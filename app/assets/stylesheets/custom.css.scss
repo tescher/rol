@@ -1,6 +1,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+/* colors */
+
+$brand-primary: rgb(14, 72, 128);
+
 /* universal */
 
 html {
@@ -71,4 +75,8 @@ p {
 #logo:hover {
   color: #fff;
   text-decoration: none;
+}
+
+.navbar-inverse {
+  background-color: $brand-primary;
 }
