@@ -7,5 +7,12 @@
     <%= SITE_TITLE %>
   </h2>
 
-  <%= link_to "Log In", '#', class: "btn btn-lg btn-primary" %>
+  <% if logged_in? %>
+
+  <% else %>
+
+    <%= link_to "Log In", login_path, class: "btn btn-lg btn-primary" %>
+
+  <% end %>
+
 </div>
