@@ -5,26 +5,12 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <!--[if lt IE 9]>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
-  </script>
-  <![endif]-->
+  <%= render 'layouts/shim' %>
 </head>
 <body>
-<header class="navbar navbar-fixed-top navbar-inverse">
+  <%= render 'layouts/header' %>
   <div class="container">
-    <%= link_to SITE_TITLE, '#', id: "logo" %>
-    <%= link_to image_tag("org.png", alt: ORG_TITLE),
-                ORG_SITE %>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home",   '#' %></li>
-      </ul>
-    </nav>
+    <%= yield %>
   </div>
-</header>
-<div class="container">
-  <%= yield %>
-</div>
 </body>
 </html>
