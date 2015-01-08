@@ -8,9 +8,10 @@
       <default-schemas>rol_development.pg_catalog rol_development.public</default-schemas>
     </data-source>
     <data-source name="Rails rol: test" uuid="76d9b8ed-8b77-4459-ae21-c13a6df19153">
-      <first-sync>true</first-sync>
       <user-name>postgres</user-name>
       <user-password>dfe7dfcbdfd8dfc3dfcbdfc4dfc4df9b</user-password>
+      <schema-pattern>rol_test.pg_catalog rol_test.public</schema-pattern>
+      <default-schemas>rol_test.pg_catalog rol_test.public</default-schemas>
     </data-source>
   </component>
 </project>
