@@ -1539,6 +1539,7 @@
       <column name="updated_at" sqlType="timestamp" precision="29" scale="6" nullable="false" jdbcType="93"/>
       <column name="password_digest" sqlType="varchar" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
       <column name="remember_digest" sqlType="varchar" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
+      <column name="admin" sqlType="bool" precision="1" scale="0" nullable="true" jdbcType="-7" def="ZmFsc2U="/>
       <primary-key name="users_pkey" columns="id"/>
       <index name="index_users_on_email" unique="true" columns="email"/>
     </table>
@@ -19511,6 +19512,7 @@
       <column name="updated_at" sqlType="timestamp" precision="29" scale="6" nullable="false" jdbcType="93"/>
       <column name="password_digest" sqlType="varchar" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
       <column name="remember_digest" sqlType="varchar" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
+      <column name="admin" sqlType="bool" precision="1" scale="0" nullable="true" jdbcType="-7" def="ZmFsc2U="/>
       <primary-key name="users_pkey" columns="id"/>
       <index name="index_users_on_email" unique="true" columns="email"/>
     </table>

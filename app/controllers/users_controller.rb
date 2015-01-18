@@ -1,16 +1,19 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit, :update]
-  before_action :correct_user,   only: [:edit, :update]
+  before_action :logged_in_user, only: [:index, :edit, :show, :update, :destroy]
+  before_action :correct_or_admin_user, only: [:edit, :update, :destroy]
+  before_action :admin_user,     only: :index
+
 
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = User.paginate(page: params[:page])
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
+    @user = User.find(params[:id])
   end
 
   # GET /users/new
@@ -40,7 +43,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
-      redirect_to @user
+      redirect_to root_url
     else
       render :edit
     end
@@ -49,8 +52,9 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    @user.destroy
-    redirect_to users_url, notice: 'User was successfully destroyed.'
+    User.find(params[:id]).destroy
+    flash[:success] = "User deleted"
+    redirect_to users_url
   end
 
   private
@@ -79,6 +83,16 @@ class UsersController < ApplicationController
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_url) unless current_user?(@user)
+    end
+
+    # Confirms an admin user.
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
+    end
+
+    # Correct user or admin
+    def correct_or_admin_user
+      redirect_to(root_url) unless current_user?(User.find(params[:id])) || current_user.admin?
     end
 
 
