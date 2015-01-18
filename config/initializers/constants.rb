@@ -10,4 +10,4 @@ ORG_SITE = "http://www.reachoutlogi.org"
 DEFAULT_TIME_ZONE = "Central Time (US & Canada)"
 
 # Password length
-MIN_PASSWORD_LENGTH = 7
+MIN_PASSWORD_LENGTH = 6

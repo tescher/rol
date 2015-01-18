@@ -6,6 +6,10 @@ ruby "2.2.0"
 gem 'rails', '4.2.0'
 # Crypto for password hashing
 gem 'bcrypt', '3.1.7'
+
+# DB Seeder
+gem 'faker',                '1.4.2'
+
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 gem 'pg'
