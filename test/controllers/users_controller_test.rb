@@ -3,8 +3,9 @@ require 'test_helper'
 class UsersControllerTest < ActionController::TestCase
 
   def setup
-    @user = users(:michael)
+    @user = users(:michael)  # Michael is an admin
     @other_user = users(:two)
+    @other_user2 = users(:archer)
   end
 
   test "should get new" do
@@ -57,6 +58,25 @@ class UsersControllerTest < ActionController::TestCase
     end
     assert_redirected_to root_url
   end
+
+  test "should allow the admin attribute to be edited by an admin" do
+    log_in_as(@user)
+    assert_not @other_user.admin?
+    patch :update, id: @other_user, user: { password:              "password",
+                                            password_confirmation: "password",
+                                            admin: true }
+    assert @other_user.reload.admin?
+  end
+
+  test "should not allow the admin attribute to be edited by a non-admin" do
+    log_in_as(@other_user2)
+    assert_not @other_user.admin?
+    patch :update, id: @other_user, user: { password:              "password",
+                                            password_confirmation: "password",
+                                            admin: true }
+    assert_not @other_user.reload.admin?
+  end
+
 
 
 
