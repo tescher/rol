@@ -45,7 +45,7 @@ class VolunteersController < ApplicationController
   def create
     @volunteer = Volunteer.new(volunteer_params)
     if @volunteer.save
-      redirect_to volunteers_path, notice: 'Volunteer was successfully created.'
+      redirect_to search_volunteers_path, notice: 'Volunteer was successfully created.'
     else
       render :new
     end
@@ -57,7 +57,7 @@ class VolunteersController < ApplicationController
     @volunteer = Volunteer.find(params[:id])
     if @volunteer.update_attributes(volunteer_params)
       flash[:success] = "Volunteer updated"
-      redirect_to root_url
+      redirect_to search_volunteers_path
     else
       render :edit
     end
@@ -68,7 +68,7 @@ class VolunteersController < ApplicationController
   def destroy
     Volunteer.find(params[:id]).destroy
     flash[:success] = "Volunteer deleted"
-    redirect_to users_url
+    redirect_to search_volunteers_path
   end
 
   private
