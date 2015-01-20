@@ -1,11 +1,17 @@
-<% provide(:title, 'Edit Volunteer') %>
+<% provide(:title, 'Volunteers') %>
 
-<h1>All Volunteers</h1>
+<h1>Volunteers</h1>
 
-<ul class="listing">
-  <%= render @volunteers %>
-</ul>
+<% if @volunteers.count < 1 %>
+    <p>No volunteers found with the given search criteria</p>
+<% else %>
 
-<%= will_paginate %>
+    <ul class="listing">
+      <%= render @volunteers %>
+    </ul>
 
-<%= link_to 'New Volunteer', new_volunteer_path %>
+    <%= will_paginate %>
+<% end %>
+
+<%= link_to 'Search Again', search_volunteers_path, class: "btn btn-primary"%>
+<%= link_to 'New Volunteer', new_volunteer_path, class: "btn btn-primary"%>

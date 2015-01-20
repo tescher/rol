@@ -16,3 +16,9 @@ one:
   notes: A bunch of notes
 
 
+<% 30.times do |n| %>
+volunteer_<%= n %>:
+  first_name:  <%= "Volunteer #{n}" %>
+  last_name: "Example"
+  email: <%= "volunteer-#{n}@example.com" %>
+<% end %>

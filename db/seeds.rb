@@ -20,4 +20,17 @@ User.create!(name:  "Example User",
                email: email,
                password:              password,
                password_confirmation: password)
-end
+  end
+
+Volunteer.create!(first_name:  "Example",
+                  last_name: "Volunteer",
+                email: "example@railstutorial.org")
+
+  99.times do |n|
+    first_name  = Faker::Name.first_name
+    last_name = Faker::Name.last_name
+    email = "example-#{n+1}@railstutorial.org"
+    Volunteer.create!(first_name:  first_name,
+                      last_name: last_name,
+                 email: email)
+  end

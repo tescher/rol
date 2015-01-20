@@ -1,32 +1,47 @@
 class VolunteersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search]
   before_action :admin_user,     only: :destroy
 
 
-  # GET /users
-  # GET /users.json
-  def index
-    @volunteers = Volunteer.paginate(page: params[:page])
+  def search
+
   end
 
-  # GET /users/1
-  # GET /users/1.json
+  # GET /volunteers
+  def index
+    where_clause = ""
+    volunteer_search_params.each do |index|
+      pp index
+      pp index[0]
+      pp index[1]
+      if ["last_name", "city"].include?(index[0])
+        if index[1].strip.length > 0
+          where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
+          where_clause += "(soundex(#{index[0]}) = soundex('#{index[1]}') OR (LOWER(#{index[0]}) LIKE '#{index[1].downcase}%'))"
+        end
+      end
+    end
+    @volunteers = where_clause.length > 0 ? Volunteer.where(where_clause).paginate(page: params[:page]) : Volunteer.paginate(page: params[:page])
+  end
+
+  # GET /volunteers/1
+  # GET /volunteers/1.json
   def show
     @volunteer = Volunteer.find(params[:id])
   end
 
-  # GET /users/new
+  # GET /volunteers/new
   def new
     @volunteer = Volunteer.new
   end
 
-  # GET /users/1/edit
+  # GET /volunteers/1/edit
   def edit
     @volunteer = Volunteer.find(params[:id])
   end
 
-  # POST /users
-  # POST /users.json
+  # POST /volunteers
+  # POST /volunteers.json
   def create
     @volunteer = Volunteer.new(volunteer_params)
     if @volunteer.save
@@ -36,8 +51,8 @@ class VolunteersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /users/1
-  # PATCH/PUT /users/1.json
+  # PATCH/PUT /volunteers/1
+  # PATCH/PUT /volunteers/1.json
   def update
     @volunteer = Volunteer.find(params[:id])
     if @volunteer.update_attributes(volunteer_params)
@@ -48,8 +63,8 @@ class VolunteersController < ApplicationController
     end
   end
 
-  # DELETE /users/1
-  # DELETE /users/1.json
+  # DELETE /volunteers/1
+  # DELETE /volunteers/1.json
   def destroy
     Volunteer.find(params[:id]).destroy
     flash[:success] = "Volunteer deleted"
@@ -77,6 +92,9 @@ class VolunteersController < ApplicationController
     params.require(:volunteer).permit(:first_name, :last_name, :middle_name, :email, :occupation,
                                       :address, :city, :state, :zip, :home_phone, :work_phone, :mobile_phone,
                                       :notes)
+  end
+  def volunteer_search_params
+    params.permit(:last_name, :city)
   end
 
 
