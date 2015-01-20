@@ -1,0 +1,73 @@
+<%= form_for(@volunteer) do |f| %>
+  <%= @object = @volunteer
+      render 'shared/error_messages' %>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1">
+        <%= f.label :first_name %><br>
+      </div>
+      <div class="col-md-4">
+        <%= f.text_field :first_name, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-1">
+        <%= f.label :middle_name %><br>
+      </div>
+      <div class="col-md-4">
+        <%= f.text_field :middle_name, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-1">
+        <%= f.label :last_name %><br>
+      </div>
+      <div class="col-md-4">
+        <%= f.text_field :last_name, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-1">
+        <%= f.label :email %><br>
+      </div>
+      <div class="col-md-4">
+        <%= f.text_field :email, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-1">
+        <%= f.label :address %><br>
+      </div>
+      <div class="col-md-4">
+        <%= f.text_field :address, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-1">
+        <%= f.label :city %><br>
+      </div>
+      <div class="col-md-4">
+        <%= f.text_field :city, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-1">
+        <%= f.label :state %><br>
+      </div>
+      <div class="col-md-1">
+        <%= f.text_field :state, class: 'form-control' %>
+      </div>
+      <div class="col-md-1">
+        <%= f.label :zip %><br>
+      </div>
+      <div class="col-md-2">
+        <%= f.text_field :zip, class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+  <div class="actions">
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
+
+<% end %>
