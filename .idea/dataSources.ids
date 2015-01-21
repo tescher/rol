@@ -18003,6 +18003,76 @@
         <parameter name="returnValue" sqlType="bool" precision="0" scale="0" nullable="true" jdbcType="-7" type="5" index="0"/>
       </prototype>
     </procedure>
+    <procedure name="difference" schema="public" catalog="rol_development" type="2">
+      <prototype>
+        <parameter name="$1" sqlType="text" precision="0" scale="0" nullable="true" jdbcType="12" type="1" index="1"/>
+        <parameter name="$2" sqlType="text" precision="0" scale="0" nullable="true" jdbcType="12" type="1" index="2"/>
+        <parameter name="returnValue" sqlType="int4" precision="0" scale="0" nullable="true" jdbcType="4" type="5" index="0"/>
+      </prototype>
+    </procedure>
+    <procedure name="dmetaphone" schema="public" catalog="rol_development" type="2">
+      <prototype>
+        <parameter name="$1" sqlType="text" precision="0" scale="0" nullable="true" jdbcType="12" type="1" index="1"/>
+        <parameter name="returnValue" sqlType="text" precision="0" scale="0" nullable="true" jdbcType="12" type="5" index="0"/>
+      </prototype>
+    </procedure>
+    <procedure name="dmetaphone_alt" schema="public" catalog="rol_development" type="2">
+      <prototype>
+        <parameter name="$1" sqlType="text" precision="0" scale="0" nullable="true" jdbcType="12" type="1" index="1"/>
+        <parameter name="returnValue" sqlType="text" precision="0" scale="0" nullable="true" jdbcType="12" type="5" index="0"/>
+      </prototype>
+    </procedure>
+    <procedure name="levenshtein" schema="public" catalog="rol_development" type="2">
+      <prototype>
+        <parameter name="$1" sqlType="text" precision="0" scale="0" nullable="true" jdbcType="12" type="1" index="1"/>
+        <parameter name="$2" sqlType="text" precision="0" scale="0" nullable="true" jdbcType="12" type="1" index="2"/>
+        <parameter name="returnValue" sqlType="int4" precision="0" scale="0" nullable="true" jdbcType="4" type="5" index="0"/>
+      </prototype>
+      <prototype>
+        <parameter name="$1" sqlType="text" precision="0" scale="0" nullable="true" jdbcType="12" type="1" index="1"/>
+        <parameter name="$2" sqlType="text" precision="0" scale="0" nullable="true" jdbcType="12" type="1" index="2"/>
+        <parameter name="$3" sqlType="int4" precision="0" scale="0" nullable="true" jdbcType="4" type="1" index="3"/>
+        <parameter name="$4" sqlType="int4" precision="0" scale="0" nullable="true" jdbcType="4" type="1" index="4"/>
+        <parameter name="$5" sqlType="int4" precision="0" scale="0" nullable="true" jdbcType="4" type="1" index="5"/>
+        <parameter name="returnValue" sqlType="int4" precision="0" scale="0" nullable="true" jdbcType="4" type="5" index="0"/>
+      </prototype>
+    </procedure>
+    <procedure name="levenshtein_less_equal" schema="public" catalog="rol_development" type="2">
+      <prototype>
+        <parameter name="$1" sqlType="text" precision="0" scale="0" nullable="true" jdbcType="12" type="1" index="1"/>
+        <parameter name="$2" sqlType="text" precision="0" scale="0" nullable="true" jdbcType="12" type="1" index="2"/>
+        <parameter name="$3" sqlType="int4" precision="0" scale="0" nullable="true" jdbcType="4" type="1" index="3"/>
+        <parameter name="returnValue" sqlType="int4" precision="0" scale="0" nullable="true" jdbcType="4" type="5" index="0"/>
+      </prototype>
+      <prototype>
+        <parameter name="$1" sqlType="text" precision="0" scale="0" nullable="true" jdbcType="12" type="1" index="1"/>
+        <parameter name="$2" sqlType="text" precision="0" scale="0" nullable="true" jdbcType="12" type="1" index="2"/>
+        <parameter name="$3" sqlType="int4" precision="0" scale="0" nullable="true" jdbcType="4" type="1" index="3"/>
+        <parameter name="$4" sqlType="int4" precision="0" scale="0" nullable="true" jdbcType="4" type="1" index="4"/>
+        <parameter name="$5" sqlType="int4" precision="0" scale="0" nullable="true" jdbcType="4" type="1" index="5"/>
+        <parameter name="$6" sqlType="int4" precision="0" scale="0" nullable="true" jdbcType="4" type="1" index="6"/>
+        <parameter name="returnValue" sqlType="int4" precision="0" scale="0" nullable="true" jdbcType="4" type="5" index="0"/>
+      </prototype>
+    </procedure>
+    <procedure name="metaphone" schema="public" catalog="rol_development" type="2">
+      <prototype>
+        <parameter name="$1" sqlType="text" precision="0" scale="0" nullable="true" jdbcType="12" type="1" index="1"/>
+        <parameter name="$2" sqlType="int4" precision="0" scale="0" nullable="true" jdbcType="4" type="1" index="2"/>
+        <parameter name="returnValue" sqlType="text" precision="0" scale="0" nullable="true" jdbcType="12" type="5" index="0"/>
+      </prototype>
+    </procedure>
+    <procedure name="soundex" schema="public" catalog="rol_development" type="2">
+      <prototype>
+        <parameter name="$1" sqlType="text" precision="0" scale="0" nullable="true" jdbcType="12" type="1" index="1"/>
+        <parameter name="returnValue" sqlType="text" precision="0" scale="0" nullable="true" jdbcType="12" type="5" index="0"/>
+      </prototype>
+    </procedure>
+    <procedure name="text_soundex" schema="public" catalog="rol_development" type="2">
+      <prototype>
+        <parameter name="$1" sqlType="text" precision="0" scale="0" nullable="true" jdbcType="12" type="1" index="1"/>
+        <parameter name="returnValue" sqlType="text" precision="0" scale="0" nullable="true" jdbcType="12" type="5" index="0"/>
+      </prototype>
+    </procedure>
   </data-source>
   <data-source name="Rails rol: test" uuid="76d9b8ed-8b77-4459-ae21-c13a6df19153">
     <database-info product="PostgreSQL" version="9.3.5" jdbc-version="4.0" driver-name="PostgreSQL Native Driver" driver-version="PostgreSQL 9.3 JDBC4 (build 1100)">

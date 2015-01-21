@@ -28,7 +28,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
                                                    last_name: last_name,
                                                    email: email }
     assert_not flash.empty?
-    assert_redirected_to search_volunteer_url
+    assert_redirected_to search_volunteers_url
     @volunteer.reload
     assert_equal @volunteer.first_name,  first_name
     assert_equal @volunteer.last_name,  last_name
@@ -46,7 +46,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
                                                    last_name: last_name,
                                                    email: email }
     assert_not flash.empty?
-    assert_redirected_to search_volunteer_url
+    assert_redirected_to search_volunteers_url
     @volunteer.reload
     assert_equal @volunteer.first_name,  first_name
     assert_equal @volunteer.last_name,  last_name

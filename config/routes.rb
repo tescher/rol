@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'interests/index'
+
+  get 'interests/new'
+
+  get 'interests/edit'
+
   root 'static_pages#home'
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
@@ -11,6 +17,8 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+  resources :interests
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
