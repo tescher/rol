@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'interest_categories/new'
+
+  get 'interest_categories/edit'
+
+  get 'interest_categories/index'
+
   get 'interests/index'
 
   get 'interests/new'
@@ -18,6 +24,7 @@ Rails.application.routes.draw do
     end
   end
   resources :interests
+  resources :interest_categories
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

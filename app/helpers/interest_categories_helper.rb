@@ -1,0 +1,2 @@
+module InterestCategoriesHelper
+end

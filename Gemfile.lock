@@ -40,6 +40,8 @@ GEM
     bcrypt (3.1.7)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-multiselect-rails (0.9.9)
+      rails (>= 4.0.0)
     bootstrap-sass (3.3.1.0)
       sass (~> 3.2)
     bootstrap-will_paginate (0.0.10)
@@ -76,6 +78,9 @@ GEM
       rails-dom-testing (~> 1.0)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
+    jquery-turbolinks (2.1.0)
+      railties (>= 3.1.0)
+      turbolinks
     json (1.8.1)
     kgio (2.9.2)
     loofah (2.0.1)
@@ -172,6 +177,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt (= 3.1.7)
+  bootstrap-multiselect-rails
   bootstrap-sass
   bootstrap-will_paginate (= 0.0.10)
   byebug
@@ -180,6 +186,7 @@ DEPENDENCIES
   heroku-deflater
   jbuilder (~> 2.0)
   jquery-rails
+  jquery-turbolinks
   pg
   possessive
   rails (= 4.2.0)

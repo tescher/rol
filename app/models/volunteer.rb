@@ -1,6 +1,9 @@
 include ActionView::Helpers::NumberHelper
 
 class Volunteer < ActiveRecord::Base
+  has_many :volunteer_interests
+  has_many :interests, through: :volunteer_interests
+
   before_save {
     self.email = email.downcase
     self.home_phone = number_to_phone(self.home_phone)

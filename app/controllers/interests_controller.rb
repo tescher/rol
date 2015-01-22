@@ -69,7 +69,7 @@ class InterestsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def interest_params
-    params.require(:interest).permit(:name, :category, :highlight)
+    params.require(:interest).permit(:name, :interest_category_id, :highlight)
   end
 
 

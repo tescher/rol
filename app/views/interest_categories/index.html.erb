@@ -1,0 +1,11 @@
+<% provide(:title, 'Interest Categories') %>
+
+<h1>All Interest Categories</h1>
+
+<ul class="listing">
+  <%= render @interest_categories %>
+</ul>
+
+<%= will_paginate %>
+
+<%= link_to 'New Interest Category', new_interest_category_path %>
