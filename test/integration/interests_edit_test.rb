@@ -27,15 +27,15 @@ class InterestsEditTest < ActionDispatch::IntegrationTest
     get edit_interest_path(@interest)
     assert_template 'interests/edit'
     name  = "Foo"
-    category = "Bar"
+    interest_category_id = 2
     patch interest_path(@interest), interest: { name:  name,
-                                                   category: category,
+                                                   interest_category_id: interest_category_id,
                                   highlight: true}
     assert_not flash.empty?
     assert_redirected_to interests_url
     @interest.reload
     assert_equal @interest.name,  name
-    assert_equal @interest.category,  category
+    assert_equal @interest.interest_category_id,  interest_category_id
     assert_equal @interest.highlight, true
   end
 
@@ -44,15 +44,15 @@ class InterestsEditTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     assert_redirected_to edit_interest_path(@interest)
     name  = "Foo"
-    category = "Bar"
+    interest_category_id = 2
     patch interest_path(@interest), interest: { name:  name,
-                                                   category: category,
+                                                interest_category_id: interest_category_id,
                                                    highlight: false }
     assert_not flash.empty?
     assert_redirected_to interests_url
     @interest.reload
     assert_equal @interest.name,  name
-    assert_equal @interest.category,  category
+    assert_equal @interest.interest_category_id,  interest_category_id
     assert_equal @interest.highlight, false
   end
 

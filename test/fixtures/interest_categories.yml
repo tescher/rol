@@ -1,9 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  string: MyString
+office:
+  name: Office
 
-two:
-  name: MyString
-  string: MyString
+construction:
+  name: Construction

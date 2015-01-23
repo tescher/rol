@@ -2,10 +2,10 @@
 
 one:
   name: Example
-  category: ExampleCat
+  interest_category_id: 1
   highlight: false
 
 two:
-  name: MyString
-  category: MyString
+  name: Example2
+  interest_category_id: 1
   highlight: false

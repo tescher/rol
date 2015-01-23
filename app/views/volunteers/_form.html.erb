@@ -112,12 +112,6 @@
             <%= f.text_area :notes, class: 'form-control' %>
           </div>
         </div>
-
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-5">
-
         <div class="row">
           <div class="col-md-2">
             <%= f.label :interests %><br>
@@ -126,11 +120,10 @@
             <%= f.select :interest_ids, option_groups_from_collection_for_select(InterestCategory.all, :interests, :name, :id, :name, f.object.interest_ids), {}, { :multiple => true, class: "form-control"}  %>
           </div>
         </div>
+
+
       </div>
-
-
     </div>
-
   </div>
 
   <div class="actions">

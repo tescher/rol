@@ -94,7 +94,7 @@ class VolunteersController < ApplicationController
                                       :notes, interest_ids: [])
   end
   def volunteer_search_params
-    params.permit(:last_name, :city)
+    params.permit(:last_name, :city, interest_ids: [])
   end
 
 

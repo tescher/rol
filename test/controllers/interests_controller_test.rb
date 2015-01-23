@@ -18,7 +18,7 @@ class InterestsControllerTest < ActionController::TestCase
   end
 
   test "should redirect update when not logged in" do
-    patch :update, id: @interest, interest: { name: @interest.name, category: @interest.category }
+    patch :update, id: @interest, interest: { name: @interest.name, interest_category_id: @interest.interest_category_id }
     assert_not flash.empty?
     assert_redirected_to login_url
   end
