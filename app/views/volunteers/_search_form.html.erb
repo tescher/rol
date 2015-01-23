@@ -11,8 +11,17 @@
                 <%= text_field_tag :last_name, nil, class: 'form-control' %>
               </div>
             </div>
+            <div class="row">
+              <div class="col-md-2">
+                <%= label_tag :interests %><br>
+              </div>
+              <div class="col-md-8">
+                <%= select_tag :interest_ids, option_groups_from_collection_for_select(InterestCategory.all, :interests, :name, :id, :name), { :multiple => true, class: "form-control"}  %>
+              </div>
+            </div>
 
           </div>
+
           <div class="col-md-5">
 
             <div class="row">

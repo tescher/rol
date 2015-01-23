@@ -10,6 +10,7 @@ class VolunteersController < ApplicationController
   # GET /volunteers
   def index
     where_clause = ""
+    interest_ids = []
     volunteer_search_params.each do |index|
       pp index
       pp index[0]
@@ -20,8 +21,18 @@ class VolunteersController < ApplicationController
           where_clause += "(soundex(#{index[0]}) = soundex('#{index[1]}') OR (LOWER(#{index[0]}) LIKE '#{index[1].downcase}%'))"
         end
       end
+      if index[0] == "interest_ids"
+        interest_ids = index[1]
+      end
     end
-    @volunteers = where_clause.length > 0 ? Volunteer.where(where_clause).paginate(page: params[:page]) : Volunteer.paginate(page: params[:page])
+    if interest_ids.count > 0
+      @volunteers = where_clause.length > 0 ? Volunteer.joins(:volunteer_interests).where(volunteer_interests: {interest_id: interest_ids}).where(where_clause).paginate(page: params[:page]) : Volunteer.joins(:volunteer_interests).where(volunteer_interests: {interest_id: interest_ids}).paginate(page: params[:page])
+      pp @volunteers
+    else
+      @volunteers = where_clause.length > 0 ? Volunteer.where(where_clause).paginate(page: params[:page]) : Volunteer.paginate(page: params[:page])
+    end
+
+
   end
 
   # GET /volunteers/1
