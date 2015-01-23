@@ -16,7 +16,7 @@
                 <%= label_tag :interests %><br>
               </div>
               <div class="col-md-8">
-                <%= select_tag :interest_ids, option_groups_from_collection_for_select(InterestCategory.all, :interests, :name, :id, :name), { :multiple => true, class: "form-control"}  %>
+                <%= select_tag :interest_ids, option_groups_from_collection_for_select(InterestCategory.all, :interests, :name, :id, :option_formatter), { :multiple => true, class: "form-control"}  %>
               </div>
             </div>
 
@@ -40,6 +40,7 @@
 
   <div class="actions">
     <%= submit_tag "Search", class: "btn btn-primary" %>
+    <%= link_to 'Back', root_path, class: "btn btn-primary" %>
   </div>
 <% end %>
 

@@ -6,4 +6,13 @@ class Interest < ActiveRecord::Base
   validates :name, presence: true
   validates :interest_category_id, presence: true
 
+  def option_formatter
+    if self.highlight?
+      "*#{self.name}"
+    else
+      self.name
+    end
+  end
+
+
 end

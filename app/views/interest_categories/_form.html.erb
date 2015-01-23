@@ -1,12 +1,15 @@
 <%= form_for(@interest_category) do |f| %>
-  <%= @object = @interest_category
+  <%= @object = f.object
       render 'shared/error_messages' %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name, class: 'form-control' %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="field">
+      <%= f.label :name %><br>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+    <%= render partial: "shared/form_actions", locals: {f: f} %>
   </div>
-  <div class="actions">
-    <%= f.submit class: "btn btn-primary" %>
-  </div>
+</div>
+
 <% end %>

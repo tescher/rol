@@ -1,0 +1,9 @@
+<div class="actions">
+  <%= f.submit class: "btn btn-primary" %>
+  <%= link_to 'Cancel', root_path, class: "btn btn-primary" %>
+  <% if current_user.admin? && f.object.persisted? %>
+      <%= link_to "Delete", f.object, method: :delete,
+                  data: { confirm: "You sure?" }, class: "btn btn-primary" %>
+  <% end %>
+
+</div>

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit, :show, :update, :destroy]
-  before_action :correct_or_admin_user, only: [:edit, :update, :destroy]
+  before_action :logged_in_user, only: [:new, :index, :edit, :show, :update, :destroy]
+  before_action :correct_or_admin_user, only: [:new, :edit, :update, :destroy]
   before_action :admin_user,     only: :index
 
 
@@ -31,7 +31,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
      if @user.save
-         redirect_to @user, notice: 'User was successfully created.'
+         flash[:success] = 'User was successfully created.'
+         redirect_to users_url
      else
          render :new
     end
@@ -43,7 +44,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
-      redirect_to root_url
+      redirect_to users_url
     else
       render :edit
     end
@@ -52,8 +53,13 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    User.find(params[:id]).destroy
-    flash[:success] = "User deleted"
+    @user = User.find(params[:id])
+    if current_user?(@user)
+      flash[:danger] = "Cannot delete yourself"
+    else
+      @user.destroy
+      flash[:success] = "User deleted"
+    end
     redirect_to users_url
   end
 

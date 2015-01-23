@@ -146,6 +146,29 @@ input {
   margin-left: 0;
 }
 
+/* Buttons */
+
+a.btn {
+  color: #ffffff;
+}
+
+a.btn:hover {
+  color: #ffffff;
+}
+
+a.btn:visited {
+   color: #ffffff;
+ }
+
+.btn {
+  width: auto
+}
+
+div.actions {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 /* sidebar */
 
 aside {

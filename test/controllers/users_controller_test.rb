@@ -10,7 +10,8 @@ class UsersControllerTest < ActionController::TestCase
 
   test "should get new" do
     get :new
-    assert_response :success
+    assert_not flash.empty?
+    assert_redirected_to login_url
   end
 
   test "should redirect edit when not logged in" do

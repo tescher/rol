@@ -4,9 +4,5 @@
   profile</h1>
 
 <%= render 'form' %>
-<% if current_user.admin? && !current_user?(@user) %>
-      <%= link_to "Delete Volunteer", @volunteer, method: :delete,
-                  data: { confirm: "You sure?" } %>
-  <% end %>
 
 

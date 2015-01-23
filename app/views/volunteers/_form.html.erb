@@ -1,5 +1,5 @@
 <%= form_for(@volunteer) do |f| %>
-  <%= @object = @volunteer
+  <%= @object = f.object
       render 'shared/error_messages' %>
 
   <div class="container">
@@ -117,7 +117,7 @@
             <%= f.label :interests %><br>
           </div>
           <div class="col-md-8">
-            <%= f.select :interest_ids, option_groups_from_collection_for_select(InterestCategory.all, :interests, :name, :id, :name, f.object.interest_ids), {}, { :multiple => true, class: "form-control"}  %>
+            <%= f.select :interest_ids, option_groups_from_collection_for_select(InterestCategory.all, :interests, :name, :id, :option_formatter, f.object.interest_ids), {}, { :multiple => true, class: "form-control"}  %>
           </div>
         </div>
 
@@ -126,8 +126,6 @@
     </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit class: "btn btn-primary" %>
-  </div>
+  <%= render partial: "shared/form_actions", locals: {f: f} %>
 
 <% end %>

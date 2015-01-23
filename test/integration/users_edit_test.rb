@@ -29,7 +29,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
                                     password:              "",
                                     password_confirmation: "" }
     assert_not flash.empty?
-    assert_redirected_to root_url
+    assert_redirected_to users_path
     @user.reload
     assert_equal @user.name,  name
     assert_equal @user.email, email
@@ -46,7 +46,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
                                     password:              "foobar12",
                                     password_confirmation: "foobar12" }
     assert_not flash.empty?
-    assert_redirected_to root_url
+    assert_redirected_to users_path
     @user.reload
     assert_equal @user.name,  name
     assert_equal @user.email, email
