@@ -1,3 +1,16 @@
-<li>
-  <%= link_to volunteer.name, edit_volunteer_path(volunteer) %>
-</li>
+<div class="row clickable" href="<%=edit_volunteer_path(volunteer)%>">
+  <li>
+    <div class="col-md-2 col-md-offset-1">
+      <%= volunteer.first_name + " " + volunteer.last_name %>
+    </div>
+    <div class="col-md-2">
+      <%= volunteer.city %>
+    </div>
+    <div class="col-md-2">
+      <%= volunteer.email %>
+    </div>
+    <div class="col-md-2">
+      <%= volunteer.home_phone.presence || volunteer.mobile_phone.presence || volunteer.work_phone.presence %>
+    </div>
+  </li>
+</div>

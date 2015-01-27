@@ -1,3 +1,7 @@
-<li>
-  <%= link_to interest_category.name, edit_interest_category_path(interest_category) %>
-</li>
+<div class="row clickable" href="<%=edit_interest_category_path(interest_category)%>">
+  <li>
+    <div class="col-md-2 col-md-offset-1">
+      <%= interest_category.name %>
+    </div>
+ </li>
+</div>

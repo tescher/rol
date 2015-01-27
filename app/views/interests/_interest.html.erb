@@ -1,3 +1,13 @@
-<li>
-  <%= link_to interest.name, edit_interest_path(interest) %>
-</li>
+<div class="row clickable" href="<%=edit_interest_path(interest)%>">
+    <li>
+        <div class="col-md-2 col-md-offset-1">
+          <%= interest.name %>
+        </div>
+      <div class="col-md-2">
+        <%= interest.interest_category.name %>
+      </div>
+      <div class="col-md-2">
+        <%= interest.highlight? ? "(highlight)" : "" %>
+      </div>
+    </li>
+</div>
