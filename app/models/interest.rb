@@ -7,7 +7,9 @@ class Interest < ActiveRecord::Base
   validates :interest_category_id, presence: true
 
   def option_formatter
-    if self.highlight?
+    if self.inactive?
+      "/#{self.name}"
+    elsif self.highlight?
       "*#{self.name}"
     else
       self.name

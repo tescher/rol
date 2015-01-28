@@ -17,6 +17,11 @@
           <%= f.check_box :highlight %> Highlight
         </label>
       </div>
+      <div class="checkbox">
+        <label>
+          <%= f.check_box :inactive %> Inactive
+        </label>
+      </div>
     <%= render partial: "shared/form_actions", locals: {f: f} %>
   </div>
 </div>
