@@ -3,7 +3,7 @@ require 'test_helper'
 class InterestTest < ActiveSupport::TestCase
 
   def setup
-    @interest_category = InterestCategory.new(name: "Office")
+    @interest_category = InterestCategory.new(name: "IT")
     @interest_category.save
     @interest = Interest.new(name: "Example", interest_category: @interest_category, highlight: true)
   end
@@ -17,6 +17,6 @@ class InterestTest < ActiveSupport::TestCase
     assert_not @interest.valid?
     @interest.name = "Example"
     @interest.interest_category = nil
-    assert @interest.valid?
+    assert_not @interest.valid?
   end
 end

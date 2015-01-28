@@ -48,9 +48,16 @@ class InterestCategoriesController < ApplicationController
   # DELETE /interests/1
   # DELETE /interests/1.json
   def destroy
-    InterestCategory.find(params[:id]).destroy
-    flash[:success] = "interest category deleted"
-    redirect_to interest_categories_path
+    @interest_category = InterestCategory.find(params[:id])
+    @interests = Interest.where(interest_category_id: @interest_category.id)
+    if @interests.count > 0
+      flash.now[:danger] = "Cannot delete interest category, it is attached to an interest"
+      render :edit
+    else
+      @interest_category.destroy
+      flash[:success] = "interest category deleted"
+      redirect_to interest_categories_path
+    end
   end
 
   private

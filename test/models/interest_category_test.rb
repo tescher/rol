@@ -3,7 +3,7 @@ require 'test_helper'
 class InterestCategoryTest < ActiveSupport::TestCase
 
   def setup
-    @interest_category = InterestCategory.new(name: "Office")
+    @interest_category = InterestCategory.new(name: "IT")
   end
 
   test "should be valid" do

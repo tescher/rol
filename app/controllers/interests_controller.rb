@@ -48,9 +48,15 @@ class InterestsController < ApplicationController
   # DELETE /interests/1
   # DELETE /interests/1.json
   def destroy
-    Interest.find(params[:id]).destroy
-    flash[:success] = "interest deleted"
-    redirect_to interests_path
+    @interest = Interest.find(params[:id])
+    if Volunteer.joins(:volunteer_interests).where(volunteer_interests: {interest_id: @interest.id}).count > 0
+      flash.now[:danger] = "Cannot delete interest, it is attached to a volunteer"
+      render :edit
+    else
+      @interest.destroy
+      flash[:success] = "interest deleted"
+      redirect_to interests_path
+    end
   end
   
   private
