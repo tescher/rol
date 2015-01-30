@@ -1554,6 +1554,7 @@
       <column name="highlight" sqlType="bool" precision="1" scale="0" nullable="true" jdbcType="-7"/>
       <column name="created_at" sqlType="timestamp" precision="29" scale="6" nullable="false" jdbcType="93"/>
       <column name="updated_at" sqlType="timestamp" precision="29" scale="6" nullable="false" jdbcType="93"/>
+      <column name="inactive" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7" def="ZmFsc2U="/>
       <primary-key name="interests_pkey" columns="id"/>
     </table>
     <table name="interests_id_seq" schema="public" catalog="rol_development" type="SEQUENCE">
@@ -19689,6 +19690,7 @@
       <column name="highlight" sqlType="bool" precision="1" scale="0" nullable="true" jdbcType="-7"/>
       <column name="created_at" sqlType="timestamp" precision="29" scale="6" nullable="false" jdbcType="93"/>
       <column name="updated_at" sqlType="timestamp" precision="29" scale="6" nullable="false" jdbcType="93"/>
+      <column name="inactive" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7" def="ZmFsc2U="/>
       <primary-key name="interests_pkey" columns="id"/>
     </table>
     <table name="interests_id_seq" schema="public" catalog="rol_test" type="SEQUENCE">

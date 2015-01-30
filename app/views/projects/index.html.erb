@@ -1,0 +1,14 @@
+<% provide(:title, 'Projects') %>
+
+<h1>All Projects</h1>
+
+<ul class="listing">
+  <%= render @projects %>
+</ul>
+
+<%= will_paginate %>
+
+<div class="actions">
+  <%= link_to 'New Project', new_project_path, class: "btn btn-primary" %>
+  <%= link_to 'Back', root_path, class: "btn btn-primary" %>
+</div>

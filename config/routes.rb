@@ -1,16 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'interest_categories/new'
-
-  get 'interest_categories/edit'
-
-  get 'interest_categories/index'
-
-  get 'interests/index'
-
-  get 'interests/new'
-
-  get 'interests/edit'
+  resources :workdays
 
   root 'static_pages#home'
   get    'login'   => 'sessions#new'
@@ -25,6 +15,8 @@ Rails.application.routes.draw do
   end
   resources :interests
   resources :interest_categories
+  resources :projects
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
