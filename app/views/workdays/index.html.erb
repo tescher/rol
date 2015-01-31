@@ -1,29 +1,18 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, 'Workdays') %>
 
-<h1>Listing Workdays</h1>
+<h1>Workdays for <%= @project.name %></h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Project</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<% if @workdays.count > 0 %>
+    <ul class="listing">
+      <%= render @workdays %>
+    </ul>
+<% else %>
+    No workdays found. Click New to create one.
+<% end %>
 
-  <tbody>
-    <% @workdays.each do |workday| %>
-      <tr>
-        <td><%= workday.name %></td>
-        <td><%= workday.project_id %></td>
-        <td><%= link_to 'Show', workday %></td>
-        <td><%= link_to 'Edit', edit_workday_path(workday) %></td>
-        <td><%= link_to 'Destroy', workday, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= will_paginate %>
 
-<br>
-
-<%= link_to 'New Workday', new_workday_path %>
+<div class="actions">
+  <%= link_to 'New Workday', new_workday_path({project_id: @project.id}), class: "btn btn-primary" %>
+  <%= link_to 'Back', root_path, class: "btn btn-primary" %>
+</div>

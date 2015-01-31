@@ -1,0 +1,17 @@
+<% provide(:title, 'Workdays') %>
+<h1>Workdays</h1>
+
+
+<div class="container">
+  <% if @projects.count > 0 %>
+      <ul class="listing">
+        <%= render partial: "workdays/project.html", collection: @projects %>
+      </ul>
+  <% else %>
+      No projects found. Create a project first.
+  <% end %>
+</div>
+
+<div class="actions">
+  <%= link_to 'Back', root_path, class: "btn btn-primary" %>
+</div>

@@ -1,8 +1,14 @@
 require 'test_helper'
 
 class WorkdaysControllerTest < ActionController::TestCase
-  setup do
+
+  def setup
     @workday = workdays(:one)
+  end
+
+  test "Search without logging in" do
+    get :search
+    assert_redirected_to login_url
   end
 
   test "should redirect new when not logged in" do

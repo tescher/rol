@@ -2,11 +2,13 @@
 
 <h1>All Interests</h1>
 
-<div class="container">
+<% if @interests.count > 0 %>
     <ul class="listing">
       <%= render @interests %>
     </ul>
-</div>
+<% else %>
+    No interests found. Click New to create one.
+<% end %>
 
 <%= will_paginate %>
 

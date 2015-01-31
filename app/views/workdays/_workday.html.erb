@@ -1,0 +1,10 @@
+<div class="row clickable" href="<%=add_volunteers_workday_path(workday)%>">
+  <li>
+    <div class="col-md-2 col-md-offset-1">
+      <%= workday.name %>
+    </div>
+    <div class="col-md-2">
+      <%= workday.workdate.to_s %>
+    </div>
+  </li>
+</div>

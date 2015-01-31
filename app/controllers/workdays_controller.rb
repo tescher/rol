@@ -1,10 +1,11 @@
 class WorkdaysController < ApplicationController
-  before_action :set_workday, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search]
 
   # GET /workdays
   # GET /workdays.json
   def index
-    @workdays = Workday.all
+    @workdays = Workday.where(project_id: params[:project_id]).order(created_at: :desc).paginate(page: params[:page])
+    @project = Project.find(params[:project_id])
   end
 
   # GET /workdays/1
@@ -12,28 +13,31 @@ class WorkdaysController < ApplicationController
   def show
   end
 
+  # GET /workdays/search
+  def search
+    @projects = Project.all
+  end
+
   # GET /workdays/new
   def new
-    @workday = Workday.new
+    @project = Project.find(params[:project_id])
+    @workday = Workday.new(project_id: @project.id)
   end
 
   # GET /workdays/1/edit
   def edit
+    @workday = Workday.find(params[:id])
   end
 
   # POST /workdays
   # POST /workdays.json
   def create
-    @workday = Workday.new(workday_params)
-
-    respond_to do |format|
-      if @workday.save
-        format.html { redirect_to @workday, notice: 'Workday was successfully created.' }
-        format.json { render :show, status: :created, location: @workday }
-      else
-        format.html { render :new }
-        format.json { render json: @workday.errors, status: :unprocessable_entity }
-      end
+    modified_params = workday_params
+    @workday = Workday.new(modified_params)
+    if @workday.save
+      redirect_to workdays_path({project_id: modified_params[:project_id]}), notice: 'interest category was successfully created.'
+    else
+      render :new
     end
   end
 
@@ -51,6 +55,11 @@ class WorkdaysController < ApplicationController
     end
   end
 
+  def add_volunteers
+
+  end
+
+
   # DELETE /workdays/1
   # DELETE /workdays/1.json
   def destroy
@@ -62,13 +71,21 @@ class WorkdaysController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_workday
-      @workday = Workday.find(params[:id])
+
+  # Confirms a logged-in user.
+  def logged_in_user
+    unless logged_in?
+      store_location
+      flash[:danger] = "Please log in."
+      redirect_to login_url
     end
+  end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def workday_params
-      params.require(:workday).permit(:description, :project_id)
+      if params[:workday][:workdate]
+          params[:workday][:workdate] = Date.strptime(params[:workday][:workdate], "%m/%d/%Y").to_s
+      end
+      params.require(:workday).permit(:name, :project_id, :workdate)
     end
 end

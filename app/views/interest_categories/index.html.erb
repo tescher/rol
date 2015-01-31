@@ -2,9 +2,13 @@
 
 <h1>All Interest Categories</h1>
 
-<ul class="listing">
-  <%= render @interest_categories %>
-</ul>
+<% if @interest_categories.count > 0 %>
+    <ul class="listing">
+      <%= render @interest_categories %>
+    </ul>
+<% else %>
+    No interest categories found. Click New to create one.
+<% end %>
 
 <%= will_paginate %>
 

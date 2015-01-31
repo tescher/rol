@@ -3,6 +3,7 @@
 one:
   name: Project1
   inactive: false
+  id: 1
 
 two:
   name: Project2

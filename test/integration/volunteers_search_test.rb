@@ -18,7 +18,7 @@ class VolunteersSearchTest < ActionDispatch::IntegrationTest
     assert_select 'div.pagination'
     first_page_of_volunteers = Volunteer.paginate(page: 1)
     first_page_of_volunteers.each do |volunteer|
-      assert_select 'a[href=?]', edit_volunteer_path(volunteer), text: volunteer.name
+      assert_select 'div[href=?]', edit_volunteer_path(volunteer)
     end
   end
 
@@ -29,7 +29,7 @@ class VolunteersSearchTest < ActionDispatch::IntegrationTest
     get search_volunteers_path
     assert_template 'volunteers/search'
     get volunteers_path, {interest_ids: [@interest.id]}
-    assert_select 'a[href=?]', edit_volunteer_path(@volunteer), text: @volunteer.name
+    assert_select 'div[href=?]', edit_volunteer_path(@volunteer)
   end
 
   test "Find volunteers with multiple interests and name" do
@@ -39,7 +39,7 @@ class VolunteersSearchTest < ActionDispatch::IntegrationTest
     get search_volunteers_path
     assert_template 'volunteers/search'
     get volunteers_path, {interest_ids: [@interest.id, "0"], last_name: "s"}
-    assert_select 'a[href=?]', edit_volunteer_path(@volunteer), text: @volunteer.name
+    assert_select 'div[href=?]', edit_volunteer_path(@volunteer)
   end
 
 

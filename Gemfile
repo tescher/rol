@@ -17,6 +17,10 @@ gem 'bootstrap-will_paginate', '0.0.10'
 # Multiselect helper
 gem 'bootstrap-multiselect-rails'
 
+# Datepicker
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.0.0'
+
 # Possessive noun helper
 gem 'possessive'
 

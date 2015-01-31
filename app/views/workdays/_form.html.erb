@@ -1,25 +1,23 @@
 <%= form_for(@workday) do |f| %>
-  <% if @workday.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@workday.errors.count, "error") %> prohibited this workday from being saved:</h2>
+    <%= @object = f.object
+        render 'shared/error_messages' %>
 
-      <ul>
-      <% @workday.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="field">
+          <%= f.label :name %><br>
+          <%= f.text_field :name, class: 'form-control' %>
+        </div>
+        <div class="field">
+          <div class='input-group date' id='workdatepicker'>
+            <input type='text' name="workday[workdate]" id="workday_workdate" class="form-control" />
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+          </div>
+        </div>
+        <%= f.hidden_field(:project_id) %>
+        <%= render partial: "shared/form_actions", locals: {f: f} %>
+      </div>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :project_id %><br>
-    <%= f.number_field :project_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>

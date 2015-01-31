@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :workdays
-
   root 'static_pages#home'
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
@@ -13,6 +11,15 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+  resources :workdays do
+    collection do
+      get 'search'
+    end
+    member do
+      get 'add_volunteers'
+    end
+  end
+
   resources :interests
   resources :interest_categories
   resources :projects

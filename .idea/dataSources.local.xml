@@ -4,14 +4,10 @@
     <data-source name="Rails rol: development" uuid="7235042d-522d-4024-8791-6fce9f1fc869">
       <user-name>postgres</user-name>
       <user-password>dfe7dfcbdfd8dfc3dfcbdfc4dfc4df9b</user-password>
-      <schema-pattern>rol_development.pg_catalog rol_development.public</schema-pattern>
-      <default-schemas>rol_development.pg_catalog rol_development.public</default-schemas>
     </data-source>
     <data-source name="Rails rol: test" uuid="76d9b8ed-8b77-4459-ae21-c13a6df19153">
       <user-name>postgres</user-name>
       <user-password>dfe7dfcbdfd8dfc3dfcbdfc4dfc4df9b</user-password>
-      <schema-pattern>rol_test.pg_catalog rol_test.public</schema-pattern>
-      <default-schemas>rol_test.pg_catalog rol_test.public</default-schemas>
     </data-source>
   </component>
 </project>

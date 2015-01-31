@@ -14,7 +14,7 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
     assert_select 'div.pagination'
     first_page_of_users = User.paginate(page: 1)
     first_page_of_users.each do |user|
-      assert_select 'a[href=?]', edit_user_path(user), text: user.name
+      assert_select 'div[href=?]', edit_user_path(user)
     end
   end
 

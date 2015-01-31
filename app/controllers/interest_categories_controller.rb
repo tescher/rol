@@ -45,6 +45,7 @@ class InterestCategoriesController < ApplicationController
     end
   end
 
+
   # DELETE /interests/1
   # DELETE /interests/1.json
   def destroy
