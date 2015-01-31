@@ -1,6 +1,8 @@
 <% provide(:title, 'Workdays') %>
 
-<h1>Workdays for <%= @project.name %></h1>
+<h1>Workdays</h1>
+<h4 class="center"><%= @project.name %> - Choose a day or create a new one</h4>
+
 
 <% if @workdays.count > 0 %>
     <ul class="listing">

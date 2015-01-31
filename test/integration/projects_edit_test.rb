@@ -49,11 +49,11 @@ class ProjectsEditTest < ActionDispatch::IntegrationTest
 
   test "successful delete as admin" do
     log_in_as(@user)
-    get edit_project_path(@project)
-    assert_select 'a[href=?]', project_path(@project), method: :delete
+    get edit_project_path(@project_2)
+    assert_select 'a[href=?]', project_path(@project_2), method: :delete
 
     assert_difference 'Project.count', -1 do
-      delete project_path(@project)
+      delete project_path(@project_2)
     end
   end
 

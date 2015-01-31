@@ -20,7 +20,7 @@ class WorkdaysController < ApplicationController
 
   # GET /workdays/new
   def new
-    @project = Project.find(params[:project_id])
+    @project = @project || Project.find(params[:project_id])
     @workday = Workday.new(project_id: @project.id)
   end
 
@@ -33,6 +33,7 @@ class WorkdaysController < ApplicationController
   # POST /workdays.json
   def create
     modified_params = workday_params
+    @project = Project.find(modified_params[:project_id])
     @workday = Workday.new(modified_params)
     if @workday.save
       redirect_to workdays_path({project_id: modified_params[:project_id]}), notice: 'interest category was successfully created.'

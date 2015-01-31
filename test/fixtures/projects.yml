@@ -8,3 +8,7 @@ one:
 two:
   name: Project2
   inactive: false
+
+three:
+  name: Project3
+  inactive: false

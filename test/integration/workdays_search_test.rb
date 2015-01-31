@@ -20,9 +20,9 @@ class VolunteersSearchTest < ActionDispatch::IntegrationTest
 
     assert_template 'workdays/search'
     get workdays_path, {project_id: 1}
-    workdays = Workday.find_by_project_id(1)
+    workdays = Workday.where(project_id: 1)
     workdays.each do |workday|
-      assert_select 'div[href=?]', edit_workday_path(workday)
+      assert_select 'div[href=?]', add_volunteers_workday_path(workday)
     end
   end
 

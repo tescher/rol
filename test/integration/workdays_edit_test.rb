@@ -64,7 +64,7 @@ class WorkdaysEditTest < ActionDispatch::IntegrationTest
     assert_template 'workdays/edit'
     name  = @workday.name
     project = @workday.project_id
-    workdate = @workday.workdate
+    workdate = @workday.workdate.strftime("%m/%d/%Y")
     patch workday_path(@workday_2), workday: { name:  name, project_id: project, workdate: workdate }
     assert_select '.alert', 1
     @workday_2.reload
