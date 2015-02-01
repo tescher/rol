@@ -6,4 +6,6 @@ class Workday < ActiveRecord::Base
   validates :project_id, presence: true
   validates :workdate, presence: true
 
+  accepts_nested_attributes_for :workday_volunteers, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
+
 end

@@ -1,0 +1,27 @@
+<%= form_for(@workday) do |f| %>
+    <%= @object = f.object
+        render 'shared/error_messages' %>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <th class="col-md-3">Volunteer</th>
+        <th class="col-md-2">Start Time</th>
+        <th class="col-md-2">End Time</th>
+        <th class="col-md-2">Total Hours</th>
+        <th class="col-md-3"></th>
+      </tr>
+      </thead>
+      <tbody class="add_fields">
+      <%= f.fields_for :workday_volunteers do |builder| %>
+          <%= render "workday_volunteer_fields", :f => builder %>
+      <% end %>
+      </tbody>
+    </table>
+    <%= link_to_add_fields "Add a Volunteer", f, :workday_volunteers, "", ".add_fields", "Add a Volunteer" %>
+
+
+    <%= f.hidden_field(:project_id) %>
+    <%= render partial: "shared/form_actions", locals: {f: f} %>
+
+<% end %>

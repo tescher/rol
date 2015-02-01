@@ -32,11 +32,10 @@ class WorkdaysController < ApplicationController
   # POST /workdays
   # POST /workdays.json
   def create
-    modified_params = workday_params
-    @project = Project.find(modified_params[:project_id])
-    @workday = Workday.new(modified_params)
+    @project = Project.find(workday_params[:project_id])
+    @workday = Workday.new(workday_params)
     if @workday.save
-      redirect_to workdays_path({project_id: modified_params[:project_id]}), notice: 'interest category was successfully created.'
+      redirect_to add_volunteers_workday_path({id: @workday.id, project_id: workday_params[:project_id]})
     else
       render :new
     end
@@ -46,7 +45,7 @@ class WorkdaysController < ApplicationController
   # PATCH/PUT /workdays/1.json
   def update
     respond_to do |format|
-      if @workday.update(workday_params)
+      if @workday.update(params)
         format.html { redirect_to @workday, notice: 'Workday was successfully updated.' }
         format.json { render :show, status: :ok, location: @workday }
       else
@@ -57,7 +56,8 @@ class WorkdaysController < ApplicationController
   end
 
   def add_volunteers
-
+    @workday = Workday.find(params[:id])
+    @project = Project.find(params[:project_id])
   end
 
 
@@ -84,9 +84,11 @@ class WorkdaysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def workday_params
-      if params[:workday][:workdate]
-          params[:workday][:workdate] = Date.strptime(params[:workday][:workdate], "%m/%d/%Y").to_s
-      end
       params.require(:workday).permit(:name, :project_id, :workdate)
+      # modified_params = params
+      # if params[:workday][:workdate]
+      #     modified_params[:workday][:workdate] = Date.strptime(params[:workday][:workdate], "%m/%d/%Y").to_s
+      # end
+      # modified_params
     end
 end
