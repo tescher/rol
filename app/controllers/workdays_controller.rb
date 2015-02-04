@@ -27,6 +27,7 @@ class WorkdaysController < ApplicationController
   # GET /workdays/1/edit
   def edit
     @workday = Workday.find(params[:id])
+    @project = Project.find(@workday.project_id)
   end
 
   # POST /workdays
@@ -35,7 +36,7 @@ class WorkdaysController < ApplicationController
     @project = Project.find(workday_params[:project_id])
     @workday = Workday.new(workday_params)
     if @workday.save
-      redirect_to add_volunteers_workday_path({id: @workday.id, project_id: workday_params[:project_id]})
+      redirect_to add_volunteers_workday_path({id: @workday.id, project_id: @project.id})
     else
       render :new
     end
@@ -45,19 +46,28 @@ class WorkdaysController < ApplicationController
   # PATCH/PUT /workdays/1.json
   def update
     @workday = Workday.find(params[:id])
+    @project = Project.find(@workday.project_id)
     if @workday.update_attributes(workday_params)
-      flash[:success] = "Workday updated"
-      session.delete(:workday_id)
-      redirect_to search_workdays_path
+      if workday_params[:name].nil?         # Coming from Add Volunteers
+        flash[:success] = "Workday updated"
+        session.delete(:workday_id)
+        redirect_to workdays_path(project_id: @workday.project_id)
+      else
+        redirect_to add_volunteers_workday_path(@workday)
+      end
     else
-      render :add_volunteers
+      if workday_params[:name].nil?         # Coming from Add Volunteers
+        render :add_volunteers
+      else
+        render :edit
+      end
     end
   end
 
   def add_volunteers
     @workday = Workday.find(params[:id])
     session[:workday_id] = @workday.id
-    @project = Project.find(params[:project_id])
+    @project = Project.find(@workday.project_id)
   end
 
 

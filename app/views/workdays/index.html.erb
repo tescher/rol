@@ -1,7 +1,7 @@
 <% provide(:title, 'Workdays') %>
 
 <h1>Workdays</h1>
-<h4 class="center"><%= @project.name %> - Choose a day or create a new one</h4>
+<h4 class="center"><%= @project.name %> - Choose a workday or create a new one</h4>
 
 
 <% if @workdays.count > 0 %>
@@ -9,7 +9,7 @@
       <%= render @workdays %>
     </ul>
 <% else %>
-    No workdays found. Click New to create one.
+    <p>No workdays found. Click New to create one.</p>
 <% end %>
 
 <%= will_paginate %>
