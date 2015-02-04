@@ -18,7 +18,8 @@
       <% end %>
       </tbody>
     </table>
-    <%= link_to_add_fields "Add a Volunteer", f, :workday_volunteers, "", ".add_fields", "Add a Volunteer" %>
+    <%= # link_to_add_fields "Add a Volunteer", f, :workday_volunteers, "", ".add_fields", "Add a Volunteer"
+        link_to "Add a Volunteer", "#", id:"linkAddVolunteer" %>
 
 
     <%= f.hidden_field(:project_id) %>

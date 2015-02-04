@@ -12,6 +12,7 @@
  *
  *= require _bootstrap-sprockets
  *= require bootstrap-multiselect
+ *= require jquery-ui
  *= require_tree .
  *= require_self
  */

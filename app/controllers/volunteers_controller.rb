@@ -4,7 +4,9 @@ class VolunteersController < ApplicationController
 
 
   def search
-
+    if params[:dialog] == "true"
+      render partial: "dialog_search_form"
+    end
   end
 
   # GET /volunteers
@@ -29,7 +31,12 @@ class VolunteersController < ApplicationController
       @volunteers = where_clause.length > 0 ? Volunteer.joins(:volunteer_interests).where(volunteer_interests: {interest_id: interest_ids}).where(where_clause).paginate(page: params[:page]) : Volunteer.joins(:volunteer_interests).where(volunteer_interests: {interest_id: interest_ids}).paginate(page: params[:page])
       pp @volunteers
     else
-      @volunteers = where_clause.length > 0 ? Volunteer.where(where_clause).paginate(page: params[:page]) : Volunteer.paginate(page: params[:page])
+      if params[:dialog] == "true"
+        @volunteers = where_clause.length > 0 ? Volunteer.where(where_clause) : nil
+        render partial: "dialog_index", collection: @volunteers, as: 'volunteer'
+      else
+        @volunteers = where_clause.length > 0 ? Volunteer.where(where_clause).paginate(page: params[:page]) : Volunteer.paginate(page: params[:page])
+      end
     end
 
 

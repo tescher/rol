@@ -83,6 +83,8 @@ GEM
     jquery-turbolinks (2.1.0)
       railties (>= 3.1.0)
       turbolinks
+    jquery-ui-rails (5.0.3)
+      railties (>= 3.2.16)
     json (1.8.1)
     kgio (2.9.2)
     loofah (2.0.1)
@@ -192,6 +194,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks
+  jquery-ui-rails
   momentjs-rails (>= 2.9.0)
   pg
   possessive

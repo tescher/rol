@@ -44,19 +44,19 @@ class WorkdaysController < ApplicationController
   # PATCH/PUT /workdays/1
   # PATCH/PUT /workdays/1.json
   def update
-    respond_to do |format|
-      if @workday.update(params)
-        format.html { redirect_to @workday, notice: 'Workday was successfully updated.' }
-        format.json { render :show, status: :ok, location: @workday }
-      else
-        format.html { render :edit }
-        format.json { render json: @workday.errors, status: :unprocessable_entity }
-      end
+    @workday = Workday.find(params[:id])
+    if @workday.update_attributes(workday_params)
+      flash[:success] = "Workday updated"
+      session.delete(:workday_id)
+      redirect_to search_workdays_path
+    else
+      render :add_volunteers
     end
   end
 
   def add_volunteers
     @workday = Workday.find(params[:id])
+    session[:workday_id] = @workday.id
     @project = Project.find(params[:project_id])
   end
 
@@ -84,7 +84,7 @@ class WorkdaysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def workday_params
-      params.require(:workday).permit(:name, :project_id, :workdate)
+      params.require(:workday).permit(:name, :project_id, :workdate, workday_volunteers_attributes: [:id, :volunteer_id, :workday_id, :start_time, :end_time, :hours, :_destroy])
       # modified_params = params
       # if params[:workday][:workdate]
       #     modified_params[:workday][:workdate] = Date.strptime(params[:workday][:workdate], "%m/%d/%Y").to_s

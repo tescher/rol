@@ -27,3 +27,8 @@ function add_fields(link, association, content, parent_selector) {
     // $(link).parent().before(content.replace(regexp, new_id));
 }
 
+function add_fields_and_close(link, association, content, parent_selector) {
+    add_fields(link,association, content, parent_selector);
+    $(link).closest('.ui-dialog-content').dialog('close');
+}
+
