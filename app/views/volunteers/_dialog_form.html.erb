@@ -1,4 +1,4 @@
-<%= form_for(@volunteer, id: "dialogFormNewVolunteer", remote: true) do |f| %>
+<%= form_for(@volunteer, html: { id: "dialogFormNewVolunteer" }, remote: true) do |f| %>
     <%= @object = f.object
         render 'shared/error_messages' %>
 
@@ -51,6 +51,6 @@
       </div>
     </div>
 
-    <% f.hidden_field :dialog, "true" %>
+    <%= f.hidden_field :dialog, value: "true" %>
 
 <% end %>

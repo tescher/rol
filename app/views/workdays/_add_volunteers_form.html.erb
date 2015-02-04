@@ -23,6 +23,6 @@
 
 
     <%= f.hidden_field(:project_id) %>
-    <%= render partial: "shared/form_actions", locals: {f: f} %>
+    <%= render partial: "shared/form_actions", locals: {f: f, cancel: workdays_path(project_id: @project.id)} %>
 
 <% end %>

@@ -44,7 +44,7 @@
                     $.ajax({
                         url: "/volunteers/new?dialog=true",
                         success: function(data) {
-                            loadDialog("dialogAddVolunteer",data);
+                            loadDialog("dialogNewVolunteer",data);
                         },
                         async: false,
                         cache: false
@@ -113,7 +113,8 @@
                     if (data.length < 2) {
                         dialog.dialog("close");
                     } else {
-                        dialog.html(data);
+                        add_fields("","workday_volunteer", data, ".add_fields");
+                        dialog.dialog("close");
                     }
             }
         });

@@ -4,7 +4,7 @@ class WorkdaysController < ApplicationController
   # GET /workdays
   # GET /workdays.json
   def index
-    @workdays = Workday.where(project_id: params[:project_id]).order(created_at: :desc).paginate(page: params[:page])
+    @workdays = Workday.where(project_id: params[:project_id]).order(workdate: :desc).paginate(page: params[:page])
     @project = Project.find(params[:project_id])
   end
 
@@ -74,11 +74,11 @@ class WorkdaysController < ApplicationController
   # DELETE /workdays/1
   # DELETE /workdays/1.json
   def destroy
+    @workday = Workday.find(params[:id])
+    project_id = @workday.project_id
     @workday.destroy
-    respond_to do |format|
-      format.html { redirect_to workdays_url, notice: 'Workday was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    flash[:success] = "Workday deleted"
+    redirect_to workdays_path(project_id: project_id)
   end
 
   private
@@ -94,11 +94,10 @@ class WorkdaysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def workday_params
-      params.require(:workday).permit(:name, :project_id, :workdate, workday_volunteers_attributes: [:id, :volunteer_id, :workday_id, :start_time, :end_time, :hours, :_destroy])
-      # modified_params = params
-      # if params[:workday][:workdate]
-      #     modified_params[:workday][:workdate] = Date.strptime(params[:workday][:workdate], "%m/%d/%Y").to_s
-      # end
-      # modified_params
+      modified_params = params.require(:workday).permit(:name, :project_id, :workdate, workday_volunteers_attributes: [:id, :volunteer_id, :workday_id, :start_time, :end_time, :hours, :_destroy])
+      if modified_params[:workdate]
+          modified_params[:workdate] = Date.strptime(modified_params[:workdate], "%m/%d/%Y").to_s
+      end
+      modified_params
     end
 end

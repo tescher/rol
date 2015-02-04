@@ -1,3 +1,5 @@
+include WorkdaysHelper
+
 class VolunteersController < ApplicationController
   before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search]
   before_action :admin_user,     only: :destroy
@@ -51,6 +53,10 @@ class VolunteersController < ApplicationController
   # GET /volunteers/new
   def new
     @volunteer = Volunteer.new
+    if params[:dialog] == "true"
+      render partial: "dialog_form"
+    end
+
   end
 
   # GET /volunteers/1/edit
@@ -63,9 +69,18 @@ class VolunteersController < ApplicationController
   def create
     @volunteer = Volunteer.new(volunteer_params)
     if @volunteer.save
-      redirect_to search_volunteers_path, notice: 'Volunteer was successfully created.'
+      if params[:volunteer][:dialog] == "true"
+        render text: add_workday_volunteer_fields(@volunteer, session[:workday_id])
+      else
+        flash[:success] = "Volunteer created"
+        redirect_to search_volunteers_path
+      end
     else
-      render :new
+      if params[:volunteer][:dialog] == "true"
+        flash[:danger] = "Could not create volunteer. Make sure fields are filled correctly"
+      else
+        render :new
+      end
     end
   end
 
