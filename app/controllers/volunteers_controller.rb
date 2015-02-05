@@ -35,7 +35,7 @@ class VolunteersController < ApplicationController
     else
       if params[:dialog] == "true"
         @volunteers = where_clause.length > 0 ? Volunteer.where(where_clause) : nil
-        render partial: "dialog_index", collection: @volunteers, as: 'volunteer'
+        render partial: "dialog_index"
       else
         @volunteers = where_clause.length > 0 ? Volunteer.where(where_clause).paginate(page: params[:page]) : Volunteer.paginate(page: params[:page])
       end
@@ -70,7 +70,8 @@ class VolunteersController < ApplicationController
     @volunteer = Volunteer.new(volunteer_params)
     if @volunteer.save
       if params[:volunteer][:dialog] == "true"
-        render text: add_workday_volunteer_fields(@volunteer, session[:workday_id])
+        @workday = session[:workday_id]
+        render partial: "dialog_add_workday_volunteer_fields"
       else
         flash[:success] = "Volunteer created"
         redirect_to search_volunteers_path

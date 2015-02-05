@@ -49,6 +49,7 @@
                         async: false,
                         cache: false
                     });
+                    $(this).dialog("close");
                 },
                 class: "btn btn-large btn-primary"
             },{
@@ -113,7 +114,7 @@
                     if (data.length < 2) {
                         dialog.dialog("close");
                     } else {
-                        add_fields("","workday_volunteer", data, ".add_fields");
+                        add_fields("","workday_volunteers", data, ".add_fields");
                         dialog.dialog("close");
                     }
             }
