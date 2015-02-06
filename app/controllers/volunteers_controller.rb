@@ -13,35 +13,42 @@ class VolunteersController < ApplicationController
 
   # GET /volunteers
   def index
-    where_clause = ""
-    interest_ids = []
-    volunteer_search_params.each do |index|
-      pp index
-      pp index[0]
-      pp index[1]
-      if ["last_name", "city"].include?(index[0])
-        if index[1].strip.length > 0
-          where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
-          where_clause += "(soundex(#{index[0]}) = soundex('#{index[1]}') OR (LOWER(#{index[0]}) LIKE '#{index[1].downcase}%'))"
+    if request.format.html?
+      per_page = 30
+    else
+      per_page = 1000000   #Hopefully all of them!
+    end
+    if params[:show_all]
+      @volunteers = Volunteer.order(:last_name, :first_name)
+    else
+
+      where_clause = ""
+      interest_ids = []
+      volunteer_search_params.each do |index|
+        if ["last_name", "city"].include?(index[0])
+          if index[1].strip.length > 0
+            where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
+            where_clause += "(soundex(#{index[0]}) = soundex('#{index[1]}') OR (LOWER(#{index[0]}) LIKE '#{index[1].downcase}%'))"
+          end
+        end
+        if index[0] == "interest_ids"
+          interest_ids = index[1]
         end
       end
-      if index[0] == "interest_ids"
-        interest_ids = index[1]
-      end
-    end
-    if interest_ids.count > 0
-      @volunteers = where_clause.length > 0 ? Volunteer.joins(:volunteer_interests).where(volunteer_interests: {interest_id: interest_ids}).where(where_clause).paginate(page: params[:page]) : Volunteer.joins(:volunteer_interests).where(volunteer_interests: {interest_id: interest_ids}).paginate(page: params[:page])
-      pp @volunteers
-    else
-      if params[:dialog] == "true"
-        @volunteers = where_clause.length > 0 ? Volunteer.where(where_clause) : nil
-        render partial: "dialog_index"
+      if interest_ids.count > 0
+        @volunteers = where_clause.length > 0 ? Volunteer.joins(:volunteer_interests).where(volunteer_interests: {interest_id: interest_ids}).where(where_clause).paginate(page: params[:page], per_page: per_page) : Volunteer.joins(:volunteer_interests).where(volunteer_interests: {interest_id: interest_ids}).paginate(page: params[:page], per_page: per_page)
       else
-        @volunteers = where_clause.length > 0 ? Volunteer.where(where_clause).paginate(page: params[:page]) : Volunteer.paginate(page: params[:page])
+        @volunteers = where_clause.length > 0 ? Volunteer.where(where_clause).paginate(page: params[:page], per_page: per_page) : Volunteer.paginate(page: params[:page], per_page: per_page)
       end
     end
-
-
+    respond_to do |format|
+      format.html {
+        if params[:dialog] == "true"
+          render partial: "dialog_index"
+        end
+      }
+      format.xls
+    end
   end
 
   # GET /volunteers/1
@@ -126,7 +133,7 @@ class VolunteersController < ApplicationController
   def volunteer_params
     params.require(:volunteer).permit(:first_name, :last_name, :middle_name, :email, :occupation,
                                       :address, :city, :state, :zip, :home_phone, :work_phone, :mobile_phone,
-                                      :notes, interest_ids: [])
+                                      :notes, :remove_from_mailing_list, interest_ids: [])
   end
   def volunteer_search_params
     params.permit(:last_name, :city, interest_ids: [])

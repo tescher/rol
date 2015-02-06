@@ -1,131 +1,142 @@
 <%= form_for(@volunteer) do |f| %>
-  <%= @object = f.object
-      render 'shared/error_messages' %>
+    <%= @object = f.object
+        render 'shared/error_messages' %>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
 
-            <div class="row">
-              <div class="col-md-2">
-                <%= f.label :first_name %><br>
-              </div>
-              <div class="col-md-8">
-                <%= f.text_field :first_name, class: 'form-control' %>
-              </div>
+          <div class="row">
+            <div class="col-md-2">
+              <%= f.label :first_name %><br>
             </div>
-            <div class="row">
-              <div class="col-md-2">
-                <%= f.label :middle_name %><br>
-              </div>
-              <div class="col-md-8">
-                <%= f.text_field :middle_name, class: 'form-control' %>
-              </div>
+            <div class="col-md-8">
+              <%= f.text_field :first_name, class: 'form-control' %>
             </div>
-            <div class="row">
-              <div class="col-md-2">
-                <%= f.label :last_name %><br>
-              </div>
-              <div class="col-md-8">
-                <%= f.text_field :last_name, class: 'form-control' %>
-              </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2">
+              <%= f.label :middle_name %><br>
             </div>
-            <div class="row">
-              <div class="col-md-2">
-                <%= f.label :email %><br>
-              </div>
-              <div class="col-md-8">
-                <%= f.text_field :email, class: 'form-control' %>
-              </div>
+            <div class="col-md-8">
+              <%= f.text_field :middle_name, class: 'form-control' %>
             </div>
-            <div class="row">
-              <div class="col-md-2">
-                <%= f.label :address %><br>
-              </div>
-              <div class="col-md-8">
-                <%= f.text_field :address, class: 'form-control' %>
-              </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2">
+              <%= f.label :last_name %><br>
             </div>
-            <div class="row">
-              <div class="col-md-2">
-                <%= f.label :city %><br>
-              </div>
-              <div class="col-md-8">
-                <%= f.text_field :city, class: 'form-control' %>
-              </div>
+            <div class="col-md-8">
+              <%= f.text_field :last_name, class: 'form-control' %>
             </div>
-            <div class="row">
-              <div class="col-md-2">
-                <%= f.label :state %><br>
-              </div>
-              <div class="col-md-2">
-                <%= f.text_field :state, class: 'form-control' %>
-              </div>
-              <div class="col-md-2">
-                <%= f.label :zip %><br>
-              </div>
-              <div class="col-md-4">
-                <%= f.text_field :zip, class: 'form-control' %>
-              </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2">
+              <%= f.label :email %><br>
             </div>
+            <div class="col-md-8">
+              <%= f.text_field :email, class: 'form-control' %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2">
+              <%= f.label :address %><br>
+            </div>
+            <div class="col-md-8">
+              <%= f.text_field :address, class: 'form-control' %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2">
+              <%= f.label :city %><br>
+            </div>
+            <div class="col-md-8">
+              <%= f.text_field :city, class: 'form-control' %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2">
+              <%= f.label :state %><br>
+            </div>
+            <div class="col-md-2">
+              <%= f.text_field :state, class: 'form-control' %>
+            </div>
+            <div class="col-md-2">
+              <%= f.label :zip %><br>
+            </div>
+            <div class="col-md-4">
+              <%= f.text_field :zip, class: 'form-control' %>
+            </div>
+          </div>
 
-      </div>
-      <div class="col-md-5">
+        </div>
+        <div class="col-md-5">
 
-        <div class="row">
-          <div class="col-md-2">
-            <%= f.label :home_phone %><br>
+          <div class="row">
+            <div class="col-md-2">
+              <%= f.label :home_phone %><br>
+            </div>
+            <div class="col-md-8">
+              <%= f.text_field :home_phone, class: 'form-control' %>
+            </div>
           </div>
-          <div class="col-md-8">
-            <%= f.text_field :home_phone, class: 'form-control' %>
+          <div class="row">
+            <div class="col-md-2">
+              <%= f.label :work_phone %><br>
+            </div>
+            <div class="col-md-8">
+              <%= f.text_field :work_phone, class: 'form-control' %>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-2">
-            <%= f.label :work_phone %><br>
+          <div class="row">
+            <div class="col-md-2">
+              <%= f.label :mobile_phone %><br>
+            </div>
+            <div class="col-md-8">
+              <%= f.text_field :mobile_phone, class: 'form-control' %>
+            </div>
           </div>
-          <div class="col-md-8">
-            <%= f.text_field :work_phone, class: 'form-control' %>
+          <div class="row">
+            <div class="col-md-2">
+              <%= f.label :occupation %><br>
+            </div>
+            <div class="col-md-8">
+              <%= f.text_field :occupation, class: 'form-control' %>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-2">
-            <%= f.label :mobile_phone %><br>
+          <div class="row">
+            <div class="col-md-2">
+              <%= f.label :notes %><br>
+            </div>
+            <div class="col-md-8">
+              <%= f.text_area :notes, class: 'form-control' %>
+            </div>
           </div>
-          <div class="col-md-8">
-            <%= f.text_field :mobile_phone, class: 'form-control' %>
+          <div class="row">
+            <div class="col-md-2">
+              <%= f.label :interests %><br>
+            </div>
+            <div class="col-md-8">
+              <%= f.select :interest_ids, option_groups_from_collection_for_select(InterestCategory.all, :interests, :name, :id, :option_formatter, f.object.interest_ids), {}, { :multiple => true, class: "form-control"}  %>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-2">
-            <%= f.label :occupation %><br>
+          <div class="row">&nbsp;</div>
+          <div class="row">
+            <div class="col-md-10">
+              <div class="checkbox">
+                <label>
+                  <%= f.check_box :remove_from_mailing_list %> Remove from mailing list
+                </label>
+              </div>
+            </div>
           </div>
-          <div class="col-md-8">
-            <%= f.text_field :occupation, class: 'form-control' %>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-2">
-            <%= f.label :notes %><br>
-          </div>
-          <div class="col-md-8">
-            <%= f.text_area :notes, class: 'form-control' %>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-2">
-            <%= f.label :interests %><br>
-          </div>
-          <div class="col-md-8">
-            <%= f.select :interest_ids, option_groups_from_collection_for_select(InterestCategory.all, :interests, :name, :id, :option_formatter, f.object.interest_ids), {}, { :multiple => true, class: "form-control"}  %>
-          </div>
-        </div>
 
 
+
+        </div>
       </div>
     </div>
-  </div>
 
-  <%= render partial: "shared/form_actions", locals: {f: f} %>
+    <%= render partial: "shared/form_actions", locals: {f: f} %>
 
 <% end %>
