@@ -2,6 +2,8 @@ class WorkdayVolunteer < ActiveRecord::Base
   belongs_to :workday
   belongs_to :volunteer
 
+  validates :workday_id, presence: true
+  validates :volunteer_id, presence: true
   validates :hours, :numericality => { :greater_than_or_equal_to => 0 }, :allow_nil => true
 
   validate :calc_and_validate_hours

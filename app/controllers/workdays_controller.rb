@@ -1,5 +1,5 @@
 class WorkdaysController < ApplicationController
-  before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search]
+  before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search, :add_volunteers]
 
   # GET /workdays
   # GET /workdays.json

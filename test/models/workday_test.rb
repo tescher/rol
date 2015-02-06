@@ -1,9 +1,6 @@
 require 'test_helper'
 
 class WorkdayTest < ActiveSupport::TestCase
-  setup do
-    @workday = workdays(:one)
-  end
   def setup
     @project = Project.new(name: "IT")
     @project.save

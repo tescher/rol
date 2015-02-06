@@ -34,6 +34,12 @@ class WorkdaysControllerTest < ActionController::TestCase
     assert_redirected_to login_url
   end
 
+  test "should redirect add_volunteers when not logged in" do
+    get :add_volunteers, id: @workday
+    assert_redirected_to login_url
+  end
+
+
 
   test "should redirect destroy when not logged in" do
     assert_no_difference 'Workday.count' do

@@ -7,7 +7,7 @@ class Volunteer < ActiveRecord::Base
   has_many :workdays, through: :workday_volunteers
 
   before_save {
-    self.email = email.downcase
+    self.email = email.downcase if email
     self.home_phone = number_to_phone(self.home_phone)
     self.work_phone = number_to_phone(self.work_phone)
     self.mobile_phone = number_to_phone(self.mobile_phone)
