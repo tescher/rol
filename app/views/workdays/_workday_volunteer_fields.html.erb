@@ -1,9 +1,16 @@
 <tr class="hide_on_remove">
   <td><%= volunteer.first_name + " " + volunteer.last_name %></td>
-  <td><%= f.text_field :start_time %></td>
-  <td><%= f.text_field :end_time %></td>
+  <td>
+    <div class='input-group date' id='worktimepicker'>
+      <%= f.text_field :start_time,  value: f.object.start_time.nil? ? "" : f.object.start_time.strftime("%l:%M %p"), class: "workdayHoursCalc" %>
+    </div>
+  </td>
+  <td>
+    <div class='input-group date' id='worktimepicker'>
+      <%= f.text_field :end_time,  value: f.object.end_time.nil? ? "" : f.object.end_time.strftime("%l:%M %p"), class: "workdayHoursCalc" %>
+    </div>
   <td><%= f.text_field :hours %></td>
   <td><%= f.hidden_field :volunteer_id, value: volunteer.id %>
-      <%= f.hidden_field :_destroy %>
-      <%= link_to "remove", "#", class: "remove_fields" %></td>
+    <%= f.hidden_field :_destroy %>
+    <%= link_to "remove", "#", class: "remove_fields" %></td>
 </tr>

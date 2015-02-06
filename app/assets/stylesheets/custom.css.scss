@@ -213,3 +213,16 @@ aside {
   background-color: #DADADA;
 }
 
+/* tables */
+
+table.no-row-border {
+  td {
+    border-top: none !important;
+  }
+}
+table.header-border {
+  th {
+    border-bottom: 1px solid #ddd !important;
+  }
+}
+

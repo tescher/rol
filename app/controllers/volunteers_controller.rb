@@ -78,7 +78,8 @@ class VolunteersController < ApplicationController
       end
     else
       if params[:volunteer][:dialog] == "true"
-        flash[:danger] = "Could not create volunteer. Make sure fields are filled correctly"
+        # flash[:danger] = "Could not create volunteer. Make sure fields are filled correctly"
+        render partial: "dialog_form"
       else
         render :new
       end
