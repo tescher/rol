@@ -13,13 +13,14 @@ class VolunteersController < ApplicationController
 
   # GET /volunteers
   def index
-    if request.format.html?
-      per_page = 30
-    else
+    if params[:format_type] == "xls"
       per_page = 1000000   #Hopefully all of them!
+      request.format = :xls
+    else
+      per_page = 30
     end
     if params[:show_all]
-      @volunteers = Volunteer.order(:last_name, :first_name)
+      @volunteers = Volunteer.order(:last_name, :first_name).paginate(page: params[:page], per_page: per_page)
     else
 
       where_clause = ""
@@ -41,13 +42,19 @@ class VolunteersController < ApplicationController
         @volunteers = where_clause.length > 0 ? Volunteer.where(where_clause).paginate(page: params[:page], per_page: per_page) : Volunteer.paginate(page: params[:page], per_page: per_page)
       end
     end
+
     respond_to do |format|
       format.html {
         if params[:dialog] == "true"
           render partial: "dialog_index"
+        else
+          render :index
         end
       }
-      format.xls
+      format.xls {
+        response.headers['Content-Disposition'] = 'attachment; filename="volunteers.xls"'
+        render "index.xls"
+      }
     end
   end
 

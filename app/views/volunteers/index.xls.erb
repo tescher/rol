@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:o="urn:schemas-microsoft-com:office:office"
+          xmlns:x="urn:schemas-microsoft-com:office:excel"
+          xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">First Name</Data></Cell>
+        <Cell><Data ss:Type="String">Middle Name</Data></Cell>
+        <Cell><Data ss:Type="String">Last Name</Data></Cell>
+        <Cell><Data ss:Type="String">Address</Data></Cell>
+        <Cell><Data ss:Type="String">City</Data></Cell>
+        <Cell><Data ss:Type="String">State</Data></Cell>
+        <Cell><Data ss:Type="String">Zip</Data></Cell>
+        <Cell><Data ss:Type="String">Home Phone</Data></Cell>
+        <Cell><Data ss:Type="String">Work Phone</Data></Cell>
+        <Cell><Data ss:Type="String">Mobile Phone</Data></Cell>
+        <Cell><Data ss:Type="String">Email</Data></Cell>
+        <Cell><Data ss:Type="String">Occupation</Data></Cell>
+        <Cell><Data ss:Type="String">Notes</Data></Cell>
+        <Cell><Data ss:Type="String">Interests</Data></Cell>
+      </Row>
+      <% @volunteers.each do |volunteer| %>
+          <Row>
+            <Cell><Data ss:Type="String"><%= volunteer.first_name %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= volunteer.middle_name %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= volunteer.last_name %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= volunteer.address %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= volunteer.city %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= volunteer.state %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= volunteer.zip %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= volunteer.home_phone %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= volunteer.work_phone %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= volunteer.mobile_phone %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= volunteer.email %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= volunteer.occupation %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= volunteer.notes %></Data></Cell>
+            <% interest_names = ""
+               volunteer.interests.each do |interest|
+                 interest_names = interest_names.empty? ? "" : interest_names + ", "
+                 interest_names += interest.interest_category.name + "-" + interest.name
+               end %>
+            <Cell><Data ss:Type="String"><%= interest_names %></Data></Cell>
+          </Row>
+      <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>
