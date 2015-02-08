@@ -48,11 +48,13 @@
       </div>
 
     </div>
-    <%= hidden_field_tag :format_type, "html", class: "request_format" %>
+    <%= hidden_field_tag :request_format, "html", class: "request_format" %>
+    <%= hidden_field_tag :merge_families, "false", class: "merge_families" %>
 
     <div class="actions">
-      <%= submit_tag "Search", class: "btn btn-primary", onclick: "change_format('html');" %>
-      <%= submit_tag "Export", class: "btn btn-primary", onclick: "change_format('xls');" %>
+      <%= submit_tag "Search", class: "btn btn-primary", onclick: "change_val('.request_format','html'); change_val('.merge_families', 'false');" %>
+      <%= submit_tag "Export", class: "btn btn-primary", onclick: "change_val('.request_format','xls'); change_val('.merge_families', 'false');" %>
+      <%= submit_tag "Export w/ Family Merge", class: "btn btn-primary", onclick: "change_val('.request_format','xls'); change_val('.merge_families', 'true');" %>
       <%= link_to 'Back', root_path, class: "btn btn-primary" %>
     </div>
 <% end %>

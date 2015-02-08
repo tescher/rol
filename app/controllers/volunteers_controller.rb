@@ -13,17 +13,18 @@ class VolunteersController < ApplicationController
 
   # GET /volunteers
   def index
-    if params[:format_type] == "xls"
+    if params[:request_format] == "xls"
       per_page = 1000000   #Hopefully all of them!
       request.format = :xls
+      where_clause = "remove_from_mailing_list = 'false'"
     else
       per_page = 30
+      where_clause = ""
     end
     if params[:show_all]
-      @volunteers = Volunteer.order(:last_name, :first_name).paginate(page: params[:page], per_page: per_page)
+      @volunteers = Volunteer.select("DISTINCT(volunteers.id), volunteers.*").where(where_clause).order(:last_name, :first_name).paginate(page: params[:page], per_page: per_page)
     else
 
-      where_clause = ""
       interest_ids = []
       volunteer_search_params.each do |index|
         if ["last_name", "city"].include?(index[0])
@@ -36,11 +37,57 @@ class VolunteersController < ApplicationController
           interest_ids = index[1]
         end
       end
+
       if interest_ids.count > 0
-        @volunteers = where_clause.length > 0 ? Volunteer.joins(:volunteer_interests).where(volunteer_interests: {interest_id: interest_ids}).where(where_clause).paginate(page: params[:page], per_page: per_page) : Volunteer.joins(:volunteer_interests).where(volunteer_interests: {interest_id: interest_ids}).paginate(page: params[:page], per_page: per_page)
+        @volunteers = Volunteer.select("DISTINCT(volunteers.id), volunteers.*").joins(:volunteer_interests).where(volunteer_interests: {interest_id: interest_ids}).where(where_clause).order(:last_name, :first_name).paginate(page: params[:page], per_page: per_page)
       else
-        @volunteers = where_clause.length > 0 ? Volunteer.where(where_clause).paginate(page: params[:page], per_page: per_page) : Volunteer.paginate(page: params[:page], per_page: per_page)
+        @volunteers = Volunteer.select("DISTINCT(volunteers.id), volunteers.*").where(where_clause).order(:last_name, :first_name).paginate(page: params[:page], per_page: per_page)
       end
+    end
+
+    if params[:merge_families] == "true"
+      @volunteers_clean = @volunteers.deep_dup
+      @volunteers_clean.map {|volunteer|
+        volunteer.last_name = volunteer.last_name.delete("^a-zA-Z0-9").upcase
+        if volunteer.address.present?
+          volunteer.address = volunteer.address.delete("^a-zA-Z0-9").upcase
+        end
+        if volunteer.city.present?
+          volunteer.city = volunteer.city.delete("^a-zA-Z0-9").upcase
+        end
+        volunteer
+      }
+      @volunteers_clean.sort_by {|rec| [rec.last_name.to_s, rec.address.to_s, rec.city.to_s]}
+      prev_last_name = ""
+      prev_address = ""
+      prev_city = ""
+      combined_first_name = ""
+      prev_volunteer = nil
+      @volunteers_filtered = []
+
+      @volunteers_clean.each {|volunteer|
+        if (prev_last_name != "") && (volunteer.last_name == prev_last_name) && (prev_address != "") && (volunteer.address == prev_address) && (prev_city != "") && (volunteer.city == prev_city)
+          combined_first_name = volunteer.first_name + "/" + combined_first_name
+          prev_volunteer = volunteer
+        else
+          if combined_first_name != ""
+            new_volunteer = @volunteers.detect {|v| v.id == prev_volunteer.id}
+            new_volunteer.first_name = combined_first_name
+            @volunteers_filtered << new_volunteer
+          end
+          prev_volunteer = volunteer
+          combined_first_name = volunteer.first_name
+          prev_last_name = volunteer.last_name
+          prev_address = volunteer.address
+          prev_city = volunteer.city
+        end
+      }
+      if !prev_volunteer.nil?
+        new_volunteer = @volunteers.detect {|v| v.id == prev_volunteer.id}
+        new_volunteer.first_name = combined_first_name
+        @volunteers_filtered << new_volunteer
+      end
+      @volunteers = @volunteers_filtered
     end
 
     respond_to do |format|

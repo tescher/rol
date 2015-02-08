@@ -63,7 +63,7 @@ function add_fields_and_close(link, association, content, parent_selector) {
     $(link).closest('.ui-dialog-content').dialog('close');
 }
 
-function change_format(format) {
-    $(".request_format").val(format);
+function change_val(selector, value) {
+    $(selector).val(value);
 }
 
