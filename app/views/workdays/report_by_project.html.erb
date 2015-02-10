@@ -1,6 +1,10 @@
 <% provide(:title, 'Workdays by Project') %>
 <h1>Workdays by Projects</h1>
+
+<% got_info = false %>
+
 <% @project_info.each do |project| %>
+    <% got_info = true %>
     <h4>Project: <%= Project.find(project.project_id).name %></h4>
     <h5>Distinct Project Volunteers: <%= project.num_volunteers %>,  Project Hours: <%= project.total_hours %></h5>
 
@@ -43,3 +47,9 @@
     </ul>
     <br />
 <% end %>
+<% if !got_info %>
+    <h4>No workdays found with the given criteria</h4>
+<% end %>
+
+<%= link_to 'Back', report_workdays_path, class: "btn btn-primary" %>
+

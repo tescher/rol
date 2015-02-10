@@ -6,7 +6,9 @@
           xmlns:html="http://www.w3.org/TR/REC-html40">
   <Worksheet ss:Name="Sheet1">
     <Table>
+      <% got_info = false %>
       <% @project_info.each do |project| %>
+          <% got_info = true %>
           <Row>
             <Cell><Data ss:Type="String">Project: <%= Project.find(project.project_id).name %></Data></Cell>
             <Cell><Data ss:Type="String">Distinct Project Volunteers: <%= project.num_volunteers %></Data></Cell>
@@ -22,13 +24,18 @@
           <% @workdays.select { |w| w.project_id == project.project_id }.each do |workday| %>
               <Row>
                 <Cell><Data ss:Type="String"><%= workday.name %></Data></Cell>
-                <Cell><Data ss:Type="String"><%= workday.workdate %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= workday.workdate.strftime("%m/%d/%Y") %></Data></Cell>
                 <Cell><Data ss:Type="String"><%= workday.hours %></Data></Cell>
                 <Cell><Data ss:Type="String"><%= workday.volunteers %></Data></Cell>
               </Row>
           <% end %>
           <Row></Row>
-    <% end %>
+      <% end %>
+      <% if !got_info %>
+          <Row>
+            <Cell><Data ss:Type="String">No workdays found meeting the criteria given</Data></Cell>
+          </Row>
+      <% end %>
     </Table>
   </Worksheet>
 </Workbook>
