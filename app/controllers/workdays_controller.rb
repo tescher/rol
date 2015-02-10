@@ -113,7 +113,6 @@ class WorkdaysController < ApplicationController
     @project = Project.find(@workday.project_id)
     if @workday.update_attributes(workday_params)
       if workday_params[:name].nil?         # Coming from Add Volunteers
-        pp @workday.errors
         flash[:success] = "Workday updated"
         session.delete(:workday_id)
         redirect_to workdays_path(project_id: @workday.project_id)
@@ -159,7 +158,6 @@ class WorkdaysController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def workday_params
-    pp params
     modified_params = params.require(:workday).permit(:name, :project_id, :workdate, workday_volunteers_attributes: [:id, :volunteer_id, :workday_id, :start_time, :start_time_string, :end_time, :end_time_string, :hours, :_destroy])
     if modified_params[:workdate]
       modified_params[:workdate] = Date.strptime(modified_params[:workdate], "%m/%d/%Y").to_s
