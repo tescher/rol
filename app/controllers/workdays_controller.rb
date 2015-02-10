@@ -9,16 +9,17 @@ class WorkdaysController < ApplicationController
   end
 
   def report
-    if params[:request_format] == "xls"
-      per_page = 1000000   #Hopefully all of them!
-      request.format = :xls
-    else
-      per_page = 30
-    end
+    if !params[:report_type].nil?    # Will render report form on initial get
 
-    where_clause = ""
+      if params[:request_format] == "xls"
+        per_page = 1000000   #Hopefully all of them!
+        request.format = :xls
+      else
+        per_page = 30
+      end
 
-    if params[:report_type] == "1"
+      where_clause = ""
+
       if !params[:from_date].empty?
         where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
         where_clause += "workdate >= '#{Date.strptime(params[:from_date], "%m/%d/%Y").to_s}'"
@@ -31,34 +32,44 @@ class WorkdaysController < ApplicationController
       project_ids = params[:project_ids].nil? ? [] : params[:project_ids]
       if project_ids.count > 0
         @project_info = Workday.select("COUNT(DISTINCT workday_volunteers.volunteer_id) as num_volunteers, COUNT(DISTINCT workdays.id) as num_workdays, SUM(workday_volunteers.hours) as total_hours, workdays.project_id").joins(:workday_volunteers).where(project_id: project_ids).where(where_clause).group(:project_id)
-        @workdays = Workday.select("workdays.*, COUNT(workday_volunteers.id) as volunteers, SUM(workday_volunteers.hours) as hours").joins(:workday_volunteers).where(where_clause).where(project_id: project_ids).order(:project_id).group("workdays.id")
+        if params[:report_type] == "1"
+          @workdays = Workday.select("workdays.*, COUNT(workday_volunteers.id) as volunteers, COALESCE(SUM(workday_volunteers.hours), 0) as hours").joins(:workday_volunteers).where(where_clause).where(project_id: project_ids).order(:project_id).group("workdays.id")
+        else
+          @volunteers = Workday.select("workdays.project_id, workday_volunteers.volunteer_id, COALESCE(SUM(workday_volunteers.hours), 0) as hours").joins(:workday_volunteers).where(where_clause).where(project_id: project_ids).group("workday_volunteers.volunteer_id, workdays.project_id").order("hours DESC")
+        end
+
       else
         @project_info = Workday.select("COUNT(DISTINCT workday_volunteers.volunteer_id) as num_volunteers, COUNT(DISTINCT workdays.id) as num_workdays, SUM(workday_volunteers.hours) as total_hours, workdays.project_id").joins(:workday_volunteers).where(where_clause).group(:project_id)
-        @workdays = Workday.select("workdays.*, COUNT(workday_volunteers.id) as volunteers, SUM(workday_volunteers.hours) as hours").joins(:workday_volunteers).where(where_clause).order(:project_id).group("workdays.id")
+        if params[:report_type] == "1"
+          @workdays = Workday.select("workdays.*, COUNT(workday_volunteers.id) as volunteers, SUM(workday_volunteers.hours) as hours").joins(:workday_volunteers).where(where_clause).order(:project_id).group("workdays.id")
+        else
+          @volunteers = Workday.select("workdays.project_id, workday_volunteers.volunteer_id, COALESCE(SUM(workday_volunteers.hours), 0) as hours").joins(:workday_volunteers).where(where_clause).group("workday_volunteers.volunteer_id, workdays.project_id").order("hours DESC")
+        end
       end
 
-    end
 
-    respond_to do |format|
+      respond_to do |format|
         format.html {
           if params[:report_type] == "1"
-            render "report_by_project.html"
+            render "report_workdays_by_project.html"
           else
-            #render "report_by_volunteer.html"
+            render "report_volunteers_by_project.html"
           end
 
         }
         format.xls {
           response.headers['Content-Disposition'] = 'attachment; filename="report.xls"'
           if params[:report_type] == "1"
-            render "report_by_project.xls"
+            render "report_workdays_by_project.xls"
           else
-            #render "report_by_volunteer.xls"
+            render "report_volunteers_by_project.xls"
           end
         }
 
 
       end
+    end
+
   end
 
   # GET /workdays/1
@@ -146,13 +157,13 @@ class WorkdaysController < ApplicationController
     end
   end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def workday_params
-      pp params
-      modified_params = params.require(:workday).permit(:name, :project_id, :workdate, workday_volunteers_attributes: [:id, :volunteer_id, :workday_id, :start_time, :start_time_string, :end_time, :end_time_string, :hours, :_destroy])
-      if modified_params[:workdate]
-          modified_params[:workdate] = Date.strptime(modified_params[:workdate], "%m/%d/%Y").to_s
-      end
-      modified_params
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def workday_params
+    pp params
+    modified_params = params.require(:workday).permit(:name, :project_id, :workdate, workday_volunteers_attributes: [:id, :volunteer_id, :workday_id, :start_time, :start_time_string, :end_time, :end_time_string, :hours, :_destroy])
+    if modified_params[:workdate]
+      modified_params[:workdate] = Date.strptime(modified_params[:workdate], "%m/%d/%Y").to_s
     end
+    modified_params
+  end
 end
