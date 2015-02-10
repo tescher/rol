@@ -21533,6 +21533,7 @@
       <column name="notes" sqlType="varchar" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
       <column name="created_at" sqlType="timestamp" precision="29" scale="6" nullable="false" jdbcType="93"/>
       <column name="updated_at" sqlType="timestamp" precision="29" scale="6" nullable="false" jdbcType="93"/>
+      <column name="remove_from_mailing_list" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7" def="ZmFsc2U="/>
       <primary-key name="volunteers_pkey" columns="id"/>
     </table>
     <table name="volunteers_id_seq" schema="public" catalog="rol_test" type="SEQUENCE">
