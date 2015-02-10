@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :workdays do
     collection do
       get 'search'
+      get 'report'
     end
     member do
       get 'add_volunteers'

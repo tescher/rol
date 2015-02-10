@@ -132,6 +132,9 @@ $(document).ready(function() {
         $(id).dialog("open");
     }
 
+    $('[id*=project_ids]').multiselect();
+
+
 
 
 });

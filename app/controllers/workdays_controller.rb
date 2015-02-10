@@ -1,11 +1,64 @@
 class WorkdaysController < ApplicationController
-  before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search, :add_volunteers]
+  before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search, :report, :add_volunteers]
 
   # GET /workdays
   # GET /workdays.json
   def index
     @workdays = Workday.where(project_id: params[:project_id]).order(workdate: :desc).paginate(page: params[:page])
     @project = Project.find(params[:project_id])
+  end
+
+  def report
+    if params[:request_format] == "xls"
+      per_page = 1000000   #Hopefully all of them!
+      request.format = :xls
+    else
+      per_page = 30
+    end
+
+    where_clause = ""
+
+    if params[:report_type] == "1"
+      if !params[:from_date].empty?
+        where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
+        where_clause += "workdate >= '#{Date.strptime(params[:from_date], "%m/%d/%Y").to_s}'"
+      end
+      if !params[:to_date].empty?
+        where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
+        where_clause += "workdate <= '#{Date.strptime(params[:to_date], "%m/%d/%Y").to_s}'"
+      end
+
+      project_ids = params[:project_ids].nil? ? [] : params[:project_ids]
+      if project_ids.count > 0
+        @project_info = Workday.select("COUNT(DISTINCT workday_volunteers.volunteer_id) as num_volunteers, COUNT(DISTINCT workdays.id) as num_workdays, SUM(workday_volunteers.hours) as total_hours, workdays.project_id").joins(:workday_volunteers).where(project_id: project_ids).where(where_clause).group(:project_id)
+        @workdays = Workday.select("workdays.*, COUNT(workday_volunteers.id) as volunteers, SUM(workday_volunteers.hours) as hours").joins(:workday_volunteers).where(where_clause).where(project_id: project_ids).order(:project_id).group("workdays.id")
+      else
+        @project_info = Workday.select("COUNT(DISTINCT workday_volunteers.volunteer_id) as num_volunteers, COUNT(DISTINCT workdays.id) as num_workdays, SUM(workday_volunteers.hours) as total_hours, workdays.project_id").joins(:workday_volunteers).where(where_clause).group(:project_id)
+        @workdays = Workday.select("workdays.*, COUNT(workday_volunteers.id) as volunteers, SUM(workday_volunteers.hours) as hours").joins(:workday_volunteers).where(where_clause).order(:project_id).group("workdays.id")
+      end
+
+    end
+
+    respond_to do |format|
+        format.html {
+          if params[:report_type] == "1"
+            render "report_by_project.html"
+          else
+            #render "report_by_volunteer.html"
+          end
+
+        }
+        format.xls {
+          response.headers['Content-Disposition'] = 'attachment; filename="report.xls"'
+          if params[:report_type] == "1"
+            render "report_by_project.xls"
+          else
+            #render "report_by_volunteer.xls"
+          end
+        }
+
+
+      end
   end
 
   # GET /workdays/1

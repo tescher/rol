@@ -1,0 +1,55 @@
+<%= form_tag(report_workdays_path, method: "get") do %>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+
+          <div class="row">
+            <div class="field">
+              <%= label_tag :from_date %><br>
+              <div class='input-group date' id='fromdatepicker'>
+                <input type='text' name="from_date" id="from_date" class="form-control" />
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+              </div>
+            </div>
+            <div class="field">
+              <%= label_tag :to_date %><br>
+              <div class='input-group date' id='todatepicker'>
+                <input type='text' value="<%= Date.today.strftime("%m/%d/%Y") %>" name="to_date" id="from_date" class="form-control" />
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-md-5">
+
+          <div class="row">
+            <div class="col-md-2">
+              <%= label_tag :projects %><br>
+            </div>
+            <div class="col-md-8">
+              <%= select_tag :project_ids, options_from_collection_for_select(Project.all, :id, :name), { :multiple => true, class: "form-control"}  %>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+    <%= hidden_field_tag :request_format, "html", class: "request_format" %>
+    <%= hidden_field_tag :report_type, "1", class: "report_type" %>
+
+    <div class="actions">
+      <%= submit_tag "Hours by Project", class: "btn btn-primary", onclick: "change_val('.request_format','html'); change_val('.report_type', '1');" %>
+      <%= submit_tag "Export", class: "btn btn-primary", onclick: "change_val('.request_format','xls'); change_val('.report_type', '1');" %>
+      <%= submit_tag "Volunteers by Project", class: "btn btn-primary", onclick: "change_val('.request_format','html'); change_val('.report_type', '2');" %>
+      <%= submit_tag "Export", class: "btn btn-primary", onclick: "change_val('.request_format','xls'); change_val('.report_type', '2');" %>
+      <%= link_to 'Back', root_path, class: "btn btn-primary" %>
+    </div>
+<% end %>
+
+
