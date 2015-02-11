@@ -142,7 +142,6 @@ class WorkdaysController < ApplicationController
       workdays = Workday.select("DISTINCT workdays.*, SUM(workday_volunteers.hours) as hours").joins(:workday_volunteers).where("ROUND(EXTRACT(YEAR FROM workdate)) = '#{wy.year}'").group("workdays.id").order("workdate DESC")
       [year, workdays]
                              }]
-    pp @workdays_by_year
     render partial: "dialog_workday_summary"
   end
 
