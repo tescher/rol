@@ -1,5 +1,5 @@
 class WorkdaysController < ApplicationController
-  before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search, :report, :add_volunteers]
+  before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search, :report, :add_volunteers, :workday_summary]
 
   # GET /workdays
   # GET /workdays.json
@@ -132,6 +132,18 @@ class WorkdaysController < ApplicationController
     @workday = Workday.find(params[:id])
     session[:workday_id] = @workday.id
     @project = Project.find(@workday.project_id)
+  end
+
+  def workday_summary
+    @volunteer = Volunteer.find(params[:volunteer_id])
+    @workday_years = Workday.select("ROUND(EXTRACT(YEAR FROM workdays.workdate)) as year").joins(:workday_volunteers).where("workday_volunteers.volunteer_id = '#{@volunteer.id}'").group("year").order("year DESC")
+    @workdays_by_year = Hash[@workday_years.map { |wy|
+      year = wy.year.to_s.split(".").first
+      workdays = Workday.select("DISTINCT workdays.*, SUM(workday_volunteers.hours) as hours").joins(:workday_volunteers).where("ROUND(EXTRACT(YEAR FROM workdate)) = '#{wy.year}'").group("workdays.id").order("workdate DESC")
+      [year, workdays]
+                             }]
+    pp @workdays_by_year
+    render partial: "dialog_workday_summary"
   end
 
 

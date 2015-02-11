@@ -3,9 +3,6 @@
  */
 
 jQuery(document).ready(function($) {
-    $(".row.clickable").click(function() {
-        window.document.location = $(this).attr("href");
-    });
 
     add_fields_wire_up_events($(document));
 
@@ -27,9 +24,25 @@ function add_fields_wire_up_events(start_node) {
 
     $(start_node).find(".workdayHoursCalc").focusout(function(ev) {
         workday_hours_calc(this);
-    })
+    });
+
+    $(".row.clickable").click(function() {
+        window.document.location = $(this).attr("href");
+    });
+
 
 }
+
+
+function loadDialog(id, data) {
+    id = "#"+id;
+    $(id).html(data);
+    $(id).dialog("enable");
+    $(id).dialog("open");
+    add_fields_wire_up_events($(id));
+
+}
+
 
 // Calculate the workday hours on changes to start or end time. Find the fields from the parent.
 function workday_hours_calc(node) {

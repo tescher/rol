@@ -114,6 +114,7 @@ class VolunteersController < ApplicationController
   # GET /volunteers/new
   def new
     @volunteer = Volunteer.new
+    @num_workdays = []
     if params[:dialog] == "true"
       render partial: "dialog_form"
     end
@@ -123,6 +124,7 @@ class VolunteersController < ApplicationController
   # GET /volunteers/1/edit
   def edit
     @volunteer = Volunteer.find(params[:id])
+    @num_workdays = WorkdayVolunteer.where(volunteer_id: @volunteer.id)
   end
 
   # POST /volunteers

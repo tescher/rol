@@ -120,17 +120,10 @@ $(document).ready(function() {
                 } else {
                     add_fields("","workday_volunteers", data, ".add_fields");
                     dialog.dialog("close");
-                };
+                }
                 break;
         }
     });
-
-    function loadDialog(id, data) {
-        id = "#"+id;
-        $(id).html(data);
-        $(id).dialog("enable");
-        $(id).dialog("open");
-    }
 
     $('[id*=project_ids]').multiselect();
 

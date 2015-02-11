@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     collection do
       get 'search'
       get 'report'
+      get 'workday_summary'
     end
     member do
       get 'add_volunteers'
