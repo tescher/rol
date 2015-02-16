@@ -17,6 +17,9 @@ gem 'bootstrap-will_paginate', '0.0.10'
 # Multiselect helper
 gem 'bootstrap-multiselect-rails'
 
+# Fedex address checker
+gem 'fedex', '~> 3.8.0'
+
 # Datepicker
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.0.0'
@@ -60,7 +63,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+  # gem 'byebug'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'

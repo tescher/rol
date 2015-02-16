@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     collection do
       get 'search'
     end
+    member do
+      get 'address_check'
+    end
   end
   resources :workdays do
     collection do

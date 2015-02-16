@@ -1,7 +1,7 @@
 include WorkdaysHelper
 
 class VolunteersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search]
+  before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search, :address_check]
   before_action :admin_user,     only: :destroy
 
 
@@ -9,6 +9,45 @@ class VolunteersController < ApplicationController
     if params[:dialog] == "true"
       render partial: "dialog_search_form"
     end
+  end
+
+  def address_check
+
+    respond_to do |format|
+      format.html {
+        render partial: 'shared/dialog_address_checker'
+      }
+      format.json {
+        address = Hash.new()
+        address_json = JSON.parse(params[:address])
+        address[:street] = address_json['street']
+        address[:city] = address_json['city']
+        address[:state] = address_json['state']
+        address[:postal_code] = address_json['postal_code']
+        fedex = Fedex::Shipment.new(:key => FEDEX_KEY,
+                                    :password => FEDEX_PASSWORD,
+                                    :account_number => FEDEX_ACCOUNT,
+                                    :meter => FEDEX_METER,
+                                    :mode => FEDEX_MODE)
+        begin
+          address_result = fedex.validate_address(address: address)
+          render json: address_result
+        rescue Fedex::RateError => error
+          puts error
+          puts address_result
+        end
+
+
+
+
+
+      }
+
+
+    end
+
+
+
   end
 
   # GET /volunteers

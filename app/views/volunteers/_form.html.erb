@@ -46,6 +46,7 @@
           <div class="row">
             <div class="col-md-2">
               <%= f.label :address %><br>
+              <%= link_to "(check)", "#", id:"linkAddressCheck" %>
             </div>
             <div class="col-md-8">
               <%= f.text_field :address, class: 'form-control' %>
@@ -144,4 +145,7 @@
 
     <%= render partial: "shared/form_actions", locals: {f: f} %>
 
+
 <% end %>
+
+<div id="dialogAddressCheck"></div>
