@@ -69,9 +69,12 @@ $(document).ready(function() {
     $("#dialogAddressCheck").dialog({
         modal: true,
         title: "Address Check",
+        width: 450,
         disabled: true,
         autoOpen: false,
         open: function() {
+
+            $(".ui-dialog-buttonpane button:contains('Use this address')").attr("disabled", true).addClass("ui-state-disabled");
 
             /* Get the data to use for the check */
             var address = $("input[id*=address]").val();
@@ -87,6 +90,7 @@ $(document).ready(function() {
 
             $("#addrchk_msg").html("Checking address with FedEx...");
 
+
             /* Build the query and send it */
             var json = new Object;
             json.street = address;
@@ -99,22 +103,24 @@ $(document).ready(function() {
                 dataType: 'json',
                 data: { address: JSON.stringify(json) },
                 success: function(data) {
-                    var result = JSON.parse(data)
-                    if (result.error_message) {
-                        $("#addrchk_msg").html("Address check failed: " + result.error_message);
-                        $(":button:contains('Use this address')").prop("disabled", true).addClass("ui-state-disabled");
+                    // var result = JSON.parse(data)
+                    if (!data.available) {
+                        $("#addrchk_msg").html("Address check failed or address not found");
+                        $(".ui-dialog-buttonpane button:contains('Use this address')").attr("disabled", true).addClass("ui-state-disabled");
                     } else {
-                        $("#addrchk_table").append("<tr><td id=\"addrchk_address\">" + result.StreetLines + "</td></tr>");
-                        $("#addrchk_table").append("<tr><td id=\"addrchk_city\">" + result.City + "</td></tr>");
-                        $("#addrchk_table").append("<tr><td id=\"addrchk_state\">" + result.StateOrProvinceCode + "</td></tr>");
-                        $("#addrchk_table").append("<tr><td id=\"addrchk_zip\">" + result.PostalCode + "</td></tr>");
+                        $("#addrchk_table").append("<tr><td id=\"addrchk_address\">" + data.street_lines + "</td></tr>");
+                        $("#addrchk_table").append("<tr><td id=\"addrchk_city\">" + data.city + "</td></tr>");
+                        $("#addrchk_table").append("<tr><td id=\"addrchk_state\">" + data.state + "</td></tr>");
+                        $("#addrchk_table").append("<tr><td id=\"addrchk_zip\">" + data.postal_code + "</td></tr>");
                         $("#addrchk_table").css("display","block");
                         $("#addrchk_msg").html("Matching address found:");
+                        $(".ui-dialog-buttonpane button:contains('Use this address')").attr("disabled", false).removeClass("ui-state-disabled");
                    }
 
 
                 }
             });
+
         },
         close: function() {
             /* Clear out any previous address, message and buttons */
@@ -142,6 +148,8 @@ $(document).ready(function() {
             class: "btn btn-large btn-primary"
 
         }]
+
+
 
     });
 
