@@ -1,0 +1,55 @@
+
++BRAKEMAN REPORT+
+
+Application path: /home/tescher/rails-projects/rol
+Rails version: 4.2.0
+Brakeman version: 3.0.1
+Started at 2015-02-24 16:36:04 -0800
+Duration: 1.160829264 seconds
+Checks run: BasicAuth, ContentTag, CreateWith, CrossSiteScripting, DefaultRoutes, Deserialize, DetailedExceptions, DigestDoS, EscapeFunction, Evaluation, Execute, FileAccess, FileDisclosure, FilterSkipping, ForgerySetting, HeaderDoS, I18nXSS, JRubyXML, JSONParsing, LinkTo, LinkToHref, MailTo, MassAssignment, ModelAttrAccessible, ModelAttributes, ModelSerialize, NestedAttributes, NumberToCurrency, QuoteTableName, Redirect, RegexDoS, Render, RenderDoS, RenderInline, ResponseSplitting, SQL, SQLCVEs, SSLVerify, SafeBufferManipulation, SanitizeMethods, SelectTag, SelectVulnerability, Send, SendFile, SessionSettings, SimpleFormat, SingleQuotes, SkipBeforeFilter, StripTags, SymbolDoSCVE, TranslateBug, UnsafeReflection, ValidationRegex, WithoutProtection, YAMLParsing
+
+
++SUMMARY+
+
++-------------------+-------+
+| Scanned/Reported  | Total |
++-------------------+-------+
+| Controllers       | 9     |
+| Models            | 8     |
+| Templates         | 57    |
+| Errors            | 0     |
+| Security Warnings | 9 (6) |
++-------------------+-------+
+
++---------------------+-------+
+| Warning Type        | Total |
++---------------------+-------+
+| Dynamic Render Path | 2     |
+| SQL Injection       | 7     |
++---------------------+-------+
+
+
++SECURITY WARNINGS+
+
++------------+--------------------+-----------------+---------------+------------------------------------------------------------------------------------------------------------>>
+| Confidence | Class              | Method          | Warning Type  | Message                                                                                                    >>
++------------+--------------------+-----------------+---------------+------------------------------------------------------------------------------------------------------------>>
+| High       | WorkdaysController | report          | SQL Injection | Possible SQL injection near line 34: Workday.select("COUNT(DISTINCT workday_volunteers.volunteer_id) as num>>
+| High       | WorkdaysController | report          | SQL Injection | Possible SQL injection near line 36: Workday.select("workdays.*, COUNT(workday_volunteers.id) as volunteers>>
+| High       | WorkdaysController | report          | SQL Injection | Possible SQL injection near line 38: Workday.select("workdays.project_id, workday_volunteers.volunteer_id, >>
+| High       | WorkdaysController | report          | SQL Injection | Possible SQL injection near line 42: Workday.select("COUNT(DISTINCT workday_volunteers.volunteer_id) as num>>
+| High       | WorkdaysController | report          | SQL Injection | Possible SQL injection near line 44: Workday.select("workdays.*, COUNT(workday_volunteers.id) as volunteers>>
+| High       | WorkdaysController | report          | SQL Injection | Possible SQL injection near line 46: Workday.select("workdays.project_id, workday_volunteers.volunteer_id, >>
+| Medium     | WorkdaysController | workday_summary | SQL Injection | Possible SQL injection near line 142: Workday.select("DISTINCT workdays.*, SUM(workday_volunteers.hours) as>>
++------------+--------------------+-----------------+---------------+------------------------------------------------------------------------------------------------------------>>
+
+
+View Warnings:
+
++------------+-----------------------------------------------+---------------------+--------------------------------------------------------------------------------------------->>
+| Confidence | Template                                      | Warning Type        | Message                                                                                     >>
++------------+-----------------------------------------------+---------------------+--------------------------------------------------------------------------------------------->>
+| Weak       | volunteers/index (VolunteersController#index) | Dynamic Render Path | Render path contains parameter value near line 9: render(action => ((Volunteer.select("DISTI>>
+| Weak       | workdays/index (WorkdaysController#index)     | Dynamic Render Path | Render path contains parameter value near line 7: render(action => Workday.where(:project_id>>
++------------+-----------------------------------------------+---------------------+--------------------------------------------------------------------------------------------->>
+
