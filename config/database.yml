@@ -40,3 +40,4 @@ production:
   password: rolit
   timeout: 5000
   port: 32297
+  host: localhost
