@@ -34,8 +34,8 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: rol_postgres
+  database: rol_production
   pool: 5
-  username: tescher
-  password: Mariann1
+  username: rol_connection
+  password: rolit
   timeout: 5000
