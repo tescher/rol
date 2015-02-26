@@ -39,3 +39,4 @@ production:
   username: rol_connection
   password: rolit
   timeout: 5000
+  port: 32297
