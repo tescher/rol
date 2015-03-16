@@ -1,5 +1,5 @@
 <%= form_tag(volunteers_path, method: "get", id: "dialogFormSearchVolunteers", remote: true) do %>
-    <div class="container">
+    <div class="container dialog-container">
       <div class="row">
         <div class="col-md-5">
 
@@ -7,7 +7,7 @@
             <div class="col-md-2">
               <%= label_tag :last_name  %><br>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-10">
               <%= text_field_tag :last_name, nil, class: 'form-control' %>
             </div>
           </div>
@@ -15,7 +15,7 @@
             <div class="col-md-2">
               <%= label_tag :city %><br>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-10">
               <%= text_field_tag :city, nil, class: 'form-control' %>
             </div>
           </div>

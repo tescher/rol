@@ -18,11 +18,18 @@
       <% end %>
       </tbody>
     </table>
+
     <%= # link_to_add_fields "Add a Volunteer", f, :workday_volunteers, "", ".add_fields", "Add a Volunteer"
         link_to "Add a Volunteer", "#", id:"linkAddVolunteer" %>
 
+    <div class="row">
+      <div class="col-md-11">
+        <div class="actions pull-right">
 
-    <%= f.hidden_field(:project_id) %>
-    <%= render partial: "shared/form_actions", locals: {f: f, cancel: workdays_path(project_id: @project.id)} %>
+          <%= f.hidden_field(:project_id) %>
+          <%= render partial: "shared/form_actions", locals: {f: f, cancel: workdays_path(project_id: @project.id)} %>
+        </div>
+      </div>
+    </div>
 
 <% end %>

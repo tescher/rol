@@ -13,7 +13,11 @@
     <%= will_paginate %>
 <% end %>
 
-<div class="actions">
-    <%= link_to 'Search Again', search_volunteers_path, class: "btn btn-primary"%>
-    <%= link_to 'New Volunteer', new_volunteer_path, class: "btn btn-primary"%>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="actions pull-right">
+      <%= link_to 'Search Again', search_volunteers_path, class: "btn btn-primary"%>
+      <%= link_to 'New Volunteer', new_volunteer_path, class: "btn btn-primary"%>
+    </div>
+  </div>
 </div>

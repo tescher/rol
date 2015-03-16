@@ -13,7 +13,9 @@
             <%= f.check_box :inactive %> Inactive
           </label>
         </div>
-        <%= render partial: "shared/form_actions", locals: {f: f} %>
+        <div class="pull-right">
+          <%= render partial: "shared/form_actions", locals: {f: f} %>
+        </div>
       </div>
     </div>
 

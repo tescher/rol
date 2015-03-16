@@ -9,12 +9,17 @@
       <%= render @workdays %>
     </ul>
 <% else %>
-    <p>No workdays found. Click New to create one.</p>
+    <p class="center">No workdays found. Click New to create one.</p>
 <% end %>
 
 <%= will_paginate %>
 
-<div class="actions">
-  <%= link_to 'New Workday', new_workday_path({project_id: @project.id}), class: "btn btn-primary" %>
-  <%= link_to 'Back', search_workdays_path, class: "btn btn-primary" %>
+
+<div class="row">
+  <div class="col-md-11">
+    <div class="actions pull-right">
+      <%= link_to 'New Workday', new_workday_path({project_id: @project.id}), class: "btn btn-primary" %>
+      <%= link_to 'Back', search_workdays_path, class: "btn btn-primary" %>
+    </div>
+  </div>
 </div>

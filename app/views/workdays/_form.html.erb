@@ -16,8 +16,15 @@
                     </span>
           </div>
         </div>
-        <%= f.hidden_field(:project_id) %>
-        <%= render partial: "shared/form_actions", locals: {f: f, cancel: workdays_path(project_id: @project.id), non_admin_delete: true} %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-11">
+        <div class="actions pull-right">
+
+          <%= f.hidden_field(:project_id) %>
+          <%= render partial: "shared/form_actions", locals: {f: f, cancel: workdays_path(project_id: @project.id), non_admin_delete: true} %>
+        </div>
       </div>
     </div>
 

@@ -25,7 +25,9 @@
         <%= f.check_box :admin %> Admin User
       </label>
     </div>
-    <%= render partial: "shared/form_actions", locals: {f: f} %>
+    <div class="pull-right">
+      <%= render partial: "shared/form_actions", locals: {f: f} %>
+    </div>
   </div>
 </div>
 
