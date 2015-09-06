@@ -228,7 +228,7 @@ class VolunteersController < ApplicationController
   def volunteer_params
     params.require(:volunteer).permit(:first_name, :last_name, :middle_name, :email, :occupation,
                                       :address, :city, :state, :zip, :home_phone, :work_phone, :mobile_phone,
-                                      :notes, :remove_from_mailing_list, interest_ids: [])
+                                      :notes, :remove_from_mailing_list, :waiver_date, :background_check_date, interest_ids: [])
   end
   def volunteer_search_params
     params.permit(:last_name, :city, interest_ids: [])

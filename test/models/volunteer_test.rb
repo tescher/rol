@@ -42,4 +42,23 @@ class VolunteerTest < ActiveSupport::TestCase
     @volunteer.save
     assert_equal mixed_case_email.downcase, @volunteer.reload.email
   end
+
+  test "waiver and background check dates accept valid dates" do
+    waiver_date = "9/15/2015"
+    background_check_date = "9/16/2015"
+    @volunteer.waiver_date = waiver_date
+    assert @volunteer.valid?, "Waiver date #{waiver_date} should be valid"
+    @volunteer.background_check_date
+    assert @volunteer.valid?, "Background check date #{background_check_date} should be valid"
+  end
+
+  test "waiver and background check dates reject invalid dates" do
+    waiver_date = "9/31/2015"
+    background_check_date = "9/31/2015"
+    @volunteer.waiver_date = waiver_date
+    assert_not @volunteer.valid?, "Waiver date #{waiver_date} should be invalid"
+    @volunteer.background_check_date
+    assert_not @volunteer.valid?, "Background check date #{background_check_date} should be invalid"
+
+  end
 end

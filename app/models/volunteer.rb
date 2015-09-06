@@ -15,6 +15,8 @@ class Volunteer < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :email, allow_blank: true, format: { with: VALID_EMAIL_REGEX }
+  validates_date :waiver_date, allow_blank: true
+  validates_date :background_check_date, allow_blank: true
 
   def name
     [first_name, last_name].join(' ')

@@ -24,6 +24,9 @@ gem 'fedex', '~> 3.8.0'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.0.0'
 
+# Date validator
+gem 'jc-validates_timeliness'
+
 # Possessive noun helper
 gem 'possessive'
 

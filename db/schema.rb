@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150206173849) do
+ActiveRecord::Schema.define(version: 20150906155546) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,8 @@ ActiveRecord::Schema.define(version: 20150206173849) do
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
     t.boolean  "remove_from_mailing_list", default: false, null: false
+    t.date     "waiver_date"
+    t.date     "background_check_date"
   end
 
   create_table "workday_volunteers", force: :cascade do |t|
