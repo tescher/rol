@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :volunteers do
     collection do
       get 'search'
+      get 'import' => 'volunteers#import_form'
+      post 'import' => 'volunteers#import'
     end
     member do
       get 'address_check'

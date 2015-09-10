@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data-set xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <record>
+    <first_name>Tim</first_name>
+    <middle_name></middle_name>
+    <last_name>Escher</last_name>
+    <occupation>Engineer</occupation>
+    <address>PO Box 1230</address>
+    <city>Chickaloon</city>
+    <state>AK</state>
+    <zip>99674</zip>
+    <home_phone>608-432-5799</home_phone>
+    <work_phone></work_phone>
+    <mobile_phone>608-215-4896</mobile_phone>
+    <notes>Testing</notes>
+    <waiver_date>4/23/2001</waiver_date>
+    <old_id>1234</old_id>
+    <email>tim@eschers.com</email>
+  </record>
+  <record>
+    <first_name>Smith</first_name>
+    <middle_name>16753</middle_name>
+    <last_name>UK</last_name>
+    <occupation>Qtr 3</occupation>
+    <address></address>
+    <city></city>
+    <state></state>
+    <zip></zip>
+    <home_phone></home_phone>
+    <work_phone></work_phone>
+    <mobile_phone></mobile_phone>
+    <notes></notes>
+    <waiver_date></waiver_date>
+    <old_id></old_id>
+    <email></email>
+  </record>
+</data-set>

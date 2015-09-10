@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150906155546) do
+ActiveRecord::Schema.define(version: 20150909150822) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,7 +78,10 @@ ActiveRecord::Schema.define(version: 20150906155546) do
     t.boolean  "remove_from_mailing_list", default: false, null: false
     t.date     "waiver_date"
     t.date     "background_check_date"
+    t.string   "old_id"
   end
+
+  add_index "volunteers", ["old_id"], name: "index_volunteers_on_old_id", using: :btree
 
   create_table "workday_volunteers", force: :cascade do |t|
     t.integer  "volunteer_id"

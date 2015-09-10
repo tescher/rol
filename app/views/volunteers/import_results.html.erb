@@ -1,0 +1,17 @@
+<% provide(:title, 'Import Results') %>
+
+<h1>Volunteers</h1>
+
+<% if @messages.count > 1 %>
+    <p>Errors found:</p>
+    <ul class="listing">
+      <% @messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+
+<% end %>
+
+<p><%= @records_read %> records(s) read</p>
+<p><%= @records_validated %> records(s) validated</p>
+<p><%= @records_imported %> records(s) imported</p>

@@ -1,0 +1,19 @@
+<%= form_tag(import_volunteers_path, action: :import, method: :post) do |f| %>
+    <div class="row">
+      <div class="col-md-10">
+        <%= file_field_tag 'datafile' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10">
+        <div class="checkbox">
+          <label>
+            <%= check_box_tag "validate_only", 1, true %> Validate only
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <%= submit_tag "Upload" %>
+
+<% end %>
