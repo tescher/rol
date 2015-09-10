@@ -226,6 +226,7 @@ class VolunteersController < ApplicationController
         record_data["middle_name"] = record.xpath("middle_name").inner_text
         record_data["last_name"] = record.xpath("last_name").inner_text
         record_data["occupation"] = record.xpath("occupation").inner_text
+        record_data["address"] = record.xpath("address").inner_text
         record_data["city"] = record.xpath("city").inner_text
         record_data["state"] = record.xpath("state").inner_text
         record_data["zip"] = record.xpath("zip").inner_text
@@ -236,6 +237,12 @@ class VolunteersController < ApplicationController
         record_data["notes"] = record.xpath("notes").inner_text
         record_data["waiver_date"] = record.xpath("waiver_date").inner_text
         record_data["email"] = record.xpath("email").inner_text
+        record_data_interests = {}
+        record.xpath("interests").children.each do |interest|
+          if interest.inner_text == 1
+            record_data_interests[interest.name] = 1
+          end
+        end
         if record_data["old_id"].blank?
           fatal = true
           @messages << "ERROR: missing id from old system. Sequence: #{sequence}, First Name: #{record_data["first_name"]}, Last Name: #{record_data["last_name"]}"
@@ -247,7 +254,7 @@ class VolunteersController < ApplicationController
             @volunteer = Volunteer.new
             record_data.each do |key, value|
                if !value.blank?
-                 @volunteer[key] = value
+                 @volunteer[key] = (key == "waiver_date") ? Date.strptime(value, "%m/%d/%Y") : value
                end
             end
             if !@volunteer.valid?

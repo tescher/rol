@@ -8,6 +8,7 @@
 		<state>WI</state>
 		<zip>53913</zip>
 		<home_phone>(608) 356-3921</home_phone>
+		<waiver_date/>
 		<old_id>14774</old_id>
 	</record>
 	<record>
@@ -18,6 +19,7 @@
 		<state>Wi</state>
 		<zip>53913</zip>
 		<home_phone>(608) 356-8757</home_phone>
+		<waiver_date/>
 		<old_id>12672</old_id>
 	</record>
 	<record>
@@ -28,6 +30,7 @@
 		<state>WI</state>
 		<zip>53940</zip>
 		<home_phone>(608) 415-1671</home_phone>
+		<waiver_date/>
 		<old_id>14456</old_id>
 	</record>
 	<record>
@@ -38,6 +41,7 @@
 		<state>Wi</state>
 		<zip>53959</zip>
 		<home_phone>(608) 768-2697</home_phone>
+		<waiver_date/>
 		<old_id>14460</old_id>
 	</record>
 	<record>
@@ -48,7 +52,7 @@
 		<state>WI</state>
 		<zip>53960</zip>
 		<home_phone>(920) 992-3020</home_phone>
-		<waiver_date>41482</waiver_date>
+		<waiver_date>07/27/2013</waiver_date>
 		<old_id>12322</old_id>
 		<email>abelaclan@centurytel.net</email>
 	</record>
@@ -61,7 +65,7 @@
 		<zip>53960</zip>
 		<home_phone>(920) 992-3020</home_phone>
 		<notes>Pastor David Lusse signed for minor</notes>
-		<waiver_date>40655</waiver_date>
+		<waiver_date>04/22/2011</waiver_date>
 		<old_id>3783</old_id>
 	</record>
 	<record>
@@ -72,7 +76,7 @@
 		<state>WI</state>
 		<zip>53960</zip>
 		<home_phone>(920) 992-3020</home_phone>
-		<waiver_date>41482</waiver_date>
+		<waiver_date>07/27/2013</waiver_date>
 		<old_id>3871</old_id>
 		<email>abelaclan@centurytel.net</email>
 	</record>
@@ -84,7 +88,7 @@
 		<state>WI</state>
 		<zip>53960</zip>
 		<notes>Pastor David Lusse signed for this minor</notes>
-		<waiver_date>40655</waiver_date>
+		<waiver_date>04/22/2011</waiver_date>
 		<old_id>3786</old_id>
 	</record>
 	<record>
@@ -96,7 +100,7 @@
 		<zip>53960</zip>
 		<home_phone>(920) 992-3020</home_phone>
 		<notes>Pastor David Lusse signed for this minor</notes>
-		<waiver_date>41482</waiver_date>
+		<waiver_date>07/27/2013</waiver_date>
 		<old_id>3785</old_id>
 		<email>jessierae548@yahoo.com</email>
 	</record>
@@ -109,6 +113,7 @@
 		<zip>53913</zip>
 		<home_phone>(608) 356-4577</home_phone>
 		<mobile_phone>(608) 253-2559</mobile_phone>
+		<waiver_date/>
 		<old_id>12877</old_id>
 		<email>bableman@uwhealth.org</email>
 	</record>
@@ -120,7 +125,7 @@
 		<state>WI</state>
 		<zip>53954</zip>
 		<home_phone>(608) 429-3233</home_phone>
-		<waiver_date>40786</waiver_date>
+		<waiver_date>08/31/2011</waiver_date>
 		<old_id>6043</old_id>
 	</record>
 	<record>
@@ -131,11 +136,13 @@
 		<state>WI</state>
 		<zip>53578</zip>
 		<notes>Generous donations made in their name Xmas 2011 and Xmas 2012 by daughter, Christine Vaudreuil.</notes>
+		<waiver_date/>
 		<old_id>12029</old_id>
 	</record>
 	<record>
 		<first_name>Bridget</first_name>
 		<last_name>Achczynski</last_name>
+		<waiver_date/>
 		<old_id>15011</old_id>
 	</record>
 	<record>
@@ -145,7 +152,7 @@
 		<city>Baraboo</city>
 		<state>WI</state>
 		<zip>53913</zip>
-		<waiver_date>41986</waiver_date>
+		<waiver_date>12/13/2014</waiver_date>
 		<old_id>14398</old_id>
 	</record>
 	<record>
@@ -157,6 +164,7 @@
 		<zip>53913</zip>
 		<mobile_phone>(608) 566-4517</mobile_phone>
 		<notes>As of 2013, the new bookkeeper.</notes>
+		<waiver_date/>
 		<old_id>13115</old_id>
 	</record>
 	<record>
@@ -167,7 +175,7 @@
 		<state>WI</state>
 		<zip>53913</zip>
 		<home_phone>(608) 356-5420</home_phone>
-		<waiver_date>40777</waiver_date>
+		<waiver_date>08/22/2011</waiver_date>
 		<old_id>4547</old_id>
 		<email>jacheson@centurylink.net</email>
 	</record>
@@ -182,6 +190,7 @@
 		<home_phone>(608) 240-0855</home_phone>
 		<work_phone>(608) 242-2712ext2779</work_phone>
 		<notes>Employer Covance Madison sign-up via our website</notes>
+		<waiver_date/>
 		<old_id>12565</old_id>
 		<email>matthewcacheson@gmail.com</email>
 	</record>
@@ -195,7 +204,7 @@
 		<zip>53955</zip>
 		<home_phone>(608) 635-7489</home_phone>
 		<mobile_phone>(608) 566-5237</mobile_phone>
-		<waiver_date>41816</waiver_date>
+		<waiver_date>06/26/2014</waiver_date>
 		<old_id>1612</old_id>
 		<email>rjacker@centurytel.net</email>
 	</record>
@@ -208,8 +217,4230 @@
 		<zip>53959</zip>
 		<home_phone>(608) 524-9653</home_phone>
 		<work_phone>(608) 460-0Ext5212</work_phone>
-		<waiver_date>40054</waiver_date>
+		<waiver_date>08/29/2009</waiver_date>
 		<old_id>1862</old_id>
+	</record>
+	<record>
+		<first_name>Craig</first_name>
+		<last_name>Adams</last_name>
+		<address>1141 Furlong Drive</address>
+		<city>Libertyville</city>
+		<state>IL</state>
+		<zip>60048</zip>
+		<home_phone>(847) 566-1086</home_phone>
+		<waiver_date/>
+		<old_id>12667</old_id>
+		<email>cadams4302@sbcslobal.net</email>
+	</record>
+	<record>
+		<first_name>Craig</first_name>
+		<last_name>Adams</last_name>
+		<address>130 West Hawthorne Boulevard</address>
+		<city>Mundelein</city>
+		<state>IL</state>
+		<zip>60060</zip>
+		<home_phone>(847) 344-9251</home_phone>
+		<waiver_date/>
+		<old_id>13740</old_id>
+		<email>cadams4302@sbcglobal.net</email>
+	</record>
+	<record>
+		<first_name>Gail</first_name>
+		<last_name>Adams</last_name>
+		<occupation>Registered Representative-Securities</occupation>
+		<address>1015 Birch Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 963-8464</home_phone>
+		<notes>changed 4-2012 add</notes>
+		<waiver_date/>
+		<old_id>1992</old_id>
+	</record>
+	<record>
+		<first_name>William</first_name>
+		<last_name>Adams</last_name>
+		<address>1220 HILL CREST LN</address>
+		<city>REEDSBURG</city>
+		<state>WI</state>
+		<zip>53959-1456</zip>
+		<waiver_date/>
+		<old_id>11243</old_id>
+	</record>
+	<record>
+		<first_name>Ron &amp; Kristina</first_name>
+		<last_name>Adamski</last_name>
+		<address>327 7th Avenue</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 356-0816</home_phone>
+		<mobile_phone>(608) 477-0887</mobile_phone>
+		<waiver_date/>
+		<old_id>739</old_id>
+	</record>
+	<record>
+		<first_name>Harley &amp; Chris</first_name>
+		<last_name>Adee</last_name>
+		<address>304 7th Avenue</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 355-0053</home_phone>
+		<waiver_date/>
+		<old_id>13799</old_id>
+		<email>chris_adee@yahoo.com</email>
+	</record>
+	<record>
+		<first_name>Gregory J.</first_name>
+		<last_name>Adelman</last_name>
+		<address>1502 Ridgeview Drive</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<notes>Married to Julie, who works for Lands' End.</notes>
+		<waiver_date/>
+		<old_id>10814</old_id>
+	</record>
+	<record>
+		<first_name>Julie</first_name>
+		<last_name>Adelman</last_name>
+		<occupation>Employee Services Manager</occupation>
+		<address>1502 Ridgeview Drive</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<home_phone>(608) 524-3729</home_phone>
+		<work_phone>(608) 524-7038</work_phone>
+		<notes>She works at Lands' End, and has organized some company support for HFHSCA.</notes>
+		<waiver_date>0000-00-00</waiver_date>
+		<old_id>1768</old_id>
+		<email>Julie.Adelman@landsend.com</email>
+	</record>
+	<record>
+		<first_name>Elaine</first_name>
+		<last_name>Aderhold</last_name>
+		<address>138 Vilas Hibbard Parkway</address>
+		<city>Lodi</city>
+		<state>WI</state>
+		<zip>53555</zip>
+		<home_phone>(608) 592-7181</home_phone>
+		<notes>Helped with 2013 WomenBuild.  Is a friend of Bette Hossman (who's the wife of BOD member Curt Hossman)</notes>
+		<waiver_date>05/07/2014</waiver_date>
+		<old_id>24</old_id>
+		<email>Lodiwi4@aol.com</email>
+	</record>
+	<record>
+		<first_name>Alan</first_name>
+		<last_name>Adler</last_name>
+		<address>N2782 County Road V</address>
+		<city>Lodi</city>
+		<state>WI</state>
+		<zip>53555</zip>
+		<home_phone>(608) 592-3080</home_phone>
+		<waiver_date/>
+		<old_id>1837</old_id>
+	</record>
+	<record>
+		<first_name>Richard A.</first_name>
+		<last_name>Adler</last_name>
+		<address>N344 15th Road</address>
+		<city>Pardeeville</city>
+		<state>WI</state>
+		<zip>53954</zip>
+		<home_phone>(608) 429-2745</home_phone>
+		<waiver_date/>
+		<old_id>14515</old_id>
+	</record>
+	<record>
+		<first_name>Jeffrey &amp; Carol</first_name>
+		<last_name>Aerts</last_name>
+		<address>S4055 Breezy Hill Road</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 356-2026</home_phone>
+		<mobile_phone>(608) 697-9757/6086976948</mobile_phone>
+		<notes>Is our sub-letter at the office. Another email address:  jaerts@centurytel.net</notes>
+		<waiver_date/>
+		<old_id>8864</old_id>
+		<email>caerts@northwoodswisconsin.org</email>
+	</record>
+	<record>
+		<first_name>Mark</first_name>
+		<last_name>Affeldt</last_name>
+		<address>505 Woodlawn Avenue</address>
+		<city>Lodi</city>
+		<state>WI</state>
+		<zip>53555</zip>
+		<home_phone>(608) 592-4740</home_phone>
+		<waiver_date>0000-00-00</waiver_date>
+		<old_id>1336</old_id>
+	</record>
+	<record>
+		<first_name>Mark</first_name>
+		<last_name>Agren</last_name>
+		<address>S4110 Whispering Pines Drive</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 448-2808</home_phone>
+		<work_phone>(mka) gre-n@gmailcom</work_phone>
+		<waiver_date/>
+		<old_id>14071</old_id>
+	</record>
+	<record>
+		<first_name>Ardelle</first_name>
+		<last_name>Albergs</last_name>
+		<address>1904 Huntington Park Drive</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<waiver_date/>
+		<old_id>10892</old_id>
+	</record>
+	<record>
+		<first_name>Blaine H. &amp; Peggy M.</first_name>
+		<last_name>Albert</last_name>
+		<address>1300 Lancer Court</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<home_phone>(608) 524-4638</home_phone>
+		<waiver_date/>
+		<old_id>11419</old_id>
+		<email>bpalbert@rucls.net</email>
+	</record>
+	<record>
+		<first_name>Kimberly</first_name>
+		<last_name>Albert</last_name>
+		<address>7750 KRAUSE RD</address>
+		<city>COLUMBUS</city>
+		<state>WI</state>
+		<zip>53925-9124</zip>
+		<home_phone>(608) 509-2559</home_phone>
+		<waiver_date>07/24/2015</waiver_date>
+		<old_id>15211</old_id>
+		<email>kimberly.albert@bluegreenvacations.com</email>
+	</record>
+	<record>
+		<first_name>June</first_name>
+		<last_name>Albertus</last_name>
+		<occupation>Retired</occupation>
+		<address>149 3rd Street</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<home_phone>(608) 524-6884</home_phone>
+		<waiver_date/>
+		<old_id>1216</old_id>
+	</record>
+	<record>
+		<first_name>Ginny</first_name>
+		<last_name>Albrecht</last_name>
+		<address>531 Clark Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 434-2521</home_phone>
+		<waiver_date/>
+		<old_id>13387</old_id>
+		<email>ginny356@msn.com</email>
+	</record>
+	<record>
+		<first_name>Stephanie</first_name>
+		<last_name>Aldridge</last_name>
+		<address>N6597 Meadowview Drive</address>
+		<city>Pardeeville</city>
+		<state>WI</state>
+		<zip>53954</zip>
+		<home_phone>(608) 742-7618</home_phone>
+		<notes>work full tine but would like to see if there is any timme that I could contribute to help. Thanks for your time</notes>
+		<waiver_date/>
+		<old_id>1543</old_id>
+		<email>maughty@msn.com</email>
+	</record>
+	<record>
+		<first_name>Steve</first_name>
+		<last_name>Aldridge</last_name>
+		<address>888 Saddle Ridge</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<home_phone>(608) 742-6414</home_phone>
+		<waiver_date/>
+		<old_id>12904</old_id>
+		<email>stevea@sta-care.com</email>
+	</record>
+	<record>
+		<first_name>Barbara</first_name>
+		<last_name>Alexander</last_name>
+		<address>722 11th Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 356-5742</home_phone>
+		<waiver_date>04/12/2011</waiver_date>
+		<old_id>2044</old_id>
+		<email>bcredexanl@hotmail.com</email>
+	</record>
+	<record>
+		<first_name>Carl</first_name>
+		<last_name>Alexander</last_name>
+		<address>722 11th Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 356-5742</home_phone>
+		<notes>Long time member - as of 2014 entering second decade of service. Helps at ReStore.</notes>
+		<waiver_date>09/02/2015</waiver_date>
+		<old_id>336</old_id>
+		<email>rednaexl2@hotmail.com</email>
+	</record>
+	<record>
+		<first_name>Hannah C.</first_name>
+		<last_name>Alexander</last_name>
+		<address>7369 Roberts Road</address>
+		<city>Arena</city>
+		<state>WI</state>
+		<zip>53503</zip>
+		<home_phone>(608) 213-1372</home_phone>
+		<waiver_date/>
+		<old_id>12494</old_id>
+	</record>
+	<record>
+		<first_name>Heidi &amp; Mark</first_name>
+		<last_name>Alexander</last_name>
+		<occupation>Lands End</occupation>
+		<address>1412 Valley Drive</address>
+		<city>Wisconsin Dells</city>
+		<state>WI</state>
+		<zip>53965</zip>
+		<home_phone>(608) 253-5062</home_phone>
+		<notes>Sauk Co.fair</notes>
+		<waiver_date/>
+		<old_id>2139</old_id>
+		<email>1mark1@live.com</email>
+	</record>
+	<record>
+		<first_name>Jean</first_name>
+		<last_name>Alexander</last_name>
+		<address>4977 Battery Lane, Apt. 711</address>
+		<city>Bethesda</city>
+		<state>MD</state>
+		<zip>20814</zip>
+		<notes>Sister of volunteer Carl Alexander.  Moved to this address in 2012.</notes>
+		<waiver_date/>
+		<old_id>12044</old_id>
+		<email>jalexan1@comcast.com</email>
+	</record>
+	<record>
+		<first_name>Mary</first_name>
+		<last_name>Alexander</last_name>
+		<address>S3819A County Road T</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 356-5073</home_phone>
+		<waiver_date/>
+		<old_id>8378</old_id>
+	</record>
+	<record>
+		<first_name>Michael J.</first_name>
+		<last_name>Alexander</last_name>
+		<address>35 8th Street</address>
+		<city>Prairie du Sac</city>
+		<state>WI</state>
+		<zip>53578</zip>
+		<notes>Helping with Giebel house USDA build 2014</notes>
+		<waiver_date>06/28/2014</waiver_date>
+		<old_id>13460</old_id>
+	</record>
+	<record>
+		<first_name>Scott</first_name>
+		<middle_name>C</middle_name>
+		<last_name>Alexander</last_name>
+		<address>1311 15th Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 356-5313</home_phone>
+		<waiver_date/>
+		<old_id>14738</old_id>
+	</record>
+	<record>
+		<first_name>Carl</first_name>
+		<last_name>Alfral</last_name>
+		<address>503 10th Avenue</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 354-5473</home_phone>
+		<waiver_date/>
+		<old_id>14727</old_id>
+	</record>
+	<record>
+		<first_name>Sam</first_name>
+		<last_name>Alhadeff</last_name>
+		<address>2244 Avalon Drive</address>
+		<city>Buffalo Grove</city>
+		<state>IL</state>
+		<zip>60089</zip>
+		<home_phone>(847) 951-9583</home_phone>
+		<notes>Camp Chi</notes>
+		<waiver_date>06/17/2011</waiver_date>
+		<old_id>4429</old_id>
+	</record>
+	<record>
+		<first_name>Ruth</first_name>
+		<last_name>Alighieri</last_name>
+		<address>167 Jones Street</address>
+		<city>Sun Prairie</city>
+		<state>WI</state>
+		<zip>53590</zip>
+		<home_phone>(608) 834-5061</home_phone>
+		<notes>phone # may be a work or cell number--was related to address #2. Address 2 is 1500 Main St. Sun Prairie. sr</notes>
+		<waiver_date/>
+		<old_id>14313</old_id>
+	</record>
+	<record>
+		<first_name>Saley</first_name>
+		<last_name>Alisha</last_name>
+		<address>N4385 County Road V</address>
+		<city>Poynette</city>
+		<state>WI</state>
+		<zip>53955</zip>
+		<waiver_date>07/14/2012</waiver_date>
+		<old_id>12389</old_id>
+		<email>alishasaley@yahoo.com</email>
+	</record>
+	<record>
+		<first_name>Craig</first_name>
+		<last_name>Allan</last_name>
+		<address>W11126 Lake Point Drive</address>
+		<city>Lodi</city>
+		<state>WI</state>
+		<zip>53555</zip>
+		<home_phone>(608) 592-5476</home_phone>
+		<mobile_phone>(608) 262-5714</mobile_phone>
+		<waiver_date>07/11/2009</waiver_date>
+		<old_id>1673</old_id>
+	</record>
+	<record>
+		<first_name>Annie</first_name>
+		<last_name>Allen</last_name>
+		<occupation>Public Health Nurse for Co.</occupation>
+		<address>S4151 Grote Hill Road</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<home_phone>(608) 524-4101</home_phone>
+		<work_phone>(608) 355-3290</work_phone>
+		<notes>didn\'t list any areas of volunteer-was at Badger Steam</notes>
+		<waiver_date/>
+		<old_id>2339</old_id>
+	</record>
+	<record>
+		<first_name>James T. &amp; Ellen M.</first_name>
+		<last_name>Allen</last_name>
+		<address>527 Hill Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 963-9781</home_phone>
+		<waiver_date/>
+		<old_id>5460</old_id>
+	</record>
+	<record>
+		<first_name>Jim</first_name>
+		<last_name>Allen</last_name>
+		<address>E12414 Highway 33</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<waiver_date/>
+		<old_id>14829</old_id>
+		<email>kallen010@centurytel.net</email>
+	</record>
+	<record>
+		<first_name>Julie</first_name>
+		<last_name>Allen</last_name>
+		<address>6437 Woodland Trail</address>
+		<city>Dane</city>
+		<state>WI</state>
+		<zip>53529</zip>
+		<home_phone>(608) 643-3676</home_phone>
+		<waiver_date>08/09/2003</waiver_date>
+		<old_id>1032</old_id>
+	</record>
+	<record>
+		<first_name>Michael</first_name>
+		<last_name>Allen</last_name>
+		<address>503 7th Street, Apt. 8</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<mobile_phone>(608) 359-2263</mobile_phone>
+		<waiver_date>10/25/2012</waiver_date>
+		<old_id>12566</old_id>
+	</record>
+	<record>
+		<first_name>Samantha</first_name>
+		<last_name>Allen</last_name>
+		<address>1044 Seymour Street</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<notes>Mom Leigh Toberman 2014 USDA Home Reedsburg - Montgomery help</notes>
+		<waiver_date>02/25/2015</waiver_date>
+		<old_id>14652</old_id>
+	</record>
+	<record>
+		<first_name>Matthew</first_name>
+		<last_name>Allison</last_name>
+		<address>S3221A Buckhorn Road</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<mobile_phone>(608) 393-2032</mobile_phone>
+		<notes>Huber 3 weeks</notes>
+		<waiver_date>12/01/2012</waiver_date>
+		<old_id>12698</old_id>
+		<email>gcema22@yahoo.com</email>
+	</record>
+	<record>
+		<first_name>Richard L.</first_name>
+		<last_name>Allison</last_name>
+		<address>S3221A Buckhorn Road</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<home_phone>(608) 963-8998</home_phone>
+		<notes>updated phone &amp; email 8/5/2015 ssr</notes>
+		<waiver_date/>
+		<old_id>2818</old_id>
+		<email>golfaddict33@gmail.com</email>
+	</record>
+	<record>
+		<first_name>Julie A.</first_name>
+		<last_name>Alt</last_name>
+		<address>810 21st Street</address>
+		<city>Prairie du Sac</city>
+		<state>WI</state>
+		<zip>53578</zip>
+		<mobile_phone>(608) 434-5833</mobile_phone>
+		<notes>Wells Fargo</notes>
+		<waiver_date/>
+		<old_id>9087</old_id>
+	</record>
+	<record>
+		<first_name>Kenneth H.</first_name>
+		<last_name>Alt</last_name>
+		<address>E11182 Carpenter Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<notes>Donation to Restore</notes>
+		<waiver_date/>
+		<old_id>12687</old_id>
+	</record>
+	<record>
+		<first_name>Scott</first_name>
+		<last_name>Alt</last_name>
+		<address>138 Fox Run</address>
+		<city>Sauk City</city>
+		<state>WI</state>
+		<zip>53583</zip>
+		<home_phone>(608) 644-0405</home_phone>
+		<waiver_date/>
+		<old_id>1015</old_id>
+		<email>alts@firstweber.com</email>
+	</record>
+	<record>
+		<first_name>Shauna</first_name>
+		<last_name>Alt</last_name>
+		<address>138 Fox Run</address>
+		<city>Sauk City</city>
+		<state>WI</state>
+		<zip>53583</zip>
+		<home_phone>(608) 644-0405</home_phone>
+		<waiver_date/>
+		<old_id>1016</old_id>
+		<email>alts@firstweber.com</email>
+	</record>
+	<record>
+		<first_name>Fernando</first_name>
+		<last_name>Alvarado</last_name>
+		<address>215 Alcan Drive</address>
+		<city>Lake Delton</city>
+		<state>WI</state>
+		<zip>53940</zip>
+		<waiver_date/>
+		<old_id>3712</old_id>
+	</record>
+	<record>
+		<first_name>Ashley</first_name>
+		<last_name>Alvarez</last_name>
+		<address>208 Strange Way Avenue</address>
+		<city>Lodi</city>
+		<state>WI</state>
+		<zip>53555</zip>
+		<mobile_phone>(920) 296-4197</mobile_phone>
+		<waiver_date/>
+		<old_id>15025</old_id>
+	</record>
+	<record>
+		<first_name>Jarod</first_name>
+		<last_name>Alvarez</last_name>
+		<address>W11855 Lange Road</address>
+		<city>Columbus</city>
+		<state>WI</state>
+		<zip>53925</zip>
+		<mobile_phone>(920) 296-3439</mobile_phone>
+		<waiver_date/>
+		<old_id>15027</old_id>
+	</record>
+	<record>
+		<first_name>Dave</first_name>
+		<last_name>Alwin</last_name>
+		<address>909 Water Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 393-0319</home_phone>
+		<waiver_date/>
+		<old_id>13817</old_id>
+	</record>
+	<record>
+		<first_name>David &amp; Deri</first_name>
+		<last_name>Ament</last_name>
+		<address>502 Spring Creek Circle</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 356-5747</home_phone>
+		<waiver_date/>
+		<old_id>6482</old_id>
+		<email>d4ament@charter.net</email>
+	</record>
+	<record>
+		<first_name>Martha</first_name>
+		<last_name>Ammann</last_name>
+		<address>W7707 Patchin Road</address>
+		<city>Pardeeville</city>
+		<state>WI</state>
+		<zip>53954</zip>
+		<home_phone>(608) 220-5592</home_phone>
+		<notes>Shantytown 2015 Lodi 1st Presbyterian Church</notes>
+		<waiver_date>08/18/2012</waiver_date>
+		<old_id>4438</old_id>
+		<email>absfamilyof6@yahoo.com</email>
+	</record>
+	<record>
+		<first_name>Paul</first_name>
+		<last_name>Ammann</last_name>
+		<address>W7707 Patchin Road</address>
+		<city>Pardeeville</city>
+		<state>WI</state>
+		<zip>53954</zip>
+		<home_phone>(608) 220-5592</home_phone>
+		<notes>Shantytown 2015 Lodi 1st Presbyterian Church</notes>
+		<waiver_date>08/18/2012</waiver_date>
+		<old_id>4453</old_id>
+	</record>
+	<record>
+		<first_name>Erin</first_name>
+		<last_name>Andersen</last_name>
+		<address>1707 Rowland Avenue</address>
+		<city>Madison</city>
+		<state>WI</state>
+		<zip>53704</zip>
+		<waiver_date>11/16/2013</waiver_date>
+		<old_id>13522</old_id>
+	</record>
+	<record>
+		<first_name>John</first_name>
+		<last_name>Andersen</last_name>
+		<address>N500 Mariposa Lane</address>
+		<city>Wisconsin Dells</city>
+		<state>WI</state>
+		<zip>53965</zip>
+		<home_phone>(608) 253-3455</home_phone>
+		<waiver_date/>
+		<old_id>13742</old_id>
+		<email>jackanders@tds.net</email>
+	</record>
+	<record>
+		<first_name>Leonard &amp; Janet</first_name>
+		<last_name>Andersen</last_name>
+		<address>823 Island Court</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<waiver_date/>
+		<old_id>15155</old_id>
+	</record>
+	<record>
+		<first_name>Abigail J.</first_name>
+		<last_name>Anderson</last_name>
+		<address>683 130th Street</address>
+		<city>Amery</city>
+		<state>WI</state>
+		<zip>54001</zip>
+		<waiver_date>06/05/2013</waiver_date>
+		<old_id>13081</old_id>
+		<email>abigail.anderson2013@gmail.com</email>
+	</record>
+	<record>
+		<first_name>Alan &amp; Kathryn</first_name>
+		<last_name>Anderson</last_name>
+		<address>1318 East Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 356-1721</home_phone>
+		<waiver_date/>
+		<old_id>6402</old_id>
+	</record>
+	<record>
+		<first_name>Andi</first_name>
+		<last_name>Anderson</last_name>
+		<address>435 14th Avenue</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 345-2757</home_phone>
+		<work_phone>(608) 356-7800</work_phone>
+		<waiver_date/>
+		<old_id>2095</old_id>
+	</record>
+	<record>
+		<first_name>Barb</first_name>
+		<last_name>Anderson</last_name>
+		<address>N7543 Pine Ridge Circle</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<waiver_date/>
+		<old_id>13758</old_id>
+	</record>
+	<record>
+		<first_name>Barbie</first_name>
+		<last_name>Anderson</last_name>
+		<address>1803 Bellevue Avenue</address>
+		<city>Eau Claire</city>
+		<state>WI</state>
+		<zip>54703</zip>
+		<home_phone>(715) 215-0095</home_phone>
+		<waiver_date/>
+		<old_id>2053</old_id>
+	</record>
+	<record>
+		<first_name>Bonnie</first_name>
+		<last_name>Anderson</last_name>
+		<address>1370 Wellington Drive</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<home_phone>(608) 524-8500</home_phone>
+		<waiver_date/>
+		<old_id>13324</old_id>
+	</record>
+	<record>
+		<first_name>Bret</first_name>
+		<last_name>Anderson</last_name>
+		<address>605 Thompson Street</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<home_phone>(608) 566-1295</home_phone>
+		<waiver_date>0000-00-00</waiver_date>
+		<old_id>1556</old_id>
+	</record>
+	<record>
+		<first_name>Christopher J. &amp; Cheryl M.</first_name>
+		<last_name>Anderson</last_name>
+		<address>537 Lake Wisconsin Drive</address>
+		<city>Merrimac</city>
+		<state>WI</state>
+		<zip>53561</zip>
+		<waiver_date/>
+		<old_id>13514</old_id>
+	</record>
+	<record>
+		<first_name>Clifford &amp; Susan</first_name>
+		<last_name>Anderson</last_name>
+		<address>733 5th Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<waiver_date/>
+		<old_id>6089</old_id>
+	</record>
+	<record>
+		<first_name>Duane C. &amp; Teressa A.</first_name>
+		<last_name>Anderson</last_name>
+		<address>S4147 Fox Hill Road</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 356-3038</home_phone>
+		<waiver_date/>
+		<old_id>10039</old_id>
+	</record>
+	<record>
+		<first_name>Elizabeth</first_name>
+		<last_name>Anderson</last_name>
+		<address>821 10th Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 434-8737</home_phone>
+		<waiver_date>05/09/2012</waiver_date>
+		<old_id>12178</old_id>
+		<email>lizjohnson8767@yahoo.com</email>
+	</record>
+	<record>
+		<first_name>Eric &amp; Amy</first_name>
+		<last_name>Anderson</last_name>
+		<address>2026 Jefferson Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 448-2821</home_phone>
+		<waiver_date/>
+		<old_id>13776</old_id>
+	</record>
+	<record>
+		<first_name>Gary</first_name>
+		<last_name>Anderson</last_name>
+		<address>W8461 Foote Drive</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<home_phone>(608) 742-4224</home_phone>
+		<waiver_date/>
+		<old_id>13987</old_id>
+	</record>
+	<record>
+		<first_name>Jeffrey S.</first_name>
+		<last_name>Anderson</last_name>
+		<address>E9548 Wildflower Drive</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<waiver_date/>
+		<old_id>7447</old_id>
+	</record>
+	<record>
+		<first_name>Kory</first_name>
+		<last_name>Anderson</last_name>
+		<address>N7150 Pacific Ridge</address>
+		<city>Pardeeville</city>
+		<state>WI</state>
+		<zip>53954</zip>
+		<home_phone>(608) 745-4552</home_phone>
+		<work_phone>(608) 697-8001</work_phone>
+		<waiver_date>06/06/2009</waiver_date>
+		<old_id>1633</old_id>
+	</record>
+	<record>
+		<first_name>Lynn</first_name>
+		<last_name>Anderson</last_name>
+		<address>1117 12th Street, Apt. 3</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<mobile_phone>(608) 393-2646</mobile_phone>
+		<waiver_date/>
+		<old_id>13171</old_id>
+	</record>
+	<record>
+		<first_name>Mariah</first_name>
+		<last_name>Anderson</last_name>
+		<address>W10716 East Harmony Drive</address>
+		<city>Lodi</city>
+		<state>WI</state>
+		<zip>53555</zip>
+		<home_phone>(608) 434-4369</home_phone>
+		<waiver_date>09/12/2011</waiver_date>
+		<old_id>6945</old_id>
+	</record>
+	<record>
+		<first_name>Mark &amp; Susan</first_name>
+		<last_name>Anderson</last_name>
+		<address>310 River Street, PO Box 122</address>
+		<city>Merrimac</city>
+		<state>WI</state>
+		<zip>53561</zip>
+		<home_phone>(608) 493-2195</home_phone>
+		<mobile_phone>(608) 493-9470</mobile_phone>
+		<waiver_date/>
+		<old_id>14436</old_id>
+	</record>
+	<record>
+		<first_name>Matt</first_name>
+		<last_name>Anderson</last_name>
+		<address>S3757 South Bent Tree Drive</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<mobile_phone>(608) 347-0156</mobile_phone>
+		<waiver_date/>
+		<old_id>14635</old_id>
+		<email>writealeasha@yahoo.com</email>
+	</record>
+	<record>
+		<first_name>Matthew G. &amp; Aleasha T.</first_name>
+		<last_name>Anderson</last_name>
+		<address>1206 Shorewood Boulevard</address>
+		<city>Madison</city>
+		<state>WI</state>
+		<zip>53705</zip>
+		<waiver_date/>
+		<old_id>8903</old_id>
+	</record>
+	<record>
+		<first_name>Paul &amp; Joanne</first_name>
+		<last_name>Anderson</last_name>
+		<address>1210 Crestview Drive</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 963-3758</home_phone>
+		<waiver_date/>
+		<old_id>6387</old_id>
+	</record>
+	<record>
+		<first_name>Rashad</first_name>
+		<last_name>Anderson</last_name>
+		<address>3051 10th Court</address>
+		<city>Grand Marsh</city>
+		<state>WI</state>
+		<zip>53936</zip>
+		<mobile_phone>(608) 434-0446</mobile_phone>
+		<waiver_date>06/20/2104</waiver_date>
+		<old_id>14034</old_id>
+		<email>marlv3rashad9140@gmail.com</email>
+	</record>
+	<record>
+		<first_name>Robert &amp; Edna</first_name>
+		<last_name>Anderson</last_name>
+		<address>S2916 Fairway Drive</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<home_phone>(608) 963-3912</home_phone>
+		<waiver_date/>
+		<old_id>10468</old_id>
+	</record>
+	<record>
+		<first_name>Shane</first_name>
+		<last_name>Anderson</last_name>
+		<address>821 10th Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 434-8785</home_phone>
+		<waiver_date/>
+		<old_id>12574</old_id>
+		<email>shiftyman_2004@hotmail.com</email>
+	</record>
+	<record>
+		<first_name>Timothy J.</first_name>
+		<last_name>Anderson</last_name>
+		<address>N1703 Kohn Road</address>
+		<city>Lodi</city>
+		<state>WI</state>
+		<zip>53555</zip>
+		<home_phone>(608) 592-5117</home_phone>
+		<work_phone>(608) 441-8855</work_phone>
+		<mobile_phone>(608) 332-9860</mobile_phone>
+		<notes>tanderson@pep-services.com     Does our Energy Start type testing</notes>
+		<waiver_date>10/01/2009</waiver_date>
+		<old_id>815</old_id>
+		<email>andertik@merr.com</email>
+	</record>
+	<record>
+		<first_name>Todd W.</first_name>
+		<last_name>Anderson</last_name>
+		<occupation>Correctional Officer</occupation>
+		<address>1028 Park Avenue</address>
+		<city>Columbus</city>
+		<state>WI</state>
+		<zip>53925</zip>
+		<home_phone>(608) 477-0743</home_phone>
+		<notes>Sauk Co.fair</notes>
+		<waiver_date>11/02/2012</waiver_date>
+		<old_id>2143</old_id>
+		<email>sgttoddande@centurytel.net</email>
+	</record>
+	<record>
+		<first_name>Ardyth A.</first_name>
+		<last_name>Anderson-Winn</last_name>
+		<address>915 Ellis Avenue, Apt. 206</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 355-1926</home_phone>
+		<waiver_date/>
+		<old_id>6218</old_id>
+	</record>
+	<record>
+		<first_name>Kurt M. &amp; Kathleen</first_name>
+		<last_name>Andreasen</last_name>
+		<address>2150 Sunset Drive</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<notes>changes ad 4-2012</notes>
+		<waiver_date/>
+		<old_id>3512</old_id>
+	</record>
+	<record>
+		<first_name>Gary</first_name>
+		<last_name>Andreaz</last_name>
+		<address>N707 Kranz Road</address>
+		<city>Columbus</city>
+		<state>WI</state>
+		<zip>53925</zip>
+		<mobile_phone>(501) 276-4472</mobile_phone>
+		<waiver_date/>
+		<old_id>12981</old_id>
+	</record>
+	<record>
+		<first_name>Pat</first_name>
+		<last_name>Andreessen</last_name>
+		<address>E6534 North Dewey Avenue</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<home_phone>(608) 524-1452</home_phone>
+		<waiver_date>04/14/2011</waiver_date>
+		<old_id>1344</old_id>
+		<email>weaver@merr.com</email>
+	</record>
+	<record>
+		<first_name>Tom</first_name>
+		<last_name>Andres</last_name>
+		<address>S7658 Lucille Lane</address>
+		<city>Merrimac</city>
+		<state>WI</state>
+		<zip>53561</zip>
+		<home_phone>(608) 493-2526</home_phone>
+		<notes>Husband of Roxeanne Andres.</notes>
+		<waiver_date>04/22/2011</waiver_date>
+		<old_id>70</old_id>
+		<email>tomroxandres@merr.com</email>
+	</record>
+	<record>
+		<first_name>Casey</first_name>
+		<last_name>Andrew</last_name>
+		<address>PO Box 248</address>
+		<city>Lake Delton</city>
+		<state>WI</state>
+		<zip>53940</zip>
+		<mobile_phone>(608) 697-1915</mobile_phone>
+		<waiver_date/>
+		<old_id>13512</old_id>
+		<email>caseyc.andrew@hotmail.com</email>
+	</record>
+	<record>
+		<first_name>Tom</first_name>
+		<last_name>Andrews</last_name>
+		<address>E11740 County Road DL</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<waiver_date>04/27/2011</waiver_date>
+		<old_id>3844</old_id>
+	</record>
+	<record>
+		<first_name>Ann L.</first_name>
+		<last_name>Andringa</last_name>
+		<address>526 Meadowlark Lane</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<home_phone>(608) 742-3182</home_phone>
+		<waiver_date>07/08/2006</waiver_date>
+		<old_id>816</old_id>
+		<email>andringad@portage.k12.wi.us</email>
+	</record>
+	<record>
+		<first_name>Don</first_name>
+		<last_name>Andringa</last_name>
+		<address>526 Meadowlark Lane</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<home_phone>(608) 742-3182</home_phone>
+		<waiver_date>07/08/2006</waiver_date>
+		<old_id>817</old_id>
+	</record>
+	<record>
+		<first_name>Tom</first_name>
+		<last_name>Anen</last_name>
+		<address>864 Golden Drive</address>
+		<city>Wisconsin Dells</city>
+		<state>WI</state>
+		<zip>53965</zip>
+		<waiver_date/>
+		<old_id>14471</old_id>
+	</record>
+	<record>
+		<first_name>Connie</first_name>
+		<last_name>Angeloo</last_name>
+		<address>S4169 Whispring pine drive</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 963-9068</home_phone>
+		<waiver_date/>
+		<old_id>14755</old_id>
+	</record>
+	<record>
+		<first_name>John P.</first_name>
+		<last_name>Anglim</last_name>
+		<address>216 West Emmett Street</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<home_phone>(608) 742-3794</home_phone>
+		<waiver_date/>
+		<old_id>12876</old_id>
+	</record>
+	<record>
+		<first_name>Chenoa</first_name>
+		<last_name>Anhalt</last_name>
+		<address>601 Wauona Trail, Lot 14</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<waiver_date/>
+		<old_id>13270</old_id>
+		<email>canhalt@madisoncollege.edu</email>
+	</record>
+	<record>
+		<first_name>Toni</first_name>
+		<last_name>Ankenbrandt</last_name>
+		<address>802 Ash Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 356-4142</home_phone>
+		<waiver_date/>
+		<old_id>14594</old_id>
+	</record>
+	<record>
+		<first_name>Antoinette J.</first_name>
+		<last_name>Ankerbrandt</last_name>
+		<address>802 Ash Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<waiver_date/>
+		<old_id>5066</old_id>
+	</record>
+	<record>
+		<first_name>Kelly</first_name>
+		<last_name>Anklan</last_name>
+		<address>6665 Viaduct Road</address>
+		<city>Dane</city>
+		<state>WI</state>
+		<zip>53529</zip>
+		<home_phone>(608) 592-5054</home_phone>
+		<work_phone>(608) 263-6920</work_phone>
+		<waiver_date>07/15/2006</waiver_date>
+		<old_id>797</old_id>
+	</record>
+	<record>
+		<first_name>Mark</first_name>
+		<last_name>Anliker</last_name>
+		<address>E13445A Bluff Road</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(920) 253-7030</home_phone>
+		<waiver_date/>
+		<old_id>12601</old_id>
+		<email>dudesjakamark@hotmail.com</email>
+	</record>
+	<record>
+		<first_name>Tim &amp; Janet</first_name>
+		<last_name>Anthon</last_name>
+		<address>W12776 Pleasant View Park Road</address>
+		<city>Lodi</city>
+		<state>WI</state>
+		<zip>53555</zip>
+		<home_phone>(608) 575-8550</home_phone>
+		<waiver_date/>
+		<old_id>14480</old_id>
+	</record>
+	<record>
+		<first_name>Aaron D. &amp; Kari A.</first_name>
+		<last_name>Apel</last_name>
+		<address>902 Highland Trail</address>
+		<city>Prairie du Sac</city>
+		<state>WI</state>
+		<zip>53578</zip>
+		<home_phone>(608) 370-3926</home_phone>
+		<waiver_date/>
+		<old_id>8195</old_id>
+	</record>
+	<record>
+		<first_name>David</first_name>
+		<last_name>Appelbaum</last_name>
+		<address>833 Horatio Boulevard</address>
+		<city>Buffalo Grove</city>
+		<state>IL</state>
+		<zip>60089</zip>
+		<home_phone>(847) 808-1412</home_phone>
+		<notes>Camp Chi</notes>
+		<waiver_date>06/17/2011</waiver_date>
+		<old_id>4415</old_id>
+	</record>
+	<record>
+		<first_name>Matt</first_name>
+		<last_name>Archambo</last_name>
+		<address>742 North Walnut Street</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<home_phone>(608) 524-0466</home_phone>
+		<waiver_date>08/01/2009</waiver_date>
+		<old_id>1715</old_id>
+	</record>
+	<record>
+		<first_name>Tyler</first_name>
+		<last_name>Archambo</last_name>
+		<address>742 North Walnut Street</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<home_phone>(608) 524-0466</home_phone>
+		<waiver_date>08/01/2009</waiver_date>
+		<old_id>1716</old_id>
+	</record>
+	<record>
+		<first_name>Mary</first_name>
+		<last_name>Archowsi</last_name>
+		<waiver_date/>
+		<old_id>12811</old_id>
+	</record>
+	<record>
+		<first_name>Gradon</first_name>
+		<last_name>Arendsee</last_name>
+		<address>N9529 Northern SHRS</address>
+		<city>Fox Lake</city>
+		<state>WI</state>
+		<zip>53933</zip>
+		<waiver_date/>
+		<old_id>14988</old_id>
+	</record>
+	<record>
+		<first_name>Leslie D. &amp; Donna</first_name>
+		<last_name>Armbrust</last_name>
+		<address>E13151 State Road 33</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 355-0946</home_phone>
+		<waiver_date/>
+		<old_id>2506</old_id>
+	</record>
+	<record>
+		<first_name>David</first_name>
+		<last_name>Armstrong</last_name>
+		<address>E12075 Kessler Road</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(813) 789-4469</home_phone>
+		<work_phone>(608) 434-2522</work_phone>
+		<waiver_date/>
+		<old_id>13648</old_id>
+	</record>
+	<record>
+		<first_name>E. Carter</first_name>
+		<last_name>Arndt</last_name>
+		<address>E9966 Buckhorn Road</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<home_phone>(608) 356-8278</home_phone>
+		<waiver_date>03/01/2014</waiver_date>
+		<old_id>1314</old_id>
+		<email>arndt1@centurytel.net</email>
+	</record>
+	<record>
+		<first_name>Joe</first_name>
+		<last_name>Arndt</last_name>
+		<address>W5180 Cowgill Road</address>
+		<city>Rio</city>
+		<state>WI</state>
+		<zip>53960</zip>
+		<home_phone>(608) 235-8038</home_phone>
+		<waiver_date>07/27/2013</waiver_date>
+		<old_id>3870</old_id>
+	</record>
+	<record>
+		<first_name>Lynn</first_name>
+		<last_name>Arndt</last_name>
+		<address>864 Iroquois Circle</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 356-3553</home_phone>
+		<work_phone>(608) 356-1218x243</work_phone>
+		<waiver_date>0000-00-00</waiver_date>
+		<old_id>1327</old_id>
+	</record>
+	<record>
+		<first_name>Melissa</first_name>
+		<last_name>Arndt</last_name>
+		<address>W5180 Cowgill Road</address>
+		<city>Rio</city>
+		<state>WI</state>
+		<zip>53960</zip>
+		<home_phone>(920) 992-3976</home_phone>
+		<mobile_phone>(608) 219-0101</mobile_phone>
+		<waiver_date>07/27/2013</waiver_date>
+		<old_id>4561</old_id>
+		<email>melisaarndt@centurytel.net</email>
+	</record>
+	<record>
+		<first_name>Michael</first_name>
+		<last_name>Arndt</last_name>
+		<address>140 Shaw Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 448-2227</home_phone>
+		<waiver_date/>
+		<old_id>12572</old_id>
+	</record>
+	<record>
+		<first_name>Olivia</first_name>
+		<last_name>Arndt</last_name>
+		<address>W5180 Cowgill Road</address>
+		<city>Rio</city>
+		<state>WI</state>
+		<zip>53960</zip>
+		<mobile_phone>(608) 219-0101</mobile_phone>
+		<waiver_date/>
+		<old_id>12362</old_id>
+	</record>
+	<record>
+		<first_name>Patricia</first_name>
+		<last_name>Arndt</last_name>
+		<address>303 Sunset Drive</address>
+		<city>Rio</city>
+		<state>WI</state>
+		<zip>53960</zip>
+		<home_phone>(608) 212-0782</home_phone>
+		<waiver_date/>
+		<old_id>13421</old_id>
+	</record>
+	<record>
+		<first_name>Peter</first_name>
+		<last_name>Arndt</last_name>
+		<address>864 Iroquois Circle</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 356-3553</home_phone>
+		<waiver_date/>
+		<old_id>12915</old_id>
+	</record>
+	<record>
+		<first_name>Leanne</first_name>
+		<last_name>Arne</last_name>
+		<address>1501 Jennifer Street</address>
+		<city>Tomah</city>
+		<state>WI</state>
+		<zip>54660</zip>
+		<mobile_phone>(262) 391-6748</mobile_phone>
+		<waiver_date>05/12/2012</waiver_date>
+		<old_id>12208</old_id>
+		<email>leanne.arnern@yahoo.com</email>
+	</record>
+	<record>
+		<first_name>Jon</first_name>
+		<last_name>Arneson</last_name>
+		<address>1000 11th Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 393-7448</home_phone>
+		<work_phone>(608) 356-8977</work_phone>
+		<waiver_date/>
+		<old_id>14312</old_id>
+	</record>
+	<record>
+		<first_name>Elysha</first_name>
+		<last_name>Arnold</last_name>
+		<address>745 CRESTVIEW DR</address>
+		<city>REEDSBURG</city>
+		<state>WI</state>
+		<zip>53959-2581</zip>
+		<mobile_phone>(608) 535-0213</mobile_phone>
+		<notes>She was part of the 2014 Reedsburg USDA build.</notes>
+		<waiver_date>12/30/2014</waiver_date>
+		<old_id>14415</old_id>
+		<email>elyshaarnold@aol.com</email>
+	</record>
+	<record>
+		<first_name>Michael</first_name>
+		<last_name>Arnold</last_name>
+		<address>745 CRESTVIEW DR</address>
+		<city>REEDSBURG</city>
+		<state>WI</state>
+		<zip>53959-2581</zip>
+		<notes>Part of the 2014 USDA build in Reedsburg.</notes>
+		<waiver_date>12/13/2014</waiver_date>
+		<old_id>14494</old_id>
+	</record>
+	<record>
+		<first_name>Gregory</first_name>
+		<last_name>Arps</last_name>
+		<address>308 Bowman Road</address>
+		<city>Wisconsin Dells</city>
+		<state>WI</state>
+		<zip>53965</zip>
+		<home_phone>(608) 253-7659</home_phone>
+		<waiver_date/>
+		<old_id>12799</old_id>
+	</record>
+	<record>
+		<first_name>Kate</first_name>
+		<last_name>Ary</last_name>
+		<address>5150 Ridgeview Road</address>
+		<city>Barneveld</city>
+		<state>WI</state>
+		<zip>53507</zip>
+		<waiver_date/>
+		<old_id>13693</old_id>
+	</record>
+	<record>
+		<first_name>Gordon</first_name>
+		<last_name>Ashley</last_name>
+		<address>4218 North Salem Drive</address>
+		<city>Arlington Heights</city>
+		<state>IL</state>
+		<zip>60004</zip>
+		<home_phone>(847) 989-0796</home_phone>
+		<notes>Camp Chi counselor</notes>
+		<waiver_date>06/30/2011</waiver_date>
+		<old_id>4417</old_id>
+	</record>
+	<record>
+		<first_name>Michael F. &amp; Anita C.</first_name>
+		<last_name>Ashworth</last_name>
+		<address>N2783 Summerville Park Road</address>
+		<city>Lodi</city>
+		<state>WI</state>
+		<zip>53555</zip>
+		<home_phone>(608) 237-1405</home_phone>
+		<waiver_date/>
+		<old_id>13622</old_id>
+	</record>
+	<record>
+		<first_name>Irene L.</first_name>
+		<last_name>Askin</last_name>
+		<address>205 15th Avenue</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 356-1870</home_phone>
+		<waiver_date/>
+		<old_id>14592</old_id>
+	</record>
+	<record>
+		<first_name>Carolyne</first_name>
+		<last_name>Aslaksen</last_name>
+		<address>S154 Wiese Road</address>
+		<city>La Valle</city>
+		<state>WI</state>
+		<zip>53941</zip>
+		<waiver_date/>
+		<old_id>13554</old_id>
+	</record>
+	<record>
+		<first_name>Jan R.</first_name>
+		<last_name>Aslaksen</last_name>
+		<address>S154 Wiese Road</address>
+		<city>La Valle</city>
+		<state>WI</state>
+		<zip>53941</zip>
+		<home_phone>(608) 524-6946</home_phone>
+		<mobile_phone>(608) 963-8806</mobile_phone>
+		<notes>Is a retired architect, and as of about 2013 serves on Build Committee.</notes>
+		<waiver_date>01/21/2014</waiver_date>
+		<old_id>12146</old_id>
+		<email>jaslaksen@rucls.net</email>
+	</record>
+	<record>
+		<first_name>Sean &amp; Christina</first_name>
+		<last_name>Asp</last_name>
+		<address>1460 Pineview Drive</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<home_phone>(608) 712-7326</home_phone>
+		<waiver_date/>
+		<old_id>10980</old_id>
+		<email>seanasp@yahoo.com</email>
+	</record>
+	<record>
+		<first_name>Family Motor Coach</first_name>
+		<last_name>Association</last_name>
+		<notes>Caravanners-August 2015</notes>
+		<waiver_date/>
+		<old_id>15302</old_id>
+	</record>
+	<record>
+		<first_name>Robert</first_name>
+		<last_name>Ast</last_name>
+		<address>815 SUMMIT ST</address>
+		<city>BARABOO</city>
+		<state>WI</state>
+		<zip>53913-1940</zip>
+		<home_phone>(608) 355-0036</home_phone>
+		<mobile_phone>(608) 434-9936</mobile_phone>
+		<notes>mobile # added 9/9/2015 ssr</notes>
+		<waiver_date/>
+		<old_id>15127</old_id>
+	</record>
+	<record>
+		<first_name>Mary</first_name>
+		<last_name>Atkinson</last_name>
+		<address>W14898 State Road 23</address>
+		<city>Wisconsin Dells</city>
+		<state>WI</state>
+		<zip>53965</zip>
+		<home_phone>(608) 254-2350</home_phone>
+		<waiver_date>08/01/2009</waiver_date>
+		<old_id>1750</old_id>
+	</record>
+	<record>
+		<first_name>Wanda</first_name>
+		<last_name>Atkinson</last_name>
+		<address>N7994 Thiel Road</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<home_phone>(608) 429-3452</home_phone>
+		<waiver_date/>
+		<old_id>13932</old_id>
+	</record>
+	<record>
+		<first_name>James E. &amp; Barbara A.</first_name>
+		<last_name>Attoe</last_name>
+		<address>N3025 Mackenzie Drive</address>
+		<city>Poynette</city>
+		<state>WI</state>
+		<zip>53955</zip>
+		<waiver_date/>
+		<old_id>15350</old_id>
+	</record>
+	<record>
+		<first_name>Josh</first_name>
+		<last_name>Aubihl</last_name>
+		<address>1011 West Carroll Street</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<mobile_phone>(608) 509-8130</mobile_phone>
+		<notes>Sauk Co Fair</notes>
+		<waiver_date/>
+		<old_id>12353</old_id>
+		<email>jaubihl@charter.net</email>
+	</record>
+	<record>
+		<first_name>Doug</first_name>
+		<last_name>Augustine</last_name>
+		<waiver_date/>
+		<old_id>13455</old_id>
+	</record>
+	<record>
+		<first_name>Frances</first_name>
+		<last_name>Auld</last_name>
+		<address>627 9th Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<waiver_date/>
+		<old_id>14078</old_id>
+	</record>
+	<record>
+		<first_name>Joelle</first_name>
+		<last_name>Austin</last_name>
+		<address>421 Walnut Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 356-0397</home_phone>
+		<waiver_date>0000-00-00</waiver_date>
+		<old_id>1329</old_id>
+		<email>frogfever91@gmail.com</email>
+	</record>
+	<record>
+		<first_name>Lenore</first_name>
+		<last_name>Austin</last_name>
+		<address>420 South Walnut Street</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<home_phone>(608) 524-4135</home_phone>
+		<waiver_date/>
+		<old_id>13212</old_id>
+	</record>
+	<record>
+		<first_name>Tina</first_name>
+		<last_name>Awonohopay</last_name>
+		<address>N974 Dyer Street, Apt. F</address>
+		<city>Wisconsin Dells</city>
+		<state>WI</state>
+		<zip>53965</zip>
+		<home_phone>(608) 448-8461</home_phone>
+		<notes>In 10-2014 she contacted us through VolunteerMatch, saying she cares about issues of homelessness and wants to get involved.</notes>
+		<waiver_date>11/01/2014</waiver_date>
+		<old_id>14272</old_id>
+		<email>tinandarrenawonohopay@gmail.com</email>
+	</record>
+	<record>
+		<first_name>Katie</first_name>
+		<last_name>Axelson</last_name>
+		<address>212 Quarry St.</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 212-1290</home_phone>
+		<notes>address changed 9/2/2015 ssr</notes>
+		<waiver_date>06/04/2011</waiver_date>
+		<old_id>4057</old_id>
+	</record>
+	<record>
+		<first_name>Logen</first_name>
+		<last_name>Ayers</last_name>
+		<address>S1975 County Road A, Lot 9</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<waiver_date>09/12/2011</waiver_date>
+		<old_id>6933</old_id>
+	</record>
+	<record>
+		<first_name>Ken</first_name>
+		<last_name>Baars</last_name>
+		<address>1120 Prospect Avenue, Apt. #3</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<home_phone>(608) 550-2591</home_phone>
+		<notes>Met at Badger Steam and Gas show  Carpentry</notes>
+		<waiver_date/>
+		<old_id>4974</old_id>
+		<email>kenbaars@aol.com</email>
+	</record>
+	<record>
+		<first_name>Emily</first_name>
+		<last_name>Babcock</last_name>
+		<address>PO Box 122</address>
+		<city>Pardeeville</city>
+		<state>WI</state>
+		<zip>53954</zip>
+		<home_phone>(608) 429-9088</home_phone>
+		<waiver_date>05/20/2009</waiver_date>
+		<old_id>1607</old_id>
+		<email>babcem@gmail.com</email>
+	</record>
+	<record>
+		<first_name>Paul</first_name>
+		<last_name>Babecky</last_name>
+		<address>S2495A Meadowview Road</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<home_phone>(608) 524-0691</home_phone>
+		<mobile_phone>(608) 408-7651</mobile_phone>
+		<waiver_date>12/03/2013</waiver_date>
+		<old_id>13517</old_id>
+		<email>jepp2495@hotmail.com</email>
+	</record>
+	<record>
+		<first_name>Tom</first_name>
+		<last_name>Babic</last_name>
+		<address>S6310 State Road 113</address>
+		<city>Merrimac</city>
+		<state>WI</state>
+		<zip>53561</zip>
+		<mobile_phone>(608) 712-2301</mobile_phone>
+		<waiver_date>11/23/2013</waiver_date>
+		<old_id>13523</old_id>
+	</record>
+	<record>
+		<first_name>Kevin</first_name>
+		<last_name>Bach</last_name>
+		<occupation>Software developer</occupation>
+		<address>9347 Jenny Lind Lane</address>
+		<city>Sauk City</city>
+		<state>WI</state>
+		<zip>53583</zip>
+		<home_phone>(608) 643-0203</home_phone>
+		<work_phone>(608) 643-8022</work_phone>
+		<waiver_date>03/31/2012</waiver_date>
+		<old_id>1269</old_id>
+		<email>KPBACH@gmail.com</email>
+	</record>
+	<record>
+		<first_name>Steve</first_name>
+		<last_name>Bach</last_name>
+		<address>1010 TILLBERRY DR</address>
+		<city>BARABOO</city>
+		<state>WI</state>
+		<zip>53913-1594</zip>
+		<mobile_phone>(608) 393-8240</mobile_phone>
+		<waiver_date/>
+		<old_id>13178</old_id>
+	</record>
+	<record>
+		<first_name>Jacob &amp; Jeni</first_name>
+		<last_name>Bachman</last_name>
+		<address>534 Bascom Hill Drive</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<notes>Going to uw in the fall for Costruction MNGMT. Her email is bachmj37@uwash.edu</notes>
+		<waiver_date/>
+		<old_id>3959</old_id>
+		<email>football_42_91@hotmail.com</email>
+	</record>
+	<record>
+		<first_name>Clyde &amp; Dawn</first_name>
+		<last_name>Bachmann</last_name>
+		<address>N1756 County Road T</address>
+		<city>Endeavor</city>
+		<state>WI</state>
+		<zip>53930</zip>
+		<home_phone>(608) 587-2535</home_phone>
+		<waiver_date/>
+		<old_id>12912</old_id>
+	</record>
+	<record>
+		<first_name>Thomas &amp; Zayda</first_name>
+		<last_name>Back</last_name>
+		<address>5309 Retana Drive</address>
+		<city>Madison</city>
+		<state>WI</state>
+		<zip>53714</zip>
+		<waiver_date/>
+		<old_id>4698</old_id>
+	</record>
+	<record>
+		<first_name>Kathy</first_name>
+		<last_name>Backstrom</last_name>
+		<address>1322 Crossing Ridge Trail</address>
+		<city>Sun Prairie</city>
+		<state>WI</state>
+		<zip>53590</zip>
+		<notes>culvers deconstruct</notes>
+		<waiver_date>07/19/2011</waiver_date>
+		<old_id>4494</old_id>
+	</record>
+	<record>
+		<first_name>William &amp; Susan</first_name>
+		<last_name>Backus</last_name>
+		<address>S9887 Exchange Road</address>
+		<city>Prairie du Sac</city>
+		<state>WI</state>
+		<zip>53578</zip>
+		<home_phone>(608) 544-2113</home_phone>
+		<waiver_date>03/01/2009</waiver_date>
+		<old_id>1810</old_id>
+		<email>bbackski@yahoo.com</email>
+	</record>
+	<record>
+		<first_name>Derick</first_name>
+		<last_name>Bacon</last_name>
+		<occupation>Pastor</occupation>
+		<address>150 Shaw Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<work_phone>(608) 356-6545</work_phone>
+		<notes>Pastor at Baraboo's Church of God.  special event listed Family Build</notes>
+		<waiver_date>05/23/2012</waiver_date>
+		<old_id>12217</old_id>
+		<email>drbacon@grics.net</email>
+	</record>
+	<record>
+		<first_name>Janis</first_name>
+		<last_name>Baer</last_name>
+		<address>N680 Golf Road</address>
+		<city>Prairie du Sac</city>
+		<state>WI</state>
+		<zip>53578</zip>
+		<home_phone>(608) 643-8646</home_phone>
+		<waiver_date/>
+		<old_id>14474</old_id>
+	</record>
+	<record>
+		<first_name>Rob &amp; Jenny</first_name>
+		<last_name>Baerwolf</last_name>
+		<occupation>Dairy farmer</occupation>
+		<address>2146 Bristol Road</address>
+		<city>Sun Prairie</city>
+		<state>WI</state>
+		<zip>53590</zip>
+		<home_phone>(608) 825-4708</home_phone>
+		<notes>Portage Fair 2010</notes>
+		<waiver_date>0000-00-00</waiver_date>
+		<old_id>2190</old_id>
+		<email>JRBAER4@Juno.com</email>
+	</record>
+	<record>
+		<first_name>John</first_name>
+		<last_name>Baeseman</last_name>
+		<address>470 North Ludington Street</address>
+		<city>Columbus</city>
+		<state>WI</state>
+		<zip>53925</zip>
+		<home_phone>(920) 623-0312</home_phone>
+		<waiver_date>08/01/2008</waiver_date>
+		<old_id>1470</old_id>
+	</record>
+	<record>
+		<first_name>Trevor</first_name>
+		<last_name>Baeseman</last_name>
+		<address>470 North Ludington Street</address>
+		<city>Columbus</city>
+		<state>WI</state>
+		<zip>53925</zip>
+		<home_phone>(920) 623-0312</home_phone>
+		<waiver_date>08/01/2008</waiver_date>
+		<old_id>1471</old_id>
+	</record>
+	<record>
+		<first_name>Carol</first_name>
+		<last_name>Baggot</last_name>
+		<address>W14896 County Road WD</address>
+		<city>Wisconsin Dells</city>
+		<state>WI</state>
+		<zip>53965</zip>
+		<home_phone>(608) 254-7228</home_phone>
+		<waiver_date/>
+		<old_id>15395</old_id>
+	</record>
+	<record>
+		<first_name>Christopher</first_name>
+		<last_name>Baggot</last_name>
+		<address>W14896 County Road WD</address>
+		<city>Wisconsin Dells</city>
+		<state>WI</state>
+		<zip>53965</zip>
+		<waiver_date/>
+		<old_id>15396</old_id>
+	</record>
+	<record>
+		<first_name>Karen</first_name>
+		<last_name>Baggot</last_name>
+		<address>1111 Oak Street</address>
+		<city>Wisconsin Dells</city>
+		<state>WI</state>
+		<zip>53965</zip>
+		<home_phone>(608) 254-8166</home_phone>
+		<waiver_date/>
+		<old_id>15237</old_id>
+	</record>
+	<record>
+		<first_name>Nicole C.</first_name>
+		<last_name>Bagwell</last_name>
+		<address>544 Ronald Lee Circle</address>
+		<city>Rio</city>
+		<state>WI</state>
+		<zip>53960</zip>
+		<home_phone>(920) 992-3730</home_phone>
+		<mobile_phone>(608) 444-7341</mobile_phone>
+		<notes>Can bring food</notes>
+		<waiver_date/>
+		<old_id>12831</old_id>
+		<email>nbagwell@madisoncollege.edu</email>
+	</record>
+	<record>
+		<first_name>Ann</first_name>
+		<last_name>Bailey</last_name>
+		<address>311 South Main Street</address>
+		<city>Pardeeville</city>
+		<state>WI</state>
+		<zip>53954</zip>
+		<home_phone>(608) 617-3359</home_phone>
+		<waiver_date/>
+		<old_id>13837</old_id>
+	</record>
+	<record>
+		<first_name>Edith</first_name>
+		<last_name>Bailey</last_name>
+		<address>N9458 Pine Valley Lane</address>
+		<city>Wisconsin Dells</city>
+		<state>WI</state>
+		<zip>53965</zip>
+		<home_phone>(608) 254-7793</home_phone>
+		<waiver_date/>
+		<old_id>12589</old_id>
+	</record>
+	<record>
+		<first_name>Phil</first_name>
+		<last_name>Bailey</last_name>
+		<address>1207 Maple Street</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<waiver_date>01/23/2015</waiver_date>
+		<old_id>14495</old_id>
+		<email>phbailey5@gmail.com</email>
+	</record>
+	<record>
+		<first_name>Barbara</first_name>
+		<last_name>Baird</last_name>
+		<address>4035 9th Avenue</address>
+		<city>Wisconsin Dells</city>
+		<state>WI</state>
+		<zip>53965</zip>
+		<home_phone>(608) 432-2129</home_phone>
+		<mobile_phone>(608) 253-3241</mobile_phone>
+		<notes>address for donation pick-up 717 Park St., Baraboo, WI 53913</notes>
+		<waiver_date>08/01/2009</waiver_date>
+		<old_id>1754</old_id>
+	</record>
+	<record>
+		<first_name>Fred &amp; Barb</first_name>
+		<last_name>Baird</last_name>
+		<address>717 Park Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 432-2129</home_phone>
+		<waiver_date/>
+		<old_id>13388</old_id>
+	</record>
+	<record>
+		<first_name>Bill</first_name>
+		<last_name>Baker</last_name>
+		<address>Dunlap Hollow Road</address>
+		<city>Sauk City</city>
+		<state>WI</state>
+		<zip>53583</zip>
+		<waiver_date/>
+		<old_id>14448</old_id>
+	</record>
+	<record>
+		<first_name>Chad</first_name>
+		<last_name>Baker</last_name>
+		<address>908 South Sheldon Street</address>
+		<city>Richland Center</city>
+		<state>WI</state>
+		<zip>53581</zip>
+		<home_phone>(608) 604-3322</home_phone>
+		<waiver_date/>
+		<old_id>13741</old_id>
+	</record>
+	<record>
+		<first_name>Dave</first_name>
+		<last_name>Baker</last_name>
+		<address>3689 State Highway 13</address>
+		<city>Wisconsin Dells</city>
+		<state>WI</state>
+		<zip>53965</zip>
+		<home_phone>(608) 678-7101</home_phone>
+		<waiver_date/>
+		<old_id>13617</old_id>
+	</record>
+	<record>
+		<first_name>Jennifer</first_name>
+		<last_name>Baker</last_name>
+		<address>S5631 OLD LAKE RD</address>
+		<city>BARABOO</city>
+		<state>WI</state>
+		<zip>53913-8821</zip>
+		<home_phone>(608) 393-1950</home_phone>
+		<waiver_date/>
+		<old_id>15239</old_id>
+	</record>
+	<record>
+		<first_name>Joellen</first_name>
+		<last_name>Baker</last_name>
+		<address>1114 SIlver Drive</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 356-4836</home_phone>
+		<waiver_date/>
+		<old_id>14742</old_id>
+	</record>
+	<record>
+		<first_name>Joseph C. &amp; Donna J.</first_name>
+		<last_name>Baker</last_name>
+		<address>1601 Man Mound Road</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<waiver_date/>
+		<old_id>5012</old_id>
+	</record>
+	<record>
+		<first_name>Larry N. &amp; Mary A.</first_name>
+		<last_name>Baker</last_name>
+		<address>N4237 Hickory Drive</address>
+		<city>Columbus</city>
+		<state>WI</state>
+		<zip>53925</zip>
+		<home_phone>(920) 623-3880</home_phone>
+		<waiver_date/>
+		<old_id>13842</old_id>
+	</record>
+	<record>
+		<first_name>Stephen E. &amp; Carole A.</first_name>
+		<last_name>Balda</last_name>
+		<address>343 Golf Course Road</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<home_phone>(608) 524-4626</home_phone>
+		<waiver_date/>
+		<old_id>8689</old_id>
+	</record>
+	<record>
+		<first_name>John &amp; Dorothy</first_name>
+		<last_name>Baldwin</last_name>
+		<address>W7181 East North Shore Drive</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<waiver_date/>
+		<old_id>12620</old_id>
+	</record>
+	<record>
+		<first_name>Matthew &amp; Coletta</first_name>
+		<last_name>Balfanz</last_name>
+		<address>E11986 Steinke Road</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 355-0366</home_phone>
+		<waiver_date/>
+		<old_id>1707</old_id>
+	</record>
+	<record>
+		<first_name>Russell</first_name>
+		<last_name>Balfanz, Jr.</last_name>
+		<address>E10193 Prairie Road</address>
+		<city>Prairie du Sac</city>
+		<state>WI</state>
+		<zip>53578</zip>
+		<waiver_date/>
+		<old_id>12261</old_id>
+	</record>
+	<record>
+		<first_name>Deana</first_name>
+		<last_name>Ballard</last_name>
+		<address>611 BIRCH ST</address>
+		<city>BARABOO</city>
+		<state>WI</state>
+		<zip>53913-2004</zip>
+		<mobile_phone>(608) 317-1972</mobile_phone>
+		<waiver_date/>
+		<old_id>14504</old_id>
+	</record>
+	<record>
+		<first_name>Darlene</first_name>
+		<last_name>Ballweg</last_name>
+		<address>PO Box 548</address>
+		<city>Sauk City</city>
+		<state>WI</state>
+		<zip>53583</zip>
+		<home_phone>(608) 643-8848</home_phone>
+		<waiver_date/>
+		<old_id>345</old_id>
+	</record>
+	<record>
+		<first_name>Dena</first_name>
+		<last_name>Ballweg</last_name>
+		<occupation>Order Processing Manager</occupation>
+		<address>8798 Katzenbuechel Road</address>
+		<city>Mazomanie</city>
+		<state>WI</state>
+		<zip>53560</zip>
+		<home_phone>(608) 643-4495</home_phone>
+		<work_phone>(608) 643-5463</work_phone>
+		<mobile_phone>(608) 393-2541</mobile_phone>
+		<notes>Tools of Marketing  E11328 Sauk Prairie Road  Prairie du Sac, WI 53578</notes>
+		<waiver_date>05/09/2012</waiver_date>
+		<old_id>3730</old_id>
+		<email>dena@toolsofmarketing.com</email>
+	</record>
+	<record>
+		<first_name>Joe</first_name>
+		<last_name>Ballweg</last_name>
+		<address>S9886 County Road E.</address>
+		<city>Sauk City</city>
+		<state>WI</state>
+		<zip>53583</zip>
+		<home_phone>(608) 544-3971</home_phone>
+		<waiver_date>0000-00-00</waiver_date>
+		<old_id>1283</old_id>
+		<email>leballweg@tds.net</email>
+	</record>
+	<record>
+		<first_name>Lloyd</first_name>
+		<last_name>Ballweg</last_name>
+		<address>S9886 County Road E</address>
+		<city>Sauk City</city>
+		<state>WI</state>
+		<zip>53583</zip>
+		<home_phone>(608) 544-3971</home_phone>
+		<work_phone>(608) 544-4725</work_phone>
+		<waiver_date>0000-00-00</waiver_date>
+		<old_id>1282</old_id>
+		<email>leballweg@tds.net</email>
+	</record>
+	<record>
+		<first_name>Paul</first_name>
+		<last_name>Ballweg</last_name>
+		<address>24 16th Street</address>
+		<city>Prairie du Sac</city>
+		<state>WI</state>
+		<zip>53578</zip>
+		<mobile_phone>(608) 279-8123</mobile_phone>
+		<notes>also warehouse stocking, advertising, sales</notes>
+		<waiver_date/>
+		<old_id>2348</old_id>
+		<email>ballwegpaul10@gmail.com</email>
+	</record>
+	<record>
+		<first_name>Mary E.</first_name>
+		<last_name>Bancroft</last_name>
+		<address>110 Washington Avenue</address>
+		<city>Lodi</city>
+		<state>WI</state>
+		<zip>53555</zip>
+		<mobile_phone>(608) 515-4814</mobile_phone>
+		<notes>Shantytown 2015 Lodi 1st Presbyterian Church</notes>
+		<waiver_date/>
+		<old_id>13887</old_id>
+	</record>
+	<record>
+		<first_name>Eugene</first_name>
+		<last_name>Barber</last_name>
+		<address>S8347 Denzer Road</address>
+		<city>North Freedom</city>
+		<state>WI</state>
+		<zip>53951</zip>
+		<home_phone>(608) 544-3025</home_phone>
+		<waiver_date>03/17/2006</waiver_date>
+		<old_id>1044</old_id>
+	</record>
+	<record>
+		<first_name>Jim &amp; Mary</first_name>
+		<last_name>Barbian</last_name>
+		<address>E12593A County Road W</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 356-8654</home_phone>
+		<waiver_date>10/01/2011</waiver_date>
+		<old_id>1263</old_id>
+	</record>
+	<record>
+		<first_name>Ben</first_name>
+		<last_name>Bare</last_name>
+		<address>E12005 Grubers Grove Road</address>
+		<city>Praire du Sac</city>
+		<state>WI</state>
+		<zip>53578</zip>
+		<waiver_date/>
+		<old_id>14833</old_id>
+	</record>
+	<record>
+		<first_name>Ronald John &amp; Denise Y.</first_name>
+		<last_name>Bare</last_name>
+		<address>E12005 Grubers Grove Road</address>
+		<city>Prairie du Sac</city>
+		<state>WI</state>
+		<zip>53578</zip>
+		<home_phone>(608) 370-2391</home_phone>
+		<waiver_date/>
+		<old_id>10204</old_id>
+	</record>
+	<record>
+		<first_name>Ronald &amp; Lynda</first_name>
+		<last_name>Barganz</last_name>
+		<address>E11548 Shady Lane Road</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 356-0431</home_phone>
+		<waiver_date/>
+		<old_id>7475</old_id>
+	</record>
+	<record>
+		<first_name>Robert</first_name>
+		<last_name>Barman, Jr.</last_name>
+		<address>104 Tena Marie Circle</address>
+		<city>Lodi</city>
+		<state>WI</state>
+		<zip>53555</zip>
+		<home_phone>(608) 592-3645</home_phone>
+		<waiver_date/>
+		<old_id>14478</old_id>
+	</record>
+	<record>
+		<first_name>Franchou</first_name>
+		<last_name>Barnes</last_name>
+		<address>3724 Primrose Court North</address>
+		<city>Minneapolis</city>
+		<state>MN</state>
+		<zip>55443</zip>
+		<home_phone>(612) 396-0721</home_phone>
+		<notes>culvers deconstruct</notes>
+		<waiver_date>07/19/2011</waiver_date>
+		<old_id>4476</old_id>
+	</record>
+	<record>
+		<first_name>Claire G.</first_name>
+		<last_name>Barnett</last_name>
+		<address>110 West Walnut Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<waiver_date/>
+		<old_id>6548</old_id>
+	</record>
+	<record>
+		<first_name>Tim &amp; Deborah</first_name>
+		<last_name>Barnish</last_name>
+		<address>S3220 Fox Hill Road</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<waiver_date/>
+		<old_id>3489</old_id>
+	</record>
+	<record>
+		<first_name>Deborah J.</first_name>
+		<last_name>Baron</last_name>
+		<address>1119 Silver Drive, Apt. 202</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 355-0385</home_phone>
+		<waiver_date>01/26/2013</waiver_date>
+		<old_id>12818</old_id>
+		<email>dbaronus@yahoo.com</email>
+	</record>
+	<record>
+		<first_name>Joe</first_name>
+		<last_name>Baron</last_name>
+		<address>1700 Prairie Street</address>
+		<city>Prairie du Sac</city>
+		<state>WI</state>
+		<zip>53578</zip>
+		<waiver_date/>
+		<old_id>349</old_id>
+	</record>
+	<record>
+		<first_name>Lukas</first_name>
+		<last_name>Baron</last_name>
+		<address>9412 Blackhawk Trail</address>
+		<city>Sauk City</city>
+		<state>WI</state>
+		<zip>53583</zip>
+		<home_phone>(608) 644-8161</home_phone>
+		<waiver_date/>
+		<old_id>923</old_id>
+	</record>
+	<record>
+		<first_name>Jack</first_name>
+		<last_name>Barrett</last_name>
+		<address>W7741 Patchin Road</address>
+		<city>Pardeeville</city>
+		<state>WI</state>
+		<zip>53954</zip>
+		<home_phone>(608) 742-2556</home_phone>
+		<waiver_date/>
+		<old_id>14619</old_id>
+	</record>
+	<record>
+		<first_name>Tom</first_name>
+		<last_name>Barrix</last_name>
+		<address>403 2nd Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 356-6808</home_phone>
+		<waiver_date/>
+		<old_id>13354</old_id>
+		<email>grannieboots5@yahoo.com</email>
+	</record>
+	<record>
+		<first_name>Terry</first_name>
+		<last_name>Bartel</last_name>
+		<address>215 West Mullett Street, Apt. 106</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<home_phone>(608) 617-2114</home_phone>
+		<waiver_date>07/25/2009</waiver_date>
+		<old_id>1741</old_id>
+	</record>
+	<record>
+		<first_name>David</first_name>
+		<last_name>Bartelt</last_name>
+		<address>1701 East State Road 33</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<home_phone>(608) 617-4380</home_phone>
+		<waiver_date/>
+		<old_id>14380</old_id>
+	</record>
+	<record>
+		<first_name>Phil</first_name>
+		<last_name>Barth</last_name>
+		<address>S8008 County Road C</address>
+		<city>North Freedom</city>
+		<state>WI</state>
+		<zip>53951</zip>
+		<home_phone>(608) 643-2246</home_phone>
+		<waiver_date/>
+		<old_id>12084</old_id>
+	</record>
+	<record>
+		<first_name>Victor &amp; Debra</first_name>
+		<last_name>Barth</last_name>
+		<address>712 Avalon Road</address>
+		<city>Columbus</city>
+		<state>WI</state>
+		<zip>53925</zip>
+		<waiver_date/>
+		<old_id>13891</old_id>
+	</record>
+	<record>
+		<first_name>Chase</first_name>
+		<last_name>Barthel</last_name>
+		<address>108 Summit Street</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<home_phone>(608) 742-8402</home_phone>
+		<waiver_date/>
+		<old_id>12537</old_id>
+		<email>barthelsfive@frontier.com</email>
+	</record>
+	<record>
+		<first_name>Colin</first_name>
+		<last_name>Barthel</last_name>
+		<address>108 Summit Street</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<home_phone>(608) 742-8402</home_phone>
+		<notes>Thrivent build</notes>
+		<waiver_date/>
+		<old_id>12536</old_id>
+		<email>barthelsfive@frontier.com</email>
+	</record>
+	<record>
+		<first_name>Elizabeth</first_name>
+		<last_name>Barthel</last_name>
+		<address>N3761 County Road F</address>
+		<city>Montello</city>
+		<state>WI</state>
+		<zip>53949</zip>
+		<home_phone>(608) 742-8402</home_phone>
+		<notes>Thrivent build</notes>
+		<waiver_date/>
+		<old_id>12535</old_id>
+		<email>barthelsfive@frontier.com</email>
+	</record>
+	<record>
+		<first_name>Lori</first_name>
+		<last_name>Barthel</last_name>
+		<address>N3761 County Road F</address>
+		<city>Montello</city>
+		<state>WI</state>
+		<zip>53949</zip>
+		<notes>Thrivent build</notes>
+		<waiver_date/>
+		<old_id>12534</old_id>
+		<email>barthelsfive@frontier.com</email>
+	</record>
+	<record>
+		<first_name>Jeffrey &amp; Adelynn</first_name>
+		<last_name>Bartlett</last_name>
+		<address>N2727 Demynck Road</address>
+		<city>Lodi</city>
+		<state>WI</state>
+		<zip>53555</zip>
+		<home_phone>(630) 886-6414</home_phone>
+		<waiver_date/>
+		<old_id>14335</old_id>
+	</record>
+	<record>
+		<first_name>Greg</first_name>
+		<last_name>Bartnick</last_name>
+		<address>410 East Verleen Avenue</address>
+		<city>Waunakee</city>
+		<state>WI</state>
+		<zip>53597</zip>
+		<waiver_date/>
+		<old_id>2458</old_id>
+	</record>
+	<record>
+		<first_name>Jamie</first_name>
+		<last_name>Bartnick</last_name>
+		<address>9347 Jenny Lind Lane</address>
+		<city>Sauk City</city>
+		<state>WI</state>
+		<zip>53583</zip>
+		<home_phone>(913) 314-9291</home_phone>
+		<waiver_date>06/04/2011</waiver_date>
+		<old_id>1650</old_id>
+	</record>
+	<record>
+		<first_name>Kevin</first_name>
+		<last_name>Bartol</last_name>
+		<address>519 South Boulevard</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 356-1761</home_phone>
+		<notes>2nd address E12040 County A  entered 11/25/2014 sr</notes>
+		<waiver_date/>
+		<old_id>13399</old_id>
+		<email>kbartol@charter.net</email>
+	</record>
+	<record>
+		<first_name>Anita L.</first_name>
+		<last_name>Bartol Meyer</last_name>
+		<address>E12044A Manchester Road</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 355-2591</home_phone>
+		<waiver_date/>
+		<old_id>14637</old_id>
+		<email>anitabartolmeyer@yahoo.com</email>
+	</record>
+	<record>
+		<first_name>Cody</first_name>
+		<last_name>Barton</last_name>
+		<address>W6364 Gem Avenue</address>
+		<city>Endeavor</city>
+		<state>WI</state>
+		<zip>53930</zip>
+		<home_phone>(608) 697-6123</home_phone>
+		<waiver_date>09/12/2011</waiver_date>
+		<old_id>6942</old_id>
+	</record>
+	<record>
+		<first_name>Jim</first_name>
+		<last_name>Barton</last_name>
+		<address>W11584 County Road W</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<waiver_date/>
+		<old_id>12749</old_id>
+	</record>
+	<record>
+		<first_name>Lucille</first_name>
+		<last_name>Barton</last_name>
+		<address>W5994 Main Street</address>
+		<city>Packwaukee</city>
+		<state>WI</state>
+		<zip>53953</zip>
+		<home_phone>(608) 589-5111</home_phone>
+		<waiver_date/>
+		<old_id>13997</old_id>
+	</record>
+	<record>
+		<first_name>Jeb</first_name>
+		<last_name>Barzen</last_name>
+		<address>S12213 Round River Trail</address>
+		<city>Spring Green</city>
+		<state>WI</state>
+		<zip>53588</zip>
+		<home_phone>(608) 544-2107</home_phone>
+		<waiver_date/>
+		<old_id>13313</old_id>
+		<email>barzen@bugnet.net</email>
+	</record>
+	<record>
+		<first_name>Robert &amp; Jacqueline</first_name>
+		<last_name>Bascom</last_name>
+		<address>240 Chestnut Street</address>
+		<city>Sauk City</city>
+		<state>WI</state>
+		<zip>53583</zip>
+		<home_phone>(608) 645-4716</home_phone>
+		<work_phone>(608) 963-4146</work_phone>
+		<waiver_date>03/01/2009</waiver_date>
+		<old_id>1804</old_id>
+	</record>
+	<record>
+		<first_name>Carol</first_name>
+		<last_name>Bassett</last_name>
+		<address>645 Lake View</address>
+		<city>Merrimac</city>
+		<state>Wi</state>
+		<home_phone>(608) 279-2280</home_phone>
+		<waiver_date/>
+		<old_id>14791</old_id>
+		<email>carol.bassett44@gmail.com</email>
+	</record>
+	<record>
+		<first_name>Lisa</first_name>
+		<last_name>Bates</last_name>
+		<address>910 Golden Drive</address>
+		<city>Wisconsin Dells</city>
+		<state>WI</state>
+		<zip>53965</zip>
+		<waiver_date/>
+		<old_id>13318</old_id>
+	</record>
+	<record>
+		<first_name>David</first_name>
+		<last_name>Batker</last_name>
+		<address>5556 Alpine Road</address>
+		<city>Brooklyn</city>
+		<state>WI</state>
+		<zip>53521</zip>
+		<home_phone>(608) 455-1391</home_phone>
+		<waiver_date>07/07/2013</waiver_date>
+		<old_id>12573</old_id>
+	</record>
+	<record>
+		<first_name>Brian R. &amp; Meghan P.</first_name>
+		<last_name>Bauer</last_name>
+		<address>433 3rd. St.</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<mobile_phone>(608) 393-0085</mobile_phone>
+		<notes>717 Dubois Dr.--former address.  New address 9/2/2015. added phone &amp; email.  ssr</notes>
+		<waiver_date/>
+		<old_id>9539</old_id>
+		<email>bkbauer67@gmail.com</email>
+	</record>
+	<record>
+		<first_name>Theresa</first_name>
+		<last_name>Bauer</last_name>
+		<address>411 21st Street</address>
+		<city>Prairie du Sac</city>
+		<state>WI</state>
+		<zip>53578</zip>
+		<home_phone>(608) 370-6412</home_phone>
+		<waiver_date>11/16/2012</waiver_date>
+		<old_id>12657</old_id>
+	</record>
+	<record>
+		<first_name>Dave</first_name>
+		<last_name>Bauman</last_name>
+		<address>201 Willow Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 448-2243</home_phone>
+		<mobile_phone>(608) 963-5310</mobile_phone>
+		<notes>email as of 5-9-14  dave1hc@charter.net</notes>
+		<waiver_date/>
+		<old_id>6542</old_id>
+		<email>y2kbogus@hotmail.com</email>
+	</record>
+	<record>
+		<first_name>John</first_name>
+		<last_name>Bauman</last_name>
+		<address>1130 Saddle Ridge</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<waiver_date/>
+		<old_id>14863</old_id>
+	</record>
+	<record>
+		<first_name>Kevin &amp; Charlene</first_name>
+		<last_name>Bauman</last_name>
+		<address>1602 Kent Court</address>
+		<city>Sauk City</city>
+		<state>WI</state>
+		<zip>53583</zip>
+		<home_phone>(608) 643-2194</home_phone>
+		<work_phone>(608) 643-3321</work_phone>
+		<waiver_date>05/01/2003</waiver_date>
+		<old_id>9029</old_id>
+	</record>
+	<record>
+		<first_name>Ken</first_name>
+		<last_name>Baumgardt</last_name>
+		<address>W14151 West Point Drive</address>
+		<city>Prairie du Sac</city>
+		<state>WI</state>
+		<zip>53578</zip>
+		<home_phone>(608) 643-0010</home_phone>
+		<waiver_date>03/15/2008</waiver_date>
+		<old_id>1401</old_id>
+		<email>kenbaumgardt@charter.net; kbaumgardt@edgeconsult.c</email>
+	</record>
+	<record>
+		<first_name>Brian</first_name>
+		<last_name>Baumgart</last_name>
+		<address>W14158 Crest View Drive</address>
+		<city>Prairie du Sac</city>
+		<state>WI</state>
+		<zip>53578</zip>
+		<mobile_phone>(608) 849-2948</mobile_phone>
+		<waiver_date>07/11/2009</waiver_date>
+		<old_id>1674</old_id>
+	</record>
+	<record>
+		<first_name>Joann K.</first_name>
+		<last_name>Baumgarten</last_name>
+		<address>515 11th Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 434-8306</home_phone>
+		<waiver_date/>
+		<old_id>5583</old_id>
+	</record>
+	<record>
+		<first_name>Phillis</first_name>
+		<last_name>Baumgartner</last_name>
+		<address>W3787 State Road 16</address>
+		<city>Rio</city>
+		<state>WI</state>
+		<zip>53960</zip>
+		<home_phone>(920) 992-3388</home_phone>
+		<waiver_date>07/17/2013</waiver_date>
+		<old_id>1893</old_id>
+		<email>phyllis474@centurytel.net</email>
+	</record>
+	<record>
+		<first_name>Paul &amp; Arline</first_name>
+		<last_name>Beagan</last_name>
+		<address>E10077 Buckhorn Road</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<home_phone>(608) 356-7197</home_phone>
+		<waiver_date/>
+		<old_id>2773</old_id>
+	</record>
+	<record>
+		<first_name>Matt</first_name>
+		<last_name>Beal</last_name>
+		<address>E11125 Pine Acres Drive</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 356-8624</home_phone>
+		<waiver_date>11/03/2011</waiver_date>
+		<old_id>11382</old_id>
+	</record>
+	<record>
+		<first_name>Jacob</first_name>
+		<last_name>Beardsley</last_name>
+		<address>E11971 County Road U</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<waiver_date>09/15/2011</waiver_date>
+		<old_id>8965</old_id>
+	</record>
+	<record>
+		<first_name>Steven George</first_name>
+		<last_name>Beattie</last_name>
+		<address>E9051 Hogsback Road</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(715) 927-0197</home_phone>
+		<waiver_date/>
+		<old_id>13753</old_id>
+	</record>
+	<record>
+		<first_name>Andrew P.</first_name>
+		<last_name>Beatty, II</last_name>
+		<address>625 North Locust Street</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<waiver_date>06/09/2012</waiver_date>
+		<old_id>12273</old_id>
+		<email>vtitanyoung@yahoo.com</email>
+	</record>
+	<record>
+		<first_name>Georgiann</first_name>
+		<last_name>Bebar</last_name>
+		<address>E8446 State Road 136</address>
+		<city>Rock Springs</city>
+		<state>WI</state>
+		<zip>53961</zip>
+		<home_phone>(608) 522-3603</home_phone>
+		<notes>Would like to be contacted for Reedsburg home volunteering in the fall. Can help at ReStore in the winter as well.</notes>
+		<waiver_date/>
+		<old_id>13820</old_id>
+		<email>gbebar@gmail.com</email>
+	</record>
+	<record>
+		<first_name>Eric</first_name>
+		<last_name>Bebber</last_name>
+		<address>E10944 Pine Acres Drive</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 963-4586</home_phone>
+		<waiver_date/>
+		<old_id>13398</old_id>
+		<email>bebber14@hotmail.com</email>
+	</record>
+	<record>
+		<first_name>Lisa</first_name>
+		<last_name>Becker</last_name>
+		<address>320 5th Street</address>
+		<city>Prairie du Sac</city>
+		<state>WI</state>
+		<zip>53578</zip>
+		<waiver_date/>
+		<old_id>2101</old_id>
+	</record>
+	<record>
+		<first_name>Peggy</first_name>
+		<last_name>Becker</last_name>
+		<address>581 South Golden Court</address>
+		<city>Wisconsin Dells</city>
+		<state>WI</state>
+		<zip>53965</zip>
+		<home_phone>(608) 254-6230</home_phone>
+		<notes>Wants to help with 2011 builds.</notes>
+		<waiver_date/>
+		<old_id>2399</old_id>
+		<email>pb@jvlnet.com</email>
+	</record>
+	<record>
+		<first_name>Mitch</first_name>
+		<last_name>Beckett</last_name>
+		<address>555 Oakridge Drive</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<home_phone>(608) 617-8208</home_phone>
+		<waiver_date>07/29/2006</waiver_date>
+		<old_id>811</old_id>
+	</record>
+	<record>
+		<first_name>Paul</first_name>
+		<last_name>Beckman</last_name>
+		<address>722 Eagle Crest Drive</address>
+		<city>Madison</city>
+		<state>WI</state>
+		<zip>53704</zip>
+		<home_phone>(608) 241-2346</home_phone>
+		<waiver_date>03/31/2012</waiver_date>
+		<old_id>12109</old_id>
+		<email>beekman5@charter.net</email>
+	</record>
+	<record>
+		<first_name>Jared</first_name>
+		<last_name>Beckwith</last_name>
+		<address>S3277 Gillem Road</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(218) 290-6698</home_phone>
+		<waiver_date/>
+		<old_id>14598</old_id>
+	</record>
+	<record>
+		<first_name>Jeff</first_name>
+		<last_name>Beckwith</last_name>
+		<address>815 Iroquois Circle</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 256-5979</home_phone>
+		<waiver_date/>
+		<old_id>12712</old_id>
+		<email>jbech1@charter.net</email>
+	</record>
+	<record>
+		<first_name>Kandie</first_name>
+		<last_name>Beckwith</last_name>
+		<occupation>Wells Fargo Bank</occupation>
+		<address>603 5th Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 356-5088</home_phone>
+		<work_phone>(608) 356-1218Ext225</work_phone>
+		<notes>Methodist</notes>
+		<waiver_date>06/21/2003</waiver_date>
+		<old_id>85</old_id>
+	</record>
+	<record>
+		<first_name>Rebecca</first_name>
+		<last_name>Beckwith</last_name>
+		<address>904 Ellie Rae Drive</address>
+		<city>Lodi</city>
+		<state>WI</state>
+		<zip>53555</zip>
+		<waiver_date/>
+		<old_id>13034</old_id>
+	</record>
+	<record>
+		<first_name>John T.</first_name>
+		<last_name>Been</last_name>
+		<address>E9845 County Road PF</address>
+		<city>Prairie du Sac</city>
+		<state>WI</state>
+		<zip>53578</zip>
+		<waiver_date>09/28/2013</waiver_date>
+		<old_id>13461</old_id>
+		<email>jbeen88@hotmail.com</email>
+	</record>
+	<record>
+		<first_name>Nikki</first_name>
+		<last_name>Been</last_name>
+		<address>S10426 Factory Road</address>
+		<city>Spring Green</city>
+		<state>WI</state>
+		<zip>53588</zip>
+		<home_phone>(608) 546-2252</home_phone>
+		<waiver_date/>
+		<old_id>13926</old_id>
+	</record>
+	<record>
+		<first_name>Ranjana</first_name>
+		<last_name>Been</last_name>
+		<address>E9845 County Road PF</address>
+		<city>Prairie du Sac</city>
+		<state>WI</state>
+		<zip>53578</zip>
+		<home_phone>(608) 544-2306</home_phone>
+		<waiver_date>11/25/2006</waiver_date>
+		<old_id>1026</old_id>
+	</record>
+	<record>
+		<first_name>Travis</first_name>
+		<last_name>Been</last_name>
+		<address>E9845 County Road PF</address>
+		<city>Prairie du Sac</city>
+		<state>WI</state>
+		<zip>53578</zip>
+		<home_phone>(608) 544-2306</home_phone>
+		<waiver_date>11/25/2006</waiver_date>
+		<old_id>1027</old_id>
+	</record>
+	<record>
+		<first_name>Mary</first_name>
+		<last_name>Befera</last_name>
+		<address>904 Moore Street, Lot 483</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 355-9855</home_phone>
+		<notes>Experience Works</notes>
+		<waiver_date>03/25/2014</waiver_date>
+		<old_id>13684</old_id>
+	</record>
+	<record>
+		<first_name>Jules A. &amp; Ella M.</first_name>
+		<last_name>Beghin</last_name>
+		<address>PO Box 113</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 448-2134</home_phone>
+		<waiver_date/>
+		<old_id>6496</old_id>
+	</record>
+	<record>
+		<first_name>Richard &amp; Carol</first_name>
+		<last_name>Behm</last_name>
+		<address>PO Box 207</address>
+		<city>Rock Springs</city>
+		<state>WI</state>
+		<zip>53961</zip>
+		<waiver_date/>
+		<old_id>10493</old_id>
+	</record>
+	<record>
+		<first_name>Virginia</first_name>
+		<last_name>Behn</last_name>
+		<address>1212 10th Street</address>
+		<city>Baraboo</city>
+		<state>Wi</state>
+		<zip>53913</zip>
+		<home_phone>(608) 356-4043</home_phone>
+		<waiver_date/>
+		<old_id>14766</old_id>
+	</record>
+	<record>
+		<first_name>Michael &amp; Kristin</first_name>
+		<last_name>Behrendt</last_name>
+		<address>N9354 Idle Hour Drive</address>
+		<city>Randolph</city>
+		<state>WI</state>
+		<zip>53956</zip>
+		<waiver_date/>
+		<old_id>12240</old_id>
+	</record>
+	<record>
+		<first_name>Jeff</first_name>
+		<last_name>Beier</last_name>
+		<address>1315 Lancer Court</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<home_phone>(937) 545-0192</home_phone>
+		<waiver_date>04/07/2012</waiver_date>
+		<old_id>1900</old_id>
+		<email>jpbeier08@yahoo.com</email>
+	</record>
+	<record>
+		<first_name>W. A.</first_name>
+		<last_name>Beimborn</last_name>
+		<address>W10567 State Road 16</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901-8801</zip>
+		<home_phone>(608) 742-0623</home_phone>
+		<waiver_date/>
+		<old_id>14325</old_id>
+	</record>
+	<record>
+		<first_name>Garret &amp; Jennifer</first_name>
+		<last_name>Belisle</last_name>
+		<address>611 Spring Street</address>
+		<city>Somerset</city>
+		<state>WI</state>
+		<zip>54025</zip>
+		<notes>moved to Somerset, WI 4/2013</notes>
+		<waiver_date/>
+		<old_id>12243</old_id>
+	</record>
+	<record>
+		<first_name>Debbie</first_name>
+		<last_name>Bell</last_name>
+		<address>N8997 Corning Road</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<home_phone>(608) 742-6454</home_phone>
+		<waiver_date/>
+		<old_id>14689</old_id>
+	</record>
+	<record>
+		<first_name>Paul</first_name>
+		<last_name>Beloungy</last_name>
+		<address>8049 Lueth Road</address>
+		<city>Sauk City</city>
+		<state>WI</state>
+		<zip>53583</zip>
+		<home_phone>(608) 643-4653</home_phone>
+		<waiver_date/>
+		<old_id>14336</old_id>
+		<email>woodchef@merr.com</email>
+	</record>
+	<record>
+		<first_name>Emily</first_name>
+		<last_name>Belz</last_name>
+		<address>6202 Winnequah Road</address>
+		<city>Madison</city>
+		<state>WI</state>
+		<zip>53716</zip>
+		<home_phone>(608) 222-0754</home_phone>
+		<waiver_date>08/07/2012</waiver_date>
+		<old_id>12469</old_id>
+		<email>emilybelz@yahoo.com</email>
+	</record>
+	<record>
+		<first_name>Linda</first_name>
+		<last_name>Belz</last_name>
+		<address>6202 Winnequah Road</address>
+		<city>Madison</city>
+		<state>WI</state>
+		<zip>53716</zip>
+		<home_phone>(608) 222-0754</home_phone>
+		<waiver_date>08/02/2012</waiver_date>
+		<old_id>12467</old_id>
+		<email>msnbogie@att.net</email>
+	</record>
+	<record>
+		<first_name>Terri</first_name>
+		<last_name>Belz</last_name>
+		<address>W2726 Doyle Road</address>
+		<city>Belleville</city>
+		<state>WI</state>
+		<zip>53508</zip>
+		<home_phone>(608) 469-0903</home_phone>
+		<waiver_date>08/07/2012</waiver_date>
+		<old_id>12468</old_id>
+		<email>sugar riverfarm@gmail.com</email>
+	</record>
+	<record>
+		<first_name>Jeffrey &amp; Mary Beth</first_name>
+		<last_name>Bendall</last_name>
+		<address>1315 Lancer Court</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<waiver_date/>
+		<old_id>11840</old_id>
+	</record>
+	<record>
+		<first_name>Cory</first_name>
+		<last_name>Bender</last_name>
+		<address>N4086 County Road J</address>
+		<city>Poynette</city>
+		<state>WI</state>
+		<zip>53955</zip>
+		<home_phone>(608) 635-2238</home_phone>
+		<waiver_date>06/20/2009</waiver_date>
+		<old_id>948</old_id>
+		<email>bender4@centurytel.net</email>
+	</record>
+	<record>
+		<first_name>Craig &amp; Christie L.</first_name>
+		<last_name>Bender</last_name>
+		<address>185 Broadway Street</address>
+		<city>Prairie du Sac</city>
+		<state>WI</state>
+		<zip>53578</zip>
+		<waiver_date>09/28/2013</waiver_date>
+		<old_id>7705</old_id>
+		<email>Bender6@charter.net</email>
+	</record>
+	<record>
+		<first_name>Elaine</first_name>
+		<last_name>Bender</last_name>
+		<address>960 West City Highway 16, Apt. 302</address>
+		<city>West Salem</city>
+		<state>WI</state>
+		<zip>54669</zip>
+		<home_phone>(608) 547-0030</home_phone>
+		<mobile_phone>(608) 547-0030</mobile_phone>
+		<waiver_date>05/12/2012</waiver_date>
+		<old_id>12198</old_id>
+	</record>
+	<record>
+		<first_name>Jaime</first_name>
+		<last_name>Bender</last_name>
+		<occupation>Student</occupation>
+		<address>218 East Miller Road</address>
+		<city>Rio</city>
+		<state>WI</state>
+		<zip>53960</zip>
+		<home_phone>(920) 992-3229</home_phone>
+		<notes>Portage Fair 2010</notes>
+		<waiver_date/>
+		<old_id>2211</old_id>
+		<email>bendej39@uwosh.edu</email>
+	</record>
+	<record>
+		<first_name>Karen</first_name>
+		<last_name>Bender</last_name>
+		<address>N4086 County Road J</address>
+		<city>Poynette</city>
+		<state>WI</state>
+		<zip>53955</zip>
+		<home_phone>(608) 635-2238</home_phone>
+		<work_phone>(608) 643-1405</work_phone>
+		<waiver_date>08/03/2013</waiver_date>
+		<old_id>813</old_id>
+		<email>bender4@centurytel.net</email>
+	</record>
+	<record>
+		<first_name>Richard &amp; Paulette</first_name>
+		<last_name>Bender</last_name>
+		<address>E10326 County Road W</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 356-8289</home_phone>
+		<waiver_date/>
+		<old_id>13829</old_id>
+	</record>
+	<record>
+		<first_name>William (Buck) G.</first_name>
+		<last_name>Bender</last_name>
+		<address>N4086 County Road J</address>
+		<city>Poynette</city>
+		<state>WI</state>
+		<zip>53955</zip>
+		<home_phone>(608) 635-2238</home_phone>
+		<work_phone>(608) 575-1510</work_phone>
+		<waiver_date>07/14/2012</waiver_date>
+		<old_id>804</old_id>
+	</record>
+	<record>
+		<first_name>Pat</first_name>
+		<last_name>Bendoritis</last_name>
+		<address>N9326 County Road CX</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<home_phone>(608) 742-7784</home_phone>
+		<waiver_date>06/27/2009</waiver_date>
+		<old_id>1649</old_id>
+	</record>
+	<record>
+		<first_name>William</first_name>
+		<last_name>Bendoritis</last_name>
+		<address>N9326 County Road CX</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<home_phone>(608) 742-7784</home_phone>
+		<work_phone>(608) 226-0344</work_phone>
+		<waiver_date>06/27/2009</waiver_date>
+		<old_id>1648</old_id>
+	</record>
+	<record>
+		<first_name>Dave</first_name>
+		<last_name>Bendtsen</last_name>
+		<address>N2489 State Road 188</address>
+		<city>Lodi</city>
+		<state>WI</state>
+		<zip>53555</zip>
+		<home_phone>(608) 592-3901</home_phone>
+		<waiver_date/>
+		<old_id>2378</old_id>
+	</record>
+	<record>
+		<first_name>Pam</first_name>
+		<last_name>Benedon</last_name>
+		<address>327 River Street</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<home_phone>(414) 239-0210</home_phone>
+		<waiver_date/>
+		<old_id>13974</old_id>
+	</record>
+	<record>
+		<first_name>Tracy</first_name>
+		<last_name>Beneventi</last_name>
+		<address>105 Lake Road</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<home_phone>(608) 742-4746</home_phone>
+		<waiver_date/>
+		<old_id>13818</old_id>
+	</record>
+	<record>
+		<first_name>Bob</first_name>
+		<last_name>Benisch</last_name>
+		<address>434 Union Street</address>
+		<city>Rio</city>
+		<state>WI</state>
+		<zip>53960</zip>
+		<home_phone>(920) 992-5698</home_phone>
+		<waiver_date/>
+		<old_id>12363</old_id>
+		<email>BJBenisch@centurylink.net</email>
+	</record>
+	<record>
+		<first_name>Dan</first_name>
+		<last_name>Benish</last_name>
+		<occupation>Aspirin Acres</occupation>
+		<address>W11814 County Road V</address>
+		<city>Lodi</city>
+		<state>WI</state>
+		<zip>53555</zip>
+		<waiver_date/>
+		<old_id>13035</old_id>
+	</record>
+	<record>
+		<first_name>Steve</first_name>
+		<last_name>Benish</last_name>
+		<address>S2958 Fairway Drive</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<home_phone>(608) 963-9081</home_phone>
+		<waiver_date/>
+		<old_id>13633</old_id>
+	</record>
+	<record>
+		<first_name>Dianne</first_name>
+		<last_name>Benner</last_name>
+		<address>W6635 County Road EE</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<home_phone>(608) 429-1365</home_phone>
+		<waiver_date/>
+		<old_id>12578</old_id>
+	</record>
+	<record>
+		<first_name>Becky</first_name>
+		<last_name>Bennett</last_name>
+		<occupation>Clerk</occupation>
+		<address>1018 Crestview Circle</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 356-9077</home_phone>
+		<notes>Came in with daughters to complete hours for pageant.</notes>
+		<waiver_date>03/01/2014</waiver_date>
+		<old_id>13608</old_id>
+	</record>
+	<record>
+		<first_name>Brad</first_name>
+		<last_name>Bennett</last_name>
+		<address>W11807 Thresher Road</address>
+		<city>Merrimac</city>
+		<state>WI</state>
+		<zip>53561</zip>
+		<home_phone>(608) 239-4088</home_phone>
+		<notes>Donation to ReStore</notes>
+		<waiver_date/>
+		<old_id>12684</old_id>
+	</record>
+	<record>
+		<first_name>Dean E. &amp; Laura A.</first_name>
+		<last_name>Bennett</last_name>
+		<address>1408 Winnebago Circle</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<waiver_date/>
+		<old_id>5789</old_id>
+	</record>
+	<record>
+		<first_name>Peggy</first_name>
+		<last_name>Benson</last_name>
+		<address>N1899 Kohn Road</address>
+		<city>Lodi</city>
+		<state>WI</state>
+		<zip>53555</zip>
+		<home_phone>(608) 592-5127</home_phone>
+		<notes>Raffle</notes>
+		<waiver_date/>
+		<old_id>12637</old_id>
+	</record>
+	<record>
+		<first_name>Bastian</first_name>
+		<last_name>Berende</last_name>
+		<address>781 County Road A, #208</address>
+		<city>Wisconsin Dells</city>
+		<state>WI</state>
+		<zip>53965</zip>
+		<waiver_date/>
+		<old_id>14369</old_id>
+	</record>
+	<record>
+		<first_name>Ben</first_name>
+		<last_name>Berg</last_name>
+		<occupation>Youth pastor</occupation>
+		<address>307 6th Street</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<home_phone>(608) 768-1511</home_phone>
+		<work_phone>(608) 524-4516</work_phone>
+		<notes>Reedsburg St. John Lutheran</notes>
+		<waiver_date>08/04/2009</waiver_date>
+		<old_id>1233</old_id>
+		<email>ben@stjohnreedsburg.com</email>
+	</record>
+	<record>
+		<first_name>Ben</first_name>
+		<last_name>Berg</last_name>
+		<address>2049 Amanda Drive</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<home_phone>(608) 215-9570</home_phone>
+		<waiver_date/>
+		<old_id>13948</old_id>
+	</record>
+	<record>
+		<first_name>Ellie</first_name>
+		<last_name>Berg</last_name>
+		<address>889 Barbara Court</address>
+		<city>Saint Paul</city>
+		<state>MN</state>
+		<zip>55118</zip>
+		<home_phone>(651) 247-0711</home_phone>
+		<notes>Camp Chi</notes>
+		<waiver_date>06/17/2011</waiver_date>
+		<old_id>4426</old_id>
+	</record>
+	<record>
+		<first_name>Philip &amp; Barbara</first_name>
+		<last_name>Berg</last_name>
+		<address>440 Winnebago Avenue</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<home_phone>(608) 963-2159</home_phone>
+		<waiver_date/>
+		<old_id>12575</old_id>
+	</record>
+	<record>
+		<first_name>Janice J.</first_name>
+		<last_name>Bergman</last_name>
+		<address>S5538 Center Valley Road</address>
+		<city>Loganville</city>
+		<state>WI</state>
+		<zip>53943</zip>
+		<waiver_date/>
+		<old_id>13544</old_id>
+	</record>
+	<record>
+		<first_name>Jeremy</first_name>
+		<last_name>Bergman</last_name>
+		<address>6521 North Mai Avenue</address>
+		<city>Lincolnwood</city>
+		<state>IL</state>
+		<zip>60712</zip>
+		<home_phone>(847) 677-5501</home_phone>
+		<notes>camp chi</notes>
+		<waiver_date>06/17/2011</waiver_date>
+		<old_id>4406</old_id>
+	</record>
+	<record>
+		<first_name>Yvonne</first_name>
+		<last_name>Bergman</last_name>
+		<address>S2574 County Road V</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<work_phone>(608) 524-6454</work_phone>
+		<notes>Addison Machine Engineering Inc.</notes>
+		<waiver_date/>
+		<old_id>1688</old_id>
+		<email>yvonne@ameinc.com</email>
+	</record>
+	<record>
+		<first_name>Susan M.</first_name>
+		<last_name>Bergs</last_name>
+		<address>1930 Manassas Drive</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 356-9772</home_phone>
+		<notes>USDA Reedsburg homes 2015 help - roller skaters Omama's women's build</notes>
+		<waiver_date>05/02/2015</waiver_date>
+		<old_id>5328</old_id>
+		<email>tbergs@charter.net</email>
+	</record>
+	<record>
+		<first_name>Tim &amp; Susan</first_name>
+		<last_name>Bergs</last_name>
+		<address>1930 Manassas Drive</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<waiver_date/>
+		<old_id>15233</old_id>
+	</record>
+	<record>
+		<first_name>Lyssa</first_name>
+		<last_name>Bergstrom</last_name>
+		<address>503 Suszycki Drive</address>
+		<city>Mauston</city>
+		<state>WI</state>
+		<zip>53948</zip>
+		<waiver_date>05/07/2011</waiver_date>
+		<old_id>3974</old_id>
+	</record>
+	<record>
+		<first_name>Janice</first_name>
+		<last_name>Berkebill</last_name>
+		<address>220 Hitchcock Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<waiver_date>09/19/2012</waiver_date>
+		<old_id>12518</old_id>
+		<email>jan_berkebill@ssmhc</email>
+	</record>
+	<record>
+		<first_name>Wendy</first_name>
+		<last_name>Berna</last_name>
+		<address>PO Box 56</address>
+		<city>Rock Springs</city>
+		<state>WI</state>
+		<zip>53961</zip>
+		<mobile_phone>(608) 477-9997</mobile_phone>
+		<notes>Sauk Co Fair</notes>
+		<waiver_date/>
+		<old_id>12335</old_id>
+	</record>
+	<record>
+		<first_name>Andy</first_name>
+		<last_name>Berry</last_name>
+		<address>140 Alcan Drive</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 393-5017</home_phone>
+		<waiver_date/>
+		<old_id>12731</old_id>
+	</record>
+	<record>
+		<first_name>Jim</first_name>
+		<last_name>Berry</last_name>
+		<address>E5548 County Road K</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<home_phone>(608) 524-2647</home_phone>
+		<notes>his sister from Westfield submitted this.</notes>
+		<waiver_date/>
+		<old_id>2324</old_id>
+	</record>
+	<record>
+		<first_name>Judy</first_name>
+		<last_name>Berry</last_name>
+		<address>208 Madison Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 356-7616</home_phone>
+		<mobile_phone>(608) 963-4699</mobile_phone>
+		<notes>Helped on Family Selection during 2010 - 2011.</notes>
+		<waiver_date>03/30/2013</waiver_date>
+		<old_id>2402</old_id>
+		<email>berryjk@charter.net</email>
+	</record>
+	<record>
+		<first_name>Peter</first_name>
+		<last_name>Berthold</last_name>
+		<occupation>Part time instructor MATC</occupation>
+		<address>449 Seminary Street</address>
+		<city>Lodi</city>
+		<state>WI</state>
+		<zip>53555</zip>
+		<home_phone>(608) 592-4679</home_phone>
+		<waiver_date>03/03/2006</waiver_date>
+		<old_id>11</old_id>
+	</record>
+	<record>
+		<first_name>Lorraine</first_name>
+		<last_name>Bertrang</last_name>
+		<occupation>Sales.Int.sppt/Land\'s End</occupation>
+		<address>E4394 Meadow Drive</address>
+		<city>Hillpoint</city>
+		<state>WI</state>
+		<zip>53937</zip>
+		<home_phone>(608) 727-2023</home_phone>
+		<notes>Moved to Hillpoint 8 yrs ago.  St. Patricks in Loretto</notes>
+		<waiver_date/>
+		<old_id>2315</old_id>
+	</record>
+	<record>
+		<first_name>Jane</first_name>
+		<last_name>Bertschinger</last_name>
+		<address>S9081 Meadowdale Road</address>
+		<city>Prairie du Sac</city>
+		<state>WI</state>
+		<zip>53578</zip>
+		<waiver_date/>
+		<old_id>12056</old_id>
+	</record>
+	<record>
+		<first_name>Ceress</first_name>
+		<last_name>Berwanger</last_name>
+		<address>7317 New Washburn Way</address>
+		<city>Madison</city>
+		<state>WI</state>
+		<zip>53719</zip>
+		<home_phone>(608) 277-9975</home_phone>
+		<waiver_date/>
+		<old_id>13232</old_id>
+	</record>
+	<record>
+		<first_name>Jane</first_name>
+		<last_name>Bescup</last_name>
+		<address>223 West Franklin Street</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<home_phone>(608) 617-7363</home_phone>
+		<waiver_date/>
+		<old_id>14711</old_id>
+	</record>
+	<record>
+		<first_name>Quentin</first_name>
+		<last_name>Bethers</last_name>
+		<address>503 7th Street, Apt. 8</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 359-2263</home_phone>
+		<notes>Eagle Scout</notes>
+		<waiver_date/>
+		<old_id>12376</old_id>
+	</record>
+	<record>
+		<first_name>Jake</first_name>
+		<last_name>Bethke</last_name>
+		<occupation>student</occupation>
+		<address>816 Jefferson Street</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<home_phone>(608) 617-8824</home_phone>
+		<notes>Signed up on-line in 2011</notes>
+		<waiver_date/>
+		<old_id>2409</old_id>
+		<email>jakebethke@gmail.com</email>
+	</record>
+	<record>
+		<first_name>Jake</first_name>
+		<last_name>Bethke</last_name>
+		<address>732 San Francisco Avenue</address>
+		<city>South Lake Tahoe</city>
+		<state>CA</state>
+		<zip>96150</zip>
+		<waiver_date/>
+		<old_id>12030</old_id>
+		<email>jakebethke@gmail.com</email>
+	</record>
+	<record>
+		<first_name>Jessica</first_name>
+		<last_name>Bethke</last_name>
+		<address>816 Jefferson Street</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<waiver_date>06/19/2013</waiver_date>
+		<old_id>13107</old_id>
+	</record>
+	<record>
+		<first_name>Kelly A.</first_name>
+		<last_name>Bevan</last_name>
+		<address>309 West Burns Street</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<home_phone>(608) 408-6659</home_phone>
+		<waiver_date/>
+		<old_id>2080</old_id>
+	</record>
+	<record>
+		<first_name>Phyllis</first_name>
+		<last_name>Bevan</last_name>
+		<address>1432 Windsor Street</address>
+		<city>Sun Prairie</city>
+		<state>WI</state>
+		<zip>53590</zip>
+		<home_phone>(608) 206-0129</home_phone>
+		<waiver_date/>
+		<old_id>2070</old_id>
+	</record>
+	<record>
+		<first_name>Gordon L. &amp; Barbara K.</first_name>
+		<last_name>Beyer</last_name>
+		<address>112 Davis Street</address>
+		<state>Lodi</state>
+		<zip>WI</zip>
+		<home_phone>53555</home_phone>
+		<waiver_date/>
+		<old_id>14996</old_id>
+	</record>
+	<record>
+		<first_name>Patrick</first_name>
+		<last_name>Beyer</last_name>
+		<address>W12101 Van Ness Road</address>
+		<city>Lodi</city>
+		<state>WI</state>
+		<zip>53555</zip>
+		<home_phone>(608) 509-5203</home_phone>
+		<waiver_date/>
+		<old_id>14571</old_id>
+	</record>
+	<record>
+		<first_name>Ashok - Heather</first_name>
+		<last_name>Bhatia - Fields</last_name>
+		<address>45 Old Green Bay Road</address>
+		<city>Winnetka</city>
+		<state>IL</state>
+		<zip>60093</zip>
+		<notes>add. correction 10/4/11</notes>
+		<waiver_date/>
+		<old_id>6567</old_id>
+	</record>
+	<record>
+		<first_name>Sandy</first_name>
+		<last_name>Bhoechl</last_name>
+		<address>727 Eagle Circle</address>
+		<city>Lodi</city>
+		<state>WI</state>
+		<home_phone>(608) 438-5668</home_phone>
+		<notes>Electric Stove</notes>
+		<waiver_date/>
+		<old_id>14349</old_id>
+	</record>
+	<record>
+		<first_name>Marie</first_name>
+		<last_name>Bianco</last_name>
+		<waiver_date/>
+		<old_id>15006</old_id>
+	</record>
+	<record>
+		<first_name>Dave</first_name>
+		<last_name>Bicknell</last_name>
+		<address>S4992 Rock Hill Road</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<waiver_date/>
+		<old_id>14079</old_id>
+	</record>
+	<record>
+		<first_name>Glen</first_name>
+		<last_name>Bicknell</last_name>
+		<address>E10791 Cowles Road</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 356-8236</home_phone>
+		<waiver_date/>
+		<old_id>13215</old_id>
+	</record>
+	<record>
+		<first_name>Jason</first_name>
+		<last_name>Biddick</last_name>
+		<address>12005 Rock Church Road</address>
+		<city>Livingston</city>
+		<state>WI</state>
+		<zip>53554</zip>
+		<notes>Donation to ReStore 12/8/12</notes>
+		<waiver_date/>
+		<old_id>12688</old_id>
+	</record>
+	<record>
+		<first_name>Bryan</first_name>
+		<last_name>Bidwell</last_name>
+		<address>4337 GREEN AVE</address>
+		<city>MADISON</city>
+		<state>WI</state>
+		<zip>53704-1125</zip>
+		<home_phone>(608) 249-1745</home_phone>
+		<waiver_date/>
+		<old_id>15125</old_id>
+		<email>electricbryan@me.com</email>
+	</record>
+	<record>
+		<first_name>Bryan</first_name>
+		<last_name>Bidwell</last_name>
+		<address>1128 3rd Street, PO Box 27</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<waiver_date/>
+		<old_id>5598</old_id>
+	</record>
+	<record>
+		<first_name>Dick</first_name>
+		<last_name>Biech</last_name>
+		<address>E14331 Wall Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 745-0145</home_phone>
+		<waiver_date/>
+		<old_id>3904</old_id>
+		<email>gbiech@centurytel.net</email>
+	</record>
+	<record>
+		<first_name>Larry</first_name>
+		<last_name>Bielke</last_name>
+		<address>1704 New Pinery Road</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<home_phone>(608) 742-7865</home_phone>
+		<mobile_phone>(608) 697-3488</mobile_phone>
+		<waiver_date>08/11/2012</waiver_date>
+		<old_id>2405</old_id>
+		<email>Bielke1514@yahoo.com</email>
+	</record>
+	<record>
+		<first_name>Dave</first_name>
+		<last_name>Bieno</last_name>
+		<address>N7662 Cardinal Drive</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<home_phone>(608) 742-7109</home_phone>
+		<work_phone>(608) 697-7773</work_phone>
+		<waiver_date>06/06/2009</waiver_date>
+		<old_id>1634</old_id>
+	</record>
+	<record>
+		<first_name>M Berneita</first_name>
+		<last_name>Biermeier</last_name>
+		<address>1129 RACE ST</address>
+		<city>WISCONSIN DELLS</city>
+		<state>WI</state>
+		<zip>53965-1222</zip>
+		<home_phone>(608) 254-4780</home_phone>
+		<waiver_date>07/24/2015</waiver_date>
+		<old_id>15212</old_id>
+		<email>mary.biermeier@bluegreenvacations.com</email>
+	</record>
+	<record>
+		<first_name>Eugene</first_name>
+		<last_name>Biesek</last_name>
+		<address>901 Moore Street, Lot 3</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 356-0275</home_phone>
+		<waiver_date/>
+		<old_id>13219</old_id>
+	</record>
+	<record>
+		<first_name>Roxi</first_name>
+		<last_name>Biffert</last_name>
+		<address>E10661 State Road 136</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<waiver_date/>
+		<old_id>14883</old_id>
+	</record>
+	<record>
+		<first_name>Nancy</first_name>
+		<last_name>Bildsten</last_name>
+		<address>S4392 Draper Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 355-2311</home_phone>
+		<waiver_date>11/18/2006</waiver_date>
+		<old_id>765</old_id>
+	</record>
+	<record>
+		<first_name>Peter J.</first_name>
+		<last_name>Bildsten</last_name>
+		<occupation>Pres. Bank of Baraboo</occupation>
+		<address>S4392 Draper Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 355-2311</home_phone>
+		<work_phone>(608) 356-1218x230</work_phone>
+		<notes>St. Clare Hosp. Foundation President</notes>
+		<waiver_date>0000-00-00</waiver_date>
+		<old_id>87</old_id>
+	</record>
+	<record>
+		<first_name>Sara</first_name>
+		<last_name>Bildsten</last_name>
+		<address>625 Bascom Hill Drive</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<mobile_phone>(608) 963-4604</mobile_phone>
+		<notes>Shantytown 2015 - Group 1st Presbyterian Church Baraboo</notes>
+		<waiver_date/>
+		<old_id>14950</old_id>
+	</record>
+	<record>
+		<first_name>Blaine E.</first_name>
+		<last_name>Bill</last_name>
+		<address>1523 Harvest Lane</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<waiver_date>05/26/2012</waiver_date>
+		<old_id>11224</old_id>
+	</record>
+	<record>
+		<first_name>Thomas &amp; Courtney</first_name>
+		<last_name>Billingsley</last_name>
+		<address>1111 College Avenue</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 712-6413</home_phone>
+		<waiver_date/>
+		<old_id>5632</old_id>
+	</record>
+	<record>
+		<first_name>Jon</first_name>
+		<last_name>Bilse</last_name>
+		<address>521 Madison Avenue</address>
+		<city>Lodi</city>
+		<state>WI</state>
+		<zip>53555</zip>
+		<home_phone>(608) 212-9900</home_phone>
+		<waiver_date>05/28/2011</waiver_date>
+		<old_id>4267</old_id>
+		<email>jonbilse@hotmail.com</email>
+	</record>
+	<record>
+		<first_name>Roger &amp; Nancy</first_name>
+		<last_name>Bilz</last_name>
+		<address>S3761 West Bent Tree Drive</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 356-6940</home_phone>
+		<waiver_date/>
+		<old_id>8904</old_id>
+	</record>
+	<record>
+		<first_name>Vicky</first_name>
+		<last_name>Binder</last_name>
+		<address>E12016 Kessler Road</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<mobile_phone>(608) 692-8788</mobile_phone>
+		<notes>ggrgers48@yahoo.com invalid</notes>
+		<waiver_date/>
+		<old_id>1646</old_id>
+	</record>
+	<record>
+		<first_name>Mel</first_name>
+		<last_name>Bindl</last_name>
+		<address>W7239 West North Shore Drive</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<home_phone>(608) 742-5297</home_phone>
+		<waiver_date/>
+		<old_id>13585</old_id>
+		<email>mabindl@yahoo.com</email>
+	</record>
+	<record>
+		<first_name>Ralph &amp; Evelyn</first_name>
+		<last_name>Bindl</last_name>
+		<address>E7244 Eagle Ridge Court</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<home_phone>(608) 524-3572</home_phone>
+		<waiver_date/>
+		<old_id>11428</old_id>
+	</record>
+	<record>
+		<first_name>Terri</first_name>
+		<last_name>Bindl</last_name>
+		<address>840 Carolina Street</address>
+		<city>Sauk City</city>
+		<state>WI</state>
+		<zip>53583</zip>
+		<home_phone>(608) 574-7515</home_phone>
+		<work_phone>(608) 643-1423</work_phone>
+		<waiver_date>09/09/2003</waiver_date>
+		<old_id>1040</old_id>
+	</record>
+	<record>
+		<first_name>Dorie</first_name>
+		<last_name>Bindrich</last_name>
+		<address>N368 County Road C</address>
+		<city>De Forest</city>
+		<state>WI</state>
+		<zip>53532</zip>
+		<home_phone>(608) 846-9758</home_phone>
+		<notes>Thrivent Build</notes>
+		<waiver_date>06/23/2012</waiver_date>
+		<old_id>12301</old_id>
+		<email>doug266@centurytel.net</email>
+	</record>
+	<record>
+		<first_name>Doug</first_name>
+		<last_name>Bindrich</last_name>
+		<address>N368 County Road C</address>
+		<city>De Forest</city>
+		<state>WI</state>
+		<zip>53532</zip>
+		<mobile_phone>(608) 516-0377</mobile_phone>
+		<notes>Thrivent build</notes>
+		<waiver_date>06/26/2012</waiver_date>
+		<old_id>12298</old_id>
+		<email>doug266@centurytel.net</email>
+	</record>
+	<record>
+		<first_name>Dave</first_name>
+		<last_name>Bingham</last_name>
+		<address>N2681 Columbia Road</address>
+		<city>Lodi</city>
+		<state>WI</state>
+		<zip>53555</zip>
+		<home_phone>(608) 592-7970</home_phone>
+		<work_phone>(608) 577-9249</work_phone>
+		<waiver_date>05/06/2006</waiver_date>
+		<old_id>806</old_id>
+	</record>
+	<record>
+		<first_name>Kenneth</first_name>
+		<last_name>Binkley</last_name>
+		<address>W6332 Lakeview Drive North</address>
+		<city>Markesan</city>
+		<state>WI</state>
+		<zip>53946</zip>
+		<mobile_phone>(630) 674-3070</mobile_phone>
+		<waiver_date/>
+		<old_id>2492</old_id>
+		<email>toothmans3@aol.com</email>
+	</record>
+	<record>
+		<first_name>Judy</first_name>
+		<last_name>Birch</last_name>
+		<address>728 5th Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 356-3813</home_phone>
+		<waiver_date/>
+		<old_id>14835</old_id>
+	</record>
+	<record>
+		<first_name>Tom</first_name>
+		<last_name>Bird</last_name>
+		<address>E11740 County Road DL</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 434-6758</home_phone>
+		<waiver_date>04/27/2011</waiver_date>
+		<old_id>3848</old_id>
+	</record>
+	<record>
+		<first_name>Dick</first_name>
+		<last_name>Birdsill</last_name>
+		<address>S863 County Road K</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<mobile_phone>(608) 415-3819</mobile_phone>
+		<waiver_date>08/01/2009</waiver_date>
+		<old_id>1702</old_id>
+		<email>rwbirdsill@seatsinc.com</email>
+	</record>
+	<record>
+		<first_name>Chad P.</first_name>
+		<last_name>Birrenkott</last_name>
+		<address>331 US Highway 12</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 393-8766</home_phone>
+		<waiver_date>06/18/2011</waiver_date>
+		<old_id>4300</old_id>
+	</record>
+	<record>
+		<first_name>Beverly</first_name>
+		<last_name>Bisbee</last_name>
+		<address>N2867 Wilson Rd</address>
+		<city>Poinette</city>
+		<state>WI</state>
+		<zip>53955</zip>
+		<home_phone>(608) 557-4643</home_phone>
+		<waiver_date/>
+		<old_id>14792</old_id>
+		<email>bbisb@hotmail.com</email>
+	</record>
+	<record>
+		<first_name>Robert &amp; Darby</first_name>
+		<last_name>Bisbee</last_name>
+		<address>N5561 Nova Drive</address>
+		<city>Pardeeville</city>
+		<state>WI</state>
+		<zip>53954</zip>
+		<home_phone>(920) 344-9656</home_phone>
+		<waiver_date/>
+		<old_id>14457</old_id>
+	</record>
+	<record>
+		<first_name>James</first_name>
+		<last_name>Bishop</last_name>
+		<address>324 West Pine Street</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<home_phone>(608) 415-3992</home_phone>
+		<waiver_date/>
+		<old_id>13726</old_id>
+		<email>jimmybee5@yahoo.com</email>
+	</record>
+	<record>
+		<first_name>Paul &amp; Alice</first_name>
+		<last_name>Bishop</last_name>
+		<occupation>Teacher</occupation>
+		<address>7499 Privett Road</address>
+		<city>Sauk City</city>
+		<state>WI</state>
+		<zip>53583</zip>
+		<home_phone>(608) 643-2663</home_phone>
+		<waiver_date>07/23/2002</waiver_date>
+		<old_id>88</old_id>
+	</record>
+	<record>
+		<first_name>Peter</first_name>
+		<last_name>Bishop</last_name>
+		<address>604 LAKEVIEW AVE</address>
+		<city>MERRIMAC</city>
+		<state>WI</state>
+		<zip>53561-9663</zip>
+		<home_phone>(608) 235-9390</home_phone>
+		<waiver_date/>
+		<old_id>15142</old_id>
+	</record>
+	<record>
+		<first_name>Shelley</first_name>
+		<last_name>Bishop</last_name>
+		<address>623 E COOK ST</address>
+		<city>PORTAGE</city>
+		<state>WI</state>
+		<zip>53901-2310</zip>
+		<home_phone>(608) 347-2498</home_phone>
+		<waiver_date/>
+		<old_id>15391</old_id>
+		<email>shelldeeshop@yahoo.com</email>
+	</record>
+	<record>
+		<first_name>Troy</first_name>
+		<last_name>Bishop</last_name>
+		<address>809 West 11th Street</address>
+		<city>Cedar Falls</city>
+		<state>IA</state>
+		<zip>50613</zip>
+		<home_phone>(608) 768-2360</home_phone>
+		<work_phone>(608) 847-6420</work_phone>
+		<waiver_date/>
+		<old_id>1280</old_id>
+		<email>ductileironman@hotmail.com</email>
+	</record>
+	<record>
+		<first_name>Ken</first_name>
+		<last_name>Bixby</last_name>
+		<address>W2952 Long Crossing Road</address>
+		<city>Rio</city>
+		<state>WI</state>
+		<zip>53960</zip>
+		<home_phone>(920) 205-8362</home_phone>
+		<waiver_date/>
+		<old_id>14296</old_id>
+	</record>
+	<record>
+		<first_name>James</first_name>
+		<middle_name>A</middle_name>
+		<last_name>Bjork</last_name>
+		<address>N6872 RAYMOND RD</address>
+		<city>PARDEEVILLE</city>
+		<state>WI</state>
+		<zip>53954-9595</zip>
+		<home_phone>(608) 742-0380</home_phone>
+		<waiver_date/>
+		<old_id>15363</old_id>
+	</record>
+	<record>
+		<first_name>Brad &amp; Kara</first_name>
+		<last_name>Bjorklund</last_name>
+		<address>E11450 Birnam Woods Road</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<waiver_date>05/12/2012</waiver_date>
+		<old_id>5552</old_id>
+		<email>kaliobaugh@hotmail.com</email>
+	</record>
+	<record>
+		<first_name>Kara</first_name>
+		<last_name>Bjorklund</last_name>
+		<address>1113 21st Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 449-0844</home_phone>
+		<waiver_date>05/12/2012</waiver_date>
+		<old_id>12201</old_id>
+		<email>kalobaugh@hotmail.com</email>
+	</record>
+	<record>
+		<first_name>Bob</first_name>
+		<last_name>Black</last_name>
+		<address>7868 State Road 73</address>
+		<city>Columbus</city>
+		<state>WI</state>
+		<zip>53925</zip>
+		<home_phone>(920) 623-3536</home_phone>
+		<waiver_date/>
+		<old_id>14362</old_id>
+	</record>
+	<record>
+		<first_name>Steve</first_name>
+		<last_name>Black</last_name>
+		<address>301 Brookside Lane</address>
+		<city>Columbus</city>
+		<state>WI</state>
+		<zip>53925</zip>
+		<home_phone>(608) 445-6172</home_phone>
+		<waiver_date/>
+		<old_id>13853</old_id>
+	</record>
+	<record>
+		<first_name>Steve</first_name>
+		<last_name>Black</last_name>
+		<address>640 Meadow Lane</address>
+		<city>Columbus</city>
+		<state>WI</state>
+		<zip>53925</zip>
+		<home_phone>(920) 623-5390</home_phone>
+		<waiver_date>08/29/2009</waiver_date>
+		<old_id>1462</old_id>
+		<email>black4@att.net</email>
+	</record>
+	<record>
+		<first_name>Steve</first_name>
+		<last_name>Black</last_name>
+		<address>7868 State Road 73</address>
+		<city>Columbus</city>
+		<state>WI</state>
+		<zip>53925</zip>
+		<home_phone>(608) 445-6172</home_phone>
+		<waiver_date/>
+		<old_id>12892</old_id>
+	</record>
+	<record>
+		<first_name>Ray &amp; Debbie</first_name>
+		<last_name>Blackburn</last_name>
+		<address>530 2nd Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 963-8087</home_phone>
+		<waiver_date/>
+		<old_id>6174</old_id>
+		<email>dlblackburn@charter.net</email>
+	</record>
+	<record>
+		<first_name>Dan</first_name>
+		<last_name>Blahnik</last_name>
+		<address>700 Jacquelyn Drive</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 448-2431</home_phone>
+		<notes>add. correction 10/4/11</notes>
+		<waiver_date>05/10/2008</waiver_date>
+		<old_id>1193</old_id>
+		<email>joe51blackie@yahoo.com</email>
+	</record>
+	<record>
+		<first_name>Thomas</first_name>
+		<last_name>Blahnik</last_name>
+		<address>700 Jacquelyn Drive</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 448-2431</home_phone>
+		<waiver_date>05/10/2008</waiver_date>
+		<old_id>1195</old_id>
+		<email>joe51blackie@yahoo.com</email>
+	</record>
+	<record>
+		<first_name>Yun</first_name>
+		<last_name>Blahnik</last_name>
+		<address>700 Jacquelyn Drive</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 448-2431</home_phone>
+		<notes>add. correction 10/4/11</notes>
+		<waiver_date>05/10/2008</waiver_date>
+		<old_id>1194</old_id>
+		<email>joe51blackie@yahoo.com</email>
+	</record>
+	<record>
+		<first_name>David</first_name>
+		<last_name>Blakeslee</last_name>
+		<address>305 East Main Street, Apt. 206</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<notes>change ad 4-2012</notes>
+		<waiver_date/>
+		<old_id>11973</old_id>
+	</record>
+	<record>
+		<first_name>Douglas &amp; Linda</first_name>
+		<last_name>Blakeslee</last_name>
+		<address>1228 East Main Street</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<home_phone>(608) 524-8547</home_phone>
+		<waiver_date/>
+		<old_id>11250</old_id>
+		<email>dlblakeslee@rucls.net</email>
+	</record>
+	<record>
+		<first_name>Howard J. &amp; Asta D.</first_name>
+		<last_name>Blanchar</last_name>
+		<address>N2764 Summerville Park Road</address>
+		<city>Lodi</city>
+		<state>WI</state>
+		<zip>53555</zip>
+		<waiver_date/>
+		<old_id>13509</old_id>
+	</record>
+	<record>
+		<first_name>Jim</first_name>
+		<last_name>Blaser</last_name>
+		<address>1343 15TH ST APT 4</address>
+		<city>BARABOO</city>
+		<state>WI</state>
+		<zip>53913-3331</zip>
+		<waiver_date/>
+		<old_id>15261</old_id>
+	</record>
+	<record>
+		<first_name>Christine</first_name>
+		<last_name>Blau</last_name>
+		<address>N4255 Highway 78</address>
+		<city>Merrimac</city>
+		<state>WI</state>
+		<zip>53561</zip>
+		<home_phone>(608) 742-3796</home_phone>
+		<waiver_date>05/03/2003</waiver_date>
+		<old_id>1037</old_id>
+	</record>
+	<record>
+		<first_name>Anthony M.</first_name>
+		<last_name>Blazek</last_name>
+		<address>W10668 East Harmony Drive</address>
+		<city>Lodi</city>
+		<state>WI</state>
+		<zip>53555</zip>
+		<home_phone>(608) 592-1867</home_phone>
+		<waiver_date>08/18/2012</waiver_date>
+		<old_id>12486</old_id>
+		<email>ambul@live.com</email>
+	</record>
+	<record>
+		<first_name>Gary &amp; Leslie</first_name>
+		<last_name>Bleskachek</last_name>
+		<address>69 Emerson Valley Drive</address>
+		<city>River Falls</city>
+		<state>WI</state>
+		<zip>54022</zip>
+		<waiver_date/>
+		<old_id>13663</old_id>
 	</record>
 
 </data-set>

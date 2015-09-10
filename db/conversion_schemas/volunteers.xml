@@ -13,9 +13,14 @@
     <work_phone></work_phone>
     <mobile_phone>608-215-4896</mobile_phone>
     <notes>Testing</notes>
-    <waiver_date>4/23/2001</waiver_date>
+    <waiver_date>2001-04-23</waiver_date>
     <old_id>1234</old_id>
     <email>tim@eschers.com</email>
+    <interests>
+      <drywall>1</drywall>
+      <framing></framing>
+      <painting>1</painting>
+    </interests>
   </record>
   <record>
     <first_name>Smith</first_name>
@@ -33,5 +38,10 @@
     <waiver_date></waiver_date>
     <old_id></old_id>
     <email></email>
+    <interests>
+      <drywall>1</drywall>
+      <framing></framing>
+      <painting>1</painting>
+    </interests>
   </record>
 </data-set>
