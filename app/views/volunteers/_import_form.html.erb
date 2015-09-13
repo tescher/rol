@@ -1,19 +1,36 @@
 <%= form_tag(import_volunteers_path, action: :import, method: :post) do |f| %>
-    <div class="row">
-      <div class="col-md-10">
-        <%= file_field_tag 'datafile' %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-10">
-        <div class="checkbox">
-          <label>
-            <%= check_box_tag "validate_only", 1, true %> Validate only
-          </label>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5 col-md-offset-1">
+          <p>File should be in the app/import directory</p>
+          <div class="row">
+            <div class="col-md-2">
+              <%= label_tag "Import file"  %><br>
+            </div>
+            <div class="col-md-8">
+              <%= text_field_tag :datafile, nil, class: 'form-control' %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="checkbox">
+                <label>
+                  <%= check_box_tag "validate_only", 1, true %> Validate only
+                </label>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <%= submit_tag "Upload" %>
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="actions pull-right">
+
+          <%= submit_tag "Import", class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
 
 <% end %>

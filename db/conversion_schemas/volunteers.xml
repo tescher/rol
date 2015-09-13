@@ -17,9 +17,11 @@
     <old_id>1234</old_id>
     <email>tim@eschers.com</email>
     <interests>
-      <drywall>1</drywall>
-      <framing></framing>
-      <painting>1</painting>
+      <Drywall>1</Drywall>
+      <Painting></Painting>
+      <Data_Entry>1</Data_Entry>
+      <Reception></Reception>
+      <Dummy></Dummy>
     </interests>
   </record>
   <record>
@@ -39,9 +41,11 @@
     <old_id></old_id>
     <email></email>
     <interests>
-      <drywall>1</drywall>
-      <framing></framing>
-      <painting>1</painting>
+      <Drywall>1</Drywall>
+      <Painting>1</Painting>
+      <Data_Entry>1</Data_Entry>
+      <Reception>1</Reception>
+      <Dummy>1</Dummy>
     </interests>
   </record>
 </data-set>

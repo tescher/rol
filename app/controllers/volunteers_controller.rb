@@ -210,76 +210,100 @@ class VolunteersController < ApplicationController
     @records_validated = 0
     @records_imported = 0
     @messages = []
-    datafile = File.join(Rails.root, "app", "import", params[:datafile])
-    validate_only = params[:validate_only]
-    File.open( datafile ) do |file|
+    if params[:datafile].blank?
+      @messages << "No file entered"
+    else
+      datafile = File.join(Rails.root, "app", "import", params[:datafile])
+      validate_only = params[:validate_only]
+      begin
+        File.open( datafile ) do |file|
 
-      doc = Nokogiri::Slop(file)
+          doc = Nokogiri::Slop(file)
 
-      doc.xpath("//record").each do |record|
-        sequence += 1
-        @records_read += 1
-        fatal = false
-        record_data = {}
-        record_data["old_id"] = record.xpath("old_id").inner_text
-        record_data["first_name"] = record.xpath("first_name").inner_text
-        record_data["middle_name"] = record.xpath("middle_name").inner_text
-        record_data["last_name"] = record.xpath("last_name").inner_text
-        record_data["occupation"] = record.xpath("occupation").inner_text
-        record_data["address"] = record.xpath("address").inner_text
-        record_data["city"] = record.xpath("city").inner_text
-        record_data["state"] = record.xpath("state").inner_text
-        record_data["zip"] = record.xpath("zip").inner_text
-        record_data["home_phone"] = record.xpath("home_phone").inner_text
-        record_data["work_phone"] = record.xpath("work_phone").inner_text
-        record_data["mobile_phone"] = record.xpath("mobile_phone").inner_text
-        record_data["work_phone"] = record.xpath("work_phone").inner_text
-        record_data["notes"] = record.xpath("notes").inner_text
-        record_data["waiver_date"] = record.xpath("waiver_date").inner_text
-        record_data["email"] = record.xpath("email").inner_text
-        record_data_interests = {}
-        record.xpath("interests").children.each do |interest|
-          if interest.inner_text == 1
-            record_data_interests[interest.name] = 1
-          end
-        end
-        if record_data["old_id"].blank?
-          fatal = true
-          @messages << "ERROR: missing id from old system. Sequence: #{sequence}, First Name: #{record_data["first_name"]}, Last Name: #{record_data["last_name"]}"
-        else
-          if !(Volunteer.find_by_old_id(record_data["old_id"]).nil?)
-          fatal = true
-          @messages << "ERROR: imported previously. Sequence: #{sequence}, Old ID: #{record_data["old_id"]}, First Name: #{record_data["first_name"]}, Last Name: #{record_data["last_name"]}"
-          else
-            @volunteer = Volunteer.new
-            record_data.each do |key, value|
-               if !value.blank?
-                 @volunteer[key] = (key == "waiver_date") ? Date.strptime(value, "%m/%d/%Y") : value
-               end
-            end
-            if !@volunteer.valid?
-              @messages << "ERROR: validation errors. Sequence: #{sequence}, Old ID: #{record_data["old_id"]}, First Name: #{record_data["first_name"]}, Last Name: #{record_data["last_name"]}"
-              @volunteer.errors.full_messages.each do |message|
-                @messages << " -- #{message}"
+          doc.xpath("//record").each do |record|
+            sequence += 1
+            @records_read += 1
+            fatal = false
+            record_data = {}
+            record_data["old_id"] = record.xpath("old_id").inner_text
+            record_data["first_name"] = record.xpath("first_name").inner_text
+            record_data["middle_name"] = record.xpath("middle_name").inner_text
+            record_data["last_name"] = record.xpath("last_name").inner_text
+            record_data["occupation"] = record.xpath("occupation").inner_text
+            record_data["address"] = record.xpath("address").inner_text
+            record_data["city"] = record.xpath("city").inner_text
+            record_data["state"] = record.xpath("state").inner_text
+            record_data["zip"] = record.xpath("zip").inner_text
+            record_data["home_phone"] = record.xpath("home_phone").inner_text
+            record_data["work_phone"] = record.xpath("work_phone").inner_text
+            record_data["mobile_phone"] = record.xpath("mobile_phone").inner_text
+            record_data["work_phone"] = record.xpath("work_phone").inner_text
+            record_data["notes"] = record.xpath("notes").inner_text
+            record_data["waiver_date"] = record.xpath("waiver_date").inner_text
+            record_data["email"] = record.xpath("email").inner_text
+            record_data_interests = []
+            record.xpath("interests/*").each do |interest|
+              if interest.inner_text == "1"
+                record_data_interests << interest.name().gsub("_"," ")
               end
+            end
+            message_data = "Sequence: #{sequence}, Old ID: #{record_data["old_id"]}, First Name: #{record_data["first_name"]}, Last Name: #{record_data["last_name"]}"
+            if record_data["old_id"].blank?
               fatal = true
+              @messages << "Missing id from old system. #{message_data}"
+            else
+              if !(Volunteer.find_by_old_id(record_data["old_id"]).nil?)
+                fatal = true
+                @messages << "Imported previously. #{message_data}"
+              else
+                interests = []
+                record_data_interests.each do |interest_name|
+                  interest = Interest.where("name ilike ?", "%#{interest_name}").first
+                  if interest.nil?
+                    @messages << "Missing #{interest_name} interest mapping. #{message_data}"
+                    fatal = true
+                  else
+                    interests << interest
+                  end
+                end
+                if !fatal
+                  @volunteer = Volunteer.new
+                  if interests.count > 0
+                    @volunteer.interests = interests
+                  end
+                  record_data.each do |key, value|
+                    if !value.blank?
+                      @volunteer[key] = (key == "waiver_date") ? Date.strptime(value, "%m/%d/%Y") : value
+                    end
+                  end
+                  if !@volunteer.valid?
+                    @messages << "Validation errors. #{message_data}"
+                    @volunteer.errors.full_messages.each do |message|
+                      @messages << " -- #{message}"
+                    end
+                    fatal = true
+                  end
+                end
+              end
+            end
+            if !fatal
+              @records_validated += 1
+              if !validate_only
+                begin
+                  @volunteer.save
+                  @records_imported += 1
+                rescue => ex
+                  @messages << "Save error. #{message_data}"
+                  @messages << " -- #{ex.message}"
+                end
+              end
             end
           end
-        end
-        if !fatal
-          @records_validated += 1
-          if !validate_only
-            begin
-              @volunteer.save
-              @records_imported += 1
-            rescue => ex
-              @messages << "ERROR: save error. Old ID: #{record_data["old_id"]}, Sequence: #{sequence}, First Name: #{record_data["first_name"]}, Last Name: #{record_data["last_name"]} "
-              @messages << " -- #{ex.message}"
-            end
-          end
-        end
-      end
 
+        end
+      rescue => ex
+        @messages << "#{ex.message}"
+      end
     end
 
     render :import_results
