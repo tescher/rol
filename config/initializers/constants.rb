@@ -3,8 +3,8 @@ VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 
 # Site Name
 SITE_TITLE = "Volunteer Management"
-ORG_TITLE = "Reach Out Lodi"
-ORG_SITE = "http://www.reachoutlogi.org"
+ORG_TITLE = "Habitat for Humanity Sauk-Columbia Area"
+ORG_SITE = "http://www.hfhsca.org"
 
 # Our Time Zone
 DEFAULT_TIME_ZONE = "Central Time (US & Canada)"
