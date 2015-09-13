@@ -1,13 +1,20 @@
 <div class="row clickable" href="<%=edit_project_path(project)%>">
   <li>
-    <div class="col-md-2 col-md-offset-1">
-      <% if project.inactive? %>
-          <s>
-      <% end %>
-      <%= project.name %>
-      <% if project.inactive? %>
-          </s>
-      <% end %>
-    </div>
+    <div class="col-md-8 col-md-offset-1">
+
+      <div class="col-md-4">
+        <% if project.inactive? %>
+            <s>
+        <% end %>
+        <%= project.name %>
+        <% if project.inactive? %>
+            </s>
+        <% end %>
+      </div>
+      <div class="col-md-4">
+        <%= project.description %>
+      </div>
+
+   </div>
  </li>
 </div>

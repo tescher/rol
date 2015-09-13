@@ -306,7 +306,7 @@ class VolunteersController < ApplicationController
       end
     end
 
-    render :import_results
+    render "shared/import_results"
 
   end
 

@@ -1,0 +1,727 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data-set xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<record>
+		<name>Build - 2006 -  Lodi</name>
+		<description>Duplex - 503/505 Hillview St.</description>
+		<inactive>0</inactive>
+		<old_id>1</old_id>
+	</record>
+	<record>
+		<name>Build - 2008 - Baraboo</name>
+		<description>411 4th Ave.</description>
+		<inactive>0</inactive>
+		<old_id>2</old_id>
+	</record>
+	<record>
+		<name>Shanty Town - 2013</name>
+		<inactive>0</inactive>
+		<old_id>31</old_id>
+	</record>
+	<record>
+		<name>Build - 2003 - Sauk</name>
+		<description>Paulina St.</description>
+		<inactive>0</inactive>
+		<old_id>4</old_id>
+	</record>
+	<record>
+		<name>Warehouse - Prairie - 2008-2011</name>
+		<description>Work done at the warehouse</description>
+		<inactive>0</inactive>
+		<old_id>10</old_id>
+	</record>
+	<record>
+		<name>Build - 2006 - Baraboo</name>
+		<description>815 Lake St.</description>
+		<inactive>0</inactive>
+		<old_id>11</old_id>
+	</record>
+	<record>
+		<name>Deconstruct - 2008 - Kwik Trip</name>
+		<description>House next to Kwik Trip in Lodi</description>
+		<inactive>1</inactive>
+		<old_id>13</old_id>
+	</record>
+	<record>
+		<name>Deconstruct - 2008 - Becker Rd</name>
+		<description>deconstruct</description>
+		<inactive>1</inactive>
+		<old_id>14</old_id>
+	</record>
+	<record>
+		<name>Build - 2009 - Portage</name>
+		<description>605 Thompson St.</description>
+		<inactive>0</inactive>
+		<old_id>15</old_id>
+	</record>
+	<record>
+		<name>Build - 2009 - Reedsburg</name>
+		<description>Walnut St.</description>
+		<inactive>0</inactive>
+		<old_id>16</old_id>
+	</record>
+	<record>
+		<name>Deconstruction</name>
+		<inactive>0</inactive>
+		<old_id>18</old_id>
+	</record>
+	<record>
+		<name>Women Build</name>
+		<inactive>1</inactive>
+		<old_id>32</old_id>
+	</record>
+	<record>
+		<name>Build - 2010 - Portage</name>
+		<description>207 Washington St.</description>
+		<inactive>0</inactive>
+		<old_id>20</old_id>
+	</record>
+	<record>
+		<name>Office</name>
+		<description>computer setup &amp; maintenance</description>
+		<inactive>0</inactive>
+		<old_id>21</old_id>
+	</record>
+	<record>
+		<name>Build - 2011 -  Baraboo</name>
+		<description>1351 Silver Drive - Holmes family</description>
+		<inactive>0</inactive>
+		<old_id>23</old_id>
+	</record>
+	<record>
+		<name>Build - 2011 - Portage</name>
+		<description>519 Thompson Street - Johnson family</description>
+		<inactive>0</inactive>
+		<old_id>24</old_id>
+	</record>
+	<record>
+		<name>Committee work - non-members</name>
+		<description>by non-BOD members</description>
+		<inactive>0</inactive>
+		<old_id>25</old_id>
+	</record>
+	<record>
+		<name>BOD -2012 -  meetings</name>
+		<description>board meeting</description>
+		<inactive>0</inactive>
+		<old_id>26</old_id>
+	</record>
+	<record>
+		<name>Office remodel - 2010</name>
+		<inactive>0</inactive>
+		<old_id>27</old_id>
+	</record>
+	<record>
+		<name>Public event - 2011 -  Boston Store</name>
+		<inactive>1</inactive>
+		<old_id>28</old_id>
+	</record>
+	<record>
+		<name>Office - Lead Access</name>
+		<description>Programming</description>
+		<inactive>0</inactive>
+		<old_id>30</old_id>
+	</record>
+	<record>
+		<name>Build - 2010 - Baraboo</name>
+		<inactive>0</inactive>
+		<old_id>19</old_id>
+	</record>
+	<record>
+		<name>ReStore - 2011-2012 - work in store</name>
+		<description>Baraboo ReStore</description>
+		<inactive>0</inactive>
+		<old_id>33</old_id>
+	</record>
+	<record>
+		<name>Repair - 2010 - Portage - Calkins</name>
+		<description>Repair - Critical</description>
+		<inactive>0</inactive>
+		<old_id>34</old_id>
+	</record>
+	<record>
+		<name>Public event - 2012 - Reedsburg Open Table</name>
+		<description>Free community meal</description>
+		<inactive>1</inactive>
+		<old_id>36</old_id>
+	</record>
+	<record>
+		<name>Build - 2012 - Reedsburg</name>
+		<description>227 Hill Crest Lane</description>
+		<inactive>0</inactive>
+		<old_id>37</old_id>
+	</record>
+	<record>
+		<name>Build - 2012 - Wyocena</name>
+		<description>316 Madison Street</description>
+		<inactive>0</inactive>
+		<old_id>38</old_id>
+	</record>
+	<record>
+		<name>Fundraiser - 2012 - Lodi Shanty Town</name>
+		<inactive>0</inactive>
+		<old_id>39</old_id>
+	</record>
+	<record>
+		<name>Women Build - 2012</name>
+		<inactive>0</inactive>
+		<old_id>40</old_id>
+	</record>
+	<record>
+		<name>Repair -2012 -  Baraboo -  Watts</name>
+		<inactive>0</inactive>
+		<old_id>41</old_id>
+	</record>
+	<record>
+		<name>BOD - 2012 - Strategic Planning</name>
+		<description>2012 Plan for HFHSC</description>
+		<inactive>0</inactive>
+		<old_id>42</old_id>
+	</record>
+	<record>
+		<name>Deconstruct - 2012 - Reedsburg - Liberty Flag</name>
+		<description>liberty flag</description>
+		<inactive>0</inactive>
+		<old_id>43</old_id>
+	</record>
+	<record>
+		<name>Repair - 2012 - Baraboo - Watts</name>
+		<description>Home Repair</description>
+		<inactive>1</inactive>
+		<old_id>44</old_id>
+	</record>
+	<record>
+		<name>Fundraiser - 2012 - Thrivent Brat Stand</name>
+		<description>41013</description>
+		<inactive>1</inactive>
+		<old_id>45</old_id>
+	</record>
+	<record>
+		<name>Portage Do-It-Center</name>
+		<description>Brat Stand</description>
+		<inactive>0</inactive>
+		<old_id>46</old_id>
+	</record>
+	<record>
+		<name>Decon - 2012 - Baraboo - St Clare Hosp.</name>
+		<description>2012</description>
+		<inactive>1</inactive>
+		<old_id>47</old_id>
+	</record>
+	<record>
+		<name>Office remodel  - 2012</name>
+		<description>Baraboo office move 8th St</description>
+		<inactive>0</inactive>
+		<old_id>48</old_id>
+	</record>
+	<record>
+		<name>Decon- 2012 - Merrimac - Mathers</name>
+		<description>Decons</description>
+		<inactive>1</inactive>
+		<old_id>49</old_id>
+	</record>
+	<record>
+		<name>Committee - 2014 - Church Relations</name>
+		<description>Meeting</description>
+		<inactive>0</inactive>
+		<old_id>113</old_id>
+	</record>
+	<record>
+		<name>Office - 2010</name>
+		<description>hire of new E.D.</description>
+		<inactive>0</inactive>
+		<old_id>59</old_id>
+	</record>
+	<record>
+		<name>Training - 2012 - SSO conference</name>
+		<description>2012  HFH Conference</description>
+		<inactive>0</inactive>
+		<old_id>56</old_id>
+	</record>
+	<record>
+		<name>Decon - 2012 - Hwy 113</name>
+		<description>S5191 Hwy 113 Baraboo</description>
+		<inactive>0</inactive>
+		<old_id>55</old_id>
+	</record>
+	<record>
+		<name>Decon - 2012 - Lake Delton - Pickerel Slough</name>
+		<description>Deconstruction</description>
+		<inactive>0</inactive>
+		<old_id>57</old_id>
+	</record>
+	<record>
+		<name>Repair - 2012 - Pardeeville - Rinde</name>
+		<description>Rinde repair</description>
+		<inactive>0</inactive>
+		<old_id>58</old_id>
+	</record>
+	<record>
+		<name>Decon - 2012 - WI Dells -  Camp Waubeck 2012</name>
+		<description>Decons old dining hall</description>
+		<inactive>0</inactive>
+		<old_id>60</old_id>
+	</record>
+	<record>
+		<name>Decon -  2012 -  Lake RedStone</name>
+		<description>demolish house</description>
+		<inactive>0</inactive>
+		<old_id>62</old_id>
+	</record>
+	<record>
+		<name>Decon -  2012 -  Sauk PR Hosp</name>
+		<description>Demolish aband house</description>
+		<inactive>0</inactive>
+		<old_id>63</old_id>
+	</record>
+	<record>
+		<name>Decon -  2012 - Lake Delton - Pine Beach Resort</name>
+		<description>demolish old cabins</description>
+		<inactive>0</inactive>
+		<old_id>64</old_id>
+	</record>
+	<record>
+		<name>Committee - ReStore - 2012 - mtings</name>
+		<description>Meeting</description>
+		<inactive>0</inactive>
+		<old_id>65</old_id>
+	</record>
+	<record>
+		<name>Restore - Pickups - 2012</name>
+		<description>Merchandise pickups</description>
+		<inactive>0</inactive>
+		<old_id>66</old_id>
+	</record>
+	<record>
+		<name>Restore -  2013 - work in store</name>
+		<description>Baraboo Store</description>
+		<inactive>0</inactive>
+		<old_id>67</old_id>
+	</record>
+	<record>
+		<name>Office 2013</name>
+		<description>Baraboo</description>
+		<inactive>0</inactive>
+		<old_id>68</old_id>
+	</record>
+	<record>
+		<name>Decon -  2013 -  Lake Delton - Pine Beach Resort</name>
+		<description>Lake Delton</description>
+		<inactive>0</inactive>
+		<old_id>69</old_id>
+	</record>
+	<record>
+		<name>Warehouse - Prairie -  2013</name>
+		<description>Removal to new store</description>
+		<inactive>0</inactive>
+		<old_id>70</old_id>
+	</record>
+	<record>
+		<name>Committee - Build - 2013 -  hiring</name>
+		<description>interviewing const. supervis.</description>
+		<inactive>0</inactive>
+		<old_id>71</old_id>
+	</record>
+	<record>
+		<name>Decon - 2012 - Plain -  Hardware store</name>
+		<inactive>0</inactive>
+		<old_id>72</old_id>
+	</record>
+	<record>
+		<name>Committee - Finance - 2012 - mtings</name>
+		<inactive>0</inactive>
+		<old_id>73</old_id>
+	</record>
+	<record>
+		<name>Committee - Finance - 2013 - mtings</name>
+		<inactive>0</inactive>
+		<old_id>74</old_id>
+	</record>
+	<record>
+		<name>Committee - ReStore - 2013 - mtings</name>
+		<inactive>0</inactive>
+		<old_id>75</old_id>
+	</record>
+	<record>
+		<name>Committee - Development - 2013 - mtings</name>
+		<inactive>0</inactive>
+		<old_id>76</old_id>
+	</record>
+	<record>
+		<name>Build - 2013 - Rio</name>
+		<inactive>0</inactive>
+		<old_id>77</old_id>
+	</record>
+	<record>
+		<name>Decon - 2013 - Baraboo - New Life church</name>
+		<inactive>0</inactive>
+		<old_id>78</old_id>
+	</record>
+	<record>
+		<name>Committee - Family Select</name>
+		<description>2013 Meeting</description>
+		<inactive>0</inactive>
+		<old_id>79</old_id>
+	</record>
+	<record>
+		<name>Decon - 2013 - Tony's Bar</name>
+		<description>Prairie du Sac</description>
+		<inactive>0</inactive>
+		<old_id>80</old_id>
+	</record>
+	<record>
+		<name>Committee - Building 2013 meeting</name>
+		<description>2013 mtgs</description>
+		<inactive>0</inactive>
+		<old_id>81</old_id>
+	</record>
+	<record>
+		<name>Shanty Town</name>
+		<description>Lodi 2013</description>
+		<inactive>0</inactive>
+		<old_id>82</old_id>
+	</record>
+	<record>
+		<name>E-Recycle - 2013</name>
+		<description>Reedsburg</description>
+		<inactive>0</inactive>
+		<old_id>83</old_id>
+	</record>
+	<record>
+		<name>Build Committee</name>
+		<description>Trailer Organization</description>
+		<inactive>0</inactive>
+		<old_id>84</old_id>
+	</record>
+	<record>
+		<name>Women Build 2013</name>
+		<inactive>0</inactive>
+		<old_id>85</old_id>
+	</record>
+	<record>
+		<name>Build - 2013 - Sauk Prairie</name>
+		<inactive>0</inactive>
+		<old_id>86</old_id>
+	</record>
+	<record>
+		<name>Public Event Do It Center Portage</name>
+		<description>Brat Sale</description>
+		<inactive>0</inactive>
+		<old_id>87</old_id>
+	</record>
+	<record>
+		<name>Restore pickup 2013</name>
+		<description>Mt Olympus merchandise</description>
+		<inactive>0</inactive>
+		<old_id>88</old_id>
+	</record>
+	<record>
+		<name>Build - 2013 - USDA Baraboo</name>
+		<description>Meetings/building</description>
+		<inactive>0</inactive>
+		<old_id>89</old_id>
+	</record>
+	<record>
+		<name>Decon - 2013 - Vantage Games</name>
+		<description>Salvage</description>
+		<inactive>0</inactive>
+		<old_id>90</old_id>
+	</record>
+	<record>
+		<name>Repair - 2013 - Loganville - Kauss</name>
+		<inactive>0</inactive>
+		<old_id>91</old_id>
+	</record>
+	<record>
+		<name>Deconstruction 2013 Prairie</name>
+		<description>Shed build</description>
+		<inactive>0</inactive>
+		<old_id>92</old_id>
+	</record>
+	<record>
+		<name>Decon - 2013 Madison</name>
+		<description>10-12 N Henry Madison</description>
+		<inactive>0</inactive>
+		<old_id>93</old_id>
+	</record>
+	<record>
+		<name>Deconstruction 2013 Prairie St Pr du Sac</name>
+		<description>Home deconstruction</description>
+		<inactive>0</inactive>
+		<old_id>94</old_id>
+	</record>
+	<record>
+		<name>Metal recycle 2013</name>
+		<description>Prairie du Sac metal recycle</description>
+		<inactive>0</inactive>
+		<old_id>95</old_id>
+	</record>
+	<record>
+		<name>Committee - 2013 - Family support</name>
+		<description>Committee meeting</description>
+		<inactive>0</inactive>
+		<old_id>96</old_id>
+	</record>
+	<record>
+		<name>Committee - BOD - 2013</name>
+		<description>Committee meeting</description>
+		<inactive>0</inactive>
+		<old_id>97</old_id>
+	</record>
+	<record>
+		<name>Build - 2014 - USDA Reedsburg</name>
+		<description>Meetings/build</description>
+		<inactive>0</inactive>
+		<old_id>98</old_id>
+	</record>
+	<record>
+		<name>Fundraising - 2013 - General</name>
+		<description>Portage</description>
+		<inactive>0</inactive>
+		<old_id>100</old_id>
+	</record>
+	<record>
+		<name>Deconstruction 2013 Culvers Reedsburg</name>
+		<description>Merchandise for restore</description>
+		<inactive>0</inactive>
+		<old_id>101</old_id>
+	</record>
+	<record>
+		<name>Deconstruction 2013 Pine Aire Motel</name>
+		<description>Lake Delton</description>
+		<inactive>0</inactive>
+		<old_id>102</old_id>
+	</record>
+	<record>
+		<name>Training - 2013- SSO Conference</name>
+		<description>HFH Conferece</description>
+		<inactive>0</inactive>
+		<old_id>103</old_id>
+	</record>
+	<record>
+		<name>BOD - 2013 Various duties</name>
+		<description>Paper work &amp; Misc.</description>
+		<inactive>0</inactive>
+		<old_id>104</old_id>
+	</record>
+	<record>
+		<name>Maintenance Kendra Dr Wyocena</name>
+		<description>Lawn mowing</description>
+		<inactive>0</inactive>
+		<old_id>105</old_id>
+	</record>
+	<record>
+		<name>Deconstruction 2013 Lake WI</name>
+		<description>Fred Feitgen Lake WI</description>
+		<inactive>0</inactive>
+		<old_id>106</old_id>
+	</record>
+	<record>
+		<name>Restore - 2014 Baraboo in store</name>
+		<description>Baraboo Store</description>
+		<inactive>0</inactive>
+		<old_id>107</old_id>
+	</record>
+	<record>
+		<name>BOD - 2014 activities</name>
+		<description>Board meeting</description>
+		<inactive>0</inactive>
+		<old_id>108</old_id>
+	</record>
+	<record>
+		<name>Committee - 2014 Restore</name>
+		<description>Board meetings</description>
+		<inactive>0</inactive>
+		<old_id>109</old_id>
+	</record>
+	<record>
+		<name>Committee - Build - 2014</name>
+		<description>Meetings</description>
+		<inactive>0</inactive>
+		<old_id>110</old_id>
+	</record>
+	<record>
+		<name>Training - 2014 - Competent Person</name>
+		<description>meeting</description>
+		<inactive>0</inactive>
+		<old_id>111</old_id>
+	</record>
+	<record>
+		<name>Committee - 2014 - Finance</name>
+		<description>Committee meeting</description>
+		<inactive>0</inactive>
+		<old_id>112</old_id>
+	</record>
+	<record>
+		<name>Committee - 2014 - Executive</name>
+		<description>Meeting</description>
+		<inactive>0</inactive>
+		<old_id>114</old_id>
+	</record>
+	<record>
+		<name>Decon - 2014 Kolb House</name>
+		<description>Lake Delton</description>
+		<inactive>0</inactive>
+		<old_id>115</old_id>
+	</record>
+	<record>
+		<name>Committee - 2014 Family Selection</name>
+		<description>Meetings</description>
+		<inactive>0</inactive>
+		<old_id>116</old_id>
+	</record>
+	<record>
+		<name>Office - 2014</name>
+		<description>Data entry/mis</description>
+		<inactive>0</inactive>
+		<old_id>117</old_id>
+	</record>
+	<record>
+		<name>Shanty Town - 2014</name>
+		<description>Lodi Fairgrounds</description>
+		<inactive>0</inactive>
+		<old_id>119</old_id>
+	</record>
+	<record>
+		<name>Build - 2013 USDA Baraboo - Kufner</name>
+		<description>1341 Silver Drive</description>
+		<inactive>0</inactive>
+		<old_id>120</old_id>
+	</record>
+	<record>
+		<name>Build - 2013 - USDA Baraboo - Weickgenant</name>
+		<description>1331 Silver Drive</description>
+		<inactive>0</inactive>
+		<old_id>121</old_id>
+	</record>
+	<record>
+		<name>Build - 2013 USDA Baraboo - Fredrickson</name>
+		<description>1311 Silver Drive</description>
+		<inactive>0</inactive>
+		<old_id>122</old_id>
+	</record>
+	<record>
+		<name>Build - 2013 USDA Baraboo - Kowalke</name>
+		<description>1301 Silver Drive</description>
+		<inactive>0</inactive>
+		<old_id>123</old_id>
+	</record>
+	<record>
+		<name>Build - 2013 USDA Baraboo -  Giebel</name>
+		<description>1321 Silver Drive</description>
+		<inactive>0</inactive>
+		<old_id>124</old_id>
+	</record>
+	<record>
+		<name>Build - 2014 - USDA Reedsburg - Dyke</name>
+		<description>755 Crestview Drive</description>
+		<inactive>0</inactive>
+		<old_id>125</old_id>
+	</record>
+	<record>
+		<name>Build - 2014 - USDA Reedsburg - Wade</name>
+		<description>2028 Willow Run</description>
+		<inactive>0</inactive>
+		<old_id>126</old_id>
+	</record>
+	<record>
+		<name>Build - 2014 - USDA Reedsburg - Willey</name>
+		<description>735 Crestview Drive</description>
+		<inactive>0</inactive>
+		<old_id>127</old_id>
+	</record>
+	<record>
+		<name>Build - 2014 - USDA Reedsburg - Montgomery</name>
+		<description>2058 Willow Run</description>
+		<inactive>0</inactive>
+		<old_id>128</old_id>
+	</record>
+	<record>
+		<name>Build - 2014 - USDA Reedsburg - McKenzie</name>
+		<description>745 Crestview Drive</description>
+		<inactive>0</inactive>
+		<old_id>129</old_id>
+	</record>
+	<record>
+		<name>Build - 2014 - Baraboo Wells Fargo</name>
+		<description>Help for houses</description>
+		<inactive>0</inactive>
+		<old_id>130</old_id>
+	</record>
+	<record>
+		<name>Deconstruction 2014- Lake Redstone</name>
+		<description>Paul Imhoff Lake Redstone</description>
+		<inactive>0</inactive>
+		<old_id>131</old_id>
+	</record>
+	<record>
+		<name>Restore - 2014 Move to S Blvd</name>
+		<description>Relocation</description>
+		<inactive>0</inactive>
+		<old_id>132</old_id>
+	</record>
+	<record>
+		<name>Repair - 2014 - Betty Krueger</name>
+		<description>Home repair</description>
+		<inactive>0</inactive>
+		<old_id>133</old_id>
+	</record>
+	<record>
+		<name>Restore - 2015</name>
+		<description>Relocation work</description>
+		<inactive>0</inactive>
+		<old_id>134</old_id>
+	</record>
+	<record>
+		<name>Restore - 2015 - In store</name>
+		<description>General merchandising</description>
+		<inactive>0</inactive>
+		<old_id>135</old_id>
+	</record>
+	<record>
+		<name>Office - 2015</name>
+		<description>Data entry/miscellaneous</description>
+		<inactive>0</inactive>
+		<old_id>136</old_id>
+	</record>
+	<record>
+		<name>BOD - 2015</name>
+		<description>Meetings for 2015</description>
+		<inactive>0</inactive>
+		<old_id>137</old_id>
+	</record>
+	<record>
+		<name>Committee - Build - 2015</name>
+		<description>Meetings</description>
+		<inactive>0</inactive>
+		<old_id>138</old_id>
+	</record>
+	<record>
+		<name>Committee - Finance - 2015</name>
+		<description>Meetings for 2015</description>
+		<inactive>0</inactive>
+		<old_id>139</old_id>
+	</record>
+	<record>
+		<name>Woman Build 2015</name>
+		<inactive>0</inactive>
+		<old_id>140</old_id>
+	</record>
+	<record>
+		<name>Build - 2015 -  Lake Delton</name>
+		<description>Stewart home</description>
+		<inactive>0</inactive>
+		<old_id>141</old_id>
+	</record>
+	<record>
+		<name>Office - 2015 - Newsletter</name>
+		<description>Mailings</description>
+		<inactive>0</inactive>
+		<old_id>142</old_id>
+	</record>
+	<record>
+		<name>Builds - Camp Chi Volunteers</name>
+		<description>All homes 2015</description>
+		<inactive>0</inactive>
+		<old_id>143</old_id>
+	</record>
+</data-set>

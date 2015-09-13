@@ -29,7 +29,12 @@ Rails.application.routes.draw do
 
   resources :interests
   resources :interest_categories
-  resources :projects
+  resources :projects do
+    collection do
+      get 'import' => 'projects#import_form'
+      post 'import' => 'projects#import'
+    end
+  end
 
 
   # The priority is based upon order of creation: first created -> highest priority.

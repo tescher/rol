@@ -2372,6 +2372,8 @@
       <column name="inactive" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7" def="ZmFsc2U="/>
       <column name="created_at" sqlType="timestamp" precision="29" scale="6" nullable="false" jdbcType="93"/>
       <column name="updated_at" sqlType="timestamp" precision="29" scale="6" nullable="false" jdbcType="93"/>
+      <column name="old_id" sqlType="varchar" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
+      <column name="description" sqlType="varchar" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="projects_pkey" columns="id"/>
     </table>
     <table name="projects_id_seq" schema="public" catalog="rol_development" type="SEQUENCE">
