@@ -2,7 +2,7 @@ include WorkdaysHelper
 
 class VolunteersController < ApplicationController
   before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search, :address_check]
-  before_action :admin_user,     only: [:destroy, :import]
+  before_action :admin_user,     only: [:destroy, :import, :import_form]
 
 
   def search
@@ -186,6 +186,7 @@ class VolunteersController < ApplicationController
       flash[:success] = "Volunteer updated"
       redirect_to search_volunteers_path
     else
+      @num_workdays = []
       render :edit
     end
   end

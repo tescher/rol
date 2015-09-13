@@ -15,6 +15,12 @@ class ProjectsEditTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_url
   end
 
+  test "No imports by non-admin" do
+    log_in_as(@non_admin)
+    get import_projects_path
+    assert_redirected_to root_url
+  end
+
   test "unsuccessful edit" do
     log_in_as(@user)
     get edit_project_path(@project)

@@ -2,7 +2,7 @@
   <td><%= volunteer.first_name + " " + volunteer.last_name %></td>
   <td>
     <div class='input-group date' id='worktimepicker'>
-      <%= f.text_field :start_time,  value: f.object.start_time.nil? ? "" : f.object.start_time.strftime("%l:%M %p"), class: "workdayHoursCalc" %>
+      <%= f.text_field :start_time,  value: f.object.start_time.nil? ? "" : f.object.start_time.strftime("%l:%M %p"), class: "workdayHoursCalc", autofocus: 'true' %>
     </div>
   </td>
   <td>

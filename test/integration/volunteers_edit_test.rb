@@ -6,6 +6,13 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     @user = users(:one)
     @volunteer = volunteers(:one)
     @admin = users(:michael)
+    @non_admin = users(:one)
+  end
+
+  test "No imports by non-admin" do
+    log_in_as(@non_admin)
+    get import_volunteers_path
+    assert_redirected_to root_url
   end
 
   test "unsuccessful edit" do

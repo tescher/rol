@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy]
-  before_action :logged_in_admin_user, only: [:new, :edit, :update, :destroy, :import]
+  before_action :logged_in_admin_user, only: [:new, :edit, :update, :destroy, :import, :import_form]
 
   # GET /projects
   # GET /projects.json
