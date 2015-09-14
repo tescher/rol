@@ -1,0 +1,16 @@
+<div class="row clickable" onclick="<%= link_to_add_workday_volunteer_fields(volunteer, session[:workday_id]) %>" >
+  <li>
+    <div class="col-md-2 col-md-offset-1">
+      <%= volunteer.first_name + " " + volunteer.last_name %>
+    </div>
+    <div class="col-md-2">
+      <%= volunteer.city %>
+    </div>
+    <div class="col-md-2">
+      <%= volunteer.email %>
+    </div>
+    <div class="col-md-3">
+      <%= volunteer.home_phone.presence || volunteer.mobile_phone.presence || volunteer.work_phone.presence %>
+    </div>
+  </li>
+</div>

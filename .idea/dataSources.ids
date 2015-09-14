@@ -2502,7 +2502,9 @@
       <column name="updated_at" sqlType="timestamp" precision="29" scale="6" nullable="false" jdbcType="93"/>
       <column name="workdate" sqlType="date" precision="13" scale="0" nullable="true" jdbcType="91"/>
       <column name="name" sqlType="varchar" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
+      <column name="old_id" sqlType="varchar" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="workdays_pkey" columns="id"/>
+      <index name="index_workdays_on_old_id" unique="false" columns="old_id"/>
     </table>
     <table name="workdays_id_seq" schema="public" catalog="rol_development" type="SEQUENCE">
       <column name="sequence_name" sqlType="name" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
@@ -21460,6 +21462,8 @@
       <column name="inactive" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7" def="ZmFsc2U="/>
       <column name="created_at" sqlType="timestamp" precision="29" scale="6" nullable="false" jdbcType="93"/>
       <column name="updated_at" sqlType="timestamp" precision="29" scale="6" nullable="false" jdbcType="93"/>
+      <column name="old_id" sqlType="varchar" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
+      <column name="description" sqlType="varchar" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="projects_pkey" columns="id"/>
     </table>
     <table name="projects_id_seq" schema="public" catalog="rol_test" type="SEQUENCE">
@@ -21542,7 +21546,9 @@
       <column name="remove_from_mailing_list" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7" def="ZmFsc2U="/>
       <column name="waiver_date" sqlType="date" precision="13" scale="0" nullable="true" jdbcType="91"/>
       <column name="background_check_date" sqlType="date" precision="13" scale="0" nullable="true" jdbcType="91"/>
+      <column name="old_id" sqlType="varchar" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="volunteers_pkey" columns="id"/>
+      <index name="index_volunteers_on_old_id" unique="false" columns="old_id"/>
     </table>
     <table name="volunteers_id_seq" schema="public" catalog="rol_test" type="SEQUENCE">
       <column name="sequence_name" sqlType="name" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
@@ -21586,7 +21592,9 @@
       <column name="updated_at" sqlType="timestamp" precision="29" scale="6" nullable="false" jdbcType="93"/>
       <column name="workdate" sqlType="date" precision="13" scale="0" nullable="true" jdbcType="91"/>
       <column name="name" sqlType="varchar" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
+      <column name="old_id" sqlType="varchar" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="workdays_pkey" columns="id"/>
+      <index name="index_workdays_on_old_id" unique="false" columns="old_id"/>
     </table>
     <table name="workdays_id_seq" schema="public" catalog="rol_test" type="SEQUENCE">
       <column name="sequence_name" sqlType="name" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>

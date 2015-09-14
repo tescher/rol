@@ -1,0 +1,22 @@
+<div class="row clickable" href="<%=edit_volunteer_path(volunteer)%>">
+  <li>
+    <div class="col-md-2 col-md-offset-1">
+      <% if volunteer.remove_from_mailing_list? %>
+          <s>
+      <% end %>
+      <%= volunteer.first_name + " " + volunteer.last_name %>
+      <% if volunteer.remove_from_mailing_list? %>
+          </s>
+      <% end %>
+    </div>
+    <div class="col-md-2">
+      <%= volunteer.city %>
+    </div>
+    <div class="col-md-2">
+      <%= volunteer.email %>
+    </div>
+    <div class="col-md-2">
+      <%= volunteer.home_phone.presence || volunteer.mobile_phone.presence || volunteer.work_phone.presence %>
+    </div>
+  </li>
+</div>

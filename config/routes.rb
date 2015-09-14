@@ -16,6 +16,16 @@ Rails.application.routes.draw do
       get 'address_check'
     end
   end
+  resources :organizations do
+    collection do
+      get 'search'
+      get 'import' => 'organizations#import_form'
+      post 'import' => 'organizations#import'
+    end
+    member do
+      get 'address_check'
+    end
+  end
   resources :workdays do
     collection do
       get 'search'
@@ -29,12 +39,15 @@ Rails.application.routes.draw do
 
   resources :interests
   resources :interest_categories
+
   resources :projects do
     collection do
       get 'import' => 'projects#import_form'
       post 'import' => 'projects#import'
     end
   end
+
+  resources :organization_types
 
 
   # The priority is based upon order of creation: first created -> highest priority.
