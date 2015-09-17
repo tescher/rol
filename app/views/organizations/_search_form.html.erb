@@ -1,22 +1,22 @@
-<%= form_tag(volunteers_path, method: "get") do %>
+<%= form_tag(organizations_path, method: "get") do %>
     <div class="container">
       <div class="row">
         <div class="col-md-5 col-md-offset-1">
 
           <div class="row">
             <div class="col-md-2">
-              <%= label_tag :last_name  %><br>
+              <%= label_tag :name  %><br>
             </div>
             <div class="col-md-8">
-              <%= text_field_tag :last_name, nil, class: 'form-control', autofocus: 'true' %>
+              <%= text_field_tag :name, nil, class: 'form-control', autofocus: 'true' %>
             </div>
           </div>
           <div class="row">
             <div class="col-md-2">
-              <%= label_tag :interests %><br>
+              <%= label_tag :organization_types %><br>
             </div>
             <div class="col-md-8">
-              <%= select_tag :interest_ids, option_groups_from_collection_for_select(InterestCategory.all, :interests, :name, :id, :option_formatter), { :multiple => true, class: "form-control"}  %>
+              <%= select_tag :organization_type_ids, options_from_collection_for_select(OrganizationType.all, :id, :name), { :multiple => true, class: "form-control"}  %>
             </div>
           </div>
 
@@ -47,15 +47,13 @@
 
     </div>
     <%= hidden_field_tag :request_format, "html", class: "request_format" %>
-    <%= hidden_field_tag :merge_families, "false", class: "merge_families" %>
 
 
     <div class="row">
       <div class="col-md-10 col-md-offset-1">
         <div class="actions pull-right">
-          <%= submit_tag "Search", class: "btn btn-primary", onclick: "change_val('.request_format','html'); change_val('.merge_families', 'false');" %>
-          <%= submit_tag "Export", class: "btn btn-primary", onclick: "change_val('.request_format','xls'); change_val('.merge_families', 'false');" %>
-          <%= submit_tag "Export w/ Family Merge", class: "btn btn-primary", onclick: "change_val('.request_format','xls'); change_val('.merge_families', 'true');" %>
+          <%= submit_tag "Search", class: "btn btn-primary", onclick: "change_val('.request_format','html'); " %>
+          <%= submit_tag "Export", class: "btn btn-primary", onclick: "change_val('.request_format','xls'); " %>
           <%= link_to 'Back', root_path, class: "btn btn-primary" %>
         </div>
       </div>

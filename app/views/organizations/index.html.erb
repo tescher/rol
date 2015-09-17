@@ -1,13 +1,13 @@
-<% provide(:title, 'Volunteers') %>
+<% provide(:title, 'Organizations') %>
 
-<h1>Volunteers</h1>
+<h1>Organizations</h1>
 
-<% if @volunteers.count < 1 %>
-    <p>No volunteers found with the given search criteria</p>
+<% if @organizations.count < 1 %>
+    <p>No organizations found with the given search criteria</p>
 <% else %>
 
     <ul class="listing">
-      <%= render @volunteers %>
+      <%= render @organizations %>
     </ul>
 
     <%= will_paginate %>
@@ -16,8 +16,8 @@
 <div class="row">
   <div class="col-md-10 col-md-offset-1">
     <div class="actions pull-right">
-      <%= link_to 'Search Again', search_volunteers_path, class: "btn btn-primary"%>
-      <%= link_to 'New Volunteer', new_volunteer_path, class: "btn btn-primary"%>
+      <%= link_to 'Search Again', search_organizations_path, class: "btn btn-primary"%>
+      <%= link_to 'New Organization', new_organization_path, class: "btn btn-primary"%>
     </div>
   </div>
 </div>

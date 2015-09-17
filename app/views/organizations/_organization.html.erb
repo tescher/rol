@@ -1,0 +1,22 @@
+<div class="row clickable" href="<%=edit_organization_path(organization)%>">
+  <li>
+    <div class="col-md-2 col-md-offset-1">
+      <% if organization.remove_from_mailing_list? %>
+          <s>
+      <% end %>
+      <%= organization.name %>
+      <% if organization.remove_from_mailing_list? %>
+          </s>
+      <% end %>
+    </div>
+    <div class="col-md-2">
+      <%= organization.city %>
+    </div>
+    <div class="col-md-2">
+      <%= organization.contact_name %>
+    </div>
+    <div class="col-md-2">
+      <%= organization.organization_type_id.nil? ? "" : OrganizationType.find(organization.organization_type_id).name %>
+    </div>
+  </li>
+</div>

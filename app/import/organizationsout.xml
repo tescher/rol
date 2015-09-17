@@ -1,0 +1,1774 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data-set xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<record>
+		<name>New Life Christian Church</name>
+		<type>Church</type>
+		<address>310 Millston Avenue</address>
+		<city>Lodi</city>
+		<state>WI</state>
+		<zip>53555</zip>
+		<phone>6085924923</phone>
+		<contact_name>Mitch &amp; Lois Falk</contact_name>
+		<old_id>1</old_id>
+		<email>loisfalk@aol.com</email>
+	</record>
+	<record>
+		<name>Blackhawk Bethlehem United Methodist Church</name>
+		<type>Church</type>
+		<address>S10174 County Road C</address>
+		<city>Sauk City</city>
+		<state>WI</state>
+		<zip>53583</zip>
+		<phone>6085443991</phone>
+		<contact_name>Pastor Kendall Schlittler</contact_name>
+		<old_id>3</old_id>
+		<email>pastorks@tds.net</email>
+	</record>
+	<record>
+		<name>Calvary Baptist Church</name>
+		<type>Church</type>
+		<address>309 Water Street</address>
+		<city>Sauk City</city>
+		<state>WI</state>
+		<zip>53583</zip>
+		<phone>6086432101</phone>
+		<contact_name>Pastor Dan Lindsey</contact_name>
+		<old_id>4</old_id>
+		<email>church@saukprairiecalvary.com</email>
+	</record>
+	<record>
+		<name>Church of God  (West Baraboo)</name>
+		<type>Church</type>
+		<address>150 Shaw Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<phone>6083566545</phone>
+		<contact_name>Pastor William Haskins (ret.);Pastor Derick Bacon</contact_name>
+		<old_id>8</old_id>
+		<email>wbchurchofgod@centurytel.net;haskins.william@yahoo.com</email>
+	</record>
+	<record>
+		<name>Church of Jesus Christ of Latter Day Saints</name>
+		<type>Church</type>
+		<address>E12678 County Road W</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<phone>6083562052</phone>
+		<contact_name>Manuel de Jesus</contact_name>
+		<old_id>9</old_id>
+	</record>
+	<record>
+		<name>Church of the Nazarene</name>
+		<type>Church</type>
+		<address>1800 Crawford Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<phone>6083563774</phone>
+		<contact_name>Pastor Bruce Cadle/Dawn Cupp</contact_name>
+		<old_id>10</old_id>
+		<email>csideways@yahoo.com</email>
+	</record>
+	<record>
+		<name>Concordia United Methodist</name>
+		<type>Church</type>
+		<address>585 Fifth Street</address>
+		<city>Prairie du Sac</city>
+		<state>WI</state>
+		<zip>53578</zip>
+		<phone>6086436356</phone>
+		<contact_name>Doris Simpson/Bruce Koch/Leslie Koch</contact_name>
+		<old_id>11</old_id>
+		<email>secr@concordiaumc.org; pastor@concordiaumc.org ; lbkoch@charter.net;hallings@frontier.com;lakcyto@charter.net</email>
+	</record>
+	<record>
+		<name>Dekorra Lutheran Church</name>
+		<type>Church</type>
+		<address>N3099 Smith Road</address>
+		<city>Poynette</city>
+		<state>WI</state>
+		<zip>53955</zip>
+		<phone>6086357200</phone>
+		<contact_name>Bill Schleichert/Lois Buckley/Pastor Ryan Rouse</contact_name>
+		<old_id>13</old_id>
+		<email>dekorra@dekorralutheran.org;fatkat@centurytel.net;pastorryan@dekorralutheran.org;lwbuckley@centurylink.net</email>
+	</record>
+	<record>
+		<name>Emanuel United Methodist Church</name>
+		<type>Church</type>
+		<address>101 - 14th Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<phone>6083568246</phone>
+		<contact_name>Blake Overlien</contact_name>
+		<old_id>14</old_id>
+		<email>pastor@emanuelumc.com</email>
+	</record>
+	<record>
+		<name>First Congregational UCC</name>
+		<type>Church</type>
+		<address>131 6th Avenue</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<phone>6083564300</phone>
+		<contact_name>Pastor Doug Fauth/Sandra Perry/Chris Christofersen</contact_name>
+		<notes>Another number 608-356-5742</notes>
+		<old_id>15</old_id>
+		<email>fstuccbboo@dwave.net;Sandrajeanneperry@hotmail.com;arthurc@centurytel.net</email>
+	</record>
+	<record>
+		<name>First Lutheran</name>
+		<type>Church</type>
+		<address>206 Pleasant Street</address>
+		<city>Lodi</city>
+		<state>WI</state>
+		<zip>53555</zip>
+		<phone>6085924102</phone>
+		<contact_name>Julie Schmidt, Pastor Mike Lee, Sue Wellnitz</contact_name>
+		<old_id>16</old_id>
+		<email>office@firstlutheranlodi.org;ThomasC_Brown@msn.com;sue@firstlutheran.org</email>
+	</record>
+	<record>
+		<name>First Presbyterian Church</name>
+		<type>Church</type>
+		<address>416 Ash Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<phone>6083565945</phone>
+		<contact_name>Pastor Lisa Taylor;Jim Karch/John Grady;Dan School</contact_name>
+		<notes>contact for Shantytown
+Dan School
+608-355-1030
+dschool@centurytel.net</notes>
+		<old_id>17</old_id>
+		<email>lmtayl@gmail.com;office@presbybaraboo.com;jmkarch@centurytel.net;dschool@centurytel.net</email>
+	</record>
+	<record>
+		<name>First Presbyterian Church</name>
+		<type>Church</type>
+		<address>435 Fifth Street</address>
+		<city>Prairie du Sac</city>
+		<state>WI</state>
+		<zip>53578</zip>
+		<phone>6086438428</phone>
+		<contact_name>Barbara Lyns</contact_name>
+		<old_id>18</old_id>
+	</record>
+	<record>
+		<name>First United Church of Christ</name>
+		<type>Church</type>
+		<address>504 Washington Avenue</address>
+		<city>Sauk City</city>
+		<state>WI</state>
+		<zip>53583</zip>
+		<phone>6086438387</phone>
+		<contact_name>Pastor William Kapp/ Cindy Baker (Church Office Manager)</contact_name>
+		<old_id>19</old_id>
+		<email>office@ucc-saukcity.org;bill_kapp@ucc-saukcity.org</email>
+	</record>
+	<record>
+		<name>FIRST UNITED METHODIST CHURCH</name>
+		<type>Church</type>
+		<address>615 BROADWAY STREET</address>
+		<city>BARABOO</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<phone>6083563991</phone>
+		<old_id>20</old_id>
+		<email>baraboo-firstumc@wisconsinumc.org;marianne@wisconsinumc.org</email>
+	</record>
+	<record>
+		<name>Immanuel Lutheran Church</name>
+		<type>Church</type>
+		<address>137 West Main Street</address>
+		<city>Merrimac</city>
+		<state>WI</state>
+		<zip>53561</zip>
+		<phone>6084932640</phone>
+		<contact_name>Pastor Joel Bradtke</contact_name>
+		<old_id>21</old_id>
+		<email>immluth@merr.com</email>
+	</record>
+	<record>
+		<name>Lake Wis Evangelical Free</name>
+		<type>Church</type>
+		<address>N1640 Ryan Road</address>
+		<city>Lodi</city>
+		<state>WI</state>
+		<zip>53555</zip>
+		<phone>6085923091</phone>
+		<contact_name>Laura C/Pastor Scott Larson/Tom Pollock</contact_name>
+		<old_id>23</old_id>
+		<email>slarson@lwefc.org;laurac@lwefc.org;scottielar8@yahoo.com;darlan@lwefc.org</email>
+	</record>
+	<record>
+		<name>Living Hope Church</name>
+		<type>Church</type>
+		<address>S3963 US Hwy 12</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<phone>6083567979</phone>
+		<contact_name>Dave Bauman/Jeff Jensen/Dave Ekes/Linda Barney</contact_name>
+		<old_id>24</old_id>
+		<email>y2kbogus@hotmail.com;livinghc@centurytel.net</email>
+	</record>
+	<record>
+		<name>First Presbyterian Church</name>
+		<type>Church</type>
+		<address>258 Lodi Street</address>
+		<city>Lodi</city>
+		<state>WI</state>
+		<zip>53555</zip>
+		<phone>6085924310</phone>
+		<contact_name>Marcia Brown/Herb Damsteegt/Richard Schmidt/Dorothy Richards</contact_name>
+		<old_id>26</old_id>
+		<email>hldamsteegt@charter.net;SchmidtDVM@aol.com;rerafar1@gmail.com;office@lodifpc.org;rick@vanfossen.net</email>
+	</record>
+	<record>
+		<name>Lodi United Methodist Church</name>
+		<type>Church</type>
+		<address>130 Locust Street</address>
+		<city>Lodi</city>
+		<state>WI</state>
+		<zip>53555</zip>
+		<phone>6085923480</phone>
+		<contact_name>Pastor Marge Rice Myers; Tracy Roller</contact_name>
+		<old_id>27</old_id>
+		<email>marge@lodiumc.org;secretary@lodiumc.org;Tim@epicsystems.com;pennyjps@yahoo.com;Tracy.Roller@firstgroup.com</email>
+	</record>
+	<record>
+		<name>United Methodist Church</name>
+		<type>Church</type>
+		<address>117  Church Street</address>
+		<city>Merrimac</city>
+		<state>WI</state>
+		<zip>53561</zip>
+		<phone>6084932774</phone>
+		<contact_name>Pastor Roxi Gnatzig</contact_name>
+		<notes>Debbie Breneman, mission committee chairperson &amp; church treasurer</notes>
+		<old_id>28</old_id>
+		<email>PastorRoxi@MerrimacUMC.org;jazzee@merr.com;england@shopstop.net</email>
+	</record>
+	<record>
+		<name>New Life Community A.C. Church</name>
+		<type>Church</type>
+		<address>1919 Elizabeth Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<phone>6083563367</phone>
+		<contact_name>Jesse Stevens/Jed Crouse/Carol Jeffers/Linda Mohar/Brenda Fleischmann</contact_name>
+		<notes>Youth Minister: Jed Crouse jedcrouse@centurytel.net</notes>
+		<old_id>29</old_id>
+		<email>newlife@centurytel.net;jedcrouse@centurytel.net;Brenda.Fleischmann@unityhealth.com;jessesherry@gmail.com</email>
+	</record>
+	<record>
+		<name>Our Savior Lutheran</name>
+		<type>Church</type>
+		<address>1120 Draper Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<phone>6083569792</phone>
+		<contact_name>Timothy Anderson/David Jensen</contact_name>
+		<old_id>30</old_id>
+		<email>baraboobishop@gmail.com</email>
+	</record>
+	<record>
+		<name>Sauk Prairie Evangelical Free Church</name>
+		<type>Church</type>
+		<address>1375 Lincoln Avenue</address>
+		<city>Prairie du Sac</city>
+		<state>WI</state>
+		<zip>53578</zip>
+		<phone>6086436064</phone>
+		<contact_name>Pastor Tim Pietrogallo/Linda Lindley</contact_name>
+		<old_id>31</old_id>
+		<email>office@spefc.org</email>
+	</record>
+	<record>
+		<name>Blessed Trinity Parish</name>
+		<type>Church</type>
+		<address>521 Fair Street</address>
+		<city>Lodi</city>
+		<state>WI</state>
+		<zip>53555</zip>
+		<phone>6085925711</phone>
+		<contact_name>Cindy Fischer, Blaine Hechimovich</contact_name>
+		<old_id>33</old_id>
+		<email>csfischer@btcatholic.us; parish@btcatholic.us; bhechimovich@btcatholic.us</email>
+	</record>
+	<record>
+		<name>St Aloysius Catholic Church</name>
+		<type>Church</type>
+		<address>115 Madison Street</address>
+		<city>Sauk City</city>
+		<state>WI</state>
+		<zip>53583</zip>
+		<phone>6086432449</phone>
+		<contact_name>Father Galvez/Ann Cicero</contact_name>
+		<old_id>34</old_id>
+		<email>saintaloysius@charter.net</email>
+	</record>
+	<record>
+		<name>St James - WELS</name>
+		<type>Church</type>
+		<address>415 Washington Street</address>
+		<city>Prairie du Sac</city>
+		<state>WI</state>
+		<zip>53578</zip>
+		<phone>6086434050</phone>
+		<contact_name>Donna Harman, Pastor Bradley Pearson</contact_name>
+		<old_id>35</old_id>
+		<email>pjharman@charter.net</email>
+	</record>
+	<record>
+		<name>St. Johns Lutheran Church</name>
+		<type>Church</type>
+		<address>100 Oak Street</address>
+		<city>Prairie du Sac</city>
+		<state>WI</state>
+		<zip>53578</zip>
+		<phone>6086432439</phone>
+		<contact_name>Pastor Fred Rilling/Maryellen Beich</contact_name>
+		<old_id>37</old_id>
+		<email>mebeich2@hotmail.com;fred@stjohnssaukprairie.org;cmreinke@charter.net, sally@stjohnssaukprairie.org</email>
+	</record>
+	<record>
+		<name>St. John's Lutheran WELS</name>
+		<type>Church</type>
+		<address>624 East Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<phone>6083553870</phone>
+		<contact_name>Pastors Thomas Fricke/Carl Schroeder</contact_name>
+		<old_id>38</old_id>
+		<email>churchoffice@stjohnsbaraboo.com</email>
+	</record>
+	<record>
+		<name>St. Joseph Catholic Church</name>
+		<type>Church</type>
+		<address>300 Second Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<phone>6083564773</phone>
+		<contact_name>Kathy Siberz (church assistant);Fr. Jay Poster; Gwen Finnegan</contact_name>
+		<old_id>40</old_id>
+		<email>kathys@stjosephbaraboo.com;jayp@stjosephbaraboo.com;gwendo@centurytel.net</email>
+	</record>
+	<record>
+		<name>St. Mary's Catholic</name>
+		<type>Church</type>
+		<address>305 West Cook Street</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<phone>6087426998</phone>
+		<contact_name>Fr. Gary Krahenbuhl and Mike Stapleton</contact_name>
+		<old_id>41</old_id>
+		<email>parish@stmaryotic.com;garyk@stmaryotic.com</email>
+	</record>
+	<record>
+		<name>St. Paul's Lutheran - ELCA</name>
+		<type>Church</type>
+		<address>727 Eighth Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<phone>6083563230</phone>
+		<contact_name>Pastor Karen Hofstad;David Anderson</contact_name>
+		<old_id>42</old_id>
+		<email>khofstad1849@charter.net;stpauls@stpaulslutheranchurch.us</email>
+	</record>
+	<record>
+		<name>Trinity Episcopal Church</name>
+		<type>Church</type>
+		<address>111 Sixth Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<phone>6083563620</phone>
+		<contact_name>Rev. Scott Allen Seefeldt</contact_name>
+		<old_id>43</old_id>
+		<email>skotallen@yahoo.com</email>
+	</record>
+	<record>
+		<name>Walnut Hill Bible Church</name>
+		<type>Church</type>
+		<address>1900 East Street</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<phone>6083563111</phone>
+		<contact_name>David Hutchens/Bergene Cowan/Barb Derse/Mary Wagner/Sandy Kessenich/Carol Emanuel/Jamie Foster</contact_name>
+		<old_id>44</old_id>
+		<email>pastordave@walnuthillbible.com;barbderse@charter.net;maryw@msa-ps.com;sandkess@charter.net</email>
+	</record>
+	<record>
+		<name>United Methodist</name>
+		<type>Church</type>
+		<address>103 Reagles Street</address>
+		<city>Arlington</city>
+		<state>WI</state>
+		<zip>53911</zip>
+		<phone>6086354860;Pastor'scell:6089633348</phone>
+		<contact_name>Joyce Youngs/Pastor Lee Bushweiler</contact_name>
+		<old_id>47</old_id>
+		<email>pastor@arlingtonumchurch.org</email>
+	</record>
+	<record>
+		<name>St. Peter's Lutheran</name>
+		<type>Church</type>
+		<address>303 Park Street</address>
+		<city>Arlington</city>
+		<state>WI</state>
+		<zip>53911</zip>
+		<phone>6086354825</phone>
+		<contact_name>Donna Howell/Kelly Anklam/Jeff Rouse/Tom and Kristine Daughtery</contact_name>
+		<old_id>48</old_id>
+		<email>stpeterluth@gmail.com; pastor.stpeterluth@gmail.com; kristinedaugherty7@gmail.com;roscoex2@centurytel.net</email>
+	</record>
+	<record>
+		<name>Zion Evangelical Lutheran</name>
+		<type>Church</type>
+		<address>W6906 County Road K</address>
+		<city>Arlington</city>
+		<state>WI</state>
+		<zip>53911</zip>
+		<phone>6086354000</phone>
+		<contact_name>Pastor Scott Schwertfeger; Pastor Jacob Scott</contact_name>
+		<old_id>49</old_id>
+	</record>
+	<record>
+		<name>Open Door Baptist Church</name>
+		<type>Church</type>
+		<address>1007 Washington Avenue</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<phone>6083566677</phone>
+		<old_id>50</old_id>
+	</record>
+	<record>
+		<name>St. Clare Hospital</name>
+		<type>Church</type>
+		<address>707  14th St.</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<phone>6083561400</phone>
+		<old_id>51</old_id>
+		<email>Natalie_Raymond@ssmhc.com;natalie.maaz@yahoo.com</email>
+	</record>
+	<record>
+		<name>Faith Lutheran Church</name>
+		<type>Church</type>
+		<address>120 Faith Drive</address>
+		<city>Columbus</city>
+		<state>WI</state>
+		<zip>53925</zip>
+		<phone>9206233610</phone>
+		<contact_name>Jim Schieble/Susan Faulhuber/Pastor Robert Moberg/Pastor Lisa Nelson</contact_name>
+		<notes>Pastor Lisa Nelson coordinates Shantytown for this church.</notes>
+		<old_id>52</old_id>
+		<email>faith@faithcolumbuswi.org;faithbassed@outlook.com; nelsonkosky@yahoo.com</email>
+	</record>
+	<record>
+		<name>Prairie Valley Christian Center</name>
+		<type>Church</type>
+		<address>923 Development Drive</address>
+		<city>Lodi</city>
+		<state>WI</state>
+		<zip>53555</zip>
+		<phone>6085922273</phone>
+		<contact_name>Pastor Brian Worthing</contact_name>
+		<old_id>53</old_id>
+		<email>pvcc@prairievalley.org</email>
+	</record>
+	<record>
+		<name>Fellowship Baptist of H G</name>
+		<type>Church</type>
+		<address>N2738 County Road V</address>
+		<city>Lodi</city>
+		<state>WI</state>
+		<zip>53555</zip>
+		<phone>6085924665</phone>
+		<contact_name>Jeremy Young</contact_name>
+		<old_id>54</old_id>
+		<email>thestranger7@charter.net;fbclodi@aol.com</email>
+	</record>
+	<record>
+		<name>St. John's Lutheran Church</name>
+		<type>Church</type>
+		<address>E7513 Hwy C</address>
+		<city>North Freedom</city>
+		<state>WI</state>
+		<zip>53951</zip>
+		<phone>6085444072</phone>
+		<contact_name>Pastor Erich Hartenberger</contact_name>
+		<old_id>55</old_id>
+		<email>erichh24@hotmail.com</email>
+	</record>
+	<record>
+		<name>Pardeeville Methodist</name>
+		<type>Church</type>
+		<address>101 Wisconsin Street</address>
+		<city>Pardeeville</city>
+		<state>WI</state>
+		<zip>53954</zip>
+		<phone>6084292514</phone>
+		<contact_name>Lisa Gilbert/Rev Norm Bude</contact_name>
+		<old_id>56</old_id>
+		<email>lisa.gilbert@wisconsin.gov;umcpard@frontier.com</email>
+	</record>
+	<record>
+		<name>Caledonia Presbyterian</name>
+		<type>Church</type>
+		<address>N5123 State Road 78</address>
+		<city>PORTAGE</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<phone>6082394992</phone>
+		<contact_name>Pastor Paula Bremer</contact_name>
+		<old_id>57</old_id>
+		<email>pdbremer@gmail.com</email>
+	</record>
+	<record>
+		<name>Beth-El Evangelical Lutheran</name>
+		<type>Church</type>
+		<address>101 Bethel Drive</address>
+		<city>Poynette</city>
+		<state>WI</state>
+		<zip>53955</zip>
+		<phone>6086357118</phone>
+		<contact_name>Pastor Steve Kurth</contact_name>
+		<old_id>58</old_id>
+		<email>slkurth@juno.com; bethel.poynette@yahoo.com</email>
+	</record>
+	<record>
+		<name>Poynette Presbyterian</name>
+		<type>Church</type>
+		<address>PO Box 155</address>
+		<city>Poynette</city>
+		<state>WI</state>
+		<zip>53955</zip>
+		<phone>6086354123</phone>
+		<contact_name>Paul Strickert</contact_name>
+		<old_id>59</old_id>
+	</record>
+	<record>
+		<name>United Methodist Poynette</name>
+		<type>Church</type>
+		<address>PO BOX 297</address>
+		<city>POYNETTE</city>
+		<state>WI</state>
+		<zip>53955</zip>
+		<phone>6086352424</phone>
+		<contact_name>Ruth Ann Waugh/Sharon Smith/Ron Smith/Lavina Powers</contact_name>
+		<old_id>60</old_id>
+		<email>ruthannwaugh@aol.com;snrsmithwi@gmail.com;aross@mailbag.com;poynetteinchumc@centurylink.net</email>
+	</record>
+	<record>
+		<name>St. Thomas Catholic</name>
+		<type>Church</type>
+		<address>655 South Main Street</address>
+		<city>Poynette</city>
+		<state>WI</state>
+		<zip>53955</zip>
+		<phone>6086354326</phone>
+		<contact_name>Fr. Ray Dischler/Gerald Peterson</contact_name>
+		<old_id>61</old_id>
+		<email>PoynetteSTP@straphael.org; avis47@centurytel.net</email>
+	</record>
+	<record>
+		<name>Denzer United Methodist Church</name>
+		<type>Church</type>
+		<address>PO Box 264</address>
+		<city>North Freedom</city>
+		<state>WI</state>
+		<zip>53951</zip>
+		<phone>6087583646</phone>
+		<contact_name>Pastor Carol Quinn</contact_name>
+		<old_id>63</old_id>
+		<email>dideaton@hotmail.com</email>
+	</record>
+	<record>
+		<name>Free Congregation of Sauk Co.</name>
+		<type>Church</type>
+		<address>PO BOX 664</address>
+		<city>SAUK CITY</city>
+		<state>WI</state>
+		<zip>53583</zip>
+		<phone>6086433131</phone>
+		<contact_name>Andrew Kerr/Susan Larkin</contact_name>
+		<old_id>64</old_id>
+		<email>free_congregation@frontier.com;larkinarts@gmail.com</email>
+	</record>
+	<record>
+		<name>St. Norbert's Catholic Church</name>
+		<type>Church</type>
+		<address>8944 County Road Y</address>
+		<city>Sauk City</city>
+		<state>WI</state>
+		<zip>53583</zip>
+		<phone>6086433661</phone>
+		<contact_name>Juanita  Wipperfurth</contact_name>
+		<old_id>65</old_id>
+		<email>thewipps412@gmail.com</email>
+	</record>
+	<record>
+		<name>St. John's Lutheran Church</name>
+		<type>Church</type>
+		<address>850 Armstrong Street</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<phone>6087422387</phone>
+		<contact_name>Pastor Kurt Klingbeil</contact_name>
+		<old_id>70</old_id>
+		<email>kklingbeil@stjohnsportage.com;ktaft@stjohnsportage.com</email>
+	</record>
+	<record>
+		<name>River Hills Community Church</name>
+		<type>Church</type>
+		<address>PO Box 25</address>
+		<city>Sauk City</city>
+		<state>WI</state>
+		<zip>53583</zip>
+		<phone>6086436000</phone>
+		<contact_name>Pastor Dennis Virta</contact_name>
+		<old_id>121</old_id>
+		<email>dennis@riverhillscommunitychurch.org;office@riverhillschurch.org</email>
+	</record>
+	<record>
+		<name>Newport Lutheran Church</name>
+		<type>Church</type>
+		<address>N8794 Peterson Road</address>
+		<city>Wisconsin Dells</city>
+		<state>WI</state>
+		<zip>53965</zip>
+		<phone>6087424286</phone>
+		<contact_name>Pastor William Grimm</contact_name>
+		<old_id>1000013</old_id>
+		<email>bjgrimm1@frontier.com</email>
+	</record>
+	<record>
+		<name>Bethlehem EV Lutheran Church</name>
+		<type>Church</type>
+		<address>PO Box 606</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<phone>6087428502</phone>
+		<contact_name>Pastor Kathy Gerking/Deb Hensler;Marge Margelowsky</contact_name>
+		<notes>Stacie Macomber-Youth/coordinator 608 745 4362 four-macombers@charter.net</notes>
+		<old_id>73</old_id>
+		<email>bethluch@frontier.com;debhensler@charter.net;four-macombers@charter.net;marlow@frontier.com;pastor.bethlehem@frontier.com</email>
+	</record>
+	<record>
+		<name>Cross of Christ Lutheran</name>
+		<type>Church</type>
+		<address>585 East Slifer Street</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<phone>6087425609</phone>
+		<contact_name>Pastor Scott Schultz</contact_name>
+		<old_id>74</old_id>
+		<email>pastor@portagelutheranchurch.org</email>
+	</record>
+	<record>
+		<name>Faith Baptist</name>
+		<type>Church</type>
+		<address>311 East Wisconsin St</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<phone>6087451917</phone>
+		<contact_name>Pastor Daniel Gaschke/Bill &amp; Sarah Mautz</contact_name>
+		<old_id>75</old_id>
+		<email>info@fbcpw.org</email>
+	</record>
+	<record>
+		<name>Grace Bible Church</name>
+		<type>Church</type>
+		<address>PO BOX 534</address>
+		<city>PORTAGE</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<phone>6087425090</phone>
+		<contact_name>Pastor Steve Corbett</contact_name>
+		<old_id>76</old_id>
+		<email>mary@escapetograce.org</email>
+	</record>
+	<record>
+		<name>Portage Presbyterian</name>
+		<type>Church</type>
+		<address>120 West Pleasant Street</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<phone>6087426006</phone>
+		<contact_name>Pastor David Hankins, Mary Heinze, Jim &amp; Mary Kingsley, Chris Crossley</contact_name>
+		<old_id>77</old_id>
+		<email>office@portagepresbyterian.com;pastordave@portagepresbyterian.com;cnpcross@dishmail.net</email>
+	</record>
+	<record>
+		<name>Silver Lake Community Church</name>
+		<type>Church</type>
+		<address>101 Hiawatha Street</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<phone>6087424217</phone>
+		<contact_name>Pastor Scott Longwell; Larry Bielke</contact_name>
+		<old_id>78</old_id>
+		<email>info@silverlakecc.net;bielke1514@yahoo.com</email>
+	</record>
+	<record>
+		<name>Trinity UCC</name>
+		<type>Church</type>
+		<address>503 Prospect Avenue</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<phone>6087421422</phone>
+		<contact_name>Pastor Vicki Warren, Myra Best, and Mary Gabbei</contact_name>
+		<notes>Cell phone:  608-617-2213.
+Pastor Warren said she ran into a local man raised in a HFH home, who wants to give back somehow.  Does balloons and magic. His contact info:
+Nick Wiszynski
+
+Nickey and Fah Fynn
+Balloon and Magical Entertainment
+608-5</notes>
+		<old_id>79</old_id>
+	</record>
+	<record>
+		<name>UMC Portage</name>
+		<type>Church</type>
+		<address>1804 New Pinery Road</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<phone>6087422107</phone>
+		<contact_name>Pastor Tom Countryman</contact_name>
+		<old_id>80</old_id>
+		<email>rev_countryman@yahoo.com; pumc@myfrontiermail.com</email>
+	</record>
+	<record>
+		<name>River of Life Church</name>
+		<type>Church</type>
+		<address>102 West Franklin Street</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<phone>6087454040</phone>
+		<contact_name>Pastor Bob Turner</contact_name>
+		<old_id>81</old_id>
+		<email>Bob@PortageChurch.org</email>
+	</record>
+	<record>
+		<name>Divine Savior Hospital</name>
+		<type>Church</type>
+		<address>715 West Pleasant Street</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<phone>6087455905and6086978845</phone>
+		<contact_name>Monica Holden</contact_name>
+		<old_id>83</old_id>
+		<email>mholden@dshealthcare.com</email>
+	</record>
+	<record>
+		<name>ABC Connections</name>
+		<type>Church</type>
+		<address>307 Cook Street</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<phone>6087424039</phone>
+		<contact_name>Nancy Holtz</contact_name>
+		<old_id>84</old_id>
+		<email>abcconnect@jvlnet.com</email>
+	</record>
+	<record>
+		<name>First Baptist</name>
+		<type>Church</type>
+		<address>321 North Locust Street</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<phone>6085246606</phone>
+		<contact_name>Pastor Robert Brandhagen</contact_name>
+		<old_id>103</old_id>
+		<email>counselor.spiritual@gmail.com</email>
+	</record>
+	<record>
+		<name>Faith Lutheran WELS</name>
+		<type>Church</type>
+		<address>1400 Eighth Street</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<phone>6085246353</phone>
+		<contact_name>Pastor Tod Vertz</contact_name>
+		<old_id>102</old_id>
+		<email>faithlutheran@hotmail.com</email>
+	</record>
+	<record>
+		<name>Cornerstone Missionary Baptist</name>
+		<type>Church</type>
+		<address>S3111 Ableman Road</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<phone>6085245838</phone>
+		<contact_name>Pastor Sonny Hyde/Liz Breckley/Scott Breckley/Dave &amp; Karen Ennis</contact_name>
+		<old_id>101</old_id>
+		<email>info@cornerstonembc.com;lbreckley@aol.com;greg@breckley.com;davebmof@yahoo.com</email>
+	</record>
+	<record>
+		<name>Church of God</name>
+		<type>Church</type>
+		<address>1225 North Dewey Avenue</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<phone>6085244771</phone>
+		<contact_name>Debbie Sammons</contact_name>
+		<old_id>100</old_id>
+		<email>rdschog@rucls.net</email>
+	</record>
+	<record>
+		<name>Bible Baptist</name>
+		<type>Church</type>
+		<address>809 Explorers Trail</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<phone>6085242604</phone>
+		<old_id>99</old_id>
+	</record>
+	<record>
+		<name>New Life Assembly of God</name>
+		<type>Church</type>
+		<address>1229 Eighth Street</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<phone>6085244719</phone>
+		<contact_name>Clark Peterson</contact_name>
+		<old_id>106</old_id>
+	</record>
+	<record>
+		<name>First Presbyterian Church</name>
+		<type>Church</type>
+		<address>148 North Park Street</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<phone>6085242812</phone>
+		<contact_name>Pastor Joe Corbin</contact_name>
+		<old_id>107</old_id>
+		<email>jcorbin@rucls.net</email>
+	</record>
+	<record>
+		<name>Sacred Heart Catholic</name>
+		<type>Church</type>
+		<address>624 North Willow Street</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<phone>6085242412</phone>
+		<contact_name>Dick Stransky</contact_name>
+		<notes>School's number is:  524-3611. Mike Rocha is principal.</notes>
+		<old_id>108</old_id>
+		<email>stransky@rucls.net;dickstransky@charter.net</email>
+	</record>
+	<record>
+		<name>St. John's Evangelical Lutheran Church</name>
+		<type>Church</type>
+		<address>307 Sixth Street</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<phone>6085244516</phone>
+		<contact_name>David Glesne, and Ben Berg;Lynn Horkan;Beth Pusel;Sue Johnson</contact_name>
+		<old_id>109</old_id>
+		<email>pastordavid@stjohnreedsburg.com;ben@stjohnreedsburg.com;dlhorkan@yahoo.com;mjohnson2@wildblue.net</email>
+	</record>
+	<record>
+		<name>St. Peter's Lutheran Church</name>
+		<type>Church</type>
+		<address>345 North Pine Street</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<phone>6085244512</phone>
+		<contact_name>Pastor Paul Crolius</contact_name>
+		<old_id>110</old_id>
+		<email>stpetersreedsburg@gmail.com</email>
+	</record>
+	<record>
+		<name>7th Day Adventist</name>
+		<type>Church</type>
+		<address>115 South Oak Street</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<phone>6085248118</phone>
+		<old_id>111</old_id>
+	</record>
+	<record>
+		<name>Trinity Baptist</name>
+		<type>Church</type>
+		<address>S3205 Golf Course Road</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<phone>6085243388</phone>
+		<contact_name>Mike Lopp; Ben Seamans, Darcy Fry, Jeff Fray</contact_name>
+		<notes>Ben Seamans-Youth director</notes>
+		<old_id>112</old_id>
+		<email>mlopp@todayschurch.com;Jeff.Fray@charter.net;tbcoffice@todayschurch.com</email>
+	</record>
+	<record>
+		<name>United Methodist Church</name>
+		<type>Church</type>
+		<address>833 Third Street</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<phone>6085243913</phone>
+		<contact_name>Pastor Marvin Singh, Zach Jantz (Youth), Wendy Hanko</contact_name>
+		<old_id>114</old_id>
+		<email>rumc@rucls.net;rumcyc@rucls.net;whanko@rucls.net</email>
+	</record>
+	<record>
+		<name>St. Peter's Lutheran Church</name>
+		<type>Church</type>
+		<address>325 Mill Street</address>
+		<city>Loganville</city>
+		<state>WI</state>
+		<zip>53943</zip>
+		<phone>6087273721</phone>
+		<contact_name>Pastor Chris Miller, Hannah McDowell, Janet Klipp</contact_name>
+		<old_id>115</old_id>
+		<email>h_mcdowell@hotmail.com;klippj@yahoo.com</email>
+	</record>
+	<record>
+		<name>St. John's Lutheran Church WELS</name>
+		<type>Church</type>
+		<address>301 West Broadway</address>
+		<city>Rock Springs</city>
+		<state>WI</state>
+		<zip>53961</zip>
+		<phone>6085245289</phone>
+		<contact_name>Jim Garske</contact_name>
+		<old_id>117</old_id>
+	</record>
+	<record>
+		<name>Holy Family Catholic Church</name>
+		<type>Church</type>
+		<address>310 Bluff Street</address>
+		<city>La Valle</city>
+		<state>WI</state>
+		<zip>53941</zip>
+		<phone>6089862102</phone>
+		<contact_name>Mandy Schulte, Matt &amp; Diane Sharp</contact_name>
+		<old_id>118</old_id>
+		<email>schultem@firstweber.com</email>
+	</record>
+	<record>
+		<name>Zion Lutheran Stone Church</name>
+		<type>Church</type>
+		<address>E6787 Stone Church Road</address>
+		<city>Rock Springs</city>
+		<state>WI</state>
+		<zip>53961</zip>
+		<phone>6087272242</phone>
+		<contact_name>Corey Schulte</contact_name>
+		<old_id>119</old_id>
+		<email>an8fan@hotmail.com</email>
+	</record>
+	<record>
+		<name>St. Mary's Catholic Church</name>
+		<type>Church</type>
+		<address>231 East Main Street</address>
+		<city>Merrimac</city>
+		<state>WI</state>
+		<zip>53561</zip>
+		<phone>Nochurchphone</phone>
+		<contact_name>Mardy Krejchik (742-3364)</contact_name>
+		<notes>Part of St Al's Parrish Sauk City.No mission committee; also contact Marsha England @493-2337 board member.</notes>
+		<old_id>123</old_id>
+		<email>jmkrejchik@yahoo.com</email>
+	</record>
+	<record>
+		<name>St. Mary's Catholic Church</name>
+		<type>Church</type>
+		<address>318 South Main Street</address>
+		<city>Pardeeville</city>
+		<state>WI</state>
+		<zip>53954</zip>
+		<phone>6084293030</phone>
+		<contact_name>Jean Damm/Ken &amp; Elaine Rieder/Kris Radtke</contact_name>
+		<old_id>124</old_id>
+		<email>stmary@jvlnet.com;WMJD@frontier.com;eandkrieder@frontier.com;churchlady2010@hotmail.com</email>
+	</record>
+	<record>
+		<name>United Methodist Church</name>
+		<type>Church</type>
+		<address>222 South Dickason Boulevard</address>
+		<city>Columbus</city>
+		<state>WI</state>
+		<zip>53925</zip>
+		<phone>9206233625</phone>
+		<contact_name>Pastor Jim Cotter; Wanda Guenther</contact_name>
+		<old_id>125</old_id>
+		<email>jcotter@wisconsinumc.org;columbusumc@wisconsinumc.org;wandag@cbusumc.net;</email>
+	</record>
+	<record>
+		<name>Columbus Community Church</name>
+		<type>Church</type>
+		<address>755 Waterloo Street</address>
+		<city>Columbus</city>
+		<state>WI</state>
+		<zip>53925</zip>
+		<phone>9206235235</phone>
+		<contact_name>Floyd Laabs (Reverend)</contact_name>
+		<old_id>126</old_id>
+	</record>
+	<record>
+		<name>St. Jerome's Catholic Church</name>
+		<type>Church</type>
+		<address>1550 Farnham Street</address>
+		<city>Columbus</city>
+		<state>WI</state>
+		<zip>53925</zip>
+		<phone>9206233753</phone>
+		<contact_name>Father Steve Kortendick</contact_name>
+		<old_id>127</old_id>
+		<email>columbussjp@straphael.org</email>
+	</record>
+	<record>
+		<name>First Presbyterian Church</name>
+		<type>Church</type>
+		<address>321 West Mill Street</address>
+		<city>Columbus</city>
+		<state>WI</state>
+		<zip>53925</zip>
+		<phone>9206233350</phone>
+		<old_id>128</old_id>
+	</record>
+	<record>
+		<name>Columbus Christian Fellowship</name>
+		<type>Church</type>
+		<address>342 N LEWIS ST</address>
+		<city>COLUMBUS</city>
+		<state>WI</state>
+		<zip>53925</zip>
+		<phone>9206232977</phone>
+		<contact_name>Matthew J Brown</contact_name>
+		<old_id>129</old_id>
+	</record>
+	<record>
+		<name>New Testament Baptist Church</name>
+		<type>Church</type>
+		<address>N2232 DU BORG RD</address>
+		<city>COLUMBUS</city>
+		<state>WI</state>
+		<zip>53925</zip>
+		<phone>9206233600</phone>
+		<contact_name>Pastor Todd Werner</contact_name>
+		<old_id>130</old_id>
+		<email>pastortodd@ntbc-columbus.org; ntbc.columbus@gmail.com</email>
+	</record>
+	<record>
+		<name>Zion Evangelical Lutheran Church WELS</name>
+		<type>Church</type>
+		<address>254 West Mill Street</address>
+		<city>Columbus</city>
+		<state>WI</state>
+		<zip>53925</zip>
+		<phone>9206235180</phone>
+		<contact_name>Pastor Robert Wilke</contact_name>
+		<old_id>131</old_id>
+		<email>revwilke@gmail.com;office@zioncolumbus.com</email>
+	</record>
+	<record>
+		<name>Olivet Congregational UCC</name>
+		<type>Church</type>
+		<address>313 West Prairie Street</address>
+		<city>Columbus</city>
+		<state>WI</state>
+		<zip>53925</zip>
+		<phone>9206235140</phone>
+		<contact_name>Pastor Lee Zortman/Steve Black</contact_name>
+		<old_id>132</old_id>
+		<email>olivetucc@sbcglobal.net;stblack4@gmail.com</email>
+	</record>
+	<record>
+		<name>St. John's Evangelical Lutheran</name>
+		<type>Church</type>
+		<address>Box 367</address>
+		<city>Pardeeville</city>
+		<state>WI</state>
+		<zip>53954</zip>
+		<phone>6084293636</phone>
+		<contact_name>Leonard Kasper</contact_name>
+		<old_id>133</old_id>
+		<email>lenlinda@frontier.com;stjohns_pville@frontier.com</email>
+	</record>
+	<record>
+		<name>Trinity Lutheran</name>
+		<type>Church</type>
+		<address>728 Church Street</address>
+		<city>Wisconsin Dells</city>
+		<state>WI</state>
+		<zip>53965</zip>
+		<phone>6082533241</phone>
+		<contact_name>David and Jean Krause / James Laatsch/Rev. Matthew Gehrke</contact_name>
+		<old_id>134</old_id>
+		<email>office@trinitydells.org</email>
+	</record>
+	<record>
+		<name>Bonnet Prairie Lutheran</name>
+		<type>Church</type>
+		<address>N3694 Old F Road</address>
+		<city>Rio</city>
+		<state>WI</state>
+		<zip>53960</zip>
+		<phone>9209923200</phone>
+		<contact_name>Linda Landsverk, Pastor Joan Wittrock</contact_name>
+		<notes>Pastor Joan Wittrock's cell:
+920-226-0453</notes>
+		<old_id>135</old_id>
+		<email>wittro@hotmail.com;lindalandsverk@yahoo.com</email>
+	</record>
+	<record>
+		<name>Seventh Day Adventist</name>
+		<type>Church</type>
+		<address>W8531 State Road 33</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<phone>6087424695/6085663296</phone>
+		<contact_name>Pastor Christian Ronald</contact_name>
+		<old_id>139</old_id>
+		<email>christianronalds@charter.net</email>
+	</record>
+	<record>
+		<name>St. John's Lutheran Church</name>
+		<type>Church</type>
+		<address>380 Walnut Street</address>
+		<city>Loganville</city>
+		<state>WI</state>
+		<zip>53943</zip>
+		<phone>6087272000</phone>
+		<contact_name>Rev. Raymond Harms</contact_name>
+		<old_id>140</old_id>
+	</record>
+	<record>
+		<name>St. John's Lutheran Church</name>
+		<type>Church</type>
+		<address>PO Box 27</address>
+		<city>Hillpoint</city>
+		<state>WI</state>
+		<zip>53937</zip>
+		<contact_name>Doris Schulte</contact_name>
+		<old_id>141</old_id>
+		<email>gschulte@frontier.com</email>
+	</record>
+	<record>
+		<name>St Paul Lutheran Church</name>
+		<type>Church</type>
+		<address>PO Box 357</address>
+		<city>North Freedom</city>
+		<state>WI</state>
+		<zip>53951</zip>
+		<contact_name>Ruth Nolden</contact_name>
+		<old_id>142</old_id>
+		<email>jrnolden@centurytel.net</email>
+	</record>
+	<record>
+		<name>St. Paul's Lutheran Church</name>
+		<type>Church</type>
+		<address>E4171 Village Road</address>
+		<city>Hillpoint</city>
+		<state>WI</state>
+		<zip>53937</zip>
+		<phone>6087273841</phone>
+		<contact_name>Delores Goetsch</contact_name>
+		<old_id>143</old_id>
+	</record>
+	<record>
+		<name>First Reformed Church</name>
+		<type>Church</type>
+		<address>406 South High Street</address>
+		<city>Randolph</city>
+		<state>WI</state>
+		<zip>53956</zip>
+		<phone>9203263707</phone>
+		<contact_name>Pastor Tim Ehrhardt</contact_name>
+		<notes>In 2/2013 this church - under the name of Pastor Tim Ehrhardt - donated $430 to HFHI, and designated that HFHSCA receive the 89% portion.</notes>
+		<old_id>1000022</old_id>
+		<email>tim@randolphfirstreformed.com,  bruins@randolphfirstreformed.com,</email>
+	</record>
+	<record>
+		<name>Trinity Lutheran Church</name>
+		<type>Church</type>
+		<address>PO Box 27</address>
+		<city>Hillpoint</city>
+		<state>WI</state>
+		<zip>53937</zip>
+		<contact_name>William Clark</contact_name>
+		<old_id>145</old_id>
+		<email>jgtowne@mwt.net</email>
+	</record>
+	<record>
+		<name>Zion Lutheran Church</name>
+		<type>Church</type>
+		<address>200 Union Street</address>
+		<city>La Valle</city>
+		<state>WI</state>
+		<zip>53941</zip>
+		<phone>6089857412</phone>
+		<contact_name>Carol Nowack</contact_name>
+		<old_id>146</old_id>
+		<email>rincar@mwt.net</email>
+	</record>
+	<record>
+		<name>Grace Presbyterian Church</name>
+		<type>Church</type>
+		<address>N7631 State Road 22</address>
+		<city>Pardeeville</city>
+		<state>WI</state>
+		<zip>53954</zip>
+		<phone>6084299086</phone>
+		<contact_name>Linda Seely</contact_name>
+		<old_id>147</old_id>
+		<email>pastorchuck@gracepresinfo.com</email>
+	</record>
+	<record>
+		<name>Rio Assembly of God</name>
+		<type>Church</type>
+		<address>N3974 Williams Road</address>
+		<city>Rio</city>
+		<state>WI</state>
+		<zip>53960</zip>
+		<phone>9209925664</phone>
+		<contact_name>Pastor Barry Auch</contact_name>
+		<old_id>148</old_id>
+		<email>assembly@centurytel.net</email>
+	</record>
+	<record>
+		<name>Living Gospel Church</name>
+		<type>Church</type>
+		<address>322 Lincoln Avenue</address>
+		<city>Rio</city>
+		<state>WI</state>
+		<zip>53960</zip>
+		<phone>9209925112</phone>
+		<contact_name>Pastor David Lusse</contact_name>
+		<old_id>149</old_id>
+		<email>rose@creationsceramics.com;rbreneman@centurytel.net;melisaarndt@centurytel.net;dblusse@gmail.com</email>
+	</record>
+	<record>
+		<name>Faith Bible Church</name>
+		<type>Church</type>
+		<address>PO Box 234</address>
+		<city>Rio</city>
+		<state>WI</state>
+		<zip>53960</zip>
+		<phone>9209923274</phone>
+		<contact_name>Pastor Mike Gormican</contact_name>
+		<old_id>150</old_id>
+		<email>mike.gormican@fbcrio.org</email>
+	</record>
+	<record>
+		<name>Redeemer Lutheran Church</name>
+		<type>Church</type>
+		<address>610 Lincoln Avenue</address>
+		<city>Rio</city>
+		<state>WI</state>
+		<zip>53960</zip>
+		<phone>9209923553</phone>
+		<contact_name>Geri Gorman/Kevin Stoddard</contact_name>
+		<old_id>151</old_id>
+		<email>redeemer@centurytel.net;kstoddard01@gmail.com;gormans@centurytel.net</email>
+	</record>
+	<record>
+		<name>Wesleyan Bible Church</name>
+		<type>Church</type>
+		<address>113 Second Street</address>
+		<city>Pardeeville</city>
+		<state>WI</state>
+		<zip>53954</zip>
+		<phone>6084293161</phone>
+		<contact_name>Pastor Doug Walborn</contact_name>
+		<old_id>152</old_id>
+		<email>pardeevillechurch@yahoo.com</email>
+	</record>
+	<record>
+		<name>First Presbyterian Church</name>
+		<type>Church</type>
+		<address>105 South Main Street</address>
+		<city>Pardeeville</city>
+		<state>WI</state>
+		<zip>53954</zip>
+		<phone>6084292646</phone>
+		<contact_name>Pastor Julie Waterdu</contact_name>
+		<old_id>153</old_id>
+		<email>teicli@hotmail.com;jlwaldman@frontier.com</email>
+	</record>
+	<record>
+		<name>North Scott Baptist Church</name>
+		<type>Church</type>
+		<address>PO Box 126</address>
+		<city>Pardeeville</city>
+		<state>WI</state>
+		<zip>53954</zip>
+		<phone>6084292794</phone>
+		<old_id>154</old_id>
+	</record>
+	<record>
+		<name>Wyocena Community Church</name>
+		<type>Church</type>
+		<address>164 East Franklin St</address>
+		<city>Wyocena</city>
+		<state>Wisconsin</state>
+		<zip>53969</zip>
+		<phone>6086178685</phone>
+		<contact_name>Rev. Charles Case</contact_name>
+		<old_id>155</old_id>
+		<email>revcharlesc@netzero.com</email>
+	</record>
+	<record>
+		<name>St. Cecilia Catholic Church</name>
+		<type>Church</type>
+		<address>603 Oak Street</address>
+		<city>Wisconsin Dells</city>
+		<state>WI</state>
+		<zip>53965</zip>
+		<phone>6082548381</phone>
+		<contact_name>Fr. Eric Sternberg, Terry Donnley,Frank Zowlacki, Fr. Michael Richel</contact_name>
+		<old_id>159</old_id>
+		<email>mrichel@dellscatholic.com; freric@dellscatholic.com</email>
+	</record>
+	<record>
+		<name>Grace Fellowship Church</name>
+		<type>Church</type>
+		<address>Box 222</address>
+		<city>Wisconsin Dells</city>
+		<state>WI</state>
+		<zip>53965</zip>
+		<phone>6082532087</phone>
+		<contact_name>Pastor John or Karen Torgerson</contact_name>
+		<old_id>160</old_id>
+		<email>jtorgersonchurch@frontier.com</email>
+	</record>
+	<record>
+		<name>Big Spring Congregational</name>
+		<type>Church</type>
+		<address>373 Golden Court</address>
+		<city>Wisconsin Dells</city>
+		<state>WI</state>
+		<zip>53965</zip>
+		<phone>6089812106</phone>
+		<contact_name>Edie Rehm or Pastor David Bowman</contact_name>
+		<old_id>161</old_id>
+		<email>rememberjesus@ymail.com</email>
+	</record>
+	<record>
+		<name>Holy Cross Episcopal Church</name>
+		<type>Church</type>
+		<address>322 Unity Drive</address>
+		<city>Wisconsin Dells</city>
+		<state>WI</state>
+		<zip>53965</zip>
+		<phone>6082548623</phone>
+		<contact_name>Bill and Lois McIntyre</contact_name>
+		<old_id>162</old_id>
+		<email>info@holycrosswisdells.com</email>
+	</record>
+	<record>
+		<name>Keystone Baptist Church</name>
+		<type>Church</type>
+		<address>E10003A Trout Road</address>
+		<city>Wisconsin Dells</city>
+		<state>WI</state>
+		<zip>53965</zip>
+		<phone>6082542063</phone>
+		<contact_name>Pastor David Moore</contact_name>
+		<old_id>163</old_id>
+		<email>pastor@keystonebaptistchurch.com</email>
+	</record>
+	<record>
+		<name>United Presbyterian Church</name>
+		<type>Church</type>
+		<address>730 Cedar Street</address>
+		<city>Wisconsin Dells</city>
+		<state>WI</state>
+		<zip>53965</zip>
+		<phone>6082533481</phone>
+		<contact_name>Pastor Steve Keller or Carla Thompson, Ginger Hawn</contact_name>
+		<notes>As of 6-2015, Carla Thompson is church secretary. This church has sent volunteers to builds in previous years.</notes>
+		<old_id>164</old_id>
+		<email>unitedpresby@yahoo.com</email>
+	</record>
+	<record>
+		<name>Bethany Lutheran ELCA</name>
+		<type>Church</type>
+		<address>620 Broadway</address>
+		<city>Wisconsin Dells</city>
+		<state>WI</state>
+		<zip>53965</zip>
+		<phone>6082544501</phone>
+		<contact_name>Pastor Craig Wolfgram</contact_name>
+		<old_id>165</old_id>
+		<email>bethany_wis_dells@frontier.com</email>
+	</record>
+	<record>
+		<name>Dells Christian Academy</name>
+		<type>Church</type>
+		<address>PO Box 472</address>
+		<city>Wisconsin Dells</city>
+		<state>WI</state>
+		<zip>53965</zip>
+		<phone>6082548017</phone>
+		<contact_name>Kaitlyn Cordrey or Pastor Robin Buchholz</contact_name>
+		<old_id>166</old_id>
+	</record>
+	<record>
+		<name>Turn Point Pentecostal Church</name>
+		<type>Church</type>
+		<address>4049 County Road G</address>
+		<city>Wisconsin Dells</city>
+		<state>WI</state>
+		<zip>53965</zip>
+		<phone>6089812544</phone>
+		<contact_name>Pastor Edward Herman</contact_name>
+		<old_id>167</old_id>
+	</record>
+	<record>
+		<name>Mountain Faith Church &amp; David J. Gonzales Ministries</name>
+		<type>Church</type>
+		<address>E11104 Moon Rd</address>
+		<city>Lake Delton</city>
+		<state>WI</state>
+		<zip>53940</zip>
+		<phone>6083561804</phone>
+		<contact_name>Pastor David Gonzales or Anna Tucker</contact_name>
+		<old_id>168</old_id>
+	</record>
+	<record>
+		<name>UMC Dells Delton and Davis Corners</name>
+		<type>Church</type>
+		<address>320 Unity Drive</address>
+		<city>Wisconsin Dells</city>
+		<state>WI</state>
+		<zip>53965</zip>
+		<phone>6082536511</phone>
+		<contact_name>Pastor Wesley Jacob</contact_name>
+		<old_id>1000003</old_id>
+		<email>dellsdelton.daviscornersumc1@frontier.com;davedashir@gmail.com</email>
+	</record>
+	<record>
+		<name>Grace Reformed Church</name>
+		<type>Church</type>
+		<address>248 Myrtle Street</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<phone>6085245856</phone>
+		<notes>located at 148 Park St.</notes>
+		<old_id>1000002</old_id>
+	</record>
+	<record>
+		<name>St. John the Baptist Episcopal</name>
+		<type>Church</type>
+		<address>211 West Pleasant Street</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<phone>6087426054</phone>
+		<contact_name>Charles Bradley</contact_name>
+		<old_id>174</old_id>
+		<email>scbradleyjr@gmail.com</email>
+	</record>
+	<record>
+		<name>Sandusky United Methodist</name>
+		<type>Church</type>
+		<address>PO Box 36</address>
+		<city>Lime Ridge</city>
+		<state>WI</state>
+		<zip>53942</zip>
+		<phone>6089862021</phone>
+		<contact_name>Pastor Vicki Brantmeyer</contact_name>
+		<notes>In 2/2011, made a $225 donation.  2/12 donation 100 from Mrs. Holly Bindl S9606 Cty Rd. G Plain, WI  53577. in 2/2013, another $100 through Holly Bindl.</notes>
+		<old_id>1000004</old_id>
+		<email>lrsdumc@hotmail.com</email>
+	</record>
+	<record>
+		<name>First Presbyterian Church</name>
+		<type>Church</type>
+		<address>121 West Florence</address>
+		<city>Cambria</city>
+		<state>Wisconsin</state>
+		<zip>53923</zip>
+		<phone>9203485859</phone>
+		<contact_name>Shirley Lloyd</contact_name>
+		<old_id>1000006</old_id>
+		<email>salloyd@centurytel.net</email>
+	</record>
+	<record>
+		<name>Friesland Reformed Church</name>
+		<type>Church</type>
+		<address>107 East Winnebago Street</address>
+		<city>Friesland</city>
+		<state>WI</state>
+		<zip>53935</zip>
+		<phone>9203485561</phone>
+		<contact_name>Pastor Rob Ford</contact_name>
+		<old_id>1000007</old_id>
+		<email>rob1stfries@centurytel.net</email>
+	</record>
+	<record>
+		<name>St. Johns Lutheran Church</name>
+		<type>Church</type>
+		<address>307 6th Street</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959</zip>
+		<phone>6082549763</phone>
+		<contact_name>Beth Voigt</contact_name>
+		<old_id>1000037</old_id>
+	</record>
+	<record>
+		<name>Turnpoint Pentecostal</name>
+		<type>Church</type>
+		<address>PO Box 210</address>
+		<city>Wisconsin Dells</city>
+		<state>WI</state>
+		<zip>53965</zip>
+		<phone>6089812544</phone>
+		<contact_name>Pastor Herman</contact_name>
+		<old_id>1000010</old_id>
+	</record>
+	<record>
+		<name>United Church Work</name>
+		<type>Church</type>
+		<address>c/o Tom &amp; Margaret McFarlane</address>
+		<city>Sauk City</city>
+		<state>WI</state>
+		<zip>53583</zip>
+		<old_id>1000011</old_id>
+	</record>
+	<record>
+		<name>Spring Prairie Lutheran Church ELCA</name>
+		<type>Church</type>
+		<address>N509 County Rd C</address>
+		<city>DeForest</city>
+		<state>WI</state>
+		<zip>53532</zip>
+		<phone>6088464178</phone>
+		<contact_name>Pastor Sylvia Lee-Thompson;Doug Bindrich</contact_name>
+		<notes>Just into Columbia County--actually in Keyeser</notes>
+		<old_id>1000012</old_id>
+		<email>splc@centurytel.net; doug266@centurytel.net;pastorsylvia@centurytel.net</email>
+	</record>
+	<record>
+		<name>St Paul's Lutheran Church</name>
+		<type>Church</type>
+		<address>212 Volk St</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<phone>6087424286</phone>
+		<contact_name>Pastor William Grimm</contact_name>
+		<old_id>1000014</old_id>
+		<email>bjgrimm1@frontier.com</email>
+	</record>
+	<record>
+		<name>Cross Point Assembly of God</name>
+		<type>Church</type>
+		<address>2727 County CX</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<phone>6087422221</phone>
+		<contact_name>Pastor Randy Mantic</contact_name>
+		<old_id>1000015</old_id>
+		<email>revmantic@crosspointag.com</email>
+	</record>
+	<record>
+		<name>Rev. John Torgerson</name>
+		<type>Church</type>
+		<address>PO Box 222</address>
+		<city>Wisconsin Dells</city>
+		<state>WI</state>
+		<zip>53965</zip>
+		<phone>6082542669</phone>
+		<old_id>1000016</old_id>
+		<email>jtorgersonchurch@frontier.com</email>
+	</record>
+	<record>
+		<name>Mt. Zion Lutheran Church</name>
+		<type>Church</type>
+		<address>505 - 13th Street South</address>
+		<city>Hudson</city>
+		<state>WI</state>
+		<zip>54016</zip>
+		<old_id>1000017</old_id>
+	</record>
+	<record>
+		<name>Rio Area Clergy Assn</name>
+		<type>Church</type>
+		<zip>0</zip>
+		<old_id>1000018</old_id>
+	</record>
+	<record>
+		<name>Madison Messiah</name>
+		<type>Church</type>
+		<address>5202 Cottage Grove Road</address>
+		<city>Madison</city>
+		<state>WI</state>
+		<zip>53716</zip>
+		<notes>Gundlach Family Fund</notes>
+		<old_id>1000019</old_id>
+	</record>
+	<record>
+		<name>Living Gospel Church</name>
+		<type>Church</type>
+		<city>Rio</city>
+		<state>Wisconsin</state>
+		<zip>53960</zip>
+		<phone>6082190101</phone>
+		<contact_name>Melisa Arndt</contact_name>
+		<old_id>1000023</old_id>
+		<email>melisaarndt@centurytel.net</email>
+	</record>
+	<record>
+		<name>Amery Congregational UCC</name>
+		<type>Church</type>
+		<address>201 Harriman Avenue North</address>
+		<city>Amery</city>
+		<state>WI</state>
+		<zip>54001</zip>
+		<phone>7152687390</phone>
+		<contact_name>Pastor Barry Schaefer</contact_name>
+		<old_id>1000027</old_id>
+	</record>
+	<record>
+		<name>North Windsor United Methodist Church</name>
+		<type>Church</type>
+		<address>7523 South Meixner Road</address>
+		<city>DeForest</city>
+		<state>WI</state>
+		<zip>53532</zip>
+		<phone>6086354860</phone>
+		<old_id>1000024</old_id>
+	</record>
+	<record>
+		<name>New Hope Community Church</name>
+		<type>Church</type>
+		<address>N3522 Hwy 51</address>
+		<city>Poynette</city>
+		<state>WI</state>
+		<zip>53955</zip>
+		<notes>This church sent a group to the 2013 WomenBuild.</notes>
+		<old_id>1000025</old_id>
+	</record>
+	<record>
+		<name>St. Peter's Lutheran Church</name>
+		<type>Church</type>
+		<address>PO Box 45</address>
+		<city>Arlington</city>
+		<state>WI</state>
+		<zip>53955</zip>
+		<phone>6086354825</phone>
+		<old_id>1000026</old_id>
+	</record>
+	<record>
+		<name>ST. PAULS CHURCH</name>
+		<type>Church</type>
+		<address>727 8TH STREET</address>
+		<city>BARABOO</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<old_id>1000033</old_id>
+	</record>
+	<record>
+		<name>Community Bible Church</name>
+		<type>Church</type>
+		<address>N701 State Rds 12 &amp; 16</address>
+		<city>Wisconsin Dells</city>
+		<state>WI</state>
+		<zip>53965</zip>
+		<phone>6082542393</phone>
+		<contact_name>Pastor Dennis</contact_name>
+		<old_id>1000028</old_id>
+	</record>
+	<record>
+		<name>Fall River United Methodist Church</name>
+		<type>Church</type>
+		<address>138 South Street</address>
+		<city>Fall River</city>
+		<state>WI</state>
+		<zip>53932</zip>
+		<phone>9372196091</phone>
+		<contact_name>Pastor Afi Dobbins</contact_name>
+		<old_id>1000029</old_id>
+		<email>adobbins@wisconsinumc.org</email>
+	</record>
+	<record>
+		<type>Church</type>
+		<zip>0</zip>
+		<old_id>1000030</old_id>
+	</record>
+	<record>
+		<name>Columbus Ecumenical Association</name>
+		<type>Church</type>
+		<city>Columbus</city>
+		<state>WI</state>
+		<zip>53925</zip>
+		<old_id>1000031</old_id>
+	</record>
+	<record>
+		<name>FIRST PRESBYTERIAN CHURCH</name>
+		<type>Church</type>
+		<address>224 NORTH MAIN STREET</address>
+		<city>POYNETTE</city>
+		<state>WI</state>
+		<zip>53955</zip>
+		<contact_name>PASTOR PAUL STRICKERT</contact_name>
+		<old_id>1000034</old_id>
+	</record>
+	<record>
+		<name>POYNETTE INCH UNITED METHODIST CHURCH</name>
+		<type>Church</type>
+		<address>402 SOUTH MAIN STREET</address>
+		<city>POYNETTE</city>
+		<state>WI</state>
+		<zip>53955</zip>
+		<old_id>1000035</old_id>
+	</record>
+	<record>
+		<name>ARLINGTON UNITED METHODIST CHURCH</name>
+		<type>Church</type>
+		<address>103 REAGLES STREET</address>
+		<city>ARLINGTON</city>
+		<state>WI</state>
+		<zip>53911</zip>
+		<old_id>1000036</old_id>
+	</record>
+</data-set>

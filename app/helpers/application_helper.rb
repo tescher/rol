@@ -16,6 +16,14 @@ module ApplicationHelper
     f.hidden_field(:_destroy) + link_to("remove", "#", class: "remove_fields")
   end
 
+  def multi_email_valid(emails)
+    all_ok = true
+    emails.split(/\s*;\s*/).each do |host|
+      all_ok = false unless(host =~ VALID_EMAIL_REGEX)
+    end
+    all_ok
+  end
+
   def link_to_add_fields(name, f, association, cssClass, parent_selector, title)
     new_object = f.object.class.reflect_on_association(association).klass.new
     fields = f.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|

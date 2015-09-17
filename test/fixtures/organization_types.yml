@@ -2,6 +2,8 @@
 
 church:
   name: Church
+  id: 1
 
 business:
   name: Business
+  id: 2

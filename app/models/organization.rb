@@ -1,4 +1,5 @@
 include ActionView::Helpers::NumberHelper
+include ApplicationHelper
 
 class Organization < ActiveRecord::Base
   belongs_to :organization_type
@@ -9,7 +10,12 @@ class Organization < ActiveRecord::Base
   }
 
   validates :name, presence: true
-  validates :email, allow_blank: true, format: { with: VALID_EMAIL_REGEX }
+  validate :check_email
   validates :organization_type_id, presence: true
 
+  def check_email
+    if email.present?
+      errors[:email] << "is not valid" unless multi_email_valid(email)
+    end
+  end
 end

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data-set xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <record>
+    <name>Organization 1</name>
+    <type>Church</type>
+    <address>PO Box 1230</address>
+    <city>Chickaloon</city>
+    <state>AK</state>
+    <zip>99674</zip>
+    <phone>608-432-5799</phone>
+    <contact_name>Tim Escher</contact_name>
+    <notes>Testing</notes>
+    <old_id>1234</old_id>
+    <email>tim@eschers.com</email>
+  </record>
+  <record>
+    <name>Organization 2</name>
+    <type>Church</type>
+    <address>PO Box 1230</address>
+    <city>Chickaloon</city>
+    <state>AK</state>
+    <zip>99674</zip>
+    <phone>608-432-5799</phone>
+    <contact_name>Tim Escher</contact_name>
+    <notes>Testing</notes>
+    <old_id>1234</old_id>
+    <email>tim@eschers.com</email>
+  </record>
+</data-set>

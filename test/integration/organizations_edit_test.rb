@@ -30,7 +30,7 @@ class OrganizationsEditTest < ActionDispatch::IntegrationTest
     assert_template 'organizations/edit'
     name  = "Foo"
     email = "foo@bar.com"
-    patch organization_path(@organization), organization: { name:  first_name,
+    patch organization_path(@organization), organization: { name:  name,
                                                    email: email }
     assert_not flash.empty?
     assert_redirected_to search_organizations_url

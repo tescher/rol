@@ -1,5 +1,5 @@
 # E-mail formatter
-VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i  # Use this if you don't want to allow multiple addresses with semicolons in between
 
 # Site Name
 SITE_TITLE = "Volunteer Management"

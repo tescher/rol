@@ -6,6 +6,8 @@ class OrganizationTypesEditTest < ActionDispatch::IntegrationTest
     @user = users(:michael)
     @organization_type = organization_types(:church)
     @organization_type_2 = organization_types(:business)
+    @organization_type_3 = OrganizationType.new(name: "Test")
+    @organization_type_3.save
     @non_admin = users(:one)
   end
 
@@ -49,11 +51,11 @@ class OrganizationTypesEditTest < ActionDispatch::IntegrationTest
 
   test "successful delete as admin" do
     log_in_as(@user)
-    get edit_organization_type_path(@organization_type)
-    assert_select 'a[href=?]', organization_type_path(@organization_type), method: :delete
+    get edit_organization_type_path(@organization_type_3)
+    assert_select 'a[href=?]', organization_type_path(@organization_type_3), method: :delete
 
     assert_difference 'OrganizationType.count', -1 do
-      delete organization_type_path(@organization_type)
+      delete organization_type_path(@organization_type_3)
     end
   end
 

@@ -54,7 +54,7 @@ class OrganizationsController < ApplicationController
       @organizations = Organization.select("DISTINCT(organizations.id), organizations.*").where(where_clause).order(:name, :city).paginate(page: params[:page], per_page: per_page)
     else
 
-      interest_ids = []
+      organization_type_ids = []
       organization_search_params.each do |index|
         if ["name", "city"].include?(index[0])
           if index[1].strip.length > 0
@@ -62,13 +62,17 @@ class OrganizationsController < ApplicationController
             where_clause += "(soundex(#{index[0]}) = soundex('#{index[1]}') OR (LOWER(#{index[0]}) LIKE '#{index[1].downcase}%'))"
           end
         end
-        if index[0] == "interest_ids"
-          interest_ids = index[1]
+        if index[0] == "organization_type_ids"
+          organization_type_ids = index[1]
         end
       end
 
-
+      if organization_type_ids.count > 0
+        @organizations = Organization.select("DISTINCT(organizations.id), organizations.*").joins(:organization_types).where(organization_types: {organizaton_type: organization_type_ids}).where(where_clause).order(:name, :city).paginate(page: params[:page], per_page: per_page)
+      else
         @organizations = Organization.select("DISTINCT(organizations.id), organizations.*").where(where_clause).order(:name, :city).paginate(page: params[:page], per_page: per_page)
+      end
+
 
     end
 
@@ -106,7 +110,8 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1/edit
   def edit
     @organization = Organization.find(params[:id])
-     # @num_workdays = WorkdayOrganization.where(organization_id: @organization.id)
+    @num_workdays = []
+    # @num_workdays = WorkdayOrganization.where(organization_id: @organization.id)
   end
 
   # POST /organizations
@@ -180,28 +185,17 @@ class OrganizationsController < ApplicationController
             fatal = false
             record_data = {}
             record_data["old_id"] = record.xpath("old_id").inner_text
-            record_data["first_name"] = record.xpath("first_name").inner_text
-            record_data["middle_name"] = record.xpath("middle_name").inner_text
-            record_data["last_name"] = record.xpath("last_name").inner_text
-            record_data["occupation"] = record.xpath("occupation").inner_text
+            record_data["name"] = record.xpath("name").inner_text
+            record_data["organization_type"] = record.xpath("type").inner_text
             record_data["address"] = record.xpath("address").inner_text
             record_data["city"] = record.xpath("city").inner_text
             record_data["state"] = record.xpath("state").inner_text
             record_data["zip"] = record.xpath("zip").inner_text
-            record_data["home_phone"] = record.xpath("home_phone").inner_text
-            record_data["work_phone"] = record.xpath("work_phone").inner_text
-            record_data["mobile_phone"] = record.xpath("mobile_phone").inner_text
-            record_data["work_phone"] = record.xpath("work_phone").inner_text
+            record_data["phone"] = record.xpath("phone").inner_text
             record_data["notes"] = record.xpath("notes").inner_text
-            record_data["waiver_date"] = record.xpath("waiver_date").inner_text
+            record_data["contact_name"] = record.xpath("contact_name").inner_text
             record_data["email"] = record.xpath("email").inner_text
-            record_data_interests = []
-            record.xpath("interests/*").each do |interest|
-              if interest.inner_text == "1"
-                record_data_interests << interest.name().gsub("_"," ")
-              end
-            end
-            message_data = "Sequence: #{sequence}, Old ID: #{record_data["old_id"]}, First Name: #{record_data["first_name"]}, Last Name: #{record_data["last_name"]}"
+            message_data = "Sequence: #{sequence}, Old ID: #{record_data["old_id"]}, Name: #{record_data["name"]}, City: #{record_data["city"]}"
             if record_data["old_id"].blank?
               fatal = true
               @messages << "Missing id from old system. #{message_data}"
@@ -210,21 +204,20 @@ class OrganizationsController < ApplicationController
                 fatal = true
                 @messages << "Imported previously. #{message_data}"
               else
-                interests = []
-                record_data_interests.each do |interest_name|
-                  interest = Interest.where("name ilike ?", "%#{interest_name}").first
-                  if interest.nil?
-                    @messages << "Missing #{interest_name} interest mapping. #{message_data}"
-                    fatal = true
-                  else
-                    interests << interest
-                  end
+                organization_type = OrganizationType.where("name ilike ?", "%#{record_data["organization_type"]}").first
+                if organization_type.nil?
+                  @messages << "Missing #{record_data["organization_type"]} organization type mapping. #{message_data}"
+                  fatal = true
                 end
                 if !fatal
                   @organization = Organization.new
                   record_data.each do |key, value|
                     if !value.blank?
-                      @organization[key] = (key == "waiver_date") ? Date.strptime(value, "%m/%d/%Y") : value
+                      if (key == "organization_type")
+                        @organization.organization_type_id = organization_type.id
+                      else
+                        @organization[key] = value
+                      end
                     end
                   end
                   if !@organization.valid?
@@ -250,7 +243,6 @@ class OrganizationsController < ApplicationController
               end
             end
           end
-
         end
       rescue => ex
         @messages << "#{ex.message}"
@@ -280,8 +272,8 @@ class OrganizationsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def organization_params
     params.require(:organization).permit(:name, :email, :contact_name,
-                                      :address, :city, :state, :zip, :phone,
-                                      :notes, :remove_from_mailing_list, :organization_type_id)
+                                         :address, :city, :state, :zip, :phone,
+                                         :notes, :remove_from_mailing_list, :organization_type_id)
   end
   def organization_search_params
     params.permit(:name, :city, :organization_type_id)

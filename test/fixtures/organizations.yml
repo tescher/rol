@@ -7,3 +7,12 @@ one:
 two:
   name: Example2
   organization_type_id: 1
+
+
+<% 30.times do |n| %>
+organization_<%= n %>:
+  name:  <%= "Example Organization #{n}" %>
+  city: "Lodi"
+  email: <%= "organization-#{n}@example.com" %>
+  organization_type_id: 2
+<% end %>
