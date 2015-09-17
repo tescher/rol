@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150914202256) do
+ActiveRecord::Schema.define(version: 20150917234226) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,6 +107,17 @@ ActiveRecord::Schema.define(version: 20150914202256) do
   end
 
   add_index "volunteers", ["old_id"], name: "index_volunteers_on_old_id", using: :btree
+
+  create_table "workday_organizations", force: :cascade do |t|
+    t.integer  "organization_id"
+    t.integer  "workday_id"
+    t.integer  "num_volunteers"
+    t.time     "start_time"
+    t.time     "end_time"
+    t.float    "hours"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "workday_volunteers", force: :cascade do |t|
     t.integer  "volunteer_id"

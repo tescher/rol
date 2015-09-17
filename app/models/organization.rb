@@ -3,6 +3,9 @@ include ApplicationHelper
 
 class Organization < ActiveRecord::Base
   belongs_to :organization_type
+  has_many :workday_organizations
+  has_many :workdays, through: :workday_organizations
+
 
   before_save {
     self.email = email.downcase if email
