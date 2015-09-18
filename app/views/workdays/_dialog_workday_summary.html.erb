@@ -10,7 +10,7 @@
           <ul class="listing">
             <% workdays.each do |w|
               workday = Workday.find(w.id) %>
-                <div class="row clickable" href="<%=add_volunteers_workday_path(workday, project_id: workday.project_id)%>">
+                <div class="row clickable" href="<%=add_participants_workday_path(workday, project_id: workday.project_id)%>">
                   <li>
                     <div class="col-md-4 col-md-offset-1">
                       <%= Project.find(workday.project_id).name + " - " + workday.name %>

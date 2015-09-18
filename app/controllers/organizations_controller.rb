@@ -111,8 +111,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1/edit
   def edit
     @organization = Organization.find(params[:id])
-    @num_workdays = []
-    # @num_workdays = WorkdayOrganization.where(organization_id: @organization.id)
+    @num_workdays = WorkdayOrganization.where(organization_id: @organization.id)
   end
 
   # POST /organizations

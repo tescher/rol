@@ -135,14 +135,20 @@ class WorkdaysController < ApplicationController
   end
 
   def workday_summary
-    @volunteer = Volunteer.find(params[:volunteer_id])
-    @workday_years = Workday.select("ROUND(EXTRACT(YEAR FROM workdays.workdate)) as year").joins(:workday_volunteers).where("workday_volunteers.volunteer_id = '#{@volunteer.id}'").group("year").order("year DESC")
+    @objectName = params[:object_name].downcase
+    if (@objectName != "volunteer") && (@objectName != "organization")
+      render partial: "Invalid parameter"
+    else
+    @object = (@objectName == "volunteer") ? Volunteer.find(params[:id]) : Organization.find(params[:id])
+    join = "INNER JOIN workday_#{@objectName}s ON workday_#{@objectName}s.workday_id = workdays.id"
+    @workday_years = Workday.select("ROUND(EXTRACT(YEAR FROM workdays.workdate)) as year").joins(join).where("workday_" + @objectName + "s." + @objectName + "_id = '#{@object.id}'").group("year").order("year DESC")
     @workdays_by_year = Hash[@workday_years.map { |wy|
       year = wy.year.to_s.split(".").first
-      workdays = Workday.select("DISTINCT workdays.*, SUM(workday_volunteers.hours) as hours").joins(:workday_volunteers).where("ROUND(EXTRACT(YEAR FROM workdate)) = '#{wy.year}'").group("workdays.id").order("workdate DESC")
+      workdays = Workday.select("DISTINCT workdays.*, SUM(workday_" + @objectName + "s.hours) as hours").joins(join).where("ROUND(EXTRACT(YEAR FROM workdate)) = '#{wy.year}'").group("workdays.id").order("workdate DESC")
       [year, workdays]
                              }]
     render partial: "dialog_workday_summary"
+    end
   end
 
 
