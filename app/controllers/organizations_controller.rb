@@ -195,6 +195,7 @@ class OrganizationsController < ApplicationController
             record_data["notes"] = record.xpath("notes").inner_text
             record_data["contact_name"] = record.xpath("contact_name").inner_text
             record_data["email"] = record.xpath("email").inner_text
+            record_data["remove_from_mailing_list"] = record.xpath("remove_from_mailing_list").inner_text
             message_data = "Sequence: #{sequence}, Old ID: #{record_data["old_id"]}, Name: #{record_data["name"]}, City: #{record_data["city"]}"
             if record_data["old_id"].blank?
               fatal = true

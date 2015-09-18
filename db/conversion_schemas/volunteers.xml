@@ -16,6 +16,7 @@
     <waiver_date>2001-04-23</waiver_date>
     <old_id>1234</old_id>
     <email>tim@eschers.com</email>
+    <remove_from_mailing_list></remove_from_mailing_list>
     <interests>
       <Drywall>1</Drywall>
       <Painting></Painting>
@@ -40,6 +41,7 @@
     <waiver_date></waiver_date>
     <old_id></old_id>
     <email></email>
+    <remove_from_mailing_list></remove_from_mailing_list>
     <interests>
       <Drywall>1</Drywall>
       <Painting>1</Painting>

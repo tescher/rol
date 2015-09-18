@@ -243,6 +243,7 @@ class VolunteersController < ApplicationController
             record_data["notes"] = record.xpath("notes").inner_text
             record_data["waiver_date"] = record.xpath("waiver_date").inner_text
             record_data["email"] = record.xpath("email").inner_text
+            record_data["remove_from_mailing_list"] = record.xpath("remove_from_mailing_list").inner_text
             record_data_interests = []
             record.xpath("interests/*").each do |interest|
               if interest.inner_text == "1"
