@@ -6,40 +6,53 @@
 <% @project_info.each do |project| %>
     <% got_info = true %>
     <h4>Project: <%= Project.find(project.project_id).name %></h4>
-    <h5>Distinct Project Volunteers: <%= project.num_volunteers %>,  Project Hours: <%= project.total_hours %></h5>
+    <h5>Distinct Project Volunteers: <%= project.num_volunteers %>,  Volunteer Hours: <%= project.total_volunteer_hours %></h5>
+    <h5>Distinct Project Organizations: <%= project.num_organizations %>,  Organization Hours: <%= project.total_organization_hours %></h5>
 
     <ul class="listing">
       <div class="row">
         <li>
-          <div class="col-md-2 col-md-offset-1">
+          <div class="col-md-2">
             <u>Workday</u>
           </div>
           <div class="col-md-3">
             <u>Date</u>
           </div>
-          <div class="col-md-2">
-            <u>Hours</u>
-          </div>
-          <div class="col-md-2">
+          <div class="col-md-1">
             <u>Volunteers</u>
+          </div>
+          <div class="col-md-1">
+            <u>Volunteer Hours</u>
+          </div>
+          <div class="col-md-1">
+            <u>Organizations</u>
+          </div>
+          <div class="col-md-1">
+            <u>Organization Hours</u>
           </div>
         </li>
       </div>
 
       <% @workdays.select { |w| w.project_id == project.project_id }.each do |workday| %>
-          <div class="row clickable" href="<%=add_volunteers_workday_path(workday, project_id: project.project_id)%>">
+          <div class="row clickable" href="<%=add_participants_workday_path(workday, project_id: project.project_id)%>">
             <li>
-              <div class="col-md-2 col-md-offset-1">
-                <%= workday.name %>
+              <div class="col-md-2">
+                <span class="no-overflow"><%= workday.name %></span>
               </div>
               <div class="col-md-3">
                 <%= workday.workdate.strftime("%A, %B %-d, %Y") %>
               </div>
-              <div class="col-md-2">
-                <%= workday.hours %>
-              </div>
-              <div class="col-md-2">
+              <div class="col-md-1">
                 <%= workday.volunteers %>
+              </div>
+              <div class="col-md-1">
+                <%= workday.volunteer_hours %>
+              </div>
+              <div class="col-md-1">
+                <%= workday.organizations %>
+              </div>
+              <div class="col-md-1">
+                <%= workday.organization_hours %>
               </div>
             </li>
           </div>

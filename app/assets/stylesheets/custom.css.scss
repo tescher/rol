@@ -238,3 +238,12 @@ table.header-border {
   max-width: 750px;
 }
 
+/* Stop overflow */
+.no-overflow {
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  display: block;
+}
+

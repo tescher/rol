@@ -31,21 +31,27 @@ class WorkdaysController < ApplicationController
 
       project_ids = params[:project_ids].nil? ? [] : params[:project_ids]
       if project_ids.count > 0
-        @project_info = Workday.select("COUNT(DISTINCT workday_volunteers.volunteer_id) as num_volunteers, COUNT(DISTINCT workdays.id) as num_workdays, SUM(workday_volunteers.hours) as total_hours, workdays.project_id").joins(:workday_volunteers).where(project_id: project_ids).where(where_clause).group(:project_id)
+        project_where = "project_id IN (" + project_ids.join(",") + ")"
+      else
+        project_where = "project_id IS NOT NULL"
+      end
+      join = "FULL OUTER JOIN workday_volunteers ON workdays.id = workday_volunteers.workday_id FULL OUTER JOIN workday_organizations ON workdays.id = workday_organizations.workday_id "
+        # @project_info = Workday.select("COUNT(DISTINCT workday_volunteers.volunteer_id) as num_volunteers, COUNT(DISTINCT workdays.id) as num_workdays, SUM(workday_volunteers.hours) as total_hours, workdays.project_id").joins(:workday_volunteers).where(project_id: project_ids).where(where_clause).group(:project_id)
+        @project_info = Workday.select("COUNT(DISTINCT workday_volunteers.volunteer_id) as num_volunteers, COUNT(DISTINCT workday_organizations.organization_id) as num_organizations, COUNT(DISTINCT workdays.id) as num_workdays, SUM(workday_volunteers.hours) as total_volunteer_hours, SUM(workday_organizations.hours * workday_organizations.num_volunteers) as total_organization_hours,workdays.project_id").joins(join).where(project_where).where(where_clause).group(:project_id)
         if params[:report_type] == "1"
-          @workdays = Workday.select("workdays.*, COUNT(workday_volunteers.id) as volunteers, COALESCE(SUM(workday_volunteers.hours), 0) as hours").joins(:workday_volunteers).where(where_clause).where(project_id: project_ids).order(:project_id).group("workdays.id")
+          @workdays = Workday.select("workdays.*, COUNT(workday_volunteers.id) as volunteers, COALESCE(SUM(workday_volunteers.hours), 0) as volunteer_hours, COUNT(workday_organizations.id) as organizations, COALESCE(SUM(workday_organizations.hours * workday_organizations.num_volunteers), 0) as organization_hours").joins(join).where(where_clause).where(project_where).order(:project_id).group("workdays.id")
         else
-          @volunteers = Workday.select("workdays.project_id, workday_volunteers.volunteer_id, COALESCE(SUM(workday_volunteers.hours), 0) as hours").joins(:workday_volunteers).where(where_clause).where(project_id: project_ids).group("workday_volunteers.volunteer_id, workdays.project_id").order("hours DESC")
+          @volunteers = Workday.select("workdays.project_id, workday_volunteers.volunteer_id, COALESCE(SUM(workday_volunteers.hours), 0) as hours").joins(:workday_volunteers).where(where_clause).where(project_where).group("workday_volunteers.volunteer_id, workdays.project_id").order("hours DESC")
+          @organizations = Workday.select("workdays.project_id, workday_organizations.organization_id, COALESCE(SUM(workday_organizations.hours * workday_organizations.num_volunteers), 0) as hours").joins(:workday_organizations).where(where_clause).where(project_where).group("workday_organizations.organization_id, workdays.project_id").order("hours DESC")
         end
 
-      else
-        @project_info = Workday.select("COUNT(DISTINCT workday_volunteers.volunteer_id) as num_volunteers, COUNT(DISTINCT workdays.id) as num_workdays, SUM(workday_volunteers.hours) as total_hours, workdays.project_id").joins(:workday_volunteers).where(where_clause).group(:project_id)
-        if params[:report_type] == "1"
-          @workdays = Workday.select("workdays.*, COUNT(workday_volunteers.id) as volunteers, SUM(workday_volunteers.hours) as hours").joins(:workday_volunteers).where(where_clause).order(:project_id).group("workdays.id")
-        else
-          @volunteers = Workday.select("workdays.project_id, workday_volunteers.volunteer_id, COALESCE(SUM(workday_volunteers.hours), 0) as hours").joins(:workday_volunteers).where(where_clause).group("workday_volunteers.volunteer_id, workdays.project_id").order("hours DESC")
-        end
-      end
+#      else
+#         @project_info = Workday.select("COUNT(DISTINCT workday_volunteers.volunteer_id) as num_volunteers, COUNT(DISTINCT workdays.id) as num_workdays, SUM(workday_volunteers.hours) as total_hours, workdays.project_id").joins(:workday_volunteers).where(where_clause).group(:project_id) #       if params[:report_type] == "1"
+#          @workdays = Workday.select("workdays.*, COUNT(workday_volunteers.id) as volunteers, SUM(workday_volunteers.hours) as hours").joins(:workday_volunteers).where(where_clause).order(:project_id).group("workdays.id")
+#        else
+#          @volunteers = Workday.select("workdays.project_id, workday_volunteers.volunteer_id, COALESCE(SUM(workday_volunteers.hours), 0) as hours").joins(:workday_volunteers).where(where_clause).group("workday_volunteers.volunteer_id, workdays.project_id").order("hours DESC")
+#        end
+#      end
 
 
       respond_to do |format|
@@ -53,7 +59,7 @@ class WorkdaysController < ApplicationController
           if params[:report_type] == "1"
             render "report_workdays_by_project.html"
           else
-            render "report_volunteers_by_project.html"
+            render "report_participants_by_project.html"
           end
 
         }
@@ -62,7 +68,7 @@ class WorkdaysController < ApplicationController
           if params[:report_type] == "1"
             render "report_workdays_by_project.xls"
           else
-            render "report_volunteers_by_project.xls"
+            render "report_participants_by_project.xls"
           end
         }
 

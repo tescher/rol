@@ -11,8 +11,11 @@
           <% got_info = true %>
           <Row>
             <Cell><Data ss:Type="String">Project: <%= Project.find(project.project_id).name %></Data></Cell>
+          </Row>
+          <Row></Row>
+          <Row>
             <Cell><Data ss:Type="String">Distinct Project Volunteers: <%= project.num_volunteers %></Data></Cell>
-            <Cell><Data ss:Type="String">Project Hours: <%= project.total_hours %></Data></Cell>
+            <Cell><Data ss:Type="String">Project Volunteer Hours: <%= project.total_volunteer_hours %></Data></Cell>
           </Row>
           <Row>
             <Cell><Data ss:Type="String">Volunteer</Data></Cell>
@@ -31,10 +34,34 @@
               </Row>
           <% end %>
           <Row></Row>
-      <% end %>
+          <Row>
+            <Cell><Data ss:Type="String">Distinct Project Organizations: <%= project.num_organizations %></Data></Cell>
+            <Cell><Data ss:Type="String">Project Organization Hours: <%= project.total_organization_hours %></Data></Cell>
+          </Row>
+          <Row>
+            <Cell><Data ss:Type="String">Organization</Data></Cell>
+            <Cell><Data ss:Type="String">City</Data></Cell>
+            <Cell><Data ss:Type="String">Contact Name</Data></Cell>
+            <Cell><Data ss:Type="String">Email</Data></Cell>
+            <Cell><Data ss:Type="String">Hours</Data></Cell>
+          </Row>
+
+          <% @organizations.select { |v| v.project_id == project.project_id }.each do |organization_info| %>
+              <% organization = Organization.find(organization_info.organization_id) %>
+              <Row>
+                <Cell><Data ss:Type="String"><%= organization.name %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= organization.city %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= organization.contact_name %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= organization.email %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= organization_info.hours %></Data></Cell>
+              </Row>
+          <% end %>
+          <Row></Row>
+
+    <% end %>
       <% if !got_info %>
           <Row>
-            <Cell><Data ss:Type="String">No volunteers found meeting the criteria given</Data></Cell>
+            <Cell><Data ss:Type="String">No participants found meeting the criteria given</Data></Cell>
           </Row>
       <% end %>
     </Table>

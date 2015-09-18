@@ -1,0 +1,110 @@
+<% provide(:title, 'Participants by Project') %>
+<h1>Participants by Projects</h1>
+
+<% got_info = false %>
+
+<% @project_info.each do |project| %>
+    <% got_info = true %>
+    <h4>Project: <%= Project.find(project.project_id).name %></h4>
+
+    <h5>Distinct Project Volunteers: <%= project.num_volunteers %>,  Volunteer Hours: <%= project.total_volunteer_hours %></h5>
+
+    <ul class="listing">
+      <div class="row">
+        <li>
+          <div class="col-md-2 col-md-offset-1">
+            <u>Volunteer</u>
+          </div>
+          <div class="col-md-3">
+            <u>City</u>
+          </div>
+          <div class="col-md-2">
+            <u>Email</u>
+          </div>
+          <div class="col-md-2">
+            <u>Hours</u>
+          </div>
+        </li>
+      </div>
+
+      <% @volunteers.select { |v| v.project_id == project.project_id }.each do |volunteer_info| %>
+          <% volunteer = Volunteer.find(volunteer_info.volunteer_id) %>
+          <div class="row clickable" href="<%=edit_volunteer_path(volunteer)%>">
+            <li>
+              <div class="col-md-2 col-md-offset-1">
+                <span class="no-overflow"><%= volunteer.name %></span>
+              </div>
+              <div class="col-md-3">
+                <span class="no-overflow"><%= volunteer.city %></span>
+              </div>
+              <div class="col-md-2">
+                <span class="no-overflow"><%= volunteer.email %></span>
+              </div>
+              <div class="col-md-2">
+                <%= volunteer_info.hours %>
+              </div>
+            </li>
+          </div>
+      <% end %>
+    </ul>
+
+    <h5>Distinct Project Organizations: <%= project.num_organizations %>,  Organization Hours: <%= project.total_organization_hours %></h5>
+
+    <ul class="listing">
+      <div class="row">
+        <li>
+          <div class="col-md-2 col-md-offset-1">
+            <u>Organization</u>
+          </div>
+          <div class="col-md-2">
+            <u>City</u>
+          </div>
+          <div class="col-md-2">
+            <u>Contact Name</u>
+          </div>
+          <div class="col-md-2">
+            <u>Email</u>
+          </div>
+          <div class="col-md-2">
+            <u>Hours</u>
+          </div>
+        </li>
+      </div>
+
+      <% @organizations.select { |v| v.project_id == project.project_id }.each do |organization_info| %>
+          <% organization = Organization.find(organization_info.organization_id) %>
+          <div class="row clickable" href="<%=edit_organization_path(organization)%>">
+            <li>
+              <div class="col-md-2 col-md-offset-1">
+                <span class="no-overflow"><%= organization.name %></span>
+              </div>
+              <div class="col-md-2">
+                <span class="no-overflow"><%= organization.city %></span>
+              </div>
+              <div class="col-md-2">
+                <span class="no-overflow"><%= organization.contact_name %></span>
+              </div>
+              <div class="col-md-2">
+                <span class="no-overflow"><%= organization.email %></span>
+              </div>
+              <div class="col-md-2">
+                <%= organization_info.hours %>
+              </div>
+            </li>
+          </div>
+      <% end %>
+    </ul>
+    <br />
+<% end %>
+<% if !got_info %>
+    <h4>No information found with the given criteria</h4>
+<% end %>
+
+<div class="row">
+  <div class="col-md-11">
+    <div class="actions pull-right">
+      <%= link_to 'Back', report_workdays_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>
+
