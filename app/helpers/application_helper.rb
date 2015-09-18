@@ -16,6 +16,14 @@ module ApplicationHelper
     f.hidden_field(:_destroy) + link_to("remove", "#", class: "remove_fields")
   end
 
+  def link_to_add_fields(name, f, association, cssClass, parent_selector, title)
+    new_object = f.object.class.reflect_on_association(association).klass.new
+    fields = f.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
+      render(association.to_s.singularize + "_fields", :f => builder)
+    end
+    link_to name, "#", :onclick => h("add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\", \"#{parent_selector}\")"), class: cssClass, title: title, remote: true
+  end
+
   def multi_email_valid(emails)
     all_ok = true
     emails.split(/\s*;\s*/).each do |host|
@@ -24,12 +32,9 @@ module ApplicationHelper
     all_ok
   end
 
-  def link_to_add_fields(name, f, association, cssClass, parent_selector, title)
-    new_object = f.object.class.reflect_on_association(association).klass.new
-    fields = f.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
-      render(association.to_s.singularize + "_fields", :f => builder)
-    end
-    link_to name, "#", :onclick => h("add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\", \"#{parent_selector}\")"), class: cssClass, title: title, remote: true
+  # Quotes a string, escaping any ' (single quote) and \ (backslash) characters.
+  def quote_string(s)
+    s.gsub(/\\/, '\&\&').gsub(/'/, "''") # ' (for ruby-mode)
   end
 
 end

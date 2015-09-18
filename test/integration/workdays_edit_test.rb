@@ -25,13 +25,13 @@ class WorkdaysEditTest < ActionDispatch::IntegrationTest
     project_id = 2
     patch workday_path(@workday), workday: { name:  name,
                                                    project_id: project_id}
-    assert_redirected_to add_volunteers_workday_path(@workday)
+    assert_redirected_to add_participants_workday_path(@workday)
     @workday.reload
     assert_equal @workday.name,  name
     assert_equal @workday.project_id,  project_id
   end
 
-  test "successful edit with friendly forwarding. Edit of basic info redirects to Add Volunteers" do
+  test "successful edit with friendly forwarding. Edit of basic info redirects to Add Participants" do
     get edit_workday_path(@workday)
     log_in_as(@user)
     assert_redirected_to edit_workday_path(@workday)
@@ -39,7 +39,7 @@ class WorkdaysEditTest < ActionDispatch::IntegrationTest
     project_id = 2
     patch workday_path(@workday), workday: { name:  name,
                                                 project_id: project_id}
-    assert_redirected_to add_volunteers_workday_path(@workday)
+    assert_redirected_to add_participants_workday_path(@workday)
     @workday.reload
     assert_equal @workday.name,  name
     assert_equal @workday.project_id,  project_id

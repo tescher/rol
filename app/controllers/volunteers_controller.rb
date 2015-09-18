@@ -1,4 +1,5 @@
 include WorkdaysHelper
+include ApplicationHelper
 
 class VolunteersController < ApplicationController
   before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search, :address_check]
@@ -59,7 +60,7 @@ class VolunteersController < ApplicationController
         if ["last_name", "city"].include?(index[0])
           if index[1].strip.length > 0
             where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
-            where_clause += "(soundex(#{index[0]}) = soundex('#{index[1]}') OR (LOWER(#{index[0]}) LIKE '#{index[1].downcase}%'))"
+            where_clause += "(soundex(#{index[0]}) = soundex('#{quote_string(index[1])}') OR (LOWER(#{index[0]}) LIKE '#{quote_string(index[1].downcase)}%'))"
           end
         end
         if index[0] == "interest_ids"

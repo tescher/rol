@@ -33,7 +33,7 @@ Rails.application.routes.draw do
       get 'workday_summary'
     end
     member do
-      get 'add_volunteers'
+      get 'add_participants'
     end
   end
 

@@ -1,0 +1,19 @@
+<div class="row clickable" onclick="<%= link_to_add_workday_organization_fields(organization, session[:workday_id]) %>" >
+  <li>
+    <div class="col-md-2 col-md-offset-1">
+      <%= organization.name %>
+    </div>
+    <div class="col-md-2 col-md-offset-1">
+      <%= organization.contact_name %>
+    </div>
+    <div class="col-md-2">
+      <%= organization.city %>
+    </div>
+    <div class="col-md-2">
+      <%= organization.email %>
+    </div>
+    <div class="col-md-3">
+      <%= organization.phone.presence %>
+    </div>
+  </li>
+</div>

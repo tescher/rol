@@ -12,7 +12,7 @@
         <th class="col-md-3"></th>
       </tr>
       </thead>
-      <tbody class="add_fields">
+      <tbody class="add_volunteer_fields">
       <%= f.fields_for :workday_volunteers do |builder| %>
           <%= render "workday_volunteer_fields", :f => builder, :volunteer => Volunteer.find(builder.object.volunteer_id) %>
       <% end %>
@@ -21,6 +21,27 @@
 
     <%= # link_to_add_fields "Add a Volunteer", f, :workday_volunteers, "", ".add_fields", "Add a Volunteer"
         link_to "Add a Volunteer", "#", id:"linkAddVolunteer" %>
+
+    <table class="table no-row-border header-border">
+      <thead>
+      <tr>
+        <th class="col-md-3">Organization</th>
+        <th class="col-md-2">Num Volunteers</th>
+        <th class="col-md-2">Start Time</th>
+        <th class="col-md-2">End Time</th>
+        <th class="col-md-2">Total Hours</th>
+        <th class="col-md-3"></th>
+      </tr>
+      </thead>
+      <tbody class="add_organization_fields">
+      <%= f.fields_for :workday_organizations do |builder| %>
+          <%= render "workday_organization_fields", :f => builder, :organization => Organization.find(builder.object.organization_id) %>
+      <% end %>
+      </tbody>
+    </table>
+
+    <%= # link_to_add_fields "Add an Organization", f, :workday_organizations, "", ".add_fields", "Add an Organization"
+        link_to "Add an Organization", "#", id:"linkAddOrganization" %>
 
     <div class="row">
       <div class="col-md-11">

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class VolunteersSearchTest < ActionDispatch::IntegrationTest
+class WorkdaysSearchTest < ActionDispatch::IntegrationTest
 
   def setup
     @user     = users(:one)
@@ -22,7 +22,7 @@ class VolunteersSearchTest < ActionDispatch::IntegrationTest
     get workdays_path, {project_id: 1}
     workdays = Workday.where(project_id: 1)
     workdays.each do |workday|
-      assert_select 'div[href*=?]', add_volunteers_workday_path(workday)
+      assert_select 'div[href*=?]', add_participants_workday_path(workday)
     end
   end
 

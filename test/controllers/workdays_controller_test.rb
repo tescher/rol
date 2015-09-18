@@ -34,8 +34,8 @@ class WorkdaysControllerTest < ActionController::TestCase
     assert_redirected_to login_url
   end
 
-  test "should redirect add_volunteers when not logged in" do
-    get :add_volunteers, id: @workday
+  test "should redirect add_participants when not logged in" do
+    get :add_participants, id: @workday
     assert_redirected_to login_url
   end
 

@@ -1,14 +1,14 @@
-<%= form_tag(volunteers_path, method: "get", id: "dialogFormSearchVolunteers", remote: true) do %>
+<%= form_tag(organizations_path, method: "get", id: "dialogFormSearchOrganizations", remote: true) do %>
     <div class="container dialog-container">
       <div class="row">
         <div class="col-md-5">
 
           <div class="row">
             <div class="col-md-2">
-              <%= label_tag :last_name  %><br>
+              <%= label_tag :name  %><br>
             </div>
             <div class="col-md-10">
-              <%= text_field_tag :last_name, nil, class: 'form-control', autofocus: 'true' %>
+              <%= text_field_tag :name, nil, class: 'form-control', autofocus: 'true' %>
             </div>
           </div>
           <div class="row">

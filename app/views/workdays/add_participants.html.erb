@@ -1,11 +1,14 @@
-<% provide(:title, 'Workday Volunteers') %>
-<h1>Add Volunteers</h1>
+<% provide(:title, 'Workday Participants') %>
+<h1>Add Participants</h1>
 <h4 class="center">For <%= @project.name %> - <%= @workday.name %> - <%= @workday.workdate.strftime("%A, %B %-d, %Y") %></h4>
 <h5 class="center"><%= link_to "(edit)", edit_workday_path(@workday) %></h5>
 
 
-<%= render 'add_volunteers_form' %>
+<%= render 'add_participants_form' %>
 
 <div id="dialogSearchVolunteers"></div>
 <div id="dialogSelectVolunteer"></div>
 <div id="dialogNewVolunteer"></div>
+<div id="dialogSearchOrganizations"></div>
+<div id="dialogSelectOrganization"></div>
+<div id="dialogNewOrganization"></div>

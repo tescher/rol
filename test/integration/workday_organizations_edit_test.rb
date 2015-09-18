@@ -1,11 +1,11 @@
 require 'test_helper'
 
-class WorkdayVolunteersEditTest < ActionDispatch::IntegrationTest
+class WorkdayOrganizationsEditTest < ActionDispatch::IntegrationTest
 
   def setup
     @non_admin = users(:one)
     @project = projects(:one)
-    @volunteer = volunteers(:one)
+    @organization = organizations(:one)
     @workday = Workday.new(project: @project, workdate: Date.today.to_s(:db), name: "Example")
     @workday.save
   end
@@ -14,9 +14,9 @@ class WorkdayVolunteersEditTest < ActionDispatch::IntegrationTest
     get add_participants_workday_path(@workday)
     log_in_as(@non_admin)
     assert_redirected_to add_participants_workday_path(@workday)
-    @workday_volunteer = WorkdayVolunteer.new
-    assert_difference "WorkdayVolunteer.count", 1 do
-      patch workday_path(@workday), workday: { workday_volunteers_attributes: {@workday_volunteer.id => {workday_id: @workday.id, volunteer_id: @volunteer.id, hours: 1.5}}}
+    @workday_organization = WorkdayOrganization.new
+    assert_difference "WorkdayOrganization.count", 1 do
+      patch workday_path(@workday), workday: { workday_organizations_attributes: {@workday_organization.id => {workday_id: @workday.id, organization_id: @organization.id, num_volunteers: 15, hours: 1.5}}}
     end
   end
 

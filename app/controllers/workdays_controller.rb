@@ -1,5 +1,5 @@
 class WorkdaysController < ApplicationController
-  before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search, :report, :add_volunteers, :workday_summary]
+  before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search, :report, :add_participants, :workday_summary]
 
   # GET /workdays
   # GET /workdays.json
@@ -100,7 +100,7 @@ class WorkdaysController < ApplicationController
     @project = Project.find(workday_params[:project_id])
     @workday = Workday.new(workday_params)
     if @workday.save
-      redirect_to add_volunteers_workday_path({id: @workday.id, project_id: @project.id})
+      redirect_to add_participants_workday_path({id: @workday.id, project_id: @project.id})
     else
       render :new
     end
@@ -112,23 +112,23 @@ class WorkdaysController < ApplicationController
     @workday = Workday.find(params[:id])
     @project = Project.find(@workday.project_id)
     if @workday.update_attributes(workday_params)
-      if workday_params[:name].nil?         # Coming from Add Volunteers
+      if workday_params[:name].nil?         # Coming from Add Participants
         flash[:success] = "Workday updated"
         session.delete(:workday_id)
         redirect_to workdays_path(project_id: @workday.project_id)
       else
-        redirect_to add_volunteers_workday_path(@workday)
+        redirect_to add_participants_workday_path(@workday)
       end
     else
-      if workday_params[:name].nil?         # Coming from Add Volunteers
-        render :add_volunteers
+      if workday_params[:name].nil?         # Coming from Add Participants
+        render :add_participants
       else
         render :edit
       end
     end
   end
 
-  def add_volunteers
+  def add_participants
     @workday = Workday.find(params[:id])
     session[:workday_id] = @workday.id
     @project = Project.find(@workday.project_id)
@@ -169,7 +169,7 @@ class WorkdaysController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def workday_params
-    modified_params = params.require(:workday).permit(:name, :project_id, :workdate, workday_volunteers_attributes: [:id, :volunteer_id, :workday_id, :start_time, :start_time_string, :end_time, :end_time_string, :hours, :_destroy])
+    modified_params = params.require(:workday).permit(:name, :project_id, :workdate, workday_volunteers_attributes: [:id, :volunteer_id, :workday_id, :start_time, :start_time_string, :end_time, :end_time_string, :hours, :_destroy], workday_organizations_attributes: [:id, :organization_id, :workday_id, :start_time, :start_time_string, :end_time, :end_time_string, :hours, :num_volunteers, :_destroy])
     if modified_params[:workdate]
       modified_params[:workdate] = Date.strptime(modified_params[:workdate], "%m/%d/%Y").to_s
     end
