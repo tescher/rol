@@ -1,8 +1,8 @@
 <div class="row clickable" href="<%=edit_project_path(project)%>">
   <li>
-    <div class="col-md-8 col-md-offset-1">
+    <div class="col-md-10 col-md-offset-1">
 
-      <div class="col-md-4">
+      <div class="col-md-5">
         <% if project.inactive? %>
             <s>
         <% end %>
@@ -11,7 +11,7 @@
             </s>
         <% end %>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-5">
         <%= project.description %>
       </div>
 

@@ -16,7 +16,7 @@ class VolunteersSearchTest < ActionDispatch::IntegrationTest
     assert_template 'volunteers/search'
     get volunteers_path, {last_name: "e"}
     assert_select 'div.pagination'
-    first_page_of_volunteers = Volunteer.paginate(page: 1)
+    first_page_of_volunteers = Volunteer.where("(soundex(last_name) = soundex('e') OR (LOWER(last_name) LIKE 'e%'))").order(:last_name, :first_name).paginate(page: 1)
     first_page_of_volunteers.each do |volunteer|
       assert_select 'div[href=?]', edit_volunteer_path(volunteer)
     end

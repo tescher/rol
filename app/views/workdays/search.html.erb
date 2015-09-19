@@ -10,7 +10,8 @@
           <ul class="listing">
             <%= render partial: "workdays/project.html", collection: @projects %>
           </ul>
-      <% else %>
+          <%= will_paginate @projects %>
+    <% else %>
           No projects found. Create a project first.
       <% end %>
     </div>

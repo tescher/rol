@@ -85,7 +85,7 @@ class WorkdaysController < ApplicationController
 
   # GET /workdays/search
   def search
-    @projects = Project.all
+    @projects = Project.order(:name).all.paginate(page: params[:page])
   end
 
   # GET /workdays/new

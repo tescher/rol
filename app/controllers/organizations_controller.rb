@@ -69,7 +69,7 @@ class OrganizationsController < ApplicationController
       end
 
       if organization_type_ids.count > 0
-        @organizations = Organization.select("DISTINCT(organizations.id), organizations.*").joins(:organization_types).where(organization_types: {organizaton_type: organization_type_ids}).where(where_clause).order(:name, :city).paginate(page: params[:page], per_page: per_page)
+        @organizations = Organization.select("DISTINCT(organizations.id), organizations.*").where(organization_type: organization_type_ids).where(where_clause).order(:name, :city).paginate(page: params[:page], per_page: per_page)
       else
         @organizations = Organization.select("DISTINCT(organizations.id), organizations.*").where(where_clause).order(:name, :city).paginate(page: params[:page], per_page: per_page)
       end
@@ -277,7 +277,7 @@ class OrganizationsController < ApplicationController
                                          :notes, :remove_from_mailing_list, :organization_type_id)
   end
   def organization_search_params
-    params.permit(:name, :city, :organization_type_id)
+    params.permit(:name, :city, organization_type_ids: [])
   end
 
 
