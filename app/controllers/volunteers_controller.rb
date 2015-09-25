@@ -48,30 +48,37 @@ class VolunteersController < ApplicationController
       request.format = :xls
       where_clause = "remove_from_mailing_list = 'false'"
     else
-      per_page = 30
+      if params[:dialog] == "true"
+        per_page = 1000000
+      else
+        per_page = 30
+      end
       where_clause = ""
     end
     if params[:show_all]
       @volunteers = Volunteer.select("DISTINCT(volunteers.id), volunteers.*").where(where_clause).order(:last_name, :first_name).paginate(page: params[:page], per_page: per_page)
     else
-
-      interest_ids = []
-      volunteer_search_params.each do |index|
-        if ["last_name", "city"].include?(index[0])
-          if index[1].strip.length > 0
-            where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
-            where_clause += "(soundex(#{index[0]}) = soundex('#{quote_string(index[1])}') OR (LOWER(#{index[0]}) LIKE '#{quote_string(index[1].downcase)}%'))"
+      if (volunteer_search_params.count < 1)
+        @volunteers = Volunteer.none
+      else
+        interest_ids = []
+        volunteer_search_params.each do |index|
+          if ["last_name", "city"].include?(index[0])
+            if index[1].strip.length > 0
+              where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
+              where_clause += "(soundex(#{index[0]}) = soundex('#{quote_string(index[1])}') OR (LOWER(#{index[0]}) LIKE '#{quote_string(index[1].downcase)}%'))"
+            end
+          end
+          if index[0] == "interest_ids"
+            interest_ids = index[1]
           end
         end
-        if index[0] == "interest_ids"
-          interest_ids = index[1]
-        end
-      end
 
-      if interest_ids.count > 0
-        @volunteers = Volunteer.select("DISTINCT(volunteers.id), volunteers.*").joins(:volunteer_interests).where(volunteer_interests: {interest_id: interest_ids}).where(where_clause).order(:last_name, :first_name).paginate(page: params[:page], per_page: per_page)
-      else
-        @volunteers = Volunteer.select("DISTINCT(volunteers.id), volunteers.*").where(where_clause).order(:last_name, :first_name).paginate(page: params[:page], per_page: per_page)
+        if interest_ids.count > 0
+          @volunteers = Volunteer.select("DISTINCT(volunteers.id), volunteers.*").joins(:volunteer_interests).where(volunteer_interests: {interest_id: interest_ids}).where(where_clause).order(:last_name, :first_name).paginate(page: params[:page], per_page: per_page)
+        else
+          @volunteers = Volunteer.select("DISTINCT(volunteers.id), volunteers.*").where(where_clause).order(:last_name, :first_name).paginate(page: params[:page], per_page: per_page)
+        end
       end
     end
 
@@ -336,7 +343,9 @@ class VolunteersController < ApplicationController
                                       :notes, :remove_from_mailing_list, :waiver_date, :background_check_date, interest_ids: [])
   end
   def volunteer_search_params
-    params.permit(:last_name, :city, interest_ids: [])
+    search_params = params.permit(:last_name, :city, interest_ids: [])
+    search_params.delete_if {|k,v| v.blank?}
+    search_params
   end
 
 

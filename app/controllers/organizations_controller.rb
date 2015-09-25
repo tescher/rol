@@ -48,30 +48,38 @@ class OrganizationsController < ApplicationController
       request.format = :xls
       where_clause = "remove_from_mailing_list = 'false'"
     else
-      per_page = 30
+      if params[:dialog] == "true"
+        per_page = 1000000
+      else
+        per_page = 30
+      end
       where_clause = ""
+
     end
     if params[:show_all]
       @organizations = Organization.select("DISTINCT(organizations.id), organizations.*").where(where_clause).order(:name, :city).paginate(page: params[:page], per_page: per_page)
     else
-
-      organization_type_ids = []
-      organization_search_params.each do |index|
-        if ["name", "city"].include?(index[0])
-          if index[1].strip.length > 0
-            where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
-            where_clause += "(soundex(#{index[0]}) = soundex('#{quote_string(index[1])}') OR (LOWER(#{index[0]}) LIKE '#{quote_string(index[1].downcase)}%'))"
+      if (organization_search_params.count < 1)
+        @organizations = Organization.none
+      else
+        organization_type_ids = []
+        organization_search_params.each do |index|
+          if ["name", "city"].include?(index[0])
+            if index[1].strip.length > 0
+              where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
+              where_clause += "(soundex(#{index[0]}) = soundex('#{quote_string(index[1])}') OR (LOWER(#{index[0]}) LIKE '#{quote_string(index[1].downcase)}%'))"
+            end
+          end
+          if index[0] == "organization_type_ids"
+            organization_type_ids = index[1]
           end
         end
-        if index[0] == "organization_type_ids"
-          organization_type_ids = index[1]
-        end
-      end
 
-      if organization_type_ids.count > 0
-        @organizations = Organization.select("DISTINCT(organizations.id), organizations.*").where(organization_type: organization_type_ids).where(where_clause).order(:name, :city).paginate(page: params[:page], per_page: per_page)
-      else
-        @organizations = Organization.select("DISTINCT(organizations.id), organizations.*").where(where_clause).order(:name, :city).paginate(page: params[:page], per_page: per_page)
+        if organization_type_ids.count > 0
+          @organizations = Organization.select("DISTINCT(organizations.id), organizations.*").where(organization_type: organization_type_ids).where(where_clause).order(:name, :city).paginate(page: params[:page], per_page: per_page)
+        else
+          @organizations = Organization.select("DISTINCT(organizations.id), organizations.*").where(where_clause).order(:name, :city).paginate(page: params[:page], per_page: per_page)
+        end
       end
 
 
@@ -277,7 +285,9 @@ class OrganizationsController < ApplicationController
                                          :notes, :remove_from_mailing_list, :organization_type_id)
   end
   def organization_search_params
-    params.permit(:name, :city, organization_type_ids: [])
+    search_params = params.permit(:name, :city, organization_type_ids: [])
+    search_params.delete_if {|k,v| v.blank?}
+    search_params
   end
 
 
