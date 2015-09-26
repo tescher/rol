@@ -1,0 +1,7 @@
+<% provide(:title, 'Import Workday Volunteers') %>
+<h1>Import Workday Volunteers</h1>
+
+<h2>WARNING: This should only be done by those who know completely what they are doing!</h2>
+
+<%= @import_path = import_workday_volunteers_path
+    render 'shared/import_form' %>

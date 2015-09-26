@@ -2531,6 +2531,7 @@
       <column name="hours" sqlType="float8" precision="17" scale="17" nullable="true" jdbcType="8"/>
       <column name="created_at" sqlType="timestamp" precision="29" scale="6" nullable="false" jdbcType="93"/>
       <column name="updated_at" sqlType="timestamp" precision="29" scale="6" nullable="false" jdbcType="93"/>
+      <column name="notes" sqlType="varchar" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="workday_organizations_pkey" columns="id"/>
     </table>
     <table name="workday_organizations_id_seq" schema="public" catalog="rol_development" type="SEQUENCE">
@@ -2554,7 +2555,10 @@
       <column name="hours" sqlType="float8" precision="17" scale="17" nullable="true" jdbcType="8"/>
       <column name="created_at" sqlType="timestamp" precision="29" scale="6" nullable="false" jdbcType="93"/>
       <column name="updated_at" sqlType="timestamp" precision="29" scale="6" nullable="false" jdbcType="93"/>
+      <column name="notes" sqlType="varchar" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
+      <column name="old_id" sqlType="varchar" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="workday_volunteers_pkey" columns="id"/>
+      <index name="index_workday_volunteers_on_old_id" unique="false" columns="old_id"/>
     </table>
     <table name="workday_volunteers_id_seq" schema="public" catalog="rol_development" type="SEQUENCE">
       <column name="sequence_name" sqlType="name" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
@@ -2576,6 +2580,7 @@
       <column name="workdate" sqlType="date" precision="13" scale="0" nullable="true" jdbcType="91"/>
       <column name="name" sqlType="varchar" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
       <column name="old_id" sqlType="varchar" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
+      <column name="notes" sqlType="varchar" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="workdays_pkey" columns="id"/>
       <index name="index_workdays_on_old_id" unique="false" columns="old_id"/>
     </table>

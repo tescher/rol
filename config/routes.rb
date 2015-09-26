@@ -39,6 +39,9 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'workday_volunteers/import' => 'workday_volunteers#import_form'
+  post 'workday_volunteers/import' => 'workday_volunteers#import', as: :import_workday_volunteers
+
   resources :interests
   resources :interest_categories
 

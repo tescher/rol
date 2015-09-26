@@ -1,5 +1,7 @@
 class WorkdaysController < ApplicationController
   before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search, :report, :add_participants, :workday_summary]
+  before_action :admin_user,     only: [:import, :import_form]
+
 
   # GET /workdays
   # GET /workdays.json
@@ -134,7 +136,7 @@ class WorkdaysController < ApplicationController
     end
   end
 
-  # GET /projects/import
+  # GET /workdays/import
   def import_form
     render :import
   end
@@ -274,6 +276,11 @@ class WorkdaysController < ApplicationController
       flash[:danger] = "Please log in."
       redirect_to login_url
     end
+  end
+
+  # Confirms an admin user.
+  def admin_user
+    redirect_to(root_url) unless current_user.admin?
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

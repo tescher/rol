@@ -282,16 +282,32 @@ class VolunteersController < ApplicationController
                     @volunteer.interests = interests
                   end
                   record_data.each do |key, value|
-                    if !value.blank?
-                      @volunteer[key] = (key == "waiver_date") ? Date.strptime(value, "%m/%d/%Y") : value
+                    if key != "notes"
+                      if !value.blank?
+                        begin
+                          @volunteer[key] = (key == "waiver_date") ? Date.strptime(value, "%m/%d/%Y") : value
+                        rescue => ex
+                          @messages << "Warning: Invalid " + key + " data (" + value + "), saved in notes field. #{message_data}"
+                          @messages << " -- #{ex.message}"
+                          record_data["notes"] += ". Invalid " + key + " data found in conversion: " + value
+                        end
+                      end
                     end
                   end
                   if !@volunteer.valid?
-                    @messages << "Validation errors. #{message_data}"
-                    @volunteer.errors.full_messages.each do |message|
-                      @messages << " -- #{message}"
+                    if @volunteer.errors[:email].any?
+                      @messages << "Invalid email " + record_data["email"] + ", saved to notes"
+                      record_data["notes"] += ". Invalid email found in conversion: " + record_data["email"]
+                    else
+                      @messages << "Validation errors. #{message_data}"
+                      @volunteer.errors.full_messages.each do |message|
+                        @messages << " -- #{message}"
+                      end
+                      fatal = true
                     end
-                    fatal = true
+                  end
+                  if !record_data["notes"].blank?
+                    @volunteer["notes"] = record_data["notes"]
                   end
                 end
               end
