@@ -9,6 +9,10 @@
           <%= f.text_field :name, class: 'form-control', autofocus: 'true' %>
         </div>
         <div class="field">
+          <%= f.label :notes %><br>
+          <%= f.text_area :notes, class: 'form-control' %>
+        </div>
+        <div class="field">
           <%= f.label :workdate %><br>
           <div class='input-group date' id='workdatepicker'>
             <input type='text' value="<%= @workday.workdate.nil? ? Date.today.strftime("%m/%d/%Y") : @workday.workdate.strftime("%m/%d/%Y") %>" name="workday[workdate]" id="workday_workdate" class="form-control" />

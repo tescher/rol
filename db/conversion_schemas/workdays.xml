@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <data-set xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <record>
-    <name>Project 1</name>
-    <description>Project 1 description</description>
-    <inactive>1</inactive>
+    <name>Event 1</name>
+    <workdate></workdate>
+    <notes></notes>
+    <project_old_id>2</project_old_id>
     <old_id></old_id>
   </record>
   <record>
-    <name>Project 2</name>
-    <description>Project 2 description</description>
-    <inactive>0</inactive>
+    <name>Event 2</name>
+    <workdate></workdate>
+    <notes></notes>
+    <project_old_id>2</project_old_id>
     <old_id></old_id>
   </record>
 </data-set>

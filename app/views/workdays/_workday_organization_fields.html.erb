@@ -11,6 +11,7 @@
       <%= f.text_field :end_time,  value: f.object.end_time.nil? ? "" : f.object.end_time.strftime("%l:%M %p"), class: "workdayHoursCalc" %>
     </div>
   <td><%= f.text_field :hours %></td>
+  <td><%= f.text_area :notes %></td>
   <td><%= f.hidden_field :organization_id, value: organization.id %>
     <%= f.hidden_field :_destroy %>
     <%= link_to "remove", "#", class: "remove_fields" %></td>
