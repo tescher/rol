@@ -298,6 +298,7 @@ class VolunteersController < ApplicationController
                     if @volunteer.errors[:email].any?
                       @messages << "Invalid email " + record_data["email"] + ", saved to notes"
                       record_data["notes"] += ". Invalid email found in conversion: " + record_data["email"]
+                      @volunteer.email = ""
                     else
                       @messages << "Validation errors. #{message_data}"
                       @volunteer.errors.full_messages.each do |message|

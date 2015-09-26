@@ -249,7 +249,7 @@ class WorkdaysController < ApplicationController
       @workday_years = Workday.select("ROUND(EXTRACT(YEAR FROM workdays.workdate)) as year").joins(join).where("workday_" + @objectName + "s." + @objectName + "_id = '#{@object.id}'").group("year").order("year DESC")
       @workdays_by_year = Hash[@workday_years.map { |wy|
                                  year = wy.year.to_s.split(".").first
-                                 workdays = Workday.select("DISTINCT workdays.*, SUM(workday_" + @objectName + "s.hours) as hours").joins(join).where("ROUND(EXTRACT(YEAR FROM workdate)) = '#{wy.year}'").group("workdays.id").order("workdate DESC")
+                                 workdays = Workday.select("DISTINCT workdays.*, SUM(workday_" + @objectName + "s.hours) as hours").joins(join).where("ROUND(EXTRACT(YEAR FROM workdate)) = '#{wy.year}' AND workday_" + @objectName + "s." + @objectName + "_id = '#{@object.id}'").group("workdays.id").order("workdate DESC")
                                  [year, workdays]
                                }]
       render partial: "dialog_workday_summary"

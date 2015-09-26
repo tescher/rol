@@ -86,25 +86,19 @@ class WorkdayVolunteersController < ApplicationController
                             end
                           end
                         end
-                        if (!@workday_volunteer.start_time.blank?) || (@workday_volunteer.end_time.blank?)
+                        if !@workday_volunteer.start_time.blank? && (@workday_volunteer.end_time.blank?)
                           @workday_volunteer.end_time = @workday_volunteer.start_time + (4 * 60 * 60)  # Old system assumed 4 hours if no end time entered
                         end
                         if !record_data["notes"].blank?
-                          @workday_volunteer["notes"] = record_data["notes"]
+                          @workday_volunteer.notes = record_data["notes"]
                         end
                         if !@workday_volunteer.valid?
-                          @messages << "Validation errors. #{message_data}"
+                          @messages << "Validation errors. #{message_data}. Project: #{Project.find(@workday.project_id).name}, Workday: #{@workday.workdate.strftime("%m/%d/%Y")} - #{@workday.name}, Volunteer: #{@volunteer.first_name} #{@volunteer.last_name} "
                           if !@workday_volunteer.start_time.blank?
                             @messages << "Start Time Imported: " + record_data["start_time"]
-                            @messages << @workday_volunteer.start_time.strftime("%m/%d/%Y %H:%M:%S")
-                            @messages << Time.strptime(record_data["start_time"], "%m/%d/%Y %H:%M:%S")
-                            @messages << Time.strptime(record_data["start_time"], "%m/%d/%Y %H:%M:%S").strftime("%H:%M:%S")
                           end
                           if !@workday_volunteer.end_time.blank?
                             @messages << "End Time Imported: " + record_data["end_time"]
-                            @messages << @workday_volunteer.end_time.strftime("%m/%d/%Y %H:%M:%S")
-                            @messages << Time.strptime(record_data["end_time"], "%m/%d/%Y %H:%M:%S")
-                            @messages << Time.strptime(record_data["end_time"], "%m/%d/%Y %H:%M:%S").strftime("%H:%M:%S")
                           end
                           @workday_volunteer.errors.full_messages.each do |message|
                             @messages << " -- #{message}"

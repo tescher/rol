@@ -35,5 +35,6 @@ module WorkdaysHelper
     end
     output
   end
+
 end
 
