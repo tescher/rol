@@ -68,20 +68,44 @@ class WorkdayVolunteersController < ApplicationController
                         @workday_volunteer = WorkdayVolunteer.new
 
                         record_data.each do |key, value|
-                          if !value.blank?
+                          if (!value.blank?) && (key != "notes")
                             if key == "volunteer_old_id"
                               @workday_volunteer["volunteer_id"] = @volunteer.id
                             else
                               if key == "workday_old_id"
                                 @workday_volunteer["workday_id"] = @workday.id
                               else
-                                @workday_volunteer[key] = ((key == "start_time") || (key == "end_time")) ? (Date.strptime(@workday.workdate, "%m/%d/%Y") + Date.strptime(value, "%H:%M:%S")) :value
+                                begin
+                                  @workday_volunteer[key] = ((key == "start_time") || (key == "end_time")) ? Time.strptime(value, "%m/%d/%Y %H:%M:%S").strftime("%H:%M:%S") : value
+                                rescue => ex
+                                  @messages << "Warning: Invalid " + key + " data (" + value + "), saved in notes field. #{message_data}"
+                                  @messages << " -- #{ex.message}"
+                                  record_data["notes"] += ". Invalid " + key + " data found in conversion: " + value
+                                end
                               end
                             end
                           end
                         end
+                        if (!@workday_volunteer.start_time.blank?) || (@workday_volunteer.end_time.blank?)
+                          @workday_volunteer.end_time = @workday_volunteer.start_time + (4 * 60 * 60)  # Old system assumed 4 hours if no end time entered
+                        end
+                        if !record_data["notes"].blank?
+                          @workday_volunteer["notes"] = record_data["notes"]
+                        end
                         if !@workday_volunteer.valid?
                           @messages << "Validation errors. #{message_data}"
+                          if !@workday_volunteer.start_time.blank?
+                            @messages << "Start Time Imported: " + record_data["start_time"]
+                            @messages << @workday_volunteer.start_time.strftime("%m/%d/%Y %H:%M:%S")
+                            @messages << Time.strptime(record_data["start_time"], "%m/%d/%Y %H:%M:%S")
+                            @messages << Time.strptime(record_data["start_time"], "%m/%d/%Y %H:%M:%S").strftime("%H:%M:%S")
+                          end
+                          if !@workday_volunteer.end_time.blank?
+                            @messages << "End Time Imported: " + record_data["end_time"]
+                            @messages << @workday_volunteer.end_time.strftime("%m/%d/%Y %H:%M:%S")
+                            @messages << Time.strptime(record_data["end_time"], "%m/%d/%Y %H:%M:%S")
+                            @messages << Time.strptime(record_data["end_time"], "%m/%d/%Y %H:%M:%S").strftime("%H:%M:%S")
+                          end
                           @workday_volunteer.errors.full_messages.each do |message|
                             @messages << " -- #{message}"
                           end
