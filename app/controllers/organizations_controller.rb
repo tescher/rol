@@ -209,33 +209,33 @@ class OrganizationsController < ApplicationController
               fatal = true
               @messages << "Missing id from old system. #{message_data}"
             else
-              if !(Organization.find_by_old_id(record_data["old_id"]).nil?)
+              organization_type = OrganizationType.where("name ilike ?", "%#{record_data["organization_type"]}").first
+              if organization_type.nil?
+                @messages << "Missing #{record_data["organization_type"]} organization type mapping. #{message_data}"
                 fatal = true
-                @messages << "Imported previously. #{message_data}"
               else
-                organization_type = OrganizationType.where("name ilike ?", "%#{record_data["organization_type"]}").first
-                if organization_type.nil?
-                  @messages << "Missing #{record_data["organization_type"]} organization type mapping. #{message_data}"
+                if !(Organization.find_by_old_id_and_organization_type_id(record_data["old_id"], organization_type.id).nil?)
                   fatal = true
+                  @messages << "Imported previously. #{message_data}"
                 end
-                if !fatal
-                  @organization = Organization.new
-                  record_data.each do |key, value|
-                    if !value.blank?
-                      if (key == "organization_type")
-                        @organization.organization_type_id = organization_type.id
-                      else
-                        @organization[key] = value
-                      end
+              end
+              if !fatal
+                @organization = Organization.new
+                record_data.each do |key, value|
+                  if !value.blank?
+                    if (key == "organization_type")
+                      @organization.organization_type_id = organization_type.id
+                    else
+                      @organization[key] = value
                     end
                   end
-                  if !@organization.valid?
-                    @messages << "Validation errors. #{message_data}"
-                    @organization.errors.full_messages.each do |message|
-                      @messages << " -- #{message}"
-                    end
-                    fatal = true
+                end
+                if !@organization.valid?
+                  @messages << "Validation errors. #{message_data}"
+                  @organization.errors.full_messages.each do |message|
+                    @messages << " -- #{message}"
                   end
+                  fatal = true
                 end
               end
             end
