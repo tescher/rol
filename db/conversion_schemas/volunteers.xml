@@ -18,11 +18,22 @@
     <email>tim@eschers.com</email>
     <remove_from_mailing_list></remove_from_mailing_list>
     <interests>
-      <Drywall>1</Drywall>
+      <Cleaning>1</Cleaning>
       <Painting></Painting>
-      <Data_Entry>1</Data_Entry>
+      <Insulation>1</Insulation>
+      <Landscaping></Landscaping>
+      <Siding></Siding>
+      <Drywall></Drywall>
+      <Finish_Carpentry></Finish_Carpentry>
       <Reception></Reception>
-      <Dummy></Dummy>
+      <Mailings></Mailings>
+      <Data_Entry></Data_Entry>
+      <Info_tables></Info_tables>
+      <Website></Website>
+      <Lunch></Lunch>
+      <Cashiering></Cashiering>
+      <Stocking></Stocking>
+      <Deconstruction></Deconstruction>
     </interests>
   </record>
   <record>
@@ -43,11 +54,22 @@
     <email></email>
     <remove_from_mailing_list></remove_from_mailing_list>
     <interests>
-      <Drywall>1</Drywall>
-      <Painting>1</Painting>
-      <Data_Entry>1</Data_Entry>
-      <Reception>1</Reception>
-      <Dummy>1</Dummy>
+      <Cleaning>1</Cleaning>
+      <Painting></Painting>
+      <Insulation>1</Insulation>
+      <Landscaping></Landscaping>
+      <Siding></Siding>
+      <Drywall></Drywall>
+      <Finish_Carpentry></Finish_Carpentry>
+      <Reception></Reception>
+      <Mailings></Mailings>
+      <Data_Entry></Data_Entry>
+      <Info_tables></Info_tables>
+      <Website></Website>
+      <Lunch></Lunch>
+      <Cashiering></Cashiering>
+      <Stocking></Stocking>
+      <Deconstruction></Deconstruction>
     </interests>
   </record>
 </data-set>
