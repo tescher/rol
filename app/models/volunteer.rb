@@ -5,6 +5,7 @@ class Volunteer < ActiveRecord::Base
   has_many :interests, through: :volunteer_interests
   has_many :workday_volunteers
   has_many :workdays, through: :workday_volunteers
+  has_many :donations
 
   before_save {
     self.email = email.downcase if email

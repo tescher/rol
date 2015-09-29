@@ -11,11 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150926153828) do
+ActiveRecord::Schema.define(version: 20150929155705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "fuzzystrmatch"
+
+  create_table "donation_types", force: :cascade do |t|
+    t.string   "name"
+    t.boolean  "non_monetary", default: false, null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  create_table "donations", force: :cascade do |t|
+    t.date     "date_received"
+    t.decimal  "value"
+    t.string   "ref_no"
+    t.string   "item"
+    t.boolean  "anonymous",        default: false, null: false
+    t.string   "in_honor_of"
+    t.string   "designation"
+    t.string   "notes"
+    t.boolean  "receipt_sent",     default: false, null: false
+    t.integer  "volunteer_id"
+    t.integer  "organization_id"
+    t.integer  "donation_type_id"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
 
   create_table "interest_categories", force: :cascade do |t|
     t.string   "name"
