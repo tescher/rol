@@ -113,6 +113,7 @@ class OrganizationsController < ApplicationController
     if params[:dialog] == "true"
       render partial: "dialog_form"
     end
+    @allow_stay = true
 
   end
 
@@ -120,6 +121,7 @@ class OrganizationsController < ApplicationController
   def edit
     @organization = Organization.find(params[:id])
     @num_workdays = WorkdayOrganization.where(organization_id: @organization.id)
+    @allow_stay = true
   end
 
   # POST /organizations
@@ -132,13 +134,21 @@ class OrganizationsController < ApplicationController
         render partial: "dialog_add_workday_organization_fields"
       else
         flash[:success] = "Organization created"
-        redirect_to search_organizations_path
+        if !params[:stay].blank?
+          @num_workdays = []
+          @allow_stay = true
+          render :edit
+        else
+          redirect_to search_organizations_path
+        end
       end
     else
       if params[:organization][:dialog] == "true"
         # flash[:danger] = "Could not create organization. Make sure fields are filled correctly"
         render partial: "dialog_form"
       else
+        @num_workdays = []
+        @allow_stay = true
         render :new
       end
     end
@@ -148,11 +158,12 @@ class OrganizationsController < ApplicationController
   # PATCH/PUT /organizations/1.json
   def update
     @organization = Organization.find(params[:id])
-    if @organization.update_attributes(organization_params)
+    if @organization.update_attributes(organization_params) && params[:stay].blank?
       flash[:success] = "Organization updated"
       redirect_to search_organizations_path
     else
-      @num_workdays = []
+      @num_workdays = WorkdayOrganization.where(organization_id: @organization.id)
+      @allow_stay = true
       render :edit
     end
   end

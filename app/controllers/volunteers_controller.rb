@@ -154,6 +154,8 @@ class VolunteersController < ApplicationController
     @num_workdays = []
     if params[:dialog] == "true"
       render partial: "dialog_form"
+    else
+      @allow_stay = true
     end
 
   end
@@ -162,6 +164,7 @@ class VolunteersController < ApplicationController
   def edit
     @volunteer = Volunteer.find(params[:id])
     @num_workdays = WorkdayVolunteer.where(volunteer_id: @volunteer.id)
+    @allow_stay = true
   end
 
   # POST /volunteers
@@ -174,13 +177,21 @@ class VolunteersController < ApplicationController
         render partial: "dialog_add_workday_volunteer_fields"
       else
         flash[:success] = "Volunteer created"
+        if !params[:stay].blank?
+          @num_workdays = []
+          @allow_stay = true
+          render :edit
+        else
         redirect_to search_volunteers_path
+        end
       end
     else
       if params[:volunteer][:dialog] == "true"
-        # flash[:danger] = "Could not create volunteer. Make sure fields are filled correctly"
         render partial: "dialog_form"
       else
+        # flash[:danger] = "Could not create volunteer. Make sure fields are filled correctly"
+        @num_workdays = []
+        @allow_stay = true
         render :new
       end
     end
@@ -190,11 +201,13 @@ class VolunteersController < ApplicationController
   # PATCH/PUT /volunteers/1.json
   def update
     @volunteer = Volunteer.find(params[:id])
-    if @volunteer.update_attributes(volunteer_params)
+    if @volunteer.update_attributes(volunteer_params) && params[:stay].blank?
       flash[:success] = "Volunteer updated"
       redirect_to search_volunteers_path
     else
-      @num_workdays = []
+      flash[:success] = "Volunteer updated"
+      @num_workdays = WorkdayVolunteer.where(volunteer_id: @volunteer.id)
+      @allow_stay = true
       render :edit
     end
   end
@@ -364,6 +377,8 @@ class VolunteersController < ApplicationController
     search_params.delete_if {|k,v| v.blank?}
     search_params
   end
+
+
 
 
 end
