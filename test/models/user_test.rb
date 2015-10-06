@@ -62,5 +62,13 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.authenticated?('')
   end
 
+  test "can only have one donation setting" do
+    @user.all_donations = true
+    @user.non_monetary_donations = true
+    assert_not @user.valid?
+    @user.all_donations = false
+    assert @user.valid?
+  end
+
 
 end

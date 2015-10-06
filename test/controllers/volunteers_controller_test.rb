@@ -29,6 +29,11 @@ class VolunteersControllerTest < ActionController::TestCase
     assert_redirected_to login_url
   end
 
+  test "should redirect donations when not logged in" do
+    get :donations, id: @volunteer
+    assert_redirected_to login_url
+  end
+
 
   test "should redirect destroy when not logged in" do
     assert_no_difference 'Volunteer.count' do

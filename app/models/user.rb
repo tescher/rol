@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, length: { minimum: MIN_PASSWORD_LENGTH }, allow_blank: true
+  validate :only_one_donation_security_type
 
   # Returns the hash digest of the given string.
   def User.digest(string)
@@ -33,9 +34,18 @@ class User < ActiveRecord::Base
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
   end
 
+  def non_monetary
+    !self.all_donations && self.non_monetary_donations
+  end
+
   # Forgets a user.
   def forget
     update_attribute(:remember_digest, nil)
+  end
+
+  private
+  def only_one_donation_security_type
+    errors.add(:all_donations, "Can't select both donation security settings") unless !(self.all_donations && self.non_monetary_donations)
   end
 
 

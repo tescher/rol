@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     end
     member do
       get 'address_check'
+      get 'donations' => 'volunteers#donations'
+      post 'donations' => 'volunteers#donations_update'
     end
   end
   resources :organizations do

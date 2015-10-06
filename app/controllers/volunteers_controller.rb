@@ -220,6 +220,16 @@ class VolunteersController < ApplicationController
     redirect_to search_volunteers_path
   end
 
+  # GET /volunteer/1/donations
+  def donations
+
+  end
+
+  # PUT /volunteer/1/donations
+  def donations_update
+
+  end
+
   # GET /volunteers/import
   def import_form
     render :import
