@@ -158,14 +158,16 @@ class OrganizationsController < ApplicationController
   # PATCH/PUT /organizations/1.json
   def update
     @organization = Organization.find(params[:id])
-    if @organization.update_attributes(organization_params) && params[:stay].blank?
+    if @organization.update_attributes(organization_params)
       flash[:success] = "Organization updated"
-      redirect_to search_organizations_path
-    else
-      @num_workdays = WorkdayOrganization.where(organization_id: @organization.id)
-      @allow_stay = true
-      render :edit
+      if params[:stay].blank?
+        redirect_to search_organizations_path
+        return
+      end
     end
+    @num_workdays = WorkdayOrganization.where(organization_id: @organization.id)
+    @allow_stay = true
+    render :edit
   end
 
   # DELETE /organizations/1

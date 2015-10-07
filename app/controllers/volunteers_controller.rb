@@ -183,7 +183,7 @@ class VolunteersController < ApplicationController
           @allow_stay = true
           render :edit
         else
-        redirect_to search_volunteers_path
+          redirect_to search_volunteers_path
         end
       end
     else
@@ -202,15 +202,16 @@ class VolunteersController < ApplicationController
   # PATCH/PUT /volunteers/1.json
   def update
     @volunteer = Volunteer.find(params[:id])
-    if @volunteer.update_attributes(volunteer_params) && params[:stay].blank?
+    if @volunteer.update_attributes(volunteer_params)
       flash[:success] = "Volunteer updated"
-      redirect_to search_volunteers_path
-    else
-      flash[:success] = "Volunteer updated"
-      @num_workdays = WorkdayVolunteer.where(volunteer_id: @volunteer.id)
-      @allow_stay = true
-      render :edit
+      if params[:stay].blank?
+        redirect_to search_volunteers_path
+        return
+      end
     end
+    @num_workdays = WorkdayVolunteer.where(volunteer_id: @volunteer.id)
+    @allow_stay = true
+    render :edit
   end
 
   # DELETE /volunteers/1
@@ -224,6 +225,8 @@ class VolunteersController < ApplicationController
   # GET /volunteer/1/donations
   def donations
     @donator = Volunteer.find(params[:id])
+    @no_delete = true
+    @allow_stay = true
     render "shared/donations_form"
   end
 
@@ -232,9 +235,15 @@ class VolunteersController < ApplicationController
     @volunteer = Volunteer.find(params[:id])
     if @volunteer.update_attributes(volunteer_params)
       flash[:success] = "Donations updated"
-      redirect_to search_volunteers_path
+      if params[:stay].blank?
+        redirect_to search_volunteers_path
+        return
+      end
     end
-
+    @donator = Volunteer.find(params[:id])
+    @no_delete = true
+    @allow_stay = true
+    render "shared/donations_form"
   end
 
   # GET /volunteers/import
