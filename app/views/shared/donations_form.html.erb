@@ -1,3 +1,6 @@
+<% provide(:title, 'Donations') %>
+<h1>Donations from <%= @donator.name %></h1>
+
 <%= form_for(@donator) do |f| %>
     <%= @object = f.object
         render 'shared/error_messages' %>
@@ -6,24 +9,26 @@
       <thead>
       <tr>
         <th class="col-md-3">Date Received</th>
-        <th class="col-md-2">Non-monetary</th>
+        <th class="col-md-2">Type</th>
+        <th class="col-md-2">Ref No</th>
         <th class="col-md-2">Value/Amount ($)</th>
         <th class="col-md-2">Item(s)</th>
         <th class="col-md-2">Designation</th>
         <th class="col-md-2">Honor Of</th>
         <th class="col-md-2">Anonymous</th>
+        <th class="col-md-2">Receipt Sent</th>
         <th class="col-md-2">Notes</th>
         <th class="col-md-1"></th>
       </tr>
       </thead>
       <tbody class="add_donation_fields">
       <%= f.fields_for :donations do |builder| %>
-          <%= render "donation_fields", :f => builder %>
+          <%= render "donations/donation_fields", :f => builder %>
       <% end %>
       </tbody>
     </table>
 
-    <%= link_to "Add a Donation", "#", id:"linkAddDonation" %>
+    <%= link_to_add_fields "Add a Donation", f, :donations, "", ".add_donation_fields", "Add a Donation" %>
 
     <div>&nbsp;</div>
 

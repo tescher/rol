@@ -2,8 +2,9 @@ include WorkdaysHelper
 include ApplicationHelper
 
 class VolunteersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search, :address_check]
+  before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search, :address_check, :donations, :donations_update]
   before_action :admin_user,     only: [:destroy, :import, :import_form]
+  before_action :donations_allowed, only: [:donations, :donation_update]
 
 
   def search
@@ -222,11 +223,17 @@ class VolunteersController < ApplicationController
 
   # GET /volunteer/1/donations
   def donations
-
+    @donator = Volunteer.find(params[:id])
+    render "shared/donations_form"
   end
 
   # PUT /volunteer/1/donations
   def donations_update
+    @volunteer = Volunteer.find(params[:id])
+    if @volunteer.update_attributes(volunteer_params)
+      flash[:success] = "Donations updated"
+      redirect_to search_volunteers_path
+    end
 
   end
 
@@ -380,12 +387,15 @@ class VolunteersController < ApplicationController
   def volunteer_params
     params.require(:volunteer).permit(:first_name, :last_name, :middle_name, :email, :occupation,
                                       :address, :city, :state, :zip, :home_phone, :work_phone, :mobile_phone,
-                                      :notes, :remove_from_mailing_list, :waiver_date, :background_check_date, interest_ids: [])
+                                      :notes, :remove_from_mailing_list, :waiver_date, :background_check_date, interest_ids: [], donations_attributes: [:id, :date_received, :value, :ref_no, :item, :anonymous, :in_honor_of, :designation, :notes, :receipt_sent, :volunteer_id, :organization_id, :donation_type_id, :_destroy])
   end
   def volunteer_search_params
     search_params = params.permit(:last_name, :city, interest_ids: [])
     search_params.delete_if {|k,v| v.blank?}
     search_params
+  end
+  def donations_allowed
+    redirect_to(root_url) unless current_user.donations_allowed
   end
 
 

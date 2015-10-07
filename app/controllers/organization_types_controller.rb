@@ -77,6 +77,6 @@ class OrganizationTypesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def organization_type_params
-    params.require(:organization_type).permit(:name)
+    params.require(:organization_type).permit(:name, :inactive)
   end
 end

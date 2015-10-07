@@ -34,6 +34,10 @@ class User < ActiveRecord::Base
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
   end
 
+  def donations_allowed
+    return self.admin || self.all_donations || self.non_monetary_donations
+  end
+
   def non_monetary
     !self.all_donations && self.non_monetary_donations
   end

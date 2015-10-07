@@ -5,7 +5,7 @@ class Organization < ActiveRecord::Base
   belongs_to :organization_type
   has_many :workday_organizations
   has_many :workdays, through: :workday_organizations
-  has_many :donations
+  has_many :donations, dependent: :destroy
 
 
   before_save {

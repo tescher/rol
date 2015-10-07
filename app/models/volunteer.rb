@@ -5,7 +5,10 @@ class Volunteer < ActiveRecord::Base
   has_many :interests, through: :volunteer_interests
   has_many :workday_volunteers
   has_many :workdays, through: :workday_volunteers
-  has_many :donations
+  has_many :donations, dependent: :destroy
+
+  accepts_nested_attributes_for :donations, :allow_destroy => true
+
 
   before_save {
     self.email = email.downcase if email

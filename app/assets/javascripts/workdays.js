@@ -1,4 +1,3 @@
-// Use the Bootstrap datepicker
 
 $(document).ready(function() {
 

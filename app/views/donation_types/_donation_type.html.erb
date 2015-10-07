@@ -1,0 +1,25 @@
+<div class="row clickable" href="<%=edit_donation_type_path(donation_type)%>">
+  <li>
+    <div class="col-md-2 col-md-offset-1">
+      <% if donation_type.inactive? %>
+          <s>
+      <% end %>
+      <%= donation_type.name %>
+      <% if donation_type.inactive? %>
+          </s>
+      <% end %>
+    </div>
+    <div class="col-md-2">
+      <% if donation_type.inactive? %>
+          <s>
+      <% end %>
+      <% if donation_type.non_monetary? %>
+          Non-Monetary
+      <% end %>
+      <% if donation_type.inactive? %>
+          </s>
+      <% end %>
+    </div>
+
+  </li>
+</div>

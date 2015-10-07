@@ -9,6 +9,20 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     @non_admin = users(:one)
     @monetary_donation_user = users(:monetary_donation)
     @non_monetary_donation_user = users(:non_monetary_donation)
+    5.times do |n|
+      @donation = Donation.new
+      @donation.donation_type = donation_types(:cash)
+      @donation.volunteer_id = @volunteer.id
+      @donation.date_received = n.day.ago.to_s(:db)
+      @donation.save
+    end
+    5.times do |n|
+      @donation = Donation.new
+      @donation.donation_type = donation_types(:restore)
+      @donation.volunteer_id = @volunteer.id
+      @donation.date_received = n.day.ago.to_s(:db)
+      @donation.save
+    end
   end
 
   test "No imports by non-admin" do
@@ -27,8 +41,8 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     [@admin, @monetary_donation_user].each do |user|
       log_in_as(user)
       get donations_volunteer_path(@volunteer)
-      assert_template "shared/donations"
-      donations = Donations.where("volunteer_id = '#{@volunteer.id}'")
+      assert_template "shared/donations_form"
+      donations = Donation.where("volunteer_id = '#{@volunteer.id}'")
       donations.each do |donation|
         assert_select 'input[value=?]',donation.id
       end
@@ -38,9 +52,9 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
   test "Non-monetary donations by non_monetary user" do
     log_in_as(@non_monetary_donation_user)
     get donations_volunteer_path(@volunteer)
-    assert_template "shared/donations"
-    monetary_donations = Donations.joins(:donation_types).where("volunteer_id = '#{@volunteer.id}' AND NOT donation_types.non_monetary")
-    non_monetary_donations = Donations.joins(:donation_types).where("volunteer_id = '#{@volunteer.id}' AND donation_types.non_monetary")
+    assert_template "shared/donations_form"
+    monetary_donations = Donation.joins(:donation_type).where("volunteer_id = '#{@volunteer.id}' AND NOT donation_types.non_monetary")
+    non_monetary_donations = Donation.joins(:donation_type).where("volunteer_id = '#{@volunteer.id}' AND donation_types.non_monetary")
     non_monetary_donations.each do |donation|
       assert_select 'input[value=?]',donation.id
     end

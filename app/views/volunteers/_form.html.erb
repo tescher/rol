@@ -173,7 +173,9 @@
       <div class="col-md-10 col-md-offset-1">
         <div class="pull-right">
           <%= render partial: "shared/form_actions", locals: {f: f} %>
-          <%= link_to 'Donations', volunteer_donations_path, class: "btn btn-primary" %>
+          <%= if current_user.donations_allowed
+                link_to 'Donations', donations_volunteer_path, class: "btn btn-primary"
+              end %>
         </div>
       </div>
     </div>

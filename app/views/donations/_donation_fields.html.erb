@@ -1,0 +1,24 @@
+<tr class="hide_on_remove">
+  <td>
+    <div class="field">
+      <div class='input-group date' id='receiveddatepicker'>
+        <input type='text' value="<%= f.object.date_received.nil? ? Date.today.strftime("%m/%d/%Y") : f.object.date_received.strftime("%m/%d/%Y") %>" name="donation[date_received]" id="donation_date_received" class="form-control" />
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+      </div>
+    </div>
+  </td>
+  <td>
+    <%= f.select :donation_type_id, options_from_collection_for_select(DonationType.where(inactive: false), :id, :name, f.object.donation_type_id), {}, { :multiple => false, class: "form-control"}  %>
+  </td>
+  <td><%= f.text_field :ref_no %></td>
+  <td><%= f.text_field :value %></td>
+  <td><%= f.text_field :item %></td>
+  <td><%= f.text_field :in_honor_of %></td>
+  <td><%= f.text_field :designation %></td>
+  <td><%= f.check_box :anonymous %></td>
+  <td><%= f.check_box :receipt_sent %></td>
+  <td><%= f.text_area :notes %></td>
+  <%= f.hidden_field :_destroy %>
+  <%= link_to "remove", "#", class: "remove_fields" %></td>
+</tr>

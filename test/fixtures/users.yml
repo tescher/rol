@@ -16,6 +16,17 @@ michael:
   password_digest: <%= User.digest('password') %>
   admin: true
 
+monetary_donation:
+  name: Tim Monetary
+  email: tm@example.com
+  password_digest: <%= User.digest('password') %>
+  all_donations: true
+
+non_monetary_donation:
+  name: Tim NonMonetary
+  email: tnm@example.com
+  password_digest: <%= User.digest('password') %>
+  non_monetary_donations: true
 
 archer:
   name: Sterling Archer
