@@ -7,6 +7,8 @@ class Organization < ActiveRecord::Base
   has_many :workdays, through: :workday_organizations
   has_many :donations, dependent: :destroy
 
+  accepts_nested_attributes_for :donations, :allow_destroy => true
+
 
   before_save {
     self.email = email.downcase if email

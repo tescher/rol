@@ -2,8 +2,9 @@ include WorkdaysHelper
 include ApplicationHelper
 
 class OrganizationsController < ApplicationController
-  before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search, :address_check]
+  before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search, :address_check, :donations]
   before_action :admin_user,     only: [:destroy, :import, :import_form]
+  before_action :donations_allowed, only: [:donations]
 
 
   def search
@@ -134,17 +135,18 @@ class OrganizationsController < ApplicationController
         render partial: "dialog_add_workday_organization_fields"
       else
         flash[:success] = "Organization created"
-        if !params[:stay].blank?
-          @num_workdays = []
-          @allow_stay = true
-          render :edit
+        if !params[:to_donations].blank?
+          redirect_to donations_organization_path(@organization)
         else
-          redirect_to search_organizations_path
+          if params[:stay].blank?
+            redirect_to search_organizations_path
+          else
+            redirect_to edit_organization_path(@organization)
+          end
         end
       end
-    else
+    else                 # Save not successful
       if params[:organization][:dialog] == "true"
-        # flash[:danger] = "Could not create organization. Make sure fields are filled correctly"
         render partial: "dialog_form"
       else
         @num_workdays = []
@@ -158,16 +160,38 @@ class OrganizationsController < ApplicationController
   # PATCH/PUT /organizations/1.json
   def update
     @organization = Organization.find(params[:id])
-    if @organization.update_attributes(organization_params)
-      flash[:success] = "Organization updated"
-      if params[:stay].blank?
-        redirect_to search_organizations_path
-        return
+    if organization_params[:name].nil?     # Coming from donations
+      if @organization.update_attributes(organization_params)
+        flash[:success] = "Donations updated"
+        if params[:stay].blank?
+          redirect_to edit_organization_path(@organization)
+        else
+          redirect_to donations_organization_path(@organization)
+        end
+      else
+        @donator = @organization
+        @allow_stay = true
+        @no_delete = true
+        render "shared/donations_form"
+      end
+    else                                       # Coming from regular edit
+      if @organization.update_attributes(organization_params)
+        flash[:success] = "Organization updated"
+        if !params[:to_donations].blank?
+          redirect_to donations_organization_path(@organization)
+        else
+          if params[:stay].blank?
+            redirect_to search_organizations_path
+          else
+            redirect_to edit_organization_path(@organization)
+          end
+        end
+      else
+        @allow_stay = true
+        @num_workdays = WorkdayOrganization.where(organization_id: @organization.id)
+        render :edit
       end
     end
-    @num_workdays = WorkdayOrganization.where(organization_id: @organization.id)
-    @allow_stay = true
-    render :edit
   end
 
   # DELETE /organizations/1
@@ -177,6 +201,15 @@ class OrganizationsController < ApplicationController
     flash[:success] = "Organization deleted"
     redirect_to search_organizations_path
   end
+
+  # GET /organization/1/donations
+  def donations
+    @donator = Organization.find(params[:id])
+    @no_delete = true
+    @allow_stay = true
+    render "shared/donations_form"
+  end
+
 
   # GET /organizations/import
   def import_form
@@ -295,13 +328,18 @@ class OrganizationsController < ApplicationController
   def organization_params
     params.require(:organization).permit(:name, :email, :contact_name,
                                          :address, :city, :state, :zip, :phone,
-                                         :notes, :remove_from_mailing_list, :organization_type_id)
+                                         :notes, :remove_from_mailing_list, :organization_type_id, donations_attributes: [:id, :date_received, :value, :ref_no, :item, :anonymous, :in_honor_of, :designation, :notes, :receipt_sent, :volunteer_id, :organization_id, :donation_type_id, :_destroy])
   end
   def organization_search_params
     search_params = params.permit(:name, :city, organization_type_ids: [])
     search_params.delete_if {|k,v| v.blank?}
     search_params
   end
+
+  def donations_allowed
+    redirect_to(root_url) unless current_user.donations_allowed
+  end
+
 
 
 end

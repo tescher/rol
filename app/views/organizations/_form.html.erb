@@ -115,6 +115,9 @@
       <div class="col-md-10 col-md-offset-1">
         <div class="pull-right">
           <%= render partial: "shared/form_actions", locals: {f: f} %>
+          <%= if current_user.donations_allowed
+                f.submit "Donations", name: "to_donations", class: "btn btn-primary"
+              end %>
         </div>
       </div>
     </div>

@@ -37,4 +37,8 @@ module ApplicationHelper
     s.gsub(/\\/, '\&\&').gsub(/'/, "''") # ' (for ruby-mode)
   end
 
+  # turn a currency to a number
+  def currency_to_number(currency)
+    currency.to_s.gsub(/[$,]/,'').to_f
+  end
 end

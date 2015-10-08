@@ -2330,6 +2330,7 @@
       <column name="non_monetary" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7" def="ZmFsc2U="/>
       <column name="created_at" sqlType="timestamp" precision="29" scale="6" nullable="false" jdbcType="93"/>
       <column name="updated_at" sqlType="timestamp" precision="29" scale="6" nullable="false" jdbcType="93"/>
+      <column name="inactive" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7" def="ZmFsc2U="/>
       <primary-key name="donation_types_pkey" columns="id"/>
     </table>
     <table name="donation_types_id_seq" schema="public" catalog="rol_development" type="SEQUENCE">
@@ -2421,6 +2422,7 @@
       <column name="name" sqlType="varchar" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
       <column name="created_at" sqlType="timestamp" precision="29" scale="6" nullable="false" jdbcType="93"/>
       <column name="updated_at" sqlType="timestamp" precision="29" scale="6" nullable="false" jdbcType="93"/>
+      <column name="inactive" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7" def="ZmFsc2U="/>
       <primary-key name="organization_types_pkey" columns="id"/>
     </table>
     <table name="organization_types_id_seq" schema="public" catalog="rol_development" type="SEQUENCE">
@@ -2500,6 +2502,8 @@
       <column name="password_digest" sqlType="varchar" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
       <column name="remember_digest" sqlType="varchar" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
       <column name="admin" sqlType="bool" precision="1" scale="0" nullable="true" jdbcType="-7" def="ZmFsc2U="/>
+      <column name="all_donations" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7" def="ZmFsc2U="/>
+      <column name="non_monetary_donations" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7" def="ZmFsc2U="/>
       <primary-key name="users_pkey" columns="id"/>
       <index name="index_users_on_email" unique="true" columns="email"/>
     </table>
@@ -21548,6 +21552,7 @@
       <column name="non_monetary" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7" def="ZmFsc2U="/>
       <column name="created_at" sqlType="timestamp" precision="29" scale="6" nullable="false" jdbcType="93"/>
       <column name="updated_at" sqlType="timestamp" precision="29" scale="6" nullable="false" jdbcType="93"/>
+      <column name="inactive" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7" def="ZmFsc2U="/>
       <primary-key name="donation_types_pkey" columns="id"/>
     </table>
     <table name="donation_types_id_seq" schema="public" catalog="rol_test" type="SEQUENCE">
@@ -21639,6 +21644,7 @@
       <column name="name" sqlType="varchar" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
       <column name="created_at" sqlType="timestamp" precision="29" scale="6" nullable="false" jdbcType="93"/>
       <column name="updated_at" sqlType="timestamp" precision="29" scale="6" nullable="false" jdbcType="93"/>
+      <column name="inactive" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7" def="ZmFsc2U="/>
       <primary-key name="organization_types_pkey" columns="id"/>
     </table>
     <table name="organization_types_id_seq" schema="public" catalog="rol_test" type="SEQUENCE">
@@ -21718,6 +21724,8 @@
       <column name="password_digest" sqlType="varchar" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
       <column name="remember_digest" sqlType="varchar" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
       <column name="admin" sqlType="bool" precision="1" scale="0" nullable="true" jdbcType="-7" def="ZmFsc2U="/>
+      <column name="all_donations" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7" def="ZmFsc2U="/>
+      <column name="non_monetary_donations" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7" def="ZmFsc2U="/>
       <primary-key name="users_pkey" columns="id"/>
       <index name="index_users_on_email" unique="true" columns="email"/>
     </table>

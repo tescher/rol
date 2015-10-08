@@ -2,9 +2,9 @@ include WorkdaysHelper
 include ApplicationHelper
 
 class VolunteersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search, :address_check, :donations, :donations_update]
+  before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search, :address_check, :donations]
   before_action :admin_user,     only: [:destroy, :import, :import_form]
-  before_action :donations_allowed, only: [:donations, :donation_update]
+  before_action :donations_allowed, only: [:donations]
 
 
   def search
@@ -172,25 +172,26 @@ class VolunteersController < ApplicationController
   # POST /volunteers.json
   def create
     @volunteer = Volunteer.new(volunteer_params)
-    if @volunteer.save
+    if @volunteer.save    # Save successful
       if params[:volunteer][:dialog] == "true"
         @workday = session[:workday_id]
         render partial: "dialog_add_workday_volunteer_fields"
       else
         flash[:success] = "Volunteer created"
-        if !params[:stay].blank?
-          @num_workdays = []
-          @allow_stay = true
-          render :edit
+        if !params[:to_donations].blank?
+          redirect_to donations_volunteer_path(@volunteer)
         else
-          redirect_to search_volunteers_path
+          if params[:stay].blank?
+            redirect_to search_volunteers_path
+          else
+            redirect_to edit_volunteer_path(@volunteer)
+          end
         end
       end
-    else
+    else                 # Save not successful
       if params[:volunteer][:dialog] == "true"
         render partial: "dialog_form"
       else
-        # flash[:danger] = "Could not create volunteer. Make sure fields are filled correctly"
         @num_workdays = []
         @allow_stay = true
         render :new
@@ -202,16 +203,38 @@ class VolunteersController < ApplicationController
   # PATCH/PUT /volunteers/1.json
   def update
     @volunteer = Volunteer.find(params[:id])
-    if @volunteer.update_attributes(volunteer_params)
-      flash[:success] = "Volunteer updated"
-      if params[:stay].blank?
-        redirect_to search_volunteers_path
-        return
+    if volunteer_params[:first_name].nil?     # Coming from donations
+      if @volunteer.update_attributes(volunteer_params)
+        flash[:success] = "Donations updated"
+        if params[:stay].blank?
+          redirect_to edit_volunteer_path(@volunteer)
+        else
+          redirect_to donations_volunteer_path(@volunteer)
+        end
+      else
+        @donator = @volunteer
+        @allow_stay = true
+        @no_delete = true
+        render "shared/donations_form"
+      end
+    else                                       # Coming from regular edit
+      if @volunteer.update_attributes(volunteer_params)
+        flash[:success] = "Volunteer updated"
+        if !params[:to_donations].blank?
+          redirect_to donations_volunteer_path(@volunteer)
+        else
+          if params[:stay].blank?
+            redirect_to search_volunteers_path
+          else
+            redirect_to edit_volunteer_path(@volunteer)
+          end
+        end
+      else
+        @allow_stay = true
+        @num_workdays = WorkdayVolunteer.where(volunteer_id: @volunteer.id)
+        render :edit
       end
     end
-    @num_workdays = WorkdayVolunteer.where(volunteer_id: @volunteer.id)
-    @allow_stay = true
-    render :edit
   end
 
   # DELETE /volunteers/1
@@ -224,22 +247,6 @@ class VolunteersController < ApplicationController
 
   # GET /volunteer/1/donations
   def donations
-    @donator = Volunteer.find(params[:id])
-    @no_delete = true
-    @allow_stay = true
-    render "shared/donations_form"
-  end
-
-  # PUT /volunteer/1/donations
-  def donations_update
-    @volunteer = Volunteer.find(params[:id])
-    if @volunteer.update_attributes(volunteer_params)
-      flash[:success] = "Donations updated"
-      if params[:stay].blank?
-        redirect_to search_volunteers_path
-        return
-      end
-    end
     @donator = Volunteer.find(params[:id])
     @no_delete = true
     @allow_stay = true
