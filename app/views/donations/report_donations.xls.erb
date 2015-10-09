@@ -52,7 +52,6 @@
                 <Cell><Data ss:Type="String">Number of Donations: <%= d_count %></Data></Cell>
                 <% if @report_type == 1 %>
                     <Cell><Data ss:Type="String">  Organization Total: <%= number_to_currency(d_total) %></Data></Cell>
-                    <Cell><Data ss:Type="String">Number of Donations: <%= d_count %></Data></Cell>
 
                 <% end %>
             <% else %>
@@ -108,7 +107,6 @@
                 <Cell><Data ss:Type="String">Number of Donations: <%= d_count %></Data></Cell>
                 <% if @report_type == 1 %>
                     <Cell><Data ss:Type="String">  Volunteer Total: <%= number_to_currency(d_total) %></Data></Cell>
-                    <Cell><Data ss:Type="String">Number of Donations: <%= d_count %></Data></Cell>
 
                 <% end %>
             <% else %>

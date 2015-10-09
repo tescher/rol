@@ -45,9 +45,6 @@ module DonationsHelper
                          end
                          [y, year_value]
                        }]
-    puts donation_years
-    puts donations_by_year
-    puts year_totals
     [donation_years, donations_by_year, year_totals]
   end
 end
