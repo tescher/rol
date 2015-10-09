@@ -46,6 +46,7 @@ Rails.application.routes.draw do
 
   resources :donations do
     collection do
+      get 'report'
       get 'import' => 'donations#import_form'
       post 'import' => 'donations#import'
       get 'donation_summary'

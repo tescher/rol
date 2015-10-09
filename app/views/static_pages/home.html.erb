@@ -9,14 +9,14 @@
 
   <% if logged_in? %>
 
-  <% if current_user.admin?
-       @column_width = "col-md-6"
-     else
-       @column_width = "col-md-12"
-     end  %>
+      <% if current_user.admin?
+           @column_width = "col-md-6"
+         else
+           @column_width = "col-md-12"
+         end  %>
 
-  <div class="container">
-      <div class="row">
+      <div class="container">
+        <div class="row">
           <div class=<%= @column_width %>>
             <h3><u>Data Entry</u></h3>
             <ul class="list-unstyled">
@@ -27,28 +27,31 @@
             <h3><u>Reports</u></h3>
             <ul class="list-unstyled">
               <li><h4><%= link_to "Workday Reports", report_workdays_path %></h4></li>
+              <% if current_user.donations_allowed %>
+                  <li><h4><%= link_to "Donation Reports", report_donations_path %></h4></li>
+              <% end %>
             </ul>
           </div>
 
           <% if current_user.admin? %>
-          <div class=<%= @column_width %>>
-            <h3><u>Database Management</u></h3>
-            <ul class="list-unstyled">
-              <li><h4><%= link_to "Users", users_path %></h4></li>
-              <li><h4><%= link_to "Projects", projects_path %></h4></li>
-              <li><h4><%= link_to "Interests", interests_path %></h4></li>
-              <li><h4><%= link_to "Interest Categories", interest_categories_path %></h4></li>
-              <li><h4><%= link_to "Organization Types", organization_types_path %></h4></li>
-              <li><h4><%= link_to "Donation Types", donation_types_path %></h4></li>
-            </ul>
-          </div>
+              <div class=<%= @column_width %>>
+                <h3><u>Database Management</u></h3>
+                <ul class="list-unstyled">
+                  <li><h4><%= link_to "Users", users_path %></h4></li>
+                  <li><h4><%= link_to "Projects", projects_path %></h4></li>
+                  <li><h4><%= link_to "Interests", interests_path %></h4></li>
+                  <li><h4><%= link_to "Interest Categories", interest_categories_path %></h4></li>
+                  <li><h4><%= link_to "Organization Types", organization_types_path %></h4></li>
+                  <li><h4><%= link_to "Donation Types", donation_types_path %></h4></li>
+                </ul>
+              </div>
           <% end %>
+        </div>
       </div>
-  </div>
 
   <% else %>
 
-    <%= link_to "Log In", login_path, class: "btn btn-lg btn-primary" %>
+      <%= link_to "Log In", login_path, class: "btn btn-lg btn-primary" %>
 
   <% end %>
 

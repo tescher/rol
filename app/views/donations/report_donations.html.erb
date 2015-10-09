@@ -1,0 +1,219 @@
+<% provide(:title, 'Donations Report') %>
+<h1>Donations Report</h1>
+
+<% if @organization_report %>
+    <% d_total = 0 %>
+    <% d_count = 0 %>
+    <h2>Organization Donations</h2>
+
+    <ul class="listing">
+      <div class="row">
+        <li>
+          <div class="col-md-2">
+            <u>Organization</u>
+          </div>
+          <div class="col-md-1">
+            <u>City</u>
+          </div>
+          <div class="col-md-1">
+            <u>Date Received</u>
+          </div>
+          <div class="col-md-1">
+            <u>Type</u>
+          </div>
+          <div class="col-md-1">
+            <u>Value</u>
+          </div>
+          <% if @report_type == 2 %>
+              <div class="col-md-2">
+                <u>Item(s)</u>
+              </div>
+          <% end %>
+          <div class="col-md-2">
+            <u>Designation</u>
+          </div>
+          <div class="col-md-1">
+            <u>Honor Of</u>
+          </div>
+          <div class="col-md-1">
+            <u>Anon</u>
+          </div>
+          <div class="col-md-2">
+            <u>Notes</u>
+          </div>
+        </li>
+      </div>
+
+      <% @organization_donations.each do |d| %>
+          <% d_total += d.value %>
+          <% d_count += 1 %>
+          <% organization = Organization.find(d.organization_id) %>
+          <div class="row clickable" href="<%=edit_organization_path(organization)%>">
+            <li>
+              <div class="col-md-2">
+                <span class="no-overflow"><%= organization.name %></span>
+              </div>
+              <div class="col-md-1">
+                <span class="no-overflow"><%= organization.city %></span>
+              </div>
+              <div class="col-md-1">
+                <span ><%= d.date_received.strftime("%m/%d/%Y") %></span>
+              </div>
+              <div class="col-md-1">
+                <span class="no-overflow"><%= d.donation_type.name %></span>
+              </div>
+              <div class="col-md-1">
+                <span class="no-overflow"><%= number_to_currency(d.value) %></span>
+              </div>
+              <% if @report_type == 2 %>
+                  <div class="col-md-2">
+                    <span class="no-overflow"><%= d.item %></span>
+                  </div>
+              <% end %>
+              <div class="col-md-2">
+                <span class="no-overflow"><%= d.designation %></span>
+              </div>
+              <div class="col-md-1">
+                <span class="no-overflow"><%= d.in_honor_of %></span>
+              </div>
+              <div class="col-md-1">
+                <span class="no-overflow"><%= d.anonymous ? "Yes" : "" %></span>
+              </div>
+              <div class="col-md-2">
+                <span class="no-overflow"><%= d.notes %></span>
+              </div>
+            </li>
+          </div>
+      <% end %>
+      <li>
+        <div class="row">
+          <div class="col-md-6">
+            <% if d_count > 0 %>
+                <span>Number of Donations: <%= d_count %></span>
+                <% if @report_type == 1 %>
+                    <span>  Organization Total: <%= number_to_currency(d_total) %></span>
+                <% end %>
+            <% else %>
+                <span>No organization donations found</span>
+            <% end %>
+          </div>
+        </div>
+      </li>
+
+    </ul>
+
+    <br />
+<% end %>
+
+<% if @volunteer_report %>
+    <% d_total = 0 %>
+    <% d_count = 0 %>
+    <h2>Volunteer Donations</h2>
+
+    <ul class="listing">
+      <div class="row">
+        <li>
+          <div class="col-md-2">
+            <u>Volunteer</u>
+          </div>
+          <div class="col-md-1">
+            <u>City</u>
+          </div>
+          <div class="col-md-1">
+            <u>Date Received</u>
+          </div>
+          <div class="col-md-1">
+            <u>Type</u>
+          </div>
+          <div class="col-md-1">
+            <u>Value</u>
+          </div>
+          <% if @report_type == 2 %>
+              <div class="col-md-2">
+                <u>Item(s)</u>
+              </div>
+          <% end %>
+          <div class="col-md-2">
+            <u>Designation</u>
+          </div>
+          <div class="col-md-1">
+            <u>Honor Of</u>d
+          </div>
+          <div class="col-md-1">
+            <u>Anon</u>
+          </div>
+          <div class="col-md-2">
+            <u>Notes</u>
+          </div>
+        </li>
+      </div>
+
+      <% @volunteer_donations.each do |d| %>
+          <% d_total += d.value %>
+          <% d_count += 1 %>
+          <% volunteer = Volunteer.find(d.volunteer_id) %>
+          <div class="row clickable" href="<%=edit_volunteer_path(volunteer)%>">
+            <li>
+              <div class="col-md-2">
+                <span class="no-overflow"><%= volunteer.name %></span>
+              </div>
+              <div class="col-md-1">
+                <span class="no-overflow"><%= volunteer.city %></span>
+              </div>
+              <div class="col-md-1">
+                <span ><%= d.date_received.strftime("%m/%d/%Y") %></span>
+              </div>
+              <div class="col-md-1">
+                <span class="no-overflow"><%= d.donation_type.name %></span>
+              </div>
+              <div class="col-md-1">
+                <span class="no-overflow"><%= number_to_currency(d.value) %></span>
+              </div>
+              <% if @report_type == 2 %>
+                  <div class="col-md-2">
+                    <span class="no-overflow"><%= d.item %></span>
+                  </div>
+              <% end %>
+              <div class="col-md-2">
+                <span class="no-overflow"><%= d.designation %></span>
+              </div>
+              <div class="col-md-1">
+                <span class="no-overflow"><%= d.in_honor_of %></span>
+              </div>
+              <div class="col-md-1">
+                <span class="no-overflow"><%= d.anonymous ? "Yes" : "" %></span>
+              </div>
+              <div class="col-md-2">
+                <span class="no-overflow"><%= d.notes %></span>
+              </div>
+            </li>
+          </div>
+      <% end %>
+      <li>
+        <div class="row">
+          <div class="col-md-6">
+            <% if d_count > 0 %>
+                <span>Number of Donations: <%= d_count %></span>
+                <% if @report_type == 1 %>
+                    <span>  Volunteer Total: <%= number_to_currency(d_total) %></span>
+                <% end %>
+            <% else %>
+                <span>No volunteer donations found</span>
+            <% end %>
+          </div>
+        </div>
+      </li>
+
+    </ul>
+
+    <br />
+<% end %>
+
+<div class="row">
+  <div class="col-md-11">
+    <div class="actions pull-right">
+      <%= link_to 'Back', report_donations_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>
+

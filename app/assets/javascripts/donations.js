@@ -43,5 +43,11 @@ $(document).ready(function() {
         return false;
     });
 
+    $('#donation_report_org').click(function(){
+        $('#donation_report_org_types').css('display', ($(this).is(':checked') ? 'block' : 'none'));
+    });
+
+    $('#donation_report_org_types').css('display', ($('#donation_report_org').is(':checked') ? 'block' : 'none'));
+
 });
 

@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
   end
 
   def non_monetary
-    !self.all_donations && self.non_monetary_donations
+    !self.admin && !self.all_donations && self.non_monetary_donations
   end
 
   # Forgets a user.

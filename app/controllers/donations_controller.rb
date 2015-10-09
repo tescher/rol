@@ -2,9 +2,88 @@ include SessionsHelper
 include DonationsHelper
 
 class DonationsController < ApplicationController
+  before_action :logged_in_user, only: [:report]
   before_action :admin_user,     only: [:import, :import_form]
   before_action :donations_allowed, only: [:donation_summary]
 
+  def report
+    if !params[:report_type].nil?    # Will render report form on initial get
+
+      if params[:request_format] == "xls"
+        per_page = 1000000   #Hopefully all of them!
+        request.format = :xls
+      else
+        per_page = 30
+      end
+
+      @report_type = params[:report_type].to_i
+
+      where_clause = ""
+
+      if !params[:from_date].empty?
+        where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
+        where_clause += "donations.date_received >= '#{Date.strptime(params[:from_date], "%m/%d/%Y").to_s}'"
+      end
+      if !params[:to_date].empty?
+        where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
+        where_clause += "donations.date_received <= '#{Date.strptime(params[:to_date], "%m/%d/%Y").to_s}'"
+      end
+
+      if params[:needing_receipts]
+        where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
+        where_clause += "donations.receipt_sent IS FALSE"
+      end
+
+      where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
+      if @report_type == 1
+        where_clause += "donation_types.non_monetary IS FALSE"
+      else
+        where_clause = "donation_types.non_monetary IS TRUE"
+      end
+
+      if params[:organizations]
+        @organization_report = true
+        organization_where = where_clause
+        organization_type_ids = params[:organization_type_ids].nil? ? [] : params[:organization_type_ids]
+        organization_where = organization_where.length > 0 ? organization_where + " AND " : organization_where
+        if organization_type_ids.count > 0
+          organization_where += "organizations.organization_type_id IN (" + organization_type_ids.join(",") + ")"
+        else
+          organization_where += "organizations.organization_type_id IS NOT NULL"
+        end
+
+        if !params[:city].empty?
+          organization_where = organization_where.length > 0 ? organization_where + " AND " : organization_where
+          organization_where += "LOWER(organizations.city) LIKE #{Organization.sanitize(params[:city].downcase + "%")}"
+        end
+
+        @organization_donations = Donation.joins(:organization, :donation_type).where(organization_where).order("organizations.name, donations.date_received")
+      end
+
+      if params[:volunteers]
+        @volunteer_report = true
+        volunteer_where = where_clause
+        if !params[:city].empty?
+          volunteer_where = volunteer_where.length > 0 ? volunteer_where + " AND " : volunteer_where
+          volunteer_where += "LOWER(volunteers.city) LIKE #{Volunteer.sanitize(params[:city].downcase + "%")}"
+        end
+        @volunteer_donations = Donation.joins(:volunteer, :donation_type).where("donations.volunteer_id IS NOT NULL").where(volunteer_where).order("volunteers.last_name, volunteers.first_name, donations.date_received")
+      end
+
+      respond_to do |format|
+        format.html {
+          render "report_donations.html"
+        }
+        format.xls {
+          response.headers['Content-Disposition'] = 'attachment; filename="report.xls"'
+          render "report_donations.xls"
+        }
+
+
+      end
+    end
+
+  end
 
   # GET /donations/import
   def import_form
@@ -184,6 +263,15 @@ class DonationsController < ApplicationController
   def donations_allowed
     redirect_to(root_url) unless current_user.donations_allowed
   end
+
+  def logged_in_user
+    unless logged_in?
+      store_location
+      flash[:danger] = "Please log in."
+      redirect_to login_url
+    end
+  end
+
 
 
 end

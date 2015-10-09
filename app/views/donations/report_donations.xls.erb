@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:o="urn:schemas-microsoft-com:office:office"
+          xmlns:x="urn:schemas-microsoft-com:office:excel"
+          xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+
+      <% if @organization_report %>
+          <% d_total = 0 %>
+          <% d_count = 0 %>
+          <Row>
+            <Cell><Data ss:Type="String">Organization Donations</Data></Cell>
+          </Row>
+          <Row></Row>
+          <Row>
+            <Cell><Data ss:Type="String">Organization</Data></Cell>
+            <Cell><Data ss:Type="String">City</Data></Cell>
+            <Cell><Data ss:Type="String">Date Received</Data></Cell>
+            <Cell><Data ss:Type="String">Type</Data></Cell>
+            <Cell><Data ss:Type="String">Value</Data></Cell>
+            <Cell><Data ss:Type="String">Item(s)</Data></Cell>
+            <Cell><Data ss:Type="String">Designation</Data></Cell>
+            <Cell><Data ss:Type="String">Honor Of</Data></Cell>
+            <Cell><Data ss:Type="String">Anon</Data></Cell>
+            <Cell><Data ss:Type="String">Rcpt Sent</Data></Cell>
+            <Cell><Data ss:Type="String">Notes</Data></Cell>
+          </Row>
+
+          <% @organization_donations.each do |d| %>
+              <% d_total += d.value %>
+              <% d_count += 1 %>
+              <% organization = Organization.find(d.organization_id) %>
+              <Row>
+                <Cell><Data ss:Type="String"><%= organization.name %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= organization.city %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= d.date_received.strftime("%m/%d/%Y") %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= d.donation_type.name %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= number_to_currency(d.value) %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= d.item %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= d.designation %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= d.in_honor_of %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= d.anonymous ? "Yes" : "" %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= d.receipt_sent ? "Yes" : "" %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= d.notes %></Data></Cell>
+              </Row>
+          <% end %>
+          <Row></Row>
+          <Row>
+            <% if d_count > 0 %>
+                <Cell><Data ss:Type="String">Number of Donations: <%= d_count %></Data></Cell>
+                <% if @report_type == 1 %>
+                    <Cell><Data ss:Type="String">  Organization Total: <%= number_to_currency(d_total) %></Data></Cell>
+                    <Cell><Data ss:Type="String">Number of Donations: <%= d_count %></Data></Cell>
+
+                <% end %>
+            <% else %>
+                <Cell><Data ss:Type="String">No organization donations found</Data></Cell>
+
+            <% end %>
+          </Row>
+          <Row></Row>
+      <% end %>
+
+      <% if @volunteer_report %>
+          <% d_total = 0 %>
+          <% d_count = 0 %>
+          <Row>
+            <Cell><Data ss:Type="String">Volunteer Donations</Data></Cell>
+          </Row>
+          <Row></Row>
+          <Row>
+            <Cell><Data ss:Type="String">Volunteer</Data></Cell>
+            <Cell><Data ss:Type="String">City</Data></Cell>
+            <Cell><Data ss:Type="String">Date Received</Data></Cell>
+            <Cell><Data ss:Type="String">Type</Data></Cell>
+            <Cell><Data ss:Type="String">Value</Data></Cell>
+            <Cell><Data ss:Type="String">Item(s)</Data></Cell>
+            <Cell><Data ss:Type="String">Designation</Data></Cell>
+            <Cell><Data ss:Type="String">Honor Of</Data></Cell>
+            <Cell><Data ss:Type="String">Anon</Data></Cell>
+            <Cell><Data ss:Type="String">Rcpt Sent</Data></Cell>
+            <Cell><Data ss:Type="String">Notes</Data></Cell>
+          </Row>
+
+          <% @volunteer_donations.each do |d| %>
+              <% d_total += d.value %>
+              <% d_count += 1 %>
+              <% volunteer = Volunteer.find(d.volunteer_id) %>
+              <Row>
+                <Cell><Data ss:Type="String"><%= volunteer.name %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= volunteer.city %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= d.date_received.strftime("%m/%d/%Y") %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= d.donation_type.name %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= number_to_currency(d.value) %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= d.item %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= d.designation %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= d.in_honor_of %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= d.anonymous ? "Yes" : "" %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= d.receipt_sent ? "Yes" : "" %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= d.notes %></Data></Cell>
+              </Row>
+          <% end %>
+          <Row></Row>
+          <Row>
+            <% if d_count > 0 %>
+                <Cell><Data ss:Type="String">Number of Donations: <%= d_count %></Data></Cell>
+                <% if @report_type == 1 %>
+                    <Cell><Data ss:Type="String">  Volunteer Total: <%= number_to_currency(d_total) %></Data></Cell>
+                    <Cell><Data ss:Type="String">Number of Donations: <%= d_count %></Data></Cell>
+
+                <% end %>
+            <% else %>
+                <Cell><Data ss:Type="String">No volunteer donations found</Data></Cell>
+
+            <% end %>
+          </Row>
+          <Row></Row>
+      <% end %>
+
+    </Table>
+  </Worksheet>
+</Workbook>

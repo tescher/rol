@@ -16,7 +16,7 @@ module DonationsHelper
 
     if (objectName == "volunteer")
       object = Volunteer.find(id)
-      address_hash = (object.address + object.city).gsub(/\s+/,"").downcase
+      address_hash = (object.address.to_s + object.city.to_s).gsub(/\s+/,"").downcase
       where_clause = "(LOWER(TRANSLATE(volunteers.address || volunteers.city, ' ', '')) = '" + address_hash + "') AND (donations.volunteer_id = volunteers.id) AND (donations.donation_type_id = donation_types.id) and (donation_types.non_monetary = FALSE)"
       # join = "INNER JOIN workday_#{@objectName}s ON workday_#{@objectName}s.workday_id = workdays.id"
       donation_years = Donation.select("ROUND(EXTRACT(YEAR FROM donations.date_received)) as year").joins(:volunteer, :donation_type).where(where_clause).group("year").order("year DESC")
