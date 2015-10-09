@@ -1,0 +1,7 @@
+<% provide(:title, 'Import Donations') %>
+<h1>Import Donations</h1>
+
+<h2>WARNING: This should only be done by those who know completely what they are doing!</h2>
+
+<%= @import_path = import_donations_path
+    render 'shared/import_form' %>

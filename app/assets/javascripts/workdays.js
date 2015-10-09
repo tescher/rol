@@ -187,7 +187,11 @@ $(document).ready(function() {
         $.ajax({
             url: "/workdays/workday_summary?dialog=true&object_name="+objectName+"&id="+id,
             success: function(data) {
-                loadDialog("dialogWorkdaySummary",data);
+                loadDialog("dialogWorkdaySummary",data, {
+                    my: "center top",
+                    at: "center bottom",
+                    of: $("header")
+                });
                 $("#tabs-container").tabs();
 
             },

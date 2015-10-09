@@ -3,26 +3,27 @@
 
 <%= form_for(@donator) do |f| %>
     <%= @object = f.object
+        @donations = @donator.donations.order("date_received DESC")
         render 'shared/error_messages' %>
 
     <table class="table no-row-border header-border">
       <thead>
       <tr>
-        <th class="col-md-2">Date Rec</th>
+        <th class="col-md-1">Date Rec</th>
         <th class="col-md-2">Type</th>
-        <th class="col-md-2">Ref No</th>
-        <th class="col-md-2">Value ($)</th>
+        <th class="col-md-1">Ref No</th>
+        <th class="col-md-1">Value ($)</th>
         <th class="col-md-2">Item(s)</th>
-        <th class="col-md-2">Designation</th>
-        <th class="col-md-2">Honor Of</th>
-        <th class="col-md-2">Anon</th>
-        <th class="col-md-2">Receipt Sent</th>
-        <th class="col-md-2">Notes</th>
+        <th class="col-md-1">Designation</th>
+        <th class="col-md-1">Honor Of</th>
+        <th class="col-md-4">Notes</th>
+        <th class="col-md-1">Anon</th>
+        <th class="col-md-1">Rcpt Sent</th>
         <th class="col-md-1"></th>
       </tr>
       </thead>
       <tbody class="add_donation_fields">
-      <%= f.fields_for :donations do |builder| %>
+      <%= f.fields_for :donations, @donations do |builder| %>
           <%= render "donations/donation_fields", :f => builder %>
       <% end %>
       </tbody>

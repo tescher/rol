@@ -85,6 +85,14 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>meyer</first_name>
+		<last_name>a</last_name>
+		<waiver_date/>
+		<old_id>15511</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests/>
+	</record>
+	<record>
 		<first_name>Carrie</first_name>
 		<last_name>Abela</last_name>
 		<address>N5523 West Hill Road</address>
@@ -769,6 +777,28 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>Greg</first_name>
+		<last_name>Albert</last_name>
+		<address>607 SYCAMORE ST</address>
+		<city>SAUK CITY</city>
+		<state>WI</state>
+		<zip>53583-1358</zip>
+		<home_phone>(608) 643-8695</home_phone>
+		<waiver_date/>
+		<old_id>15484</old_id>
+		<email>galbert@flambeau.com</email>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>Kimberly</first_name>
 		<last_name>Albert</last_name>
 		<address>7750 Krause Road</address>
@@ -989,10 +1019,10 @@
 	<record>
 		<first_name>Scott C.</first_name>
 		<last_name>Alexander</last_name>
-		<address>1311 15th Street</address>
-		<city>Baraboo</city>
+		<address>1311 15TH ST</address>
+		<city>BARABOO</city>
 		<state>WI</state>
-		<zip>53913</zip>
+		<zip>53913-3325</zip>
 		<home_phone>(608) 356-5313</home_phone>
 		<waiver_date/>
 		<old_id>14738</old_id>
@@ -1644,10 +1674,10 @@
 	<record>
 		<first_name>Allison</first_name>
 		<last_name>Anderson</last_name>
-		<address>403 E WALNUT ST</address>
-		<city>NORTH FREEDOM</city>
+		<address>403 East Walnut Street</address>
+		<city>North Freedom</city>
 		<state>WI</state>
-		<zip>53951-9545</zip>
+		<zip>53951</zip>
 		<mobile_phone>(608) 863-2105</mobile_phone>
 		<waiver_date/>
 		<old_id>15454</old_id>
@@ -3454,10 +3484,10 @@
 	<record>
 		<first_name>Sean &amp; Christina</first_name>
 		<last_name>Asp</last_name>
-		<address>1460 Pineview Drive</address>
-		<city>Reedsburg</city>
+		<address>1460 PINEVIEW DR</address>
+		<city>REEDSBURG</city>
 		<state>WI</state>
-		<zip>53959</zip>
+		<zip>53959-1064</zip>
 		<home_phone>(608) 712-7326</home_phone>
 		<waiver_date/>
 		<old_id>10980</old_id>
@@ -4841,10 +4871,10 @@
 	<record>
 		<first_name>Tim &amp; Deborah</first_name>
 		<last_name>Barnish</last_name>
-		<address>S3220 Fox Hill Road</address>
-		<city>Baraboo</city>
+		<address>S3220 FOX HILL RD</address>
+		<city>BARABOO</city>
 		<state>WI</state>
-		<zip>53913</zip>
+		<zip>53913-9108</zip>
 		<waiver_date/>
 		<old_id>3489</old_id>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
@@ -6761,6 +6791,27 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>Doug</first_name>
+		<last_name>Benham</last_name>
+		<address>1118 21ST ST</address>
+		<city>BARABOO</city>
+		<state>WI</state>
+		<zip>53913-3344</zip>
+		<mobile_phone>(608) 448-4172</mobile_phone>
+		<waiver_date/>
+		<old_id>15526</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>Bob</first_name>
 		<last_name>Benisch</last_name>
 		<address>434 Union Street</address>
@@ -7830,10 +7881,10 @@
 	<record>
 		<first_name>Bryan</first_name>
 		<last_name>Bidwell</last_name>
-		<address>4337 GREEN AVE</address>
-		<city>MADISON</city>
+		<address>4337 Green Avenue</address>
+		<city>Madison</city>
 		<state>WI</state>
-		<zip>53704-1125</zip>
+		<zip>53704</zip>
 		<home_phone>(608) 249-1745</home_phone>
 		<waiver_date/>
 		<old_id>15125</old_id>
@@ -8347,6 +8398,28 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>Nicholle</first_name>
+		<last_name>Birdsill</last_name>
+		<address>1203 LINCOLN AVE</address>
+		<city>BARABOO</city>
+		<state>WI</state>
+		<zip>53913-1813</zip>
+		<mobile_phone>(715) 933-0225</mobile_phone>
+		<waiver_date/>
+		<old_id>15538</old_id>
+		<email>oman@uwalumni.com</email>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>Chad P.</first_name>
 		<last_name>Birrenkott</last_name>
 		<address>331 US Highway 12</address>
@@ -8717,6 +8790,26 @@
 		<waiver_date/>
 		<old_id>6174</old_id>
 		<email>dlblackburn@charter.net</email>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>Kris</first_name>
+		<last_name>Blacklock</last_name>
+		<address>S8851 Old Bluff Trail</address>
+		<city>Prairie du Sac</city>
+		<state>WI</state>
+		<zip>53578</zip>
+		<waiver_date>09/26/2015</waiver_date>
+		<old_id>15474</old_id>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
@@ -9927,6 +10020,28 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>Margo</first_name>
+		<last_name>Bongiovanni</last_name>
+		<address>121 E MAIN ST</address>
+		<city>CAZENOVIA</city>
+		<state>WI</state>
+		<zip>53924-9716</zip>
+		<mobile_phone>(608) 415-0651</mobile_phone>
+		<waiver_date/>
+		<old_id>15542</old_id>
+		<email>mlbongiovanni@hotmail.com</email>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>Jan</first_name>
 		<last_name>Bonham</last_name>
 		<address>E11250 State Road 159</address>
@@ -10348,6 +10463,28 @@
 		<home_phone>(608) 254-7108</home_phone>
 		<waiver_date/>
 		<old_id>14773</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>William</first_name>
+		<middle_name>L</middle_name>
+		<last_name>Botten</last_name>
+		<address>60 THOMAS RD</address>
+		<city>REEDSBURG</city>
+		<state>WI</state>
+		<zip>53959-2506</zip>
+		<mobile_phone>(218) 390-0035</mobile_phone>
+		<waiver_date/>
+		<old_id>15537</old_id>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
@@ -11109,6 +11246,27 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>Sheryl</first_name>
+		<last_name>Bray</last_name>
+		<address>3080 S Reno Dr</address>
+		<city>New Berlin</city>
+		<state>WI</state>
+		<zip>53151</zip>
+		<mobile_phone>(262) 951-0222</mobile_phone>
+		<waiver_date/>
+		<old_id>15529</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>William &amp; Kathleen</first_name>
 		<last_name>Bray</last_name>
 		<address>1540 20th Street</address>
@@ -11435,10 +11593,10 @@
 	<record>
 		<first_name>Erin</first_name>
 		<last_name>Brennan</last_name>
-		<address>1508 PARKVIEW CT</address>
-		<city>PRAIRIE DU SAC</city>
+		<address>1508 Parkview Court</address>
+		<city>Prairie du Sac</city>
 		<state>WI</state>
-		<zip>53578-1378</zip>
+		<zip>53578</zip>
 		<home_phone>(608) 963-8449</home_phone>
 		<waiver_date/>
 		<old_id>15276</old_id>
@@ -11995,10 +12153,10 @@
 	<record>
 		<first_name>Judy &amp; Frank</first_name>
 		<last_name>Brey</last_name>
-		<address>2101 WINFIELD DR</address>
-		<city>REEDSBURG</city>
+		<address>2101 Winfield Drive</address>
+		<city>Reedsburg</city>
 		<state>WI</state>
-		<zip>53959-2237</zip>
+		<zip>53959</zip>
 		<waiver_date/>
 		<old_id>3138</old_id>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
@@ -12087,6 +12245,27 @@
 		<home_phone>(608) 408-9508</home_phone>
 		<waiver_date/>
 		<old_id>12907</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>William</first_name>
+		<last_name>Brink</last_name>
+		<address>117 N Elm Street</address>
+		<city>Adams</city>
+		<state>WI</state>
+		<zip>53910</zip>
+		<waiver_date>09/12/2015</waiver_date>
+		<old_id>15475</old_id>
+		<email>wbrink9@gmail.com</email>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
@@ -12247,10 +12426,10 @@
 	<record>
 		<first_name>Marc</first_name>
 		<last_name>Brockly</last_name>
-		<address>N5802 COUNTY ROAD U</address>
-		<city>PORTAGE</city>
+		<address>N5802 County Road U</address>
+		<city>Portage</city>
 		<state>WI</state>
-		<zip>53901-8952</zip>
+		<zip>53901</zip>
 		<home_phone>(608) 469-2714</home_phone>
 		<waiver_date/>
 		<old_id>15140</old_id>
@@ -12376,26 +12555,6 @@
 		</interests>
 	</record>
 	<record>
-		<first_name>Marilyn Yongco</first_name>
-		<last_name>Broesch</last_name>
-		<address>221 11th Street</address>
-		<city>Baraboo</city>
-		<state>WI</state>
-		<zip>53913</zip>
-		<waiver_date/>
-		<old_id>5357</old_id>
-		<remove_from_mailing_list>0</remove_from_mailing_list>
-		<interests>
-			<Painting>0</Painting>
-			<Landscaping>0</Landscaping>
-			<Siding>0</Siding>
-			<Drywall>0</Drywall>
-			<Finish_Carpentry>0</Finish_Carpentry>
-			<Mailings>0</Mailings>
-			<Data_Enry>0</Data_Enry>
-		</interests>
-	</record>
-	<record>
 		<first_name>Linda J.</first_name>
 		<last_name>Brokish</last_name>
 		<address>509 North Main Street</address>
@@ -12483,10 +12642,10 @@
 	<record>
 		<first_name>Aaron</first_name>
 		<last_name>Brooks</last_name>
-		<address>S3030 AULT RD</address>
-		<city>REEDSBURG</city>
+		<address>S3030 Ault Road</address>
+		<city>Reedsburg</city>
 		<state>WI</state>
-		<zip>53959-9583</zip>
+		<zip>53959</zip>
 		<waiver_date/>
 		<old_id>15274</old_id>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
@@ -12532,6 +12691,26 @@
 		<mobile_phone>(608) 434-4444</mobile_phone>
 		<waiver_date/>
 		<old_id>2819</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>Phillip &amp; Janet</first_name>
+		<last_name>Brooks</last_name>
+		<address>1503 Orwell Road</address>
+		<city>Naperville</city>
+		<state>IL</state>
+		<zip>60564</zip>
+		<waiver_date/>
+		<old_id>3425</old_id>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
@@ -12675,10 +12854,10 @@
 	<record>
 		<first_name>Barbara</first_name>
 		<last_name>Brown</last_name>
-		<address>E2325 ALPINE LN</address>
-		<city>LA VALLE</city>
+		<address>E2325 Alpine Lane</address>
+		<city>La Valle</city>
 		<state>WI</state>
-		<zip>53941-9786</zip>
+		<zip>53941</zip>
 		<home_phone>(608) 464-1124</home_phone>
 		<mobile_phone>(612) 910-7753</mobile_phone>
 		<notes>Got us the Wells Fargo  Grant in 2012.  Serves on Finance and BOD. BOD President as of  2015.   Additional email is:  Barbara.brown053@gmail.com</notes>
@@ -12767,6 +12946,26 @@
 		<zip>53913</zip>
 		<waiver_date/>
 		<old_id>5003</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>Janice M.</first_name>
+		<last_name>Brown</last_name>
+		<address>1114 15TH CT</address>
+		<city>REEDSBURG</city>
+		<state>WI</state>
+		<zip>53959-1009</zip>
+		<waiver_date/>
+		<old_id>11438</old_id>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
@@ -12898,7 +13097,8 @@
 		</interests>
 	</record>
 	<record>
-		<first_name>Marcia D.</first_name>
+		<first_name>Marcia</first_name>
+		<middle_name>D</middle_name>
 		<last_name>Brown</last_name>
 		<occupation>Retired</occupation>
 		<address>N2750 Summerville Park Road</address>
@@ -12908,7 +13108,7 @@
 		<home_phone>(608) 592-7296</home_phone>
 		<mobile_phone>(608) 332-8231</mobile_phone>
 		<notes>Serves on BOD.  Very involved!</notes>
-		<waiver_date>05/03/2014</waiver_date>
+		<waiver_date>10/03/2015</waiver_date>
 		<old_id>61</old_id>
 		<email>mbrown2119@charter.net</email>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
@@ -13071,14 +13271,12 @@
 		</interests>
 	</record>
 	<record>
-		<first_name>Timothy</first_name>
-		<middle_name>P.</middle_name>
+		<first_name>Timothy P.</first_name>
 		<last_name>Brown</last_name>
-		<address>526 14TH AVE</address>
-		<city>BARABOO</city>
+		<address>526 14th Avenue</address>
+		<city>Baraboo</city>
 		<state>WI</state>
-		<zip>53913-1328</zip>
-		<home_phone>(608) 356-5080</home_phone>
+		<zip>53913</zip>
 		<waiver_date/>
 		<old_id>12715</old_id>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
@@ -13408,10 +13606,10 @@
 	<record>
 		<first_name>Chris</first_name>
 		<last_name>Bruni</last_name>
-		<address>1014 OAK ST</address>
-		<city>BARABOO</city>
+		<address>1014 Oak Street</address>
+		<city>Baraboo</city>
 		<state>WI</state>
-		<zip>53913-2170</zip>
+		<zip>53913</zip>
 		<home_phone>(715) 486-5361</home_phone>
 		<waiver_date/>
 		<old_id>15460</old_id>
@@ -13794,10 +13992,10 @@
 	<record>
 		<first_name>Greg</first_name>
 		<last_name>Bucholc</last_name>
-		<address>412 W PLEASANT ST</address>
-		<city>PORTAGE</city>
+		<address>412 West Pleasant Street</address>
+		<city>Portage</city>
 		<state>WI</state>
-		<zip>53901-2010</zip>
+		<zip>53901</zip>
 		<mobile_phone>(715) 451-1120</mobile_phone>
 		<waiver_date/>
 		<old_id>15334</old_id>
@@ -14952,6 +15150,27 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>Steve</first_name>
+		<last_name>Buss</last_name>
+		<address>E9205 STATE ROAD 136</address>
+		<city>NORTH FREEDOM</city>
+		<state>WI</state>
+		<zip>53951-9793</zip>
+		<waiver_date>09/25/2015</waiver_date>
+		<old_id>15504</old_id>
+		<email>buss.steven@bar.sysco.com</email>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>Vicki</first_name>
 		<last_name>Buss</last_name>
 		<address>S7540 Pine Hollow Road</address>
@@ -15380,6 +15599,27 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>Jim</first_name>
+		<last_name>Cabaj</last_name>
+		<address>S4293A SUTTLE RIDGE CT</address>
+		<city>BARABOO</city>
+		<state>WI</state>
+		<zip>53913-9374</zip>
+		<waiver_date>09/25/2015</waiver_date>
+		<old_id>15510</old_id>
+		<email>jicabaj@gmail.com</email>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>Josey</first_name>
 		<last_name>Cabaj</last_name>
 		<home_phone>(608) 356-6144</home_phone>
@@ -15421,22 +15661,6 @@
 		<waiver_date/>
 		<old_id>5638</old_id>
 		<email>dcada33@aol.com</email>
-		<remove_from_mailing_list>1</remove_from_mailing_list>
-		<interests>
-			<Painting>0</Painting>
-			<Landscaping>0</Landscaping>
-			<Siding>0</Siding>
-			<Drywall>0</Drywall>
-			<Finish_Carpentry>0</Finish_Carpentry>
-			<Mailings>0</Mailings>
-			<Data_Enry>0</Data_Enry>
-		</interests>
-	</record>
-	<record>
-		<first_name>Bruce</first_name>
-		<last_name>Cadle</last_name>
-		<waiver_date/>
-		<old_id>1433</old_id>
 		<remove_from_mailing_list>1</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
@@ -15579,7 +15803,7 @@
 		<last_name>Caito</last_name>
 		<waiver_date/>
 		<old_id>12450</old_id>
-		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<remove_from_mailing_list>1</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
 			<Landscaping>0</Landscaping>
@@ -15607,50 +15831,6 @@
 			<Landscaping>0</Landscaping>
 			<Siding>1</Siding>
 			<Drywall>1</Drywall>
-			<Finish_Carpentry>0</Finish_Carpentry>
-			<Mailings>0</Mailings>
-			<Data_Enry>0</Data_Enry>
-		</interests>
-	</record>
-	<record>
-		<first_name>Corey</first_name>
-		<last_name>Calkins</last_name>
-		<address>2545 West Wisconsin Street</address>
-		<city>Portage</city>
-		<state>WI</state>
-		<zip>53901</zip>
-		<mobile_phone>(608) 617-8809</mobile_phone>
-		<notes>He was married to Rachel and they got a Critical Home repair from us in 2010.  But by 2014 they were divorced.</notes>
-		<waiver_date/>
-		<old_id>13456</old_id>
-		<remove_from_mailing_list>0</remove_from_mailing_list>
-		<interests>
-			<Painting>0</Painting>
-			<Landscaping>0</Landscaping>
-			<Siding>0</Siding>
-			<Drywall>0</Drywall>
-			<Finish_Carpentry>0</Finish_Carpentry>
-			<Mailings>0</Mailings>
-			<Data_Enry>0</Data_Enry>
-		</interests>
-	</record>
-	<record>
-		<first_name>Rachel</first_name>
-		<last_name>Calkins</last_name>
-		<address>704 Adams Street</address>
-		<city>Portage</city>
-		<state>WI</state>
-		<zip>53901</zip>
-		<mobile_phone>(608) 697-2331</mobile_phone>
-		<notes>Partner family that got a major repair in 2010/2011. Her husband was Corey - but in 2013 they got separated.</notes>
-		<waiver_date/>
-		<old_id>4671</old_id>
-		<remove_from_mailing_list>0</remove_from_mailing_list>
-		<interests>
-			<Painting>0</Painting>
-			<Landscaping>0</Landscaping>
-			<Siding>0</Siding>
-			<Drywall>0</Drywall>
 			<Finish_Carpentry>0</Finish_Carpentry>
 			<Mailings>0</Mailings>
 			<Data_Enry>0</Data_Enry>
@@ -15695,15 +15875,17 @@
 		</interests>
 	</record>
 	<record>
-		<first_name>Allen</first_name>
+		<first_name>Gary</first_name>
 		<last_name>Campbell</last_name>
-		<address>710 Ray Street</address>
-		<city>Prairie du Sac</city>
+		<address>W5039 Oakland Drive</address>
+		<city>Rio</city>
 		<state>WI</state>
-		<zip>53578</zip>
-		<home_phone>(608) 643-4565</home_phone>
-		<waiver_date>12/26/2005</waiver_date>
-		<old_id>1059</old_id>
+		<zip>53960</zip>
+		<home_phone>(920) 992-5039</home_phone>
+		<mobile_phone>(608) 220-8460</mobile_phone>
+		<notes>mobile# added 9/17/2015 ssr</notes>
+		<waiver_date/>
+		<old_id>13250</old_id>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
@@ -15716,17 +15898,15 @@
 		</interests>
 	</record>
 	<record>
-		<first_name>Gary</first_name>
+		<first_name>Harry &amp; Kris</first_name>
 		<last_name>Campbell</last_name>
-		<address>W5039 Oakland Drive</address>
-		<city>Rio</city>
-		<state>WI</state>
-		<zip>53960</zip>
-		<home_phone>(920) 992-5039</home_phone>
-		<mobile_phone>(608) 220-8460</mobile_phone>
-		<notes>mobile# added 9/17/2015 ssr</notes>
+		<address>14409 Outlook Street</address>
+		<city>Overland Park</city>
+		<state>KS</state>
+		<zip>66223</zip>
+		<home_phone>(913) 814-9920</home_phone>
 		<waiver_date/>
-		<old_id>13250</old_id>
+		<old_id>15499</old_id>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
@@ -15823,8 +16003,16 @@
 		<last_name>Camren</last_name>
 		<waiver_date/>
 		<old_id>13501</old_id>
-		<remove_from_mailing_list>0</remove_from_mailing_list>
-		<interests/>
+		<remove_from_mailing_list>1</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
 	</record>
 	<record>
 		<first_name>Heather</first_name>
@@ -15854,8 +16042,16 @@
 		<waiver_date/>
 		<old_id>13131</old_id>
 		<email>canales_kyle7@hotmail.com</email>
-		<remove_from_mailing_list>0</remove_from_mailing_list>
-		<interests/>
+		<remove_from_mailing_list>1</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
 	</record>
 	<record>
 		<first_name>Caden</first_name>
@@ -15916,58 +16112,15 @@
 		</interests>
 	</record>
 	<record>
-		<first_name>Jill</first_name>
-		<last_name>Capelle</last_name>
-		<address>N9879 Stomner Road.</address>
-		<city>Wisconsin Dells</city>
-		<state>WI</state>
-		<zip>53965</zip>
-		<home_phone>(608) 254-2758</home_phone>
-		<waiver_date/>
-		<old_id>12681</old_id>
-		<remove_from_mailing_list>0</remove_from_mailing_list>
-		<interests>
-			<Painting>0</Painting>
-			<Landscaping>0</Landscaping>
-			<Siding>0</Siding>
-			<Drywall>0</Drywall>
-			<Finish_Carpentry>0</Finish_Carpentry>
-			<Mailings>0</Mailings>
-			<Data_Enry>0</Data_Enry>
-		</interests>
-	</record>
-	<record>
 		<first_name>Andy</first_name>
 		<last_name>Cappaert</last_name>
-		<address>409 6th Street</address>
+		<address>409 6th Avenue</address>
 		<city>Baraboo</city>
 		<state>WI</state>
 		<zip>53913</zip>
 		<home_phone>(608) 448-5180</home_phone>
 		<waiver_date/>
 		<old_id>15187</old_id>
-		<remove_from_mailing_list>0</remove_from_mailing_list>
-		<interests>
-			<Painting>0</Painting>
-			<Landscaping>0</Landscaping>
-			<Siding>0</Siding>
-			<Drywall>0</Drywall>
-			<Finish_Carpentry>0</Finish_Carpentry>
-			<Mailings>0</Mailings>
-			<Data_Enry>0</Data_Enry>
-		</interests>
-	</record>
-	<record>
-		<first_name>Mike</first_name>
-		<last_name>Carbonara</last_name>
-		<address>1220 Silver Drive, Apt. 5</address>
-		<city>Baraboo</city>
-		<state>WI</state>
-		<zip>53913</zip>
-		<home_phone>(608) 445-8362</home_phone>
-		<notes>Sauk Co.fair</notes>
-		<waiver_date/>
-		<old_id>2129</old_id>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
@@ -16018,28 +16171,6 @@
 			<Drywall>0</Drywall>
 			<Finish_Carpentry>0</Finish_Carpentry>
 			<Mailings>0</Mailings>
-			<Data_Enry>0</Data_Enry>
-		</interests>
-	</record>
-	<record>
-		<first_name>Patricia</first_name>
-		<last_name>Cardoni</last_name>
-		<occupation>Retired</occupation>
-		<address>W11538 Demynck Road</address>
-		<city>Lodi</city>
-		<state>WI</state>
-		<zip>53555</zip>
-		<home_phone>(608) 592-4614</home_phone>
-		<waiver_date/>
-		<old_id>14</old_id>
-		<remove_from_mailing_list>0</remove_from_mailing_list>
-		<interests>
-			<Painting>1</Painting>
-			<Landscaping>1</Landscaping>
-			<Siding>0</Siding>
-			<Drywall>0</Drywall>
-			<Finish_Carpentry>0</Finish_Carpentry>
-			<Mailings>1</Mailings>
 			<Data_Enry>0</Data_Enry>
 		</interests>
 	</record>
@@ -16220,31 +16351,9 @@
 		</interests>
 	</record>
 	<record>
-		<first_name>Haakon &amp; Janis</first_name>
-		<last_name>Carlson</last_name>
-		<address>104 1st Street</address>
-		<city>Prairie du Sac</city>
-		<state>WI</state>
-		<zip>53578</zip>
-		<home_phone>(608) 981-2413</home_phone>
-		<work_phone>(608) 617-3435</work_phone>
-		<waiver_date/>
-		<old_id>383</old_id>
-		<remove_from_mailing_list>1</remove_from_mailing_list>
-		<interests>
-			<Painting>0</Painting>
-			<Landscaping>0</Landscaping>
-			<Siding>0</Siding>
-			<Drywall>0</Drywall>
-			<Finish_Carpentry>0</Finish_Carpentry>
-			<Mailings>0</Mailings>
-			<Data_Enry>0</Data_Enry>
-		</interests>
-	</record>
-	<record>
 		<first_name>Haakon P. &amp; Janice</first_name>
 		<last_name>Carlson</last_name>
-		<address>104 First Street</address>
+		<address>104 1st Street</address>
 		<city>Prairie du Sac</city>
 		<state>WI</state>
 		<zip>53578</zip>
@@ -16393,6 +16502,27 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>Ralph</first_name>
+		<last_name>Carney</last_name>
+		<address>130 WASHINGTON AVE</address>
+		<city>LODI</city>
+		<state>WI</state>
+		<zip>53555-1437</zip>
+		<home_phone>(608) 592-5916</home_phone>
+		<waiver_date/>
+		<old_id>15543</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>Caleca</first_name>
 		<last_name>Carol</last_name>
 		<address>617 6th Street</address>
@@ -16456,29 +16586,7 @@
 		</interests>
 	</record>
 	<record>
-		<first_name>Marcia G.</first_name>
-		<last_name>Carrier</last_name>
-		<address>250 Hartford Square</address>
-		<city>Hartford</city>
-		<state>WI</state>
-		<zip>53027</zip>
-		<notes>Change ad 4-2012</notes>
-		<waiver_date/>
-		<old_id>9943</old_id>
-		<remove_from_mailing_list>0</remove_from_mailing_list>
-		<interests>
-			<Painting>0</Painting>
-			<Landscaping>0</Landscaping>
-			<Siding>0</Siding>
-			<Drywall>0</Drywall>
-			<Finish_Carpentry>0</Finish_Carpentry>
-			<Mailings>0</Mailings>
-			<Data_Enry>0</Data_Enry>
-		</interests>
-	</record>
-	<record>
-		<first_name>Elizabeth</first_name>
-		<middle_name>M.</middle_name>
+		<first_name>Elizabeth M.</first_name>
 		<last_name>Carrington</last_name>
 		<address>404 Henry Drive, Apt. 2</address>
 		<city>Portage</city>
@@ -16640,28 +16748,6 @@
 			<Drywall>0</Drywall>
 			<Finish_Carpentry>0</Finish_Carpentry>
 			<Mailings>0</Mailings>
-			<Data_Enry>0</Data_Enry>
-		</interests>
-	</record>
-	<record>
-		<first_name>Sarah</first_name>
-		<last_name>Carter</last_name>
-		<address>W14140 West Point Drive</address>
-		<city>Prairie du Sac</city>
-		<state>WI</state>
-		<zip>53578</zip>
-		<mobile_phone>(608) 963-9078</mobile_phone>
-		<notes>Listed advertising and sales and stocking.</notes>
-		<waiver_date/>
-		<old_id>2342</old_id>
-		<remove_from_mailing_list>0</remove_from_mailing_list>
-		<interests>
-			<Painting>1</Painting>
-			<Landscaping>1</Landscaping>
-			<Siding>0</Siding>
-			<Drywall>0</Drywall>
-			<Finish_Carpentry>0</Finish_Carpentry>
-			<Mailings>1</Mailings>
 			<Data_Enry>0</Data_Enry>
 		</interests>
 	</record>
@@ -16896,28 +16982,6 @@
 		</interests>
 	</record>
 	<record>
-		<first_name>Ruben</first_name>
-		<last_name>Cavazos</last_name>
-		<occupation>Handyman</occupation>
-		<address>815 3rd Street</address>
-		<city>Baraboo</city>
-		<state>WI</state>
-		<zip>53913</zip>
-		<home_phone>(608) 393-8990</home_phone>
-		<waiver_date/>
-		<old_id>4550</old_id>
-		<remove_from_mailing_list>0</remove_from_mailing_list>
-		<interests>
-			<Painting>1</Painting>
-			<Landscaping>1</Landscaping>
-			<Siding>1</Siding>
-			<Drywall>1</Drywall>
-			<Finish_Carpentry>0</Finish_Carpentry>
-			<Mailings>0</Mailings>
-			<Data_Enry>0</Data_Enry>
-		</interests>
-	</record>
-	<record>
 		<first_name>Taylor</first_name>
 		<last_name>Cawkins</last_name>
 		<address>C/O Carpenters Union 5202 Monument Lane</address>
@@ -16940,7 +17004,7 @@
 	</record>
 	<record>
 		<first_name>Billy</first_name>
-		<last_name>Cepeda-smith</last_name>
+		<last_name>Cepeda-Smith</last_name>
 		<home_phone>(608) 434-0743</home_phone>
 		<waiver_date/>
 		<old_id>12291</old_id>
@@ -17017,29 +17081,6 @@
 		</interests>
 	</record>
 	<record>
-		<first_name>Justin</first_name>
-		<last_name>Chamberlin</last_name>
-		<address>W8780 Pine Hollow Road</address>
-		<city>Poynette</city>
-		<state>WI</state>
-		<zip>53955</zip>
-		<home_phone>(608) 445-5440</home_phone>
-		<notes>Portage Fair  2010</notes>
-		<waiver_date/>
-		<old_id>2232</old_id>
-		<email>custom79shovel@aol.com</email>
-		<remove_from_mailing_list>0</remove_from_mailing_list>
-		<interests>
-			<Painting>0</Painting>
-			<Landscaping>0</Landscaping>
-			<Siding>0</Siding>
-			<Drywall>0</Drywall>
-			<Finish_Carpentry>0</Finish_Carpentry>
-			<Mailings>0</Mailings>
-			<Data_Enry>0</Data_Enry>
-		</interests>
-	</record>
-	<record>
 		<first_name>Jesse</first_name>
 		<last_name>Chambers</last_name>
 		<home_phone>(608) 697-4620</home_phone>
@@ -17099,28 +17140,7 @@
 		</interests>
 	</record>
 	<record>
-		<first_name>Lewis</first_name>
-		<last_name>Charles</last_name>
-		<address>214 West Franklin Street</address>
-		<city>Portage</city>
-		<state>WI</state>
-		<zip>53901</zip>
-		<home_phone>(608) 742-0511</home_phone>
-		<waiver_date/>
-		<old_id>12618</old_id>
-		<remove_from_mailing_list>0</remove_from_mailing_list>
-		<interests>
-			<Painting>0</Painting>
-			<Landscaping>0</Landscaping>
-			<Siding>0</Siding>
-			<Drywall>0</Drywall>
-			<Finish_Carpentry>0</Finish_Carpentry>
-			<Mailings>0</Mailings>
-			<Data_Enry>0</Data_Enry>
-		</interests>
-	</record>
-	<record>
-		<first_name>Mike &amp; Pam</first_name>
+		<first_name>Lewis &amp; Pam</first_name>
 		<last_name>Charles</last_name>
 		<address>214 West Franklin Street</address>
 		<city>Portage</city>
@@ -17423,34 +17443,15 @@
 	<record>
 		<first_name>Scott</first_name>
 		<last_name>Chilson</last_name>
-		<address>W9046 HILLTOP RD</address>
-		<city>PORTAGE</city>
+		<address>W9046 Hilltop Road</address>
+		<city>Portage</city>
 		<state>WI</state>
-		<zip>53901-8979</zip>
+		<zip>53901</zip>
 		<home_phone>(608) 669-4659</home_phone>
 		<waiver_date/>
 		<old_id>15266</old_id>
 		<email>schilson6527@gmail.com</email>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
-		<interests>
-			<Painting>0</Painting>
-			<Landscaping>0</Landscaping>
-			<Siding>0</Siding>
-			<Drywall>0</Drywall>
-			<Finish_Carpentry>0</Finish_Carpentry>
-			<Mailings>0</Mailings>
-			<Data_Enry>0</Data_Enry>
-		</interests>
-	</record>
-	<record>
-		<first_name>Alex</first_name>
-		<last_name>Chiquoine</last_name>
-		<city>Reedsburg</city>
-		<state>WI</state>
-		<zip>53959</zip>
-		<waiver_date/>
-		<old_id>12097</old_id>
-		<remove_from_mailing_list>1</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
 			<Landscaping>0</Landscaping>
@@ -17558,6 +17559,7 @@
 		<city>Baraboo</city>
 		<state>WI</state>
 		<zip>53913</zip>
+		<home_phone>(608) 963-0866</home_phone>
 		<mobile_phone>(608) 566-4849</mobile_phone>
 		<waiver_date>07/25/2015</waiver_date>
 		<old_id>14096</old_id>
@@ -17638,10 +17640,10 @@
 	<record>
 		<first_name>Joyce</first_name>
 		<last_name>Christee</last_name>
-		<address>S13062 HIGHBANKS RD</address>
-		<city>SPRING GREEN</city>
+		<address>S13062 Highbanks Road</address>
+		<city>Spring Green</city>
 		<state>WI</state>
-		<zip>53588-9404</zip>
+		<zip>53588</zip>
 		<home_phone>(608) 588-2386</home_phone>
 		<waiver_date/>
 		<old_id>15461</old_id>
@@ -18513,6 +18515,27 @@
 		<notes>Total donation through Thrivent was $730 on 03/06/2014, total was included with another donor, Joan Kautz. Put each donor as $1.00 because unsure of exact amount per donor.</notes>
 		<waiver_date/>
 		<old_id>13560</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>Scott</first_name>
+		<last_name>Clemmons</last_name>
+		<address>605 SILVER LAKE DR</address>
+		<city>PORTAGE</city>
+		<state>WI</state>
+		<zip>53901-1114</zip>
+		<home_phone>(608) 742-5714</home_phone>
+		<waiver_date/>
+		<old_id>15525</old_id>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
@@ -20106,10 +20129,10 @@
 	<record>
 		<first_name>Jane</first_name>
 		<last_name>Cordero</last_name>
-		<address>7140 STATE ROAD 78</address>
-		<city>SAUK CITY</city>
+		<address>7140 State Road 78</address>
+		<city>Sauk City</city>
 		<state>WI</state>
-		<zip>53583-9711</zip>
+		<zip>53583</zip>
 		<home_phone>(608) 643-2864</home_phone>
 		<mobile_phone>(608) 220-4000</mobile_phone>
 		<waiver_date>03/03/2006</waiver_date>
@@ -20261,6 +20284,27 @@
 		<home_phone>(920) 350-2625</home_phone>
 		<waiver_date/>
 		<old_id>14688</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>BreCal</first_name>
+		<last_name>Cotton</last_name>
+		<address>122 Maine Street, Apt. 104</address>
+		<city>Mauston</city>
+		<state>WI</state>
+		<zip>53948</zip>
+		<waiver_date>09/17/2015</waiver_date>
+		<old_id>15476</old_id>
+		<email>Rise.brecalcotton@gmail.com</email>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
@@ -20707,8 +20751,12 @@
 	<record>
 		<first_name>Jeff</first_name>
 		<last_name>Cramer</last_name>
+		<address>General Delivery</address>
+		<city>Lake Delton</city>
+		<state>WI</state>
+		<zip>53940</zip>
 		<mobile_phone>(608) 432-1539</mobile_phone>
-		<waiver_date/>
+		<waiver_date>09/18/2015</waiver_date>
 		<old_id>14548</old_id>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
@@ -21669,10 +21717,10 @@
 	<record>
 		<first_name>Donald G. &amp; Dorothy</first_name>
 		<last_name>Cwik, Sr.</last_name>
-		<address>E10050 BUCKHORN RD</address>
-		<city>REEDSBURG</city>
+		<address>E10050 Buckhorn Road</address>
+		<city>Reedsburg</city>
 		<state>WI</state>
-		<zip>53959-9631</zip>
+		<zip>53959</zip>
 		<home_phone>(608) 356-3224</home_phone>
 		<waiver_date/>
 		<old_id>2857</old_id>
@@ -22737,7 +22785,7 @@
 		<notes>Messiah Lutheran Church</notes>
 		<waiver_date>08/17/2015</waiver_date>
 		<old_id>15317</old_id>
-		<email>stdebroux@charter.net</email>
+		<email>staebroux@charter.net</email>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
@@ -23892,6 +23940,28 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>Sabra</first_name>
+		<last_name>Dessauer</last_name>
+		<address>550 16TH ST</address>
+		<city>BARABOO</city>
+		<state>WI</state>
+		<zip>53913-1417</zip>
+		<mobile_phone>(608) 448-4155</mobile_phone>
+		<waiver_date/>
+		<old_id>15541</old_id>
+		<email>sabradess@gmail.com</email>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>Ken</first_name>
 		<last_name>Detmer</last_name>
 		<address>221 Palmer Parkway</address>
@@ -24409,6 +24479,7 @@
 		<city>Madison</city>
 		<state>WI</state>
 		<zip>53718</zip>
+		<home_phone>(608) 249-9851</home_phone>
 		<notes>Messiah Lutheran Church Madison</notes>
 		<waiver_date>08/17/2015</waiver_date>
 		<old_id>15318</old_id>
@@ -24897,6 +24968,27 @@
 		<waiver_date>02/17/2015</waiver_date>
 		<old_id>15202</old_id>
 		<remove_from_mailing_list>1</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>John</first_name>
+		<last_name>Dodge</last_name>
+		<address>E13660 STATE ROAD 33</address>
+		<city>BARABOO</city>
+		<state>WI</state>
+		<zip>53913-9696</zip>
+		<home_phone>(608) 356-4468</home_phone>
+		<waiver_date/>
+		<old_id>15489</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
 			<Landscaping>0</Landscaping>
@@ -26686,6 +26778,27 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>Steve</first_name>
+		<last_name>Ebert</last_name>
+		<address>323 7TH ST</address>
+		<city>BARABOO</city>
+		<state>WI</state>
+		<zip>53913-2234</zip>
+		<mobile_phone>(608) 963-7353</mobile_phone>
+		<waiver_date/>
+		<old_id>15532</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>Julie</first_name>
 		<last_name>Eckert</last_name>
 		<occupation>retired</occupation>
@@ -28095,6 +28208,28 @@
 		<zip>53951</zip>
 		<waiver_date/>
 		<old_id>13694</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>Billy Jack</first_name>
+		<last_name>Erickson</last_name>
+		<address>820 20TH Street</address>
+		<city>Prairie du Sac</city>
+		<state>WI</state>
+		<zip>53578</zip>
+		<mobile_phone>(608) 843-9563</mobile_phone>
+		<waiver_date/>
+		<old_id>15545</old_id>
+		<email>erickson55@msn.com</email>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
@@ -30953,10 +31088,10 @@
 	<record>
 		<first_name>Patrick A. &amp; Kelli M.</first_name>
 		<last_name>Fish</last_name>
-		<address>1425 Lancer Court</address>
-		<city>Reedsburg</city>
+		<address>1425 LANCER CT</address>
+		<city>REEDSBURG</city>
 		<state>WI</state>
-		<zip>53959</zip>
+		<zip>53959-1463</zip>
 		<waiver_date/>
 		<old_id>11423</old_id>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
@@ -32532,10 +32667,10 @@
 	<record>
 		<first_name>Deb</first_name>
 		<last_name>Frosch</last_name>
-		<address>1011 6th Street</address>
-		<city>Baraboo</city>
+		<address>1011 6TH ST</address>
+		<city>BARABOO</city>
 		<state>WI</state>
-		<zip>53913</zip>
+		<zip>53913-2326</zip>
 		<home_phone>(608) 393-1076</home_phone>
 		<waiver_date/>
 		<old_id>12961</old_id>
@@ -34524,6 +34659,27 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>Todd</first_name>
+		<last_name>Gehrke</last_name>
+		<address>S2751 County Road V</address>
+		<city>Reedsburg</city>
+		<state>WI</state>
+		<zip>53959-9693</zip>
+		<mobile_phone>(608) 469-3490</mobile_phone>
+		<waiver_date>02/18/2013</waiver_date>
+		<old_id>11519</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>STEVEN-MARK-DAVID</first_name>
 		<last_name>GEIGER</last_name>
 		<address>7533 FELTON DR</address>
@@ -35150,6 +35306,27 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>Glen</first_name>
+		<middle_name>K.</middle_name>
+		<last_name>Giebel</last_name>
+		<address>E10398 SHADY LANE RD</address>
+		<city>REEDSBURG</city>
+		<state>WI</state>
+		<zip>53959-9738</zip>
+		<waiver_date>09/04/2013</waiver_date>
+		<old_id>3285</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>Kevin</first_name>
 		<last_name>Giebel</last_name>
 		<address>E10222A Shady Land Road</address>
@@ -35346,7 +35523,7 @@
 		<city>MERRIMAC</city>
 		<state>WI</state>
 		<zip>53561-9723</zip>
-		<home_phone>(608) 370-7771</home_phone>
+		<mobile_phone>606956810</mobile_phone>
 		<waiver_date/>
 		<old_id>13308</old_id>
 		<email>pgiesler@hotmail.com</email>
@@ -35548,6 +35725,27 @@
 		<zip>53578</zip>
 		<waiver_date/>
 		<old_id>443</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>Dean</first_name>
+		<last_name>Gilding</last_name>
+		<address>915 Lone Tree Ln</address>
+		<city>Prairie du Sac</city>
+		<state>WI</state>
+		<zip>53978</zip>
+		<home_phone>(608) 434-1260</home_phone>
+		<waiver_date>03/01/2009</waiver_date>
+		<old_id>1811</old_id>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
@@ -36705,12 +36903,33 @@
 		<interests/>
 	</record>
 	<record>
+		<first_name>Viccarlo</first_name>
+		<last_name>Gonzalez</last_name>
+		<address>291 North Burritt Avenue</address>
+		<city>WISCONSIN DELLS</city>
+		<state>WI</state>
+		<zip>53965</zip>
+		<mobile_phone>(262) 865-8595</mobile_phone>
+		<waiver_date>09/17/2015</waiver_date>
+		<old_id>15478</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>Cale W. &amp; Shirley G.</first_name>
 		<last_name>Good</last_name>
-		<address>S3051 East Fox Hill Road</address>
-		<city>Baraboo</city>
+		<address>S3051 E FOX HILL RD</address>
+		<city>BARABOO</city>
 		<state>WI</state>
-		<zip>53913</zip>
+		<zip>53913-9177</zip>
 		<home_phone>(608) 356-2494</home_phone>
 		<notes>phone updated 11/25/2014 sr</notes>
 		<waiver_date/>
@@ -36748,6 +36967,14 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>Justin</first_name>
+		<last_name>Good</last_name>
+		<waiver_date/>
+		<old_id>15534</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests/>
+	</record>
+	<record>
 		<first_name>Sarah</first_name>
 		<last_name>Goodenow</last_name>
 		<address>601 Wauona Trail, Lot 63</address>
@@ -36760,6 +36987,46 @@
 		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>1</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>Brianna</first_name>
+		<last_name>Gooding</last_name>
+		<address>721 CONNIE RD</address>
+		<city>BARABOO</city>
+		<state>WI</state>
+		<zip>53913-1011</zip>
+		<waiver_date>09/26/2015</waiver_date>
+		<old_id>15477</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>Phil</first_name>
+		<last_name>Gooding</last_name>
+		<address>721 CONNIE RD</address>
+		<city>BARABOO</city>
+		<state>WI</state>
+		<zip>53913-1011</zip>
+		<waiver_date>09/26/2015</waiver_date>
+		<old_id>15479</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
 			<Landscaping>0</Landscaping>
 			<Siding>0</Siding>
 			<Drywall>0</Drywall>
@@ -36990,6 +37257,26 @@
 		<zip>53901-2018</zip>
 		<waiver_date/>
 		<old_id>15258</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>Cory</first_name>
+		<last_name>Gorman</last_name>
+		<address>N4951 Woodlawn Terrace</address>
+		<city>Poynette</city>
+		<state>WI</state>
+		<zip>53955</zip>
+		<waiver_date/>
+		<old_id>15546</old_id>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
@@ -38089,6 +38376,27 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>Carley</first_name>
+		<last_name>Greenwood</last_name>
+		<address>111 WALNUT ST</address>
+		<city>BARABOO</city>
+		<state>WI</state>
+		<zip>53913-2555</zip>
+		<waiver_date>09/17/2015</waiver_date>
+		<old_id>15480</old_id>
+		<email>carleystar@gmail.com</email>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>David P. &amp; Melissa S.</first_name>
 		<last_name>Greenwood</last_name>
 		<address>629 Third Avenue</address>
@@ -38182,6 +38490,27 @@
 		<waiver_date/>
 		<old_id>1468</old_id>
 		<remove_from_mailing_list>1</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>DOUGLAS</first_name>
+		<middle_name>A.</middle_name>
+		<last_name>GREFE JR</last_name>
+		<address>918 4TH ST</address>
+		<city>BARABOO</city>
+		<state>WI</state>
+		<zip>53913-2300</zip>
+		<waiver_date>12/21/2013</waiver_date>
+		<old_id>6296</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
 			<Landscaping>0</Landscaping>
@@ -39216,10 +39545,10 @@
 	<record>
 		<first_name>Gary &amp; Marilyn</first_name>
 		<last_name>Guckenberger</last_name>
-		<address>502 Saddle Ridge</address>
-		<city>Portage</city>
+		<address>502 SADDLE RDG</address>
+		<city>PORTAGE</city>
 		<state>WI</state>
-		<zip>53901</zip>
+		<zip>53901-9776</zip>
 		<home_phone>(608) 721-1945</home_phone>
 		<waiver_date/>
 		<old_id>12780</old_id>
@@ -39426,19 +39755,43 @@
 		<first_name>Dale</first_name>
 		<last_name>Gullickson</last_name>
 		<occupation>healthcare Financial Consultant</occupation>
-		<address>7149 Taylor Rd</address>
-		<city>Sauk City</city>
+		<address>7161 TAYLOR RD</address>
+		<city>SAUK CITY</city>
 		<state>WI</state>
-		<zip>53583</zip>
+		<zip>53583-9744</zip>
 		<home_phone>(608) 643-3459</home_phone>
 		<work_phone>(608) 643-2343</work_phone>
 		<notes>St. Als</notes>
 		<waiver_date>05/17/2003</waiver_date>
 		<old_id>161</old_id>
+		<email>perux2@merr.com</email>
 		<remove_from_mailing_list>1</remove_from_mailing_list>
 		<interests>
 			<Painting>1</Painting>
 			<Landscaping>1</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>Peter</first_name>
+		<middle_name>E.</middle_name>
+		<last_name>Gullickson</last_name>
+		<address>712 S PRESTON AVE APT 203</address>
+		<city>REEDSBURG</city>
+		<state>WI</state>
+		<zip>53959-1893</zip>
+		<home_phone>(608) 345-0783</home_phone>
+		<waiver_date/>
+		<old_id>15496</old_id>
+		<email>Pete.Gullickson@gmail.com</email>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
 			<Siding>0</Siding>
 			<Drywall>0</Drywall>
 			<Finish_Carpentry>0</Finish_Carpentry>
@@ -41958,6 +42311,27 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>Kevin</first_name>
+		<last_name>Hansen</last_name>
+		<address>S4105 FOX HILL RD</address>
+		<city>BARABOO</city>
+		<state>WI</state>
+		<zip>53913-9107</zip>
+		<home_phone>(608) 963-3220</home_phone>
+		<waiver_date/>
+		<old_id>15486</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>Michael C. &amp; Dee Ann K.</first_name>
 		<last_name>Hansen</last_name>
 		<address>906 Highland Trail</address>
@@ -42461,6 +42835,26 @@
 		<home_phone>(608) 254-7965</home_phone>
 		<waiver_date>08/01/2009</waiver_date>
 		<old_id>1748</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>Kevin</first_name>
+		<last_name>Hardin</last_name>
+		<address>E12773 CLINGMANS RD</address>
+		<city>BARABOO</city>
+		<state>WI</state>
+		<zip>53913-9675</zip>
+		<waiver_date>09/25/2015</waiver_date>
+		<old_id>15481</old_id>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
@@ -43320,6 +43714,28 @@
 		<waiver_date>04/30/2014</waiver_date>
 		<old_id>13844</old_id>
 		<email>jhartz79@gmail.com</email>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>Lorisa</first_name>
+		<last_name>Harvey</last_name>
+		<address>1340 WINNEBAGO CIR</address>
+		<city>BARABOO</city>
+		<state>WI</state>
+		<zip>53913-1283</zip>
+		<mobile_phone>(608) 333-9752</mobile_phone>
+		<waiver_date/>
+		<old_id>15536</old_id>
+		<email>lorisa.harvey@gmail.com</email>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
@@ -45098,6 +45514,27 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>William</first_name>
+		<last_name>Helwig</last_name>
+		<address>N8302 POLINSKE RD</address>
+		<city>PORTAGE</city>
+		<state>WI</state>
+		<zip>53901-9136</zip>
+		<home_phone>(608) 429-4004</home_phone>
+		<waiver_date/>
+		<old_id>15540</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>Anees</first_name>
 		<last_name>Hemaidan</last_name>
 		<address>1420 ASH ST</address>
@@ -45322,6 +45759,26 @@
 		<waiver_date/>
 		<old_id>4180</old_id>
 		<remove_from_mailing_list>1</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>MIKE</first_name>
+		<last_name>HENGSTLER</last_name>
+		<address>S2049 HERWIG RD</address>
+		<city>REEDSBURG</city>
+		<state>WI</state>
+		<zip>53959-9741</zip>
+		<waiver_date>06/11/2011</waiver_date>
+		<old_id>4264</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
 			<Landscaping>0</Landscaping>
@@ -46268,10 +46725,10 @@
 	<record>
 		<first_name>Bob</first_name>
 		<last_name>Herum</last_name>
-		<address>E7822 Virginia Terrace</address>
-		<city>Reedsburg</city>
+		<address>E7822 VIRGINIA TER</address>
+		<city>REEDSBURG</city>
 		<state>WI</state>
-		<zip>53959</zip>
+		<zip>53959-9573</zip>
 		<home_phone>(608) 524-3264</home_phone>
 		<mobile_phone>(608) 415-8449</mobile_phone>
 		<waiver_date/>
@@ -46617,6 +47074,7 @@
 		<city>La Valle</city>
 		<state>WI</state>
 		<zip>53941</zip>
+		<home_phone>(608) 464-3587</home_phone>
 		<notes>Offered to help on the Reedsburg USDA builds.</notes>
 		<waiver_date>08/21/2014</waiver_date>
 		<old_id>14164</old_id>
@@ -46920,10 +47378,10 @@
 	<record>
 		<first_name>Dan</first_name>
 		<last_name>Hilfiker</last_name>
-		<address>E10850 Hatchery Road</address>
-		<city>Baraboo</city>
+		<address>E10850 HATCHERY RD</address>
+		<city>BARABOO</city>
 		<state>WI</state>
-		<zip>53913</zip>
+		<zip>53913-9267</zip>
 		<home_phone>(608) 356-2086</home_phone>
 		<waiver_date>03/17/2012</waiver_date>
 		<old_id>989</old_id>
@@ -47189,6 +47647,27 @@
 		<notes>USDA 2013 build Fredrickson help</notes>
 		<waiver_date>07/29/2014</waiver_date>
 		<old_id>14147</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>Shannon</first_name>
+		<middle_name>R</middle_name>
+		<last_name>Hill</last_name>
+		<address>745 ROSEMARY LN</address>
+		<city>BARABOO</city>
+		<state>WI</state>
+		<zip>53913-1031</zip>
+		<waiver_date>09/09/2015</waiver_date>
+		<old_id>9544</old_id>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
@@ -49971,13 +50450,14 @@
 		<first_name>Douglas</first_name>
 		<middle_name>D</middle_name>
 		<last_name>Hultberg</last_name>
-		<address>703 Eighth Street</address>
-		<city>Prairie du Sac</city>
+		<address>703 8TH ST</address>
+		<city>PRAIRIE DU SAC</city>
 		<state>WI</state>
 		<zip>53578-1057</zip>
-		<waiver_date>09/28/2013</waiver_date>
+		<notes>Concordia United Methodist</notes>
+		<waiver_date>10/03/2015</waiver_date>
 		<old_id>13476</old_id>
-		<email>dougndp.42@gmail.com</email>
+		<email>dougndp42@gmail.com</email>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
@@ -50045,6 +50525,47 @@
 		<waiver_date>05/25/2015</waiver_date>
 		<old_id>15158</old_id>
 		<remove_from_mailing_list>1</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>P.</first_name>
+		<middle_name>A.</middle_name>
+		<last_name>Hults</last_name>
+		<address>715 Canyon Rd #5</address>
+		<city>Lake Delton</city>
+		<state>WI</state>
+		<zip>53940</zip>
+		<waiver_date/>
+		<old_id>15515</old_id>
+		<email>hults@charter.net</email>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>P.</first_name>
+		<middle_name>A.</middle_name>
+		<last_name>Hults</last_name>
+		<address>715 Canyon Rd #5</address>
+		<state>WI</state>
+		<waiver_date/>
+		<old_id>15514</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
 			<Landscaping>0</Landscaping>
@@ -50205,10 +50726,10 @@
 	<record>
 		<first_name>Mary</first_name>
 		<last_name>Huntamer</last_name>
-		<address>204 Myrtle Street</address>
-		<city>Reedsburg</city>
+		<address>204 MYRTLE ST</address>
+		<city>REEDSBURG</city>
 		<state>WI</state>
-		<zip>53959</zip>
+		<zip>53959-1647</zip>
 		<home_phone>(608) 415-2326</home_phone>
 		<waiver_date/>
 		<old_id>14750</old_id>
@@ -50317,26 +50838,6 @@
 		<home_phone>(608) 592-3842</home_phone>
 		<waiver_date/>
 		<old_id>13907</old_id>
-		<remove_from_mailing_list>0</remove_from_mailing_list>
-		<interests>
-			<Painting>0</Painting>
-			<Landscaping>0</Landscaping>
-			<Siding>0</Siding>
-			<Drywall>0</Drywall>
-			<Finish_Carpentry>0</Finish_Carpentry>
-			<Mailings>0</Mailings>
-			<Data_Enry>0</Data_Enry>
-		</interests>
-	</record>
-	<record>
-		<first_name>BRIDGET W</first_name>
-		<last_name>HUTCHEN</last_name>
-		<address>971 COVENTRY DR</address>
-		<city>LAKE FOREST</city>
-		<state>IL</state>
-		<zip>60045-2705</zip>
-		<waiver_date/>
-		<old_id>9831</old_id>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
@@ -52548,6 +53049,27 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>Geneva</first_name>
+		<last_name>Jensen</last_name>
+		<address>1015 TUTTLE ST</address>
+		<city>BARABOO</city>
+		<state>WI</state>
+		<zip>53913-1772</zip>
+		<home_phone>(608) 355-0483</home_phone>
+		<waiver_date/>
+		<old_id>15531</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>John</first_name>
 		<last_name>Jensen</last_name>
 		<address>339 5TH ST</address>
@@ -52806,10 +53328,10 @@
 	<record>
 		<first_name>Paul T.</first_name>
 		<last_name>Jeske</last_name>
-		<address>167 Golden Avenue</address>
-		<city>Briggsville</city>
+		<address>167 GOLDEN DR</address>
+		<city>BRIGGSVILLE</city>
 		<state>WI</state>
-		<zip>53920</zip>
+		<zip>53920-9604</zip>
 		<work_phone>(608) 981-2285</work_phone>
 		<notes>Electrician who's done work for us on the houses.</notes>
 		<waiver_date/>
@@ -52911,6 +53433,15 @@
 			<Mailings>0</Mailings>
 			<Data_Enry>0</Data_Enry>
 		</interests>
+	</record>
+	<record>
+		<first_name>Cabaj</first_name>
+		<last_name>Jim</last_name>
+		<waiver_date/>
+		<old_id>15509</old_id>
+		<email>jicabaj@gmail.com</email>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests/>
 	</record>
 	<record>
 		<first_name>Angie</first_name>
@@ -54012,6 +54543,14 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>Tammy</first_name>
+		<last_name>Johnson</last_name>
+		<waiver_date/>
+		<old_id>15472</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests/>
+	</record>
+	<record>
 		<first_name>TIM</first_name>
 		<last_name>JOHNSON</last_name>
 		<address>E12295 STEINKE ROAD</address>
@@ -54066,6 +54605,28 @@
 		<waiver_date/>
 		<old_id>2782</old_id>
 		<email>tjohnson3250@yahoo.com</email>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>WILLIAM</first_name>
+		<middle_name>G.</middle_name>
+		<last_name>JOHNSON</last_name>
+		<address>716 EAST ST</address>
+		<city>BARABOO</city>
+		<state>WI</state>
+		<zip>53913-2210</zip>
+		<work_phone>(608) 643-2477</work_phone>
+		<waiver_date>05/01/2003</waiver_date>
+		<old_id>1081</old_id>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
@@ -54333,6 +54894,26 @@
 		<waiver_date>06/09/2012</waiver_date>
 		<old_id>12271</old_id>
 		<email>darius12009@hotmail.com</email>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>Michelle</first_name>
+		<last_name>Jones</last_name>
+		<address>N834 COUNTY ROAD T</address>
+		<city>ENDEAVOR</city>
+		<state>WI</state>
+		<zip>53930-9529</zip>
+		<waiver_date/>
+		<old_id>15523</old_id>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
@@ -55858,6 +56439,27 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>Robert</first_name>
+		<last_name>kaschel</last_name>
+		<address>S6462 COUNTY ROAD PF</address>
+		<city>NORTH FREEDOM</city>
+		<state>WI</state>
+		<zip>53951-9644</zip>
+		<home_phone>(608) 522-4276</home_phone>
+		<waiver_date/>
+		<old_id>15535</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>Jessica</first_name>
 		<last_name>Kasha</last_name>
 		<address>5002 Autumn Leaf Lane, Apartment 207</address>
@@ -57156,6 +57758,26 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>Aaron</first_name>
+		<last_name>Kelsey</last_name>
+		<address>W14033 W POINT DR</address>
+		<city>PRAIRIE DU SAC</city>
+		<state>WI</state>
+		<zip>53578-9562</zip>
+		<waiver_date/>
+		<old_id>15533</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>Gary</first_name>
 		<last_name>Kemp</last_name>
 		<occupation>Banker</occupation>
@@ -57394,28 +58016,6 @@
 		</interests>
 	</record>
 	<record>
-		<first_name>Lori</first_name>
-		<last_name>Kersten</last_name>
-		<address>1802 East Street</address>
-		<city>Baraboo</city>
-		<state>WI</state>
-		<zip>53913</zip>
-		<home_phone>(608) 630-3537</home_phone>
-		<waiver_date/>
-		<old_id>14763</old_id>
-		<email>lorikersten@gamil.com</email>
-		<remove_from_mailing_list>0</remove_from_mailing_list>
-		<interests>
-			<Painting>0</Painting>
-			<Landscaping>0</Landscaping>
-			<Siding>0</Siding>
-			<Drywall>0</Drywall>
-			<Finish_Carpentry>0</Finish_Carpentry>
-			<Mailings>0</Mailings>
-			<Data_Enry>0</Data_Enry>
-		</interests>
-	</record>
-	<record>
 		<first_name>Melissa</first_name>
 		<last_name>Kersten</last_name>
 		<address>W595 BREEZY DR</address>
@@ -57594,10 +58194,10 @@
 	<record>
 		<first_name>Kirk &amp; Sara</first_name>
 		<last_name>Kettleson</last_name>
-		<address>E9265 Pebble Beach Drive</address>
-		<city>Wisconsin Dells</city>
+		<address>E9265 PEBBLEBEACH DR</address>
+		<city>WISCONSIN DELLS</city>
 		<state>WI</state>
-		<zip>53965</zip>
+		<zip>53965-8240</zip>
 		<home_phone>(608) 692-5911</home_phone>
 		<waiver_date/>
 		<old_id>13859</old_id>
@@ -58487,6 +59087,28 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>Lori</first_name>
+		<last_name>Kirsten</last_name>
+		<address>1802 EAST ST</address>
+		<city>BARABOO</city>
+		<state>WI</state>
+		<zip>53913-1371</zip>
+		<home_phone>(608) 630-3537</home_phone>
+		<waiver_date/>
+		<old_id>14763</old_id>
+		<email>lorikersten@gamil.com</email>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>Louis &amp; Diane</first_name>
 		<last_name>Kirt</last_name>
 		<address>1436 Harvest Lane</address>
@@ -59025,8 +59647,7 @@
 		<city>PRAIRIE DU SAC</city>
 		<state>WI</state>
 		<zip>53578-9724</zip>
-		<home_phone>(608) 393-4800</home_phone>
-		<mobile_phone>(608) 644-0056</mobile_phone>
+		<mobile_phone>(608) 370-9243</mobile_phone>
 		<waiver_date/>
 		<old_id>12756</old_id>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
@@ -59489,6 +60110,28 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>Matt</first_name>
+		<last_name>Klitzke</last_name>
+		<address>432 N PARK ST</address>
+		<city>REEDSBURG</city>
+		<state>WI</state>
+		<zip>53959-1246</zip>
+		<mobile_phone>(608) 434-1833</mobile_phone>
+		<waiver_date/>
+		<old_id>15520</old_id>
+		<email>mattklitzke32@yahoo.com</email>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>Andrew &amp; Elizabeth</first_name>
 		<last_name>Klossner</last_name>
 		<address>105 Sunrise Lane</address>
@@ -59532,14 +60175,14 @@
 	<record>
 		<first_name>Larry</first_name>
 		<last_name>Klubertanz</last_name>
-		<address>S7631 HIGH POINT DR</address>
-		<city>MERRIMAC</city>
+		<address>S7631 High Point Drive</address>
+		<city>Merrimac</city>
 		<state>WI</state>
-		<zip>53561-9598</zip>
+		<zip>53561</zip>
 		<home_phone>(608) 628-7502</home_phone>
 		<mobile_phone>(608) 772-0086</mobile_phone>
 		<notes>Worked as a volunteer on Baraboo USDA homes in 2014; then came on as construction staff.</notes>
-		<waiver_date>04/10/2015</waiver_date>
+		<waiver_date>09/12/2015</waiver_date>
 		<old_id>13486</old_id>
 		<email>ltklubertanz@gmail.com</email>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
@@ -59704,6 +60347,26 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>KENNETH E &amp; DEBRA D</first_name>
+		<last_name>KNERZER</last_name>
+		<address>E11374 BIRNAM WOODS RD</address>
+		<city>BARABOO</city>
+		<state>WI</state>
+		<zip>53913-9129</zip>
+		<waiver_date/>
+		<old_id>10035</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>Bill &amp; Donna</first_name>
 		<last_name>Knickmeyer</last_name>
 		<address>W14118 Selwood Drive</address>
@@ -59845,6 +60508,27 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>Julie</first_name>
+		<last_name>Knudsen</last_name>
+		<address>424 S WALNUT ST</address>
+		<city>REEDSBURG</city>
+		<state>WI</state>
+		<zip>53959-2119</zip>
+		<waiver_date>09/25/2015</waiver_date>
+		<old_id>11227</old_id>
+		<email>jknudsen1021@gmail.com</email>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>Darryl J. &amp; Sherri Lynn</first_name>
 		<last_name>Knuteson</last_name>
 		<address>427 Colby Boulevard</address>
@@ -59957,6 +60641,29 @@
 			<Landscaping>0</Landscaping>
 			<Siding>0</Siding>
 			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>Bill</first_name>
+		<last_name>Kobs</last_name>
+		<occupation>Engineer</occupation>
+		<address>1203A WELLINGTON DR</address>
+		<city>REEDSBURG</city>
+		<state>WI</state>
+		<zip>53959-1314</zip>
+		<mobile_phone>(608) 609-5516</mobile_phone>
+		<waiver_date/>
+		<old_id>15500</old_id>
+		<email>whkobs@gmail.com</email>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>1</Painting>
+			<Landscaping>1</Landscaping>
+			<Siding>1</Siding>
+			<Drywall>1</Drywall>
 			<Finish_Carpentry>0</Finish_Carpentry>
 			<Mailings>0</Mailings>
 			<Data_Enry>0</Data_Enry>
@@ -60704,10 +61411,10 @@
 		<city>WARRENVILLE</city>
 		<state>IL</state>
 		<zip>60555-2107</zip>
-		<home_phone>(630) 393-3739</home_phone>
+		<home_phone>(630) 728-1239</home_phone>
 		<waiver_date/>
 		<old_id>15378</old_id>
-		<email>kokolb13@gmail.com</email>
+		<email>jgkolb13@gmail.com</email>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
@@ -61895,17 +62602,16 @@
 		</interests>
 	</record>
 	<record>
-		<first_name>Anna</first_name>
-		<middle_name>M.</middle_name>
+		<first_name>Anna M.</first_name>
 		<last_name>Krause</last_name>
-		<address>PO BOX 224</address>
-		<city>NORTH FREEDOM</city>
+		<address>PO Box 224</address>
+		<city>North Freedom</city>
 		<state>WI</state>
-		<zip>53951-0224</zip>
+		<zip>53951</zip>
 		<notes>In 2013 she applied for the ReStore Manager position.</notes>
 		<waiver_date>09/08/2015</waiver_date>
 		<old_id>6724</old_id>
-		<email>collagedesignstudio@@gmail.com</email>
+		<email>collagedesignstudio@gmail.com</email>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
@@ -62028,13 +62734,13 @@
 		</interests>
 	</record>
 	<record>
-		<first_name>Patrick</first_name>
-		<middle_name>C</middle_name>
+		<first_name>Patrick C.</first_name>
 		<last_name>Krebs</last_name>
-		<address>418 VALLEY RD</address>
-		<city>MADISON</city>
+		<address>418 Valley Road</address>
+		<city>Madison</city>
 		<state>WI</state>
-		<zip>53714-2736</zip>
+		<zip>53714</zip>
+		<home_phone>(608) 221-3769</home_phone>
 		<notes>Messiah Lutheran Church Madison</notes>
 		<waiver_date>08/11/2014</waiver_date>
 		<old_id>13277</old_id>
@@ -63883,12 +64589,11 @@
 	<record>
 		<first_name>Judith</first_name>
 		<last_name>Kuse</last_name>
-		<address>520 Spring Creek Circle, #5</address>
-		<city>Baraboo</city>
+		<address>520 SPRING CREEK CIR</address>
+		<city>BARABOO</city>
 		<state>WI</state>
-		<zip>53913</zip>
+		<zip>53913-3077</zip>
 		<home_phone>(608) 697-4375</home_phone>
-		<notes>Newsletter returned temporarily away.</notes>
 		<waiver_date/>
 		<old_id>12705</old_id>
 		<email>jon.kuse@frontier.com</email>
@@ -65794,6 +66499,26 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>Brad</first_name>
+		<last_name>Lauer</last_name>
+		<address>S2903 FAIRWAY DR</address>
+		<city>REEDSBURG</city>
+		<state>WI</state>
+		<zip>53959-9618</zip>
+		<waiver_date/>
+		<old_id>15530</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>Bryce</first_name>
 		<last_name>Lauer</last_name>
 		<address>107 14th Street</address>
@@ -67277,26 +68002,6 @@
 		</interests>
 	</record>
 	<record>
-		<first_name>N-C</first_name>
-		<last_name>Lemoine &amp; Landsinger</last_name>
-		<address>S3182 Sate RD 136</address>
-		<city>Reedsburg</city>
-		<state>WI</state>
-		<zip>53959</zip>
-		<waiver_date/>
-		<old_id>2533</old_id>
-		<remove_from_mailing_list>0</remove_from_mailing_list>
-		<interests>
-			<Painting>0</Painting>
-			<Landscaping>0</Landscaping>
-			<Siding>0</Siding>
-			<Drywall>0</Drywall>
-			<Finish_Carpentry>0</Finish_Carpentry>
-			<Mailings>0</Mailings>
-			<Data_Enry>0</Data_Enry>
-		</interests>
-	</record>
-	<record>
 		<first_name>David</first_name>
 		<last_name>Lendved</last_name>
 		<address>W12778 County Road J</address>
@@ -67388,6 +68093,26 @@
 		<waiver_date/>
 		<old_id>1366</old_id>
 		<remove_from_mailing_list>1</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>JOHN E &amp; MARY K</first_name>
+		<last_name>LENERZ</last_name>
+		<address>1545 EAST ST</address>
+		<city>BARABOO</city>
+		<state>WI</state>
+		<zip>53913-1438</zip>
+		<waiver_date/>
+		<old_id>4785</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
 			<Landscaping>0</Landscaping>
@@ -67940,6 +68665,27 @@
 		<zip>53583</zip>
 		<waiver_date/>
 		<old_id>525</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>Charles &amp; Pamela</first_name>
+		<last_name>Lewis</last_name>
+		<address>214 West Franklin Street</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<home_phone>(608) 742-0511</home_phone>
+		<waiver_date/>
+		<old_id>12618</old_id>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
@@ -71479,6 +72225,26 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>Isabelle</first_name>
+		<last_name>Mallory</last_name>
+		<address>PO BOX 396</address>
+		<city>BARABOO</city>
+		<state>WI</state>
+		<zip>53913-0396</zip>
+		<waiver_date>10/21/2014</waiver_date>
+		<old_id>10926</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>James</first_name>
 		<middle_name>E.</middle_name>
 		<last_name>Malmberg</last_name>
@@ -72358,6 +73124,27 @@
 		<home_phone>(608) 356-8446</home_phone>
 		<waiver_date/>
 		<old_id>14253</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>Dixie</first_name>
+		<last_name>Marquardt</last_name>
+		<address>S5207 State Road 113</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 356-7985</home_phone>
+		<waiver_date/>
+		<old_id>15521</old_id>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
@@ -73876,6 +74663,27 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>Jim</first_name>
+		<last_name>Maziarka</last_name>
+		<address>E11248A BIRNAM WOODS RD</address>
+		<city>BARABOO</city>
+		<state>WI</state>
+		<zip>53913-9132</zip>
+		<waiver_date>09/25/2015</waiver_date>
+		<old_id>15482</old_id>
+		<email>maziarka.jim@bar.sysco.com</email>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>Joan</first_name>
 		<last_name>Mc Arthur</last_name>
 		<address>1107 Birch Street</address>
@@ -75122,6 +75930,28 @@
 		<waiver_date>10/08/2013</waiver_date>
 		<old_id>1789</old_id>
 		<remove_from_mailing_list>1</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>Bill</first_name>
+		<last_name>Mcintyre</last_name>
+		<address>750 Golf Rd. #41</address>
+		<city>Prairie Du Sac</city>
+		<state>WI</state>
+		<zip>53578</zip>
+		<home_phone>(608) 370-6029</home_phone>
+		<mobile_phone>(608) 219-3376</mobile_phone>
+		<waiver_date/>
+		<old_id>15495</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
 			<Landscaping>0</Landscaping>
@@ -77112,6 +77942,27 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>Angela</first_name>
+		<last_name>Meyer</last_name>
+		<address>541 WHITE SPRUCE AVE</address>
+		<city>BARABOO</city>
+		<state>WI</state>
+		<zip>53913-9189</zip>
+		<home_phone>(608) 393-7475</home_phone>
+		<waiver_date>09/26/2015</waiver_date>
+		<old_id>15512</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>Craig A. &amp; Debra A.</first_name>
 		<last_name>Meyer</last_name>
 		<address>E12419 County Road T</address>
@@ -77237,10 +78088,10 @@
 	<record>
 		<first_name>Kurt</first_name>
 		<last_name>Meyer</last_name>
-		<address>3814 WINNEMAC AVE</address>
-		<city>MADISON</city>
+		<address>3814 Winnemac Avenue</address>
+		<city>Madison</city>
 		<state>WI</state>
-		<zip>53711-1758</zip>
+		<zip>53711</zip>
 		<waiver_date>09/05/2015</waiver_date>
 		<old_id>15412</old_id>
 		<email>kdmeyer@tds.net</email>
@@ -79164,6 +80015,27 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>Tony</first_name>
+		<last_name>Miller</last_name>
+		<address>634 NARAGANSETT AVE</address>
+		<city>BARABOO</city>
+		<state>WI</state>
+		<zip>53913-1261</zip>
+		<waiver_date>09/25/2015</waiver_date>
+		<old_id>15483</old_id>
+		<email>baraboomiller@gmail.com</email>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>Vincent</first_name>
 		<middle_name>F.</middle_name>
 		<last_name>Miller</last_name>
@@ -79279,6 +80151,27 @@
 		<waiver_date>06/22/2015</waiver_date>
 		<old_id>15207</old_id>
 		<remove_from_mailing_list>1</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>Lisa</first_name>
+		<last_name>Miner</last_name>
+		<address>515 9TH ST</address>
+		<city>BARABOO</city>
+		<state>WI</state>
+		<zip>53913-1749</zip>
+		<home_phone>(608) 477-3357</home_phone>
+		<waiver_date/>
+		<old_id>15492</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
 			<Landscaping>0</Landscaping>
@@ -80075,10 +80968,10 @@
 	<record>
 		<first_name>Kevin</first_name>
 		<last_name>Moll</last_name>
-		<address>920 Second Street</address>
-		<city>Baraboo</city>
+		<address>920 2ND ST</address>
+		<city>BARABOO</city>
 		<state>WI</state>
-		<zip>53913</zip>
+		<zip>53913-2360</zip>
 		<home_phone>(608) 434-0890</home_phone>
 		<waiver_date>07/05/2012</waiver_date>
 		<old_id>4062</old_id>
@@ -80690,6 +81583,28 @@
 		<waiver_date/>
 		<old_id>4029</old_id>
 		<remove_from_mailing_list>1</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>Ernest</first_name>
+		<last_name>Morgan</last_name>
+		<address>580 OAKRIDGE DR</address>
+		<city>PORTAGE</city>
+		<state>WI</state>
+		<zip>53901-1220</zip>
+		<home_phone>(608) 697-1076</home_phone>
+		<waiver_date/>
+		<old_id>15494</old_id>
+		<email>kmsmorgan@hotmail.com</email>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
 			<Landscaping>0</Landscaping>
@@ -81463,6 +82378,26 @@
 		<home_phone>(608) 522-4783</home_phone>
 		<waiver_date/>
 		<old_id>13602</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>G.</first_name>
+		<last_name>Muehllehuer</last_name>
+		<address>S6106 FREEDOM RD</address>
+		<city>NORTH FREEDOM</city>
+		<state>WI</state>
+		<zip>53951-9702</zip>
+		<waiver_date/>
+		<old_id>15485</old_id>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
@@ -82446,6 +83381,28 @@
 		<home_phone>(608) 963-3397</home_phone>
 		<waiver_date/>
 		<old_id>13671</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>PATRICK H</first_name>
+		<last_name>MYERS</last_name>
+		<address>2129 AMANDA DR</address>
+		<city>REEDSBURG</city>
+		<state>WI</state>
+		<zip>53959-2253</zip>
+		<home_phone>(608) 524-2678</home_phone>
+		<work_phone>(608) 643-1435</work_phone>
+		<waiver_date>09/09/2003</waiver_date>
+		<old_id>11079</old_id>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
@@ -84423,6 +85380,27 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>Joe</first_name>
+		<last_name>Niedo</last_name>
+		<address>815 COUNTY ROAD U</address>
+		<city>BELLEVILLE</city>
+		<state>WI</state>
+		<zip>53508-9569</zip>
+		<mobile_phone>(608) 832-1568</mobile_phone>
+		<waiver_date/>
+		<old_id>15527</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>Anita</first_name>
 		<last_name>Nielsen</last_name>
 		<address>E10980 HATCHERY RD</address>
@@ -86045,10 +87023,10 @@
 	<record>
 		<first_name>John</first_name>
 		<last_name>Ofstun</last_name>
-		<address>1032 5TH ST</address>
-		<city>BARABOO</city>
+		<address>1032 5th Street</address>
+		<city>Baraboo</city>
 		<state>WI</state>
-		<zip>53913-2313</zip>
+		<zip>53913</zip>
 		<home_phone>(608) 355-9735</home_phone>
 		<waiver_date/>
 		<old_id>12887</old_id>
@@ -86200,6 +87178,27 @@
 		<waiver_date/>
 		<old_id>13640</old_id>
 		<email>toleszak@new.rr.com</email>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>Dave</first_name>
+		<last_name>Olig</last_name>
+		<address>N5620 THUNDERBIRD RD</address>
+		<city>PORTAGE</city>
+		<state>WI</state>
+		<zip>53901-9660</zip>
+		<home_phone>(608) 742-8428</home_phone>
+		<waiver_date/>
+		<old_id>15544</old_id>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
@@ -87148,6 +88147,27 @@
 		<home_phone>(608) 592-4668</home_phone>
 		<waiver_date/>
 		<old_id>15348</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>Damian</first_name>
+		<last_name>Ordonez</last_name>
+		<address>2515 E MAIN ST</address>
+		<city>REEDSBURG</city>
+		<state>WI</state>
+		<zip>53959-9433</zip>
+		<mobile_phone>(608) 432-1077</mobile_phone>
+		<waiver_date/>
+		<old_id>15501</old_id>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
@@ -88127,6 +89147,27 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>Sharon</first_name>
+		<last_name>Oxley</last_name>
+		<address>1158 11TH ST</address>
+		<city>BARABOO</city>
+		<state>WI</state>
+		<zip>53913-1806</zip>
+		<home_phone>(608) 356-6116</home_phone>
+		<waiver_date/>
+		<old_id>15518</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>Ian</first_name>
 		<last_name>Ozelis</last_name>
 		<address>S1963 VALLEY AVE</address>
@@ -88171,7 +89212,7 @@
 	</record>
 	<record>
 		<first_name>STEVEN</first_name>
-		<last_name>OZELLIS</last_name>
+		<last_name>Ozelis</last_name>
 		<occupation>Warehouse Associate</occupation>
 		<address>317 9TH STREET</address>
 		<city>BARABOO</city>
@@ -92864,6 +93905,27 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>Ken</first_name>
+		<last_name>Popp</last_name>
+		<address>1160 12TH ST</address>
+		<city>BARABOO</city>
+		<state>WI</state>
+		<zip>53913-1528</zip>
+		<home_phone>(608) 963-6179</home_phone>
+		<waiver_date/>
+		<old_id>15493</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>Matthew</first_name>
 		<last_name>Porter</last_name>
 		<address>PO Box 244</address>
@@ -93052,12 +94114,20 @@
 		</interests>
 	</record>
 	<record>
-		<first_name>Elder</first_name>
+		<first_name>Elder Kyle</first_name>
 		<last_name>Pounds</last_name>
 		<waiver_date/>
 		<old_id>15285</old_id>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
-		<interests/>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
 	</record>
 	<record>
 		<first_name>Adam</first_name>
@@ -93069,6 +94139,26 @@
 		<home_phone>(608) 393-3257</home_phone>
 		<waiver_date>08/29/2009</waiver_date>
 		<old_id>1864</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>JEFF &amp; LISA</first_name>
+		<last_name>POWELL</last_name>
+		<address>S8228 INSPIRATION DR</address>
+		<city>MERRIMAC</city>
+		<state>WI</state>
+		<zip>53561-9721</zip>
+		<waiver_date>08/09/2003</waiver_date>
+		<old_id>599</old_id>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
@@ -94708,26 +95798,6 @@
 		</interests>
 	</record>
 	<record>
-		<first_name>BROCE A &amp; MARY J</first_name>
-		<last_name>RAMSEY</last_name>
-		<address>S4358 FOX HILL CIR</address>
-		<city>BARABOO</city>
-		<state>WI</state>
-		<zip>53913-9151</zip>
-		<waiver_date/>
-		<old_id>10047</old_id>
-		<remove_from_mailing_list>0</remove_from_mailing_list>
-		<interests>
-			<Painting>0</Painting>
-			<Landscaping>0</Landscaping>
-			<Siding>0</Siding>
-			<Drywall>0</Drywall>
-			<Finish_Carpentry>0</Finish_Carpentry>
-			<Mailings>0</Mailings>
-			<Data_Enry>0</Data_Enry>
-		</interests>
-	</record>
-	<record>
 		<first_name>W.</first_name>
 		<last_name>Ramsey</last_name>
 		<address>529 Slifer</address>
@@ -95035,6 +96105,27 @@
 		<home_phone>(608) 849-2680</home_phone>
 		<waiver_date/>
 		<old_id>13419</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>Brian</first_name>
+		<last_name>Rathman</last_name>
+		<address>E12108A SIDE RD</address>
+		<city>BARABOO</city>
+		<state>WI</state>
+		<zip>53913-9752</zip>
+		<home_phone>(608) 356-9393</home_phone>
+		<waiver_date>09/25/2015</waiver_date>
+		<old_id>8595</old_id>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
@@ -95372,6 +96463,26 @@
 		<mobile_phone>(608) 697-4920</mobile_phone>
 		<waiver_date/>
 		<old_id>13639</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>Scott</first_name>
+		<last_name>Rector</last_name>
+		<address>W8968 Thunderbird</address>
+		<city>Portage</city>
+		<state>WI</state>
+		<zip>53901</zip>
+		<waiver_date/>
+		<old_id>15522</old_id>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
@@ -96076,6 +97187,26 @@
 		<waiver_date>07/28/2009</waiver_date>
 		<old_id>1701</old_id>
 		<remove_from_mailing_list>1</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>Cindy</first_name>
+		<last_name>Reitzi</last_name>
+		<address>S3168 LAKESHORE RD</address>
+		<city>REEDSBURG</city>
+		<state>WI</state>
+		<zip>53959-9578</zip>
+		<waiver_date/>
+		<old_id>15498</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
 			<Landscaping>0</Landscaping>
@@ -97143,7 +98274,7 @@
 		<state>WI</state>
 		<zip>53913-3204</zip>
 		<mobile_phone>(608) 408-4266</mobile_phone>
-		<waiver_date/>
+		<waiver_date>09/25/2015</waiver_date>
 		<old_id>5306</old_id>
 		<email>larieland@charter.net</email>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
@@ -99389,7 +100520,7 @@
 	<record>
 		<first_name>Julie</first_name>
 		<last_name>Rose</last_name>
-		<address>103 10th</address>
+		<address>303 10th Street</address>
 		<city>Baraboo</city>
 		<state>WI</state>
 		<home_phone>(608) 356-6560</home_phone>
@@ -100860,13 +101991,13 @@
 		</interests>
 	</record>
 	<record>
-		<first_name>Timothy</first_name>
-		<middle_name>K</middle_name>
+		<first_name>Timothy K.</first_name>
 		<last_name>Ryan</last_name>
-		<address>1256 Prairie Village Rd</address>
+		<address>1256 Prairie Village Road</address>
 		<city>Deerfield</city>
 		<state>WI</state>
 		<zip>53531</zip>
+		<home_phone>(608) 764-8366</home_phone>
 		<notes>Messiah Lutheran Church Madison</notes>
 		<waiver_date>08/18/2015</waiver_date>
 		<old_id>15320</old_id>
@@ -102327,6 +103458,28 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>Alissa</first_name>
+		<last_name>Scales</last_name>
+		<address>N1883 STATE ROAD 113</address>
+		<city>LODI</city>
+		<state>WI</state>
+		<zip>53555-9618</zip>
+		<mobile_phone>(608) 843-9544</mobile_phone>
+		<waiver_date/>
+		<old_id>15473</old_id>
+		<email>aliscales96@gmail.com</email>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>Edward P. &amp; Molly M.</first_name>
 		<last_name>Scanlan</last_name>
 		<address>114 10th Street</address>
@@ -103550,6 +104703,26 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>Marlene</first_name>
+		<last_name>Schlimegen</last_name>
+		<address>101 NESHEIM TRL</address>
+		<city>MOUNT HOREB</city>
+		<state>WI</state>
+		<zip>53572-1920</zip>
+		<waiver_date/>
+		<old_id>15524</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>KAREN</first_name>
 		<last_name>SCHLITTLER</last_name>
 		<address>S10173 Cty Rd C</address>
@@ -103987,6 +105160,25 @@
 		<home_phone>(608) 356-4009</home_phone>
 		<waiver_date/>
 		<old_id>5405</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>Susan</first_name>
+		<last_name>Schmidt</last_name>
+		<city>North Freedom</city>
+		<state>WI</state>
+		<zip>53951</zip>
+		<waiver_date>09/25/2015</waiver_date>
+		<old_id>15502</old_id>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
@@ -105817,7 +107009,7 @@
 		<zip>53913-1922</zip>
 		<mobile_phone>(608) 477-0757</mobile_phone>
 		<notes>Contacted us in 8-2015 also to volunteer.  Was sent a welcoming email.</notes>
-		<waiver_date/>
+		<waiver_date>09/26/2015</waiver_date>
 		<old_id>15112</old_id>
 		<email>amberhankins1000@msn.com</email>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
@@ -105850,6 +107042,27 @@
 			<Siding>1</Siding>
 			<Drywall>1</Drywall>
 			<Finish_Carpentry>1</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>Bill</first_name>
+		<last_name>Schultz</last_name>
+		<address>1125A SILVER DR APT 204</address>
+		<city>BARABOO</city>
+		<state>WI</state>
+		<zip>53913-8955</zip>
+		<mobile_phone>(608) 393-4251</mobile_phone>
+		<waiver_date/>
+		<old_id>15490</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
 			<Mailings>0</Mailings>
 			<Data_Enry>0</Data_Enry>
 		</interests>
@@ -105981,6 +107194,28 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>GARY</first_name>
+		<middle_name>L.</middle_name>
+		<last_name>SCHULTZ</last_name>
+		<address>S4717 PRAIRIEVIEW DR</address>
+		<city>REEDSBURG</city>
+		<state>WI</state>
+		<zip>53959-9362</zip>
+		<home_phone>(608) 727-2436</home_phone>
+		<waiver_date>08/04/2009</waiver_date>
+		<old_id>1782</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>GREG</first_name>
 		<last_name>SCHULTZ</last_name>
 		<address>PO BOX 34</address>
@@ -106048,6 +107283,26 @@
 		<waiver_date/>
 		<old_id>4028</old_id>
 		<remove_from_mailing_list>1</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>Kimberly</first_name>
+		<last_name>schultz</last_name>
+		<address>S2049 HERWIG RD</address>
+		<city>REEDSBURG</city>
+		<state>WI</state>
+		<zip>53959-9741</zip>
+		<waiver_date/>
+		<old_id>15487</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
 			<Landscaping>0</Landscaping>
@@ -106693,6 +107948,27 @@
 		<zip>53941</zip>
 		<waiver_date/>
 		<old_id>15249</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>Brad</first_name>
+		<last_name>Schwager</last_name>
+		<address>E10138 STATE ROAD 136</address>
+		<city>BARABOO</city>
+		<state>WI</state>
+		<zip>53913-9245</zip>
+		<mobile_phone>(608) 279-8052</mobile_phone>
+		<waiver_date/>
+		<old_id>15516</old_id>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
@@ -110241,6 +111517,26 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>Agnieszka</first_name>
+		<last_name>Sienadzke</last_name>
+		<address>819 CEDAR ST</address>
+		<city>WISCONSIN DELLS</city>
+		<state>WI</state>
+		<zip>53965-1410</zip>
+		<waiver_date>09/25/2015</waiver_date>
+		<old_id>15503</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>David &amp; Susan D.</first_name>
 		<last_name>Sierer</last_name>
 		<address>216 13th Avenue</address>
@@ -110862,7 +112158,8 @@
 		<city>PRAIRIE DU SAC</city>
 		<state>WI</state>
 		<zip>53578-1212</zip>
-		<waiver_date>09/28/2013</waiver_date>
+		<notes>Concordia United Methodist Church</notes>
+		<waiver_date>0205-10-03</waiver_date>
 		<old_id>13470</old_id>
 		<email>pastor@concordiaumc.org</email>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
@@ -110905,9 +112202,10 @@
 		<city>Baraboo</city>
 		<state>WI</state>
 		<zip>53913</zip>
+		<notes>In Sept 2015, she requested removal from our mailing list - "just to simplify life."  She had donated via HFHI, and when that was explained (that she'd continue to receive their items) she said that she was asking them to remove her from their mailing list, too.  But she acted very kindly toward us, and indicated that she would continue to support us even if off the mailing list.</notes>
 		<waiver_date/>
 		<old_id>14884</old_id>
-		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<remove_from_mailing_list>1</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
 			<Landscaping>0</Landscaping>
@@ -113666,13 +114964,12 @@
 		</interests>
 	</record>
 	<record>
-		<first_name>Gilbert</first_name>
-		<middle_name>E</middle_name>
+		<first_name>Gilbert E.</first_name>
 		<last_name>Splett</last_name>
-		<address>3528 ATWOOD AVE APT 216</address>
-		<city>MADISON</city>
+		<address>3528 Atwood Avenue, Apt. 216</address>
+		<city>Madison</city>
 		<state>WI</state>
-		<zip>53714-2888</zip>
+		<zip>53714</zip>
 		<waiver_date>08/18/2015</waiver_date>
 		<old_id>15417</old_id>
 		<email>gilbert.splett@yahoo.com</email>
@@ -114244,9 +115541,9 @@
 	</record>
 	<record>
 		<first_name>Jim</first_name>
-		<last_name>Spredermann</last_name>
+		<last_name>Spredemann</last_name>
 		<occupation>commercial banker</occupation>
-		<address>S12030 Hilton Dr.</address>
+		<address>S12030 Hilton Dr</address>
 		<city>Spring Green</city>
 		<state>WI</state>
 		<zip>53588</zip>
@@ -114766,6 +116063,29 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>DAVID H &amp; WENDY L</first_name>
+		<last_name>STANLEY</last_name>
+		<address>431 14TH ST</address>
+		<city>BARABOO</city>
+		<state>WI</state>
+		<zip>53913-1448</zip>
+		<mobile_phone>(608) 604-4685</mobile_phone>
+		<notes>updated phone &amp; email 9/30/2015 ssr</notes>
+		<waiver_date/>
+		<old_id>5942</old_id>
+		<email>dstan948@gmail.com</email>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>Spencer</first_name>
 		<last_name>Stanley</last_name>
 		<address>503 Seventh Street, Apartment 8</address>
@@ -114797,6 +116117,27 @@
 		<waiver_date/>
 		<old_id>5663</old_id>
 		<email>2skaters@charter.net</email>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>Matt</first_name>
+		<last_name>Stanton</last_name>
+		<address>W1299 ARBOR LK N</address>
+		<city>LYNDON STATION</city>
+		<state>WI</state>
+		<zip>53944-9409</zip>
+		<waiver_date>09/25/2015</waiver_date>
+		<old_id>15505</old_id>
+		<email>mattystanton24@gmail.com</email>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
@@ -115625,14 +116966,15 @@
 		</interests>
 	</record>
 	<record>
-		<first_name>Patrick D. &amp; Nancy</first_name>
+		<first_name>Patrick</first_name>
+		<middle_name>D</middle_name>
 		<last_name>Steinhorst</last_name>
 		<address>E10103 ANTLER CT</address>
 		<city>REEDSBURG</city>
 		<state>WI</state>
 		<zip>53959-9627</zip>
 		<home_phone>(608) 495-2665</home_phone>
-		<waiver_date/>
+		<waiver_date>09/25/2015</waiver_date>
 		<old_id>2840</old_id>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
@@ -116179,6 +117521,22 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>Elder McKay</first_name>
+		<last_name>Stevens</last_name>
+		<waiver_date/>
+		<old_id>15406</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>Estelle</first_name>
 		<middle_name>M.</middle_name>
 		<last_name>Stevens</last_name>
@@ -116245,14 +117603,6 @@
 			<Mailings>0</Mailings>
 			<Data_Enry>0</Data_Enry>
 		</interests>
-	</record>
-	<record>
-		<first_name>McKay</first_name>
-		<last_name>Stevens</last_name>
-		<waiver_date/>
-		<old_id>15406</old_id>
-		<remove_from_mailing_list>0</remove_from_mailing_list>
-		<interests/>
 	</record>
 	<record>
 		<first_name>Sherry</first_name>
@@ -116561,6 +117911,26 @@
 			<Finish_Carpentry>0</Finish_Carpentry>
 			<Mailings>1</Mailings>
 			<Data_Enry>1</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>Bob</first_name>
+		<last_name>Stienhorse</last_name>
+		<address>213 CAMPUS VIEW DR</address>
+		<city>BARABOO</city>
+		<state>WI</state>
+		<zip>53913-1052</zip>
+		<waiver_date/>
+		<old_id>15517</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
 		</interests>
 	</record>
 	<record>
@@ -116983,18 +118353,17 @@
 		</interests>
 	</record>
 	<record>
-		<first_name>Jim</first_name>
-		<middle_name>R</middle_name>
+		<first_name>Jim R.</first_name>
 		<last_name>Stolzenberg</last_name>
-		<address>4606 LEO DR</address>
-		<city>MADISON</city>
+		<address>4606 Leo Drive</address>
+		<city>Madison</city>
 		<state>WI</state>
-		<zip>53716-1423</zip>
+		<zip>53716</zip>
 		<home_phone>(608) 224-2664</home_phone>
 		<notes>Messiah Lutheran Church Madison</notes>
 		<waiver_date>06/24/2015</waiver_date>
 		<old_id>12464</old_id>
-		<email>lmjrotolzenburg@yahoo.com</email>
+		<email>lmjrstolzenburg@yahoo.com</email>
 		<remove_from_mailing_list>1</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
@@ -118195,6 +119564,26 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>Robert</first_name>
+		<last_name>Surrman</last_name>
+		<address>S6394 BLUFF RD</address>
+		<city>MERRIMAC</city>
+		<state>WI</state>
+		<zip>53561-9737</zip>
+		<waiver_date/>
+		<old_id>15491</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>Becky</first_name>
 		<last_name>Susper</last_name>
 		<mobile_phone>(608) 434-2036</mobile_phone>
@@ -118336,6 +119725,26 @@
 			<Finish_Carpentry>1</Finish_Carpentry>
 			<Mailings>0</Mailings>
 			<Data_Enry>1</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>JOSEPH L &amp; THERESA M</first_name>
+		<last_name>SVETLIK</last_name>
+		<address>2125 SUNSET DR</address>
+		<city>REEDSBURG</city>
+		<state>WI</state>
+		<zip>53959-2263</zip>
+		<waiver_date>05/26/2012</waiver_date>
+		<old_id>11327</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
 		</interests>
 	</record>
 	<record>
@@ -118580,6 +119989,27 @@
 		<zip>53529</zip>
 		<waiver_date/>
 		<old_id>13871</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>David</first_name>
+		<last_name>Sweeney</last_name>
+		<address>1517 DOROTHY CT</address>
+		<city>SAUK CITY</city>
+		<state>WI</state>
+		<zip>53583-1306</zip>
+		<mobile_phone>(608) 434-9208</mobile_phone>
+		<waiver_date>0000-00-00</waiver_date>
+		<old_id>15513</old_id>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
@@ -119488,11 +120918,11 @@
 	<record>
 		<first_name>Tim</first_name>
 		<last_name>Teelin</last_name>
-		<address>E11714 GALL RD</address>
+		<address>College Avenue</address>
 		<city>BARABOO</city>
 		<state>WI</state>
 		<zip>53913-9206</zip>
-		<home_phone>(608) 495-1377</home_phone>
+		<home_phone>(608) 495-1379</home_phone>
 		<waiver_date/>
 		<old_id>15172</old_id>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
@@ -120799,13 +122229,14 @@
 	<record>
 		<first_name>Doris</first_name>
 		<last_name>Ticknor</last_name>
-		<address>S3815 Mountain Road</address>
-		<city>Baraboo</city>
+		<address>S3815 MOUNTAIN RD</address>
+		<city>BARABOO</city>
 		<state>WI</state>
-		<zip>53913</zip>
+		<zip>53913-9479</zip>
 		<home_phone>(608) 215-8979</home_phone>
 		<waiver_date/>
 		<old_id>13745</old_id>
+		<email>toadranchers@tds.net</email>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
@@ -121531,6 +122962,28 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>Pete</first_name>
+		<last_name>Toonen</last_name>
+		<address>E9432 INNISBROOK LN</address>
+		<city>WISCONSIN DELLS</city>
+		<state>WI</state>
+		<zip>53965-8252</zip>
+		<mobile_phone>(920) 232-6648</mobile_phone>
+		<waiver_date/>
+		<old_id>15488</old_id>
+		<email>toonen63@hotmail.com</email>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>Mark</first_name>
 		<last_name>Topham</last_name>
 		<waiver_date/>
@@ -121718,6 +123171,27 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>Bill</first_name>
+		<last_name>Traeger</last_name>
+		<address>W12449 NORTHERN CROSS ARM</address>
+		<city>LODI</city>
+		<state>WI</state>
+		<zip>53555-9313</zip>
+		<mobile_phone>(608) 852-3205</mobile_phone>
+		<waiver_date/>
+		<old_id>15519</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>Bruce &amp; Joann</first_name>
 		<last_name>Trager</last_name>
 		<address>S3626 US HIGHWAY 12</address>
@@ -121759,10 +123233,10 @@
 	<record>
 		<first_name>Warren &amp; Martha</first_name>
 		<last_name>Trager</last_name>
-		<address>E10909 Pit Road</address>
-		<city>Baraboo</city>
+		<address>E10909 PIT RD</address>
+		<city>BARABOO</city>
 		<state>WI</state>
-		<zip>53913</zip>
+		<zip>53913-8751</zip>
 		<home_phone>(608) 356-2060</home_phone>
 		<waiver_date/>
 		<old_id>13655</old_id>
@@ -122434,13 +123908,12 @@
 		</interests>
 	</record>
 	<record>
-		<first_name>Clyde</first_name>
-		<middle_name>M</middle_name>
+		<first_name>Clyde M.</first_name>
 		<last_name>Tunak</last_name>
-		<address>6029 DELL DR</address>
-		<city>MADISON</city>
+		<address>6029 Dell Drive</address>
+		<city>Madison</city>
 		<state>WI</state>
-		<zip>53718-8201</zip>
+		<zip>53718</zip>
 		<home_phone>(608) 206-3479</home_phone>
 		<notes>Messiah Lutheran Church Madison</notes>
 		<waiver_date>06/24/2015</waiver_date>
@@ -122510,6 +123983,26 @@
 		<waiver_date/>
 		<old_id>2450</old_id>
 		<email>iblat65@gmail.com</email>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>W. &amp; C.</first_name>
+		<last_name>Turner</last_name>
+		<address>S2466 GILLEM RD</address>
+		<city>BARABOO</city>
+		<state>WI</state>
+		<zip>53913-9328</zip>
+		<waiver_date/>
+		<old_id>2757</old_id>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
@@ -123009,6 +124502,26 @@
 		<zip>53913</zip>
 		<waiver_date/>
 		<old_id>12886</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>Brian</first_name>
+		<last_name>Unmuth Estate</last_name>
+		<address>1610 LORI CT</address>
+		<city>SAUK CITY</city>
+		<state>WI</state>
+		<zip>53583-1311</zip>
+		<waiver_date/>
+		<old_id>15539</old_id>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
 		<interests>
 			<Painting>0</Painting>
@@ -124302,6 +125815,47 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>Lisa</first_name>
+		<last_name>Veitch</last_name>
+		<address>3451 COUNTY ROAD G</address>
+		<city>OXFORD</city>
+		<state>WI</state>
+		<zip>53952-9312</zip>
+		<waiver_date>10/25/2015</waiver_date>
+		<old_id>15506</old_id>
+		<email>lveitch68@yahoo.com</email>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>Mark</first_name>
+		<last_name>Veitch</last_name>
+		<address>3451 COUNTY ROAD G</address>
+		<city>OXFORD</city>
+		<state>WI</state>
+		<zip>53952-9312</zip>
+		<waiver_date>09/25/2015</waiver_date>
+		<old_id>15507</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>Emily</first_name>
 		<last_name>Veith</last_name>
 		<home_phone>(608) 320-1757</home_phone>
@@ -124581,6 +126135,27 @@
 			<Landscaping>1</Landscaping>
 			<Siding>1</Siding>
 			<Drywall>1</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
+		<first_name>Edward</first_name>
+		<last_name>Villegas</last_name>
+		<address>761 HIGHCLIFF TRL</address>
+		<city>MADISON</city>
+		<state>WI</state>
+		<zip>53718-3228</zip>
+		<waiver_date>09/25/2015</waiver_date>
+		<old_id>15508</old_id>
+		<email>edward.villegas@live.com</email>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
 			<Finish_Carpentry>0</Finish_Carpentry>
 			<Mailings>0</Mailings>
 			<Data_Enry>0</Data_Enry>
@@ -126736,11 +128311,10 @@
 		</interests>
 	</record>
 	<record>
-		<first_name>MELVIN</first_name>
-		<middle_name>D.</middle_name>
-		<last_name>WAUGH</last_name>
-		<address>N4724 US HIGHWAY 51</address>
-		<city>POYNETTE</city>
+		<first_name>Melvin D.</first_name>
+		<last_name>Waugh</last_name>
+		<address>N4724 US Highway 51</address>
+		<city>Poynette</city>
 		<state>WI</state>
 		<zip>53955</zip>
 		<home_phone>(608) 635-4167</home_phone>
@@ -131633,6 +133207,29 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>Greg &amp; Patti</first_name>
+		<last_name>Wise</last_name>
+		<occupation>Administrator</occupation>
+		<address>402 Amey Drive</address>
+		<city>Baraboo</city>
+		<state>WI</state>
+		<zip>53913</zip>
+		<home_phone>(608) 356-9510</home_phone>
+		<work_phone>(608) 262-4387</work_phone>
+		<waiver_date>03/19/2003</waiver_date>
+		<old_id>305</old_id>
+		<remove_from_mailing_list>1</remove_from_mailing_list>
+		<interests>
+			<Painting>1</Painting>
+			<Landscaping>1</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>TERENCE M &amp; DEANNA K</first_name>
 		<last_name>WISE</last_name>
 		<address>701 MOUND ST</address>
@@ -132898,6 +134495,27 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>Betty</first_name>
+		<last_name>Young</last_name>
+		<address>419 ALEXANDER AVE</address>
+		<city>REEDSBURG</city>
+		<state>WI</state>
+		<zip>53959-1509</zip>
+		<home_phone>(608) 495-3013</home_phone>
+		<waiver_date/>
+		<old_id>15497</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>Duaine &amp; Evelyn</first_name>
 		<last_name>Young</last_name>
 		<address>1450 TILLBERRY DR</address>
@@ -133155,12 +134773,28 @@
 		</interests>
 	</record>
 	<record>
+		<first_name>L</first_name>
+		<last_name>Youngren</last_name>
+		<waiver_date/>
+		<old_id>15528</old_id>
+		<remove_from_mailing_list>0</remove_from_mailing_list>
+		<interests>
+			<Painting>0</Painting>
+			<Landscaping>0</Landscaping>
+			<Siding>0</Siding>
+			<Drywall>0</Drywall>
+			<Finish_Carpentry>0</Finish_Carpentry>
+			<Mailings>0</Mailings>
+			<Data_Enry>0</Data_Enry>
+		</interests>
+	</record>
+	<record>
 		<first_name>Larry</first_name>
 		<last_name>Youngren</last_name>
-		<address>S5348 Sleepy Hollow Road</address>
-		<city>Baraboo</city>
+		<address>S5348 SLEEPY HOLLOW RD</address>
+		<city>BARABOO</city>
 		<state>WI</state>
-		<zip>53913</zip>
+		<zip>53913-9674</zip>
 		<home_phone>(605) 690-6503</home_phone>
 		<waiver_date/>
 		<old_id>13998</old_id>
@@ -133530,8 +135164,7 @@
 		<city>BARABOO</city>
 		<state>WI</state>
 		<zip>53913-1758</zip>
-		<home_phone>(608) /35-6/5075</home_phone>
-		<notes>updated phone 8/5/15 ssr</notes>
+		<home_phone>(608) 356-5075</home_phone>
 		<waiver_date/>
 		<old_id>14486</old_id>
 		<remove_from_mailing_list>0</remove_from_mailing_list>
@@ -134381,10 +136014,10 @@
 	<record>
 		<first_name>Jill</first_name>
 		<last_name>Zimmerman</last_name>
-		<address>S3120 HUNTERS GLEN CIR</address>
-		<city>BARABOO</city>
+		<address>S3120 Hunters Glen Circle</address>
+		<city>Baraboo</city>
 		<state>WI</state>
-		<zip>53913-8112</zip>
+		<zip>53913</zip>
 		<mobile_phone>(608) 393-5779</mobile_phone>
 		<waiver_date>09/10/2015</waiver_date>
 		<old_id>2976</old_id>
@@ -134728,10 +136361,10 @@
 	<record>
 		<first_name>Steven &amp; Katherine</first_name>
 		<last_name>Zowin</last_name>
-		<address>210 East Adams Street, PO Box 366</address>
-		<city>Lake Delton</city>
+		<address>PO BOX 366</address>
+		<city>LAKE DELTON</city>
 		<state>WI</state>
-		<zip>53940</zip>
+		<zip>53940-0366</zip>
 		<home_phone>(608) 393-9087</home_phone>
 		<waiver_date/>
 		<old_id>3744</old_id>

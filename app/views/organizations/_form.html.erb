@@ -7,6 +7,14 @@
     <% else %>
         <h5 class="center">Has not participated in any workdays</h5>
     <% end %>
+    <% if current_user.donations_allowed %>
+        <% if !@donation_year.nil? %>
+            <h5 class="center">Organization has <a href="#" data-id="<%= @organization.id %>" data-object-name="organization" id="linkDonationSummary"> donated </a></h5>
+            <div id="dialogDonationSummary"></div>
+        <% else %>
+            <h5 class="center">Organization has not donated</h5>
+        <% end %>
+    <% end %>
     <div class="container">
       <div class="row">
         <div class="col-md-5 col-md-offset-1">

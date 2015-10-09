@@ -44,6 +44,14 @@ Rails.application.routes.draw do
   get 'workday_volunteers/import' => 'workday_volunteers#import_form'
   post 'workday_volunteers/import' => 'workday_volunteers#import', as: :import_workday_volunteers
 
+  resources :donations do
+    collection do
+      get 'import' => 'donations#import_form'
+      post 'import' => 'donations#import'
+      get 'donation_summary'
+    end
+  end
+
   resources :interests
   resources :interest_categories
 

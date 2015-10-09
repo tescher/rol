@@ -1,4 +1,5 @@
 include WorkdaysHelper
+include DonationsHelper
 include ApplicationHelper
 
 class VolunteersController < ApplicationController
@@ -166,6 +167,7 @@ class VolunteersController < ApplicationController
     @volunteer = Volunteer.find(params[:id])
     @num_workdays = WorkdayVolunteer.where(volunteer_id: @volunteer.id)
     @allow_stay = true
+    @donation_year = get_donation_summary("volunteer", @volunteer.id)[0].first
   end
 
   # POST /volunteers
@@ -232,6 +234,7 @@ class VolunteersController < ApplicationController
       else
         @allow_stay = true
         @num_workdays = WorkdayVolunteer.where(volunteer_id: @volunteer.id)
+        @donation_year = get_donation_summary("volunteer", @volunteer.id)[0].first
         render :edit
       end
     end

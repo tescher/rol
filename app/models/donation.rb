@@ -3,11 +3,14 @@ class Donation < ActiveRecord::Base
   belongs_to :volunteer
   belongs_to :organization
 
+
+  attr_accessor :skip_item_check
+
   validates_date :date_received, allow_blank: false
   validates :donation_type, presence: true
   validate :have_donor
   validate :value_if_monetary
-  validate :item_if_non_monetary
+  validate :item_if_non_monetary, unless: :skip_item_check
   validate :value_not_negative
 
   private
@@ -29,6 +32,11 @@ class Donation < ActiveRecord::Base
   def value_not_negative
     return if self.donation_type.nil?
     errors.add(:value, "invalid value amount") unless (self.value.to_f > 0) || (self.donation_type.non_monetary && !(self.value.to_f < 0))
+  end
+
+  private
+  def skip_item_check
+    @skip_item_check
   end
 
 end

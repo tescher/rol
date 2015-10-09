@@ -1,4 +1,5 @@
 include WorkdaysHelper
+include DonationsHelper
 include ApplicationHelper
 
 class OrganizationsController < ApplicationController
@@ -123,6 +124,7 @@ class OrganizationsController < ApplicationController
     @organization = Organization.find(params[:id])
     @num_workdays = WorkdayOrganization.where(organization_id: @organization.id)
     @allow_stay = true
+    @donation_year = get_donation_summary("organization", @organization.id)[0].first
   end
 
   # POST /organizations
@@ -189,6 +191,7 @@ class OrganizationsController < ApplicationController
       else
         @allow_stay = true
         @num_workdays = WorkdayOrganization.where(organization_id: @organization.id)
+        @donation_year = get_donation_summary("organization", @organization.id)[0].first
         render :edit
       end
     end

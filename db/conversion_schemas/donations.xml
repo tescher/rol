@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data-set xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <record>
+    <old_id></old_id>
+    <volunteer_old_id>1</volunteer_old_id>
+    <organization_old_id>1</organization_old_id>
+    <date_received></date_received>
+    <valus></valus>
+    <ref_no></ref_no>
+    <item></item>
+    <anonymous></anonymous>
+    <in_honor_of></in_honor_of>
+    <designation></designation>
+    <notes></notes>
+    <receipt_sent></receipt_sent>
+    <donation_type></donation_type>
+    <organization_type></organization_type>
+  </record>
+  <record>
+    <old_id></old_id>
+    <volunteer_old_id>1</volunteer_old_id>
+    <organization_old_id>1</organization_old_id>
+    <date_received></date_received>
+    <valus></valus>
+    <ref_no></ref_no>
+    <item></item>
+    <anonymous></anonymous>
+    <in_honor_of></in_honor_of>
+    <designation></designation>
+    <notes></notes>
+    <receipt_sent></receipt_sent>
+    <donation_type></donation_type>
+    <organization_type></organization_type>
+  </record>
+</data-set>
