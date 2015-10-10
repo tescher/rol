@@ -726,14 +726,12 @@
 	</record>
 	<record>
 		<name>Unknown Project 1</name>
-		<description>Probably 2008 build, but got deleted from the database</description>
-		<inactive>0</inactive>
+		<description>Probably 2008 build</description>
 		<old_id>3</old_id>
 	</record>
 	<record>
 		<name>Unknown Project 2</name>
-		<description>Probably Shantytown, but project got deleted from the database</description>
-		<inactive>0</inactive>
+		<description>Probably Shantytown</description>
 		<old_id>118</old_id>
 	</record>
 </data-set>

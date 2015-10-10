@@ -280,11 +280,17 @@ class OrganizationsController < ApplicationController
                   end
                 end
                 if !@organization.valid?
-                  @messages << "Validation errors. #{message_data}"
-                  @organization.errors.full_messages.each do |message|
-                    @messages << " -- #{message}"
+                  if @organization.errors[:email].any?
+                    @messages << "Invalid email " + record_data["email"] + ", saved to notes"
+                    record_data["notes"] += ". Invalid email found in conversion: " + record_data["email"]
+                    @organization.email = ""
+                  else
+                    @messages << "Validation errors. #{message_data}"
+                    @organization.errors.full_messages.each do |message|
+                      @messages << " -- #{message}"
+                    end
+                    fatal = true
                   end
-                  fatal = true
                 end
               end
             end

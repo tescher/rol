@@ -18,22 +18,27 @@
     <email>tim@eschers.com</email>
     <remove_from_mailing_list></remove_from_mailing_list>
     <interests>
-      <Cleaning>1</Cleaning>
+      <Cleaning_-_Sweeping>1</Cleaning_-_Sweeping>
       <Painting></Painting>
       <Insulation>1</Insulation>
+      <Caulking>1</Caulking>
       <Landscaping></Landscaping>
+      <Provide_Lunch></Provide_Lunch>
       <Siding></Siding>
       <Drywall></Drywall>
-      <Finish_Carpentry></Finish_Carpentry>
+      <Trim_-_Finish_Work></Trim_-_Finish_Work>
       <Reception></Reception>
       <Mailings></Mailings>
+      <Website></Website>
       <Data_Entry></Data_Entry>
       <Info_tables></Info_tables>
-      <Website></Website>
-      <Lunch></Lunch>
-      <Cashiering></Cashiering>
+      <Fundraisers></Fundraisers>
+      <WomenBuild></WomenBuild>
+      <Shanty_Town></Shanty_Town>
+      <Customer_Care></Customer_Care>
       <Stocking></Stocking>
       <Deconstruction></Deconstruction>
+      <Cashiering></Cashiering>
     </interests>
   </record>
   <record>
@@ -54,22 +59,27 @@
     <email></email>
     <remove_from_mailing_list></remove_from_mailing_list>
     <interests>
-      <Cleaning>1</Cleaning>
+      <Cleaning_-_Sweeping>1</Cleaning_-_Sweeping>
       <Painting></Painting>
       <Insulation>1</Insulation>
+      <Caulking>1</Caulking>
       <Landscaping></Landscaping>
+      <Provide_Lunch></Provide_Lunch>
       <Siding></Siding>
       <Drywall></Drywall>
-      <Finish_Carpentry></Finish_Carpentry>
+      <Trim_-_Finish_Work></Trim_-_Finish_Work>
       <Reception></Reception>
       <Mailings></Mailings>
+      <Website></Website>
       <Data_Entry></Data_Entry>
       <Info_tables></Info_tables>
-      <Website></Website>
-      <Lunch></Lunch>
-      <Cashiering></Cashiering>
+      <Fundraisers></Fundraisers>
+      <WomenBuild></WomenBuild>
+      <Shanty_Town></Shanty_Town>
+      <Customer_Care></Customer_Care>
       <Stocking></Stocking>
       <Deconstruction></Deconstruction>
+      <Cashiering></Cashiering>
     </interests>
   </record>
 </data-set>

@@ -11,23 +11,15 @@
 		<old_id>1000010</old_id>
 	</record>
 	<record>
-		<name>Bike &amp; Build, Inc.</name>
+		<name>Bike &amp; Build</name>
 		<type>Business</type>
-		<address>6153 Ridge Avenue</address>
-		<city>Philadelphia</city>
-		<state>PA</state>
-		<zip>19128</zip>
-		<phone>2673318488</phone>
-		<contact_name>Justin Villere</contact_name>
-		<notes>Donation from 2012 riders.</notes>
+		<address/>
 		<old_id>1000474</old_id>
-		<email>justin.villere@bikeandbuild.org</email>
 	</record>
 	<record>
 		<name>Absolute Imprints</name>
 		<type>Business</type>
-		<address>P. O. Box 614
-202 South Blvd.</address>
+		<address>P. O. Box 614, 202 South Blvd.</address>
 		<city>Baraboo</city>
 		<state>WI</state>
 		<zip>53913</zip>
@@ -79,12 +71,9 @@
 		<old_id>11</old_id>
 	</record>
 	<record>
-		<name>Alkar-RapidPak-MPEquipment, Inc.</name>
+		<name>Alkar-RapidPak-MPEquipment</name>
 		<type>Business</type>
-		<address>PO Box 260</address>
-		<city>Lodi</city>
-		<state>WI</state>
-		<zip>53555</zip>
+		<address/>
 		<old_id>12</old_id>
 	</record>
 	<record>
@@ -182,8 +171,7 @@
 	<record>
 		<name>American Family Insurance - Keith Klipp Agengy</name>
 		<type>Business</type>
-		<address>246 W MAIN ST
-PO Box 696</address>
+		<address>246 W MAIN ST, PO Box 696</address>
 		<city>REEDSBURG</city>
 		<state>WI</state>
 		<zip>53959-1561</zip>
@@ -210,10 +198,7 @@ PO Box 696</address>
 	<record>
 		<name>American Way</name>
 		<type>Business</type>
-		<address>602 E. Albert, Suite 3</address>
-		<city>Portage</city>
-		<state>WI</state>
-		<zip>53901</zip>
+		<address>602 E. Albert</address>
 		<old_id>27</old_id>
 	</record>
 	<record>
@@ -228,8 +213,7 @@ PO Box 696</address>
 	<record>
 		<name>An Siopa Eire</name>
 		<type>Business</type>
-		<address>c/o The Mercantile
-117 W. Cook St.</address>
+		<address>c/o The Mercantile, 117 W. Cook St.</address>
 		<city>Portage</city>
 		<state>WI</state>
 		<zip>53901</zip>
@@ -292,12 +276,9 @@ PO Box 696</address>
 		<old_id>1000008</old_id>
 	</record>
 	<record>
-		<name>Aramark Uniform Services, Inc.</name>
+		<name>Aramark Uniform Services</name>
 		<type>Business</type>
-		<address>110 E. Haertel</address>
-		<city>Portage</city>
-		<state>WI</state>
-		<zip>53901</zip>
+		<address/>
 		<old_id>37</old_id>
 	</record>
 	<record>
@@ -443,8 +424,7 @@ PO Box 696</address>
 	<record>
 		<name>Badgerland Financial</name>
 		<type>Business</type>
-		<address>P.O. Box 452
-423 Linn St.</address>
+		<address>P.O. Box 452, 423 Linn St.</address>
 		<city>Baraboo</city>
 		<state>WI</state>
 		<zip>53913</zip>
@@ -462,8 +442,7 @@ PO Box 696</address>
 	<record>
 		<name>Ballweg Chevrolet</name>
 		<type>Business</type>
-		<address>PO BOX 548
-783 Phillips Blvd.</address>
+		<address>PO BOX 548, 783 Phillips Blvd.</address>
 		<city>SAUK CITY</city>
 		<state>WI</state>
 		<zip>53583-0548</zip>
@@ -500,8 +479,7 @@ PO Box 696</address>
 	<record>
 		<name>Baraboo Candy Co. LLC</name>
 		<type>Business</type>
-		<address>P. O. Box 63
-E10891 Co-op Lane</address>
+		<address>P. O. Box 63, E10891 Co-op Lane</address>
 		<city>Baraboo</city>
 		<state>WI</state>
 		<zip>53913</zip>
@@ -544,12 +522,9 @@ E10891 Co-op Lane</address>
 		<old_id>68</old_id>
 	</record>
 	<record>
-		<name>Baraboo Motors, Inc</name>
+		<name>Baraboo Motors</name>
 		<type>Business</type>
-		<address>640 U.S. Hwy 12</address>
-		<city>Baraboo</city>
-		<state>WI</state>
-		<zip>53913</zip>
+		<address/>
 		<old_id>69</old_id>
 	</record>
 	<record>
@@ -564,8 +539,7 @@ E10891 Co-op Lane</address>
 	<record>
 		<name>Baraboo National Bank</name>
 		<type>Business</type>
-		<address>P.O. Box 50
-101 Third Ave.</address>
+		<address>P.O. Box 50, 101 Third Ave.</address>
 		<city>Baraboo</city>
 		<state>WI</state>
 		<zip>53913</zip>
@@ -590,23 +564,15 @@ E10891 Co-op Lane</address>
 		<old_id>73</old_id>
 	</record>
 	<record>
-		<name>Sound Devices, LLC</name>
+		<name>Sound Devices</name>
 		<type>Business</type>
-		<address>E7556 State Road 23 and 33</address>
-		<city>Reedsburg</city>
-		<state>WI</state>
-		<zip>53959-9584</zip>
-		<notes>performed deconstruct 4/12</notes>
+		<address/>
 		<old_id>1000459</old_id>
 	</record>
 	<record>
-		<name>Baraboo Tent &amp; Awning, Inc.</name>
+		<name>Baraboo Tent &amp; Awning</name>
 		<type>Business</type>
-		<address>P. O. Box 57
-1111 Walnut St.</address>
-		<city>Baraboo</city>
-		<state>WI</state>
-		<zip>53913</zip>
+		<address/>
 		<old_id>75</old_id>
 	</record>
 	<record>
@@ -713,16 +679,13 @@ E10891 Co-op Lane</address>
 	<record>
 		<name>Blau Family Chiropractic</name>
 		<type>Business</type>
-		<address>641 Latton Ln., Ste. A</address>
-		<city>Portage</city>
-		<state>WI</state>
-		<zip>53901</zip>
+		<address>641 Latton Ln.</address>
 		<old_id>94</old_id>
 	</record>
 	<record>
 		<name>Blue Heron</name>
 		<type>Business</type>
-		<address>0</address>
+		<address/>
 		<state>WI</state>
 		<zip>53901</zip>
 		<notes>12/13 ac deleted not able to forward</notes>
@@ -794,8 +757,7 @@ E10891 Co-op Lane</address>
 	<record>
 		<name>Pirate's Cove</name>
 		<type>Business</type>
-		<address>PO BOX 410
-31 Broadway</address>
+		<address>PO BOX 410, 31 Broadway</address>
 		<city>WISCONSIN DELLS</city>
 		<state>WI</state>
 		<zip>53965-0410</zip>
@@ -819,7 +781,7 @@ E10891 Co-op Lane</address>
 		<city>AURORA</city>
 		<state>IL</state>
 		<zip>60507-0831</zip>
-		<notes>Local address is 1139 8th St., Baraboo, WI 53913.  Local phone is 608-356-6661</notes>
+		<notes>Local address is 1139 8th St.</notes>
 		<old_id>110</old_id>
 	</record>
 	<record>
@@ -841,13 +803,9 @@ E10891 Co-op Lane</address>
 		<old_id>114</old_id>
 	</record>
 	<record>
-		<name>BUSHNELL'S JEWELRY, LTD</name>
+		<name>BUSHNELL'S JEWELRY</name>
 		<type>Business</type>
-		<address>PO BOX 243</address>
-		<city>LODI</city>
-		<state>WI</state>
-		<zip>53555-0243</zip>
-		<notes>Business has closed.</notes>
+		<address/>
 		<old_id>116</old_id>
 	</record>
 	<record>
@@ -909,8 +867,7 @@ E10891 Co-op Lane</address>
 	<record>
 		<name>Cardo Gorsuch Legal Services</name>
 		<type>Business</type>
-		<address>PO BOX 417
-212 N. Walnut St.</address>
+		<address>PO BOX 417, 212 N. Walnut St.</address>
 		<city>REEDSBURG</city>
 		<state>WI</state>
 		<zip>53959-0417</zip>
@@ -982,20 +939,16 @@ E10891 Co-op Lane</address>
 	<record>
 		<name>Portage Daily Register</name>
 		<type>Business</type>
-		<address>P.O. Box 470
-1640 La Daawn Dr.</address>
+		<address>P.O. Box 470, 1640 La Daawn Dr.</address>
 		<city>Portage</city>
 		<state>WI</state>
 		<zip>53901</zip>
 		<old_id>133</old_id>
 	</record>
 	<record>
-		<name>Century 21, Portage Realty</name>
+		<name>Century 21</name>
 		<type>Business</type>
-		<address>526 Meadowlark Lane</address>
-		<city>Portage</city>
-		<state>WI</state>
-		<zip>53901</zip>
+		<address/>
 		<old_id>134</old_id>
 	</record>
 	<record>
@@ -1019,14 +972,13 @@ E10891 Co-op Lane</address>
 	<record>
 		<name>Other-Enter details in Comments</name>
 		<type>Business</type>
-		<address>0</address>
+		<address/>
 		<old_id>999999</old_id>
 	</record>
 	<record>
 		<name>Charlie Galle</name>
 		<type>Business</type>
-		<address>c/o Sentry Food Store
-P. O. Box 36</address>
+		<address>c/o Sentry Food Store, P. O. Box 36</address>
 		<city>Prairie du Sac</city>
 		<state>WI</state>
 		<zip>53578-0036</zip>
@@ -1071,12 +1023,11 @@ P. O. Box 36</address>
 	<record>
 		<name>Chiquoine &amp; Molberg S. C.</name>
 		<type>Business</type>
-		<address>PO Box 399
-118 Main Street</address>
+		<address>PO Box 399, 118 Main Street</address>
 		<city>Reedsburg</city>
 		<state>WI</state>
 		<zip>53959</zip>
-		<notes>This firm is owned by Eleanor Chiquoine's husband, Stephen.</notes>
+		<notes>This firm is owned by Eleanor Chiquoine's husband</notes>
 		<old_id>143</old_id>
 		<email>steve@cmlawyers.net</email>
 	</record>
@@ -1122,20 +1073,13 @@ P. O. Box 36</address>
 	<record>
 		<name>Classic Cabinetry</name>
 		<type>Business</type>
-		<address>2560 East Main Street, Suite H</address>
-		<city>Reedsburg</city>
-		<state>WI</state>
-		<zip>53959</zip>
-		<phone>6085248448</phone>
+		<address>2560 East Main Street</address>
 		<old_id>148</old_id>
 	</record>
 	<record>
-		<name>Cochrane Investments, LLC</name>
+		<name>Cochrane Investments</name>
 		<type>Business</type>
-		<address>PO Box 864</address>
-		<city>Portage</city>
-		<state>WI</state>
-		<zip>53901</zip>
+		<address/>
 		<old_id>149</old_id>
 	</record>
 	<record>
@@ -1196,8 +1140,7 @@ P. O. Box 36</address>
 	<record>
 		<name>Community Bank of Portage</name>
 		<type>Business</type>
-		<address>P.O. Box 292
-2930 New Pinery Rd.</address>
+		<address>P.O. Box 292, 2930 New Pinery Rd.</address>
 		<city>Portage</city>
 		<state>WI</state>
 		<zip>53901</zip>
@@ -1215,8 +1158,7 @@ P. O. Box 36</address>
 	<record>
 		<name>Community Business Bank</name>
 		<type>Business</type>
-		<address>1111 SYCAMORE ST
-P.O. Box 636</address>
+		<address>1111 SYCAMORE ST, P.O. Box 636</address>
 		<city>SAUK CITY</city>
 		<state>WI</state>
 		<zip>53583-1378</zip>
@@ -1234,8 +1176,7 @@ P.O. Box 636</address>
 	<record>
 		<name>Community First Bank</name>
 		<type>Business</type>
-		<address>PO BOX 520
-115 Main St.</address>
+		<address>PO BOX 520, 115 Main St.</address>
 		<city>REEDSBURG</city>
 		<state>WI</state>
 		<zip>53959-0520</zip>
@@ -1244,8 +1185,7 @@ P.O. Box 636</address>
 	<record>
 		<name>Community Home Medical Equip.</name>
 		<type>Business</type>
-		<address>P.O. Box 153
-144 3rd St.</address>
+		<address>P.O. Box 153, 144 3rd St.</address>
 		<city>Baraboo</city>
 		<state>WI</state>
 		<zip>53913</zip>
@@ -1344,21 +1284,15 @@ P.O. Box 636</address>
 		<old_id>179</old_id>
 	</record>
 	<record>
-		<name>Country Plumber, Inc</name>
+		<name>Country Plumber</name>
 		<type>Business</type>
-		<address>P.O. Box 539</address>
-		<city>Portage</city>
-		<state>WI</state>
-		<zip>53901</zip>
+		<address/>
 		<old_id>180</old_id>
 	</record>
 	<record>
-		<name>Country Press, Inc.</name>
+		<name>Country Press</name>
 		<type>Business</type>
-		<address>W9878 STATE ROAD 60</address>
-		<city>LODI</city>
-		<state>WI</state>
-		<zip>53555-9411</zip>
+		<address/>
 		<old_id>181</old_id>
 	</record>
 	<record>
@@ -1382,8 +1316,7 @@ P.O. Box 636</address>
 	<record>
 		<name>Crawford Oil Company</name>
 		<type>Business</type>
-		<address>416 E. Wisconsin St.
-P.O. Box 115</address>
+		<address>416 E. Wisconsin St., P.O. Box 115</address>
 		<city>Portage</city>
 		<state>WI</state>
 		<zip>53901</zip>
@@ -1589,20 +1522,15 @@ P.O. Box 115</address>
 		<old_id>210</old_id>
 	</record>
 	<record>
-		<name>Davis &amp; Page, LLP</name>
+		<name>Davis &amp; Page</name>
 		<type>Business</type>
-		<address>P.O. Box 491
-208 W Town St.</address>
-		<city>Portage</city>
-		<state>WI</state>
-		<zip>53901</zip>
+		<address/>
 		<old_id>211</old_id>
 	</record>
 	<record>
 		<name>Davis Construction Co. of Portage</name>
 		<type>Business</type>
-		<address>P.O. Box 890
-800 Whitney St.</address>
+		<address>P.O. Box 890, 800 Whitney St.</address>
 		<city>Portage</city>
 		<state>WI</state>
 		<zip>53901</zip>
@@ -1620,8 +1548,7 @@ P.O. Box 115</address>
 	<record>
 		<name>Davis Duehr Dean-Reedsburg</name>
 		<type>Business</type>
-		<address>1104 21ST ST STE F
-PO BOX 29</address>
+		<address>1104 21ST ST STE F, PO BOX 29</address>
 		<city>REEDSBURG</city>
 		<state>WI</state>
 		<zip>53959-1156</zip>
@@ -1630,10 +1557,7 @@ PO BOX 29</address>
 	<record>
 		<name>Davis Duehr Dean-Baraboo</name>
 		<type>Business</type>
-		<address>1626 Tuttle Street, #1</address>
-		<city>Baraboo</city>
-		<state>WI</state>
-		<zip>53913</zip>
+		<address>1626 Tuttle Street</address>
 		<old_id>215</old_id>
 	</record>
 	<record>
@@ -1656,12 +1580,9 @@ PO BOX 29</address>
 		<old_id>1000462</old_id>
 	</record>
 	<record>
-		<name>Dell Prairie Printers, Inc</name>
+		<name>Dell Prairie Printers</name>
 		<type>Business</type>
-		<address>S3055A U.S. Hwy 12</address>
-		<city>Baraboo</city>
-		<state>WI</state>
-		<zip>53913</zip>
+		<address/>
 		<old_id>220</old_id>
 	</record>
 	<record>
@@ -1677,8 +1598,7 @@ PO BOX 29</address>
 	<record>
 		<name>Dental Associates of Baraboo</name>
 		<type>Business</type>
-		<address>P.O. Box 558
-880 14th St.</address>
+		<address>P.O. Box 558, 880 14th St.</address>
 		<city>Baraboo</city>
 		<state>WI</state>
 		<zip>53913</zip>
@@ -1705,8 +1625,7 @@ PO BOX 29</address>
 	<record>
 		<name>Scott Construction</name>
 		<type>Business</type>
-		<address>560 Munroe Avenue
-PO Box 340</address>
+		<address>560 Munroe Avenue, PO Box 340</address>
 		<city>Lake Delton</city>
 		<state>WI</state>
 		<zip>53940</zip>
@@ -1751,8 +1670,7 @@ PO Box 340</address>
 	<record>
 		<name>Divine Savior Healthcare</name>
 		<type>Business</type>
-		<address>P.O. Box 387
-2817 New Pinery Road</address>
+		<address>P.O. Box 387, 2817 New Pinery Road</address>
 		<city>Portage</city>
 		<state>WI</state>
 		<zip>53901</zip>
@@ -1770,8 +1688,7 @@ PO Box 340</address>
 	<record>
 		<name>Don Larson Chevrolet</name>
 		<type>Business</type>
-		<address>P.O. Box 30
-S3801 State Hwy 12</address>
+		<address>P.O. Box 30, S3801 State Hwy 12</address>
 		<city>Baraboo</city>
 		<state>WI</state>
 		<zip>53913</zip>
@@ -1780,8 +1697,7 @@ S3801 State Hwy 12</address>
 	<record>
 		<name>Don-Rick Insurance Inc</name>
 		<type>Business</type>
-		<address>P.O. Box 465
-236 W. Cook St.</address>
+		<address>P.O. Box 465, 236 W. Cook St.</address>
 		<city>Portage</city>
 		<state>WI</state>
 		<zip>53901</zip>
@@ -1826,27 +1742,22 @@ S3801 State Hwy 12</address>
 	<record>
 		<name>Dr. Joe G. Prell</name>
 		<type>Business</type>
-		<address>251 2ND ST
-P.O. Box 309</address>
+		<address>251 2ND ST, P.O. Box 309</address>
 		<city>REEDSBURG</city>
 		<state>WI</state>
 		<zip>53959-1610</zip>
 		<old_id>239</old_id>
 	</record>
 	<record>
-		<name>Dr. John E. Elfers, D.D.S.</name>
+		<name>Dr. John E. Elfers</name>
 		<type>Business</type>
-		<address>241 2ND ST</address>
-		<city>REEDSBURG</city>
-		<state>WI</state>
-		<zip>53959-1610</zip>
+		<address/>
 		<old_id>240</old_id>
 	</record>
 	<record>
 		<name>DW Sport Center</name>
 		<type>Business</type>
-		<address>P.O. Box 218
-125 W. Cook St.</address>
+		<address>P.O. Box 218, 125 W. Cook St.</address>
 		<city>Portage</city>
 		<state>WI</state>
 		<zip>53901</zip>
@@ -1864,27 +1775,22 @@ P.O. Box 309</address>
 	<record>
 		<name>Eagleview Dental Office</name>
 		<type>Business</type>
-		<address>P. O. Box 126
-476 Water St.</address>
+		<address>P. O. Box 126, 476 Water St.</address>
 		<city>Prairie du Sac</city>
 		<state>WI</state>
 		<zip>53578-0126</zip>
 		<old_id>244</old_id>
 	</record>
 	<record>
-		<name>Edge Consulting Engineers, Inc.</name>
+		<name>Edge Consulting Engineers</name>
 		<type>Business</type>
-		<address>624 Water St.</address>
-		<city>Prairie du Sac</city>
-		<state>WI</state>
-		<zip>53578</zip>
+		<address/>
 		<old_id>245</old_id>
 	</record>
 	<record>
 		<name>Edgewater Greenhouse</name>
 		<type>Business</type>
-		<address>P.O. Box 757
-2957 Co. Hwy CX</address>
+		<address>P.O. Box 757, 2957 Co. Hwy CX</address>
 		<city>Portage</city>
 		<state>WI</state>
 		<zip>53901</zip>
@@ -1936,19 +1842,15 @@ P.O. Box 309</address>
 		<old_id>251</old_id>
 	</record>
 	<record>
-		<name>Elliott &amp; Webb, DRS</name>
+		<name>Elliott &amp; Webb</name>
 		<type>Business</type>
-		<address>304 W. Cook St.</address>
-		<city>Portage</city>
-		<state>WI</state>
-		<zip>53901</zip>
+		<address/>
 		<old_id>253</old_id>
 	</record>
 	<record>
 		<name>Filter CPA Office</name>
 		<type>Business</type>
-		<address>410 VIKING DR
-PO Box 416</address>
+		<address>410 VIKING DR, PO Box 416</address>
 		<city>REEDSBURG</city>
 		<state>WI</state>
 		<zip>53959-1466</zip>
@@ -1957,8 +1859,7 @@ PO Box 416</address>
 	<record>
 		<name>Elsing Oil Company</name>
 		<type>Business</type>
-		<address>231 OLD SETTLERS TRL
-PO BOX 85</address>
+		<address>231 OLD SETTLERS TRL, PO BOX 85</address>
 		<city>POYNETTE</city>
 		<state>WI</state>
 		<zip>53955-9542</zip>
@@ -1994,8 +1895,7 @@ PO BOX 85</address>
 	<record>
 		<name>Eulberg's-The Store for Men</name>
 		<type>Business</type>
-		<address>P.O. Box 279
-128 W Cook St.</address>
+		<address>P.O. Box 279, 128 W Cook St.</address>
 		<city>Portage</city>
 		<state>WI</state>
 		<zip>53901</zip>
@@ -2011,14 +1911,9 @@ PO BOX 85</address>
 		<old_id>262</old_id>
 	</record>
 	<record>
-		<name>EVERGREEN REALTY, INC.</name>
+		<name>EVERGREEN REALTY</name>
 		<type>Business</type>
-		<address>2350 EAST MAIN STREET, SUITE A</address>
-		<city>REEDSBURG</city>
-		<state>WI</state>
-		<zip>53959</zip>
-		<phone>6084152899</phone>
-		<contact_name>RYAN OLSON</contact_name>
+		<address/>
 		<old_id>263</old_id>
 	</record>
 	<record>
@@ -2114,8 +2009,7 @@ PO BOX 85</address>
 	<record>
 		<name>First Weber Group</name>
 		<type>Business</type>
-		<address>P.O. Box 219
-333 W. Wisconsin St.</address>
+		<address>P.O. Box 219, 333 W. Wisconsin St.</address>
 		<city>Portage</city>
 		<state>WI</state>
 		<zip>53901</zip>
@@ -2133,8 +2027,7 @@ PO BOX 85</address>
 	<record>
 		<name>First Weber Group Realtors</name>
 		<type>Business</type>
-		<address>2175 E MAIN ST
-PO Box 305</address>
+		<address>2175 E MAIN ST, PO Box 305</address>
 		<city>REEDSBURG</city>
 		<state>WI</state>
 		<zip>53959-9440</zip>
@@ -2159,29 +2052,21 @@ PO Box 305</address>
 		<old_id>281</old_id>
 	</record>
 	<record>
-		<name>Flambeau, Inc.</name>
+		<name>Flambeau</name>
 		<type>Business</type>
-		<address>801 LYNN AVE</address>
-		<city>BARABOO</city>
-		<state>WI</state>
-		<zip>53913-2746</zip>
-		<contact_name>(608)356-5551 ext 6298</contact_name>
+		<address/>
 		<old_id>282</old_id>
 	</record>
 	<record>
-		<name>Food Process Systems, Inc.</name>
+		<name>Food Process Systems</name>
 		<type>Business</type>
-		<address>PO BOX 327</address>
-		<city>LODI</city>
-		<state>WI</state>
-		<zip>53555-0327</zip>
+		<address/>
 		<old_id>283</old_id>
 	</record>
 	<record>
 		<name>Foremost Farms USA</name>
 		<type>Business</type>
-		<address>PO BOX 111
-E10889A Penny Lane</address>
+		<address>PO BOX 111, E10889A Penny Lane</address>
 		<city>BARABOO</city>
 		<state>WI</state>
 		<zip>53913-0111</zip>
@@ -2210,19 +2095,13 @@ E10889A Penny Lane</address>
 	<record>
 		<name>Free Spirit Travel LLC</name>
 		<type>Business</type>
-		<address>2851 New Pinery Rd., Suite A</address>
-		<city>Portage</city>
-		<state>WI</state>
-		<zip>53901</zip>
+		<address>2851 New Pinery Rd.</address>
 		<old_id>289</old_id>
 	</record>
 	<record>
-		<name>Freeland Industries, Inc</name>
+		<name>Freeland Industries</name>
 		<type>Business</type>
-		<address>P.O. Box 59</address>
-		<city>Portage</city>
-		<state>WI</state>
-		<zip>53901</zip>
+		<address/>
 		<old_id>290</old_id>
 	</record>
 	<record>
@@ -2237,8 +2116,7 @@ E10889A Penny Lane</address>
 	<record>
 		<name>Friede and Associates LLC</name>
 		<type>Business</type>
-		<address>500 Utility Drive
-PO Box 248</address>
+		<address>500 Utility Drive, PO Box 248</address>
 		<city>Reedsburg</city>
 		<state>WI</state>
 		<zip>53959-2702</zip>
@@ -2247,8 +2125,7 @@ PO Box 248</address>
 	<record>
 		<name>Fuchs Trucking LLC</name>
 		<type>Business</type>
-		<address>P. O. Box 576
-7257 Hwy 78</address>
+		<address>P. O. Box 576, 7257 Hwy 78</address>
 		<city>Sauk City</city>
 		<state>WI</state>
 		<zip>53583-0576</zip>
@@ -2300,24 +2177,15 @@ PO Box 248</address>
 		<old_id>301</old_id>
 	</record>
 	<record>
-		<name>NUK USA, LLC</name>
+		<name>NUK USA</name>
 		<type>Business</type>
-		<address>728 Booster Boulevard
-PO Box 120</address>
-		<city>Reedsburg</city>
-		<state>WI</state>
-		<zip>53959</zip>
-		<phone>6085249398OR6085244343</phone>
-		<contact_name>Janelle</contact_name>
+		<address/>
 		<old_id>303</old_id>
 	</record>
 	<record>
-		<name>Gerfen, Dave</name>
+		<name>Gerfen</name>
 		<type>Business</type>
-		<address>320 9th St.</address>
-		<city>Baraboo</city>
-		<state>WI</state>
-		<zip>53913</zip>
+		<address/>
 		<old_id>304</old_id>
 	</record>
 	<record>
@@ -2332,8 +2200,7 @@ PO Box 120</address>
 	<record>
 		<name>Glacier Valley Ford-Mercury Inc.</name>
 		<type>Business</type>
-		<address>P.O. Box 446
-615 South Boulevard</address>
+		<address>P.O. Box 446, 615 South Boulevard</address>
 		<city>Baraboo</city>
 		<state>WI</state>
 		<zip>53913</zip>
@@ -2385,19 +2252,15 @@ PO Box 120</address>
 		<old_id>313</old_id>
 	</record>
 	<record>
-		<name>Grede Foundries, Inc.</name>
+		<name>Grede Foundries</name>
 		<type>Business</type>
-		<address>700 ASH ST</address>
-		<city>REEDSBURG</city>
-		<state>WI</state>
-		<zip>53959-2134</zip>
+		<address/>
 		<old_id>314</old_id>
 	</record>
 	<record>
 		<name>Green Acres</name>
 		<type>Business</type>
-		<address>P. O. Box 635
-7487 Hwy 78</address>
+		<address>P. O. Box 635, 7487 Hwy 78</address>
 		<city>Sauk City</city>
 		<state>WI</state>
 		<zip>53583-0635</zip>
@@ -2415,8 +2278,7 @@ PO Box 120</address>
 	<record>
 		<name>Badgerland CFC</name>
 		<type>Business</type>
-		<address>2059 Atwood Ave.
-P.O. box 7548</address>
+		<address>2059 Atwood Ave., P.O. box 7548</address>
 		<city>Madison</city>
 		<state>WI</state>
 		<zip>53707</zip>
@@ -2433,12 +2295,9 @@ P.O. box 7548</address>
 		<old_id>318</old_id>
 	</record>
 	<record>
-		<name>Grobe &amp; Associates, LLC</name>
+		<name>Grobe &amp; Associates</name>
 		<type>Business</type>
-		<address>421 Water St., Suite 111</address>
-		<city>Prairie du Sac</city>
-		<state>WI</state>
-		<zip>53578</zip>
+		<address/>
 		<old_id>319</old_id>
 	</record>
 	<record>
@@ -2498,8 +2357,7 @@ P.O. box 7548</address>
 	<record>
 		<name>Hale's Legal Services LLC</name>
 		<type>Business</type>
-		<address>P. O. Box 114
-620 8th Ave.</address>
+		<address>P. O. Box 114, 620 8th Ave.</address>
 		<city>Baraboo</city>
 		<state>WI</state>
 		<zip>53913</zip>
@@ -2508,8 +2366,7 @@ P.O. box 7548</address>
 	<record>
 		<name>Hankscraft Inc.</name>
 		<type>Business</type>
-		<address>300 WENGEL DR
-PO BOX 190</address>
+		<address>300 WENGEL DR, PO BOX 190</address>
 		<city>REEDSBURG</city>
 		<state>WI</state>
 		<zip>53959-9107</zip>
@@ -2555,8 +2412,7 @@ PO BOX 190</address>
 	<record>
 		<name>Hatch Dental</name>
 		<type>Business</type>
-		<address>208 N LOCUST ST
-PO BOX 228</address>
+		<address>208 N LOCUST ST, PO BOX 228</address>
 		<city>REEDSBURG</city>
 		<state>WI</state>
 		<zip>53959-1642</zip>
@@ -2583,8 +2439,7 @@ PO BOX 228</address>
 	<record>
 		<name>Hill Automotive</name>
 		<type>Business</type>
-		<address>P.O. Box 406
-3013 Co. Rd. CX</address>
+		<address>P.O. Box 406, 3013 Co. Rd. CX</address>
 		<city>Portage</city>
 		<state>WI</state>
 		<zip>53901</zip>
@@ -2648,8 +2503,7 @@ PO BOX 228</address>
 	<record>
 		<name>Hooverson Funeral Home</name>
 		<type>Business</type>
-		<address>P.O. Box 86
-251 Water St.</address>
+		<address>P.O. Box 86, 251 Water St.</address>
 		<city>Sauk City</city>
 		<state>WI</state>
 		<zip>53583-0086</zip>
@@ -2667,17 +2521,13 @@ PO BOX 228</address>
 	<record>
 		<name>Hendricks Commercial Properties</name>
 		<type>Business</type>
-		<address>525 3rd Street, #300</address>
-		<city>Beloit</city>
-		<state>WI</state>
-		<zip>53511</zip>
+		<address>525 3rd Street</address>
 		<old_id>1000254</old_id>
 	</record>
 	<record>
 		<name>Interstate Electric Supply CED</name>
 		<type>Business</type>
-		<address>
-2757 Columbia Drive</address>
+		<address>, 2757 Columbia Drive</address>
 		<city>Portage</city>
 		<state>WI</state>
 		<zip>53901</zip>
@@ -2686,8 +2536,7 @@ PO BOX 228</address>
 	<record>
 		<name>Iron Skillet Restaurant</name>
 		<type>Business</type>
-		<address>P.O. Box 489
-Hwy 78/I90-94</address>
+		<address>P.O. Box 489, Hwy 78/I90-94</address>
 		<city>Portage</city>
 		<state>WI</state>
 		<zip>53901</zip>
@@ -2730,12 +2579,9 @@ Hwy 78/I90-94</address>
 		<old_id>361</old_id>
 	</record>
 	<record>
-		<name>JKBA Properties, LLC</name>
+		<name>JKBA Properties</name>
 		<type>Business</type>
-		<address>7208 Inama Road</address>
-		<city>Sauk City</city>
-		<state>WI</state>
-		<zip>53583</zip>
+		<address/>
 		<old_id>362</old_id>
 	</record>
 	<record>
@@ -2750,8 +2596,7 @@ Hwy 78/I90-94</address>
 	<record>
 		<name>Johnson Chiropractic</name>
 		<type>Business</type>
-		<address>PO BOX 72
-1512 New Pinery Road</address>
+		<address>PO BOX 72, 1512 New Pinery Road</address>
 		<city>Portage</city>
 		<state>WI</state>
 		<zip>53901</zip>
@@ -2767,19 +2612,15 @@ Hwy 78/I90-94</address>
 		<old_id>366</old_id>
 	</record>
 	<record>
-		<name>Jorandby Chiropractic Office, S.C.</name>
+		<name>Jorandby Chiropractic Office</name>
 		<type>Business</type>
-		<address>149 N PARK ST</address>
-		<city>REEDSBURG</city>
-		<state>WI</state>
-		<zip>53959-1651</zip>
+		<address/>
 		<old_id>367</old_id>
 	</record>
 	<record>
 		<name>Portage Theaters</name>
 		<type>Business</type>
-		<address>P.O. Box 562
-322 W. Wisconsin St.</address>
+		<address>P.O. Box 562, 322 W. Wisconsin St.</address>
 		<city>Portage</city>
 		<state>WI</state>
 		<zip>53901</zip>
@@ -2795,20 +2636,15 @@ Hwy 78/I90-94</address>
 		<old_id>369</old_id>
 	</record>
 	<record>
-		<name>Architectural Design Consultants, Inc</name>
+		<name>Architectural Design Consultants</name>
 		<type>Business</type>
-		<address>30 Wisconsin Dells Parkway
-PO Box 580</address>
-		<city>Lake Delton</city>
-		<state>WI</state>
-		<zip>53940</zip>
+		<address/>
 		<old_id>1000480</old_id>
 	</record>
 	<record>
 		<name>Just Imagine</name>
 		<type>Business</type>
-		<address>P.O. Box 13
-120 Fourth Ave.</address>
+		<address>P.O. Box 13, 120 Fourth Ave.</address>
 		<city>Baraboo</city>
 		<state>WI</state>
 		<zip>53913</zip>
@@ -2844,8 +2680,7 @@ PO Box 580</address>
 	<record>
 		<name>Kapitan Engineering</name>
 		<type>Business</type>
-		<address>P.O. Box 665
-802 Franklin St.</address>
+		<address>P.O. Box 665, 802 Franklin St.</address>
 		<city>Sauk City</city>
 		<state>WI</state>
 		<zip>53583</zip>
@@ -2879,12 +2714,9 @@ PO Box 580</address>
 		<old_id>381</old_id>
 	</record>
 	<record>
-		<name>Kippley Custom Carpentry, Inc.</name>
+		<name>Kippley Custom Carpentry</name>
 		<type>Business</type>
-		<address>8160 Lueth Road</address>
-		<city>Sauk City</city>
-		<state>WI</state>
-		<zip>53583-9545</zip>
+		<address/>
 		<old_id>382</old_id>
 	</record>
 	<record>
@@ -2908,8 +2740,7 @@ PO Box 580</address>
 	<record>
 		<name>Koenecke Ford-Mercury</name>
 		<type>Business</type>
-		<address>S2745 TWIN PINE RD
-PO BOX 378</address>
+		<address>S2745 TWIN PINE RD, PO BOX 378</address>
 		<city>REEDSBURG</city>
 		<state>WI</state>
 		<zip>53959-9319</zip>
@@ -2943,22 +2774,15 @@ PO BOX 378</address>
 		<old_id>390</old_id>
 	</record>
 	<record>
-		<name>Krista's Kitchen, LLC</name>
+		<name>Krista's Kitchen</name>
 		<type>Business</type>
-		<address>0</address>
-		<state>WI</state>
-		<zip>53901-1676</zip>
-		<notes>12/13 unable to forward mail deleted address</notes>
+		<address/>
 		<old_id>391</old_id>
 	</record>
 	<record>
-		<name>Krueger Office Supplies, Inc.</name>
+		<name>Krueger Office Supplies</name>
 		<type>Business</type>
-		<address>644 W MAIN ST
-PO BOX 37</address>
-		<city>REEDSBURG</city>
-		<state>WI</state>
-		<zip>53959-1513</zip>
+		<address/>
 		<old_id>393</old_id>
 	</record>
 	<record>
@@ -2994,8 +2818,7 @@ PO BOX 37</address>
 	<record>
 		<name>La Mexicana</name>
 		<type>Business</type>
-		<address>P.O. Box 22
-834 Water St.</address>
+		<address>P.O. Box 22, 834 Water St.</address>
 		<city>Sauk City</city>
 		<state>WI</state>
 		<zip>53583</zip>
@@ -3050,8 +2873,7 @@ PO BOX 37</address>
 	<record>
 		<name>Lamp-Lite Motel</name>
 		<type>Business</type>
-		<address>P.O. Box 402
-N6186 Hwy 51/16 S</address>
+		<address>P.O. Box 402, N6186 Hwy 51/16 S</address>
 		<city>Portage</city>
 		<state>WI</state>
 		<zip>53901</zip>
@@ -3085,23 +2907,15 @@ N6186 Hwy 51/16 S</address>
 		<old_id>407</old_id>
 	</record>
 	<record>
-		<name>LaRowe, Gerlach &amp; Roy LLP</name>
+		<name>LaRowe</name>
 		<type>Business</type>
-		<address>P.O. Box 10
-1730 Community Dr.</address>
-		<city>Sauk City</city>
-		<state>WI</state>
-		<zip>53583-0010</zip>
+		<address/>
 		<old_id>408</old_id>
 	</record>
 	<record>
-		<name>LaRowe, Gerlach and Roy, S.C.</name>
+		<name>LaRowe</name>
 		<type>Business</type>
-		<address>110 E MAIN ST
-PO BOX 231</address>
-		<city>REEDSBURG</city>
-		<state>WI</state>
-		<zip>53959-1936</zip>
+		<address/>
 		<old_id>409</old_id>
 	</record>
 	<record>
@@ -3125,8 +2939,7 @@ PO BOX 231</address>
 	<record>
 		<name>Lentz &amp; Andres Insurance Agency Inc.</name>
 		<type>Business</type>
-		<address>510 K ST
-PO BOX 59</address>
+		<address>510 K ST, PO BOX 59</address>
 		<city>REEDSBURG</city>
 		<state>WI</state>
 		<zip>53959-1824</zip>
@@ -3135,8 +2948,7 @@ PO BOX 59</address>
 	<record>
 		<name>Leystras Venture Restaurant</name>
 		<type>Business</type>
-		<address>P. O. Box 39
-200 Phillips Blvd.</address>
+		<address>P. O. Box 39, 200 Phillips Blvd.</address>
 		<city>Sauk City</city>
 		<state>WI</state>
 		<zip>53583-0039</zip>
@@ -3156,8 +2968,7 @@ PO BOX 59</address>
 	<record>
 		<name>Lichte Insurance Agency Inc.</name>
 		<type>Business</type>
-		<address>149 W MAIN ST
-PO BOX 7</address>
+		<address>149 W MAIN ST, PO BOX 7</address>
 		<city>REEDSBURG</city>
 		<state>WI</state>
 		<zip>53959-1514</zip>
@@ -3200,13 +3011,9 @@ PO BOX 7</address>
 		<old_id>424</old_id>
 	</record>
 	<record>
-		<name>Lodi Canning Company, Inc.</name>
+		<name>Lodi Canning Company</name>
 		<type>Business</type>
-		<address>PO Box 315
-307 Nestles Avenue</address>
-		<city>Lodi</city>
-		<state>WI</state>
-		<zip>53555</zip>
+		<address/>
 		<old_id>425</old_id>
 	</record>
 	<record>
@@ -3275,8 +3082,7 @@ PO BOX 7</address>
 	<record>
 		<name>Log Cabin Family Restaurant</name>
 		<type>Business</type>
-		<address>P.O. Box 154
-1215 Eighth St.</address>
+		<address>P.O. Box 154, 1215 Eighth St.</address>
 		<city>Baraboo</city>
 		<state>WI</state>
 		<zip>53913</zip>
@@ -3303,8 +3109,7 @@ PO BOX 7</address>
 	<record>
 		<name>M &amp; I Bank</name>
 		<type>Business</type>
-		<address>615 Water Street
-P.O. Box 638</address>
+		<address>615 Water Street, P.O. Box 638</address>
 		<city>Sauk City</city>
 		<state>WI</state>
 		<zip>53583-0638</zip>
@@ -3331,8 +3136,7 @@ P.O. Box 638</address>
 	<record>
 		<name>Magnum Radio Group</name>
 		<type>Business</type>
-		<address>PO BOX 448
-1420 E. Wisconsin St.</address>
+		<address>PO BOX 448, 1420 E. Wisconsin St.</address>
 		<city>PORTAGE</city>
 		<state>WI</state>
 		<zip>53901-0448</zip>
@@ -3350,8 +3154,7 @@ P.O. Box 638</address>
 	<record>
 		<name>Malone Sean Insurance</name>
 		<type>Business</type>
-		<address>P.O. Box 710
-415 W. Wisconsin St.</address>
+		<address>P.O. Box 710, 415 W. Wisconsin St.</address>
 		<city>Portage</city>
 		<state>WI</state>
 		<zip>53901</zip>
@@ -3369,8 +3172,7 @@ P.O. Box 638</address>
 	<record>
 		<name>Markent Personnel</name>
 		<type>Business</type>
-		<address>P.O. Box 423
-121 E. Conant St.</address>
+		<address>P.O. Box 423, 121 E. Conant St.</address>
 		<city>Portage</city>
 		<state>WI</state>
 		<zip>53901</zip>
@@ -3388,8 +3190,7 @@ P.O. Box 638</address>
 	<record>
 		<name>Reedsburg True Value</name>
 		<type>Business</type>
-		<address>100 Viking Drive
-PO Box 636</address>
+		<address>100 Viking Drive, PO Box 636</address>
 		<city>Reedsburg</city>
 		<state>WI</state>
 		<zip>53959</zip>
@@ -3410,8 +3211,7 @@ PO Box 636</address>
 	<record>
 		<name>McFarlane Implement</name>
 		<type>Business</type>
-		<address>P. O. Box 100
-1259 Water St.</address>
+		<address>P. O. Box 100, 1259 Water St.</address>
 		<city>Sauk City</city>
 		<state>WI</state>
 		<zip>53583-0100</zip>
@@ -3427,12 +3227,9 @@ PO Box 636</address>
 		<old_id>454</old_id>
 	</record>
 	<record>
-		<name>MDA Plumbing &amp; Heating, LLC</name>
+		<name>MDA Plumbing &amp; Heating</name>
 		<type>Business</type>
-		<address>W10404 Krejchik Rd.</address>
-		<city>Portage</city>
-		<state>WI</state>
-		<zip>53901</zip>
+		<address/>
 		<old_id>455</old_id>
 	</record>
 	<record>
@@ -3484,8 +3281,7 @@ PO Box 636</address>
 	<record>
 		<name>MEYER INSURANCE</name>
 		<type>Business</type>
-		<address>PO BOX 633
-511 PHILLIPS BOULEVARD</address>
+		<address>PO BOX 633, 511 PHILLIPS BOULEVARD</address>
 		<city>SAUK CITY</city>
 		<state>WI</state>
 		<zip>53583</zip>
@@ -3537,22 +3333,15 @@ PO Box 636</address>
 		<old_id>468</old_id>
 	</record>
 	<record>
-		<name>Miller &amp; Miller, LLC</name>
+		<name>Miller &amp; Miller</name>
 		<type>Business</type>
-		<address>P.O. Box 200
-311 DeWitt St.</address>
-		<city>Portage</city>
-		<state>WI</state>
-		<zip>53901</zip>
+		<address/>
 		<old_id>469</old_id>
 	</record>
 	<record>
-		<name>Miller, Brussell, Ebben, Glaeske</name>
+		<name>Miller</name>
 		<type>Business</type>
-		<address>611 E Wisconsin Street</address>
-		<city>Portage</city>
-		<state>WI</state>
-		<zip>53901</zip>
+		<address/>
 		<old_id>470</old_id>
 	</record>
 	<record>
@@ -3585,8 +3374,7 @@ PO Box 636</address>
 	<record>
 		<name>Modern Woodman of America</name>
 		<type>Business</type>
-		<address>P. O. Box 66
-478 Water St.</address>
+		<address>P. O. Box 66, 478 Water St.</address>
 		<city>Prairie du Sac</city>
 		<state>WI</state>
 		<zip>53578-0066</zip>
@@ -3631,8 +3419,7 @@ PO Box 636</address>
 	<record>
 		<name>Mueller Sports Medicine</name>
 		<type>Business</type>
-		<address>P.O. Box 99
-1 Quench Dr.</address>
+		<address>P.O. Box 99, 1 Quench Dr.</address>
 		<city>Prairie de Sac</city>
 		<state>WI</state>
 		<zip>53578-0099</zip>
@@ -3650,20 +3437,16 @@ PO Box 636</address>
 	<record>
 		<name>Museum at the Portage</name>
 		<type>Business</type>
-		<address>P.O. Box 727
-804 McFarlane</address>
+		<address>P.O. Box 727, 804 McFarlane</address>
 		<city>Portage</city>
 		<state>WI</state>
 		<zip>53901</zip>
 		<old_id>482</old_id>
 	</record>
 	<record>
-		<name>Nafcor, Inc.</name>
+		<name>Nafcor</name>
 		<type>Business</type>
-		<address>725 Water Street</address>
-		<city>Sauk City</city>
-		<state>WI</state>
-		<zip>53583</zip>
+		<address/>
 		<old_id>484</old_id>
 	</record>
 	<record>
@@ -3696,10 +3479,7 @@ PO Box 636</address>
 	<record>
 		<name>New Life Physical Therapy</name>
 		<type>Business</type>
-		<address>2639 New Pinery Rd., Ste. 2</address>
-		<city>Portage</city>
-		<state>WI</state>
-		<zip>53901</zip>
+		<address>2639 New Pinery Rd.</address>
 		<old_id>491</old_id>
 	</record>
 	<record>
@@ -3722,12 +3502,9 @@ PO Box 636</address>
 		<old_id>494</old_id>
 	</record>
 	<record>
-		<name>Norland, Raymond CPA</name>
+		<name>Norland</name>
 		<type>Business</type>
-		<address>311 E. Wisconsin St.</address>
-		<city>Portage</city>
-		<state>WI</state>
-		<zip>53901</zip>
+		<address/>
 		<old_id>495</old_id>
 	</record>
 	<record>
@@ -3742,8 +3519,7 @@ PO Box 636</address>
 	<record>
 		<name>Northwestern Mutual Insurance</name>
 		<type>Business</type>
-		<address>P.O. Box 888
-254 W. Cook St.</address>
+		<address>P.O. Box 888, 254 W. Cook St.</address>
 		<city>Portage</city>
 		<state>WI</state>
 		<zip>53901</zip>
@@ -3752,8 +3528,7 @@ PO Box 636</address>
 	<record>
 		<name>Northwoods Inc</name>
 		<type>Business</type>
-		<address>P.O. Box 357
-N6510 US Hwy 51 S.</address>
+		<address>P.O. Box 357, N6510 US Hwy 51 S.</address>
 		<city>Portage</city>
 		<state>WI</state>
 		<zip>53901</zip>
@@ -3762,8 +3537,7 @@ N6510 US Hwy 51 S.</address>
 	<record>
 		<name>Magnum Radio Group</name>
 		<type>Business</type>
-		<address>PO BOX 349
-E5680A State Road 33</address>
+		<address>PO BOX 349, E5680A State Road 33</address>
 		<city>REEDSBURG</city>
 		<state>WI</state>
 		<zip>53959-0349</zip>
@@ -3788,13 +3562,9 @@ E5680A State Road 33</address>
 		<old_id>897</old_id>
 	</record>
 	<record>
-		<name>O'Brion Agency, LLC</name>
+		<name>O'Brion Agency</name>
 		<type>Business</type>
-		<address>P.O. Box 258
-628 E. Albert St.</address>
-		<city>Portage</city>
-		<state>WI</state>
-		<zip>53901</zip>
+		<address/>
 		<old_id>504</old_id>
 	</record>
 	<record>
@@ -3872,8 +3642,7 @@ E5680A State Road 33</address>
 	<record>
 		<name>Electric 1</name>
 		<type>Business</type>
-		<address>221 East Albert Street
-PO Box</address>
+		<address>221 East Albert Street, PO Box</address>
 		<city>Portage</city>
 		<state>WI</state>
 		<zip>53901</zip>
@@ -3936,20 +3705,15 @@ PO Box</address>
 		<old_id>522</old_id>
 	</record>
 	<record>
-		<name>Paulk, Stephen Dr</name>
+		<name>Paulk</name>
 		<type>Business</type>
-		<address>P.O. Box 29
-2817 New Pinery Rd</address>
-		<city>Portage</city>
-		<state>WI</state>
-		<zip>53901</zip>
+		<address/>
 		<old_id>523</old_id>
 	</record>
 	<record>
 		<name>Pauquette Center for Psychological Services</name>
 		<type>Business</type>
-		<address>P.O. Box 301
-2901 Hunters Trail</address>
+		<address>P.O. Box 301, 2901 Hunters Trail</address>
 		<city>Portage</city>
 		<state>WI</state>
 		<zip>53901</zip>
@@ -3967,20 +3731,16 @@ PO Box</address>
 	<record>
 		<name>Penda Corporation</name>
 		<type>Business</type>
-		<address>P.O. Box 449
-2344 W. Wisconsin St.</address>
+		<address>P.O. Box 449, 2344 W. Wisconsin St.</address>
 		<city>Portage</city>
 		<state>WI</state>
 		<zip>53901</zip>
 		<old_id>528</old_id>
 	</record>
 	<record>
-		<name>PERRY BARRETTE, DDS</name>
+		<name>PERRY BARRETTE</name>
 		<type>Business</type>
-		<address>PO BOX 95</address>
-		<city>LODI</city>
-		<state>WI</state>
-		<zip>53555-0095</zip>
+		<address/>
 		<old_id>530</old_id>
 	</record>
 	<record>
@@ -4042,8 +3802,7 @@ PO Box</address>
 	<record>
 		<name>WCCU</name>
 		<type>Business</type>
-		<address>PO BOX 550
-820 Viking Drive</address>
+		<address>PO BOX 550, 820 Viking Drive</address>
 		<city>REEDSBURG</city>
 		<state>WI</state>
 		<zip>53959-0550</zip>
@@ -4080,8 +3839,7 @@ PO Box</address>
 	<record>
 		<name>Pointon Heating &amp; Air Conditioning</name>
 		<type>Business</type>
-		<address>P.O. Box 14
-601 South Blvd.</address>
+		<address>P.O. Box 14, 601 South Blvd.</address>
 		<city>Baraboo</city>
 		<state>WI</state>
 		<zip>53913</zip>
@@ -4106,12 +3864,9 @@ PO Box</address>
 		<old_id>547</old_id>
 	</record>
 	<record>
-		<name>Portage Cafe, LLC</name>
+		<name>Portage Cafe</name>
 		<type>Business</type>
-		<address>111 W. Cook St.</address>
-		<city>Portage</city>
-		<state>WI</state>
-		<zip>53901</zip>
+		<address/>
 		<old_id>548</old_id>
 	</record>
 	<record>
@@ -4136,8 +3891,7 @@ PO Box</address>
 	<record>
 		<name>Portage Country Club</name>
 		<type>Business</type>
-		<address>P. O. Box 382
-W7245 Country Club Rd.</address>
+		<address>P. O. Box 382, W7245 Country Club Rd.</address>
 		<city>Portage</city>
 		<state>WI</state>
 		<zip>53901</zip>
@@ -4146,8 +3900,7 @@ W7245 Country Club Rd.</address>
 	<record>
 		<name>Portage Curling Association</name>
 		<type>Business</type>
-		<address>P.O. Box 55
-107 W. Albert St.</address>
+		<address>P.O. Box 55, 107 W. Albert St.</address>
 		<city>Portage</city>
 		<state>WI</state>
 		<zip>53901</zip>
@@ -4201,8 +3954,7 @@ W7245 Country Club Rd.</address>
 	<record>
 		<name>Portage Insurance Center</name>
 		<type>Business</type>
-		<address>P.O. Box 27
-201 E. Wisconsin St.</address>
+		<address>P.O. Box 27, 201 E. Wisconsin St.</address>
 		<city>Portage</city>
 		<state>WI</state>
 		<zip>53901</zip>
@@ -4220,20 +3972,16 @@ W7245 Country Club Rd.</address>
 	<record>
 		<name>Portage Lumber Do-It Best</name>
 		<type>Business</type>
-		<address>P.O. Box 425
-1009 E.Wisconsin St.</address>
+		<address>P.O. Box 425, 1009 E.Wisconsin St.</address>
 		<city>Portage</city>
 		<state>WI</state>
 		<zip>53901</zip>
 		<old_id>562</old_id>
 	</record>
 	<record>
-		<name>Portage Motors, LLC</name>
+		<name>Portage Motors</name>
 		<type>Business</type>
-		<address>515 E. Wisconsin St.</address>
-		<city>Portage</city>
-		<state>WI</state>
-		<zip>53901</zip>
+		<address/>
 		<old_id>563</old_id>
 	</record>
 	<record>
@@ -4248,8 +3996,7 @@ W7245 Country Club Rd.</address>
 	<record>
 		<name>Portage Plastics Corp</name>
 		<type>Business</type>
-		<address>P.O. Box 640
-3000 Boeck Rd.</address>
+		<address>P.O. Box 640, 3000 Boeck Rd.</address>
 		<city>Portage</city>
 		<state>WI</state>
 		<zip>53901</zip>
@@ -4258,8 +4005,7 @@ W7245 Country Club Rd.</address>
 	<record>
 		<name>Portage Printing</name>
 		<type>Business</type>
-		<address>P.O. Box 566
-309 E. Albert St.</address>
+		<address>P.O. Box 566, 309 E. Albert St.</address>
 		<city>Portage</city>
 		<state>WI</state>
 		<zip>53901</zip>
@@ -4277,8 +4023,7 @@ W7245 Country Club Rd.</address>
 	<record>
 		<name>Portage Theatres</name>
 		<type>Business</type>
-		<address>P.O. Box 462
-322 W. Wisconsin St.</address>
+		<address>P.O. Box 462, 322 W. Wisconsin St.</address>
 		<city>Portage</city>
 		<state>WI</state>
 		<zip>53901</zip>
@@ -4296,8 +4041,7 @@ W7245 Country Club Rd.</address>
 	<record>
 		<name>Poynette Press</name>
 		<type>Business</type>
-		<address>135 N MAIN ST
-PO BOX 37</address>
+		<address>135 N MAIN ST, PO BOX 37</address>
 		<city>POYNETTE</city>
 		<state>WI</state>
 		<zip>53955-8984</zip>
@@ -4333,8 +4077,7 @@ PO BOX 37</address>
 	<record>
 		<name>Preuss Implement Inc</name>
 		<type>Business</type>
-		<address>PO Box 164
-E8380 Co. Rd. P</address>
+		<address>PO Box 164, E8380 Co. Rd. P</address>
 		<city>Portage</city>
 		<state>WI</state>
 		<zip>53901</zip>
@@ -4352,8 +4095,7 @@ E8380 Co. Rd. P</address>
 	<record>
 		<name>Proforma</name>
 		<type>Business</type>
-		<address>P.O. Box 485
-403 Franklin St.</address>
+		<address>P.O. Box 485, 403 Franklin St.</address>
 		<city>Sauk City</city>
 		<state>WI</state>
 		<zip>53583-0485</zip>
@@ -4380,10 +4122,7 @@ E8380 Co. Rd. P</address>
 	<record>
 		<name>QTI Group the Qualitemps</name>
 		<type>Business</type>
-		<address>311 E. Wisconsin St., Suite 106</address>
-		<city>Portage</city>
-		<state>WI</state>
-		<zip>53901-2455</zip>
+		<address>311 E. Wisconsin St.</address>
 		<old_id>584</old_id>
 	</record>
 	<record>
@@ -4443,10 +4182,7 @@ E8380 Co. Rd. P</address>
 	<record>
 		<name>Randy Diehl &amp; Associates</name>
 		<type>Business</type>
-		<address>207 Water St., Suite B</address>
-		<city>Sauk City</city>
-		<state>WI</state>
-		<zip>53583</zip>
+		<address>207 Water St.</address>
 		<old_id>593</old_id>
 	</record>
 	<record>
@@ -4478,12 +4214,9 @@ E8380 Co. Rd. P</address>
 		<old_id>596</old_id>
 	</record>
 	<record>
-		<name>Recob Enterprises, LLC</name>
+		<name>Recob Enterprises</name>
 		<type>Business</type>
-		<address>975 19th St.</address>
-		<city>Prairie du Sac</city>
-		<state>WI</state>
-		<zip>53578</zip>
+		<address/>
 		<old_id>599</old_id>
 	</record>
 	<record>
@@ -4508,8 +4241,7 @@ E8380 Co. Rd. P</address>
 	<record>
 		<name>Harris Bank</name>
 		<type>Business</type>
-		<address>201 E MAIN ST
-PO BOX 90</address>
+		<address>201 E MAIN ST, PO BOX 90</address>
 		<city>REEDSBURG</city>
 		<state>WI</state>
 		<zip>53959-1939</zip>
@@ -4518,8 +4250,7 @@ PO BOX 90</address>
 	<record>
 		<name>Reedsburg Country Club</name>
 		<type>Business</type>
-		<address>PO BOX 125
-3003 E. Main Street</address>
+		<address>PO BOX 125, 3003 E. Main Street</address>
 		<city>REEDSBURG</city>
 		<state>WI</state>
 		<zip>53959-0125</zip>
@@ -4538,8 +4269,7 @@ PO BOX 90</address>
 	<record>
 		<name>Reedsburg National Bank</name>
 		<type>Business</type>
-		<address>130 VIKING DR
-Box 577</address>
+		<address>130 VIKING DR, Box 577</address>
 		<city>REEDSBURG</city>
 		<state>WI</state>
 		<zip>53959-1435</zip>
@@ -4600,12 +4330,9 @@ Box 577</address>
 		<old_id>615</old_id>
 	</record>
 	<record>
-		<name>Renewal Unlimited, Inc</name>
+		<name>Renewal Unlimited</name>
 		<type>Business</type>
-		<address>2900 Red Fox Run</address>
-		<city>Portage</city>
-		<state>WI</state>
-		<zip>53901</zip>
+		<address/>
 		<old_id>616</old_id>
 	</record>
 	<record>
@@ -4620,8 +4347,7 @@ Box 577</address>
 	<record>
 		<name>Rhyme Business Products</name>
 		<type>Business</type>
-		<address>P.O. Box 338
-N6832 U.S. Hwy. 51</address>
+		<address>P.O. Box 338, N6832 U.S. Hwy. 51</address>
 		<city>Portage</city>
 		<state>WI</state>
 		<zip>53901</zip>
@@ -4643,8 +4369,7 @@ N6832 U.S. Hwy. 51</address>
 	<record>
 		<name>Riberich Inc.</name>
 		<type>Business</type>
-		<address>2160 E MAIN ST
-PO BOX 226</address>
+		<address>2160 E MAIN ST, PO BOX 226</address>
 		<city>REEDSBURG</city>
 		<state>WI</state>
 		<zip>53959-9441</zip>
@@ -4715,13 +4440,9 @@ PO BOX 226</address>
 		<old_id>628</old_id>
 	</record>
 	<record>
-		<name>Rosin, Timothy DDS</name>
+		<name>Rosin</name>
 		<type>Business</type>
-		<address>2570 New Pinery Rd.</address>
-		<city>Portage</city>
-		<state>WI</state>
-		<zip>53901</zip>
-		<notes>This man works for Midwest Dental.</notes>
+		<address/>
 		<old_id>629</old_id>
 	</record>
 	<record>
@@ -4788,12 +4509,9 @@ PO BOX 226</address>
 		<old_id>1000445</old_id>
 	</record>
 	<record>
-		<name>Saputo Foods USA, Inc.</name>
+		<name>Saputo Foods USA</name>
 		<type>Business</type>
-		<address>1120 COMMERCIAL AVE</address>
-		<city>REEDSBURG</city>
-		<state>WI</state>
-		<zip>53959-2132</zip>
+		<address/>
 		<old_id>638</old_id>
 	</record>
 	<record>
@@ -4942,12 +4660,9 @@ PO BOX 226</address>
 		<old_id>659</old_id>
 	</record>
 	<record>
-		<name>Schmitt's Shoes, Inc.</name>
+		<name>Schmitt's Shoes</name>
 		<type>Business</type>
-		<address>244 E MAIN ST #A</address>
-		<city>REEDSBURG</city>
-		<state>WI</state>
-		<zip>53959-1965</zip>
+		<address/>
 		<old_id>660</old_id>
 	</record>
 	<record>
@@ -4971,8 +4686,7 @@ PO BOX 226</address>
 	<record>
 		<name>Schulz Automotive</name>
 		<type>Business</type>
-		<address>PO BOX 151
-1400 E. Main Street</address>
+		<address>PO BOX 151, 1400 E. Main Street</address>
 		<city>REEDSBURG</city>
 		<state>WI</state>
 		<zip>53959-0151</zip>
@@ -4999,8 +4713,7 @@ PO BOX 226</address>
 	<record>
 		<name>Schwarz Insurance</name>
 		<type>Business</type>
-		<address>P. O. Box 40
-350 Prairie</address>
+		<address>P. O. Box 40, 350 Prairie</address>
 		<city>Prairie du Sac</city>
 		<state>WI</state>
 		<zip>53578</zip>
@@ -5046,8 +4759,7 @@ PO BOX 226</address>
 	<record>
 		<name>Service Electric of Reedsburg</name>
 		<type>Business</type>
-		<address>524 S ALBERT AVE
-PO BOX 98</address>
+		<address>524 S ALBERT AVE, PO BOX 98</address>
 		<city>REEDSBURG</city>
 		<state>WI</state>
 		<zip>53959-1827</zip>
@@ -5072,12 +4784,9 @@ PO BOX 98</address>
 		<old_id>674</old_id>
 	</record>
 	<record>
-		<name>Shanedrives, LLC</name>
+		<name>Shanedrives</name>
 		<type>Business</type>
-		<address>305 Water Street</address>
-		<city>Sauk City</city>
-		<state>WI</state>
-		<zip>53583</zip>
+		<address/>
 		<old_id>675</old_id>
 	</record>
 	<record>
@@ -5132,8 +4841,7 @@ PO BOX 98</address>
 	<record>
 		<name>Skinner Transfer Corp.</name>
 		<type>Business</type>
-		<address>PO BOX 438
-2020 E. Main Street</address>
+		<address>PO BOX 438, 2020 E. Main Street</address>
 		<city>REEDSBURG</city>
 		<state>WI</state>
 		<zip>53959-0438</zip>
@@ -5152,20 +4860,16 @@ PO BOX 98</address>
 	<record>
 		<name>Smiley Law Office</name>
 		<type>Business</type>
-		<address>P.O. Box 361
-235 W. Cook St.</address>
+		<address>P.O. Box 361, 235 W. Cook St.</address>
 		<city>Portage</city>
 		<state>WI</state>
 		<zip>53901</zip>
 		<old_id>686</old_id>
 	</record>
 	<record>
-		<name>Smith &amp; Moy, LLP</name>
+		<name>Smith &amp; Moy</name>
 		<type>Business</type>
-		<address>PO BOX 15</address>
-		<city>BARABOO</city>
-		<state>WI</state>
-		<zip>53913-0015</zip>
+		<address/>
 		<old_id>688</old_id>
 	</record>
 	<record>
@@ -5217,8 +4921,7 @@ PO BOX 98</address>
 	<record>
 		<name>State Farm Insurance</name>
 		<type>Business</type>
-		<address>604 WATER ST
-PO BOX 100</address>
+		<address>604 WATER ST, PO BOX 100</address>
 		<city>PRAIRIE DU SAC</city>
 		<state>WI</state>
 		<zip>53578-1027</zip>
@@ -5256,12 +4959,9 @@ PO BOX 100</address>
 		<old_id>1000583</old_id>
 	</record>
 	<record>
-		<name>Steve's Auto Service, Inc.</name>
+		<name>Steve's Auto Service</name>
 		<type>Business</type>
-		<address>60 W MAIN ST</address>
-		<city>REEDSBURG</city>
-		<state>WI</state>
-		<zip>53959-1558</zip>
+		<address/>
 		<old_id>703</old_id>
 	</record>
 	<record>
@@ -5319,12 +5019,9 @@ PO BOX 100</address>
 		<old_id>711</old_id>
 	</record>
 	<record>
-		<name>Surgical Associates, LLP</name>
+		<name>Surgical Associates</name>
 		<type>Business</type>
-		<address>260 26th Street</address>
-		<city>Prairie du Sac</city>
-		<state>WI</state>
-		<zip>53578</zip>
+		<address/>
 		<old_id>713</old_id>
 	</record>
 	<record>
@@ -5364,12 +5061,9 @@ PO BOX 100</address>
 		<old_id>717</old_id>
 	</record>
 	<record>
-		<name>Taylor, Stewart Jr. MD</name>
+		<name>Taylor</name>
 		<type>Business</type>
-		<address>212 W HOWARD ST</address>
-		<city>PORTAGE</city>
-		<state>WI</state>
-		<zip>53901-1735</zip>
+		<address/>
 		<old_id>719</old_id>
 	</record>
 	<record>
@@ -5430,8 +5124,7 @@ PO BOX 100</address>
 	<record>
 		<name>The Press Box</name>
 		<type>Business</type>
-		<address>P.O. Box 93
-809 Water St.</address>
+		<address>P.O. Box 93, 809 Water St.</address>
 		<city>Sauk City</city>
 		<state>WI</state>
 		<zip>53583-0093</zip>
@@ -5489,8 +5182,7 @@ PO BOX 100</address>
 	<record>
 		<name>Tim Schmidt Insurance</name>
 		<type>Business</type>
-		<address>P.O. Box 26
-121 W. Cook St.</address>
+		<address>P.O. Box 26, 121 W. Cook St.</address>
 		<city>Portage</city>
 		<state>WI</state>
 		<zip>53901</zip>
@@ -5506,12 +5198,9 @@ PO BOX 100</address>
 		<old_id>1000442</old_id>
 	</record>
 	<record>
-		<name>TLC Learning Center, Inc.</name>
+		<name>TLC Learning Center</name>
 		<type>Business</type>
-		<address>N1544 SUNSET DR</address>
-		<city>LODI</city>
-		<state>WI</state>
-		<zip>53555-9442</zip>
+		<address/>
 		<old_id>738</old_id>
 	</record>
 	<record>
@@ -5551,12 +5240,9 @@ PO BOX 100</address>
 		<old_id>743</old_id>
 	</record>
 	<record>
-		<name>Trans Works Transmission, LLC</name>
+		<name>Trans Works Transmission</name>
 		<type>Business</type>
-		<address>3025 Cty. Rd. CX</address>
-		<city>Portage</city>
-		<state>WI</state>
-		<zip>53901-9269</zip>
+		<address/>
 		<old_id>745</old_id>
 	</record>
 	<record>
@@ -5571,8 +5257,7 @@ PO BOX 100</address>
 	<record>
 		<name>Trecek Automotive of Portage</name>
 		<type>Business</type>
-		<address>P.O. Box 540
-1350 E. Wisconsin St.</address>
+		<address>P.O. Box 540, 1350 E. Wisconsin St.</address>
 		<city>Portage</city>
 		<state>WI</state>
 		<zip>53901</zip>
@@ -5597,12 +5282,9 @@ PO BOX 100</address>
 		<old_id>749</old_id>
 	</record>
 	<record>
-		<name>TURNER OIL CO., INC.</name>
+		<name>TURNER OIL CO.</name>
 		<type>Business</type>
-		<address>PO BOX 185</address>
-		<city>BARABOO</city>
-		<state>WI</state>
-		<zip>53913-0185</zip>
+		<address/>
 		<old_id>751</old_id>
 	</record>
 	<record>
@@ -5617,8 +5299,7 @@ PO BOX 100</address>
 	<record>
 		<name>U.S. Bank Wisconsin</name>
 		<type>Business</type>
-		<address>P.O. Box 568
-238 W. Wisconsin St.</address>
+		<address>P.O. Box 568, 238 W. Wisconsin St.</address>
 		<city>Portage</city>
 		<state>WI</state>
 		<zip>53901</zip>
@@ -5627,8 +5308,7 @@ PO BOX 100</address>
 	<record>
 		<name>Unimin Corporation</name>
 		<type>Business</type>
-		<address>P.O. Box 508
-W8375 Hwy 51</address>
+		<address>P.O. Box 508, W8375 Hwy 51</address>
 		<city>Portage</city>
 		<state>WI</state>
 		<zip>53901</zip>
@@ -5653,12 +5333,9 @@ W8375 Hwy 51</address>
 		<old_id>759</old_id>
 	</record>
 	<record>
-		<name>UTG, Inc.</name>
+		<name>UTG</name>
 		<type>Business</type>
-		<address>815 Phillips Blvd.</address>
-		<city>Sauk City</city>
-		<state>WI</state>
-		<zip>53583-1313</zip>
+		<address/>
 		<old_id>760</old_id>
 	</record>
 	<record>
@@ -5700,8 +5377,7 @@ W8375 Hwy 51</address>
 	<record>
 		<name>Vernon Sales Promotion</name>
 		<type>Business</type>
-		<address>S3258 LAKE VIRGINIA RD
-PO BOX 311</address>
+		<address>S3258 LAKE VIRGINIA RD, PO BOX 311</address>
 		<city>REEDSBURG</city>
 		<state>WI</state>
 		<zip>53959-9577</zip>
@@ -5717,20 +5393,15 @@ PO BOX 311</address>
 		<old_id>766</old_id>
 	</record>
 	<record>
-		<name>Vierbicher Associates, Inc.</name>
+		<name>Vierbicher Associates</name>
 		<type>Business</type>
-		<address>400 VIKING DR
-PO BOX 379</address>
-		<city>REEDSBURG</city>
-		<state>WI</state>
-		<zip>53959-1466</zip>
+		<address/>
 		<old_id>767</old_id>
 	</record>
 	<record>
 		<name>Viking Express</name>
 		<type>Business</type>
-		<address>PO BOX 350
-1375 E. Main Street</address>
+		<address>PO BOX 350, 1375 E. Main Street</address>
 		<city>REEDSBURG</city>
 		<state>WI</state>
 		<zip>53959-0350</zip>
@@ -5794,10 +5465,7 @@ PO BOX 379</address>
 	<record>
 		<name>Waddell &amp; Reed</name>
 		<type>Business</type>
-		<address>311 E. Wisconsin St.., Ste. 109</address>
-		<city>Portage</city>
-		<state>WI</state>
-		<zip>53901</zip>
+		<address>311 E. Wisconsin St..</address>
 		<old_id>775</old_id>
 	</record>
 	<record>
@@ -5848,8 +5516,7 @@ PO BOX 379</address>
 	<record>
 		<name>WBKY/WIBU/WNNO/WDLS</name>
 		<type>Business</type>
-		<address>PO BOX 448
-1420 E. Wisconsin St.</address>
+		<address>PO BOX 448, 1420 E. Wisconsin St.</address>
 		<city>PORTAGE</city>
 		<state>WI</state>
 		<zip>53901-0448</zip>
@@ -5893,12 +5560,9 @@ PO BOX 379</address>
 		<old_id>1000576</old_id>
 	</record>
 	<record>
-		<name>Wegner CPAS, LLP</name>
+		<name>Wegner CPAS</name>
 		<type>Business</type>
-		<address>PO BOX 150</address>
-		<city>BARABOO</city>
-		<state>WI</state>
-		<zip>53913-0150</zip>
+		<address/>
 		<old_id>787</old_id>
 	</record>
 	<record>
@@ -5920,12 +5584,9 @@ PO BOX 379</address>
 		<old_id>789</old_id>
 	</record>
 	<record>
-		<name>Weix, Faith</name>
+		<name>Weix</name>
 		<type>Business</type>
-		<address>W7881 North Star Rd.</address>
-		<city>Pardeeville</city>
-		<state>WI</state>
-		<zip>53954</zip>
+		<address/>
 		<old_id>790</old_id>
 	</record>
 	<record>
@@ -5958,20 +5619,16 @@ PO BOX 379</address>
 	<record>
 		<name>Wheel City Inc</name>
 		<type>Business</type>
-		<address>PO BOX 346
-548 S Albert Ave.</address>
+		<address>PO BOX 346, 548 S Albert Ave.</address>
 		<city>REEDSBURG</city>
 		<state>WI</state>
 		<zip>53959-0346</zip>
 		<old_id>794</old_id>
 	</record>
 	<record>
-		<name>Wieser Concrete Products, Inc</name>
+		<name>Wieser Concrete Products</name>
 		<type>Business</type>
-		<address>2815 Riley Rd.</address>
-		<city>Portage</city>
-		<state>WI</state>
-		<zip>53901</zip>
+		<address/>
 		<old_id>796</old_id>
 	</record>
 	<record>
@@ -6031,12 +5688,9 @@ PO BOX 379</address>
 		<old_id>1000608</old_id>
 	</record>
 	<record>
-		<name>Wisconsin River Title, LLC</name>
+		<name>Wisconsin River Title</name>
 		<type>Business</type>
-		<address>115 West Conant Street</address>
-		<city>Portage</city>
-		<state>WI</state>
-		<zip>53901-2128</zip>
+		<address/>
 		<old_id>804</old_id>
 	</record>
 	<record>
@@ -6060,8 +5714,7 @@ PO BOX 379</address>
 	<record>
 		<name>WPDR/WDDC Radio</name>
 		<type>Business</type>
-		<address>P.O. Box 448
-N6912 Hwy 51 S.</address>
+		<address>P.O. Box 448, N6912 Hwy 51 S.</address>
 		<city>Portage</city>
 		<state>WI</state>
 		<zip>53901</zip>
@@ -6095,23 +5748,15 @@ N6912 Hwy 51 S.</address>
 		<old_id>811</old_id>
 	</record>
 	<record>
-		<name>Zimmerman Plumbing, Inc</name>
+		<name>Zimmerman Plumbing</name>
 		<type>Business</type>
-		<address>PO Box 117
-303 E. Albert St.</address>
-		<city>Portage</city>
-		<state>WI</state>
-		<zip>53901</zip>
+		<address/>
 		<old_id>812</old_id>
 	</record>
 	<record>
 		<name>Zimmerman PromotionZ</name>
 		<type>Business</type>
-		<address>P.O. Box 857
-104 W. Cook ST, Suite 102</address>
-		<city>Portage</city>
-		<state>WI</state>
-		<zip>53901</zip>
+		<address>P.O. Box 857, 104 W. Cook ST</address>
 		<old_id>813</old_id>
 	</record>
 	<record>
@@ -6125,12 +5770,9 @@ N6912 Hwy 51 S.</address>
 		<old_id>814</old_id>
 	</record>
 	<record>
-		<name>Downtown Baraboo, Inc.</name>
+		<name>Downtown Baraboo</name>
 		<type>Business</type>
-		<address>PO BOX 317</address>
-		<city>BARABOO</city>
-		<state>WI</state>
-		<zip>53913-0317</zip>
+		<address/>
 		<old_id>817</old_id>
 	</record>
 	<record>
@@ -6155,12 +5797,11 @@ N6912 Hwy 51 S.</address>
 	<record>
 		<name>Bank of Prairie du Sac</name>
 		<type>Business</type>
-		<address>555 Park Avenue
-PO Box 130</address>
+		<address>555 Park Avenue, PO Box 130</address>
 		<city>Prairie du Sac</city>
 		<state>WI</state>
 		<zip>53578</zip>
-		<notes>Note - there is also an account for the other branch of this bank, and some donations are noted there.  But this appears to be the \primary\" branch."</notes>
+		<notes>Note - there is also an account for the other branch of this bank</notes>
 		<old_id>820</old_id>
 		<email>byanke@bankpds.com</email>
 	</record>
@@ -6192,23 +5833,15 @@ PO Box 130</address>
 		<old_id>823</old_id>
 	</record>
 	<record>
-		<name>CROSS, JENKS, MERCER, AND MAFFEI</name>
+		<name>CROSS</name>
 		<type>Business</type>
-		<address>PO BOX 556
-221 3rd AVENUE</address>
-		<city>BARABOO</city>
-		<state>WI</state>
-		<zip>53913</zip>
-		<phone>6083563981</phone>
+		<address/>
 		<old_id>824</old_id>
 	</record>
 	<record>
-		<name>Edge of Dells, Inc.</name>
+		<name>Edge of Dells</name>
 		<type>Business</type>
-		<address>PO Box 237</address>
-		<city>Wisconsin Dells</city>
-		<state>WI</state>
-		<zip>53965</zip>
+		<address/>
 		<old_id>825</old_id>
 	</record>
 	<record>
@@ -6221,22 +5854,15 @@ PO Box 130</address>
 		<old_id>1000235</old_id>
 	</record>
 	<record>
-		<name>Premier Windows, LLC</name>
+		<name>Premier Windows</name>
 		<type>Business</type>
-		<address>1205 3RD ST</address>
-		<city>REEDSBURG</city>
-		<state>WI</state>
-		<zip>53959-1412</zip>
+		<address/>
 		<old_id>827</old_id>
 	</record>
 	<record>
-		<name>Moy, Borchert, Erbs &amp; Assoc, LLP</name>
+		<name>Moy</name>
 		<type>Business</type>
-		<address>P. O. Box 163
-210 8th Ave.</address>
-		<city>Baraboo</city>
-		<state>WI</state>
-		<zip>53913</zip>
+		<address/>
 		<old_id>828</old_id>
 	</record>
 	<record>
@@ -6282,9 +5908,7 @@ PO Box 130</address>
 		<name>Bierman Construction &amp; Remodeling LLC</name>
 		<type>Business</type>
 		<address>207 N. Main St.</address>
-		<city>Pardeeville, WI</city>
-		<state>WI</state>
-		<zip>53954</zip>
+		<city>Pardeeville</city>
 		<old_id>836</old_id>
 	</record>
 	<record>
@@ -6325,12 +5949,9 @@ PO Box 130</address>
 		<old_id>1000489</old_id>
 	</record>
 	<record>
-		<name>Casey Construction, Inc</name>
+		<name>Casey Construction</name>
 		<type>Business</type>
-		<address>W7126 W. Bush Rd</address>
-		<city>Pardeeville</city>
-		<state>WI</state>
-		<zip>53954</zip>
+		<address/>
 		<old_id>842</old_id>
 	</record>
 	<record>
@@ -6361,30 +5982,21 @@ PO Box 130</address>
 		<old_id>845</old_id>
 	</record>
 	<record>
-		<name>DJ Custom Framing, Inc</name>
+		<name>DJ Custom Framing</name>
 		<type>Business</type>
-		<address>W8370 State Road 33</address>
-		<city>Portage</city>
-		<state>WI</state>
-		<zip>53901</zip>
+		<address/>
 		<old_id>846</old_id>
 	</record>
 	<record>
 		<name>The QTI Group</name>
 		<type>Business</type>
-		<address>S4066 Hwy 12, Ste. 3</address>
-		<city>Baraboo</city>
-		<state>WI</state>
-		<zip>53913</zip>
+		<address>S4066 Hwy 12</address>
 		<old_id>899</old_id>
 	</record>
 	<record>
-		<name>Eagle Carpentry, Inc</name>
+		<name>Eagle Carpentry</name>
 		<type>Business</type>
-		<address>548 SYCAMORE ST</address>
-		<city>SAUK CITY</city>
-		<state>WI</state>
-		<zip>53583-1318</zip>
+		<address/>
 		<old_id>850</old_id>
 	</record>
 	<record>
@@ -6397,22 +6009,15 @@ PO Box 130</address>
 		<old_id>851</old_id>
 	</record>
 	<record>
-		<name>Gaffney Electric Company, Inc</name>
+		<name>Gaffney Electric Company</name>
 		<type>Business</type>
-		<address>1897 Broadway</address>
-		<city>Wisconsin Dells</city>
-		<state>WI</state>
-		<zip>53965</zip>
+		<address/>
 		<old_id>852</old_id>
 	</record>
 	<record>
-		<name>Ganser Construction, Inc</name>
+		<name>Ganser Construction</name>
 		<type>Business</type>
-		<address>1900 PRAIRIE ST</address>
-		<city>PRAIRIE DU SAC</city>
-		<state>WI</state>
-		<zip>53578-1146</zip>
-		<notes>restore donation 11-28-2012</notes>
+		<address/>
 		<old_id>853</old_id>
 	</record>
 	<record>
@@ -6463,12 +6068,9 @@ PO Box 130</address>
 		<email>jillian@dellsmoosejaw.com</email>
 	</record>
 	<record>
-		<name>LMS Construction, Inc</name>
+		<name>LMS Construction</name>
 		<type>Business</type>
-		<address>W7550 State Rd 16</address>
-		<city>Pardeeville</city>
-		<state>WI</state>
-		<zip>53954</zip>
+		<address/>
 		<old_id>861</old_id>
 	</record>
 	<record>
@@ -6491,12 +6093,9 @@ PO Box 130</address>
 		<old_id>1000516</old_id>
 	</record>
 	<record>
-		<name>Lins Construction, Inc</name>
+		<name>Lins Construction</name>
 		<type>Business</type>
-		<address>P.O. Box 173</address>
-		<city>Prairie du Sac</city>
-		<state>WI</state>
-		<zip>53578</zip>
+		<address/>
 		<old_id>866</old_id>
 	</record>
 	<record>
@@ -6555,19 +6154,15 @@ PO Box 130</address>
 		<old_id>876</old_id>
 	</record>
 	<record>
-		<name>Dr. Jennifer Kitson, D.D.S.</name>
+		<name>Dr. Jennifer Kitson</name>
 		<type>Business</type>
-		<address>764 CRESTVIEW DR</address>
-		<city>REEDSBURG</city>
-		<state>WI</state>
-		<zip>53959-2581</zip>
+		<address/>
 		<old_id>898</old_id>
 	</record>
 	<record>
 		<name>Central WI Community Action Council</name>
 		<type>Business</type>
-		<address>1000 Highway 13
-PO Box 430</address>
+		<address>1000 Highway 13, PO Box 430</address>
 		<city>Wisconsin Dells</city>
 		<state>WI</state>
 		<zip>53965</zip>
@@ -6593,21 +6188,15 @@ PO Box 430</address>
 		<old_id>880</old_id>
 	</record>
 	<record>
-		<name>Royal Excavating, Inc</name>
+		<name>Royal Excavating</name>
 		<type>Business</type>
-		<address>N 9957 9th Ave</address>
-		<city>Wisconsin Dells</city>
-		<state>WI</state>
-		<zip>53965</zip>
+		<address/>
 		<old_id>881</old_id>
 	</record>
 	<record>
-		<name>S &amp; K Construction Co, Inc</name>
+		<name>S &amp; K Construction Co</name>
 		<type>Business</type>
-		<address>4014 Shadows Court</address>
-		<city>DeForest</city>
-		<state>WI</state>
-		<zip>53532</zip>
+		<address/>
 		<old_id>882</old_id>
 	</record>
 	<record>
@@ -6638,12 +6227,9 @@ PO Box 430</address>
 		<old_id>886</old_id>
 	</record>
 	<record>
-		<name>Verthein JA Construction Co, Inc</name>
+		<name>Verthein JA Construction Co</name>
 		<type>Business</type>
-		<address>342 INVERNESS TERRACE CT</address>
-		<city>BARABOO</city>
-		<state>WI</state>
-		<zip>53913-2900</zip>
+		<address/>
 		<old_id>888</old_id>
 	</record>
 	<record>
@@ -6730,17 +6316,13 @@ PO Box 430</address>
 	<record>
 		<name>Hawthorne Ridge Builders Inc.</name>
 		<type>Business</type>
-		<address>9715 North 93rd Way, Unit 250</address>
-		<city>Scottsdale</city>
-		<state>AZ</state>
-		<zip>85258</zip>
+		<address>9715 North 93rd Way</address>
 		<old_id>1000007</old_id>
 	</record>
 	<record>
 		<name>Home Depot</name>
 		<type>Business</type>
-		<address>P.O. 640
-136 Commerce St.</address>
+		<address>P.O. 640, 136 Commerce St.</address>
 		<city>Lake Delton</city>
 		<state>WI</state>
 		<zip>53940</zip>
@@ -6933,12 +6515,9 @@ PO Box 430</address>
 		<old_id>1000255</old_id>
 	</record>
 	<record>
-		<name>Buckhorn Property Owners, Assoc.</name>
+		<name>Buckhorn Property Owners</name>
 		<type>Business</type>
-		<address>S3102 BUCKHORN RD</address>
-		<city>REEDSBURG</city>
-		<state>WI</state>
-		<zip>53959-9622</zip>
+		<address/>
 		<old_id>1000039</old_id>
 	</record>
 	<record>
@@ -6952,13 +6531,9 @@ PO Box 430</address>
 		<old_id>1000598</old_id>
 	</record>
 	<record>
-		<name>Lake Delton Water Sports, Inc.</name>
+		<name>Lake Delton Water Sports</name>
 		<type>Business</type>
-		<address>Steven M. or Katherine A. Zowin
-PO Box 366</address>
-		<city>Lake Delton</city>
-		<state>WI</state>
-		<zip>53940</zip>
+		<address/>
 		<old_id>1000610</old_id>
 	</record>
 	<record>
@@ -6973,7 +6548,7 @@ PO Box 366</address>
 	<record>
 		<name>Al  Ringling Theatre</name>
 		<type>Business</type>
-		<address>0</address>
+		<address/>
 		<city>Baraboo</city>
 		<state>WI</state>
 		<zip>53913</zip>
@@ -7038,12 +6613,11 @@ PO Box 366</address>
 	<record>
 		<name>Kraemer Company LLC</name>
 		<type>Business</type>
-		<address>925 PARK AVE
-PO Box 235</address>
+		<address>925 PARK AVE, PO Box 235</address>
 		<city>PLAIN</city>
 		<state>WI</state>
 		<zip>53577-9686</zip>
-		<notes>In 2011, donated hard hats, safety goggles, and a couple sinks and toilets to us.</notes>
+		<notes>In 2011</notes>
 		<old_id>1000050</old_id>
 	</record>
 	<record>
@@ -7130,12 +6704,9 @@ PO Box 235</address>
 		<email>tmcimprovements@hotmail.com</email>
 	</record>
 	<record>
-		<name>Stonecliff, LLC</name>
+		<name>Stonecliff</name>
 		<type>Business</type>
-		<address>PO Box 410</address>
-		<city>Wisconsin Dells</city>
-		<state>WI</state>
-		<zip>53965</zip>
+		<address/>
 		<old_id>1000059</old_id>
 	</record>
 	<record>
@@ -7148,21 +6719,15 @@ PO Box 235</address>
 		<old_id>1000060</old_id>
 	</record>
 	<record>
-		<name>Standrock, LLC</name>
+		<name>Standrock</name>
 		<type>Business</type>
-		<address>PO BOX 1767</address>
-		<city>MADISON</city>
-		<state>WI</state>
-		<zip>53701-1767</zip>
+		<address/>
 		<old_id>1000061</old_id>
 	</record>
 	<record>
-		<name>Timber Mountain, LLC</name>
+		<name>Timber Mountain</name>
 		<type>Business</type>
-		<address>PO BOX 1767</address>
-		<city>MADISON</city>
-		<state>WI</state>
-		<zip>53701-1767</zip>
+		<address/>
 		<old_id>1000062</old_id>
 	</record>
 	<record>
@@ -7184,12 +6749,9 @@ PO Box 235</address>
 		<old_id>1000064</old_id>
 	</record>
 	<record>
-		<name>NLS, LLC</name>
+		<name>NLS</name>
 		<type>Business</type>
-		<address>PO Box 590</address>
-		<city>Wisconsin Dells</city>
-		<state>WI</state>
-		<zip>53965</zip>
+		<address/>
 		<old_id>1000065</old_id>
 	</record>
 	<record>
@@ -7213,7 +6775,7 @@ PO Box 235</address>
 	<record>
 		<name>Podolak Properties LLC</name>
 		<type>Business</type>
-		<address>0</address>
+		<address/>
 		<state>WI</state>
 		<zip>53913-1626</zip>
 		<notes>12/13 retrn ml not able to forward deleted address</notes>
@@ -7793,10 +7355,7 @@ PO Box 235</address>
 	<record>
 		<name>Dells One LLC</name>
 		<type>Business</type>
-		<address>2248 Deming Way, #200</address>
-		<city>Middleton</city>
-		<state>WI</state>
-		<zip>53562</zip>
+		<address>2248 Deming Way</address>
 		<old_id>1000136</old_id>
 	</record>
 	<record>
@@ -7907,19 +7466,18 @@ PO Box 235</address>
 		<zip>53581-2354</zip>
 		<phone>6086474949Ext305</phone>
 		<contact_name>Terry Testolin</contact_name>
-		<notes>A branch of NeighborWorks, another rural housing group.</notes>
+		<notes>A branch of NeighborWorks</notes>
 		<old_id>1000148</old_id>
 		<email>terry@nhsrcwi.org</email>
 	</record>
 	<record>
 		<name>Reedsburg Area United Fund</name>
 		<type>Business</type>
-		<address>PO Box 301
-c/o Jeannine Mueller</address>
+		<address>PO Box 301, c/o Jeannine Mueller</address>
 		<city>Reedsburg</city>
 		<state>WI</state>
 		<zip>53959</zip>
-		<notes>In 2011, they gave us $375.</notes>
+		<notes>In 2011</notes>
 		<old_id>1000149</old_id>
 	</record>
 	<record>
@@ -7988,10 +7546,7 @@ c/o Jeannine Mueller</address>
 	<record>
 		<name>JEWISH COMMUNITY CENTERS</name>
 		<type>Business</type>
-		<address>30 SOUTH WELLS STREET, SUITE 4000</address>
-		<city>CHICAGO</city>
-		<state>IL</state>
-		<zip>60606</zip>
+		<address>30 SOUTH WELLS STREET</address>
 		<old_id>1000157</old_id>
 	</record>
 	<record>
@@ -8043,7 +7598,7 @@ c/o Jeannine Mueller</address>
 	<record>
 		<name>Pfaff Rentals</name>
 		<type>Business</type>
-		<address>0</address>
+		<address/>
 		<city>Sauk City</city>
 		<state>WI</state>
 		<zip>53805</zip>
@@ -8152,7 +7707,7 @@ c/o Jeannine Mueller</address>
 	<record>
 		<name>Andersen Electric</name>
 		<type>Business</type>
-		<address>0</address>
+		<address/>
 		<city>Portage</city>
 		<state>WI</state>
 		<contact_name>Al</contact_name>
@@ -8188,13 +7743,12 @@ c/o Jeannine Mueller</address>
 	<record>
 		<name>Sauk Prairie School District</name>
 		<type>Business</type>
-		<address>c/o Troy Talford - FFA Teacher
-105 9th Street</address>
+		<address>c/o Troy Talford - FFA Teacher, 105 9th Street</address>
 		<city>Prairie du Sac</city>
 		<state>WI</state>
 		<zip>53578</zip>
 		<phone>6086435900</phone>
-		<notes>In 2011, the FFA joined with Culver's selling calendars and gave us the money.</notes>
+		<notes>In 2011</notes>
 		<old_id>1000181</old_id>
 	</record>
 	<record>
@@ -8206,7 +7760,7 @@ c/o Jeannine Mueller</address>
 		<zip>53913-9293</zip>
 		<phone>6084482215</phone>
 		<contact_name>Mary Dressen</contact_name>
-		<notes>In 2011,  manage Mary Dressen, offered food for workers on build days.</notes>
+		<notes>In 2011</notes>
 		<old_id>1000182</old_id>
 		<email>baraboopr@pizzaranchbr.com</email>
 	</record>
@@ -8328,14 +7882,9 @@ c/o Jeannine Mueller</address>
 		<old_id>1000197</old_id>
 	</record>
 	<record>
-		<name>Baker Real Estate, LLC</name>
+		<name>Baker Real Estate</name>
 		<type>Business</type>
-		<address>921 Canyon Road</address>
-		<city>Wisconsin Dells</city>
-		<state>WI</state>
-		<zip>53965</zip>
-		<phone>6082548406</phone>
-		<contact_name>Dawn Baker</contact_name>
+		<address/>
 		<old_id>1000198</old_id>
 	</record>
 	<record>
@@ -8419,7 +7968,7 @@ c/o Jeannine Mueller</address>
 		<state>WI</state>
 		<zip>53913-2037</zip>
 		<phone>6084770123</phone>
-		<contact_name>Norb, Cindy or Tim Moy</contact_name>
+		<contact_name>Norb</contact_name>
 		<old_id>1000605</old_id>
 	</record>
 	<record>
@@ -8623,17 +8172,10 @@ c/o Jeannine Mueller</address>
 		<old_id>1000273</old_id>
 	</record>
 	<record>
-		<name>Helping Hands Recycling, LLC</name>
+		<name>Helping Hands Recycling</name>
 		<type>Business</type>
-		<address>PO Box 654</address>
-		<city>Reedsburg</city>
-		<state>WI</state>
-		<zip>53959</zip>
-		<phone>6082138629</phone>
-		<contact_name>David Bingham</contact_name>
-		<notes>Did a fundraiser for us in May, 2011</notes>
+		<address/>
 		<old_id>1000274</old_id>
-		<email>helpinghandsrecycling@gmail.com</email>
 	</record>
 	<record>
 		<name>Leatherberry Enterprises</name>
@@ -8644,7 +8186,7 @@ c/o Jeannine Mueller</address>
 		<zip>53913</zip>
 		<phone>6089631120</phone>
 		<contact_name>Tyler Leatherberry</contact_name>
-		<notes>In 2011, donated $1000 in materials and labor to the Holmes' home in Baraboo</notes>
+		<notes>In 2011</notes>
 		<old_id>1000275</old_id>
 		<email>rednaexl@centurylink.net</email>
 	</record>
@@ -8660,8 +8202,7 @@ c/o Jeannine Mueller</address>
 	<record>
 		<name>Thrivent Financial for Lutherans Chapter</name>
 		<type>Business</type>
-		<address>Columbia County Chapter
-N4121 County Road J</address>
+		<address>Columbia County Chapter, N4121 County Road J</address>
 		<city>Poynette</city>
 		<state>WI</state>
 		<zip>53955-9760</zip>
@@ -8915,12 +8456,9 @@ N4121 County Road J</address>
 		<old_id>1000304</old_id>
 	</record>
 	<record>
-		<name>EVEN PAR PROP &amp; NEWCOMER, S&amp;D</name>
+		<name>EVEN PAR PROP &amp; NEWCOMER</name>
 		<type>Business</type>
-		<address>12120 187TH AVE</address>
-		<city>BRISTOL</city>
-		<state>WI</state>
-		<zip>53104-9229</zip>
+		<address/>
 		<old_id>1000305</old_id>
 	</record>
 	<record>
@@ -9014,14 +8552,9 @@ N4121 County Road J</address>
 		<old_id>1000315</old_id>
 	</record>
 	<record>
-		<name>C &amp; D Seamless Gutters, Inc</name>
+		<name>C &amp; D Seamless Gutters</name>
 		<type>Business</type>
-		<address>W9011 Hilltop Road</address>
-		<city>Portage</city>
-		<state>WI</state>
-		<zip>53901</zip>
-		<phone>6087427530</phone>
-		<notes>Donated labor to install Gutters and downspouts at Silver Drive - Baraboo Build</notes>
+		<address/>
 		<old_id>1000316</old_id>
 	</record>
 	<record>
@@ -9054,7 +8587,7 @@ N4121 County Road J</address>
 	<record>
 		<name>Devil's Lake Park</name>
 		<type>Business</type>
-		<address>0</address>
+		<address/>
 		<city>Baraboo</city>
 		<state>WI</state>
 		<zip>53913</zip>
@@ -9270,13 +8803,9 @@ N4121 County Road J</address>
 		<old_id>1000343</old_id>
 	</record>
 	<record>
-		<name>Wyndham Vacation Resorts, Inc.</name>
+		<name>Wyndham Vacation Resorts</name>
 		<type>Business</type>
-		<address>PO Box 574
-45 Hillman Road</address>
-		<city>Lake Delton</city>
-		<state>WI</state>
-		<zip>53940-0574</zip>
+		<address/>
 		<old_id>1000344</old_id>
 	</record>
 	<record>
@@ -9417,10 +8946,7 @@ N4121 County Road J</address>
 	<record>
 		<name>Kalkon LLC</name>
 		<type>Business</type>
-		<address>6767 Frank Lloyd Wright Avenue, Apt. 301</address>
-		<city>Middleton</city>
-		<state>WI</state>
-		<zip>53562</zip>
+		<address>6767 Frank Lloyd Wright Avenue</address>
 		<old_id>1000360</old_id>
 	</record>
 	<record>
@@ -9446,8 +8972,7 @@ N4121 County Road J</address>
 	<record>
 		<name>Circle Homemakers of Caledonia Township</name>
 		<type>Business</type>
-		<address>Attn: Nancy Wehlage
-W11159 Pigtail Alley</address>
+		<address>Attn: Nancy Wehlage, W11159 Pigtail Alley</address>
 		<city>Portage</city>
 		<state>WI</state>
 		<zip>53901</zip>
@@ -9745,14 +9270,9 @@ W11159 Pigtail Alley</address>
 		<old_id>1000586</old_id>
 	</record>
 	<record>
-		<name>DJ Dietz Designs, LLC</name>
+		<name>DJ Dietz Designs</name>
 		<type>Business</type>
-		<address>26 East Main Street</address>
-		<city>Reedsburg</city>
-		<state>WI</state>
-		<zip>53959</zip>
-		<phone>6085244899</phone>
-		<contact_name>Dan Dietz</contact_name>
+		<address/>
 		<old_id>1000587</old_id>
 	</record>
 	<record>
@@ -10168,13 +9688,9 @@ W11159 Pigtail Alley</address>
 		<old_id>1000450</old_id>
 	</record>
 	<record>
-		<name>Kwik Trip, Inc</name>
+		<name>Kwik Trip</name>
 		<type>Business</type>
-		<address>P.O. Box 2107
-1626 Oak Street</address>
-		<city>LaCrosse</city>
-		<state>WI</state>
-		<zip>54602</zip>
+		<address/>
 		<old_id>1000463</old_id>
 	</record>
 	<record>
@@ -10190,8 +9706,7 @@ W11159 Pigtail Alley</address>
 	<record>
 		<name>Baraboo United Fund</name>
 		<type>Business</type>
-		<address>
-PO Box 290</address>
+		<address>PO Box 290</address>
 		<city>Baraboo</city>
 		<state>WI</state>
 		<zip>53913</zip>
@@ -10199,7 +9714,7 @@ PO Box 290</address>
 	</record>
 	<record>
 		<type>Business</type>
-		<address>0</address>
+		<address/>
 		<old_id>1000509</old_id>
 	</record>
 	<record>
@@ -10213,13 +9728,9 @@ PO Box 290</address>
 		<old_id>1000481</old_id>
 	</record>
 	<record>
-		<name>Gold Star Machine, Inc</name>
+		<name>Gold Star Machine</name>
 		<type>Business</type>
-		<address>E11211 STATE ROAD 159</address>
-		<city>BARABOO</city>
-		<state>WI</state>
-		<zip>53913-9228</zip>
-		<contact_name>Brian H. Woodbury</contact_name>
+		<address/>
 		<old_id>1000483</old_id>
 	</record>
 	<record>
@@ -10300,12 +9811,9 @@ PO Box 290</address>
 		<old_id>1000495</old_id>
 	</record>
 	<record>
-		<name>Kirchberg Repair, Inc.</name>
+		<name>Kirchberg Repair</name>
 		<type>Business</type>
-		<address>N3155 STATE ROAD 73</address>
-		<city>COLUMBUS</city>
-		<state>WI</state>
-		<zip>53925-9312</zip>
+		<address/>
 		<old_id>1000496</old_id>
 	</record>
 	<record>
@@ -10319,25 +9827,21 @@ PO Box 290</address>
 		<old_id>1000497</old_id>
 	</record>
 	<record>
-		<name>Keiths Recycling, Inc</name>
+		<name>Keiths Recycling</name>
 		<type>Business</type>
-		<address>1030 Silver Lake Drive</address>
-		<city>Portage</city>
-		<state>WI</state>
-		<zip>53901</zip>
+		<address/>
 		<old_id>1000498</old_id>
 	</record>
 	<record>
 		<name>elect</name>
 		<type>Business</type>
-		<address>0</address>
+		<address/>
 		<old_id>1000499</old_id>
 	</record>
 	<record>
 		<name>Knuckleheads</name>
 		<type>Business</type>
-		<address>150 Gasser Road
-P.O. Box 298</address>
+		<address>150 Gasser Road, P.O. Box 298</address>
 		<city>Wisconsin Dells</city>
 		<state>WI</state>
 		<zip>53965</zip>
@@ -10373,7 +9877,7 @@ P.O. Box 298</address>
 	<record>
 		<name>bush</name>
 		<type>Business</type>
-		<address>0</address>
+		<address/>
 		<old_id>1000504</old_id>
 	</record>
 	<record>
@@ -10404,13 +9908,9 @@ P.O. Box 298</address>
 		<old_id>1000507</old_id>
 	</record>
 	<record>
-		<name>Culver's VIP Foundation, Inc.</name>
+		<name>Culver's VIP Foundation</name>
 		<type>Business</type>
-		<address>1240 Water Street</address>
-		<city>Prairie du Sac</city>
-		<state>WI</state>
-		<zip>53578</zip>
-		<phone>6086437980</phone>
+		<address/>
 		<old_id>1000508</old_id>
 	</record>
 	<record>
@@ -10446,7 +9946,7 @@ P.O. Box 298</address>
 	<record>
 		<name>Nonns Flooring</name>
 		<type>Business</type>
-		<address>0</address>
+		<address/>
 		<city>Prairie du Sac</city>
 		<state>WI</state>
 		<notes>Store closed</notes>
@@ -10495,11 +9995,7 @@ P.O. Box 298</address>
 	<record>
 		<name>Farm Service Agency</name>
 		<type>Business</type>
-		<address>505 Broadway, Room 225</address>
-		<city>Baraboo</city>
-		<state>WI</state>
-		<zip>53913</zip>
-		<phone>6083554423</phone>
+		<address>505 Broadway</address>
 		<old_id>1000521</old_id>
 	</record>
 	<record>
@@ -10514,20 +10010,13 @@ P.O. Box 298</address>
 	<record>
 		<name>Alliant Energy Foundation</name>
 		<type>Business</type>
-		<address>4902 North Biltmore Lane, Suite 1000</address>
-		<city>Madison</city>
-		<state>WI</state>
-		<zip>53718</zip>
+		<address>4902 North Biltmore Lane</address>
 		<old_id>1000523</old_id>
 	</record>
 	<record>
-		<name>Glenville Timberwrights, Inc.</name>
+		<name>Glenville Timberwrights</name>
 		<type>Business</type>
-		<address>S5694 State Road 113</address>
-		<city>Baraboo</city>
-		<state>WI</state>
-		<zip>53913</zip>
-		<phone>6083559950</phone>
+		<address/>
 		<old_id>1000524</old_id>
 	</record>
 	<record>
@@ -10583,7 +10072,7 @@ P.O. Box 298</address>
 		<name>Clack Corporation</name>
 		<type>Business</type>
 		<address>4462 Duraform Lane</address>
-		<city>Windsor, WI 53598</city>
+		<city>Windsor</city>
 		<old_id>1000531</old_id>
 	</record>
 	<record>
@@ -10607,13 +10096,9 @@ P.O. Box 298</address>
 		<old_id>1000533</old_id>
 	</record>
 	<record>
-		<name>MBE, CPA</name>
+		<name>MBE</name>
 		<type>Business</type>
-		<address>201 Eighth Avenue</address>
-		<city>Baraboo</city>
-		<state>WI</state>
-		<zip>53913</zip>
-		<phone>6083562541</phone>
+		<address/>
 		<old_id>1000534</old_id>
 	</record>
 	<record>
@@ -10647,7 +10132,7 @@ P.O. Box 298</address>
 	</record>
 	<record>
 		<type>Business</type>
-		<address>0</address>
+		<address/>
 		<old_id>1000538</old_id>
 	</record>
 	<record>
@@ -10694,8 +10179,7 @@ P.O. Box 298</address>
 	<record>
 		<name>School District of Poynette</name>
 		<type>Business</type>
-		<address>108 North Cleveland Street
-PO Box 10</address>
+		<address>108 North Cleveland Street, PO Box 10</address>
 		<city>Poynette</city>
 		<state>WI</state>
 		<zip>53955</zip>
@@ -10752,10 +10236,7 @@ PO Box 10</address>
 	<record>
 		<name>Webster &amp; Sons Drilling</name>
 		<type>Business</type>
-		<address>415 North Main Street, Suite 3</address>
-		<city>Poynette</city>
-		<state>WI</state>
-		<zip>53955</zip>
+		<address>415 North Main Street</address>
 		<old_id>1000550</old_id>
 	</record>
 	<record>
@@ -10888,7 +10369,7 @@ PO Box 10</address>
 	<record>
 		<name>BARABOO WARMING SHELTER</name>
 		<type>Business</type>
-		<address>0</address>
+		<address/>
 		<phone>6084347599</phone>
 		<contact_name>MATT &amp; ROCHELLE FEARSON</contact_name>
 		<old_id>1000566</old_id>
@@ -10914,10 +10395,10 @@ PO Box 10</address>
 		<old_id>1000568</old_id>
 	</record>
 	<record>
-		<name>CATTAIL RETREAT</name>
+		<name>Cattail Retreat</name>
 		<type>Business</type>
-		<address>W9110 COUNTY ROAD CS</address>
-		<city>POYNETTE</city>
+		<address>W9110 County Road CS</address>
+		<city>Poynette</city>
 		<state>WI</state>
 		<zip>53955</zip>
 		<phone>6085924139</phone>
@@ -10934,21 +10415,15 @@ PO Box 10</address>
 		<old_id>1000570</old_id>
 	</record>
 	<record>
-		<name>CELLOX, LLC</name>
+		<name>CELLOX</name>
 		<type>Business</type>
-		<address>1200 INDUSTRIAL STREET</address>
-		<city>REEDSBURG</city>
-		<state>WI</state>
-		<zip>53959</zip>
-		<phone>6085242316x215</phone>
-		<contact_name>CANDICE SOLCHENBERGER</contact_name>
+		<address/>
 		<old_id>1000571</old_id>
 	</record>
 	<record>
 		<name>Springfield Warehouse</name>
 		<type>Business</type>
-		<address>
-7311 Darlin Drive</address>
+		<address>, 7311 Darlin Drive</address>
 		<city>Dane</city>
 		<state>WI</state>
 		<zip>53529</zip>
@@ -11001,13 +10476,9 @@ PO Box 10</address>
 		<old_id>1000578</old_id>
 	</record>
 	<record>
-		<name>Steven R. Pierick Agency, State Farm</name>
+		<name>Steven R. Pierick Agency</name>
 		<type>Business</type>
-		<address>618 US Highway 12</address>
-		<city>Baraboo</city>
-		<state>WI</state>
-		<zip>53913</zip>
-		<phone>6083552400</phone>
+		<address/>
 		<old_id>1000579</old_id>
 	</record>
 	<record>
@@ -11034,7 +10505,7 @@ PO Box 10</address>
 	<record>
 		<name>Reedsburg Schools</name>
 		<type>Business</type>
-		<address>0</address>
+		<address/>
 		<city>Reedsburg</city>
 		<state>WI</state>
 		<zip>53959</zip>
@@ -11044,16 +10515,10 @@ PO Box 10</address>
 		<old_id>1000619</old_id>
 	</record>
 	<record>
-		<name>DP Property Preservation, LLC</name>
+		<name>DP Property Preservation</name>
 		<type>Business</type>
-		<address>1009 Church St.</address>
-		<city>Wisconsin Dells</city>
-		<state>Wi</state>
-		<zip>53965</zip>
-		<phone>6083933037</phone>
-		<contact_name>Patrick Buck</contact_name>
+		<address/>
 		<old_id>1000620</old_id>
-		<email>dp_preservation@hotmail.com</email>
 	</record>
 	<record>
 		<name>Camp Lake Delton Club</name>
@@ -11068,8 +10533,7 @@ PO Box 10</address>
 	<record>
 		<name>Spirit Lake LLC</name>
 		<type>Business</type>
-		<address>
-E11714 Gall Road</address>
+		<address>, E11714 Gall Road</address>
 		<city>Baraboo</city>
 		<state>WI</state>
 		<zip>53913</zip>
@@ -11088,7 +10552,7 @@ E11714 Gall Road</address>
 	<record>
 		<name>US Cellular</name>
 		<type>Business</type>
-		<address>0</address>
+		<address/>
 		<phone>6086045451</phone>
 		<contact_name>Darren Hornby</contact_name>
 		<old_id>1000624</old_id>
@@ -11097,12 +10561,21 @@ E11714 Gall Road</address>
 	<record>
 		<name>Didion Milling</name>
 		<type>Business</type>
-		<address>0</address>
+		<address/>
 		<phone>9203486818</phone>
 		<contact_name>Shawn Dettman</contact_name>
-		<notes>www.didionmilling.com
-Interested in team-building activities</notes>
+		<notes>www.didionmilling.comInterested in team-building activities</notes>
 		<old_id>1000625</old_id>
 		<email>sdettman@didionmilling.com</email>
+	</record>
+	<record>
+		<name>River Bay</name>
+		<type>Business</type>
+		<address>W1147 RIVER BAY RD</address>
+		<city>LYNDON STATION</city>
+		<state>WI</state>
+		<zip>53944-9546</zip>
+		<phone>6082547193</phone>
+		<old_id>1000626</old_id>
 	</record>
 </data-set>
