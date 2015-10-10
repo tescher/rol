@@ -11,6 +11,60 @@ SET client_min_messages = warning;
 
 SET search_path = public, pg_catalog;
 
+ALTER TABLE ONLY public.donation_types DROP CONSTRAINT donation_types_pkey;
+ALTER TABLE public.donation_types ALTER COLUMN id DROP DEFAULT;
+DROP SEQUENCE public.donation_types_id_seq;
+DROP TABLE public.donation_types;
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: donation_types; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE donation_types (
+    id integer NOT NULL,
+    name character varying,
+    non_monetary boolean DEFAULT false NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    inactive boolean DEFAULT false NOT NULL
+);
+
+
+ALTER TABLE public.donation_types OWNER TO postgres;
+
+--
+-- Name: donation_types_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE donation_types_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.donation_types_id_seq OWNER TO postgres;
+
+--
+-- Name: donation_types_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE donation_types_id_seq OWNED BY donation_types.id;
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY donation_types ALTER COLUMN id SET DEFAULT nextval('donation_types_id_seq'::regclass);
+
+
 --
 -- Data for Name: donation_types; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -34,6 +88,14 @@ COPY donation_types (id, name, non_monetary, created_at, updated_at, inactive) F
 --
 
 SELECT pg_catalog.setval('donation_types_id_seq', 10, true);
+
+
+--
+-- Name: donation_types_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY donation_types
+    ADD CONSTRAINT donation_types_pkey PRIMARY KEY (id);
 
 
 --
