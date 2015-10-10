@@ -22,7 +22,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: interest_categories; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Name: interest_categories; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE interest_categories (
@@ -34,10 +34,8 @@ CREATE TABLE interest_categories (
 );
 
 
-ALTER TABLE public.interest_categories OWNER TO postgres;
-
 --
--- Name: interest_categories_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: interest_categories_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE interest_categories_id_seq
@@ -48,24 +46,22 @@ CREATE SEQUENCE interest_categories_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.interest_categories_id_seq OWNER TO postgres;
-
 --
--- Name: interest_categories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: interest_categories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE interest_categories_id_seq OWNED BY interest_categories.id;
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY interest_categories ALTER COLUMN id SET DEFAULT nextval('interest_categories_id_seq'::regclass);
 
 
 --
--- Data for Name: interest_categories; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: interest_categories; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY interest_categories (id, name, string, created_at, updated_at) FROM stdin;
@@ -78,14 +74,14 @@ COPY interest_categories (id, name, string, created_at, updated_at) FROM stdin;
 
 
 --
--- Name: interest_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: interest_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('interest_categories_id_seq', 8, true);
 
 
 --
--- Name: interest_categories_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- Name: interest_categories_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY interest_categories

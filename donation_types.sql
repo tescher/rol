@@ -22,7 +22,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: donation_types; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Name: donation_types; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE donation_types (
@@ -35,10 +35,8 @@ CREATE TABLE donation_types (
 );
 
 
-ALTER TABLE public.donation_types OWNER TO postgres;
-
 --
--- Name: donation_types_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: donation_types_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE donation_types_id_seq
@@ -49,24 +47,22 @@ CREATE SEQUENCE donation_types_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.donation_types_id_seq OWNER TO postgres;
-
 --
--- Name: donation_types_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: donation_types_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE donation_types_id_seq OWNED BY donation_types.id;
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY donation_types ALTER COLUMN id SET DEFAULT nextval('donation_types_id_seq'::regclass);
 
 
 --
--- Data for Name: donation_types; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: donation_types; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY donation_types (id, name, non_monetary, created_at, updated_at, inactive) FROM stdin;
@@ -84,14 +80,14 @@ COPY donation_types (id, name, non_monetary, created_at, updated_at, inactive) F
 
 
 --
--- Name: donation_types_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: donation_types_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('donation_types_id_seq', 10, true);
 
 
 --
--- Name: donation_types_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- Name: donation_types_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY donation_types

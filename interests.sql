@@ -22,7 +22,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: interests; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Name: interests; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE interests (
@@ -36,10 +36,8 @@ CREATE TABLE interests (
 );
 
 
-ALTER TABLE public.interests OWNER TO postgres;
-
 --
--- Name: interests_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: interests_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE interests_id_seq
@@ -50,24 +48,22 @@ CREATE SEQUENCE interests_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.interests_id_seq OWNER TO postgres;
-
 --
--- Name: interests_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: interests_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE interests_id_seq OWNED BY interests.id;
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY interests ALTER COLUMN id SET DEFAULT nextval('interests_id_seq'::regclass);
 
 
 --
--- Data for Name: interests; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: interests; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY interests (id, name, interest_category_id, highlight, created_at, updated_at, inactive) FROM stdin;
@@ -96,14 +92,14 @@ COPY interests (id, name, interest_category_id, highlight, created_at, updated_a
 
 
 --
--- Name: interests_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: interests_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('interests_id_seq', 27, true);
 
 
 --
--- Name: interests_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- Name: interests_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY interests
