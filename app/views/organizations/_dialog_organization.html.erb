@@ -1,4 +1,9 @@
-<div class="row clickable" onclick="<%= link_to_add_workday_organization_fields(organization, session[:workday_id]) %>" >
+<div class="row clickable" onclick="<%=
+    if @alias.blank?
+      link_to_add_workday_organization_fields(organization, session[:workday_id])
+    else
+      link_to_select(organization, @alias)
+    end %>" >
   <li>
     <div class="col-md-3 col-md-offset-1">
       <%= organization.name %>

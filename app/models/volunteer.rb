@@ -1,11 +1,13 @@
 include ActionView::Helpers::NumberHelper
 
 class Volunteer < ActiveRecord::Base
-  has_many :volunteer_interests
+  has_many :volunteer_interests, dependent: :destroy
   has_many :interests, through: :volunteer_interests
-  has_many :workday_volunteers
+  has_many :workday_volunteers, dependent: :destroy
   has_many :workdays, through: :workday_volunteers
   has_many :donations, dependent: :destroy
+  belongs_to :church, -> { where(:organization_type => 1) }, class_name: "Organizations"
+  belongs_to :employer, class_name: "Organizations"
 
   accepts_nested_attributes_for :donations, :allow_destroy => true
 

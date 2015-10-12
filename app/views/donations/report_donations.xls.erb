@@ -16,7 +16,10 @@
           <Row></Row>
           <Row>
             <Cell><Data ss:Type="String">Organization</Data></Cell>
+            <Cell><Data ss:Type="String">Address</Data></Cell>
             <Cell><Data ss:Type="String">City</Data></Cell>
+            <Cell><Data ss:Type="String">State</Data></Cell>
+            <Cell><Data ss:Type="String">Zip</Data></Cell>
             <Cell><Data ss:Type="String">Date Received</Data></Cell>
             <Cell><Data ss:Type="String">Type</Data></Cell>
             <Cell><Data ss:Type="String">Value</Data></Cell>
@@ -34,7 +37,10 @@
               <% organization = Organization.find(d.organization_id) %>
               <Row>
                 <Cell><Data ss:Type="String"><%= organization.name %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= organization.address %></Data></Cell>
                 <Cell><Data ss:Type="String"><%= organization.city %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= organization.state %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= organization.zip %></Data></Cell>
                 <Cell><Data ss:Type="String"><%= d.date_received.strftime("%m/%d/%Y") %></Data></Cell>
                 <Cell><Data ss:Type="String"><%= d.donation_type.name %></Data></Cell>
                 <Cell><Data ss:Type="String"><%= number_to_currency(d.value) %></Data></Cell>
@@ -71,7 +77,10 @@
           <Row></Row>
           <Row>
             <Cell><Data ss:Type="String">Volunteer</Data></Cell>
+            <Cell><Data ss:Type="String">Address</Data></Cell>
             <Cell><Data ss:Type="String">City</Data></Cell>
+            <Cell><Data ss:Type="String">State</Data></Cell>
+            <Cell><Data ss:Type="String">Zip</Data></Cell>
             <Cell><Data ss:Type="String">Date Received</Data></Cell>
             <Cell><Data ss:Type="String">Type</Data></Cell>
             <Cell><Data ss:Type="String">Value</Data></Cell>
@@ -89,7 +98,10 @@
               <% volunteer = Volunteer.find(d.volunteer_id) %>
               <Row>
                 <Cell><Data ss:Type="String"><%= volunteer.name %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= volunteer.address %></Data></Cell>
                 <Cell><Data ss:Type="String"><%= volunteer.city %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= volunteer.state %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= volunteer.zip %></Data></Cell>
                 <Cell><Data ss:Type="String"><%= d.date_received.strftime("%m/%d/%Y") %></Data></Cell>
                 <Cell><Data ss:Type="String"><%= d.donation_type.name %></Data></Cell>
                 <Cell><Data ss:Type="String"><%= number_to_currency(d.value) %></Data></Cell>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151008160647) do
+ActiveRecord::Schema.define(version: 20151012014732) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -133,8 +133,12 @@ ActiveRecord::Schema.define(version: 20151008160647) do
     t.date     "waiver_date"
     t.date     "background_check_date"
     t.string   "old_id"
+    t.integer  "church_id"
+    t.integer  "employer_id"
   end
 
+  add_index "volunteers", ["church_id"], name: "index_volunteers_on_church_id", using: :btree
+  add_index "volunteers", ["employer_id"], name: "index_volunteers_on_employer_id", using: :btree
   add_index "volunteers", ["old_id"], name: "index_volunteers_on_old_id", using: :btree
 
   create_table "workday_organizations", force: :cascade do |t|

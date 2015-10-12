@@ -158,6 +158,7 @@ class VolunteersController < ApplicationController
       render partial: "dialog_form"
     else
       @allow_stay = true
+      session[:volunteer_id] = @volunteer.id
     end
 
   end
@@ -166,6 +167,8 @@ class VolunteersController < ApplicationController
   def edit
     @volunteer = Volunteer.find(params[:id])
     @num_workdays = WorkdayVolunteer.where(volunteer_id: @volunteer.id)
+    @employer = @volunteer.employer_id.blank? ? nil : Organization.find(@volunteer.employer_id)
+    @church = @volunteer.church_id.blank? ? nil : Organization.find(@volunteer.church_id)
     @allow_stay = true
     @donation_year = get_donation_summary("volunteer", @volunteer.id)[0].first
   end
@@ -404,7 +407,7 @@ class VolunteersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def volunteer_params
-    params.require(:volunteer).permit(:first_name, :last_name, :middle_name, :email, :occupation,
+    params.require(:volunteer).permit(:first_name, :last_name, :middle_name, :email, :occupation, :employer_id, :church_id,
                                       :address, :city, :state, :zip, :home_phone, :work_phone, :mobile_phone,
                                       :notes, :remove_from_mailing_list, :waiver_date, :background_check_date, interest_ids: [], donations_attributes: [:id, :date_received, :value, :ref_no, :item, :anonymous, :in_honor_of, :designation, :notes, :receipt_sent, :volunteer_id, :organization_id, :donation_type_id, :_destroy])
   end

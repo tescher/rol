@@ -95,6 +95,17 @@
               </div>
             </div>
           </div>
+          <div class="row">&nbsp;</div>
+          <div class="row">
+            <div class="col-md-10">
+              <div class="checkbox">
+                <label>
+                  <%= f.check_box :remove_from_mailing_list %> Remove from mailing list
+                </label>
+              </div>
+            </div>
+          </div>
+
 
 
         </div>
@@ -134,6 +145,34 @@
           </div>
           <div class="row">
             <div class="col-md-2">
+              <%= f.label :employer %><br>
+            </div>
+            <div class="col-md-8">
+              <div class='input-group employer'>
+                <%= text_field_tag :employer, @employer.nil? ? "Click to search ->" : @employer.name, class: 'form-control', disabled: true %>
+                <%= f.hidden_field :employer_id %>
+                <span class="input-group-addon"><span id='linkAddOrganization' data-alias="employer" class="glyphicon glyphicon-search"></span></span>
+                <span class="input-group-addon"><span id='linkRemoveOrganization' data-alias="employer" class="glyphicon glyphicon-remove"></span></span>
+              </div>
+            </div>
+          </div>
+          <div class="row">&nbsp;</div>
+          <div class="row">
+            <div class="col-md-2">
+              <%= f.label :church %><br>
+            </div>
+            <div class="col-md-8">
+              <div class='input-group church'>
+                <%= text_field_tag :church, @church.nil? ? "Click to search ->" : @church.name, class: 'form-control', disabled: true %>
+                <%= f.hidden_field :church_id %>
+                <span class="input-group-addon"><span id='linkAddOrganization' data-alias="church" class="glyphicon glyphicon-search"></span></span>
+                <span class="input-group-addon"><span id='linkRemoveOrganization' data-alias="church" class="glyphicon glyphicon-remove"></span></span>
+              </div>
+            </div>
+          </div>
+          <div class="row">&nbsp;</div>
+          <div class="row">
+            <div class="col-md-2">
               <%= f.label :notes %><br>
             </div>
             <div class="col-md-8">
@@ -161,16 +200,8 @@
               </div>
             </div>
           </div>
-          <div class="row">&nbsp;</div>
-          <div class="row">
-            <div class="col-md-10">
-              <div class="checkbox">
-                <label>
-                  <%= f.check_box :remove_from_mailing_list %> Remove from mailing list
-                </label>
-              </div>
-            </div>
-          </div>
+
+
 
 
 
@@ -193,3 +224,6 @@
 <% end %>
 
 <div id="dialogAddressCheck"></div>
+<div id="dialogSearchOrganizations"></div>
+<div id="dialogSelectOrganization"></div>
+<div id="dialogNewOrganization"></div>

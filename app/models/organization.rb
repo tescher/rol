@@ -3,9 +3,12 @@ include ApplicationHelper
 
 class Organization < ActiveRecord::Base
   belongs_to :organization_type
-  has_many :workday_organizations
+  has_many :workday_organizations, dependent: :destroy
   has_many :workdays, through: :workday_organizations
   has_many :donations, dependent: :destroy
+  has_many :church_members, class_name: "Volunteers"
+  has_many :employees, class_name: "Volunteers"
+
 
   accepts_nested_attributes_for :donations, :allow_destroy => true
 

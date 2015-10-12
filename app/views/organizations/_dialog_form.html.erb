@@ -19,7 +19,7 @@
               <%= f.label :organization_type %><br>
             </div>
             <div class="col-md-8">
-              <%= f.select :organization_type_id, options_from_collection_for_select(OrganizationType.where(inactive: false), :id, :name, f.object.organization_type_id), {}, { :multiple => false, class: "form-control"}  %>
+              <%= f.select :organization_type_id, options_from_collection_for_select(OrganizationType.where(inactive: false), :id, :name, f.object.organization_type_id), {}, { :multiple => false, class: "form-control", :disabled => (@alias == "church" ? true : false)}  %>
             </div>
           </div>
           <div class="row">
@@ -60,5 +60,6 @@
     </div>
 
     <%= f.hidden_field :dialog, value: "true" %>
+    <%= f.hidden_field :alias, value: @alias %>
 
 <% end %>

@@ -24,6 +24,10 @@ module ApplicationHelper
     link_to name, "#", :onclick => h("add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\", \"#{parent_selector}\")"), class: cssClass, title: title, remote: true
   end
 
+  def link_to_select(object, alias_name)
+    "set_selection_field(\"#{object.id}\", \"#{object.name}\", \"#{alias_name}\", $(this))"
+  end
+
   def multi_email_valid(emails)
     all_ok = true
     emails.split(/\s*;\s*/).each do |host|

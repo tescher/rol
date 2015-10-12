@@ -10,6 +10,7 @@ class OrganizationsController < ApplicationController
 
   def search
     if params[:dialog] == "true"
+      @alias = params[:alias].blank? ? "" : params[:alias]
       render partial: "dialog_search_form"
     end
   end
@@ -55,7 +56,11 @@ class OrganizationsController < ApplicationController
       else
         per_page = 30
       end
-      where_clause = ""
+      if params[:alias] == "church"   # We are selecting a church on another model's form
+        where_clause = "organization_type_id = '1'"
+      else
+        where_clause = ""
+      end
 
     end
     if params[:show_all]
@@ -90,6 +95,7 @@ class OrganizationsController < ApplicationController
     respond_to do |format|
       format.html {
         if params[:dialog] == "true"
+          @alias = params[:alias].blank? ? "" : params[:alias]
           render partial: "dialog_index"
         else
           render :index
@@ -113,6 +119,7 @@ class OrganizationsController < ApplicationController
     @organization = Organization.new
     @num_workdays = []
     if params[:dialog] == "true"
+      @alias = params[:alias].blank? ? "" : params[:alias]
       render partial: "dialog_form"
     end
     @allow_stay = true
@@ -133,8 +140,12 @@ class OrganizationsController < ApplicationController
     @organization = Organization.new(organization_params)
     if @organization.save
       if params[:organization][:dialog] == "true"
-        @workday = session[:workday_id]
-        render partial: "dialog_add_workday_organization_fields"
+        if !params[:organization][:alias].blank?
+          render json: {id: @organization.id, name: @organization.name, alias: params[:organization][:alias]}
+        else
+          @workday = session[:workday_id]
+          render partial: "dialog_add_workday_organization_fields"
+        end
       else
         flash[:success] = "Organization created"
         if !params[:to_donations].blank?
@@ -149,6 +160,7 @@ class OrganizationsController < ApplicationController
       end
     else                 # Save not successful
       if params[:organization][:dialog] == "true"
+        @alias = params[:alias].blank? ? "" : params[:alias]
         render partial: "dialog_form"
       else
         @num_workdays = []
@@ -335,6 +347,9 @@ class OrganizationsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def organization_params
+    if params[:organization][:alias] == "church"
+      params[:organization][:organization_type_id] = 1
+    end
     params.require(:organization).permit(:name, :email, :contact_name,
                                          :address, :city, :state, :zip, :phone,
                                          :notes, :remove_from_mailing_list, :organization_type_id, donations_attributes: [:id, :date_received, :value, :ref_no, :item, :anonymous, :in_honor_of, :designation, :notes, :receipt_sent, :volunteer_id, :organization_id, :donation_type_id, :_destroy])
