@@ -361,10 +361,10 @@ class VolunteersController < ApplicationController
                 @volunteer.church_id = @church.id
               end
               if !@employer.nil?
-                @volunteer.church_id = @employer.id
+                @volunteer.employer_id = @employer.id
               end
               if !@contact_type.nil?
-                @volunteer.church_id = @contact_type.id
+                @volunteer.first_contact_type_id = @contact_type.id
               end
               if interests.count > 0
                 @volunteer.interests = interests
