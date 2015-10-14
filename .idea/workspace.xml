@@ -85,8 +85,8 @@
       <file leaf-file-name="volunteers_controller.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/volunteers_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7297297">
-              <caret line="342" column="18" selection-start-line="342" selection-start-column="18" selection-end-line="342" selection-end-column="18" />
+            <state vertical-scroll-proportion="0.6486486">
+              <caret line="339" column="8" selection-start-line="339" selection-start-column="8" selection-end-line="339" selection-end-column="8" />
               <folding>
                 <element signature="e#11217#11379#0" expanded="false" />
                 <element signature="e#11245#11363#1" expanded="false" />
@@ -1544,8 +1544,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/volunteers_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7297297">
-          <caret line="342" column="18" selection-start-line="342" selection-start-column="18" selection-end-line="342" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.6486486">
+          <caret line="339" column="8" selection-start-line="339" selection-start-column="8" selection-end-line="339" selection-end-column="8" />
           <folding>
             <element signature="e#11217#11379#0" expanded="false" />
             <element signature="e#11245#11363#1" expanded="false" />
