@@ -336,6 +336,7 @@ class VolunteersController < ApplicationController
                     @messages << "Employer not found. #{message_data}"
                   end
                 end
+                @contact_type = nil
                 if !record_data["first_contact_type"].blank?
                   @contact_type = ContactType.where("name ilike ?", "%#{record_data["first_contact_type"]}").first
                   if (@contact_type.nil?)
