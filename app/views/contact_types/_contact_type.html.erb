@@ -1,0 +1,14 @@
+<div class="row clickable" href="<%=edit_contact_type_path(contact_type)%>">
+  <li>
+    <div class="col-md-2 col-md-offset-1">
+      <% if contact_type.inactive? %>
+          <s>
+      <% end %>
+      <%= contact_type.name %>
+      <% if contact_type.inactive? %>
+          </s>
+      <% end %>
+    </div>
+
+  </li>
+</div>

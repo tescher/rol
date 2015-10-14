@@ -65,6 +65,7 @@ Rails.application.routes.draw do
 
   resources :organization_types
   resources :donation_types
+  resources :contact_types
 
 
   # The priority is based upon order of creation: first created -> highest priority.

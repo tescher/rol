@@ -87,12 +87,32 @@
             <div class="col-md-2">
               <%= f.label :waiver_signed %><br>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-5">
               <div class='input-group date' id='waiverdatepicker'>
                 <input type='text' value="<%= @volunteer.waiver_date.nil? ? "" : @volunteer.waiver_date.strftime("%m/%d/%Y") %>" name="volunteer[waiver_date]" id="volunteer_waiver_date" class="form-control" />
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
                     </span>
               </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2">
+              <%= f.label :first_contact %><br>
+            </div>
+            <div class="col-md-5">
+              <div class='input-group date' id='firstcontactdatepicker'>
+                <input type='text' value="<%= @volunteer.first_contact_date.nil? ? "" : @volunteer.first_contact_date.strftime("%m/%d/%Y") %>" name="volunteer[first_contact_date]" id="volunteer_first_contact_date" class="form-control" />
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2">
+              <%= f.label :first_contact_type %><br>
+            </div>
+            <div class="col-md-8">
+              <%= f.select :first_contact_type_id, options_from_collection_for_select(ContactType.where(inactive: false), :id, :name, f.object.first_contact_type_id), {}, { :multiple => false, class: "form-control"}  %>
             </div>
           </div>
           <div class="row">&nbsp;</div>
@@ -192,7 +212,7 @@
             <div class="col-md-2">
               <%= f.label :background_check %><br>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-5">
               <div class='input-group date' id='backgroundcheckdatepicker'>
                 <input type='text' value="<%= @volunteer.background_check_date.nil? ? "" : @volunteer.background_check_date.strftime("%m/%d/%Y") %>" name="volunteer[background_check_date]" id="volunteer_background_check_date" class="form-control" />
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>

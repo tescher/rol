@@ -2561,7 +2561,11 @@
       <column name="waiver_date" sqlType="date" precision="13" scale="0" nullable="true" jdbcType="91"/>
       <column name="background_check_date" sqlType="date" precision="13" scale="0" nullable="true" jdbcType="91"/>
       <column name="old_id" sqlType="varchar" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
+      <column name="church_id" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="employer_id" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <primary-key name="volunteers_pkey" columns="id"/>
+      <index name="index_volunteers_on_church_id" unique="false" columns="church_id"/>
+      <index name="index_volunteers_on_employer_id" unique="false" columns="employer_id"/>
       <index name="index_volunteers_on_old_id" unique="false" columns="old_id"/>
     </table>
     <table name="volunteers_id_seq" schema="public" catalog="rol_development" type="SEQUENCE">
@@ -21784,7 +21788,11 @@
       <column name="waiver_date" sqlType="date" precision="13" scale="0" nullable="true" jdbcType="91"/>
       <column name="background_check_date" sqlType="date" precision="13" scale="0" nullable="true" jdbcType="91"/>
       <column name="old_id" sqlType="varchar" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
+      <column name="church_id" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="employer_id" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <primary-key name="volunteers_pkey" columns="id"/>
+      <index name="index_volunteers_on_church_id" unique="false" columns="church_id"/>
+      <index name="index_volunteers_on_employer_id" unique="false" columns="employer_id"/>
       <index name="index_volunteers_on_old_id" unique="false" columns="old_id"/>
     </table>
     <table name="volunteers_id_seq" schema="public" catalog="rol_test" type="SEQUENCE">

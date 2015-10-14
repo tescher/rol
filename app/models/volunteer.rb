@@ -8,6 +8,7 @@ class Volunteer < ActiveRecord::Base
   has_many :donations, dependent: :destroy
   belongs_to :church, -> { where(:organization_type => 1) }, class_name: "Organizations"
   belongs_to :employer, class_name: "Organizations"
+  belongs_to :contact_type
 
   accepts_nested_attributes_for :donations, :allow_destroy => true
 
@@ -22,6 +23,7 @@ class Volunteer < ActiveRecord::Base
   validates :last_name, presence: true
   validates :email, allow_blank: true, format: { with: VALID_EMAIL_REGEX }
   validates_date :waiver_date, allow_blank: true
+  validates_date :first_contact_date, allow_blank: true
   validates_date :background_check_date, allow_blank: true
 
   def name

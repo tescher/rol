@@ -14,7 +14,11 @@
     <mobile_phone>608-215-4896</mobile_phone>
     <notes>Testing</notes>
     <waiver_date>2001-04-23</waiver_date>
+    <first_contact_date>2001-04-23</first_contact_date>
+    <first_contact_type>Phone</first_contact_type>
     <old_id>1234</old_id>
+    <church_old_id></church_old_id>
+    <employer_old_id></employer_old_id>
     <email>tim@eschers.com</email>
     <remove_from_mailing_list></remove_from_mailing_list>
     <interests>
@@ -55,7 +59,11 @@
     <mobile_phone></mobile_phone>
     <notes></notes>
     <waiver_date></waiver_date>
+    <first_contact_date>2001-04-23</first_contact_date>
+    <first_contact_type>Phone</first_contact_type>
     <old_id></old_id>
+    <church_old_id></church_old_id>
+    <employer_old_id></employer_old_id>
     <email></email>
     <remove_from_mailing_list></remove_from_mailing_list>
     <interests>

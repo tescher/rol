@@ -11,11 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151012014732) do
+ActiveRecord::Schema.define(version: 20151014200228) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "fuzzystrmatch"
+
+  create_table "contact_types", force: :cascade do |t|
+    t.string   "name"
+    t.boolean  "inactive",   default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
 
   create_table "donation_types", force: :cascade do |t|
     t.string   "name"
@@ -135,10 +142,13 @@ ActiveRecord::Schema.define(version: 20151012014732) do
     t.string   "old_id"
     t.integer  "church_id"
     t.integer  "employer_id"
+    t.date     "first_contact_date"
+    t.integer  "first_contact_type_id"
   end
 
   add_index "volunteers", ["church_id"], name: "index_volunteers_on_church_id", using: :btree
   add_index "volunteers", ["employer_id"], name: "index_volunteers_on_employer_id", using: :btree
+  add_index "volunteers", ["first_contact_type_id"], name: "index_volunteers_on_first_contact_type_id", using: :btree
   add_index "volunteers", ["old_id"], name: "index_volunteers_on_old_id", using: :btree
 
   create_table "workday_organizations", force: :cascade do |t|

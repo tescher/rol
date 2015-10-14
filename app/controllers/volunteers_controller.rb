@@ -301,6 +301,10 @@ class VolunteersController < ApplicationController
             record_data["work_phone"] = record.xpath("work_phone").inner_text
             record_data["notes"] = record.xpath("notes").inner_text
             record_data["waiver_date"] = record.xpath("waiver_date").inner_text
+            record_data["first_contact_date"] = record.xpath("first_contact_date").inner_text
+            record_data["first_contact_type"] = record.xpath("first_contact_type").inner_text
+            record_data["church_old_id"] = record.xpath("church_old_id").inner_text
+            record_data["employer_old_id"] = record.xpath("employer_old_id").inner_text
             record_data["email"] = record.xpath("email").inner_text
             record_data["remove_from_mailing_list"] = record.xpath("remove_from_mailing_list").inner_text
             record_data_interests = []
@@ -318,6 +322,27 @@ class VolunteersController < ApplicationController
                 fatal = true
                 @messages << "Imported previously. #{message_data}"
               else
+                @church = nil
+                if !record_data["church_old_id"].blank?
+                  @church = Organization.find_by_old_id_and_organization_type_id(record_data["church_old_id"], 1)
+                  if (@church.nil?)
+                    @messages << "Church not found. #{message_data}"
+                  end
+                end
+                @employer = nil
+                if !record_data["employer_old_id"].blank?
+                  @employer = Organization.find_by_old_id_and_organization_type_id(record_data["employer_old_id"], 2)
+                  if (@employer.nil?)
+                    @messages << "Employer not found. #{message_data}"
+                  end
+                end
+                if !record_data["first_contact_type"].blank?
+                  @contact_type = ContactType.where("name ilike ?", "%#{record_data["first_contact_type"]}").first
+                  if (@contact_type.nil?)
+                    fatal = true
+                    @messages << "Missing #{record_data["first_contact_type"]} contact type mapping. #{message_data}"
+                  end
+                end
                 interests = []
                 record_data_interests.each do |interest_name|
                   interest = Interest.where("name ilike ?", "%#{interest_name}").first
@@ -328,41 +353,50 @@ class VolunteersController < ApplicationController
                     interests << interest
                   end
                 end
-                if !fatal
-                  @volunteer = Volunteer.new
-                  if interests.count > 0
-                    @volunteer.interests = interests
-                  end
-                  record_data.each do |key, value|
-                    if key != "notes"
-                      if !value.blank?
-                        begin
-                          @volunteer[key] = (key == "waiver_date") ? Date.strptime(value, "%m/%d/%Y") : value
-                        rescue => ex
-                          @messages << "Warning: Invalid " + key + " data (" + value + "), saved in notes field. #{message_data}"
-                          @messages << " -- #{ex.message}"
-                          record_data["notes"] += ". Invalid " + key + " data found in conversion: " + value
-                        end
-                      end
+              end
+            end
+            if !fatal
+              @volunteer = Volunteer.new
+              if !@church.nil?
+                @volunteer.church_id = @church.id
+              end
+              if !@employer.nil?
+                @volunteer.church_id = @employer.id
+              end
+              if !@contact_type.nil?
+                @volunteer.church_id = @contact_type.id
+              end
+              if interests.count > 0
+                @volunteer.interests = interests
+              end
+              record_data.each do |key, value|
+                if (key != "notes") && (key != "church_old_id") && (key != "employer_old_id") && (key != "first_contact_type")
+                  if !value.blank?
+                    begin
+                      @volunteer[key] = ((key == "waiver_date") || (key == "first_contact_date")) ? Date.strptime(value, "%m/%d/%Y") : value
+                    rescue => ex
+                      @messages << "Warning: Invalid " + key + " data (" + value + "), saved in notes field. #{message_data}"
+                      @messages << " -- #{ex.message}"
+                      record_data["notes"] += ". Invalid " + key + " data found in conversion: " + value
                     end
-                  end
-                  if !@volunteer.valid?
-                    if @volunteer.errors[:email].any?
-                      @messages << "Invalid email " + record_data["email"] + ", saved to notes"
-                      record_data["notes"] += ". Invalid email found in conversion: " + record_data["email"]
-                      @volunteer.email = ""
-                    else
-                      @messages << "Validation errors. #{message_data}"
-                      @volunteer.errors.full_messages.each do |message|
-                        @messages << " -- #{message}"
-                      end
-                      fatal = true
-                    end
-                  end
-                  if !record_data["notes"].blank?
-                    @volunteer["notes"] = record_data["notes"]
                   end
                 end
+              end
+              if !@volunteer.valid?
+                if @volunteer.errors[:email].any?
+                  @messages << "Invalid email " + record_data["email"] + ", saved to notes"
+                  record_data["notes"] += ". Invalid email found in conversion: " + record_data["email"]
+                  @volunteer.email = ""
+                else
+                  @messages << "Validation errors. #{message_data}"
+                  @volunteer.errors.full_messages.each do |message|
+                    @messages << " -- #{message}"
+                  end
+                  fatal = true
+                end
+              end
+              if !record_data["notes"].blank?
+                @volunteer["notes"] = record_data["notes"]
               end
             end
             if !fatal
@@ -378,7 +412,6 @@ class VolunteersController < ApplicationController
               end
             end
           end
-
         end
       rescue => ex
         @messages << "#{ex.message}"
@@ -409,7 +442,7 @@ class VolunteersController < ApplicationController
   def volunteer_params
     params.require(:volunteer).permit(:first_name, :last_name, :middle_name, :email, :occupation, :employer_id, :church_id,
                                       :address, :city, :state, :zip, :home_phone, :work_phone, :mobile_phone,
-                                      :notes, :remove_from_mailing_list, :waiver_date, :background_check_date, interest_ids: [], donations_attributes: [:id, :date_received, :value, :ref_no, :item, :anonymous, :in_honor_of, :designation, :notes, :receipt_sent, :volunteer_id, :organization_id, :donation_type_id, :_destroy])
+                                      :notes, :remove_from_mailing_list, :waiver_date, :first_contact_date, :first_contact_type_id, :background_check_date, interest_ids: [], donations_attributes: [:id, :date_received, :value, :ref_no, :item, :anonymous, :in_honor_of, :designation, :notes, :receipt_sent, :volunteer_id, :organization_id, :donation_type_id, :_destroy])
   end
   def volunteer_search_params
     search_params = params.permit(:last_name, :city, interest_ids: [])
