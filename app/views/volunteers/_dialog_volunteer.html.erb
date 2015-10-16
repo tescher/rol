@@ -7,7 +7,7 @@
       <%= volunteer.city %>
     </div>
     <div class="col-md-2">
-      <%= volunteer.email %>
+      <span class="no-overflow"><%= volunteer.email %></span>
     </div>
     <div class="col-md-3">
       <%= volunteer.home_phone.presence || volunteer.mobile_phone.presence || volunteer.work_phone.presence %>

@@ -63,9 +63,21 @@ class VolunteersController < ApplicationController
       if (volunteer_search_params.count < 1)
         @volunteers = Volunteer.none
       else
+        # Parse name if comma entered, otherwise assume last name only
+        search_params = volunteer_search_params
+        if !search_params[:name].blank?
+          names = search_params[:name].split(",")
+          if !names[1].blank?
+            search_params[:first_name] = names[1].lstrip
+          end
+          if !names[0].blank?
+            search_params[:last_name] = names[0].lstrip
+          end
+          search_params = search_params.except(:name)
+        end
         interest_ids = []
-        volunteer_search_params.each do |index|
-          if ["last_name", "city"].include?(index[0])
+        search_params.each do |index|
+          if ["last_name", "first_name", "city"].include?(index[0])
             if index[1].strip.length > 0
               where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
               where_clause += "(soundex(#{index[0]}) = soundex(#{Volunteer.sanitize(index[1])}) OR (LOWER(#{index[0]}) LIKE #{Volunteer.sanitize(index[1].downcase+ "%")}))"
@@ -127,6 +139,14 @@ class VolunteersController < ApplicationController
         @volunteers_filtered << new_volunteer
       end
       @volunteers = @volunteers_filtered
+    end
+
+    @last_workdate = {}
+    @volunteers.each do |v|
+      last_workday = Workday.joins(:workday_volunteers).where("workday_volunteers.volunteer_id = '#{v.id}'").order("workdays.workdate DESC").first
+      if !last_workday.nil?
+        @last_workdate[v.id] = last_workday.workdate
+      end
     end
 
     respond_to do |format|
@@ -446,7 +466,7 @@ class VolunteersController < ApplicationController
                                       :notes, :remove_from_mailing_list, :waiver_date, :first_contact_date, :first_contact_type_id, :background_check_date, interest_ids: [], donations_attributes: [:id, :date_received, :value, :ref_no, :item, :anonymous, :in_honor_of, :designation, :notes, :receipt_sent, :volunteer_id, :organization_id, :donation_type_id, :_destroy])
   end
   def volunteer_search_params
-    search_params = params.permit(:last_name, :city, interest_ids: [])
+    search_params = params.permit(:name, :city, interest_ids: [])
     search_params.delete_if {|k,v| v.blank?}
     search_params
   end

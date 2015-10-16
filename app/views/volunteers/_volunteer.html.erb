@@ -13,10 +13,13 @@
       <%= volunteer.city %>
     </div>
     <div class="col-md-2">
-      <%= volunteer.email %>
+      <span class="no-overflow"><%= volunteer.email %></span>
     </div>
     <div class="col-md-2">
       <%= volunteer.home_phone.presence || volunteer.mobile_phone.presence || volunteer.work_phone.presence %>
+    </div>
+    <div class="col-md-2">
+      <%= @last_workdate[volunteer.id].nil? ? "" : @last_workdate[volunteer.id].strftime("%m/%d/%Y") %>
     </div>
   </li>
 </div>
