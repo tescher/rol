@@ -14,11 +14,7 @@
         </div>
         <div class="field">
           <%= f.label :workdate %><br>
-          <div class='input-group date' id='workdatepicker'>
-            <input type='text' value="<%= @workday.workdate.nil? ? Date.today.strftime("%m/%d/%Y") : @workday.workdate.strftime("%m/%d/%Y") %>" name="workday[workdate]" id="workday_workdate" class="form-control" />
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-          </div>
+          <%= f.text_field :workdate,  value: @workday.workdate.nil? ? Date.today.strftime("%m/%d/%Y") : @workday.workdate.strftime("%m/%d/%Y") , id: 'workdatepicker', class: 'form-control' %>
         </div>
       </div>
     </div>

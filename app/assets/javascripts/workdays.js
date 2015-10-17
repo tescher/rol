@@ -17,6 +17,11 @@ $(document).ready(function() {
             class: "btn btn-large btn-primary"
         }],
 
+        open: function (event, ui ) {
+            var wHeight = $(window).height();
+            $(this).dialog("option", "height", wHeight * 0.8)
+        },
+
         close: function (event, ui ) {
             // RO_DO: Something go here?
         }

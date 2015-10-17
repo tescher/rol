@@ -88,11 +88,7 @@
               <%= f.label :waiver_signed %><br>
             </div>
             <div class="col-md-5">
-              <div class='input-group date' id='waiverdatepicker'>
-                <input type='text' value="<%= @volunteer.waiver_date.nil? ? "" : @volunteer.waiver_date.strftime("%m/%d/%Y") %>" name="volunteer[waiver_date]" id="volunteer_waiver_date" class="form-control" />
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-              </div>
+              <%= f.text_field :waiver_date,  value: @volunteer.waiver_date.nil? ? "" : @volunteer.waiver_date.strftime("%m/%d/%Y") , id: 'waiverdatepicker', class: 'form-control' %>
             </div>
           </div>
           <div class="row">
@@ -100,11 +96,7 @@
               <%= f.label :first_contact %><br>
             </div>
             <div class="col-md-5">
-              <div class='input-group date' id='firstcontactdatepicker'>
-                <input type='text' value="<%= @volunteer.first_contact_date.nil? ? "" : @volunteer.first_contact_date.strftime("%m/%d/%Y") %>" name="volunteer[first_contact_date]" id="volunteer_first_contact_date" class="form-control" />
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-              </div>
+              <%= f.text_field :first_contact_date,  value: @volunteer.first_contact_date.nil? ? "" : @volunteer.first_contact_date.strftime("%m/%d/%Y") , id: 'firstcontactdatepicker', class: 'form-control' %>
             </div>
           </div>
           <div class="row">
@@ -213,11 +205,7 @@
               <%= f.label :background_check %><br>
             </div>
             <div class="col-md-5">
-              <div class='input-group date' id='backgroundcheckdatepicker'>
-                <input type='text' value="<%= @volunteer.background_check_date.nil? ? "" : @volunteer.background_check_date.strftime("%m/%d/%Y") %>" name="volunteer[background_check_date]" id="volunteer_background_check_date" class="form-control" />
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-              </div>
+              <%= f.text_field :background_check_date,  value: @volunteer.background_check_date.nil? ? "" : @volunteer.background_check_date.strftime("%m/%d/%Y") , id: 'backgroundcheckdatepicker', class: 'form-control' %>
             </div>
           </div>
 

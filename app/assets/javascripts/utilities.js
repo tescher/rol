@@ -72,6 +72,8 @@ jQuery(document).ready(function($) {
             var objectName = $(this).attr('id').substr($(this).attr('id').indexOf("dialogSelect") + 12);
             $(this).dialog("option", "objectName", objectName);
             $(this).dialog("option", "title", "Select " + objectName);
+            var wHeight = $(window).height();
+            $(this).dialog("option", "height", wHeight * 0.8)
         },
 
         close: function (event, ui ) {
