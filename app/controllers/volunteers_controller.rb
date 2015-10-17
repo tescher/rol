@@ -65,33 +65,37 @@ class VolunteersController < ApplicationController
       else
         # Parse name if comma entered, otherwise assume last name only
         search_params = volunteer_search_params
-        if !search_params[:name].blank?
-          names = search_params[:name].split(",")
-          if !names[1].blank?
-            search_params[:first_name] = names[1].lstrip
+        if (search_params[:name] == "=") && (!session[:volunteer_id].nil?)
+          @volunteers = Volunteer.where(id: session[:volunteer_id]).paginate(page: params[:page], per_page: per_page)
+        else
+          if !search_params[:name].blank?
+            names = search_params[:name].split(",")
+            if !names[1].blank?
+              search_params[:first_name] = names[1].lstrip
+            end
+            if !names[0].blank?
+              search_params[:last_name] = names[0].lstrip
+            end
+            search_params = search_params.except(:name)
           end
-          if !names[0].blank?
-            search_params[:last_name] = names[0].lstrip
-          end
-          search_params = search_params.except(:name)
-        end
-        interest_ids = []
-        search_params.each do |index|
-          if ["last_name", "first_name", "city"].include?(index[0])
-            if index[1].strip.length > 0
-              where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
-              where_clause += "(soundex(#{index[0]}) = soundex(#{Volunteer.sanitize(index[1])}) OR (LOWER(#{index[0]}) LIKE #{Volunteer.sanitize(index[1].downcase+ "%")}))"
+          interest_ids = []
+          search_params.each do |index|
+            if ["last_name", "first_name", "city"].include?(index[0])
+              if index[1].strip.length > 0
+                where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
+                where_clause += "(soundex(#{index[0]}) = soundex(#{Volunteer.sanitize(index[1])}) OR (LOWER(#{index[0]}) LIKE #{Volunteer.sanitize(index[1].downcase+ "%")}))"
+              end
+            end
+            if index[0] == "interest_ids"
+              interest_ids = index[1]
             end
           end
-          if index[0] == "interest_ids"
-            interest_ids = index[1]
-          end
-        end
 
-        if interest_ids.count > 0
-          @volunteers = Volunteer.select("DISTINCT(volunteers.id), volunteers.*").joins(:volunteer_interests).where(volunteer_interests: {interest_id: interest_ids}).where(where_clause).order(:last_name, :first_name).paginate(page: params[:page], per_page: per_page)
-        else
-          @volunteers = Volunteer.select("DISTINCT(volunteers.id), volunteers.*").where(where_clause).order(:last_name, :first_name).paginate(page: params[:page], per_page: per_page)
+          if interest_ids.count > 0
+            @volunteers = Volunteer.select("DISTINCT(volunteers.id), volunteers.*").joins(:volunteer_interests).where(volunteer_interests: {interest_id: interest_ids}).where(where_clause).order(:last_name, :first_name).paginate(page: params[:page], per_page: per_page)
+          else
+            @volunteers = Volunteer.select("DISTINCT(volunteers.id), volunteers.*").where(where_clause).order(:last_name, :first_name).paginate(page: params[:page], per_page: per_page)
+          end
         end
       end
     end
@@ -191,6 +195,7 @@ class VolunteersController < ApplicationController
     @church = @volunteer.church_id.blank? ? nil : Organization.find(@volunteer.church_id)
     @allow_stay = true
     @donation_year = get_donation_summary("volunteer", @volunteer.id)[0].first
+    session[:volunteer_id] = @volunteer.id
   end
 
   # POST /volunteers
@@ -198,6 +203,7 @@ class VolunteersController < ApplicationController
   def create
     @volunteer = Volunteer.new(volunteer_params)
     if @volunteer.save    # Save successful
+      session[:volunteer_id] = @volunteer.id
       if params[:volunteer][:dialog] == "true"
         @workday = session[:workday_id]
         render partial: "dialog_add_workday_volunteer_fields"
@@ -228,6 +234,7 @@ class VolunteersController < ApplicationController
   # PATCH/PUT /volunteers/1.json
   def update
     @volunteer = Volunteer.find(params[:id])
+    session[:volunteer_id] = @volunteer.id
     if volunteer_params[:first_name].nil?     # Coming from donations
       if @volunteer.update_attributes(volunteer_params)
         flash[:success] = "Donations updated"

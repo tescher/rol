@@ -69,23 +69,27 @@ class OrganizationsController < ApplicationController
       if (organization_search_params.count < 1)
         @organizations = Organization.none
       else
-        organization_type_ids = []
-        organization_search_params.each do |index|
-          if ["name", "city"].include?(index[0])
-            if index[1].strip.length > 0
-              where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
-              where_clause += "(soundex(#{index[0]}) = soundex(#{Organization.sanitize(index[1])}) OR (LOWER(#{index[0]}) LIKE #{Organization.sanitize(index[1].downcase + "%")}))"
+        if (organization_search_params[:name] == "=") && (!session[:organization_id].nil?)
+          @organizations = Organization.where(id: session[:organization_id]).paginate(page: params[:page], per_page: per_page)
+        else
+          organization_type_ids = []
+          organization_search_params.each do |index|
+            if ["name", "city"].include?(index[0])
+              if index[1].strip.length > 0
+                where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
+                where_clause += "(soundex(#{index[0]}) = soundex(#{Organization.sanitize(index[1])}) OR (LOWER(#{index[0]}) LIKE #{Organization.sanitize(index[1].downcase + "%")}))"
+              end
+            end
+            if index[0] == "organization_type_ids"
+              organization_type_ids = index[1]
             end
           end
-          if index[0] == "organization_type_ids"
-            organization_type_ids = index[1]
-          end
-        end
 
-        if organization_type_ids.count > 0
-          @organizations = Organization.select("DISTINCT(organizations.id), organizations.*").where(organization_type: organization_type_ids).where(where_clause).order(:name, :city).paginate(page: params[:page], per_page: per_page)
-        else
-          @organizations = Organization.select("DISTINCT(organizations.id), organizations.*").where(where_clause).order(:name, :city).paginate(page: params[:page], per_page: per_page)
+          if organization_type_ids.count > 0
+            @organizations = Organization.select("DISTINCT(organizations.id), organizations.*").where(organization_type: organization_type_ids).where(where_clause).order(:name, :city).paginate(page: params[:page], per_page: per_page)
+          else
+            @organizations = Organization.select("DISTINCT(organizations.id), organizations.*").where(where_clause).order(:name, :city).paginate(page: params[:page], per_page: per_page)
+          end
         end
       end
 
@@ -123,6 +127,7 @@ class OrganizationsController < ApplicationController
       render partial: "dialog_form"
     end
     @allow_stay = true
+    session[:organization_id] = @organization.id
 
   end
 
@@ -132,6 +137,7 @@ class OrganizationsController < ApplicationController
     @num_workdays = WorkdayOrganization.where(organization_id: @organization.id)
     @allow_stay = true
     @donation_year = get_donation_summary("organization", @organization.id)[0].first
+    session[:organization_id] = @organization.id
   end
 
   # POST /organizations
@@ -139,6 +145,7 @@ class OrganizationsController < ApplicationController
   def create
     @organization = Organization.new(organization_params)
     if @organization.save
+      session[:organization_id] = @organization.id
       if params[:organization][:dialog] == "true"
         if !params[:organization][:alias].blank?
           render json: {id: @organization.id, name: @organization.name, alias: params[:organization][:alias]}
@@ -174,6 +181,7 @@ class OrganizationsController < ApplicationController
   # PATCH/PUT /organizations/1.json
   def update
     @organization = Organization.find(params[:id])
+    session[:organization_id] = @organization.id
     if organization_params[:name].nil?     # Coming from donations
       if @organization.update_attributes(organization_params)
         flash[:success] = "Donations updated"
