@@ -10,7 +10,7 @@ class Donation < ActiveRecord::Base
   validates :donation_type, presence: true
   validate :have_donor
   validate :value_if_monetary
-  validate :item_if_non_monetary, unless: :skip_item_check
+  # validate :item_if_non_monetary, unless: :skip_item_check  Skipping for now
   validate :value_not_negative
 
   private

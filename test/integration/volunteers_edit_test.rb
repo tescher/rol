@@ -44,7 +44,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
       assert_template "shared/donations_form"
       donations = Donation.where("volunteer_id = '#{@volunteer.id}'")
       donations.each do |donation|
-        assert_select 'input[value=?]',donation.id
+        assert_select "input[value='#{donation.id}']"
       end
     end
   end
@@ -56,10 +56,10 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     monetary_donations = Donation.joins(:donation_type).where("volunteer_id = '#{@volunteer.id}' AND NOT donation_types.non_monetary")
     non_monetary_donations = Donation.joins(:donation_type).where("volunteer_id = '#{@volunteer.id}' AND donation_types.non_monetary")
     non_monetary_donations.each do |donation|
-      assert_select 'input[value=?]',donation.id
+      assert_select "input[value='#{donation.id}']"
     end
     monetary_donations.each do |donation|
-      assert_select 'input[value=?]',donation.id, false
+      assert_select "input[value='#{donation.id}']", false
     end
   end
 
