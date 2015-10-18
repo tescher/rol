@@ -78,6 +78,32 @@ class UsersControllerTest < ActionController::TestCase
     assert_not @other_user.reload.admin?
   end
 
+  test "should not allow the admin attribute to be edited by current user unless admin" do
+    log_in_as(@other_user)
+    assert_not @other_user.admin?
+    patch :update, id: @other_user, user: { password:              "password",
+                                            password_confirmation: "password",
+                                            admin: true }
+    assert_not @other_user.reload.admin?
+  end
+
+  test "should not allow the donations attributes to be edited by current user unless admin" do
+    log_in_as(@other_user)
+    assert_not @other_user.admin?
+    patch :update, id: @other_user, user: { password:              "password",
+                                            password_confirmation: "password",
+                                            all_donations: true,
+                                            non_monetary_donations: false}
+    assert_not @other_user.reload.all_donations?
+    patch :update, id: @other_user, user: { password:              "password",
+                                            password_confirmation: "password",
+                                            all_donations: false,
+                                            non_monetary_donations: true}
+    assert_not @other_user.reload.non_monetary_donations?
+  end
+
+
+
 
 
 
