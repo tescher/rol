@@ -14,4 +14,12 @@ class OrganizationTypeTest < ActiveSupport::TestCase
     @organization_type.name = "     "
     assert_not @organization_type.valid?
   end
+
+  test "cannot change locked type" do
+    @organization_type = OrganizationType.find(1)
+    old_name = @organization_type.name
+    @organization_type.name = "Something Else"
+    assert_raises(ActiveRecord::ReadOnlyRecord) { @organization_type.save}
+    # assert_not @organization_type.errors.empty?, "Should error"
+  end
 end

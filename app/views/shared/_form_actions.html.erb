@@ -1,12 +1,14 @@
 <div class="actions">
-  <%= f.submit class: "btn btn-primary" %>
-  <%= if @allow_stay
-        f.submit "Save & Stay", name: "stay", class: "btn btn-primary"
-       end %>
-  <%= link_to 'Cancel', defined?(cancel) ? cancel : root_path, class: "btn btn-primary" %>
-  <% if ((defined?(non_admin_delete) && non_admin_delete) || current_user.admin?) && f.object.persisted? && !@no_delete %>
-      <%= link_to "Delete", f.object, method: :delete,
-                  data: { confirm: "You sure?" }, class: "btn btn-primary" %>
+  <% if !f.object.readonly? %>
+      <%= f.submit class: "btn btn-primary" %>
+      <%= if @allow_stay
+            f.submit "Save & Stay", name: "stay", class: "btn btn-primary"
+          end %>
+      <% if ((defined?(non_admin_delete) && non_admin_delete) || current_user.admin?) && f.object.persisted? && !@no_delete %>
+          <%= link_to "Delete", f.object, method: :delete,
+                      data: { confirm: "You sure?" }, class: "btn btn-primary" %>
+      <% end %>
   <% end %>
+  <%= link_to 'Cancel', defined?(cancel) ? cancel : root_path, class: "btn btn-primary" %>
 
 </div>

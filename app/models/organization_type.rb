@@ -3,5 +3,9 @@ class OrganizationType < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: { case_sensitive: false, message: "duplicate name" }
 
+  def readonly?
+    LOCKED_ORGANIZATION_TYPES.include?(self.id)
+  end
+
 
 end

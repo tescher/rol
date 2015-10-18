@@ -4,7 +4,7 @@ class OrganizationTypesEditTest < ActionDispatch::IntegrationTest
 
   def setup
     @user = users(:michael)
-    @organization_type = organization_types(:church)
+    @organization_type = organization_types(:non_profit)
     @organization_type_2 = organization_types(:business)
     @organization_type_3 = OrganizationType.new(name: "Test")
     @organization_type_3.save

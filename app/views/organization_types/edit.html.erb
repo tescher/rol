@@ -1,6 +1,9 @@
 <% provide(:title, 'Edit Organization Type') %>
 <h1>Update
-        <%= @organization_type.name %>
+  <%= @organization_type.name %>
 </h1>
+<% if @organization_type.readonly? %>
+    <h2>(read only)</h2>
+<% end %>
 
 <%= render 'form' %>
