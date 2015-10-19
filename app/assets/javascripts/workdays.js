@@ -23,7 +23,7 @@ $(document).ready(function() {
         },
 
         close: function (event, ui ) {
-            // RO_DO: Something go here?
+            $(this).dialog("option", "height", "auto")
         }
     });
 
@@ -38,7 +38,7 @@ $(document).ready(function() {
                     at: "center bottom",
                     of: $("header")
                 });
-                $("#tabs-container").tabs();
+                $("#dialogWorkdaySummary #tabs-container").tabs();
 
             },
             async: false,

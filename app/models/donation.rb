@@ -6,6 +6,8 @@ class Donation < ActiveRecord::Base
 
   attr_accessor :skip_item_check
 
+  scope :non_monetary, -> { joins(:donation_type).where('donation_types.non_monetary = ?', true) }
+
   validates_date :date_received, allow_blank: false
   validates :donation_type, presence: true
   validate :have_donor

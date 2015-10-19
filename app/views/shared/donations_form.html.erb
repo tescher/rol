@@ -3,7 +3,11 @@
 
 <%= form_for(@donator) do |f| %>
     <%= @object = f.object
-        @donations = @donator.donations.order("date_received DESC")
+        if current_user.non_monetary
+          @donations = @donator.donations.non_monetary.order("date_received DESC")
+        else
+          @donations = @donator.donations.order("date_received DESC")
+        end
         render 'shared/error_messages' %>
 
     <table class="table no-row-border header-border">

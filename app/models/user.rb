@@ -35,7 +35,11 @@ class User < ActiveRecord::Base
   end
 
   def donations_allowed
-    return self.admin || self.all_donations || self.non_monetary_donations
+    self.admin || self.all_donations || self.non_monetary_donations
+  end
+
+  def monetary
+    self.admin || self.all_donations
   end
 
   def non_monetary

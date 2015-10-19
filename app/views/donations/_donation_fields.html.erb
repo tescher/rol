@@ -7,7 +7,9 @@
     </div>
   </td>
   <td>
-    <%= f.select :donation_type_id, options_from_collection_for_select(DonationType.where(inactive: false), :id, :name, f.object.donation_type_id), {}, { :multiple => false, class: "form-control"}  %>
+    <%= donation_types = DonationType.where(inactive: false)
+        donation_types = donation_types.where(non_monetary: true) if current_user.non_monetary
+        f.select :donation_type_id, options_from_collection_for_select(donation_types, :id, :name, f.object.donation_type_id), {}, { :multiple => false, class: "form-control"}  %>
   </td>
   <td><%= f.text_field :ref_no %></td>
   <td><%= f.text_field :value,  value: number_with_precision(f.object.value, precision: 2)%></td>

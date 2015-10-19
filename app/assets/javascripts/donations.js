@@ -33,7 +33,7 @@ $(document).ready(function() {
                     at: "center bottom",
                     of: $("header")
                 });
-                $("#tabs-container").tabs();
+                $("#dialogDonationSummary #tabs-container").tabs();
 
             },
             async: false,
