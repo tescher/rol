@@ -252,6 +252,14 @@ class WorkdaysController < ApplicationController
                                  workdays = Workday.select("DISTINCT workdays.*, SUM(workday_" + @objectName + "s.hours) as hours").joins(join).where("ROUND(EXTRACT(YEAR FROM workdate)) = '#{wy.year}' AND workday_" + @objectName + "s." + @objectName + "_id = '#{@object.id}'").group("workdays.id").order("workdate DESC")
                                  [year, workdays]
                                }]
+      @year_totals = Hash[@workdays_by_year.map { |y, ws|
+                           year_hours = 0
+                           ws.each do |w|
+                             year_hours += w.hours
+                           end
+                           [y, year_hours]
+                         }]
+
       render partial: "dialog_workday_summary"
     end
   end
