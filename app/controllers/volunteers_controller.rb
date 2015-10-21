@@ -91,11 +91,27 @@ class VolunteersController < ApplicationController
             end
           end
 
+          joins_clause = []
           if interest_ids.count > 0
-            @volunteers = Volunteer.select("DISTINCT(volunteers.id), volunteers.*").joins(:volunteer_interests).where(volunteer_interests: {interest_id: interest_ids}).where(where_clause).order(:last_name, :first_name).paginate(page: params[:page], per_page: per_page)
+            joins_clause << :volunteer_interests
+            where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
+            where_clause += "volunteer_interests.interest_id IN (#{interest_ids.join(',')})"
+            # @volunteers = Volunteer.select("DISTINCT(volunteers.id), volunteers.*").joins(:volunteer_interests).where(volunteer_interests: {interest_id: interest_ids}).where(where_clause).order(:last_name, :first_name)
           else
-            @volunteers = Volunteer.select("DISTINCT(volunteers.id), volunteers.*").where(where_clause).order(:last_name, :first_name).paginate(page: params[:page], per_page: per_page)
+            # @volunteers = Volunteer.select("DISTINCT(volunteers.id), volunteers.*").where(where_clause).order(:last_name, :first_name)
           end
+
+          if !search_params[:workday_since].blank?
+            workday_since = Date.strptime(search_params[:workday_since], "%m/%d/%Y").to_s
+            if !workday_since.blank?
+              joins_clause << :workday_volunteers
+              joins_clause << :workdays
+              where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
+              where_clause += "workdays.workdate >= '#{workday_since}'"
+              #@volunteers = @volunteers.joins(:workday_volunteers, :workdays).where("workday_volunteers.volunteer_id = '#{v.id}'").where("workdays.workdate >= '#{workday_since}'")
+            end
+          end
+          @volunteers = Volunteer.select("DISTINCT(volunteers.id), volunteers.*").joins(joins_clause).where(where_clause).order(:last_name, :first_name).paginate(page: params[:page], per_page: per_page)
         end
       end
     end
@@ -473,7 +489,7 @@ class VolunteersController < ApplicationController
                                       :notes, :remove_from_mailing_list, :waiver_date, :first_contact_date, :first_contact_type_id, :background_check_date, interest_ids: [], donations_attributes: [:id, :date_received, :value, :ref_no, :item, :anonymous, :in_honor_of, :designation, :notes, :receipt_sent, :volunteer_id, :organization_id, :donation_type_id, :_destroy])
   end
   def volunteer_search_params
-    search_params = params.permit(:name, :city, interest_ids: [])
+    search_params = params.permit(:name, :city, :workday_since, interest_ids: [])
     search_params.delete_if {|k,v| v.blank?}
     search_params
   end

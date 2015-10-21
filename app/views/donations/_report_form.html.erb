@@ -6,19 +6,11 @@
           <div class="row">
             <div class="field">
               <%= label_tag :from_date %><br>
-              <div class='input-group date' id='fromdatepicker'>
-                <input type='text' name="from_date" id="from_date" class="form-control" autofocus/>
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-              </div>
+              <%= text_field_tag :from_date, nil, id: 'fromdatepicker', class: 'form-control' %>
             </div>
             <div class="field">
               <%= label_tag :to_date %><br>
-              <div class='input-group date' id='todatepicker'>
-                <input type='text' value="<%= Date.today.strftime("%m/%d/%Y") %>" name="to_date" id="from_date" class="form-control" />
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-              </div>
+              <%= text_field_tag :to_date, Date.today.strftime("%m/%d/%Y"), id: 'todatepicker', class: 'form-control' %>
             </div>
 
             <div class="field">

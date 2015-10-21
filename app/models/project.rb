@@ -3,4 +3,7 @@ class Project < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: { case_sensitive: false, message: "duplicate name" }
 
+  scope :active, -> { where(inactive: false) }
+
+
 end

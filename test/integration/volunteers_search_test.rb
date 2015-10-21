@@ -16,7 +16,7 @@ class VolunteersSearchTest < ActionDispatch::IntegrationTest
     assert_template 'volunteers/search'
     get volunteers_path, {name: "e"}
     assert_select 'div.pagination'
-    first_page_of_volunteers = Volunteer.where("(soundex(last_name) = soundex('e') OR (LOWER(last_name) LIKE 'e%'))").order(:last_name, :first_name).paginate(page: 1)
+    first_page_of_volunteers = Volunteer.where("(soundex(last_name) = soundex('e') OR (LOWER(last_name) LIKE 'e%'))").order(:last_name, :first_name).paginate(page: 1, per_page: 30)
     first_page_of_volunteers.each do |volunteer|
       assert_select 'div[href=?]', edit_volunteer_path(volunteer)
     end
@@ -80,6 +80,22 @@ class VolunteersSearchTest < ActionDispatch::IntegrationTest
     assert_template 'volunteers/search'
     get volunteers_path, {interest_ids: [@interest.id, "0"], name: "s,t", city: "baraboo"}
     assert_select 'div[href=?]', edit_volunteer_path(@volunteer)
+  end
+
+  test "Find volunteers with workdays on or after a date" do
+    log_in_as(@user)
+    @recent_volunteer = Volunteer.new(first_name: "Tim", last_name: "Smith", email: "tim@eschers.com", interests: [@interest], city: "Baraboo")
+    @recent_volunteer.save
+    @past_volunteer = Volunteer.new(first_name: "Tim", last_name: "Jones", email: "tim@eschers.com", interests: [@interest], city: "Baraboo")
+    @past_volunteer.save
+    @recent_workday_volunteer = WorkdayVolunteer.new(workday: workdays(:fiveday), volunteer_id: @recent_volunteer.id)
+    @recent_workday_volunteer.save
+    @past_workday_volunteer = WorkdayVolunteer.new(workday: workdays(:tenday), volunteer_id: @past_volunteer.id)
+    @past_workday_volunteer.save
+    get search_volunteers_path
+    assert_template 'volunteers/search'
+    get volunteers_path, {workday_since: 5.day.ago.strftime("%m/%d/%Y")}
+    assert_select 'div[href=?]', edit_volunteer_path(@recent_volunteer)
   end
 
 

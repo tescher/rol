@@ -13,10 +13,15 @@ class WorkdaysSearchTest < ActionDispatch::IntegrationTest
   test "Listing by project" do
     log_in_as(@user)
     get search_workdays_path
-    projects = Project.all
+    projects = Project.where(inactive: false).all
     projects.each do |project|
       assert_select 'div[href=?]', workdays_path({project_id: project.id})
     end
+    projects = Project.where(inactive: true).all
+    projects.each do |project|
+      assert_select 'div[href=?]', workdays_path({project_id: project.id}), false
+    end
+
 
     assert_template 'workdays/search'
     get workdays_path, {project_id: 1}

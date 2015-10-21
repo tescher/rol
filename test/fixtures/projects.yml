@@ -12,3 +12,7 @@ two:
 three:
   name: Project3
   inactive: false
+
+four:
+  name: Project4
+  inactive: true
