@@ -21,3 +21,7 @@ FEDEX_MODE = 'development'
 
 # Locked organization types
 LOCKED_ORGANIZATION_TYPES = [1]
+
+# Link to old system if any
+OLD_SYSTEM = "http://hfhsca.org/lead_access/login.php"
+OLD_SYSTEM_NAME = "Old Lead Access"

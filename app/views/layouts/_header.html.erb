@@ -16,6 +16,11 @@
                 <li>
                   <%= link_to "Log out", logout_path, method: "delete" %>
                 </li>
+                <% if defined? OLD_SYSTEM %>
+                    <li>
+                      <%= link_to OLD_SYSTEM_NAME, OLD_SYSTEM %>
+                    </li>
+                <% end %>
               </ul>
             </li>
         <% else %>
