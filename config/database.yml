@@ -34,10 +34,10 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: rol_production
+  database: <%= ENV["RAILS_DB_DATABASE"] %>
   pool: 5
-  username: rol_connection
-  password: rolit
+  username: <%= ENV["RAILS_DB_USER"] %>
+  password: <%= ENV["RAILS_DB_PASSWORD"] %>
   timeout: 5000
-  port: 16332
+  port: <%= ENV["RAILS_DB_PORT"] %>
   host: localhost
