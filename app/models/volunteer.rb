@@ -30,4 +30,8 @@ class Volunteer < ActiveRecord::Base
     [first_name, last_name].join(' ')
   end
 
+  def phone
+    self.home_phone || self.mobile_phone || self.work_phone
+  end
+
 end

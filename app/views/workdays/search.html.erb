@@ -3,15 +3,18 @@
 <h4 class="center">Choose a project</h4>
 
 
-<div class="container">
+
+<div class="<%= NO_PAGINATION.blank? ? "container" : "container scrolled-listing" %>">
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
       <% if @projects.count > 0 %>
           <ul class="listing">
             <%= render partial: "workdays/project.html", collection: @projects %>
           </ul>
-          <%= will_paginate @projects %>
-    <% else %>
+          <% if NO_PAGINATION.blank? %>
+              <%= will_paginate @projects %>
+          <% end %>
+      <% else %>
           No projects found. Create a project first.
       <% end %>
     </div>

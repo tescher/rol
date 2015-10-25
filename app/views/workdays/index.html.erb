@@ -2,17 +2,20 @@
 
 <h1>Workdays</h1>
 <h4 class="center"><%= @project.name %> - Choose a workday or create a new one</h4>
+<div class="<%= NO_PAGINATION.blank? ? "container" : "container scrolled-listing" %>">
 
+  <% if @workdays.count > 0 %>
+      <ul class="listing">
+        <%= render @workdays %>
+      </ul>
+  <% else %>
+      <p class="center">No workdays found. Click New to create one.</p>
+  <% end %>
 
-<% if @workdays.count > 0 %>
-    <ul class="listing">
-      <%= render @workdays %>
-    </ul>
-<% else %>
-    <p class="center">No workdays found. Click New to create one.</p>
-<% end %>
-
-<%= will_paginate %>
+  <% if NO_PAGINATION.blank? %>
+      <%= will_paginate %>
+  <% end %>
+</div>
 
 
 <div class="row">

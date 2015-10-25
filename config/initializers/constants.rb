@@ -25,3 +25,7 @@ LOCKED_ORGANIZATION_TYPES = [1]
 # Link to old system if any
 OLD_SYSTEM = "http://hfhsca.org/lead_access/login.php"
 OLD_SYSTEM_NAME = "Old Lead Access"
+
+# Pagination
+NO_PAGINATION = true
+WillPaginate.per_page = 15

@@ -2,11 +2,17 @@
 
 <h1>All Projects</h1>
 
-<ul class="listing">
-  <%= render @projects %>
-</ul>
+<div class="<%= NO_PAGINATION.blank? ? "container" : "container scrolled-listing" %>">
 
-<%= will_paginate %>
+  <ul class="listing">
+    <%= render @projects %>
+  </ul>
+
+  <% if NO_PAGINATION.blank? %>
+      <%= will_paginate %>
+  <% end %>
+
+</div>
 
 <div class="actions pull-right">
   <%= link_to 'New Project', new_project_path, class: "btn btn-primary" %>

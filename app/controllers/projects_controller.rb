@@ -5,7 +5,10 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.order(:name).all.paginate(page: params[:page])
+    @projects = Project.order(:name).all
+    if (!defined? NO_PAGINATION) || !NO_PAGINATION
+      @projects = @projects.paginate(page: params[:page])
+    end
   end
 
   # GET /projects/1

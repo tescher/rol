@@ -19,7 +19,10 @@ class InterestsController < ApplicationController
   end
 
   def index
-    @interests = Interest.paginate(page: params[:page])
+    @interests = Interest.all
+    if (!defined? NO_PAGINATION) || !NO_PAGINATION
+      @interests = @interests.paginate(page: params[:page])
+    end
   end
 
   # POST /interests

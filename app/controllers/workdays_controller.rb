@@ -6,7 +6,10 @@ class WorkdaysController < ApplicationController
   # GET /workdays
   # GET /workdays.json
   def index
-    @workdays = Workday.where(project_id: params[:project_id]).order(workdate: :desc).paginate(page: params[:page])
+    @workdays = Workday.where(project_id: params[:project_id]).order(workdate: :desc)
+    if (!defined? NO_PAGINATION) || !NO_PAGINATION
+      @workdays = @workdays.paginate(page: params[:page])
+    end
     @project = Project.find(params[:project_id])
   end
 
@@ -87,7 +90,10 @@ class WorkdaysController < ApplicationController
 
   # GET /workdays/search
   def search
-    @projects = Project.active.order(:name).all.paginate(page: params[:page])
+    @projects = Project.active.order(:name).all
+    if (!defined? NO_PAGINATION) || !NO_PAGINATION
+      @projects = @projects.paginate(page: params[:page])
+    end
   end
 
   # GET /workdays/new
@@ -253,12 +259,12 @@ class WorkdaysController < ApplicationController
                                  [year, workdays]
                                }]
       @year_totals = Hash[@workdays_by_year.map { |y, ws|
-                           year_hours = 0
-                           ws.each do |w|
-                             year_hours += w.hours
-                           end
-                           [y, year_hours]
-                         }]
+                            year_hours = 0
+                            ws.each do |w|
+                              year_hours += w.hours
+                            end
+                            [y, year_hours]
+                          }]
 
       render partial: "dialog_workday_summary"
     end

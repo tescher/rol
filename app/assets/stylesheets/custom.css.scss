@@ -241,11 +241,17 @@ table.header-border {
 
 /* Stop overflow */
 .no-overflow {
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: visible;
   -ms-text-overflow: ellipsis;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
-  display: block;
+  /* display: block; */
+}
+
+.scrolled-listing {
+  height: 500px;
+  overflow: auto;
 }
 
 

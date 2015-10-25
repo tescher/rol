@@ -2,17 +2,22 @@
 
 <h1>All Interests</h1>
 
-<% if @interests.count > 0 %>
-    <ul class="listing">
-      <%= render @interests %>
-    </ul>
-<% else %>
-    No interests found. Click New to create one.
-<% end %>
+<div class="<%= NO_PAGINATION.blank? ? "container" : "container scrolled-listing" %>">
 
-<%= will_paginate %>
+  <% if @interests.count > 0 %>
+      <ul class="listing">
+        <%= render @interests %>
+      </ul>
+  <% else %>
+      No interests found. Click New to create one.
+  <% end %>
+
+  <% if NO_PAGINATION.blank? %>
+      <%= will_paginate %>
+  <% end %>
+</div>
 
 <div class="actions pull-right">
-    <%= link_to 'New Interest', new_interest_path, class: "btn btn-primary" %>
-    <%= link_to 'Back', root_path, class: "btn btn-primary" %>
+  <%= link_to 'New Interest', new_interest_path, class: "btn btn-primary" %>
+  <%= link_to 'Back', root_path, class: "btn btn-primary" %>
 </div>

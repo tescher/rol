@@ -15,7 +15,7 @@
 
             <div class="field">
               <%= label_tag :projects %><br>
-              <%= select_tag :project_ids, options_from_collection_for_select(Project.all, :id, :name), { :multiple => true, class: "form-control"}  %>
+              <%= select_tag :project_ids, options_from_collection_for_select(Project.all.order(:name), :id, :name), { :multiple => true, class: "form-control"}  %>
             </div>
           </div>
         </div>
