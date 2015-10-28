@@ -45,4 +45,60 @@ module ApplicationHelper
   def currency_to_number(currency)
     currency.to_s.gsub(/[$,]/,'').to_f
   end
+
+  ### Controller Helpers
+
+  #standard delete action for simple controllers, catches errors and returns to edit
+  def standard_delete(myclass, id, edit_view = "")
+    @object = myclass.find(id)
+    begin
+      @object.destroy
+      flash[:success] = "#{myclass.name.underscore.tr("_"," ")} deleted"
+      redirect_to url_for controller: myclass.name.underscore.pluralize, action: :index
+    rescue => ex
+      flash[:danger] = ex.message
+      #redirect_to url_for controller: myclass.name.underscore.pluralize, id: id, action: :edit
+      render edit_view.blank? ? 'shared/simple_edit' : edit_view
+    end
+  end
+
+  #standard new action
+  def standard_new(myclass, object_params)
+    @object = myclass.new(object_params)
+    if @object.save
+      flash[:success] = "#{myclass.name.titleize} successfully created"
+      redirect_to url_for(controller: myclass.name.underscore.pluralize, action: :index)
+    else
+      render 'shared/simple_new'
+    end
+  end
+
+  #standard update action
+  def standard_update(myclass, id, object_params)
+    @object = myclass.find(id)
+    if @object.update_attributes(object_params)
+      flash[:success] = "#{myclass.name.titleize} updated"
+      redirect_to url_for(controller: myclass.name.underscore.pluralize, action: :index)
+    else
+      render 'shared/simple_edit'
+    end
+
+  end
+
+  # Confirms an admin user.
+  def logged_in_admin_user
+    if logged_in?
+      redirect_to(root_url) unless current_user.admin?
+    else
+      store_location
+      flash[:danger] = "Please log in."
+      redirect_to login_url
+    end
+  end
+
+  # Set class variables for all controller actions
+  def set_controller_vars(controller_name)
+    @class_name = controller_name.classify
+  end
+
 end

@@ -22,3 +22,21 @@ volunteer_<%= n %>:
   last_name: "Example"
   email: <%= "volunteer-#{n}@example.com" %>
 <% end %>
+
+# for testing has_many/belongs_to relationship deletions
+
+dependent:
+  first_name: Tom
+  middle_name: William
+  last_name: Escher
+  occupation: Engineer
+  address: 1234 View St
+  city: Lodi
+  state: WI
+  zip: 53555
+  email: tim@example.com
+  home_phone: (608) 432-6755
+  work_phone:
+  mobile_phone:
+  notes: A bunch of notes
+  first_contact_type: master

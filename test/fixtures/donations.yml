@@ -27,3 +27,17 @@ two:
   volunteer_id: 1
   organization_id: 1
   donation_type_id: 1
+
+dependent:
+  date_received: 2015-09-29
+  value: 9.99
+  ref_no: MyString
+  item: MyString
+  anonymous: false
+  in_honor_of: MyString
+  designation: MyString
+  notes: MyString
+  receipt_sent: false
+  volunteer_id: 1
+  organization_id: 1
+  donation_type: master
