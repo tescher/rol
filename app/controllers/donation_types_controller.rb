@@ -5,19 +5,19 @@ class DonationTypesController < ApplicationController
   before_action :logged_in_admin_user, only: [:index, :new, :edit, :update, :destroy]
 
 
-  # GET /contact_types/1
-  # GET /contact_types/1.json
+  # GET /donation_types/1
+  # GET /donation_types/1.json
   def show
     @object = DonationType.find(params[:id])
   end
 
-  # GET /contact_types/new
+  # GET /donation_types/new
   def new
     @object = DonationType.new
     render 'shared/simple_new'
   end
 
-  # GET /contact_types/1/edit
+  # GET /donation_types/1/edit
   def edit
     @object = DonationType.find(params[:id])
     render 'shared/simple_edit'
@@ -28,21 +28,21 @@ class DonationTypesController < ApplicationController
     render 'shared/simple_index'
   end
 
-  # POST /contact_types
-  # POST /contact_types.json
+  # POST /donation_types
+  # POST /donation_types.json
   def create
-    standard_new(DonationType, contact_type_params)
+    standard_new(DonationType, donation_type_params)
   end
 
-  # PATCH/PUT /contact_types/1
-  # PATCH/PUT /contact_types/1.json
+  # PATCH/PUT /donation_types/1
+  # PATCH/PUT /donation_types/1.json
   def update
-    standard_update(DonationType, params[:id], contact_type_params)
+    standard_update(DonationType, params[:id], donation_type_params)
   end
 
 
-  # DELETE /contact_types/1
-  # DELETE /contact_types/1.json
+  # DELETE /donation_types/1
+  # DELETE /donation_types/1.json
   def destroy
     standard_delete(DonationType, params[:id])
   end

@@ -5,3 +5,6 @@ office:
 
 construction:
   name: Construction
+
+master:
+  name: master

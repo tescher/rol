@@ -1,79 +1,53 @@
+include ApplicationHelper
+
 class InterestCategoriesController < ApplicationController
+  before_filter { |c| c.set_controller_vars(controller_name) }
   before_action :logged_in_admin_user, only: [:index, :new, :edit, :update, :destroy]
 
 
-  # GET /interests/1
-  # GET /interests/1.json
+  # GET /interest_categories/1
+  # GET /interest_categories/1.json
   def show
-    @interest_category = InterestCategory.find(params[:id])
+    @object = InterestCategory.find(params[:id])
   end
 
-  # GET /interests/new
+  # GET /interest_categories/new
   def new
-    @interest_category = InterestCategory.new
+    @object = InterestCategory.new
+    render 'shared/simple_new'
   end
 
-  # GET /interests/1/edit
+  # GET /interest_categories/1/edit
   def edit
-    @interest_category = InterestCategory.find(params[:id])
+    @object = InterestCategory.find(params[:id])
+    render 'shared/simple_edit'
   end
 
   def index
-    @interest_categories = InterestCategory.paginate(page: params[:page])
+    @objects = InterestCategory.paginate(page: params[:page])
+    render 'shared/simple_index'
   end
 
-  # POST /interests
-  # POST /interests.json
+  # POST /interest_categories
+  # POST /interest_categories.json
   def create
-    @interest_category = InterestCategory.new(interest_category_params)
-    if @interest_category.save
-      redirect_to interest_categories_path, notice: 'interest category was successfully created.'
-    else
-      render :new
-    end
+    standard_new(InterestCategory, interest_category_params)
   end
 
-  # PATCH/PUT /interests/1
-  # PATCH/PUT /interests/1.json
+  # PATCH/PUT /interest_categories/1
+  # PATCH/PUT /interest_categories/1.json
   def update
-    @interest_category = InterestCategory.find(params[:id])
-    if @interest_category.update_attributes(interest_category_params)
-      flash[:success] = "interest category updated"
-      redirect_to interest_categories_path
-    else
-      render :edit
-    end
+    standard_update(InterestCategory, params[:id], interest_category_params)
   end
 
 
-  # DELETE /interests/1
-  # DELETE /interests/1.json
+  # DELETE /interest_categories/1
+  # DELETE /interest_categories/1.json
   def destroy
-    @interest_category = InterestCategory.find(params[:id])
-    @interests = Interest.where(interest_category_id: @interest_category.id)
-    if @interests.count > 0
-      flash.now[:danger] = "Cannot delete interest category, it is attached to an interest"
-      render :edit
-    else
-      @interest_category.destroy
-      flash[:success] = "interest category deleted"
-      redirect_to interest_categories_path
-    end
+    standard_delete(InterestCategory, params[:id])
   end
 
   private
-
-  # Confirms an admin user.
-  def logged_in_admin_user
-    if logged_in?
-      redirect_to(root_url) unless current_user.admin?
-    else
-      store_location
-      flash[:danger] = "Please log in."
-      redirect_to login_url
-    end
-
-  end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def interest_category_params

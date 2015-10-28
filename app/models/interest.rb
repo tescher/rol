@@ -4,7 +4,7 @@ class Interest < ActiveRecord::Base
   belongs_to :interest_category
 
   validates :name, presence: true, uniqueness: {scope: :interest_category_id, message: "Duplicate name and category with another interest"}
-  validates :interest_category_id, presence: true
+  validates :interest_category, presence: true
 
   def option_formatter
     if self.inactive?

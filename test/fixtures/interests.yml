@@ -9,3 +9,8 @@ two:
   name: Example2
   interest_category_id: 1
   highlight: false
+
+dependent:
+  name: Example3
+  interest_category: master
+  highlight: false
