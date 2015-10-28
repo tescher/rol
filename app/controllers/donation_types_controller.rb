@@ -24,8 +24,7 @@ class DonationTypesController < ApplicationController
   end
 
   def index
-    @objects = DonationType.paginate(page: params[:page])
-    render 'shared/simple_index'
+    standard_index(DonationType, params[:page])
   end
 
   # POST /donation_types

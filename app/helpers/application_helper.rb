@@ -48,6 +48,18 @@ module ApplicationHelper
 
   ### Controller Helpers
 
+  #standard index action
+  def standard_index(myclass, page = 1, always_paginate = false, index_view = "")
+    @objects = myclass.all
+    if always_paginate || (!defined? NO_PAGINATION) || !NO_PAGINATION
+      @paginate = true
+      @objects = @objects.paginate(page: page)
+    else
+      @paginate = false
+    end
+    render index_view.blank? ? 'shared/simple_index' : index_view
+  end
+
   #standard delete action for simple controllers, catches errors and returns to edit
   def standard_delete(myclass, id, edit_view = "")
     @object = myclass.find(id)

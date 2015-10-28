@@ -24,8 +24,7 @@ class InterestCategoriesController < ApplicationController
   end
 
   def index
-    @objects = InterestCategory.paginate(page: params[:page])
-    render 'shared/simple_index'
+    standard_index(InterestCategory, params[:page])
   end
 
   # POST /interest_categories

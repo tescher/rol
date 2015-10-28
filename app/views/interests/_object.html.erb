@@ -1,0 +1,19 @@
+<div class="row clickable" href="<%= url_for controller: @class_name.underscore.pluralize, id: object.id, action: :edit %>">
+    <li>
+      <div class="col-md-2 col-md-offset-1">
+        <% if object.inactive? %>
+            <s>
+        <% end %>
+        <%= object.name %>
+        <% if object.inactive? %>
+            </s>
+        <% end %>
+      </div>
+      <div class="col-md-2">
+        <%= object.interest_category.name %>
+      </div>
+      <div class="col-md-2">
+        <%= object.highlight? ? "(highlight)" : "" %>
+      </div>
+    </li>
+</div>

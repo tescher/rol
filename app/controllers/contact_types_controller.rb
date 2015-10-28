@@ -24,8 +24,7 @@ class ContactTypesController < ApplicationController
   end
 
   def index
-    @objects = ContactType.paginate(page: params[:page])
-    render 'shared/simple_index'
+    standard_index(ContactType, params[:page])
   end
 
   # POST /contact_types

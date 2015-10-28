@@ -18,15 +18,15 @@ class InterestCategoriesEditTest < ActionDispatch::IntegrationTest
   test "unsuccessful edit" do
     log_in_as(@user)
     get edit_interest_category_path(@interest_category)
-    assert_template 'interest_categories/edit'
+    assert_template 'shared/simple_edit'
     patch interest_category_path(@interest_category), interest_category: { name:  "" }
-    assert_template 'interest_categories/edit'
+    assert_template 'shared/simple_edit'
   end
 
   test "successful edit" do
     log_in_as(@user)
     get edit_interest_category_path(@interest_category)
-    assert_template 'interest_categories/edit'
+    assert_template 'shared/simple_edit'
     name  = "Foo"
     patch interest_category_path(@interest_category), interest_category: { name:  name }
     assert_not flash.empty?
@@ -73,7 +73,7 @@ class InterestCategoriesEditTest < ActionDispatch::IntegrationTest
   test "no duplicate creation" do
     log_in_as(@user)
     get edit_interest_category_path(@interest_category_2)
-    assert_template 'interest_categories/edit'
+    assert_template 'shared/simple_edit'
     name  = @interest_category.name
     patch interest_category_path(@interest_category_2), interest_category: { name:  name }
     assert_select '.alert', 1
