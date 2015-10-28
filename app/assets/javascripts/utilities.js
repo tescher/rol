@@ -178,7 +178,14 @@ function add_fields_wire_up_events(start_node) {
         remove_fields(this);
         return false;
     });
-    $(start_node).find("[id$='datepicker']").datetimepicker({
+    $(start_node).find("[id$='receiveddatepicker']").datetimepicker({
+        format: 'M/D/YYYY',
+        widgetPositioning: {
+            horizontal: "left"
+        }
+    });
+
+    $(start_node).find("[id$='datepicker']").not("#receiveddatepicker").datetimepicker({
         format: 'M/D/YYYY'
     });
 
