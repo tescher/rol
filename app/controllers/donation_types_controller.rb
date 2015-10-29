@@ -30,7 +30,7 @@ class DonationTypesController < ApplicationController
   # POST /donation_types
   # POST /donation_types.json
   def create
-    standard_new(DonationType, donation_type_params)
+    standard_create(DonationType, donation_type_params)
   end
 
   # PATCH/PUT /donation_types/1
@@ -43,7 +43,7 @@ class DonationTypesController < ApplicationController
   # DELETE /donation_types/1
   # DELETE /donation_types/1.json
   def destroy
-    standard_delete(DonationType, params[:id])
+    standard_destroy(DonationType, params[:id])
   end
 
   private

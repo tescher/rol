@@ -40,6 +40,8 @@ dependent:
   mobile_phone:
   notes: A bunch of notes
   first_contact_type: master
+  employer: master_employer
+  church: master_church
 
 master:
   first_name: Jim

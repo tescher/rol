@@ -30,7 +30,7 @@ class ContactTypesController < ApplicationController
   # POST /contact_types
   # POST /contact_types.json
   def create
-    standard_new(ContactType, contact_type_params)
+    standard_create(ContactType, contact_type_params)
   end
 
   # PATCH/PUT /contact_types/1
@@ -43,7 +43,7 @@ class ContactTypesController < ApplicationController
   # DELETE /contact_types/1
   # DELETE /contact_types/1.json
   def destroy
-    standard_delete(ContactType, params[:id])
+    standard_destroy(ContactType, params[:id])
   end
 
   private

@@ -22,4 +22,11 @@ class OrganizationTypeTest < ActiveSupport::TestCase
     assert_raises(ActiveRecord::ReadOnlyRecord) { @organization_type.save}
     # assert_not @organization_type.errors.empty?, "Should error"
   end
+
+  test "Organization Association" do
+    @organization_type = organization_types(:master)
+    @organization = volunteers(:dependent)
+    assert_raises(ActiveRecord::DeleteRestrictionError) {@organization_type.destroy}
+  end
+
 end

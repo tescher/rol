@@ -49,8 +49,11 @@ module ApplicationHelper
   ### Controller Helpers
 
   #standard index action
-  def standard_index(myclass, page = 1, always_paginate = false, index_view = "")
+  def standard_index(myclass, page = 1, always_paginate = false, index_view = "", order = nil)
     @objects = myclass.all
+    if order
+      @objects = @objects.order(order)
+    end
     if always_paginate || (!defined? NO_PAGINATION) || !NO_PAGINATION
       @paginate = true
       @objects = @objects.paginate(page: page)
@@ -61,7 +64,7 @@ module ApplicationHelper
   end
 
   #standard delete action for simple controllers, catches errors and returns to edit
-  def standard_delete(myclass, id, edit_view = "")
+  def standard_destroy(myclass, id, edit_view = "")
     @object = myclass.find(id)
     begin
       @object.destroy
@@ -74,8 +77,8 @@ module ApplicationHelper
     end
   end
 
-  #standard new action
-  def standard_new(myclass, object_params)
+  #standard create action
+  def standard_create(myclass, object_params)
     @object = myclass.new(object_params)
     if @object.save
       flash[:success] = "#{myclass.name.titleize} successfully created"

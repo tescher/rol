@@ -24,15 +24,15 @@ class ProjectsEditTest < ActionDispatch::IntegrationTest
   test "unsuccessful edit" do
     log_in_as(@user)
     get edit_project_path(@project)
-    assert_template 'projects/edit'
+    assert_template 'shared/simple_edit'
     patch project_path(@project), project: { name:  "" }
-    assert_template 'projects/edit'
+    assert_template 'shared/simple_edit'
   end
 
   test "successful edit" do
     log_in_as(@user)
     get edit_project_path(@project)
-    assert_template 'projects/edit'
+    assert_template 'shared/simple_edit'
     name  = "Foo"
     patch project_path(@project), project: { name:  name }
     assert_not flash.empty?
@@ -79,7 +79,7 @@ class ProjectsEditTest < ActionDispatch::IntegrationTest
   test "no duplicate creation" do
     log_in_as(@user)
     get edit_project_path(@project_2)
-    assert_template 'projects/edit'
+    assert_template 'shared/simple_edit'
     name  = @project.name
     patch project_path(@project_2), project: { name:  name }
     assert_select '.alert', 1

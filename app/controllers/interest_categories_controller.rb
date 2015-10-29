@@ -30,7 +30,7 @@ class InterestCategoriesController < ApplicationController
   # POST /interest_categories
   # POST /interest_categories.json
   def create
-    standard_new(InterestCategory, interest_category_params)
+    standard_create(InterestCategory, interest_category_params)
   end
 
   # PATCH/PUT /interest_categories/1
@@ -43,7 +43,7 @@ class InterestCategoriesController < ApplicationController
   # DELETE /interest_categories/1
   # DELETE /interest_categories/1.json
   def destroy
-    standard_delete(InterestCategory, params[:id])
+    standard_destroy(InterestCategory, params[:id])
   end
 
   private

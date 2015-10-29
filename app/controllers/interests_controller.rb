@@ -30,7 +30,7 @@ class InterestsController < ApplicationController
   # POST /interests
   # POST /interests.json
   def create
-    standard_new(Interest, interest_params)
+    standard_create(Interest, interest_params)
   end
 
   # PATCH/PUT /interests/1
@@ -42,7 +42,7 @@ class InterestsController < ApplicationController
   # DELETE /interests/1
   # DELETE /interests/1.json
   def destroy
-    standard_delete(Interest, params[:id])
+    standard_destroy(Interest, params[:id])
     #if Volunteer.joins(:volunteer_interests).where(volunteer_interests: {interest_id: @interest.id}).count > 0
   end
   

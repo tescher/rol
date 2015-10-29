@@ -20,15 +20,15 @@ class OrganizationTypesEditTest < ActionDispatch::IntegrationTest
   test "unsuccessful edit" do
     log_in_as(@user)
     get edit_organization_type_path(@organization_type)
-    assert_template 'organization_types/edit'
+    assert_template 'shared/simple_edit'
     patch organization_type_path(@organization_type), organization_type: { name:  "" }
-    assert_template 'organization_types/edit'
+    assert_template 'shared/simple_edit'
   end
 
   test "successful edit" do
     log_in_as(@user)
     get edit_organization_type_path(@organization_type)
-    assert_template 'organization_types/edit'
+    assert_template 'shared/simple_edit'
     name  = "Foo"
     patch organization_type_path(@organization_type), organization_type: { name:  name }
     assert_not flash.empty?
@@ -75,7 +75,7 @@ class OrganizationTypesEditTest < ActionDispatch::IntegrationTest
   test "no duplicate creation" do
     log_in_as(@user)
     get edit_organization_type_path(@organization_type_2)
-    assert_template 'organization_types/edit'
+    assert_template 'shared/simple_edit'
     name  = @organization_type.name
     patch organization_type_path(@organization_type_2), organization_type: { name:  name }
     assert_select '.alert', 1
