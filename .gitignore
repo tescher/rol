@@ -18,10 +18,6 @@
 
 # Ignore Spring files.
 /spring/*.pid
-<<<<<<< HEAD
-.idea
-=======
 
 # Ignore RubyMine stuff
 /.idea
->>>>>>> f5d0af25ab454b24431add04fc6230e32403d806
