@@ -18,15 +18,15 @@ class InterestsEditTest < ActionDispatch::IntegrationTest
   test "unsuccessful edit" do
     log_in_as(@user)
     get edit_interest_path(@interest)
-    assert_template 'interests/edit'
+    assert_template 'shared/simple_edit'
     patch interest_path(@interest), interest: { name:  "" }
-    assert_template 'interests/edit'
+    assert_template 'shared/simple_edit'
   end
 
   test "successful edit" do
     log_in_as(@user)
     get edit_interest_path(@interest)
-    assert_template 'interests/edit'
+    assert_template 'shared/simple_edit'
     name  = "Foo"
     interest_category_id = 2
     patch interest_path(@interest), interest: { name:  name,
@@ -83,7 +83,7 @@ class InterestsEditTest < ActionDispatch::IntegrationTest
   test "no duplicate creation" do
     log_in_as(@user)
     get edit_interest_path(@interest_2)
-    assert_template 'interests/edit'
+    assert_template 'shared/simple_edit'
     name  = @interest.name
     category = @interest.interest_category_id
     patch interest_path(@interest_2), interest: { name:  name, interest_category_id: category }

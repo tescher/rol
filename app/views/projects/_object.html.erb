@@ -1,0 +1,20 @@
+<div class="row clickable" href="<%= url_for controller: @class_name.underscore.pluralize, id: object.id, action: :edit %>">
+  <li>
+    <div class="col-md-10 col-md-offset-1">
+
+      <div class="col-md-5">
+        <% if object.inactive? %>
+            <s>
+        <% end %>
+        <%= object.name %>
+        <% if object.inactive? %>
+            </s>
+        <% end %>
+      </div>
+      <div class="col-md-5">
+        <%= object.description %>
+      </div>
+
+   </div>
+ </li>
+</div>

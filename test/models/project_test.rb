@@ -13,4 +13,11 @@ class ProjectTest < ActiveSupport::TestCase
     @project.name = "     "
     assert_not @project.valid?
   end
+
+  test "Workday Association" do
+    @project = projects(:master)
+    @workday = workdays(:dependent)
+    assert_raises(ActiveRecord::DeleteRestrictionError) {@project.destroy}
+  end
+
 end

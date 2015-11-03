@@ -11,3 +11,6 @@ business:
 non_profit:
   name: Non Profit
   id: 3
+
+master:
+  name: master

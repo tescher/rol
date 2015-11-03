@@ -6,8 +6,8 @@ class Organization < ActiveRecord::Base
   has_many :workday_organizations, dependent: :destroy
   has_many :workdays, through: :workday_organizations
   has_many :donations, dependent: :destroy
-  has_many :church_members, class_name: "Volunteers"
-  has_many :employees, class_name: "Volunteers"
+  has_many :church_members, class_name: "Volunteer", foreign_key: :church_id, dependent: :restrict_with_exception
+  has_many :employees, class_name: "Volunteer", foreign_key: :employer_id, dependent: :restrict_with_exception
 
 
   accepts_nested_attributes_for :donations, :allow_destroy => true

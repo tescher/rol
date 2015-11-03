@@ -13,6 +13,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
       @donation = Donation.new
       @donation.donation_type = donation_types(:cash)
       @donation.volunteer_id = @volunteer.id
+      @donation.value = 10.00
       @donation.date_received = n.day.ago.to_s(:db)
       @donation.save
     end
@@ -23,6 +24,11 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
       @donation.date_received = n.day.ago.to_s(:db)
       @donation.save
     end
+    @workday_volunteer = WorkdayVolunteer.new
+    @workday_volunteer.workday = workdays(:one)
+    @workday_volunteer.volunteer = @volunteer
+    @workday_volunteer.hours = 4
+    @workday_volunteer.save
   end
 
   test "No imports by non-admin" do
@@ -113,11 +119,28 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     log_in_as(@admin)
     get edit_volunteer_path(@volunteer)
     assert_select 'a[href=?]', volunteer_path(@volunteer), method: :delete
-
-    assert_difference 'Volunteer.count', -1 do
-      delete volunteer_path(@volunteer)
-    end
-
+    before_wdv = WorkdayVolunteer.count
+    puts before_wdv
+    before_v = Volunteer.count
+    puts before_v
+    before_d = Donation.count
+    puts before_d
+    before_wd = Workday.count
+    puts before_wd
+    delete volunteer_path(@volunteer)
+    after_wdv = WorkdayVolunteer.count
+    puts after_wdv
+    after_v = Volunteer.count
+    puts after_v
+    after_d = Donation.count
+    puts after_d
+    after_wd = Workday.count
+    puts after_wd
+    # Make sure all cascade deletes worked OK
+    assert_equal before_v - 1, after_v
+    assert_equal before_d - 10, after_d
+    assert_equal before_wd, after_wd
+    assert_equal before_wdv - 1, after_wdv
   end
 
   test "No delete if not admin" do

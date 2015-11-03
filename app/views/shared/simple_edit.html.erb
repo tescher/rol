@@ -1,0 +1,10 @@
+<% provide(:title, "Edit #{@class_name.titleize}") %>
+<h1>Update
+        <%= @class_name.titleize + ' "' + @object.name + '"' %>
+</h1>
+<% if @object.readonly? %>
+    <h2>(read only)</h2>
+<% end %>
+
+
+<%= render 'form' %>

@@ -26,3 +26,8 @@ workday_<%= n %>:
   project_id: 1
   workdate: <%= 5.day.ago.to_s(:db) %>
 <% end %>
+
+dependent:
+  name: dependent
+  project: master
+  workdate: <%= 5.day.ago.to_s(:db) %>

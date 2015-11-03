@@ -6,7 +6,7 @@ class Workday < ActiveRecord::Base
   has_many :workday_volunteers, dependent: :destroy
   has_many :workday_organizations, dependent: :destroy
 
-  validates :name, presence: true, uniqueness: { scope: [:project_id, :workdate], case_sensitive: false, message: ": duplicate workday", on: :create, unless: :skip_dup_check? }
+  validates :name, presence: true, uniqueness: { scope: [:project_id, :workdate], case_sensitive: false, message: ": duplicate workday", unless: :skip_dup_check? }
   validates :project_id, presence: true
   validates :workdate, presence: true
 

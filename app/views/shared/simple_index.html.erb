@@ -1,0 +1,24 @@
+<% provide(:title, @class_name.titleize.pluralize) %>
+
+<h1>All <%= @class_name.titleize.pluralize %></h1>
+
+<div class="<%= @paginate ? "container" : "container scrolled-listing" %>">
+
+<% if @objects.count > 0 %>
+    <ul class="listing">
+      <%= render partial: "object", collection: @objects, as: :object %>
+    </ul>
+<% else %>
+    No <%= @class_name.tablize.humanize(capitalize: false) %> found. Click New to create one.
+<% end %>
+
+  <% if @paginate %>
+      <%= will_paginate @objects %>
+  <% end %>
+
+</div>
+
+<div class="actions pull-right">
+    <%= link_to "New #{@class_name.titleize}", url_for(controller: @class_name.underscore.pluralize, action: "new"), class: "btn btn-primary" %>
+    <%= link_to 'Back', root_path, class: "btn btn-primary" %>
+</div>

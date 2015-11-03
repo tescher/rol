@@ -1,12 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-office:
-  name: Office
-  id: 1
-
-construction:
-  name: Construction
-  id: 2
+# for testing has_many/belongs_to relationship deletions
 
 master:
   name: master
+
+
+

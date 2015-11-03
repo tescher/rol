@@ -16,3 +16,6 @@ three:
 four:
   name: Project4
   inactive: true
+
+master:
+  name: master

@@ -45,4 +45,13 @@ class OrganizationTest < ActiveSupport::TestCase
     assert_equal mixed_case_email.downcase, @organization.reload.email
   end
 
+  test "Volunteer Association" do
+    @organization = organizations(:master_church)
+    @volunteer = volunteers(:dependent)
+    assert_raises(ActiveRecord::DeleteRestrictionError) {@organization.destroy}
+    @organization = organizations(:master_employer)
+    @volunteer = volunteers(:dependent)
+    assert_raises(ActiveRecord::DeleteRestrictionError) {@organization.destroy}
+  end
+
 end

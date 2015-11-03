@@ -19,4 +19,11 @@ class InterestTest < ActiveSupport::TestCase
     @interest.interest_category = nil
     assert_not @interest.valid?
   end
+
+  test "Volunteer Association" do
+    @interest = interests(:master)
+    @volunteer = volunteers(:dependent)
+    assert_raises(ActiveRecord::DeleteRestrictionError) {@interest.destroy}
+  end
+
 end

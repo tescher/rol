@@ -1,14 +1,14 @@
+include ApplicationHelper
+
 class ProjectsController < ApplicationController
+  before_filter { |c| c.set_controller_vars(controller_name) }
   before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy]
   before_action :logged_in_admin_user, only: [:new, :edit, :update, :destroy, :import, :import_form]
 
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.order(:name).all
-    if (!defined? NO_PAGINATION) || !NO_PAGINATION
-      @projects = @projects.paginate(page: params[:page])
-    end
+    standard_index(Project, params[:page], false, "", :name)
   end
 
   # GET /projects/1
@@ -19,50 +19,32 @@ class ProjectsController < ApplicationController
 
   # GET /projects/new
   def new
-    @project = Project.new
+    @object = Project.new
+    render 'shared/simple_new'
   end
 
   # GET /projects/1/edit
   def edit
-    @project = Project.find(params[:id])
+    @object = Project.find(params[:id])
+    render 'shared/simple_edit'
   end
 
   # POST /projects
   # POST /projects.json
   def create
-    @project = Project.new(project_params)
-    if @project.save
-      redirect_to projects_path, notice: 'project was successfully created.'
-    else
-      render :new
-    end
+    standard_create(Project, contact_type_params)
   end
 
   # PATCH/PUT /projects/1
   # PATCH/PUT /projects/1.json
   def update
-    @project = Project.find(params[:id])
-    if @project.update_attributes(project_params)
-      flash[:success] = "project updated"
-      redirect_to projects_path
-    else
-      render :edit
-    end
+    standard_update(Project, params[:id], project_params)
   end
 
   # DELETE /projects/1
   # DELETE /projects/1.json
   def destroy
-    @project = Project.find(params[:id])
-    @projects = Workday.where(project_id: @project.id)
-    if @projects.count > 0
-      flash.now[:danger] = "Cannot delete project, it is attached to a workday"
-      render :edit
-    else
-      @project.destroy
-      flash[:success] = "project deleted"
-      redirect_to projects_path
-    end
+    standard_destroy(Project, params[:id])
   end
 
   # GET /projects/import
@@ -147,16 +129,6 @@ class ProjectsController < ApplicationController
 
 
   private
-  # Confirms an admin user.
-  def logged_in_admin_user
-    if logged_in?
-      redirect_to(root_url) unless current_user.admin?
-    else
-      store_location
-      flash[:danger] = "Please log in."
-      redirect_to login_url
-    end
-  end
 
   def logged_in_user
     unless logged_in?

@@ -16,3 +16,16 @@ organization_<%= n %>:
   email: <%= "organization-#{n}@example.com" %>
   organization_type_id: 2
 <% end %>
+
+master_church:
+  name: master church
+  organization_type_id: 1
+
+master_employer:
+  name: master employer
+  organization_type_id: 2
+
+dependent:
+  name: dependent
+  organization_type: master
+
