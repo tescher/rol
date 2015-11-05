@@ -1,79 +1,40 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <data-set xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <record>
-    <first_name>Tim</first_name>
-    <middle_name></middle_name>
-    <last_name>Escher</last_name>
-    <occupation>Engineer</occupation>
-    <address>PO Box 1230</address>
-    <municipality>Chickaloon</municipality>
-    <state>AK</state>
-    <zip>99674</zip>
-    <home_phone>608-432-5799</home_phone>
-    <work_phone></work_phone>
-    <mobile_phone>608-215-4896</mobile_phone>
-    <notes>Testing</notes>
-    <affiliation></affiliation>
-    <email>tim@eschers.com</email>
-    <interests>
-      <Cleaning_-_Sweeping>Yes</Cleaning_-_Sweeping>
-      <Painting></Painting>
-      <Insulation>Yes</Insulation>
-      <Caulking>Yes</Caulking>
-      <Landscaping></Landscaping>
-      <Provide_Lunch></Provide_Lunch>
-      <Siding></Siding>
-      <Drywall></Drywall>
-      <Trim_-_Finish_Work></Trim_-_Finish_Work>
-      <Reception></Reception>
-      <Mailings></Mailings>
-      <Website>1</Website>
-      <Data_Entry></Data_Entry>
-      <Info_tables></Info_tables>
-      <Fundraisers></Fundraisers>
-      <WomenBuild>1</WomenBuild>
-      <Shanty_Town></Shanty_Town>
-      <Customer_Care></Customer_Care>
-      <Stocking></Stocking>
-      <Deconstruction></Deconstruction>
-      <Cashiering></Cashiering>
-    </interests>
-  </record>
-  <record>
-    <first_name>Terri</first_name>
-    <middle_name></middle_name>
-    <last_name>Escher</last_name>
-    <occupation>Accountant</occupation>
-    <address>PO Box 1230</address>
-    <city>Chickaloon</city>
-    <state>AK</state>
-    <zip>99674</zip>
-    <home_phone>608-432-5799</home_phone>
-    <work_phone></work_phone>
-    <mobile_phone>608-215-4896</mobile_phone>
-    <notes>Testing</notes>
-    <affiliation></affiliation>
-    <email>tim@eschers.com</email>
-    <Cleaning_-_Sweeping>1</Cleaning_-_Sweeping>
+  <first_name>Tim</first_name>
+  <middle_name></middle_name>
+  <last_name>Escher</last_name>
+  <occupation>Engineer</occupation>
+  <address>PO Box 1230</address>
+  <municipality>Chickaloon</municipality>
+  <state>AK</state>
+  <zip>99674</zip>
+  <home_phone>608-432-5799</home_phone>
+  <work_phone></work_phone>
+  <mobile_phone>608-215-4896</mobile_phone>
+  <notes>Testing</notes>
+  <affiliation></affiliation>
+  <email>tim@eschers.com</email>
+  <interests>
+    <Cleaning_-_Sweeping>Yes</Cleaning_-_Sweeping>
     <Painting></Painting>
-    <Insulation>1</Insulation>
-    <Caulking>1</Caulking>
+    <Insulation>Yes</Insulation>
+    <Caulking>Yes</Caulking>
     <Landscaping></Landscaping>
     <Provide_Lunch></Provide_Lunch>
     <Siding></Siding>
     <Drywall></Drywall>
-    <Trim_-_Finish_Work>1</Trim_-_Finish_Work>
+    <Trim_-_Finish_Work></Trim_-_Finish_Work>
     <Reception></Reception>
-    <Mailings></Mailings>
-    <Website></Website>
+    <Mailings>Yes</Mailings>
+    <Website>1</Website>
     <Data_Entry></Data_Entry>
     <Info_tables></Info_tables>
     <Fundraisers></Fundraisers>
-    <WomenBuild></WomenBuild>
+    <WomenBuild>1</WomenBuild>
     <Shanty_Town></Shanty_Town>
     <Customer_Care></Customer_Care>
-    <Stocking>1</Stocking>
+    <Stocking></Stocking>
     <Deconstruction></Deconstruction>
-    <Cashiering></Cashiering>
-  </record>
+  </interests>
+  <Cashiering></Cashiering>
 </data-set>

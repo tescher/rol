@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151014200228) do
+ActiveRecord::Schema.define(version: 20151105214003) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,6 +88,19 @@ ActiveRecord::Schema.define(version: 20151014200228) do
     t.boolean  "remove_from_mailing_list", default: false, null: false
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
+  end
+
+  create_table "pending_volunteers", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "middle_name"
+    t.string   "email"
+    t.string   "city"
+    t.boolean  "resolved",    default: false, null: false
+    t.string   "xml"
+    t.string   "raw"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "projects", force: :cascade do |t|

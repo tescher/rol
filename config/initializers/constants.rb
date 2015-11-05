@@ -29,3 +29,6 @@ OLD_SYSTEM_NAME = "Old Lead Access"
 # Pagination
 NO_PAGINATION = true
 WillPaginate.per_page = 15
+
+# XML Schemas
+PENDING_VOLUNTEERS_XSD = File.join(Rails.root, "db", "conversion_schemas", "pending_volunteers.xsd")

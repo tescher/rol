@@ -3,50 +3,44 @@
   <xs:element name="data-set">
     <xs:complexType>
       <xs:sequence>
-        <xs:element maxOccurs="unbounded" name="record">
+        <xs:element name="first_name" type="xs:string" minOccurs="0" />
+        <xs:element name="middle_name" type="xs:string" minOccurs="0" />
+        <xs:element name="last_name" type="xs:string" minOccurs="0" />
+        <xs:element name="occupation" type="xs:string" minOccurs="0" />
+        <xs:element name="address" type="xs:string" minOccurs="0" />
+        <xs:element name="city" type="xs:string" minOccurs="0" />
+        <xs:element name="state" type="xs:string" minOccurs="0" />
+        <xs:element name="zip" type="xs:unsignedInt" minOccurs="0" />
+        <xs:element name="home_phone" type="xs:string" minOccurs="0" />
+        <xs:element name="work_phone" type="xs:string" minOccurs="0" />
+        <xs:element name="mobile_phone" type="xs:string" minOccurs="0" />
+        <xs:element name="notes" type="xs:string" minOccurs="0" />
+        <xs:element name="affiliation" type="xs:string" minOccurs="0" />
+        <xs:element name="email" type="xs:string" minOccurs="0" />
+        <xs:element name="interests" minOccurs="0">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="first_name" type="xs:string" />
-              <xs:element name="middle_name" type="xs:string" />
-              <xs:element name="last_name" type="xs:string" />
-              <xs:element name="occupation" type="xs:string" />
-              <xs:element name="address" type="xs:string" />
-              <xs:element name="city" type="xs:string" />
-              <xs:element name="state" type="xs:string" />
-              <xs:element name="zip" type="xs:unsignedInt" />
-              <xs:element name="home_phone" type="xs:string" />
-              <xs:element name="work_phone" type="xs:string" />
-              <xs:element name="mobile_phone" type="xs:string" />
-              <xs:element name="notes" type="xs:string" />
-              <xs:element name="affiliation" type="xs:string" />
-              <xs:element name="email" type="xs:string" />
-              <xs:element name="interests">
-                <xs:complexType>
-                  <xs:sequence>
-                    <xs:element name="Cleaning_-_Sweeping" type="xs:unsignedByte" />
-                    <xs:element name="Painting" type="xs:unsignedByte" />
-                    <xs:element name="Insulation" type="xs:unsignedByte" />
-                    <xs:element name="Caulking" type="xs:unsignedByte" />
-                    <xs:element name="Landscaping" type="xs:unsignedByte" />
-                    <xs:element name="Provide_Lunch" type="xs:unsignedByte" />
-                    <xs:element name="Siding" type="xs:unsignedByte" />
-                    <xs:element name="Drywall" type="xs:unsignedByte" />
-                    <xs:element name="Trim_-_Finish_Work" type="xs:unsignedByte" />
-                    <xs:element name="Reception" type="xs:unsignedByte" />
-                    <xs:element name="Mailings" type="xs:unsignedByte" />
-                    <xs:element name="Website" type="xs:unsignedByte" />
-                    <xs:element name="Data_Entry" type="xs:unsignedByte" />
-                    <xs:element name="Info_tables" type="xs:unsignedByte" />
-                    <xs:element name="Fundraisers" type="xs:unsignedByte" />
-                    <xs:element name="WomenBuild" type="xs:unsignedByte" />
-                    <xs:element name="Shanty_Town" type="xs:unsignedByte" />
-                    <xs:element name="Customer_Care" type="xs:unsignedByte" />
-                    <xs:element name="Stocking" type="xs:unsignedByte" />
-                    <xs:element name="Deconstruction" type="xs:unsignedByte" />
-                    <xs:element name="Cashiering" type="xs:unsignedByte" />
-                  </xs:sequence>
-                </xs:complexType>
-              </xs:element>
+              <xs:element name="Cleaning_-_Sweeping" type="xs:boolean" default="false" minOccurs="0" />
+              <xs:element name="Painting" type="xs:boolean" default="false" minOccurs="0" />
+              <xs:element name="Insulation" type="xs:boolean" default="false" minOccurs="0" />
+              <xs:element name="Caulking" type="xs:boolean" default="false" minOccurs="0" />
+              <xs:element name="Landscaping" type="xs:boolean" default="false" minOccurs="0" />
+              <xs:element name="Provide_Lunch" type="xs:boolean" default="false" minOccurs="0" />
+              <xs:element name="Siding" type="xs:boolean" default="false" minOccurs="0" />
+              <xs:element name="Drywall" type="xs:boolean" default="false" minOccurs="0" />
+              <xs:element name="Trim_-_Finish_Work" type="xs:boolean" default="false" minOccurs="0" />
+              <xs:element name="Reception" type="xs:boolean" default="false" minOccurs="0" />
+              <xs:element name="Mailings" type="xs:boolean" default="false" minOccurs="0" />
+              <xs:element name="Website" type="xs:boolean" default="false" minOccurs="0" />
+              <xs:element name="Data_Entry" type="xs:boolean" default="false" minOccurs="0" />
+              <xs:element name="Info_tables" type="xs:boolean" default="false" minOccurs="0" />
+              <xs:element name="Fundraisers" type="xs:boolean" default="false" minOccurs="0" />
+              <xs:element name="WomenBuild" type="xs:boolean" default="false" minOccurs="0" />
+              <xs:element name="Shanty_Town" type="xs:boolean" default="false" minOccurs="0" />
+              <xs:element name="Customer_Care" type="xs:boolean" default="false" minOccurs="0" />
+              <xs:element name="Stocking" type="xs:boolean" default="false" minOccurs="0" />
+              <xs:element name="Deconstruction" type="xs:boolean" default="false" minOccurs="0" />
+              <xs:element name="Cashiering" type="xs:boolean" default="false" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
