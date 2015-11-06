@@ -49,7 +49,7 @@ module ApplicationHelper
   ### Controller Helpers
 
   #standard index action
-  def standard_index(myclass, page = 1, always_paginate = false, index_view = "", order = nil)
+  def standard_index(myclass, page = 1, always_paginate = false, index_view = "", order = nil, no_new = false)
     @objects = myclass.all
     if order
       @objects = @objects.order(order)
@@ -60,6 +60,7 @@ module ApplicationHelper
     else
       @paginate = false
     end
+    @no_new = no_new
     render index_view.blank? ? 'shared/simple_index' : index_view
   end
 

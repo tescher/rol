@@ -1,0 +1,22 @@
+<div class="row clickable" href="<%=edit_pending_volunteer_path(id: @pending_volunteer, matching_id: @volunteer.id)%>">
+  <li>
+    <div class="col-md-2 col-md-offset-1">
+      <% if @volunteer.remove_from_mailing_list? %>
+          <s>
+      <% end %>
+      <%= @volunteer.name %>
+      <% if @volunteer.remove_from_mailing_list? %>
+          </s>
+      <% end %>
+    </div>
+    <div class="col-md-3">
+      <%= @volunteer.address %>
+    </div>
+    <div class="col-md-2">
+      <%= @volunteer.city %>
+    </div>
+    <div class="col-md-2">
+      <span class="no-overflow"><%= @volunteer.email %></span>
+    </div>
+  </li>
+</div>

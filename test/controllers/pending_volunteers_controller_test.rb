@@ -8,6 +8,14 @@ class PendingVolunteersControllerTest < ActionController::TestCase
     doc = Nokogiri::XML(File.read(File.join(Rails.root, "test", "fixtures", "pending_volunteers_valid.xml")))
     @pending_volunteer.xml = doc.to_s
     @pending_volunteer.save!
+    @pending_volunteer2 = PendingVolunteer.new();
+    doc = Nokogiri::XML(File.read(File.join(Rails.root, "test", "fixtures", "pending_volunteers_valid2.xml")))
+    @pending_volunteer2.xml = doc.to_s
+    @pending_volunteer2.save!
+    @pending_volunteer3 = PendingVolunteer.new();
+    doc = Nokogiri::XML(File.read(File.join(Rails.root, "test", "fixtures", "pending_volunteers_valid3.xml")))
+    @pending_volunteer3.xml = doc.to_s
+    @pending_volunteer3.save!
     @user = users(:one)
   end
 
@@ -57,14 +65,23 @@ class PendingVolunteersControllerTest < ActionController::TestCase
     end
   end
 
+  test "index display with nobody" do
+    log_in_as(@user)
+    @pending_volunteer.resolved = true
+    @pending_volunteer.save!
+    @pending_volunteer2.resolved = true
+    @pending_volunteer2.save!
+    @pending_volunteer3.resolved = true
+    @pending_volunteer3.save!
+    get :index
+    assert_template 'shared/simple_index'
+    assert_select 'span', /^No pending?/
+  end
+
   test "match display" do
     log_in_as(@user)
     get :match, id: @pending_volunteer
-    assert_template 'match'
-    pending_volunteers = PendingVolunteer.where(resolved: false)
-    pending_volunteers.each do |pending_volunteer|
-      assert_select 'div[href=?]', edit_pending_volunteer_path(pending_volunteer)
-    end
+    assert_template 'match'   # ToDo: Duplicate the matching algorithm?
   end
 
 

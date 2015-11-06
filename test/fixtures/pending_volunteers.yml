@@ -1,21 +1,2 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  first_name: MyString
-  last_name: MyString
-  middle_name: MyString
-  email: MyString
-  city: MyString
-  resolved: false
-  xml: MyString
-  raw: MyString
-
-two:
-  first_name: MyString
-  last_name: MyString
-  middle_name: MyString
-  email: MyString
-  city: MyString
-  resolved: false
-  xml: MyString
-  raw: MyString

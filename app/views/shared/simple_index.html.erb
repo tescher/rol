@@ -9,7 +9,7 @@
       <%= render partial: "object", collection: @objects, as: :object %>
     </ul>
 <% else %>
-    No <%= @class_name.tablize.humanize(capitalize: false) %> found. Click New to create one.
+    <span> No <%= @class_name.tableize.humanize(capitalize: false) %> found. <% unless @no_new %> Click New to create one. <% end %> </span>
 <% end %>
 
   <% if @paginate %>
@@ -19,6 +19,8 @@
 </div>
 
 <div class="actions pull-right">
-    <%= link_to "New #{@class_name.titleize}", url_for(controller: @class_name.underscore.pluralize, action: "new"), class: "btn btn-primary" %>
+    <%= unless @no_new
+          link_to "New #{@class_name.titleize}", url_for(controller: @class_name.underscore.pluralize, action: "new"), class: "btn btn-primary"
+        end %>
     <%= link_to 'Back', root_path, class: "btn btn-primary" %>
 </div>

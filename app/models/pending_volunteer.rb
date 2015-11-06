@@ -5,7 +5,7 @@ class PendingVolunteer < ActiveRecord::Base
   before_save {
     if (!self.xml.blank?)
       doc = Nokogiri::XML(self.xml)
-      ["first_name", "middle_name", "last_name", "email", "city"].each do |item|
+      ["first_name", "middle_name", "last_name", "email", "address", "city"].each do |item|
         node = doc.xpath("data-set/#{item}")
         if (!(node[0].nil?))
           self[item.to_sym] = node[0].text
