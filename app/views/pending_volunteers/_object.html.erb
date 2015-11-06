@@ -1,0 +1,17 @@
+<div class="row clickable" href="<%= url_for controller: @class_name.underscore.pluralize, id: object.id, action: :match %>">
+  <li>
+    <div class="col-md-10 col-md-offset-1">
+
+      <div class="col-md-3">
+        <%= object.name %>
+      </div>
+      <div class="col-md-3">
+        <%= object.email %>
+      </div>
+      <div class="col-md-3">
+        <%= object.city %>
+      </div>
+
+   </div>
+ </li>
+</div>

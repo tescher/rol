@@ -1,5 +1,6 @@
 include SessionsHelper
 include DonationsHelper
+include ApplicationHelper
 
 class DonationsController < ApplicationController
   before_action :logged_in_user, only: [:report]
@@ -255,23 +256,8 @@ class DonationsController < ApplicationController
 
   private
 
-  # Confirms an admin user.
-  def admin_user
-    redirect_to(root_url) unless current_user.admin?
-  end
-
   def donations_allowed
     redirect_to(root_url) unless current_user.donations_allowed
   end
-
-  def logged_in_user
-    unless logged_in?
-      store_location
-      flash[:danger] = "Please log in."
-      redirect_to login_url
-    end
-  end
-
-
 
 end

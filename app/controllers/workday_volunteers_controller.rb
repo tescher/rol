@@ -1,4 +1,5 @@
 include SessionsHelper
+include ApplicationHelper
 
 class WorkdayVolunteersController < ApplicationController
   before_action :admin_user,     only: [:import, :import_form]
@@ -133,11 +134,6 @@ class WorkdayVolunteersController < ApplicationController
 
     render "shared/import_results"
 
-  end
-
-  # Confirms an admin user.
-  def admin_user
-    redirect_to(root_url) unless current_user.admin?
   end
 
 end

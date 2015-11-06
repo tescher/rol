@@ -130,15 +130,6 @@ class ProjectsController < ApplicationController
 
   private
 
-  def logged_in_user
-    unless logged_in?
-      store_location
-      flash[:danger] = "Please log in."
-      redirect_to login_url
-    end
-  end
-
-
   # Never trust parameters from the scary internet, only allow the white list through.
   def project_params
     params.require(:project).permit(:name, :description, :inactive)

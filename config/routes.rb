@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
 
-  resources :pending_volunteers
+  resources :pending_volunteers do
+    member do
+      get 'match'
+    end
+  end
   resources :users
   resources :volunteers do
     collection do

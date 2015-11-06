@@ -348,11 +348,6 @@ class OrganizationsController < ApplicationController
     end
   end
 
-  # Confirms an admin user.
-  def admin_user
-    redirect_to(root_url) unless current_user.admin?
-  end
-
   # Never trust parameters from the scary internet, only allow the white list through.
   def organization_params
     if params[:organization][:alias] == "church"

@@ -120,22 +120,14 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     get edit_volunteer_path(@volunteer)
     assert_select 'a[href=?]', volunteer_path(@volunteer), method: :delete
     before_wdv = WorkdayVolunteer.count
-    puts before_wdv
     before_v = Volunteer.count
-    puts before_v
     before_d = Donation.count
-    puts before_d
     before_wd = Workday.count
-    puts before_wd
     delete volunteer_path(@volunteer)
     after_wdv = WorkdayVolunteer.count
-    puts after_wdv
     after_v = Volunteer.count
-    puts after_v
     after_d = Donation.count
-    puts after_d
     after_wd = Workday.count
-    puts after_wd
     # Make sure all cascade deletes worked OK
     assert_equal before_v - 1, after_v
     assert_equal before_d - 10, after_d
