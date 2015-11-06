@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
 
+  resources :pending_volunteers
   resources :users
   resources :volunteers do
     collection do
