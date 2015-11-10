@@ -1,0 +1,10 @@
+<% content_for(:header) do %>
+    <%= link_to image_tag("org.png", alt: ORG_TITLE), ORG_SITE, id: "logo" %>
+    <%= link_to ORG_TITLE, ORG_SITE, id: "logo" %>
+<% end %>
+
+<% provide(:title, "New Volunteer") %>
+<h1> <%=ORG_SHORT_TITLE%> Volunteer Sign-up</h1>
+<h2>Success! Thank You!</h2>
+
+<h2><u><%= link_to "Return to " + ORG_SHORT_TITLE, (session[:referer] || ORG_SITE) %></u></h2>

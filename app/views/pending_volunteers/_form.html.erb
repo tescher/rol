@@ -69,12 +69,20 @@
             <%= f.text_field :phone, class: 'form-control' %>
           </div>
         </div>
+        <div class="row">
+          <div class="col-md-3">
+            <%= f.label :notes, 'Comments (e.g. affiliations, special interests)' %><br>
+          </div>
+          <div class="col-md-7">
+            <%= f.text_area :notes, class: 'form-control', rows: "4" %>
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-md-10 col-md-offset-1">
-        <h3> Share with us how you might help. And remember - we can train you! </h3>
+      <h3 class="text-center"> Share with us how you might help. And remember - we can train you! </h3>
+      <div class="col-md-10 col-md-offset-2">
         <% num_columns = 3
            interest_categories = InterestCategory.all
            interest_category_height = Hash.new()
@@ -123,7 +131,7 @@
           if (columns[c]) %>
                 <div class="col-md-3">
                   <% columns[c].each do |ic| %>
-                      <label><span><strong><u><%= ic.name %></u></strong></span></label>
+                      <h5><strong><u><%= ic.name %></u></strong></h5>
                       <% interest_category_interests[ic].each do |i| %>
                           <div class="checkbox">
                             <label>
@@ -142,8 +150,13 @@
             <% end %>
         <% end %>
       </div>
-      <div class="pull-right">
-        <%= render partial: "shared/form_actions", locals: {f: f} %>
+      <div class="row">
+        <div class="col-md-10">
+          <div class="pull-right">
+            <div class="g-recaptcha" data-sitekey="<%= GOOGLE_SITE_KEY %>"></div>
+            <%= render partial: "shared/form_actions", locals: {f: f} %>
+          </div>
+        </div>
       </div>
     </div>
 

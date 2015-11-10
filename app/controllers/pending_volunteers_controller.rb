@@ -7,7 +7,9 @@ class PendingVolunteersController < ApplicationController
 
   def new
     @object = PendingVolunteer.new
-    render 'shared/simple_new'
+    session[:referer] = request.referer
+    @submit_name = "Submit"
+    render 'new'
   end
 
   def update
@@ -67,11 +69,15 @@ class PendingVolunteersController < ApplicationController
 
   def create
     @object = PendingVolunteer.new(pending_volunteer_params)
-    if @object.save
-      flash[:success] = "Pending Volunteer successfully created"
-      redirect_to root_url  #Redirect to referrer
+    status = verify_google_recptcha(GOOGLE_SECRET_KEY,params["g-recaptcha-response"])
+    if status && @object.save  # Order is important here!
+      render 'success'
     else
-      render 'shared/simple_new'
+      if !status
+        @object.errors.add(:captcha, " - Be sure to click the No Robots box")
+      end
+      @submit_name = "Submit"
+      render 'new'
     end
   end
 
@@ -89,6 +95,13 @@ class PendingVolunteersController < ApplicationController
     modified_params.delete(:pv_int_ids)
     puts modified_params
     modified_params
+  end
+
+  def verify_google_recptcha(secret_key,response)
+    status = `curl "https://www.google.com/recaptcha/api/siteverify?secret=#{secret_key}&response=#{response}"`
+    logger.info "---------------status ==> #{status}"
+    hash = JSON.parse(status)
+    hash["success"] == true ? true : false
   end
 
 end
