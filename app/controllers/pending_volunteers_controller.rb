@@ -4,10 +4,10 @@ include ApplicationHelper
 class PendingVolunteersController < ApplicationController
   before_filter { |c| c.set_controller_vars(controller_name) }
   before_action :logged_in_user, only: [:index, :update, :match]
-  before_action :send_forbidden,  except: [:create, :index, :update, :match]
 
   def new
-
+    @object = PendingVolunteer.new
+    render 'shared/simple_new'
   end
 
   def update
@@ -92,10 +92,5 @@ class PendingVolunteersController < ApplicationController
   def pending_volunteer_params
     params.require(:pending_volunteer).permit(:xml, :hash)
   end
-
-  def send_forbidden
-    head :forbidden
-  end
-
 
 end

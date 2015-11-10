@@ -1,58 +1,37 @@
 require 'test_helper'
-require 'digest'
 
 class PendingVolunteersControllerTest < ActionController::TestCase
 
   def setup
-    @pending_volunteer = PendingVolunteer.new();
-    doc = Nokogiri::XML(File.read(File.join(Rails.root, "test", "fixtures", "pending_volunteers_valid.xml")))
-    @pending_volunteer.xml = doc.to_s
-    @pending_volunteer.save!
-    @pending_volunteer2 = PendingVolunteer.new();
-    doc = Nokogiri::XML(File.read(File.join(Rails.root, "test", "fixtures", "pending_volunteers_valid2.xml")))
-    @pending_volunteer2.xml = doc.to_s
-    @pending_volunteer2.save!
-    @pending_volunteer3 = PendingVolunteer.new();
-    doc = Nokogiri::XML(File.read(File.join(Rails.root, "test", "fixtures", "pending_volunteers_valid3.xml")))
-    @pending_volunteer3.xml = doc.to_s
-    @pending_volunteer3.save!
     @user = users(:one)
+    @pending_volunteer = pending_volunteers(:one)
+    @pending_volunteer2 = pending_volunteers(:two)
+    @pending_volunteer3 = pending_volunteers(:three)
+    @volunteer = Volunteer.new()
+    @volunteer.first_name = @pending_volunteer.first_name + 'a'
+    @volunteer.last_name = @pending_volunteer.last_name
+    @volunteer.save!
   end
 
   test "should error or redirect all but post if not logged in " do
-    get :new
-    assert_response :forbidden, "Should not respond to New"
     get :show, id: @pending_volunteer
-    assert_response :forbidden, "Should not respond to Show"
+    assert_redirected_to login_url
+    assert_not flash.empty?
+    get :edit, id: @pending_volunteer
+    assert_redirected_to login_url
     patch :update, id: @pending_volunteer, pending_volunteer: { xml: "" }
     assert_not flash.empty?
     assert_redirected_to login_url
     delete :destroy, id: @pending_volunteer
-    assert_response :forbidden, "Should not respond to Delete"
+    assert_redirected_to login_url
     get :index
     assert_not flash.empty?
     assert_redirected_to login_url
   end
 
-  test "respond post if hash correct" do
-    doc = Nokogiri::XML(File.read(File.join(Rails.root, "test", "fixtures", "pending_volunteers_valid.xml")))
-    @request.host = "www.tim.testing.com"
-    hash = Digest::SHA1.hexdigest(doc.to_s + "testing.com")
-    post :create, pending_volunteer: { xml: doc.to_s, hash: hash }
-    assert_difference "PendingVolunteer.count", 1 do
-      post :create, pending_volunteer: { xml: doc.to_s, hash: hash }
-      assert_response :success
-    end
-  end
-
-  test "respond post if hash incorrect" do
-    doc = Nokogiri::XML(File.read(File.join(Rails.root, "test", "fixtures", "pending_volunteers_valid.xml")))
-    @request.host = "www.tim.testing.com"
-    hash = Digest::SHA1.hexdigest(doc.to_s + "invalid")
-    assert_difference "PendingVolunteer.count", 0 do
-      post :create, pending_volunteer: { xml: doc.to_s, hash: hash }
-      assert_response :unprocessable_entity
-    end
+  test "should allow new even if not logged in" do
+    get :new
+    assert_template 'new'
   end
 
   test "index display" do
@@ -81,8 +60,29 @@ class PendingVolunteersControllerTest < ActionController::TestCase
   test "match display" do
     log_in_as(@user)
     get :match, id: @pending_volunteer
-    assert_template 'match'   # ToDo: Duplicate the matching algorithm?
+    assert_template 'match'
+    assert_select 'div[href=?]', edit_pending_volunteer_path(id: @pending_volunteer, volunteer_id: @volunteer)  # Should find at least one match
   end
+
+  test "edit display" do
+    log_in_as(@user)
+    get :edit, id: @pending_volunteer
+    assert_template 'edit'
+  end
+
+  test "update, set 'resolved' flag, update the volunteer" do
+    log_in_as(@user)
+    #invalid patch
+    patch :update, id: @pending_volunteer  #First with no volunteer
+    assert_not flash.empty?
+    assert_redirected_to pending_volunteers_path
+    #patch with first name used
+    patch :update, id: @pending_volunteer, volunteer_id: @volunteer, first_name_use: true
+    assert_redirected_to pending_volunteers_path
+    assert_equal @pending_volunteer.first_name, @volunteer.first_name
+    assert_equal @pending_volunteer.resolved, true
+  end
+
 
 
 end

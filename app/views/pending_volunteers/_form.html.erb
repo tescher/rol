@@ -1,0 +1,147 @@
+<%= form_for(@object) do |f| %>
+    <%= @object = f.object
+        render 'shared/error_messages' %>
+
+    <div class="row">
+      <div class="col-md-5 col-md-offset-1">
+        <div class="row">
+          <div class="col-md-2">
+            <%= f.label :first_name %><br>
+          </div>
+          <div class="col-md-8">
+            <%= f.text_field :first_name, class: 'form-control', autofocus: 'true' %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">
+            <%= f.label :last_name %><br>
+          </div>
+          <div class="col-md-8">
+            <%= f.text_field :last_name, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">
+            <%= f.label :address %><br>
+            <%= link_to "(check)", "#", id:"linkAddressCheck" %>
+          </div>
+          <div class="col-md-8">
+            <%= f.text_field :address, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">
+            <%= f.label :city %><br>
+          </div>
+          <div class="col-md-8">
+            <%= f.text_field :city, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">
+            <%= f.label :state %><br>
+          </div>
+          <div class="col-md-2">
+            <%= f.text_field :state, class: 'form-control' %>
+          </div>
+          <div class="col-md-2">
+            <%= f.label :zip %><br>
+          </div>
+          <div class="col-md-4">
+            <%= f.text_field :zip, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="row">
+          <div class="col-md-2">
+            <%= f.label :email %><br>
+          </div>
+          <div class="col-md-8">
+            <%= f.text_field :email, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">
+            <%= f.label :phone %><br>
+          </div>
+          <div class="col-md-8">
+            <%= f.text_field :phone, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-offset1">
+        <h3> Share with us how you might help. And remember - we can train you! </h3>
+        <% num_columns = 3
+           interest_categories = InterestCategory.all
+           interest_category_height = Hash.new()
+           interest_category_interests = Hash.new()
+           total_height = 0
+           interest_categories.each do |ic|
+             interests = Interest.where(interest_category: ic).where(inactive: false)
+             interest_category_height[ic] = 2 + interests.count
+             interest_category_interests[ic] = interests
+             total_height += interest_category_height[ic]
+           end
+           interest_categories.sort_by {|ic| -interest_category_height[ic]}
+           column_height = (total_height / num_columns).floor
+           columns = Array.new()
+           column_heights = Array.new()
+           interest_categories.each do |ic|  # Next category of interests
+             found_spot = false
+             (0..num_columns-1).each do |c|    # find a column for it
+               if ((column_heights[c] || 0) + interest_category_height[ic] < column_height)
+                 if (!columns[c])
+                   columns[c] = Array.new
+                   column_heights[c] = 0
+                 end
+                 columns[c].push(ic)
+                 column_heights[c] += interest_category_height[ic]
+                 found_spot = true
+                 break
+               end
+             end
+             if (!found_spot) # didn't find a spot, put it on the smallest column
+               smallest = column_heights.index(column_heights.min)
+               columns[smallest].push(ic)
+               column_heights[smallest] += interest_category_height[ic]
+             end
+           end
+           puts interest_categories
+           puts("---")
+           puts (interest_category_height)
+           puts "---"
+           puts column_heights
+           puts("---")
+           puts columns
+        %>
+
+        <% (0..num_columns - 1).each do |c|
+          if (columns[c]) %>
+                <div class="col-md-3">
+                  <% columns[c].each do |ic| %>
+                      <span><strong><u><%= ic.name %></u></strong></span>
+                      <% interest_category_interests[ic].each do |i| %>
+                          <div class="checkbox">
+                            <label>
+                              <% if (i.highlight) %>
+                                  <strong>
+                              <% end %>
+                              <%= check_box_tag i.id %> <%= i.name %>
+                              <% if (i.highlight) %>
+                                  </strong>
+                              <% end %>
+                            </label>
+                          </div>
+                      <% end %>
+                  <% end %>
+                </div>
+            <% end %>
+        <% end %>
+      </div>
+    </div>
+
+<% end %>

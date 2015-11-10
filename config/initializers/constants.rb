@@ -4,6 +4,7 @@ VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i  # Use th
 # Site Name
 SITE_TITLE = "Volunteer Management"
 ORG_TITLE = "Habitat for Humanity Sauk-Columbia Area"
+ORG_SHORT_TITLE = "HFHSCA"
 ORG_SITE = "http://www.hfhsca.org"
 
 # Our Time Zone

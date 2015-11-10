@@ -1,0 +1,10 @@
+<% content_for(:header) do %>
+<%= link_to image_tag("org.png", alt: ORG_TITLE), ORG_SITE, id: "logo" %>
+<%= link_to ORG_TITLE, ORG_SITE, id: "logo" %>
+<% end %>
+
+<% provide(:title, "New Volunteer") %>
+<h1> <%=ORG_SHORT_TITLE%> Volunteer Sign-up</h1>
+<h2>Fill out and submit the form below. Thanks for your interest!</h2>
+
+<%= render 'form' %>
