@@ -3,7 +3,7 @@ include ApplicationHelper
 
 class PendingVolunteersController < ApplicationController
   before_filter { |c| c.set_controller_vars(controller_name) }
-  before_action :logged_in_user, only: [:index, :update, :match]
+  before_action :logged_in_user, only: [:index, :update, :match, :destroy]
 
   def new
     @object = PendingVolunteer.new
@@ -64,7 +64,9 @@ class PendingVolunteersController < ApplicationController
   end
 
   def destroy
-
+    PendingVolunteer.find(params[:id]).destroy
+    flash[:success] = "Pending Volunteer discarded"
+    redirect_to pending_volunteers_path
   end
 
   def create

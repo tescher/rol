@@ -3,41 +3,45 @@
 <h1><%= @class_name.titleize.pluralize %></h1>
 <h2>Resolving <%= @pending_volunteer.name %></h2>
 
-<div class="col-md-10 col-md-offset-1">
+<div class="container">
 
-  <div class="col-md-2">
+  <div class="col-md-2 col-md-offset-1">
     <%= @pending_volunteer.name %>
   </div>
   <div class="col-md-3">
-    <%= @pending_volunteer.address %>
+    <%= @pending_volunteer.address.blank? ? "<no address>" :  @pending_volunteer.address %>
   </div>
   <div class="col-md-2">
-    <%= @pending_volunteer.city %>
+    <%= @pending_volunteer.city.blank? ?  "<no city>" :  @pending_volunteer.city %>
   </div>
   <div class="col-md-2">
-    <%= @pending_volunteer.email %>
+    <%= @pending_volunteer.email.blank? ? "<no email>" : @pending_volunteer.email %>
   </div>
 </div>
+
+<br/><br/>
 
 <% if @matched_volunteers.count < 1 %>
-    <span>No matching volunteers found. Click 'New Volunteer' to create new record.</span>
+    <span>No matching volunteers found. Click 'New Volunteer' to create a new record, or 'Discard' to discard the pending volunteer.</span>
 <% else %>
+    <span> Possible matches below. Click one to merge, 'New Volunteer' to create a new record, or 'Discard' to discard the pending volunteer. </span>
 
-
-<div class="container scrolled-listing">
-
-    <ul class="listing">
-      <% @matched_volunteers.each do |id, mv|
-            @volunteer = mv[:volunteer] %>
-      <%=   render partial: "volunteers/matching_volunteer" %>
-      <% end %>
-    </ul>
-</div>
+    <div class="container scrolled-listing">
+      <ul class="listing">
+        <% @matched_volunteers.each do |id, mv|
+          @volunteer = mv[:volunteer] %>
+            <%=   render partial: "volunteers/matching_volunteer" %>
+        <% end %>
+      </ul>
+    </div>
 <% end %>
 
-
+<br/><br/>
 
 <div class="actions pull-right">
-    <%= link_to "New Volunteer", new_volunteer_path, class: "btn btn-primary" %>
-    <%= link_to 'Back', pending_volunteers_path, class: "btn btn-primary" %>
+  <%= link_to "New Volunteer", new_volunteer_path, class: "btn btn-primary" %>
+  <%= link_to "Discard", { action: :destroy, id: @pending_volunteer.id }, method: :delete,
+              data: { confirm: "You sure?" }, class: "btn btn-primary" %>
+  <%= link_to 'Back', pending_volunteers_path, class: "btn btn-primary" %>
+
 </div>
