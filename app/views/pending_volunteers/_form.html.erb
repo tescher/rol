@@ -73,7 +73,7 @@
     </div>
 
     <div class="row">
-      <div class="col-md-offset1">
+      <div class="col-md-10 col-md-offset-1">
         <h3> Share with us how you might help. And remember - we can train you! </h3>
         <% num_columns = 3
            interest_categories = InterestCategory.all
@@ -123,14 +123,14 @@
           if (columns[c]) %>
                 <div class="col-md-3">
                   <% columns[c].each do |ic| %>
-                      <span><strong><u><%= ic.name %></u></strong></span>
+                      <label><span><strong><u><%= ic.name %></u></strong></span></label>
                       <% interest_category_interests[ic].each do |i| %>
                           <div class="checkbox">
                             <label>
                               <% if (i.highlight) %>
                                   <strong>
                               <% end %>
-                              <%= check_box_tag i.id %> <%= i.name %>
+                              <%= check_box_tag 'pending_volunteer[pv_int_ids][]', i.id %> <%= i.name %>
                               <% if (i.highlight) %>
                                   </strong>
                               <% end %>
@@ -141,6 +141,9 @@
                 </div>
             <% end %>
         <% end %>
+      </div>
+      <div class="pull-right">
+        <%= render partial: "shared/form_actions", locals: {f: f} %>
       </div>
     </div>
 

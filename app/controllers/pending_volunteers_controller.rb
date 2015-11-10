@@ -66,20 +66,12 @@ class PendingVolunteersController < ApplicationController
   end
 
   def create
-    xml = pending_volunteer_params[:xml]
-    hash = pending_volunteer_params[:hash]
-    domain = request.host.split('.').last(2).join('.')
-    check_hash = Digest::SHA1.hexdigest(xml + domain)
-    if (hash != check_hash)
-      render text: "Bad hash", status: :unprocessable_entity
+    @object = PendingVolunteer.new(pending_volunteer_params)
+    if @object.save
+      flash[:success] = "Pending Volunteer successfully created"
+      redirect_to root_url  #Redirect to referrer
     else
-      @pending_volunteer = PendingVolunteer.new()
-      @pending_volunteer.xml = xml
-      if @pending_volunteer.save
-        render text: "Saved"
-      else
-        render text: "Bad XML", status: :unprocessable_entity
-      end
+      render 'shared/simple_new'
     end
   end
 
@@ -90,7 +82,13 @@ class PendingVolunteersController < ApplicationController
   private
 
   def pending_volunteer_params
-    params.require(:pending_volunteer).permit(:xml, :hash)
+    modified_params = params.require(:pending_volunteer).permit(:first_name, :last_name, :address, :city, :state, :zip, :phone, :email, :notes, pv_int_ids: [] )
+    if (!modified_params[:pv_int_ids].nil?)
+      modified_params[:interest_ids] = modified_params[:pv_int_ids].dup
+    end
+    modified_params.delete(:pv_int_ids)
+    puts modified_params
+    modified_params
   end
 
 end

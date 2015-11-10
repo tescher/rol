@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151110001026) do
+ActiveRecord::Schema.define(version: 20151110044001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,10 @@ ActiveRecord::Schema.define(version: 20151110001026) do
     t.integer  "old_id"
   end
 
+  add_index "donations", ["donation_type_id"], name: "index_donations_on_donation_type_id", using: :btree
+  add_index "donations", ["organization_id"], name: "index_donations_on_organization_id", using: :btree
+  add_index "donations", ["volunteer_id"], name: "index_donations_on_volunteer_id", using: :btree
+
   create_table "interest_categories", force: :cascade do |t|
     t.string   "name"
     t.string   "string"
@@ -65,6 +69,8 @@ ActiveRecord::Schema.define(version: 20151110001026) do
     t.datetime "updated_at",                           null: false
     t.boolean  "inactive",             default: false, null: false
   end
+
+  add_index "interests", ["interest_category_id"], name: "index_interests_on_interest_category_id", using: :btree
 
   create_table "organization_types", force: :cascade do |t|
     t.string   "name"
@@ -90,6 +96,17 @@ ActiveRecord::Schema.define(version: 20151110001026) do
     t.datetime "updated_at",                               null: false
   end
 
+  add_index "organizations", ["organization_type_id"], name: "index_organizations_on_organization_type_id", using: :btree
+
+  create_table "pending_volunteer_interests", force: :cascade do |t|
+    t.integer  "interest_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.integer  "pending_volunteer_id"
+  end
+
+  add_index "pending_volunteer_interests", ["interest_id"], name: "index_pending_volunteer_interests_on_interest_id", using: :btree
+
   create_table "pending_volunteers", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -105,6 +122,7 @@ ActiveRecord::Schema.define(version: 20151110001026) do
     t.string   "state"
     t.string   "zip"
     t.string   "phone"
+    t.string   "notes"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -115,6 +133,8 @@ ActiveRecord::Schema.define(version: 20151110001026) do
     t.string   "old_id"
     t.string   "description"
   end
+
+  add_index "projects", ["old_id"], name: "index_projects_on_old_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -136,6 +156,9 @@ ActiveRecord::Schema.define(version: 20151110001026) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
+
+  add_index "volunteer_interests", ["interest_id"], name: "index_volunteer_interests_on_interest_id", using: :btree
+  add_index "volunteer_interests", ["volunteer_id"], name: "index_volunteer_interests_on_volunteer_id", using: :btree
 
   create_table "volunteers", force: :cascade do |t|
     t.string   "first_name"
@@ -180,6 +203,9 @@ ActiveRecord::Schema.define(version: 20151110001026) do
     t.string   "notes"
   end
 
+  add_index "workday_organizations", ["organization_id"], name: "index_workday_organizations_on_organization_id", using: :btree
+  add_index "workday_organizations", ["workday_id"], name: "index_workday_organizations_on_workday_id", using: :btree
+
   create_table "workday_volunteers", force: :cascade do |t|
     t.integer  "volunteer_id"
     t.integer  "workday_id"
@@ -193,6 +219,8 @@ ActiveRecord::Schema.define(version: 20151110001026) do
   end
 
   add_index "workday_volunteers", ["old_id"], name: "index_workday_volunteers_on_old_id", using: :btree
+  add_index "workday_volunteers", ["volunteer_id"], name: "index_workday_volunteers_on_volunteer_id", using: :btree
+  add_index "workday_volunteers", ["workday_id"], name: "index_workday_volunteers_on_workday_id", using: :btree
 
   create_table "workdays", force: :cascade do |t|
     t.integer  "project_id"
@@ -205,5 +233,6 @@ ActiveRecord::Schema.define(version: 20151110001026) do
   end
 
   add_index "workdays", ["old_id"], name: "index_workdays_on_old_id", using: :btree
+  add_index "workdays", ["project_id"], name: "index_workdays_on_project_id", using: :btree
 
 end
