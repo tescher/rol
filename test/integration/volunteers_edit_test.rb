@@ -141,5 +141,20 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     assert_no_match 'a[href=?]', volunteer_path(@volunteer), method: :delete
   end
 
+  test "New volunteer from pending volunteer" do
+    log_in_as(@user)
+    @pending_volunteer = pending_volunteers(:one)
+    get new_volunteer_path(pending_volunteer_id: @pending_volunteer)
+    assert_template 'new'
+    assert_select "[name*=first_name]" do
+      assert_select "[value=?]", @pending_volunteer.first_name
+    end
+    @volunteer = Volunteer.new()
+    post volunteers_path(@volunteer), volunteer: {first_name: @pending_volunteer.first_name,
+                                                 last_name: @pending_volunteer.last_name, pending_volunteer_id: @pending_volunteer.id}
+    @pending_volunteer.reload
+    assert_equal(@pending_volunteer.resolved, true)
+  end
+
 
 end

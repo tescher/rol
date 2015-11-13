@@ -208,12 +208,8 @@
               <%= f.text_field :background_check_date,  value: @volunteer.background_check_date.nil? ? "" : @volunteer.background_check_date.strftime("%m/%d/%Y") , id: 'backgroundcheckdatepicker', class: 'form-control' %>
             </div>
           </div>
-
-
-
-
-
-        </div>
+            <%= f.hidden_field :pending_volunteer_id, value: (@pending_volunteer.nil? ? nil: @pending_volunteer.id) %>
+       </div>
       </div>
     </div>
 

@@ -39,7 +39,7 @@
 <br/><br/>
 
 <div class="actions pull-right">
-  <%= link_to "New Volunteer", new_volunteer_path, class: "btn btn-primary" %>
+  <%= link_to "New Volunteer", new_volunteer_path(pending_volunteer_id: @pending_volunteer.id), class: "btn btn-primary" %>
   <%= link_to "Discard", { action: :destroy, id: @pending_volunteer.id }, method: :delete,
               data: { confirm: "You sure?" }, class: "btn btn-primary" %>
   <%= link_to 'Back', pending_volunteers_path, class: "btn btn-primary" %>

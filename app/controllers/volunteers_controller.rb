@@ -199,8 +199,18 @@ class VolunteersController < ApplicationController
     else
       @allow_stay = true
       session[:volunteer_id] = @volunteer.id
+      if params[:pending_volunteer_id]
+        @pending_volunteer = PendingVolunteer.find(params[:pending_volunteer_id])
+        @volunteer.pending_volunteer_id = @pending_volunteer.id
+        ["first_name", "last_name", "address", "city", "state", "zip", "phone", "notes", "interests"].each do |column|
+          if column == "phone"
+            @volunteer.send("home_phone=", @pending_volunteer.send(column))
+          else
+            @volunteer.send(column+"=", @pending_volunteer.send(column))
+          end
+        end
+      end
     end
-
   end
 
   # GET /volunteers/1/edit
@@ -219,6 +229,15 @@ class VolunteersController < ApplicationController
   def create
     @volunteer = Volunteer.new(volunteer_params)
     if @volunteer.save    # Save successful
+      from_pending_volunteers = false
+      if @volunteer.pending_volunteer_id
+        pending_volunteer = PendingVolunteer.find(@volunteer.pending_volunteer_id)
+        if !pending_volunteer.resolved
+          from_pending_volunteers = true #If coming from an unresolved pending volunteer, need to go back to list
+        end
+        pending_volunteer.resolved = true
+        pending_volunteer.save
+      end
       session[:volunteer_id] = @volunteer.id
       if params[:volunteer][:dialog] == "true"
         @workday = session[:workday_id]
@@ -229,7 +248,11 @@ class VolunteersController < ApplicationController
           redirect_to donations_volunteer_path(@volunteer)
         else
           if params[:stay].blank?
-            redirect_to search_volunteers_path
+            if from_pending_volunteers
+              redirect_to pending_volunteers_path
+            else
+              redirect_to search_volunteers_path
+            end
           else
             redirect_to edit_volunteer_path(@volunteer)
           end
@@ -472,7 +495,7 @@ class VolunteersController < ApplicationController
   def volunteer_params
     params.require(:volunteer).permit(:first_name, :last_name, :middle_name, :email, :occupation, :employer_id, :church_id,
                                       :address, :city, :state, :zip, :home_phone, :work_phone, :mobile_phone,
-                                      :notes, :remove_from_mailing_list, :waiver_date, :first_contact_date, :first_contact_type_id, :background_check_date, interest_ids: [], donations_attributes: [:id, :date_received, :value, :ref_no, :item, :anonymous, :in_honor_of, :designation, :notes, :receipt_sent, :volunteer_id, :organization_id, :donation_type_id, :_destroy])
+                                      :notes, :remove_from_mailing_list, :waiver_date, :first_contact_date, :first_contact_type_id, :pending_volunteer_id, :background_check_date, interest_ids: [], donations_attributes: [:id, :date_received, :value, :ref_no, :item, :anonymous, :in_honor_of, :designation, :notes, :receipt_sent, :volunteer_id, :organization_id, :donation_type_id, :_destroy])
   end
   def volunteer_search_params
     search_params = params.permit(:name, :city, :workday_since, interest_ids: [])
