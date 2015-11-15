@@ -5,9 +5,9 @@
     <div class="row">
       <div class="col-md-5 col-md-offset-1">
         <% [:first_name, :last_name, :address, :city, :state, :zip, :email, :phone].each do |field| %>
-            <div class="row">
+            <div class="row form-group">
               <div class="col-md-2">
-                <%= f.label field %><br>
+                <%= f.label field %>
               </div>
               <div class="col-md-8">
                 <%= f.text_field field, class: 'form-control' %>
@@ -17,24 +17,56 @@
               </div>
             </div>
         <% end %>
-        <div class="row">
+        <div class="row form-group">
           <div class="col-md-3">
-            <%= f.label :notes, 'Comments (e.g. affiliations, special interests)' %><br>
+            <%= f.label :notes, 'Comments (e.g. affiliations, special interests)' %>
           </div>
           <div class="col-md-7">
             <%= f.text_area :notes, class: 'form-control', rows: "4" %>
           </div>
         </div>
       </div>
+
+      <div class="row form-group">
+        <div class="col-md-2">
+          <%= f.label :interests %>
+        </div>
+        <div class="col-md-8">
+          <%= f.select :interest_ids, option_groups_from_collection_for_select(InterestCategory.all, :interests, :name, :id, :option_formatter, f.object.interest_ids), {}, { :multiple => true, class: "form-control"}  %>
+        </div>
+      </div>
     </div>
 
     <div class="row">
-      <div class="col-md-2">
-        <%= f.label :interests %><br>
-      </div>
-      <div class="col-md-8">
-        <%= f.select :interest_ids, option_groups_from_collection_for_select(InterestCategory.all, :interests, :name, :id, :option_formatter, f.object.interest_ids), {}, { :multiple => true, class: "form-control"}  %>
+      <div class="col-md-5 col-md-offset-1">
+        <% [:first_name, :last_name, :address, :city, :state, :zip, :email, :home_phone].each do |field| %>
+            <div class="row form-group">
+              <div class="col-md-2">
+                <%= label_tag field %>
+              </div>
+              <div class="col-md-8 form-control-static">
+                <%= @volunteer.send(field) %>
+              </div>
+            </div>
+        <% end %>
+        <div class="row">
+          <div class="col-md-3 form-group">
+            <%= f.label :notes %>
+          </div>
+          <div class="col-md-7 form-control-static">
+            <%= @volunteer.notes %>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-md-2">
+            <%= f.label :interests %>
+          </div>
+          <div class="col-md-8">
+            <%= f.select :interest_ids, option_groups_from_collection_for_select(InterestCategory.all, :interests, :name, :id, :option_formatter, f.object.interest_ids), {}, { :multiple => true, class: "form-control"}  %>
+          </div>
+        </div>
       </div>
     </div>
+
 
 <% end %>
