@@ -1,0 +1,40 @@
+<%= form_for(@object) do |f| %>
+    <%= @object = f.object
+        render 'shared/error_messages' %>
+
+    <div class="row">
+      <div class="col-md-5 col-md-offset-1">
+        <% [:first_name, :last_name, :address, :city, :state, :zip, :email, :phone].each do |field| %>
+            <div class="row">
+              <div class="col-md-2">
+                <%= f.label field %><br>
+              </div>
+              <div class="col-md-8">
+                <%= f.text_field field, class: 'form-control' %>
+              </div>
+              <div class="col-md-1">
+                <%= check_box_tag("pv_use_fields[]", PendingVolunteer.resolve_fields_table[field], !@object.send(field).blank?) %>
+              </div>
+            </div>
+        <% end %>
+        <div class="row">
+          <div class="col-md-3">
+            <%= f.label :notes, 'Comments (e.g. affiliations, special interests)' %><br>
+          </div>
+          <div class="col-md-7">
+            <%= f.text_area :notes, class: 'form-control', rows: "4" %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-2">
+        <%= f.label :interests %><br>
+      </div>
+      <div class="col-md-8">
+        <%= f.select :interest_ids, option_groups_from_collection_for_select(InterestCategory.all, :interests, :name, :id, :option_formatter, f.object.interest_ids), {}, { :multiple => true, class: "form-control"}  %>
+      </div>
+    </div>
+
+<% end %>

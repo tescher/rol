@@ -10,4 +10,14 @@ class PendingVolunteer < ActiveRecord::Base
     [first_name, last_name].join(' ')
   end
 
+  def self.resolve_fields_table
+    resolve_fields = {}
+    index = 0
+    [:first_name, :last_name, :address, :city, :state, :zip, :email, :phone].each do |f|
+      resolve_fields[f] = index
+      index += 1
+    end
+    resolve_fields
+  end
+
 end

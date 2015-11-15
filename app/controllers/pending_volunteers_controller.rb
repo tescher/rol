@@ -3,13 +3,20 @@ include ApplicationHelper
 
 class PendingVolunteersController < ApplicationController
   before_filter { |c| c.set_controller_vars(controller_name) }
-  before_action :logged_in_user, only: [:index, :update, :match, :destroy]
+  before_action :logged_in_user, only: [:index, :update, :match, :edit, :destroy]
 
   def new
     @object = PendingVolunteer.new
     session[:referer] = request.referer
     @submit_name = "Submit"
     render 'new'
+  end
+
+  def edit
+    @object = PendingVolunteer.find(params[:id])
+    @volunteer = Volunteer.find(params[:matching_id])
+
+
   end
 
   def update
