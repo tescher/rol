@@ -39,7 +39,7 @@ class DonationsController < ApplicationController
       if @report_type == 1
         where_clause += "donation_types.non_monetary IS FALSE"
       else
-        where_clause = "donation_types.non_monetary IS TRUE"
+        where_clause += "donation_types.non_monetary IS TRUE"
       end
 
       if params[:organizations]

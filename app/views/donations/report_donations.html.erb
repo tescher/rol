@@ -45,7 +45,7 @@
       </div>
 
       <% @organization_donations.each do |d| %>
-          <% d_total += d.value %>
+          <% d_total += (d.value.to_f) %>
           <% d_count += 1 %>
           <% organization = Organization.find(d.organization_id) %>
           <div class="row clickable" href="<%=edit_organization_path(organization)%>">
@@ -63,7 +63,7 @@
                 <span class="no-overflow"><%= d.donation_type.name %></span>
               </div>
               <div class="col-md-1">
-                <span class="no-overflow"><%= number_to_currency(d.value) %></span>
+                <span class="no-overflow"><%= number_to_currency(d.value.to_f) %></span>
               </div>
               <% if @report_type == 2 %>
                   <div class="col-md-2">
@@ -149,7 +149,7 @@
       </div>
 
       <% @volunteer_donations.each do |d| %>
-          <% d_total += d.value %>
+          <% d_total += (d.value.to_f) %>
           <% d_count += 1 %>
           <% volunteer = Volunteer.find(d.volunteer_id) %>
           <div class="row clickable" href="<%=edit_volunteer_path(volunteer)%>">
@@ -167,7 +167,7 @@
                 <span class="no-overflow"><%= d.donation_type.name %></span>
               </div>
               <div class="col-md-1">
-                <span class="no-overflow"><%= number_to_currency(d.value) %></span>
+                <span class="no-overflow"><%= number_to_currency(d.value.to_f) %></span>
               </div>
               <% if @report_type == 2 %>
                   <div class="col-md-2">

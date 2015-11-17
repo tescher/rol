@@ -14,11 +14,11 @@ class PendingVolunteersController < ApplicationController
 
   def edit
     @object = PendingVolunteer.find(params[:id])
-    @volunteer = Volunteer.find(params[:matching_id])
-    if @volunteer.nil?
+    if params[:matching_id].blank?
       redirect_to root_path
+    else
+      @volunteer = Volunteer.find(params[:matching_id])
     end
-
   end
 
   def update
