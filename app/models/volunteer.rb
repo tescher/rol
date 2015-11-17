@@ -7,6 +7,7 @@ class Volunteer < ActiveRecord::Base
   has_many :workdays, through: :workday_volunteers
   has_many :donations, dependent: :destroy
   has_one :pending_volunteer
+  belongs_to :pending_volunteer
   belongs_to :church, -> { where(:organization_type => 1) }, class_name: "Organization", foreign_key: :church_id
   belongs_to :employer, class_name: "Organization", foreign_key: :employer_id
   belongs_to :first_contact_type, class_name: "ContactType", foreign_key: :first_contact_type_id

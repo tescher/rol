@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151113013848) do
+ActiveRecord::Schema.define(version: 20151116211200) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -113,17 +113,20 @@ ActiveRecord::Schema.define(version: 20151113013848) do
     t.string   "middle_name"
     t.string   "email"
     t.string   "city"
-    t.boolean  "resolved",    default: false, null: false
+    t.boolean  "resolved",     default: false, null: false
     t.string   "xml"
     t.string   "raw"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.string   "address"
     t.string   "state"
     t.string   "zip"
     t.string   "phone"
     t.string   "notes"
+    t.integer  "volunteer_id"
   end
+
+  add_index "pending_volunteers", ["volunteer_id"], name: "index_pending_volunteers_on_volunteer_id", using: :btree
 
   create_table "projects", force: :cascade do |t|
     t.string   "name"

@@ -254,4 +254,12 @@ table.header-border {
   overflow: auto;
 }
 
+/* Field background colors */
+.background-valid {
+  background-color: LightGreen !important;
+}
+.background-invalid {
+  background-color: LightPink !important;
+}
+
 

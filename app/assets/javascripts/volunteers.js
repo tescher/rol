@@ -3,6 +3,10 @@
 $(document).ready(function() {
     $('[id*=interest_ids]').multiselect();
 
+    $('[id*=interest_ids].read-only').next('.btn-group').find('input').each(function(){
+        $(this).prop('disabled', true);
+    });
+
     $(".multiselect-container").find("label.checkbox").contents().filter(function() { return this.nodeType === 3 }).each(function() {
         var name=$(this).text();
         if (name.substring(0,2) == " *") {
@@ -79,7 +83,7 @@ $(document).ready(function() {
                         $("#addrchk_table").css("display","block");
                         $("#addrchk_msg").html("Matching address found:");
                         $(".ui-dialog-buttonpane button:contains('Use this address')").attr("disabled", false).removeClass("ui-state-disabled");
-                   }
+                    }
 
 
                 }
@@ -131,6 +135,80 @@ $(document).ready(function() {
         }
     });
 
+    // Check boxes on (Pending) Volunteer merge
 
+    function set_field_validity_color($checkbox) {
+        var field_name = $checkbox.attr("id").split("use_")[1];
+        var $field = $("input[id^=pending_volunteer_"+field_name+"]");
+        var $other_field = $("span[id^=volunteer_"+field_name+"]");
+        if ($checkbox.prop("checked")) {
+            $other_field.removeClass("background-valid");
+            switch (field_name) {
+                case "first_name":
+                case "last_name":
+                    if ($field.val()) {
+                        $field.removeClass("background-invalid");
+                        $field.addClass("background-valid")
+                    } else {
+                        $field.removeClass("background-valid");
+                        $field.addClass("background-invalid")
+                    }
+                    break;
+                case "email":
+                    var r = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+                    if ($field.val() && !(r.test($field.val()))) {
+                        $field.removeClass("background-valid");
+                        $field.addClass("background-invalid")
+                    } else {
+                        $field.removeClass("background-invalid");
+                        $field.addClass("background-valid")
+                    }
+                    break;
+                default:
+                    $field.removeClass("background-invalid");
+                    $field.addClass("background-valid");
+                    break;
+            }
+        } else {
+            $field.removeClass("background-valid");
+            $field.removeClass("background-invalid");
+            $other_field.addClass("background-valid");
+        }
+    }
 
+    $(":checkbox[id^=use_]").change(function() {
+        set_field_validity_color($(this))
+    }).trigger("change");
+
+    ["first_name", "last_name", "email"].forEach(function(field_name) {
+        $("input[id$="+field_name+"]").change(function() {
+            set_field_validity_color($(":checkbox[id=use_"+field_name+"]"))
+        })
+    });
+
+    ["notes", "interests"].forEach(function(field_name) {
+        $("select[id*=" + field_name + "]").change(function () {
+            var action = $("select[id*=" + field_name + "] option:selected").text();
+            var $field = "";
+            var $other_field = "";
+            if (field_name == "notes") {
+                $field = $("textarea[id^=pending_volunteer_" + field_name + "]");
+                $other_field = $("textarea[id^=volunteer_" + field_name + "]");
+            } else {
+                $field = $("select[id^=pending_volunteer_interest_ids]").next("div.btn-group").children(":button");
+                $other_field = $("select[id^=volunteer_interest_ids]").next("div.btn-group").children(":button");
+            }
+            if (action.toLowerCase() != "ignore") {
+                $field.addClass("background-valid");
+                if (action.toLowerCase() != "replace") {
+                    $other_field.addClass("background-valid")
+                } else {
+                    $other_field.removeClass("background-valid")
+                }
+            } else {
+                $field.removeClass("background-valid");
+                $other_field.addClass("background-valid")
+            }
+        }).trigger("change")
+    })
 });
