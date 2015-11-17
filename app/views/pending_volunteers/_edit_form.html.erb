@@ -16,7 +16,8 @@
           </div>
 
         </div>
-        <% [:first_name, :last_name, :address, :city, :state, :zip, :email, :phone].each do |field| %>
+        <% check_exceptions = [:work_phone, :mobile_phone] %>
+        <% [:first_name, :last_name, :address, :city, :state, :zip, :email, :home_phone, :work_phone, :mobile_phone].each do |field| %>
             <div class="row">
               <div class="col-md-1">
                 <%= f.label field %>
@@ -25,7 +26,7 @@
                 <%= f.text_field field, class: 'form-control' %>
               </div>
               <div class="col-md-2">
-                <%= check_box_tag("pv_use_fields[]", PendingVolunteer.resolve_fields_table[field], !@object.send(field).blank?, {id: "use_#{field}", class: "form-control"}) %>
+                <%= check_box_tag("pv_use_fields[]", PendingVolunteer.resolve_fields_table[field], !check_exceptions.include?(field) && !@object.send(field).blank?, {id: "use_#{field}", class: "form-control"}) %>
               </div>
               <div class="col-md-1">
                 <%= label_tag field %>

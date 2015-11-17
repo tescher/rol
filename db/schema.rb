@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151116211200) do
+ActiveRecord::Schema.define(version: 20151117020822) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -124,6 +124,9 @@ ActiveRecord::Schema.define(version: 20151116211200) do
     t.string   "phone"
     t.string   "notes"
     t.integer  "volunteer_id"
+    t.string   "home_phone"
+    t.string   "work_phone"
+    t.string   "mobile_phone"
   end
 
   add_index "pending_volunteers", ["volunteer_id"], name: "index_pending_volunteers_on_volunteer_id", using: :btree
