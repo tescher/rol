@@ -3,15 +3,15 @@
         render 'shared/error_messages' %>
 
     <div class="row">
-      <div class="col-md-12 col-md-offset-1">
+      <div class="col-xs-12 col-xs-offset-1">
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-xs-4">
             <h3>Pending Volunteer Data</h3>
           </div>
-          <div class="col-md-2">
+          <div class="col-xs-2">
             <h3><u>Use</u></h3>
           </div>
-          <div class="col-md-4">
+          <div class="col-xs-4">
             <h3>Existing Volunteer Data</h3>
           </div>
 
@@ -19,56 +19,56 @@
         <% check_exceptions = [:work_phone, :mobile_phone] %>
         <% [:first_name, :last_name, :address, :city, :state, :zip, :email, :home_phone, :work_phone, :mobile_phone].each do |field| %>
             <div class="row">
-              <div class="col-md-1">
+              <div class="col-xs-1">
                 <%= f.label field %>
               </div>
-              <div class="col-md-3">
+              <div class="col-xs-3">
                 <%= f.text_field field, class: 'form-control' %>
               </div>
-              <div class="col-md-2">
+              <div class="col-xs-2">
                 <%= check_box_tag("pv_use_fields[]", PendingVolunteer.resolve_fields_table[field], !check_exceptions.include?(field) && !@object.send(field).blank?, {id: "use_#{field}", class: "form-control"}) %>
               </div>
-              <div class="col-md-1">
+              <div class="col-xs-1">
                 <%= label_tag field %>
               </div>
-              <div class="col-md-3">
+              <div class="col-xs-3">
                 <%= content_tag(:span, @volunteer.send(field), id: "volunteer_#{field}", class: "form-control") %>
               </div>
             </div>
         <% end %>
         <div class="row">
-          <div class="col-md-1">
+          <div class="col-xs-1">
             <%= f.label :notes, 'Comments (e.g. affiliations, special interests)' %>
           </div>
-          <div class="col-md-3">
+          <div class="col-xs-3">
             <%= f.text_area :notes, class: 'form-control', rows: "4" %>
           </div>
-          <div class="col-md-2">
+          <div class="col-xs-2">
             <%= select_tag(:use_notes, options_for_select([ "Prepend", "Append", "Replace", "Ignore" ], "Append"), {class: "form-control"}) %>
           </div>
-          <div class="col-md-1">
+          <div class="col-xs-1">
             <%= f.label :notes %>
           </div>
-          <div class="col-md-3">
+          <div class="col-xs-3">
             <%= text_area_tag(:volunteer_notes, @volunteer.notes, class: "form-control", rows: "4", disabled: "disabled") %>
           </div>
 
         </div>
 
         <div class="row">
-          <div class="col-md-1">
+          <div class="col-xs-1">
             <%= f.label :interests %>
           </div>
-          <div class="col-md-3">
+          <div class="col-xs-3">
             <%= f.select :interest_ids, option_groups_from_collection_for_select(InterestCategory.all, :interests, :name, :id, :option_formatter, f.object.interest_ids), {}, { :multiple => true, class: "form-control"}  %>
           </div>
-          <div class="col-md-2">
+          <div class="col-xs-2">
             <%= select_tag(:use_interests, options_for_select([ "Add", "Replace", "Ignore" ], "Add"), {class: "form-control"}) %>
           </div>
-          <div class="col-md-1">
+          <div class="col-xs-1">
             <%= f.label :interests %>
           </div>
-          <div class="col-md-3">
+          <div class="col-xs-3">
             <%= select_tag(:volunteer_interest_ids, option_groups_from_collection_for_select(InterestCategory.all, :interests, :name, :id, :option_formatter, @volunteer.interest_ids), { :multiple => true, class: "form-control read-only"})  %>
           </div>
         </div>
