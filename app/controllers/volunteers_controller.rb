@@ -215,13 +215,7 @@ class VolunteersController < ApplicationController
 
   # GET /volunteers/1/edit
   def edit
-    @volunteer = Volunteer.find(params[:id])
-    @num_workdays = WorkdayVolunteer.where(volunteer_id: @volunteer.id)
-    @employer = @volunteer.employer_id.blank? ? nil : Organization.find(@volunteer.employer_id)
-    @church = @volunteer.church_id.blank? ? nil : Organization.find(@volunteer.church_id)
-    @allow_stay = true
-    @donation_year = get_donation_summary("volunteer", @volunteer.id)[0].first
-    session[:volunteer_id] = @volunteer.id
+    edit_setup
   end
 
   # POST /volunteers
@@ -277,15 +271,17 @@ class VolunteersController < ApplicationController
     if volunteer_params[:first_name].nil?     # Coming from donations
       if @volunteer.update_attributes(volunteer_params)
         flash[:success] = "Donations updated"
-        if params[:stay].blank?
-          redirect_to edit_volunteer_path(@volunteer)
-        else
+        if !params[:stay].blank?
           redirect_to donations_volunteer_path(@volunteer)
+        else
+          if !params[:save_and_search].blank?
+            redirect_to search_volunteers_path
+          else
+            redirect_to edit_volunteer_path(@volunteer)
+          end
         end
       else
-        @donator = @volunteer
-        @allow_stay = true
-        @no_delete = true
+        donation_setup
         render "shared/donations_form"
       end
     else                                       # Coming from regular edit
@@ -301,9 +297,7 @@ class VolunteersController < ApplicationController
           end
         end
       else
-        @allow_stay = true
-        @num_workdays = WorkdayVolunteer.where(volunteer_id: @volunteer.id)
-        @donation_year = get_donation_summary("volunteer", @volunteer.id)[0].first
+        edit_setup
         render :edit
       end
     end
@@ -319,9 +313,7 @@ class VolunteersController < ApplicationController
 
   # GET /volunteer/1/donations
   def donations
-    @donator = Volunteer.find(params[:id])
-    @no_delete = true
-    @allow_stay = true
+    donation_setup
     render "shared/donations_form"
   end
 
@@ -502,11 +494,27 @@ class VolunteersController < ApplicationController
     search_params.delete_if {|k,v| v.blank?}
     search_params
   end
+
   def donations_allowed
     redirect_to(root_url) unless current_user.donations_allowed
   end
 
+  def donation_setup
+    @donator = @volunteer.nil? ? Volunteer.find(params[:id]) : @volunteer
+    @no_delete = true
+    @allow_stay = true
+    @custom_submit = "Save & Search"
+    @custom_submit_name = "save_and_search"
+  end
 
-
+  def edit_setup
+    @volunteer = @volunteer.nil? ? Volunteer.find(params[:id]) : @volunteer
+    @num_workdays = WorkdayVolunteer.where(volunteer_id: @volunteer.id)
+    @employer = @volunteer.employer_id.blank? ? nil : Organization.find(@volunteer.employer_id)
+    @church = @volunteer.church_id.blank? ? nil : Organization.find(@volunteer.church_id)
+    @allow_stay = true
+    @donation_year = get_donation_summary("volunteer", @volunteer.id)[0].first
+    session[:volunteer_id] = @volunteer.id
+  end
 
 end
