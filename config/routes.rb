@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'settings/edit'
+  patch 'settings/update'
+
   root 'static_pages#home'
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'

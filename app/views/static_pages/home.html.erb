@@ -1,10 +1,10 @@
 <% provide(:title, "Home") %>
 
 <div class="center jumbotron">
-  <h1><%= ORG_TITLE %></h1>
+  <h1><%= Utilities::Utilities.system_setting(:org_title) %></h1>
 
   <h2>
-    <%= SITE_TITLE %>
+    <%= Utilities::Utilities.system_setting(:site_title) %>
   </h2>
 
   <% if logged_in? %>
@@ -45,6 +45,7 @@
                   <li><h4><%= link_to "Organization Types", organization_types_path %></h4></li>
                   <li><h4><%= link_to "Donation Types", donation_types_path %></h4></li>
                   <li><h4><%= link_to "Contact Types", contact_types_path %></h4></li>
+                  <li><h4><%= link_to "System Settings", settings_edit_path('1') %></h4></li>
                 </ul>
               </div>
           <% end %>

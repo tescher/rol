@@ -3,7 +3,7 @@ module ApplicationHelper
 
   # Returns the full title on a per-page basis.
   def full_title(page_title = '')
-    base_title = SITE_TITLE
+    base_title = Utilities::Utilities.system_setting(:site_title)
     if page_title.empty?
       base_title
     else
@@ -54,7 +54,7 @@ module ApplicationHelper
     if order
       @objects = @objects.order(order)
     end
-    if always_paginate || (!defined? NO_PAGINATION) || !NO_PAGINATION
+    if always_paginate || (!defined? Utilities::Utilities.system_setting(:no_pagination)) || !Utilities::Utilities.system_setting(:no_pagination)
       @paginate = true
       @objects = @objects.paginate(page: page)
     else

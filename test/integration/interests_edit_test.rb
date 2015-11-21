@@ -4,8 +4,8 @@ class InterestsEditTest < ActionDispatch::IntegrationTest
 
   def setup
     @user = users(:michael)
-    @interest = interests(:one)
-    @interest_2 = interests(:two)
+    @interest = Interest.create!(name:"test1", interest_category_id: 1)
+    @interest_2 = Interest.create!(name:"test2", interest_category_id: 1)
     @non_admin = users(:one)
   end
 

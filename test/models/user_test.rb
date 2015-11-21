@@ -4,7 +4,7 @@ class UserTest < ActiveSupport::TestCase
 
   def setup
     @user = User.new(name: "Example User", email: "user@example.com",
-                     password: "a" * MIN_PASSWORD_LENGTH, password_confirmation:"a" * MIN_PASSWORD_LENGTH)
+                     password: "a" * Utilities::Utilities.system_setting(:min_password_length), password_confirmation:"a" * Utilities::Utilities.system_setting(:min_password_length))
   end
 
   test "should be valid" do
@@ -47,7 +47,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "password should have a minimum length" do
-    @user.password = @user.password_confirmation = "a" * (MIN_PASSWORD_LENGTH - 1)
+    @user.password = @user.password_confirmation = "a" * (Utilities::Utilities.system_setting(:min_password_length) - 1)
     assert_not @user.valid?
   end
 

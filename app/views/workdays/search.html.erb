@@ -4,14 +4,14 @@
 
 
 
-<div class="<%= NO_PAGINATION.blank? ? "container" : "container scrolled-listing" %>">
+<div class="<%= Utilities::Utilities.system_setting(:no_pagination).blank? ? "container" : "container scrolled-listing" %>">
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
       <% if @projects.count > 0 %>
           <ul class="listing">
             <%= render partial: "workdays/project.html", collection: @projects %>
           </ul>
-          <% if NO_PAGINATION.blank? %>
+          <% if Utilities::Utilities.system_setting(:no_pagination).blank? %>
               <%= will_paginate @projects %>
           <% end %>
       <% else %>

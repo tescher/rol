@@ -9,7 +9,7 @@ class WorkdaysController < ApplicationController
   # GET /workdays.json
   def index
     @workdays = Workday.where(project_id: params[:project_id]).order(workdate: :desc)
-    if (!defined? NO_PAGINATION) || !NO_PAGINATION
+    if (!defined? Utilities::Utilities.system_setting(:no_pagination)) || !Utilities::Utilities.system_setting(:no_pagination)
       @workdays = @workdays.paginate(page: params[:page])
     end
     @project = Project.find(params[:project_id])
@@ -93,7 +93,7 @@ class WorkdaysController < ApplicationController
   # GET /workdays/search
   def search
     @projects = Project.active.order(:name).all
-    if (!defined? NO_PAGINATION) || !NO_PAGINATION
+    if (!defined? Utilities::Utilities.system_setting(:no_pagination)) || !Utilities::Utilities.system_setting(:no_pagination)
       @projects = @projects.paginate(page: params[:page])
     end
   end

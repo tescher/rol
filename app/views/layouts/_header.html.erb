@@ -3,8 +3,8 @@
     <% if content_for?(:header) %>
         <%= yield(:header) %>
     <% else %>
-        <%= link_to image_tag("org.png", alt: ORG_TITLE), ORG_SITE, id: "logo" %>
-        <%= link_to SITE_TITLE, root_path, id: "logo" %>
+        <%= link_to image_tag("org.png", alt: Utilities::Utilities.system_setting(:org_title)), Utilities::Utilities.system_setting(:org_site), id: "logo" %>
+        <%= link_to Utilities::Utilities.system_setting(:site_title), root_path, id: "logo" %>
         <nav>
           <ul class="nav navbar-nav navbar-right">
             <% if logged_in? %>
@@ -19,9 +19,9 @@
                     <li>
                       <%= link_to "Log out", logout_path, method: "delete" %>
                     </li>
-                    <% if defined? OLD_SYSTEM %>
+                    <% if defined? Utilities::Utilities.system_setting(:old_system_site) %>
                         <li>
-                          <%= link_to OLD_SYSTEM_NAME, OLD_SYSTEM %>
+                          <%= link_to Utilities::Utilities.system_setting(:old_system_name), Utilities::Utilities.system_setting(:old_system_site) %>
                         </li>
                     <% end %>
                   </ul>

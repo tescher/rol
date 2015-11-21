@@ -6,31 +6,13 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create!(name:  "Example User",
-             email: "example@railstutorial.org",
-             password:              "foobar",
-             password_confirmation: "foobar",
-             admin: true)
 
-99.times do |n|
-  name  = Faker::Name.name
-  email = "example-#{n+1}@railstutorial.org"
-  password = "password"
-  User.create!(name:  name,
-               email: email,
-               password:              password,
-               password_confirmation: password)
-  end
+Setting.create!(id:1,
+                            name: "System",
+                            org_site: "http://www.example.org",
+                            org_title: "Example Organization",
+                            org_short_title: "EXAMPLEORG",
+                            site_title: "Volunteer Management",
+                            old_system_site: "http://old_example.org/index.php",
+                            old_system_name: "Old System Example")
 
-Volunteer.create!(first_name:  "Example",
-                  last_name: "Volunteer",
-                email: "example@railstutorial.org")
-
-  99.times do |n|
-    first_name  = Faker::Name.first_name
-    last_name = Faker::Name.last_name
-    email = "example-#{n+1}@railstutorial.org"
-    Volunteer.create!(first_name:  first_name,
-                      last_name: last_name,
-                 email: email)
-  end

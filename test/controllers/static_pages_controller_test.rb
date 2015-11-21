@@ -3,7 +3,7 @@ require 'test_helper'
 class StaticPagesControllerTest < ActionController::TestCase
 
   def setup
-    @base_title = SITE_TITLE
+    @base_title = Utilities::Utilities.system_setting(:site_title)
   end
   
   test "should get home" do

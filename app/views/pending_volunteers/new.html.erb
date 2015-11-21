@@ -3,12 +3,12 @@
 <% end %>
 
 <% content_for(:header) do %>
-<%= link_to image_tag("org.png", alt: ORG_TITLE), ORG_SITE, id: "logo" %>
-<%= link_to ORG_TITLE, ORG_SITE, id: "logo" %>
+<%= link_to image_tag("org.png", alt: Utilities::Utilities.system_setting(:org_title)), Utilities::Utilities.system_setting(:org_site), id: "logo" %>
+<%= link_to Utilities::Utilities.system_setting(:org_title), Utilities::Utilities.system_setting(:org_site), id: "logo" %>
 <% end %>
 
 <% provide(:title, "New Volunteer") %>
-<h1> <%=ORG_SHORT_TITLE%> Volunteer Sign-up</h1>
+<h1> <%=Utilities::Utilities.system_setting(:org_short_title)%> Volunteer Sign-up</h1>
 <h2>Fill out and submit the form below. Thanks for your interest!</h2>
 
 <%= render 'form' %>

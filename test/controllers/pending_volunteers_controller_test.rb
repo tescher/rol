@@ -69,18 +69,6 @@ class PendingVolunteersControllerTest < ActionController::TestCase
     assert_template 'edit'
   end
 
-  test "update, set 'resolved' flag, update the volunteer" do
-    log_in_as(@user)
-    #invalid patch
-    patch :update, id: @pending_volunteer  #First with no volunteer
-    assert_redirected_to root_path
-    #patch with first name used
-    patch :update, id: @pending_volunteer, matching_id: @volunteer
-    assert_redirected_to pending_volunteers_path
-    assert_equal @pending_volunteer.first_name, @volunteer.first_name
-    assert_equal @pending_volunteer.resolved, true
-  end
-
 
 
 end

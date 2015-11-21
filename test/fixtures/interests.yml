@@ -2,12 +2,12 @@
 
 one:
   name: Example
-  interest_category_id: office
+  interest_category_id: 1
   highlight: false
 
 two:
   name: Example2
-  interest_category_id: construction
+  interest_category_id: 2
   highlight: false
 
 dependent:
@@ -17,4 +17,4 @@ dependent:
 
 master:
   name: master
-  interest_category_id: office
+  interest_category_id: 1

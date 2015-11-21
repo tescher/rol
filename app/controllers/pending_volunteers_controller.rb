@@ -23,51 +23,52 @@ class PendingVolunteersController < ApplicationController
 
   def update
     @object = PendingVolunteer.find(params[:id])
-    @volunteer = Volunteer.find(params[:matching_id])
-    if @volunteer.nil?
+    if params[:matching_id].blank?
       redirect_to root_path
-    end
-    volunteer_params = {}
-    params[:pv_use_fields].each do |findex|
-      item = PendingVolunteer.resolve_fields_table.key(findex.to_i)
-      volunteer_params[item] = pending_volunteer_params[item]
-    end
-    if (params[:use_notes].downcase != "ignore")
-      if @volunteer.notes.blank? || (params[:use_notes].downcase == "replace")
-        volunteer_params[:notes] = pending_volunteer_params[:notes]
-      else
-        if (!pending_volunteer_params[:notes].blank?)
-          if (params[:use_notes].downcase == "append")
-            volunteer_params[:notes] = @volunteer.notes + "\n " + pending_volunteer_params[:notes]
-          else
-            if (params[:use_notes].downcase == "prepend")
-              volunteer_params[:notes] =  pending_volunteer_params[:notes] + "\n " + @volunteer.notes
+    else
+      @volunteer = Volunteer.find(params[:matching_id])
+      volunteer_params = {}
+      params[:pv_use_fields].each do |findex|
+        item = PendingVolunteer.resolve_fields_table.key(findex.to_i)
+        volunteer_params[item] = pending_volunteer_params[item]
+      end
+      if (params[:use_notes].downcase != "ignore")
+        if @volunteer.notes.blank? || (params[:use_notes].downcase == "replace")
+          volunteer_params[:notes] = pending_volunteer_params[:notes]
+        else
+          if (!pending_volunteer_params[:notes].blank?)
+            if (params[:use_notes].downcase == "append")
+              volunteer_params[:notes] = @volunteer.notes + "\n " + pending_volunteer_params[:notes]
+            else
+              if (params[:use_notes].downcase == "prepend")
+                volunteer_params[:notes] =  pending_volunteer_params[:notes] + "\n " + @volunteer.notes
+              end
             end
           end
         end
       end
-    end
-    interests = []
-    if (pending_volunteer_params[:interest_ids].length > 0) && (params[:use_interests].downcase != "ignore")
-      if (params[:use_interests].downcase == "add") && (!params[:volunteer_interest_ids].nil?)
-        volunteer_params[:interest_ids] = (pending_volunteer_params[:interest_ids] + params[:volunteer_interest_ids]).uniq
-      else
-        volunteer_params[:interest_ids] = pending_volunteer_params[:interest_ids].dup
+      interests = []
+      if (pending_volunteer_params[:interest_ids].length > 0) && (params[:use_interests].downcase != "ignore")
+        if (params[:use_interests].downcase == "add") && (!params[:volunteer_interest_ids].nil?)
+          volunteer_params[:interest_ids] = (pending_volunteer_params[:interest_ids] + params[:volunteer_interest_ids]).uniq
+        else
+          volunteer_params[:interest_ids] = pending_volunteer_params[:interest_ids].dup
+        end
       end
-    end
 
-    if @volunteer.update_attributes(volunteer_params)
-      flash[:success] = "Volunteer updated"
-      @object.resolved = true
-      @object.volunteer_id = @volunteer.id
-      @object.save!
-      redirect_to pending_volunteers_path
-    else
-      @volunteer.errors.each {|attr, error| @object.errors.add(attr, error)}
-      @volunteer.reload
-      render :edit
-    end
+      if @volunteer.update_attributes(volunteer_params)
+        flash[:success] = "Volunteer updated"
+        @object.resolved = true
+        @object.volunteer_id = @volunteer.id
+        @object.save!
+        redirect_to pending_volunteers_path
+      else
+        @volunteer.errors.each {|attr, error| @object.errors.add(attr, error)}
+        @volunteer.reload
+        render :edit
+      end
 
+    end
   end
 
 
