@@ -32,7 +32,7 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.json
   def create
-    standard_create(Project, contact_type_params)
+    standard_create(Project, project_params)
   end
 
   # PATCH/PUT /projects/1
