@@ -6,6 +6,10 @@ class VolunteerTest < ActiveSupport::TestCase
     @volunteer = Volunteer.new(first_name: "Example", last_name: "User", email: "user@example.com")
   end
 
+  def teardown
+    @volunteer.destroy
+  end
+
   test "should be valid" do
     assert @volunteer.valid?
   end

@@ -13,6 +13,10 @@ class PendingVolunteersControllerTest < ActionController::TestCase
     @volunteer.save!
   end
 
+  def teardown
+    @volunteer.destroy
+  end
+
   test "should error or redirect all but post if not logged in " do
     get :edit, id: @pending_volunteer
     assert_redirected_to login_url

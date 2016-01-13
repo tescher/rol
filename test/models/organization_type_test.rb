@@ -6,6 +6,10 @@ class OrganizationTypeTest < ActiveSupport::TestCase
     @organization_type = OrganizationType.new(name: "NGO")
   end
 
+  def teardown
+    @organization_type.destroy
+  end
+
   test "should be valid" do
     assert @organization_type.valid?
   end
@@ -16,17 +20,17 @@ class OrganizationTypeTest < ActiveSupport::TestCase
   end
 
   test "cannot change locked type" do
-    @organization_type = OrganizationType.find(1)
-    old_name = @organization_type.name
-    @organization_type.name = "Something Else"
-    assert_raises(ActiveRecord::ReadOnlyRecord) { @organization_type.save}
+    @organization_type1 = OrganizationType.find(1)
+    old_name = @organization_type1.name
+    @organization_type1.name = "Something Else"
+    assert_raises(ActiveRecord::ReadOnlyRecord) { @organization_type1.save}
     # assert_not @organization_type.errors.empty?, "Should error"
   end
 
   test "Organization Association" do
-    @organization_type = organization_types(:master)
-    @organization = volunteers(:dependent)
-    assert_raises(ActiveRecord::DeleteRestrictionError) {@organization_type.destroy}
+    @organization_type1 = organization_types(:master)
+    @organization1 = volunteers(:dependent)
+    assert_raises(ActiveRecord::DeleteRestrictionError) {@organization_type1.destroy}
   end
 
 end

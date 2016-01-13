@@ -11,6 +11,13 @@ class DonationTest < ActiveSupport::TestCase
     @donation = Donation.new(date_received: 1.day.ago.to_s(:db), value: 100, donation_type: @donation_type)
   end
 
+  def teardown
+    @organization.destroy
+    @volunteer.destroy
+    @donation.destroy
+    @donation_type.destroy
+  end
+
   test "Needs volunteer or organization, but not both" do
     assert_not @donation.valid?
     @donation.volunteer = @volunteer

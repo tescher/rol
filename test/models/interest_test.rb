@@ -8,6 +8,11 @@ class InterestTest < ActiveSupport::TestCase
     @interest = Interest.new(name: "Example", interest_category: @interest_category, highlight: true)
   end
 
+  def teardown
+    @interest.destroy
+    @interest_category.destroy
+  end
+
   test "should be valid" do
     assert @interest.valid?
   end
@@ -21,9 +26,9 @@ class InterestTest < ActiveSupport::TestCase
   end
 
   test "Volunteer Association" do
-    @interest = interests(:master)
-    @volunteer = volunteers(:dependent)
-    assert_raises(ActiveRecord::DeleteRestrictionError) {@interest.destroy}
+    @interest1 = interests(:master)
+    @volunteer1 = volunteers(:dependent)
+    assert_raises(ActiveRecord::DeleteRestrictionError) {@interest1.destroy}
   end
 
 end

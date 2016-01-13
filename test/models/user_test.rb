@@ -7,6 +7,10 @@ class UserTest < ActiveSupport::TestCase
                      password: "a" * Utilities::Utilities.system_setting(:min_password_length), password_confirmation:"a" * Utilities::Utilities.system_setting(:min_password_length))
   end
 
+  def teardown
+    @user.destroy
+  end
+
   test "should be valid" do
     assert @user.valid?
   end

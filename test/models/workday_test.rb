@@ -7,6 +7,10 @@ class WorkdayTest < ActiveSupport::TestCase
     @workday = Workday.new(name: "Example", project: @project, workdate: 1.day.ago.to_s(:db))
   end
 
+  def teardown
+    @workday.destroy
+    @project.destroy
+  end
   test "should be valid" do
     assert @workday.valid?
   end

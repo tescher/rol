@@ -11,6 +11,10 @@ class OrganizationTypesEditTest < ActionDispatch::IntegrationTest
     @non_admin = users(:one)
   end
 
+  def teardown
+    @organization_type_3.destroy
+  end
+
   test "No edits by non-admin" do
     log_in_as(@non_admin)
     get edit_organization_type_path(@organization_type)

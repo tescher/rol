@@ -9,6 +9,11 @@ class InterestsEditTest < ActionDispatch::IntegrationTest
     @non_admin = users(:one)
   end
 
+  def teardown
+    @interest.destroy
+    @interest_2.destroy
+  end
+
   test "No edits by non-admin" do
     log_in_as(@non_admin)
     get edit_interest_path(@interest)
@@ -77,6 +82,9 @@ class InterestsEditTest < ActionDispatch::IntegrationTest
 
     assert_no_difference 'Interest.count' do
       delete interest_path(@interest)
+    end
+    VolunteerInterest.where(volunteer_id: @volunteer.id).each do |vi|
+      vi.destroy
     end
   end
 

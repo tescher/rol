@@ -5,6 +5,10 @@ class ProjectTest < ActiveSupport::TestCase
     @project = Project.new(name: "Food Pantry")
   end
 
+  def teardown
+    @project.destroy
+  end
+
   test "should be valid" do
     assert @project.valid?
   end
@@ -15,9 +19,9 @@ class ProjectTest < ActiveSupport::TestCase
   end
 
   test "Workday Association" do
-    @project = projects(:master)
+    @project1 = projects(:master)
     @workday = workdays(:dependent)
-    assert_raises(ActiveRecord::DeleteRestrictionError) {@project.destroy}
+    assert_raises(ActiveRecord::DeleteRestrictionError) {@project1.destroy}
   end
 
 end

@@ -10,6 +10,10 @@ class VolunteersSearchTest < ActionDispatch::IntegrationTest
     @interest.save
   end
 
+  def teardown
+    @interest.destroy
+  end
+
   test "Search including pagination" do
     log_in_as(@user)
     get search_volunteers_path
@@ -30,6 +34,7 @@ class VolunteersSearchTest < ActionDispatch::IntegrationTest
     assert_template 'volunteers/search'
     get volunteers_path, {interest_ids: [@interest.id]}
     assert_select 'div[href=?]', edit_volunteer_path(@volunteer)
+    @volunteer.destroy
   end
 
   test "Find volunteers with multiple interests and name" do
@@ -40,6 +45,7 @@ class VolunteersSearchTest < ActionDispatch::IntegrationTest
     assert_template 'volunteers/search'
     get volunteers_path, {interest_ids: [@interest.id, "0"], name: "s"}
     assert_select 'div[href=?]', edit_volunteer_path(@volunteer)
+    @volunteer.destroy
   end
 
   test "Don't find volunteers with multiple interests and wrong first name" do
@@ -50,6 +56,7 @@ class VolunteersSearchTest < ActionDispatch::IntegrationTest
     assert_template 'volunteers/search'
     get volunteers_path, {interest_ids: [@interest.id, "0"], name: "s,z"}
     assert_select 'div[href=?]', edit_volunteer_path(@volunteer), false
+    @volunteer.destroy
   end
 
   test "Find volunteers with multiple interests and correct first name" do
@@ -60,6 +67,7 @@ class VolunteersSearchTest < ActionDispatch::IntegrationTest
     assert_template 'volunteers/search'
     get volunteers_path, {interest_ids: [@interest.id, "0"], name: "s,t"}
     assert_select 'div[href=?]', edit_volunteer_path(@volunteer)
+    @volunteer.destroy
   end
 
   test "Don't find volunteers with multiple interests and wrong city" do
@@ -70,6 +78,7 @@ class VolunteersSearchTest < ActionDispatch::IntegrationTest
     assert_template 'volunteers/search'
     get volunteers_path, {interest_ids: [@interest.id, "0"], name: "s,t", city: "baraboo"}
     assert_select 'div[href=?]', edit_volunteer_path(@volunteer), false
+    @volunteer.destroy
   end
 
   test "Find volunteers with multiple interests and correct city" do
@@ -80,6 +89,7 @@ class VolunteersSearchTest < ActionDispatch::IntegrationTest
     assert_template 'volunteers/search'
     get volunteers_path, {interest_ids: [@interest.id, "0"], name: "s,t", city: "baraboo"}
     assert_select 'div[href=?]', edit_volunteer_path(@volunteer)
+    @volunteer.destroy
   end
 
   test "Find volunteers with workdays on or after a date" do
@@ -96,6 +106,10 @@ class VolunteersSearchTest < ActionDispatch::IntegrationTest
     assert_template 'volunteers/search'
     get volunteers_path, {workday_since: 5.day.ago.strftime("%m/%d/%Y")}
     assert_select 'div[href=?]', edit_volunteer_path(@recent_volunteer)
+    @recent_workday_volunteer.destroy
+    @past_workday_volunteer.destroy
+    @recent_volunteer.destroy
+    @past_volunteer.destroy
   end
 
 

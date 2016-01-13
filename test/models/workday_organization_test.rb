@@ -11,6 +11,13 @@ class WorkdayOrganizationTest < ActiveSupport::TestCase
     @workday_organization = WorkdayOrganization.new(organization: @organization, workday: @workday, hours: 1.5)
   end
 
+  def teardown
+    @workday_organization.destroy
+    @workday.destroy
+    @organization.destroy
+    @project.destroy
+  end
+
   test "should be valid" do
     assert @workday_organization.valid?
   end

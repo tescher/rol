@@ -1,4 +1,4 @@
 class PendingVolunteerInterest < ActiveRecord::Base
-  belongs_to :volunteer
+  belongs_to :pending_volunteer
   belongs_to :interest
 end

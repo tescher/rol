@@ -6,7 +6,13 @@ class InterestCategoriesEditTest < ActionDispatch::IntegrationTest
     @user = users(:michael)
     @interest_category = interest_categories(:office)
     @interest_category_2 = interest_categories(:construction)
+    @interest_category_deleteable = InterestCategory.new(name: "Deleteable")
+    @interest_category_deleteable.save!
     @non_admin = users(:one)
+  end
+
+  def teardown
+    @interest_category_deleteable.destroy
   end
 
   test "No edits by non-admin" do
@@ -49,25 +55,26 @@ class InterestCategoriesEditTest < ActionDispatch::IntegrationTest
 
   test "successful delete as admin" do
     log_in_as(@user)
-    get edit_interest_category_path(@interest_category)
-    assert_select 'a[href=?]', interest_category_path(@interest_category), method: :delete
+    get edit_interest_category_path(@interest_category_deleteable)
+    assert_select 'a[href=?]', interest_category_path(@interest_category_deleteable), method: :delete
 
     assert_difference 'InterestCategory.count', -1 do
-      delete interest_category_path(@interest_category)
+      delete interest_category_path(@interest_category_deleteable)
     end
   end
 
   test "no delete if attached to an interest" do
     log_in_as(@user)
-    @interest = interests(:one)
-    @interest.interest_category = @interest_category
+    @interest = Interest.new(name: "Deletable")
+    @interest.interest_category = @interest_category_deleteable
     @interest.save
-    get edit_interest_category_path(@interest_category)
-    assert_select 'a[href=?]', interest_category_path(@interest_category), method: :delete
+    get edit_interest_category_path(@interest_category_deleteable)
+    assert_select 'a[href=?]', interest_category_path(@interest_category_deleteable), method: :delete
 
     assert_no_difference 'InterestCategory.count' do
-      delete interest_category_path(@interest_category)
+      delete interest_category_path(@interest_category_deleteable)
     end
+    @interest.destroy
   end
 
   test "no duplicate creation" do

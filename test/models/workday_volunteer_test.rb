@@ -11,6 +11,13 @@ class WorkdayVolunteerTest < ActiveSupport::TestCase
     @workday_volunteer = WorkdayVolunteer.new(volunteer: @volunteer, workday: @workday, hours: 1.5)
   end
 
+  def teardown
+    @workday_volunteer.destroy
+    @workday.destroy
+    @volunteer.destroy
+    @project.destroy
+  end
+
   test "should be valid" do
     assert @workday_volunteer.valid?
   end

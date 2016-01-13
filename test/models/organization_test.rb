@@ -8,6 +8,11 @@ class OrganizationTest < ActiveSupport::TestCase
     @organization = Organization.new(name: "Example", organization_type: @organization_type)
   end
 
+  def teardown
+    @organization.destroy
+    @organization_type.destroy
+  end
+
   test "should be valid" do
     assert @organization.valid?
   end
@@ -46,12 +51,12 @@ class OrganizationTest < ActiveSupport::TestCase
   end
 
   test "Volunteer Association" do
-    @organization = organizations(:master_church)
-    @volunteer = volunteers(:dependent)
-    assert_raises(ActiveRecord::DeleteRestrictionError) {@organization.destroy}
-    @organization = organizations(:master_employer)
-    @volunteer = volunteers(:dependent)
-    assert_raises(ActiveRecord::DeleteRestrictionError) {@organization.destroy}
+    @organization1 = organizations(:master_church)
+    @volunteer1 = volunteers(:dependent)
+    assert_raises(ActiveRecord::DeleteRestrictionError) {@organization1.destroy}
+    @organization1 = organizations(:master_employer)
+    @volunteer1 = volunteers(:dependent)
+    assert_raises(ActiveRecord::DeleteRestrictionError) {@organization1.destroy}
   end
 
 end

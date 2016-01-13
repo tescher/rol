@@ -10,6 +10,10 @@ class WorkdayVolunteersEditTest < ActionDispatch::IntegrationTest
     @workday.save
   end
 
+  def teardown
+    @workday.destroy
+  end
+
   test "successful edit with friendly forwarding" do
     get add_participants_workday_path(@workday)
     log_in_as(@non_admin)

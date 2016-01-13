@@ -31,6 +31,14 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     @workday_volunteer.save
   end
 
+  def teardown
+    Donation.all.each do |d|
+      d.destroy
+    end
+    @workday_volunteer.destroy
+  end
+
+
   test "No imports by non-admin" do
     log_in_as(@non_admin)
     get import_volunteers_path

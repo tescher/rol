@@ -10,6 +10,11 @@ class OrganizationsSearchTest < ActionDispatch::IntegrationTest
     @organization_type2.save
   end
 
+  def teardown
+    @organization_type.destroy
+    @organization_type2.destroy
+  end
+
   test "Search including pagination" do
     log_in_as(@user)
     get search_organizations_path
@@ -17,10 +22,7 @@ class OrganizationsSearchTest < ActionDispatch::IntegrationTest
     get organizations_path, {name: "e"}
     assert_select 'div.pagination'
     first_page_of_organizations = Organization.where("(soundex(name) = soundex('e') OR (LOWER(name) LIKE 'e%'))").order(:name, :city).paginate(page: 1)
-    puts first_page_of_organizations
-    puts @response.body
     first_page_of_organizations.each do |organization|
-      puts organization.name
       assert_select 'div[href=?]', edit_organization_path(organization)
     end
   end
@@ -33,6 +35,7 @@ class OrganizationsSearchTest < ActionDispatch::IntegrationTest
     assert_template 'organizations/search'
     get organizations_path, {organization_type_ids: [@organization_type.id]}
     assert_select 'div[href=?]', edit_organization_path(@organization)
+    @organization.destroy
   end
 
   test "Do not find organizations with wrong type" do
@@ -43,6 +46,7 @@ class OrganizationsSearchTest < ActionDispatch::IntegrationTest
     assert_template 'organizations/search'
     get organizations_path, {organization_type_ids: [@organization_type2.id]}
     assert_select 'div[href=?]', edit_organization_path(@organization), false
+    @organization.destroy
   end
 
 
@@ -54,6 +58,7 @@ class OrganizationsSearchTest < ActionDispatch::IntegrationTest
     assert_template 'organizations/search'
     get organizations_path, {organization_type_ids: [@organization_type.id], name: "e"}
     assert_select 'div[href=?]', edit_organization_path(@organization)
+    @organization.destroy
   end
 
 

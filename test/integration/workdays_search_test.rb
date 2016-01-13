@@ -10,6 +10,12 @@ class WorkdaysSearchTest < ActionDispatch::IntegrationTest
     @workday.save
   end
 
+  def teardown
+    @workday.destroy
+  end
+
+
+
   test "Listing by project" do
     log_in_as(@user)
     get search_workdays_path
