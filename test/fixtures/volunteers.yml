@@ -15,6 +15,20 @@ one:
   mobile_phone:
   notes: A bunch of notes
 
+duplicate:
+  first_name: Timothy
+  middle_name:
+  last_name: Escher
+  occupation:
+  address: PO Box 1230
+  city: Chickaloon
+  state: AK
+  zip: 99674
+  email: tim@example.com
+  home_phone: (907) 745-3512)
+  work_phone:
+  mobile_phone:
+  notes: Another bunch of notes
 
 <% 30.times do |n| %>
 volunteer_<%= n %>:

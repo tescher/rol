@@ -5,37 +5,58 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:one)
     @volunteer = volunteers(:one)
+    @duplicate_volunteer = volunteers(:duplicate)
     @admin = users(:michael)
     @non_admin = users(:one)
     @monetary_donation_user = users(:monetary_donation)
     @non_monetary_donation_user = users(:non_monetary_donation)
-    5.times do |n|
-      @donation = Donation.new
-      @donation.donation_type = donation_types(:cash)
-      @donation.volunteer_id = @volunteer.id
-      @donation.value = 10.00
-      @donation.date_received = n.day.ago.to_s(:db)
-      @donation.save
+    [@volunteer, @duplicate_volunteer].each do |v|
+      5.times do |n|
+        donation = Donation.new
+        donation.donation_type = donation_types(:cash)
+        donation.volunteer_id = v.id
+        donation.value = 10.00
+        donation.date_received = n.day.ago.to_s(:db)
+        donation.save
+      end
+      5.times do |n|
+        donation = Donation.new
+        donation.donation_type = donation_types(:restore)
+        donation.volunteer_id = v.id
+        donation.date_received = n.day.ago.to_s(:db)
+        donation.save
+      end
+      workday_volunteer = WorkdayVolunteer.new
+      workday_volunteer.workday = workdays(:one)
+      workday_volunteer.volunteer = v
+      workday_volunteer.hours = 4
+      workday_volunteer.save
+      interest1 = interests(:one)
+      interest2 = interests(:two)
+        volunteer_interest = VolunteerInterest.new
+        volunteer_interest.volunteer = v
+      if (v == @volunteer)
+        volunteer_interest.interest = interest1
+      else
+        volunteer_interest.interest = interest2
+      end
+      volunteer_interest.save
     end
-    5.times do |n|
-      @donation = Donation.new
-      @donation.donation_type = donation_types(:restore)
-      @donation.volunteer_id = @volunteer.id
-      @donation.date_received = n.day.ago.to_s(:db)
-      @donation.save
-    end
-    @workday_volunteer = WorkdayVolunteer.new
-    @workday_volunteer.workday = workdays(:one)
-    @workday_volunteer.volunteer = @volunteer
-    @workday_volunteer.hours = 4
-    @workday_volunteer.save
   end
 
   def teardown
-    Donation.all.each do |d|
-      d.destroy
+    [@volunteer, @duplicate_volunteer].each do |v|
+      Donation.where("volunteer_id = #{v.id}") do |d|
+        d.destroy
+      end
+      WorkdayVolunteer.where("volunteer_id = #{v.id}") do |w|
+        w.destroy
+      end
+      VolunteerInterest.where("volunteer_id = #{v.id}") do |i|
+        i.destroy
+      end
+      v.destroy
     end
-    @workday_volunteer.destroy
   end
 
 
@@ -162,6 +183,17 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
                                                  last_name: @pending_volunteer.last_name, pending_volunteer_id: @pending_volunteer.id}
     @pending_volunteer.reload
     assert_equal(@pending_volunteer.resolved, true)
+  end
+
+
+  test "Merge duplicate into volunteer" do
+    log_in_as(@non_admin)
+    workdays = WorkdayVolunteer.where("volunteer_id = #{@volunteer.id}").all
+    workdays_dup = WorkdayVolunteer.where("volunteer_id = #{@duplicate_volunteer.id}").all
+    volunteer_interests = VolunteerInterest.where("volunteer_id = #{@volunteer.id}").all
+    volunteer_interests_dup = VolunteerInterest.where("volunteer_id = #{@duplicate_volunteer.id}").all
+    donations = Donations.where("volunteer_id = #{@volunteer.id}").all
+    donations_dup = Donations.where("volunteer_id = #{@duplicate_volunteer.id}").all
   end
 
 
