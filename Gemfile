@@ -30,6 +30,9 @@ gem 'jc-validates_timeliness'
 # Possessive noun helper
 gem 'possessive'
 
+# Paranoid record deleter
+gem "paranoia", "~> 2.0"
+
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 gem 'pg'

@@ -3,7 +3,7 @@ include DonationsHelper
 include ApplicationHelper
 
 class VolunteersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search, :address_check, :donations]
+  before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search, :address_check, :donations, :merge, :search_merge, :match_merge]
   before_action :admin_user,     only: [:destroy, :import, :import_form]
   before_action :donations_allowed, only: [:donations]
 
@@ -57,61 +57,65 @@ class VolunteersController < ApplicationController
       end
       where_clause = ""
     end
-    if params[:show_all]
-      @volunteers = Volunteer.select("DISTINCT(volunteers.id), volunteers.*").where(where_clause).order(:last_name, :first_name).paginate(page: params[:page], per_page: per_page)
+    if params[:system_merge_match]
+      @volunteers = find_matching_volunteers(Volunteer.find(session[:volunteer_id]))
     else
-      if (volunteer_search_params.count < 1)
-        @volunteers = Volunteer.none
+      if params[:show_all]
+        @volunteers = Volunteer.select("DISTINCT(volunteers.id), volunteers.*").where(where_clause).order(:last_name, :first_name).paginate(page: params[:page], per_page: per_page)
       else
-        # Parse name if comma entered, otherwise assume last name only
-        search_params = volunteer_search_params
-        if (search_params[:name] == "=") && (!session[:volunteer_id].nil?)
-          @volunteers = Volunteer.where(id: session[:volunteer_id]).paginate(page: params[:page], per_page: per_page)
+        if (volunteer_search_params.count < 1)
+          @volunteers = Volunteer.none
         else
-          if !search_params[:name].blank?
-            names = search_params[:name].split(",")
-            if !names[1].blank?
-              search_params[:first_name] = names[1].lstrip
+          # Parse name if comma entered, otherwise assume last name only
+          search_params = volunteer_search_params
+          if (search_params[:name] == "=") && (!session[:volunteer_id].nil?)
+            @volunteers = Volunteer.where(id: session[:volunteer_id]).paginate(page: params[:page], per_page: per_page)
+          else
+            if !search_params[:name].blank?
+              names = search_params[:name].split(",")
+              if !names[1].blank?
+                search_params[:first_name] = names[1].lstrip
+              end
+              if !names[0].blank?
+                search_params[:last_name] = names[0].lstrip
+              end
+              search_params = search_params.except(:name)
             end
-            if !names[0].blank?
-              search_params[:last_name] = names[0].lstrip
-            end
-            search_params = search_params.except(:name)
-          end
-          interest_ids = []
-          search_params.each do |index|
-            if ["last_name", "first_name", "city"].include?(index[0])
-              if index[1].strip.length > 0
-                where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
-                where_clause += "(soundex(#{index[0]}) = soundex(#{Volunteer.sanitize(index[1])}) OR (LOWER(#{index[0]}) LIKE #{Volunteer.sanitize(index[1].downcase+ "%")}))"
+            interest_ids = []
+            search_params.each do |index|
+              if ["last_name", "first_name", "city"].include?(index[0])
+                if index[1].strip.length > 0
+                  where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
+                  where_clause += "(soundex(#{index[0]}) = soundex(#{Volunteer.sanitize(index[1])}) OR (LOWER(#{index[0]}) LIKE #{Volunteer.sanitize(index[1].downcase+ "%")}))"
+                end
+              end
+              if index[0] == "interest_ids"
+                interest_ids = index[1]
               end
             end
-            if index[0] == "interest_ids"
-              interest_ids = index[1]
-            end
-          end
 
-          joins_clause = []
-          if interest_ids.count > 0
-            joins_clause << :volunteer_interests
-            where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
-            where_clause += "volunteer_interests.interest_id IN (#{interest_ids.join(',')})"
-            # @volunteers = Volunteer.select("DISTINCT(volunteers.id), volunteers.*").joins(:volunteer_interests).where(volunteer_interests: {interest_id: interest_ids}).where(where_clause).order(:last_name, :first_name)
-          else
-            # @volunteers = Volunteer.select("DISTINCT(volunteers.id), volunteers.*").where(where_clause).order(:last_name, :first_name)
-          end
-
-          if !search_params[:workday_since].blank?
-            workday_since = Date.strptime(search_params[:workday_since], "%m/%d/%Y").to_s
-            if !workday_since.blank?
-              joins_clause << :workday_volunteers
-              joins_clause << :workdays
+            joins_clause = []
+            if interest_ids.count > 0
+              joins_clause << :volunteer_interests
               where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
-              where_clause += "workdays.workdate >= '#{workday_since}'"
-              #@volunteers = @volunteers.joins(:workday_volunteers, :workdays).where("workday_volunteers.volunteer_id = '#{v.id}'").where("workdays.workdate >= '#{workday_since}'")
+              where_clause += "volunteer_interests.interest_id IN (#{interest_ids.join(',')})"
+              # @volunteers = Volunteer.select("DISTINCT(volunteers.id), volunteers.*").joins(:volunteer_interests).where(volunteer_interests: {interest_id: interest_ids}).where(where_clause).order(:last_name, :first_name)
+            else
+              # @volunteers = Volunteer.select("DISTINCT(volunteers.id), volunteers.*").where(where_clause).order(:last_name, :first_name)
             end
+
+            if !search_params[:workday_since].blank?
+              workday_since = Date.strptime(search_params[:workday_since], "%m/%d/%Y").to_s
+              if !workday_since.blank?
+                joins_clause << :workday_volunteers
+                joins_clause << :workdays
+                where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
+                where_clause += "workdays.workdate >= '#{workday_since}'"
+                #@volunteers = @volunteers.joins(:workday_volunteers, :workdays).where("workday_volunteers.volunteer_id = '#{v.id}'").where("workdays.workdate >= '#{workday_since}'")
+              end
+            end
+            @volunteers = Volunteer.select("DISTINCT(volunteers.id), volunteers.*").joins(joins_clause).where(where_clause).order(:last_name, :first_name).paginate(page: params[:page], per_page: per_page)
           end
-          @volunteers = Volunteer.select("DISTINCT(volunteers.id), volunteers.*").joins(joins_clause).where(where_clause).order(:last_name, :first_name).paginate(page: params[:page], per_page: per_page)
         end
       end
     end
@@ -172,7 +176,11 @@ class VolunteersController < ApplicationController
     respond_to do |format|
       format.html {
         if params[:dialog] == "true"
-          render partial: "dialog_index"
+          if params[:merge] == "true"
+            render partial: "dialog_index_merge"
+          else
+            render partial: "dialog_index"
+          end
         else
           render :index
         end
@@ -303,6 +311,16 @@ class VolunteersController < ApplicationController
     end
   end
 
+  def search_merge
+    if params[:dialog] == "true"
+      render partial: "dialog_search_merge_form"
+    end
+  end
+
+  def merge_form
+    render :merge
+  end
+
   # POST /volunteers/1/merge
   def merge
     @object =Volunteer.find(params[:id])
@@ -317,23 +335,22 @@ class VolunteersController < ApplicationController
           volunteer_params[item] = @source_volunteer[item]
         end
       end
-=begin
       if (params[:use_notes].downcase != "ignore")
-        if @volunteer.notes.blank? || (params[:use_notes].downcase == "replace")
-          volunteer_params[:notes] = pending_volunteer_params[:notes]
+        if @object.notes.blank? || (params[:use_notes].downcase == "replace")
+          volunteer_params[:notes] = @source_volunteer.notes
         else
-          if (!pending_volunteer_params[:notes].blank?)
+          if (!@source_volunteer.notes.blank?)
             if (params[:use_notes].downcase == "append")
-              volunteer_params[:notes] = @volunteer.notes + "\n " + pending_volunteer_params[:notes]
+              volunteer_params[:notes] = @object.notes + "\n " + @source_volunteer.notes
             else
               if (params[:use_notes].downcase == "prepend")
-                volunteer_params[:notes] =  pending_volunteer_params[:notes] + "\n " + @volunteer.notes
+                volunteer_params[:notes] =  @source_volunteer.notes + "\n " + @object.notes
               end
             end
           end
         end
       end
-=end
+
       interests = []
       volunteer_interest_ids = VolunteerInterest.where("volunteer_id = #{@object.id}").map {|i| i.interest_id}
       source_interest_ids = VolunteerInterest.where("volunteer_id = #{@source_volunteer.id}").map {|i| i.interest_id}
@@ -354,19 +371,18 @@ class VolunteersController < ApplicationController
           workday.save!
           sw.destroy!
         end
-        Donation.where("volunteer_id = #{@source_volunteer.id}").each do |d|
-          donation = d.dup
+        Donation.where("volunteer_id = #{@source_volunteer.id}").each do |sd|
+          donation = sd.dup
           donation.volunteer_id = @object.id
           donation.save!
-          d.destroy!
+          sd.destroy!
         end
 
+        @source_volunteer.deleted_reason = "Merged with #{@object.id}"
+        @source_volunteer.destroy!
+
         flash[:success] = "Volunteers merged"
-=begin
-        @object.resolved = true
-        @object.volunteer_id = @volunteer.id
-        @object.save!
-=end
+
         redirect_to volunteers_path
 
       else

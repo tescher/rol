@@ -19,11 +19,14 @@ Rails.application.routes.draw do
       get 'search'
       get 'import' => 'volunteers#import_form'
       post 'import' => 'volunteers#import'
+      get 'search_merge'
+      get 'match_merge'
     end
     member do
       get 'address_check'
       get 'donations' => 'volunteers#donations'
       post 'merge'
+      get 'merge' => 'volunteers#merge_form'
     end
   end
   resources :organizations do

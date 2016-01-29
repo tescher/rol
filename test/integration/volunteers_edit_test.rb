@@ -67,7 +67,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
       VolunteerInterest.where("volunteer_id = #{v.id}") do |i|
         i.destroy
       end
-      v.destroy
+      v.really_destroy!
     end
   end
 
@@ -174,6 +174,9 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     assert_equal before_d - 10, after_d
     assert_equal before_wd, after_wd
     assert_equal before_wdv - 1, after_wdv
+
+    @volunteer.reload
+    assert(@volunteer.deleted?)
   end
 
   test "No delete if not admin" do
@@ -252,6 +255,13 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     # We had "ignore" for notes and interests, make sure they stayed as is
     assert_equal(@volunteer.notes, notes, "Notes '#{notes}' should have remained as is")
     assert(volunteer_interests.uniq.sort == VolunteerInterest.where("volunteer_id = #{@volunteer.id}").all.uniq.sort, "Interests (#{volunteer_interests_count}) should have remained the same")
+
+    # Did everything delete OK?
+    @duplicate_volunteer.reload
+    assert(@duplicate_volunteer.deleted?, "Source volunteer soft deleted");
+    assert_equal(WorkdayVolunteer.where("volunteer_id = #{@duplicate_volunteer.id}").count, 0, "All workday shifts from source gone")
+    assert_equal(Donation.where("volunteer_id = #{@duplicate_volunteer.id}").count, 0, "All donations from source gone")
+    assert_equal(VolunteerInterest.where("volunteer_id = #{@duplicate_volunteer.id}").count, 0, "All interests from source gone")
 
   end
 
@@ -340,6 +350,54 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     # Did interests move?
     new_volunteer_interests_content = VolunteerInterest.where("volunteer_id = #{@volunteer.id}").all.map {|v| v.interest_id}
     assert(new_volunteer_interests_content.sort == volunteer_interests_dup_content.sort, "Interests (#{volunteer_interests_dup_count}) should be equal")
+  end
+
+  test "Merge with appended notes" do
+    log_in_as(@non_admin)
+    notes = @volunteer.notes
+    notes_dup = @duplicate_volunteer.notes
+
+    use_notes = "append"
+    use_interests = "ignore"
+
+    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_interests: use_interests}
+
+    @volunteer.reload
+
+    # Did notes move?
+    assert_equal(@volunteer.notes, notes + "\n " + notes_dup, "Notes (#{notes + "\n " + notes_dup}) should be equal")
+  end
+
+  test "Merge with prepended notes" do
+    log_in_as(@non_admin)
+    notes = @volunteer.notes
+    notes_dup = @duplicate_volunteer.notes
+
+    use_notes = "prepend"
+    use_interests = "ignore"
+
+    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_interests: use_interests}
+
+    @volunteer.reload
+
+    # Did notes move?
+    assert_equal(@volunteer.notes, notes_dup + "\n " + notes, "Notes (#{notes_dup + "\n " + notes}) should be equal")
+  end
+
+  test "Merge with replaced notes" do
+    log_in_as(@non_admin)
+    notes = @volunteer.notes
+    notes_dup = @duplicate_volunteer.notes
+
+    use_notes = "replace"
+    use_interests = "ignore"
+
+    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_interests: use_interests}
+
+    @volunteer.reload
+
+    # Did notes stay?
+    assert_equal(@volunteer.notes, notes_dup, "Notes (#{notes_dup}) should be equal")
   end
 
 

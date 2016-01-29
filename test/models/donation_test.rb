@@ -13,7 +13,7 @@ class DonationTest < ActiveSupport::TestCase
 
   def teardown
     @organization.destroy
-    @volunteer.destroy
+    @volunteer.really_destroy!
     @donation.destroy
     @donation_type.destroy
   end

@@ -14,7 +14,7 @@ class WorkdayVolunteerTest < ActiveSupport::TestCase
   def teardown
     @workday_volunteer.destroy
     @workday.destroy
-    @volunteer.destroy
+    @volunteer.really_destroy!
     @project.destroy
   end
 

@@ -134,6 +134,89 @@ jQuery(document).ready(function($) {
         return false;
     });
 
+    // Merge dialogs (Need different buttons than other dialogs)
+
+    $('div[id^="dialogSearchMerge"]').dialog({
+        modal: true,
+        title: "Search ",
+        disabled: true,
+        autoOpen: false,
+        width: 800,
+        buttons: [{
+            text: "Search",
+            click: function() {
+                $("#dialogFormSearch" + $(this).dialog("option", "objectName")).submit()
+            },
+            class: "btn btn-large btn-primary"
+        },{
+            text: "Let System Find",
+            click: function() {
+                $("#dialogFormSearch" + $(this).dialog("option", "objectName")).submit()
+            },
+            class: "btn btn-large btn-primary"
+        },{
+            text: "Cancel",
+            click: function() {
+                $(this).dialog("close");
+            },
+            class: "btn btn-large btn-primary"
+        }],
+
+        open: function (event, ui) {
+            $(this).dialog("option", "objectName", $(this).attr('id').substr($(this).attr('id').indexOf("dialogSearch") + 12));
+            $(this).dialog("option", "title", "Search " + $(this).dialog("option", "objectName"));
+        },
+
+        close: function (event, ui ) {
+            // RO_DO: Something go here?
+        }
+    });
+
+    $('div[id^="dialogSelectMerge"]').dialog({
+        modal: true,
+        title: "Select ",
+        disabled: true,
+        autoOpen: false,
+        width: 800,
+        buttons: [{
+            text: "Cancel",
+            click: function() {
+                $(this).dialog("close");
+            },
+            class: "btn btn-large btn-primary"
+        }],
+
+        open: function (event, ui) {
+            var objectName = $(this).attr('id').substr($(this).attr('id').indexOf("dialogSelect") + 12);
+            $(this).dialog("option", "objectName", objectName);
+            $(this).dialog("option", "title", "Select " + objectName);
+            var wHeight = $(window).height();
+            $(this).dialog("option", "height", wHeight * 0.8)
+        },
+
+        close: function (event, ui ) {
+            // RO_DO: Something go here?
+        }
+    });
+
+
+
+    $('[id^="linkMerge"]').click(function(evt) {
+        var objectName = $(this).attr('id').substr($(this).attr('id').indexOf("linkAdd") + 7);
+        var aliasName = $(this).attr('data-alias');
+        $('div[id^="dialogSelectMerge"]').attr('data-alias', aliasName);
+        $.ajax({
+            url: "/" + objectName.toLowerCase() + "s/search_merge?dialog=true" + (aliasName ? "&alias=" + aliasName.toLowerCase() : ""),
+            success: function(data) {
+                loadDialog("dialogSearchMerge" + objectName + "s",data);
+            },
+            async: false,
+            cache: false
+        });
+
+        return false;
+    });
+
     $('[id^="linkRemove"]').click(function(evt){
         var aliasName = $(this).attr('data-alias');
         $("input[id*='" + aliasName.toLowerCase() + "']").val("");
@@ -152,6 +235,10 @@ jQuery(document).ready(function($) {
             case "dialogSearch" + objectName + "s":
                 dialog.dialog("close");
                 loadDialog("dialogSelect" + objectName, data);
+                break;
+            case "dialogSearchMerge" + objectName + "s":
+                dialog.dialog("close");
+                loadDialog("dialogSelectMerge" + objectName, data);
                 break;
             case "dialogNew" + objectName:
                 if (typeof data == 'object') {

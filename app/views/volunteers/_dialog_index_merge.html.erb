@@ -1,0 +1,12 @@
+<% if @volunteers.count < 1 %>
+    <p>No volunteers found that match</p>
+<% else %>
+
+    <div class="container-fluid">
+        <ul class="listing">
+          <%= render partial: "dialog_volunteer_merge", collection: @volunteers, as: 'volunteer' %>
+        </ul>
+
+    </div>
+
+<% end %>

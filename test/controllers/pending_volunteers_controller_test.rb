@@ -14,7 +14,7 @@ class PendingVolunteersControllerTest < ActionController::TestCase
   end
 
   def teardown
-    @volunteer.destroy
+    @volunteer.really_destroy!
   end
 
   test "should error or redirect all but post if not logged in " do
