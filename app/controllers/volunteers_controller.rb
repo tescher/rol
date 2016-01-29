@@ -311,9 +311,11 @@ class VolunteersController < ApplicationController
     else
       @source_volunteer = Volunteer.find(params[:source_id])
       volunteer_params = {}
-      params[:source_use_fields].each do |findex|
-        item = Volunteer.merge_fields_table.key(findex.to_i)
-        volunteer_params[item] = @source_volunteer[item]
+      if params[:source_use_fields] then
+        params[:source_use_fields].each do |findex|
+          item = Volunteer.merge_fields_table.key(findex.to_i)
+          volunteer_params[item] = @source_volunteer[item]
+        end
       end
 =begin
       if (params[:use_notes].downcase != "ignore")
@@ -331,15 +333,17 @@ class VolunteersController < ApplicationController
           end
         end
       end
+=end
       interests = []
-      if (pending_volunteer_params[:interest_ids].length > 0) && (params[:use_interests].downcase != "ignore")
-        if (params[:use_interests].downcase == "add") && (!params[:volunteer_interest_ids].nil?)
-          volunteer_params[:interest_ids] = (pending_volunteer_params[:interest_ids] + params[:volunteer_interest_ids]).uniq
+      volunteer_interest_ids = VolunteerInterest.where("volunteer_id = #{@object.id}").map {|i| i.interest_id}
+      source_interest_ids = VolunteerInterest.where("volunteer_id = #{@source_volunteer.id}").map {|i| i.interest_id}
+      if (params[:use_interests].downcase != "ignore")
+        if (params[:use_interests].downcase == "add")
+          volunteer_params[:interest_ids] = (source_interest_ids + volunteer_interest_ids).uniq
         else
-          volunteer_params[:interest_ids] = pending_volunteer_params[:interest_ids].dup
+          volunteer_params[:interest_ids] = source_interest_ids.dup
         end
       end
-=end
 
       if @object.update_attributes(volunteer_params)
 
@@ -350,7 +354,7 @@ class VolunteersController < ApplicationController
           workday.save!
           sw.destroy!
         end
-       Donation.where("volunteer_id = #{@source_volunteer.id}").each do |d|
+        Donation.where("volunteer_id = #{@source_volunteer.id}").each do |d|
           donation = d.dup
           donation.volunteer_id = @object.id
           donation.save!
