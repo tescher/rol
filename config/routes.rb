@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     member do
       get 'address_check'
       get 'donations' => 'volunteers#donations'
+      post 'merge'
     end
   end
   resources :organizations do

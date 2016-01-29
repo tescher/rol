@@ -303,6 +303,77 @@ class VolunteersController < ApplicationController
     end
   end
 
+  # POST /volunteers/1/merge
+  def merge
+    @object =Volunteer.find(params[:id])
+    if params[:source_id].blank?
+      redirect_to root_path
+    else
+      @source_volunteer = Volunteer.find(params[:source_id])
+      volunteer_params = {}
+      params[:source_use_fields].each do |findex|
+        item = Volunteer.merge_fields_table.key(findex.to_i)
+        volunteer_params[item] = @source_volunteer[item]
+      end
+=begin
+      if (params[:use_notes].downcase != "ignore")
+        if @volunteer.notes.blank? || (params[:use_notes].downcase == "replace")
+          volunteer_params[:notes] = pending_volunteer_params[:notes]
+        else
+          if (!pending_volunteer_params[:notes].blank?)
+            if (params[:use_notes].downcase == "append")
+              volunteer_params[:notes] = @volunteer.notes + "\n " + pending_volunteer_params[:notes]
+            else
+              if (params[:use_notes].downcase == "prepend")
+                volunteer_params[:notes] =  pending_volunteer_params[:notes] + "\n " + @volunteer.notes
+              end
+            end
+          end
+        end
+      end
+      interests = []
+      if (pending_volunteer_params[:interest_ids].length > 0) && (params[:use_interests].downcase != "ignore")
+        if (params[:use_interests].downcase == "add") && (!params[:volunteer_interest_ids].nil?)
+          volunteer_params[:interest_ids] = (pending_volunteer_params[:interest_ids] + params[:volunteer_interest_ids]).uniq
+        else
+          volunteer_params[:interest_ids] = pending_volunteer_params[:interest_ids].dup
+        end
+      end
+=end
+
+      if @object.update_attributes(volunteer_params)
+
+        # If successful, move everything else
+        WorkdayVolunteer.where("volunteer_id = #{@source_volunteer.id}").each do |sw|
+          workday = sw.dup
+          workday.volunteer_id = @object.id
+          workday.save!
+          sw.destroy!
+        end
+       Donation.where("volunteer_id = #{@source_volunteer.id}").each do |d|
+          donation = d.dup
+          donation.volunteer_id = @object.id
+          donation.save!
+          d.destroy!
+        end
+
+        flash[:success] = "Volunteers merged"
+=begin
+        @object.resolved = true
+        @object.volunteer_id = @volunteer.id
+        @object.save!
+=end
+        redirect_to volunteers_path
+
+      else
+        @object.errors.each {|attr, error| @object.errors.add(attr, error)}
+        @object.reload
+        render :merge
+      end
+
+    end
+  end
+
   # DELETE /volunteers/1
   # DELETE /volunteers/1.json
   def destroy

@@ -186,14 +186,57 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
   end
 
 
-  test "Merge duplicate into volunteer" do
+  test "Merge duplicate into volunteer" do  # Duplicate is the source, volunteer is the target
     log_in_as(@non_admin)
     workdays = WorkdayVolunteer.where("volunteer_id = #{@volunteer.id}").all
+    workdays_count = workdays.count # Need to do here to make sure query runs before merge
     workdays_dup = WorkdayVolunteer.where("volunteer_id = #{@duplicate_volunteer.id}").all
+    workdays_dup_count = workdays_dup.count
     volunteer_interests = VolunteerInterest.where("volunteer_id = #{@volunteer.id}").all
+    volunteer_interests_count = volunteer_interests.count
     volunteer_interests_dup = VolunteerInterest.where("volunteer_id = #{@duplicate_volunteer.id}").all
-    donations = Donations.where("volunteer_id = #{@volunteer.id}").all
-    donations_dup = Donations.where("volunteer_id = #{@duplicate_volunteer.id}").all
+    volunteer_interests_dup_count = volunteer_interests_dup.count
+    donations = Donation.where("volunteer_id = #{@volunteer.id}").all
+    donations_count = donations.count
+    donations_dup = Donation.where("volunteer_id = #{@duplicate_volunteer.id}").all
+    donations_dup_count = donations_dup.count
+    notes = @volunteer.notes
+    notes_dup = @duplicate_volunteer.notes
+
+    source_use_field_list = [:first_name, :last_name, :waiver_date, :remove_from_mailing_list, :church_id, :home_phone]
+    source_use_fields = source_use_field_list.map {|f,i| Volunteer.merge_fields_table[f] }
+
+    use_notes = "ignore"   # Skip notes and interests on this first pass
+    use_interests = "ignore"
+
+    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: source_use_fields, use_notes: use_notes, use_interests: use_interests}
+
+    @volunteer.reload
+
+    # Did all fields merge as expected?
+    Volunteer.merge_fields_table.each do |field,index|
+      if source_use_field_list.include? field
+        assert_equal(@volunteer[field], @duplicate_volunteer[field],"Field #{field.to_s} should be equal")
+      else
+        assert_not_equal(@volunteer[field], @duplicate_volunteer[field],"Field #{field.to_s} should not be equal")
+      end
+    end
+
+    # Did workdays move?
+    assert_equal(WorkdayVolunteer.where("volunteer_id = #{@volunteer.id}").all.count, workdays_count + workdays_dup_count, "Number of workdays (#{workdays_count + workdays_dup_count}) should be equal")
+
+    # Did donations move and is the amount the same?
+    new_donations = Donation.where("volunteer_id = #{@volunteer.id}").all
+    assert_equal(new_donations.count, donations_count + donations_dup_count, "Number of donations (#{donations_count + donations_dup_count}) should be equal")
+    puts new_donations.count
+    new_total = 0
+    old_total = 0
+    new_donations.each {|d| new_total += d.value unless d.value.blank? }
+    donations.each {|d| old_total += d.value unless d.value.blank? }
+    donations_dup.each {|d| old_total += d.value unless d.value.blank? }
+    assert_equal(new_total, old_total, "Donation total #{new_total} should be equal")
+    puts new_total,old_total
+
   end
 
 

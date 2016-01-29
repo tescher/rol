@@ -36,4 +36,14 @@ class Volunteer < ActiveRecord::Base
     self.home_phone || self.mobile_phone || self.work_phone
   end
 
+  def self.merge_fields_table
+    merge_fields = {}
+    index = 0
+    [:first_name, :middle_name, :last_name, :occupation, :address, :city, :state, :zip, :email, :home_phone, :work_phone, :mobile_phone, :remove_from_mailing_list, :waiver_date, :background_check_date, :church_id, :employer_id, :first_contact_date, :first_contact_type_id].each do |f|
+      merge_fields[f] = index
+      index += 1
+    end
+    merge_fields
+  end
+
 end

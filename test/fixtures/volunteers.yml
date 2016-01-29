@@ -14,21 +14,31 @@ one:
   work_phone:
   mobile_phone:
   notes: A bunch of notes
+  first_contact_date: <%= 10.day.ago.to_s(:db) %>
+  background_check_date: <%= 10.day.ago.to_s(:db) %>
+  waiver_date: <%= 10.day.ago.to_s(:db) %>
 
 duplicate:
-  first_name: Timothy
-  middle_name:
-  last_name: Escher
-  occupation:
-  address: PO Box 1230
-  city: Chickaloon
-  state: AK
-  zip: 99674
-  email: tim@example.com
-  home_phone: (907) 745-3512)
-  work_phone:
-  mobile_phone:
-  notes: Another bunch of notes
+  first_name: TimothyDup
+  middle_name: Dup
+  last_name: EscherDup
+  occupation: Dup
+  address: PO Box 1230Dup
+  city: ChickaloonDup
+  state: AKDup
+  zip: 99674Dup
+  email: tim@example.comDup
+  home_phone: (907) 745-3512Dup
+  work_phone: Dup
+  mobile_phone: Dup
+  notes: Another bunch of notesDup
+  church: master_church
+  employer: master_employer
+  first_contact_date: <%= 5.day.ago.to_s(:db) %>
+  first_contact_type_id: master
+  background_check_date: <%= 5.day.ago.to_s(:db) %>
+  waiver_date: <%= 10.day.ago.to_s(:db) %>
+
 
 <% 30.times do |n| %>
 volunteer_<%= n %>:
