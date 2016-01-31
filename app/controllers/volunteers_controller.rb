@@ -1,6 +1,7 @@
 include WorkdaysHelper
 include DonationsHelper
 include ApplicationHelper
+include VolunteersHelper
 
 class VolunteersController < ApplicationController
   before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search, :address_check, :donations, :merge, :search_merge, :merge_form]
@@ -58,7 +59,7 @@ class VolunteersController < ApplicationController
       where_clause = ""
     end
     if params[:system_merge_match]
-      @volunteers = find_matching_volunteers(Volunteer.find(session[:volunteer_id]))
+      @volunteers = find_matching_volunteers(Volunteer.find(session[:volunteer_id])).map {|id, mv| mv[:volunteer]}
     else
       if params[:show_all]
         @volunteers = Volunteer.select("DISTINCT(volunteers.id), volunteers.*").where(where_clause).order(:last_name, :first_name).paginate(page: params[:page], per_page: per_page)

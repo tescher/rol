@@ -30,7 +30,7 @@ module VolunteersHelper
     if (!object.email.blank?)
       volunteers = Volunteer.where(id: volunteer_ids).where("email ILIKE ?",object.email)
       volunteers.each do |v|
-        @matched_volunteers[v.id][:points] += 10
+        matched_volunteers[v.id][:points] += 10
       end
     end
     if (!object.city.blank?)
@@ -39,7 +39,7 @@ module VolunteersHelper
         matched_volunteers[v.id][:points] += 2
       end
     end
-    matched_volunteers.delete(object)  # Get rid of the one we passed in
+    matched_volunteers.each {|id, mv| matched_volunteers.delete(id) if mv[:volunteer] == object }  # Get rid of the one we passed in
     matched_volunteers = Hash[matched_volunteers.sort_by { |id, mv| -mv[:points]}[0..4]]
   end
 end

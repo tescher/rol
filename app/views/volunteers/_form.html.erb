@@ -217,7 +217,7 @@
       <div class="col-md-10 col-md-offset-1">
         <div class="pull-right">
           <%= render partial: "shared/form_actions", locals: {f: f} %>
-          <% link_to "Merge", "#", id:"linkMergeVolunteer", class: "btn btn-primary" %>
+          <%= link_to "Merge", "#", id:"linkMergeVolunteer", class: "btn btn-primary" %>
 
           <%= if current_user.donations_allowed
                 f.submit "Donations", name: "to_donations", class: "btn btn-primary"

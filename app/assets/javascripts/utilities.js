@@ -4,6 +4,13 @@
 
 jQuery(document).ready(function($) {
 
+    // Extend JQuery with presence function
+    $.fn.presence = function () {
+        return this.length !== 0 && this;
+    };
+
+
+
     add_fields_wire_up_events($(document));
 
     // Infrastructure to search/select/add associated records with dialogs
@@ -145,13 +152,14 @@ jQuery(document).ready(function($) {
         buttons: [{
             text: "Search",
             click: function() {
-                $("#dialogFormSearch" + $(this).dialog("option", "objectName")).submit()
+                $("#dialogFormSearchMerge" + $(this).dialog("option", "objectName")).submit()
             },
             class: "btn btn-large btn-primary"
         },{
             text: "Let System Find",
             click: function() {
-                $("#dialogFormSearch" + $(this).dialog("option", "objectName")).submit()
+                $("#system_merge_match").val("true");
+                $("#dialogFormSearchMerge" + $(this).dialog("option", "objectName")).submit()
             },
             class: "btn btn-large btn-primary"
         },{
@@ -163,8 +171,8 @@ jQuery(document).ready(function($) {
         }],
 
         open: function (event, ui) {
-            $(this).dialog("option", "objectName", $(this).attr('id').substr($(this).attr('id').indexOf("dialogSearch") + 12));
-            $(this).dialog("option", "title", "Search " + $(this).dialog("option", "objectName"));
+            $(this).dialog("option", "objectName", $(this).attr('id').substr($(this).attr('id').indexOf("dialogSearchMerge") + 17));
+            $(this).dialog("option", "title", "Search For " + $(this).dialog("option", "objectName") + " To Merge");
         },
 
         close: function (event, ui ) {
@@ -187,7 +195,7 @@ jQuery(document).ready(function($) {
         }],
 
         open: function (event, ui) {
-            var objectName = $(this).attr('id').substr($(this).attr('id').indexOf("dialogSelect") + 12);
+            var objectName = $(this).attr('id').substr($(this).attr('id').indexOf("dialogSelectMerge") + 17);
             $(this).dialog("option", "objectName", objectName);
             $(this).dialog("option", "title", "Select " + objectName);
             var wHeight = $(window).height();
@@ -202,7 +210,7 @@ jQuery(document).ready(function($) {
 
 
     $('[id^="linkMerge"]').click(function(evt) {
-        var objectName = $(this).attr('id').substr($(this).attr('id').indexOf("linkAdd") + 7);
+        var objectName = $(this).attr('id').substr($(this).attr('id').indexOf("linkMerge") + 9);
         var aliasName = $(this).attr('data-alias');
         $('div[id^="dialogSelectMerge"]').attr('data-alias', aliasName);
         $.ajax({

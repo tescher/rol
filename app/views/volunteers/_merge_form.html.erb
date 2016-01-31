@@ -99,7 +99,7 @@
             <%= label_tag :interests %>
           </div>
           <div class="col-xs-3">
-            <%= select_tag(:interest_ids, option_groups_from_collection_for_select(InterestCategory.all, :interests, :name, :id, :option_formatter, @source_volunteer.interest_ids), { :multiple => true, class: "form-control read-only"})  %>
+            <%= select_tag(:source_volunteer_interest_ids, option_groups_from_collection_for_select(InterestCategory.all, :interests, :name, :id, :option_formatter, @source_volunteer.interest_ids), { :multiple => true, class: "form-control read-only"})  %>
           </div>
           <div class="col-xs-2">
             <%= select_tag(:use_interests, options_for_select([ "Add", "Replace", "Ignore" ], "Add"), {class: "form-control"}) %>
@@ -108,7 +108,7 @@
             <%= label_tag :interests %>
           </div>
           <div class="col-xs-3">
-            <%= select_tag(:volunteer_interest_ids, option_groups_from_collection_for_select(InterestCategory.all, :interests, :name, :id, :option_formatter, @object.interest_ids), { :multiple => true, class: "form-control read-only"})  %>
+            <%= select_tag(:interest_ids, option_groups_from_collection_for_select(InterestCategory.all, :interests, :name, :id, :option_formatter, @object.interest_ids), { :multiple => true, class: "form-control read-only"})  %>
           </div>
         </div>
       </div>

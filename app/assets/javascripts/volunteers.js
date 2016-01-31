@@ -1,6 +1,7 @@
 // Use the Bootstrap multiselect
 
 $(document).ready(function() {
+
     $('[id*=interest_ids]').multiselect();
 
     $('[id*=interest_ids].read-only').next('.btn-group').find('input').each(function(){
@@ -135,11 +136,11 @@ $(document).ready(function() {
         }
     });
 
-    // Check boxes on (Pending) Volunteer merge
+    // Check boxes on (Pending/Merge) Volunteer
 
     function set_field_validity_color($checkbox) {
         var field_name = $checkbox.attr("id").split("use_")[1];
-        var $field = $("input[id^=pending_volunteer_"+field_name+"]");
+        var $field = $("input[id^=pending_volunteer_"+field_name+"]").presence() || $("span[id^=source_volunteer_"+field_name+"]").presence();
         var $other_field = $("span[id^=volunteer_"+field_name+"]");
         if ($checkbox.prop("checked")) {
             $other_field.removeClass("background-valid");
@@ -182,7 +183,7 @@ $(document).ready(function() {
 
     ["first_name", "last_name", "email"].forEach(function(field_name) {
         $("input[id$="+field_name+"]").change(function() {
-            set_field_validity_color($(":checkbox[id=use_"+field_name+"]"))
+            if ($(":checkbox[id=use_"+field_name+"]").presence()) { set_field_validity_color($(":checkbox[id=use_"+field_name+"]")) }
         })
     });
 
@@ -192,11 +193,11 @@ $(document).ready(function() {
             var $field = "";
             var $other_field = "";
             if (field_name == "notes") {
-                $field = $("textarea[id^=pending_volunteer_" + field_name + "]");
+                $field = $("textarea[id^=pending_volunteer_" + field_name + "]").presence() || $("span[id^=source_volunteer_" + field_name + "]").presence();
                 $other_field = $("textarea[id^=volunteer_" + field_name + "]");
             } else {
-                $field = $("select[id^=pending_volunteer_interest_ids]").next("div.btn-group").children(":button");
-                $other_field = $("select[id^=volunteer_interest_ids]").next("div.btn-group").children(":button");
+                $field = ($("select[id^=pending_volunteer_interest_ids]").presence() || $("select[id^=source_volunteer_interest_ids]").presence()).next("div.btn-group").children(":button");
+                $other_field = ($("select[id^=volunteer_interest_ids]")).next("div.btn-group").children(":button");
             }
             if (action.toLowerCase() != "ignore") {
                 $field.addClass("background-valid");
