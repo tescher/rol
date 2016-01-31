@@ -217,6 +217,8 @@
       <div class="col-md-10 col-md-offset-1">
         <div class="pull-right">
           <%= render partial: "shared/form_actions", locals: {f: f} %>
+          <% link_to "Merge", "#", id:"linkMergeVolunteer", class: "btn btn-primary" %>
+
           <%= if current_user.donations_allowed
                 f.submit "Donations", name: "to_donations", class: "btn btn-primary"
               end %>
@@ -231,3 +233,6 @@
 <div id="dialogSearchOrganizations"></div>
 <div id="dialogSelectOrganization"></div>
 <div id="dialogNewOrganization"></div>
+<div id="dialogSearchMergeVolunteers"></div>
+<div id="dialogSelectMergeVolunteer"></div>
+

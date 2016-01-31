@@ -3,7 +3,7 @@ include DonationsHelper
 include ApplicationHelper
 
 class VolunteersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search, :address_check, :donations, :merge, :search_merge, :match_merge]
+  before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search, :address_check, :donations, :merge, :search_merge, :merge_form]
   before_action :admin_user,     only: [:destroy, :import, :import_form]
   before_action :donations_allowed, only: [:donations]
 
@@ -318,6 +318,11 @@ class VolunteersController < ApplicationController
   end
 
   def merge_form
+    @source_volunteer = Volunteer.find(params[:source_id])
+    @object = Volunteer.find(params[:volunteer_id])
+    if @source_volunteer.nil? || @object.nil?
+      redirect_to root_path
+    end
     render :merge
   end
 
