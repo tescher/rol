@@ -2,6 +2,12 @@
 
 $(document).ready(function() {
 
+    // Extend JQuery with presence function
+    $.fn.presence = function () {
+        return this.length !== 0 && this;
+    };
+
+
     $('[id*=interest_ids]').multiselect();
 
     $('[id*=interest_ids].read-only').next('.btn-group').find('input').each(function(){
@@ -144,31 +150,36 @@ $(document).ready(function() {
         var $other_field = $("span[id^=volunteer_"+field_name+"]");
         if ($checkbox.prop("checked")) {
             $other_field.removeClass("background-valid");
-            switch (field_name) {
-                case "first_name":
-                case "last_name":
-                    if ($field.val()) {
+            if ($field.is("input")) {
+                switch (field_name) {
+                    case "first_name":
+                    case "last_name":
+                        if ($field.val()) {
+                            $field.removeClass("background-invalid");
+                            $field.addClass("background-valid")
+                        } else {
+                            $field.removeClass("background-valid");
+                            $field.addClass("background-invalid")
+                        }
+                        break;
+                    case "email":
+                        var r = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+                        if ($field.val() && !(r.test($field.val()))) {
+                            $field.removeClass("background-valid");
+                            $field.addClass("background-invalid")
+                        } else {
+                            $field.removeClass("background-invalid");
+                            $field.addClass("background-valid")
+                        }
+                        break;
+                    default:
                         $field.removeClass("background-invalid");
-                        $field.addClass("background-valid")
-                    } else {
-                        $field.removeClass("background-valid");
-                        $field.addClass("background-invalid")
-                    }
-                    break;
-                case "email":
-                    var r = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-                    if ($field.val() && !(r.test($field.val()))) {
-                        $field.removeClass("background-valid");
-                        $field.addClass("background-invalid")
-                    } else {
-                        $field.removeClass("background-invalid");
-                        $field.addClass("background-valid")
-                    }
-                    break;
-                default:
-                    $field.removeClass("background-invalid");
-                    $field.addClass("background-valid");
-                    break;
+                        $field.addClass("background-valid");
+                        break;
+                }
+            } else {
+                $field.removeClass("background-invalid");
+                $field.addClass("background-valid");
             }
         } else {
             $field.removeClass("background-valid");
@@ -182,8 +193,10 @@ $(document).ready(function() {
     }).trigger("change");
 
     ["first_name", "last_name", "email"].forEach(function(field_name) {
-        $("input[id$="+field_name+"]").change(function() {
-            if ($(":checkbox[id=use_"+field_name+"]").presence()) { set_field_validity_color($(":checkbox[id=use_"+field_name+"]")) }
+        $("input:not(:checkbox)[id$="+field_name+"]").change(function() {
+            if ($(":checkbox[id=use_"+field_name+"]").presence()) {
+                set_field_validity_color($(":checkbox[id=use_"+field_name+"]"));
+            }
         })
     });
 

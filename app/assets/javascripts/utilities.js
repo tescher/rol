@@ -4,14 +4,7 @@
 
 jQuery(document).ready(function($) {
 
-    // Extend JQuery with presence function
-    $.fn.presence = function () {
-        return this.length !== 0 && this;
-    };
-
-
-
-    add_fields_wire_up_events($(document));
+     add_fields_wire_up_events($(document));
 
     // Infrastructure to search/select/add associated records with dialogs
 
@@ -236,8 +229,11 @@ jQuery(document).ready(function($) {
         var objectName = "";
         if (dialogId.match("^dialogNew")) {
             objectName = dialogId.substr(dialogId.indexOf("dialogNew") + 9);
+        } else if (dialogId.match("^dialogSearchMerge")) {
+            objectName = dialogId.substr(dialogId.indexOf("dialogSearchMerge") + 17).slice(0, -1);  // Remove "s"
         } else {
             objectName = dialogId.substr(dialogId.indexOf("dialogSearch") + 12).slice(0, -1);  // Remove "s"
+
         }
         switch(dialog.attr('id')) {
             case "dialogSearch" + objectName + "s":

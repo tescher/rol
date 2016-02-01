@@ -320,7 +320,7 @@ class VolunteersController < ApplicationController
 
   def merge_form
     @source_volunteer = Volunteer.find(params[:source_id])
-    @object = Volunteer.find(params[:volunteer_id])
+    @object = Volunteer.find(params[:id])
     if @source_volunteer.nil? || @object.nil?
       redirect_to root_path
     end
