@@ -16,7 +16,6 @@
           </div>
 
         </div>
-        <% check_exceptions = [:work_phone, :mobile_phone, :remove_from_mailing_list] %>
         <% [:first_name, :middle_name, :last_name, :occupation, :address, :city, :state, :zip, :email, :home_phone, :work_phone, :mobile_phone, :remove_from_mailing_list].each do |field| %>
             <div class="row">
               <div class="col-xs-1">
@@ -26,7 +25,7 @@
                 <%= content_tag(:span, @source_volunteer.send(field), id: "source_volunteer_#{field}", class: "form-control") %>
               </div>
               <div class="col-xs-2">
-                <%= check_box_tag("source_use_fields[]",Volunteer.merge_fields_table[field], !check_exceptions.include?(field) && !@object.send(field).blank?, {id: "use_#{field}", class: "form-control"}) %>
+                <%= check_box_tag("source_use_fields[]",Volunteer.merge_fields_table[field], (field.to_s != "remove_from_mailing_list" && !@source_volunteer.send(field).blank?) || (field.to_s == "remove_from_mailing_list" && !@source_volunteer.remove_from_mailing_list?), {id: "use_#{field}", class: "form-control"}) %>
               </div>
               <div class="col-xs-1">
                 <%= label_tag field %>
@@ -45,7 +44,7 @@
                 <%= content_tag(:span,  @source_volunteer.send(field).nil? ? "" :  @source_volunteer.send(field).strftime("%m/%d/%Y"), id: "source_volunteer_#{field}", class: "form-control") %>
               </div>
               <div class="col-xs-2">
-                <%= check_box_tag("source_use_fields[]",Volunteer.merge_fields_table[field], !check_exceptions.include?(field) && !@object.send(field).blank?, {id: "use_#{field}", class: "form-control"}) %>
+                <%= check_box_tag("source_use_fields[]",Volunteer.merge_fields_table[field], !@source_volunteer.send(field).blank?, {id: "use_#{field}", class: "form-control"}) %>
               </div>
               <div class="col-xs-1">
                 <%= label_tag field %>
@@ -66,7 +65,7 @@
                 <%= content_tag(:span,  @source_volunteer.send(f[:field]).nil? ? "" :  f[:class].constantize.find(@source_volunteer.send(f[:field])).name, id: "source_volunteer_#{f[:field]}", class: "form-control") %>
               </div>
               <div class="col-xs-2">
-                <%= check_box_tag("source_use_fields[]",Volunteer.merge_fields_table[f[:field]], !check_exceptions.include?(f[:field]) && !@object.send(f[:field]).blank?, {id: "use_#{f[:field]}", class: "form-control"}) %>
+                <%= check_box_tag("source_use_fields[]",Volunteer.merge_fields_table[f[:field]], !@source_volunteer.send(f[:field]).blank?, {id: "use_#{f[:field]}", class: "form-control"}) %>
               </div>
               <div class="col-xs-1">
                 <%= label_tag f[:name] %>
@@ -81,7 +80,7 @@
             <%= label_tag :notes %>
           </div>
           <div class="col-xs-3">
-            <%= content_tag(:span, @source_volunteer.notes, id: "source_volunteer_notes", class: "form-control") %>
+            <%= text_area_tag(:source_volunteer_notes, @source_volunteer.notes, class: "form-control", rows: "4", disabled: "disabled") %>
           </div>
           <div class="col-xs-2">
             <%= select_tag(:use_notes, options_for_select([ "Prepend", "Append", "Replace", "Ignore" ], "Append"), {class: "form-control"}) %>
@@ -90,7 +89,7 @@
             <%= label_tag :notes %>
           </div>
           <div class="col-xs-3">
-            <%= content_tag(:span, @object.notes, id: "volunteer_notes", class: "form-control") %>
+            <%= text_area_tag(:volunteer_notes, @object.notes, class: "form-control", rows: "4", disabled: "disabled") %>
           </div>
         </div>
 

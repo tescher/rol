@@ -58,7 +58,7 @@ class VolunteersController < ApplicationController
       end
       where_clause = ""
     end
-    if params[:system_merge_match]
+    if params[:system_merge_match] == "true"
       @volunteers = find_matching_volunteers(Volunteer.find(session[:volunteer_id])).map {|id, mv| mv[:volunteer]}
     else
       if params[:show_all]
@@ -116,6 +116,14 @@ class VolunteersController < ApplicationController
               end
             end
             @volunteers = Volunteer.select("DISTINCT(volunteers.id), volunteers.*").joins(joins_clause).where(where_clause).order(:last_name, :first_name).paginate(page: params[:page], per_page: per_page)
+          end
+        end
+      end
+      if params[:merge] == "true"  # If in merge flow, remove the volunteer we are working with
+        @volunteers = @volunteers.to_a
+        @volunteers.each do |v|
+          if v.id == session[:volunteer_id]
+            @volunteers.delete(v)
           end
         end
       end
@@ -347,10 +355,10 @@ class VolunteersController < ApplicationController
         else
           if (!@source_volunteer.notes.blank?)
             if (params[:use_notes].downcase == "append")
-              volunteer_params[:notes] = @object.notes + "\n " + @source_volunteer.notes
+              volunteer_params[:notes] = @object.notes + "\n" + @source_volunteer.notes
             else
               if (params[:use_notes].downcase == "prepend")
-                volunteer_params[:notes] =  @source_volunteer.notes + "\n " + @object.notes
+                volunteer_params[:notes] =  @source_volunteer.notes + "\n" + @object.notes
               end
             end
           end
@@ -389,7 +397,7 @@ class VolunteersController < ApplicationController
 
         flash[:success] = "Volunteers merged"
 
-        redirect_to volunteers_path
+        redirect_to edit_volunteer_path(@object)
 
       else
         @object.errors.each {|attr, error| @object.errors.add(attr, error)}

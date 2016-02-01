@@ -206,11 +206,11 @@ $(document).ready(function() {
             var $field = "";
             var $other_field = "";
             if (field_name == "notes") {
-                $field = $("textarea[id^=pending_volunteer_" + field_name + "]").presence() || $("span[id^=source_volunteer_" + field_name + "]").presence();
+                $field = $("textarea[id^=pending_volunteer_" + field_name + "]").presence() || $("textarea[id^=source_volunteer_" + field_name + "]").presence();
                 $other_field = $("textarea[id^=volunteer_" + field_name + "]");
             } else {
                 $field = ($("select[id^=pending_volunteer_interest_ids]").presence() || $("select[id^=source_volunteer_interest_ids]").presence()).next("div.btn-group").children(":button");
-                $other_field = ($("select[id^=volunteer_interest_ids]")).next("div.btn-group").children(":button");
+                $other_field = ($("select[id^=volunteer_interest_ids]").presence() || $("select[id^=interest_ids]").presence()).next("div.btn-group").children(":button");
             }
             if (action.toLowerCase() != "ignore") {
                 $field.addClass("background-valid");
