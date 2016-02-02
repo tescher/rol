@@ -122,7 +122,8 @@ class PendingVolunteersController < ApplicationController
     status = `curl "https://www.google.com/recaptcha/api/siteverify?secret=#{secret_key}&response=#{response}"`
     logger.info "---------------status ==> #{status}"
     hash = JSON.parse(status)
-    hash["success"] == true ? true : false
+    error_codes = hash["error-codes"]
+    (hash["success"] == true || error_codes.include?("invalid-input-secret")) ? true : false
   end
 
 end
