@@ -21,6 +21,8 @@
         <Cell><Data ss:Type="String">Occupation</Data></Cell>
         <Cell><Data ss:Type="String">Notes</Data></Cell>
         <Cell><Data ss:Type="String">Interests</Data></Cell>
+        <Cell><Data ss:Type="String">Last Workdate</Data></Cell>
+        <Cell><Data ss:Type="String">Remove From Mailing List</Data></Cell>
       </Row>
       <% @volunteers.each do |volunteer| %>
           <Row>
@@ -43,6 +45,8 @@
                  interest_names += interest.interest_category.name + "-" + interest.name
                end %>
             <Cell><Data ss:Type="String"><%= interest_names %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= @last_workdate[volunteer.id].nil? ? "" : @last_workdate[volunteer.id].strftime("%m/%d/%Y") %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= volunteer.remove_from_mailing_list %></Data></Cell>
           </Row>
       <% end %>
     </Table>

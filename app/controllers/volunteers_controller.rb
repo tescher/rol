@@ -49,15 +49,14 @@ class VolunteersController < ApplicationController
     if params[:request_format] == "xls"
       per_page = 1000000   #Hopefully all of them!
       request.format = :xls
-      where_clause = "remove_from_mailing_list = 'false'"
     else
       if params[:dialog] == "true"
         per_page = 1000000
       else
         per_page = 30
       end
-      where_clause = ""
     end
+    where_clause = ""
     if params[:system_merge_match] == "true"
       @volunteers = find_matching_volunteers(Volunteer.find(session[:volunteer_id])).map {|id, mv| mv[:volunteer]}
     else
