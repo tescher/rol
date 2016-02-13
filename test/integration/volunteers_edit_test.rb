@@ -365,7 +365,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     @volunteer.reload
 
     # Did notes move?
-    assert_equal(@volunteer.notes, notes + "\n " + notes_dup, "Notes (#{notes + "\n " + notes_dup}) should be equal")
+    assert_equal(@volunteer.notes, notes + "\n" + notes_dup, "Notes (#{notes + "\n" + notes_dup}) should be equal")
   end
 
   test "Merge with prepended notes" do
@@ -381,7 +381,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     @volunteer.reload
 
     # Did notes move?
-    assert_equal(@volunteer.notes, notes_dup + "\n " + notes, "Notes (#{notes_dup + "\n " + notes}) should be equal")
+    assert_equal(@volunteer.notes, notes_dup + "\n" + notes, "Notes (#{notes_dup + "\n" + notes}) should be equal")
   end
 
   test "Merge with replaced notes" do
