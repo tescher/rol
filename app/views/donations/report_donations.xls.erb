@@ -32,7 +32,7 @@
           </Row>
 
           <% @organization_donations.each do |d| %>
-              <% d_total += d.value %>
+              <% d_total += (d.value.to_f) %>
               <% d_count += 1 %>
               <% organization = Organization.find(d.organization_id) %>
               <Row>
@@ -93,7 +93,7 @@
           </Row>
 
           <% @volunteer_donations.each do |d| %>
-              <% d_total += d.value %>
+              <% d_total += (d.value.to_f) %>
               <% d_count += 1 %>
               <% volunteer = Volunteer.find(d.volunteer_id) %>
               <Row>
