@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:o="urn:schemas-microsoft-com:office:office"
+          xmlns:x="urn:schemas-microsoft-com:office:excel"
+          xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <% got_info = false %>
+      <Row>
+        <Cell><Data ss:Type="String">Volunteer</Data></Cell>
+        <Cell><Data ss:Type="String">City</Data></Cell>
+        <Cell><Data ss:Type="String">Email</Data></Cell>
+        <Cell><Data ss:Type="String">Hours</Data></Cell>
+      </Row>
+
+      <% @volunteers.each do |volunteer_info| %>
+          <% got_info = true %>
+          <% volunteer = Volunteer.find(volunteer_info.volunteer_id) %>
+          <Row>
+            <Cell><Data ss:Type="String"><%= volunteer.name %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= volunteer.city %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= volunteer.email %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= volunteer_info.hours %></Data></Cell>
+          </Row>
+      <% end %>
+      <Row></Row>
+      <Row>
+        <Cell><Data ss:Type="String">Organization</Data></Cell>
+        <Cell><Data ss:Type="String">City</Data></Cell>
+        <Cell><Data ss:Type="String">Contact Name</Data></Cell>
+        <Cell><Data ss:Type="String">Email</Data></Cell>
+        <Cell><Data ss:Type="String">Hours</Data></Cell>
+      </Row>
+
+      <% @organizations.each do |organization_info| %>
+          <% got_info = true %>
+          <% organization = Organization.find(organization_info.organization_id) %>
+          <Row>
+            <Cell><Data ss:Type="String"><%= organization.name %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= organization.city %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= organization.contact_name %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= organization.email %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= organization_info.hours %></Data></Cell>
+          </Row>
+      <% end %>
+      <Row></Row>
+
+      <% if !got_info %>
+          <Row>
+            <Cell><Data ss:Type="String">No participants found meeting the criteria given</Data></Cell>
+          </Row>
+      <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

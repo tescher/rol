@@ -1,12 +1,12 @@
 <% provide(:title, 'Workdays by Project') %>
-<h1>Workdays by Projects</h1>
+<h1>Workdays by Project</h1>
 
 <% got_info = false %>
 
 <% @project_info.each do |project| %>
     <% got_info = true %>
     <h4>Project: <%= Project.find(project.project_id).name %></h4>
-    <h5>Distinct Project Volunteers: <%= project.num_volunteers %>,  Volunteer Hours: <%= project.total_volunteer_hours %></h5>
+    <h5>Distinct Project Volunteers: <%= project.num_volunteers %>,  Volunteer Shifts: <%= project.num_shifts %>, Volunteer Hours: <%= project.total_volunteer_hours %></h5>
     <h5>Distinct Project Organizations: <%= project.num_organizations %>,  Organization Hours: <%= project.total_organization_hours %></h5>
 
     <ul class="listing">
@@ -19,7 +19,7 @@
             <u>Date</u>
           </div>
           <div class="col-md-1">
-            <u>Volunteers</u>
+            <u>Volunteer Shifts</u>
           </div>
           <div class="col-md-1">
             <u>Volunteer Hours</u>

@@ -7,7 +7,7 @@
     <% got_info = true %>
     <h4>Project: <%= Project.find(project.project_id).name %></h4>
 
-    <h5>Distinct Project Volunteers: <%= project.num_volunteers %>,  Volunteer Hours: <%= project.total_volunteer_hours %></h5>
+    <h5>Distinct Project Volunteers: <%= project.num_volunteers %>, Volunteer Shifts: <%= project.num_shifts %>, Volunteer Hours: <%= project.total_volunteer_hours %></h5>
 
     <ul class="listing">
       <div class="row">

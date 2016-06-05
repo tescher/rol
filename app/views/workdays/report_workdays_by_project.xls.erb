@@ -12,6 +12,7 @@
           <Row>
             <Cell><Data ss:Type="String">Project: <%= Project.find(project.project_id).name %></Data></Cell>
             <Cell><Data ss:Type="String">Distinct Project Volunteers: <%= project.num_volunteers %></Data></Cell>
+            <Cell><Data ss:Type="String">Volunteer Shifts: <%= project.num_shifts %></Data></Cell>
             <Cell><Data ss:Type="String">Volunteer Hours: <%= project.total_volunteer_hours %></Data></Cell>
             <Cell><Data ss:Type="String">Distinct Project Organizations: <%= project.num_organizations %></Data></Cell>
             <Cell><Data ss:Type="String">Organization Hours: <%= project.total_organization_hours %></Data></Cell>
@@ -19,7 +20,7 @@
           <Row>
             <Cell><Data ss:Type="String">Workday</Data></Cell>
             <Cell><Data ss:Type="String">Workdate</Data></Cell>
-            <Cell><Data ss:Type="String">Volunteers</Data></Cell>
+            <Cell><Data ss:Type="String">Volunteer Shifts</Data></Cell>
             <Cell><Data ss:Type="String">Volunteer Hours</Data></Cell>
             <Cell><Data ss:Type="String">Organizations</Data></Cell>
             <Cell><Data ss:Type="String">Organization Hours</Data></Cell>
