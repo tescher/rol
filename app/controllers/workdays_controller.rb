@@ -18,7 +18,7 @@ class WorkdaysController < ApplicationController
   def report
     if !params[:report_type].nil?    # Will render report form on initial get
 
-      if params[:request_format] == "xls"
+      if params[:report_format] == "2"
         per_page = 1000000   #Hopefully all of them!
         request.format = :xls
       else
@@ -81,6 +81,9 @@ class WorkdaysController < ApplicationController
 
 
       end
+    else
+      @report_types = [["Workdays by Project",1], ["Volunteers by Project",2], ["Volunteers by Hours",3]]
+      @report_format = [["Screen",1],["Excel",2]]
     end
 
   end

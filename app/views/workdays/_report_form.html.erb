@@ -4,34 +4,43 @@
         <div class="col-md-5 col-md-offset-3">
 
           <div class="row">
-            <div class="field">
-              <%= label_tag :from_date %><br>
-              <%= text_field_tag :from_date, nil, id: 'fromdatepicker', class: 'form-control' %>
+            <div class="col-md-6">
+              <%= label_tag :report_type %>
             </div>
-            <div class="field">
-              <%= label_tag :to_date %><br>
-              <%= text_field_tag :to_date, Date.today.strftime("%m/%d/%Y"), id: 'todatepicker', class: 'form-control' %>
+            <div class="col-md-6">
+              <%= label_tag :report_format %>
             </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <%= select_tag(:report_type, options_for_select(@report_types), {multiple:false, class: "form-control"}) %>
+            </div>
+            <div class="col-md-6">
+              <%= select_tag(:report_format, options_for_select([["Screen",1], ["Excel",2]]), {multiple:false, class: "form-control"}) %>
+            </div>
+          </div>
 
-            <div class="field">
-              <%= label_tag :projects %><br>
-              <%= select_tag :project_ids, options_from_collection_for_select(Project.all.order(:name), :id, :name), { :multiple => true, class: "form-control"}  %>
-            </div>
+          <div class="field">
+            <%= label_tag :from_date %><br>
+            <%= text_field_tag :from_date, nil, id: 'fromdatepicker', class: 'form-control' %>
+          </div>
+          <div class="field">
+            <%= label_tag :to_date %><br>
+            <%= text_field_tag :to_date, Date.today.strftime("%m/%d/%Y"), id: 'todatepicker', class: 'form-control' %>
+          </div>
+
+          <div class="field">
+            <%= label_tag :projects %><br>
+            <%= select_tag :project_ids, options_from_collection_for_select(Project.all.order(:name), :id, :name), { :multiple => true, class: "form-control"}  %>
           </div>
         </div>
       </div>
-
     </div>
-    <%= hidden_field_tag :request_format, "html", class: "request_format" %>
-    <%= hidden_field_tag :report_type, "1", class: "report_type" %>
 
     <div class="row">
       <div class="col-md-11">
         <div class="actions pull-right">
-          <%= submit_tag "Workdays by Project", class: "btn btn-primary", onclick: "change_val('.request_format','html'); change_val('.report_type', '1');" %>
-          <%= submit_tag "Export", class: "btn btn-primary", onclick: "change_val('.request_format','xls'); change_val('.report_type', '1');" %>
-          <%= submit_tag "Participants by Project", class: "btn btn-primary", onclick: "change_val('.request_format','html'); change_val('.report_type', '2');" %>
-          <%= submit_tag "Export", class: "btn btn-primary", onclick: "change_val('.request_format','xls'); change_val('.report_type', '2');" %>
+          <%= submit_tag "Run", class: "btn btn-primary" %>
           <%= link_to 'Back', root_path, class: "btn btn-primary" %>
         </div>
       </div>
