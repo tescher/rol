@@ -1,0 +1,29 @@
+<%= form_tag(workdays_participant_report_path, method: "get", id: "dialogParticipantReportForm", target: "_blank", remote: true) do %>
+    <div class="container dialog-container">
+      <div class="row">
+        <div class="col-md-5">
+
+          <div class="field">
+            <%= label_tag :from_date %><br>
+            <%= text_field_tag :from_date, nil, id: 'fromdatepicker', class: 'form-control' %>
+          </div>
+          <div class="field">
+            <%= label_tag :to_date %><br>
+            <%= text_field_tag :to_date, Date.today.strftime("%m/%d/%Y"), id: 'todatepicker', class: 'form-control' %>
+          </div>
+
+          <div class="field">
+            <%= label_tag :projects %><br>
+            <%= select_tag :project_ids, options_from_collection_for_select(Project.all.order(:name), :id, :name), { :multiple => true, class: "form-control"}  %>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <%= hidden_field_tag :object_name, @object_name %>
+    <%= hidden_field_tag :object_id, @object_id %>
+
+
+<% end %>

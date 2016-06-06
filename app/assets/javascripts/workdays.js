@@ -10,7 +10,56 @@ $(document).ready(function() {
         autoOpen: false,
         width: 800,
         buttons: [{
-            text: "Ok",
+            text: "Printable Report",
+            click: function () {
+                $(this).dialog("close");
+                $.ajax({
+                    url: "/workdays/participant_report?dialog=true&object_name="+objectName+"&id="+id,
+                    success: function(data) {
+                        loadDialog("dialogParticipantReportForm",data, {
+                            my: "center top",
+                            at: "center bottom",
+                            of: $("header")
+                        });
+                    },
+                    async: false,
+                    cache: false
+                });
+            },
+            class: "btn btn-large btn-primary"
+        },{
+            text: "Close",
+            click: function() {
+                $(this).dialog("close");
+            },
+            class: "btn btn-large btn-primary"
+        }],
+
+        open: function (event, ui ) {
+            var wHeight = $(window).height();
+            $(this).dialog("option", "height", wHeight * 0.8)
+        },
+
+        close: function (event, ui ) {
+            $(this).dialog("option", "height", "auto")
+        }
+    });
+
+    $("#dialogParticipantReportForm").dialog({
+        modal: true,
+        title: "Workday Report",
+        disabled: true,
+        autoOpen: false,
+        width: 800,
+        buttons: [{
+            text: "Run",
+            click: function () {
+                $(this).submit();
+                $(this).dialog("close");
+             },
+            class: "btn btn-large btn-primary"
+        },{
+            text: "Cancel",
             click: function() {
                 $(this).dialog("close");
             },

@@ -45,6 +45,7 @@ Rails.application.routes.draw do
       get 'search'
       get 'report'
       get 'workday_summary'
+      get 'participant_report'
       get 'import' => 'workdays#import_form'
       post 'import' => 'workdays#import'
     end

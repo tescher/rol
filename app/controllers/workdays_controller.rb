@@ -1,7 +1,7 @@
 include ApplicationHelper
 
 class WorkdaysController < ApplicationController
-  before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search, :report, :add_participants, :workday_summary]
+  before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search, :report, :add_participants, :workday_summary, :participant_report]
   before_action :admin_user,     only: [:import, :import_form]
 
 
