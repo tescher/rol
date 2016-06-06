@@ -311,7 +311,7 @@ class WorkdaysController < ApplicationController
           project_where = "project_id IS NOT NULL"
         end
         join = "INNER JOIN workday_#{@objectName}s ON workday_#{@objectName}s.workday_id = workdays.id"
-        @workdays = Workday.select("workdays.*, COUNT(workday_#{@objectName}s.id) as shifts, COALESCE(SUM(workday_#{@objectName}s.hours), 0) as total_hours").joins(join).where("workday_" + @objectName + "s." + @objectName + "_id = '#{@object.id}'").where(where_clause).where(project_where).order(:project_id).group("workdays.id")
+        @workdays = Workday.select("workdays.*, COUNT(workday_#{@objectName}s.id) as shifts, COALESCE(SUM(workday_#{@objectName}s.hours), 0) as total_hours").joins(join).where("workday_" + @objectName + "s." + @objectName + "_id = '#{@object.id}'").where(where_clause).where(project_where).order("workdays.workdate").group("workdays.id")
 
         render "report_participant_report"
       end
