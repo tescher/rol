@@ -5,7 +5,7 @@
 
 <h4><%= @objectName.capitalize + ": " + @object.name %></h4>
 <h5>From: <%= @from_date.empty? ? "Beginning" : @from_date %>  To: <%= @to_date.empty? ? "Today" : @to_date %></h5>
-<h5>Total Hours: <%= @total_hours %> <%= @project_ids.nil? ? "All Projects" : "Selected Projects" %></h5>
+<h5>Total Hours: <%= '%.1f' % @total_hours %> <%= @project_ids.nil? ? "All Projects" : "Selected Projects" %></h5>
 
 <ul class="listing">
   <div class="row">
