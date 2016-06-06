@@ -13,10 +13,10 @@
       <div class="col-md-3">
         <u>Date</u>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-4">
         <u>Workday</u>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-4">
         <u>Project</u>
       </div>
       <div class="col-md-1">
@@ -31,11 +31,11 @@
             <div class="col-md-3">
               <%= workday.workdate.strftime("%A, %B %-d, %Y") %>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-4">
               <span class="no-overflow"><%= workday.name %></span>
             </div>
-            <div class="col-md-2">
-              <%= Project.find(workday.project_id).name %>
+            <div class="col-md-4">
+              <span class="no-overflow"><%= Project.find(workday.project_id).name %></span>
             </div>
             <div class="col-md-1">
               <%= workday.workday_hours %>
