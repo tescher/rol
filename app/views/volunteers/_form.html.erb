@@ -4,6 +4,7 @@
     <% if @num_workdays.count > 0 %>
         <h5 class="center">Has participated in <a href="#" data-id="<%= @volunteer.id %>" data-object-name="volunteer" id="linkWorkdaySummary"><%= pluralize(@num_workdays.count, "workday") %> for <%= pluralize(@num_workdays.sum("hours"), "hour") %></a></h5>
         <div id="dialogWorkdaySummary"></div>
+        <div id="dialogParticipantReport"></div>
     <% else %>
         <h5 class="center">Has not participated in any workdays</h5>
     <% end %>

@@ -1,0 +1,56 @@
+<% provide(:title, 'Participant Report') %>
+<h1>Participant Report</h1>
+
+<% got_info = false %>
+
+<h4><%= @objectName.capitalize + ": " + @object.name %></h4>
+<h5>From: <%= @from_date.empty? ? "Beginning" : @from_date %></h5>
+<h5>To: <%= @to_date.empty? ? "Today" : @to_date %></h5>
+<h5><%= @project_ids.nil? ? "All Projects" : "Selected Projects" %></h5>
+
+<ul class="listing">
+  <div class="row">
+    <li>
+      <div class="col-md-3">
+        <u>Date</u>
+      </div>
+      <div class="col-md-2">
+        <u>Workday</u>
+      </div>
+      <div class="col-md-2">
+        <u>Project</u>
+      </div>
+      <div class="col-md-1">
+        <u>Hours</u>
+      </div>
+    </li>
+
+    <% @workdays.each do |workday| %>
+        <% got_info = true %>
+        <div>
+          <li>
+            <div class="col-md-3">
+              <%= workday.workdate.strftime("%A, %B %-d, %Y") %>
+            </div>
+            <div class="col-md-2">
+              <span class="no-overflow"><%= workday.name %></span>
+            </div>
+            <div class="col-md-2">
+              <%= Project.find(workday.project_id).name %>
+            </div>
+            <div class="col-md-1">
+              <%= workday.total_hours %>
+            </div>
+          </li>
+        </div>
+    <% end %>
+  </div>
+</ul>
+
+<br />
+<% if !got_info %>
+    <h4>No workdays found with the given criteria</h4>
+<% end %>
+
+
+

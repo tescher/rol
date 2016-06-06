@@ -255,10 +255,11 @@ class WorkdaysController < ApplicationController
 
   def workday_summary
     @objectName = params[:object_name].downcase
+    @objectId = params[:id]
     if (@objectName != "volunteer") && (@objectName != "organization")
       render partial: "Invalid parameter"
     else
-      @object = (@objectName == "volunteer") ? Volunteer.find(params[:id]) : Organization.find(params[:id])
+      @object = (@objectName == "volunteer") ? Volunteer.find(@objectId) : Organization.find(@objectId)
       join = "INNER JOIN workday_#{@objectName}s ON workday_#{@objectName}s.workday_id = workdays.id"
       @workday_years = Workday.select("ROUND(EXTRACT(YEAR FROM workdays.workdate)) as year").joins(join).where("workday_" + @objectName + "s." + @objectName + "_id = '#{@object.id}'").group("year").order("year DESC")
       @workdays_by_year = Hash[@workday_years.map { |wy|
@@ -277,6 +278,46 @@ class WorkdaysController < ApplicationController
       render partial: "dialog_workday_summary"
     end
   end
+
+  def participant_report
+    @objectName = params[:object_name].downcase
+    @objectId = params[:object_id]
+    if params[:dialog] == "true"
+      render partial: "dialog_participant_report_form"
+    else
+      @from_date = params[:from_date]
+      @to_date = params[:to_date]
+      @project_ids = params[:project_ids]
+      if (@objectName != "volunteer") && (@objectName != "organization")
+        render partial: "Invalid parameter"
+      else
+        @object = (@objectName == "volunteer") ? Volunteer.find(@objectId) : Organization.find(@objectId)
+
+        where_clause = ""
+
+        if !@from_date.empty?
+          where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
+          where_clause += "workdate >= '#{Date.strptime(@from_date, "%m/%d/%Y").to_s}'"
+        end
+        if !params[:to_date].empty?
+          where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
+          where_clause += "workdate <= '#{Date.strptime(@to_date, "%m/%d/%Y").to_s}'"
+        end
+
+        project_ids = @project_ids.nil? ? [] : @project_ids
+        if project_ids.count > 0
+          project_where = "project_id IN (" + project_ids.join(",") + ")"
+        else
+          project_where = "project_id IS NOT NULL"
+        end
+        join = "INNER JOIN workday_#{@objectName}s ON workday_#{@objectName}s.workday_id = workdays.id"
+        @workdays = Workday.select("workdays.*, COUNT(workday_#{@objectName}s.id) as shifts, COALESCE(SUM(workday_#{@objectName}s.hours), 0) as total_hours").joins(join).where("workday_" + @objectName + "s." + @objectName + "_id = '#{@object.id}'").where(where_clause).where(project_where).order(:project_id).group("workdays.id")
+
+        render "report_participant_report"
+      end
+    end
+  end
+
 
 
   # DELETE /workdays/1

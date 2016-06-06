@@ -12,11 +12,12 @@ $(document).ready(function() {
         buttons: [{
             text: "Printable Report",
             click: function () {
-                $(this).dialog("close");
+                objectId = $(this).data("object_id");
+                objectName = $(this).data("object_name");
                 $.ajax({
-                    url: "/workdays/participant_report?dialog=true&object_name="+objectName+"&id="+id,
+                    url: "/workdays/participant_report?dialog=true&object_name="+objectName+"&object_id="+objectId,
                     success: function(data) {
-                        loadDialog("dialogParticipantReportForm",data, {
+                        loadDialog("dialogParticipantReport",data, {
                             my: "center top",
                             at: "center bottom",
                             of: $("header")
@@ -45,7 +46,7 @@ $(document).ready(function() {
         }
     });
 
-    $("#dialogParticipantReportForm").dialog({
+    $("#dialogParticipantReport").dialog({
         modal: true,
         title: "Workday Report",
         disabled: true,
@@ -54,8 +55,8 @@ $(document).ready(function() {
         buttons: [{
             text: "Run",
             click: function () {
-                $(this).submit();
-                $(this).dialog("close");
+                $("#dialogParticipantReportForm").submit();
+                $(this).close();
              },
             class: "btn btn-large btn-primary"
         },{
@@ -88,6 +89,8 @@ $(document).ready(function() {
                     of: $("header")
                 });
                 $("#dialogWorkdaySummary #tabs-container").tabs();
+                $("#dialogWorkdaySummary").data("object_name", objectName);
+                $("#dialogWorkdaySummary").data("object_id", id);
 
             },
             async: false,
