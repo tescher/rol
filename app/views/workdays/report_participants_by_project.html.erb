@@ -100,8 +100,8 @@
     <h4>No information found with the given criteria</h4>
 <% else %>
     <h4><u>Report Totals</u></h4>
-    <h4>Distinct Volunteers: <%= @report_info["num_volunteers"] %> Volunteer Shifts: <%= @report_info["num_shifts"] %> Volunteer Hours: <%= @report_info["total_volunteer_hours"] %></h4>
-    <h4>Distinct Organizations: <%= @report_info["num_organizations"] %> Organization Hours: <%= @report_info["total_organization_hours"] %></h4>
+    <h4>Distinct Volunteers: <%= @report_info["num_volunteers"] %> Volunteer Shifts: <%= @report_info["num_shifts"] %> Volunteer Hours: <%= '%.1f' % @report_info["total_volunteer_hours"] %></h4>
+    <h4>Distinct Organizations: <%= @report_info["num_organizations"] %> Organization Hours: <%= '%.1f' % @report_info["total_organization_hours"] %></h4>
 <% end %>
 
 <div class="row">
