@@ -68,8 +68,12 @@ class VolunteersController < ApplicationController
         else
           # Parse name if comma entered, otherwise assume last name only
           search_params = volunteer_search_params
-          if (search_params[:name] == "=") && (!session[:volunteer_id].nil?)
-            @volunteers = Volunteer.where(id: session[:volunteer_id]).paginate(page: params[:page], per_page: per_page)
+          if (search_params[:name] == "=")
+            if (!session[:volunteer_id].nil?)
+              @volunteers = Volunteer.where(id: session[:volunteer_id]).paginate(page: params[:page], per_page: per_page)
+            else
+              @volunteers = []
+            end
           else
             if !search_params[:name].blank?
               names = search_params[:name].split(",")

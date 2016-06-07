@@ -31,6 +31,11 @@ jQuery(document).ready(function($) {
         open: function (event, ui) {
             $(this).dialog("option", "objectName", $(this).attr('id').substr($(this).attr('id').indexOf("dialogSearch") + 12));
             $(this).dialog("option", "title", "Search " + $(this).dialog("option", "objectName"));
+            $(this).keydown(function(e) {
+                if (e.keyCode === $.ui.keyCode.ENTER) {
+                    $(this).parent().find("button:eq(1)").trigger("click");
+                }
+            });
         },
 
         close: function (event, ui ) {
@@ -107,8 +112,8 @@ jQuery(document).ready(function($) {
             $(this).dialog("option", "objectName", objectName);
             $(this).dialog("option", "title", "New " + objectName);
             $(this).keydown(function(e) {
-                if (e.keyCode == $.ui.keyCode.ENTER) {
-                    $(this).parent().find("button:eq(0)").trigger("click");
+                if (e.keyCode === $.ui.keyCode.ENTER) {
+                    $(this).parent().find("button:eq(1)").trigger("click");
                 }
             });
         },

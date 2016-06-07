@@ -69,8 +69,12 @@ class OrganizationsController < ApplicationController
       if (organization_search_params.count < 1)
         @organizations = Organization.none
       else
-        if (organization_search_params[:name] == "=") && (!session[:organization_id].nil?)
-          @organizations = Organization.where(id: session[:organization_id]).paginate(page: params[:page], per_page: per_page)
+        if (organization_search_params[:name] == "=")
+          if (!session[:organization_id].nil?)
+            @organizations = Organization.where(id: session[:organization_id]).paginate(page: params[:page], per_page: per_page)
+          else
+            @organizations = []
+          end
         else
           organization_type_ids = []
           organization_search_params.each do |index|

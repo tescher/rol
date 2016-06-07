@@ -70,6 +70,11 @@ $(document).ready(function() {
         open: function (event, ui ) {
             var wHeight = $(window).height();
             $(this).dialog("option", "height", wHeight * 0.8)
+            $(this).keydown(function(e) {
+                if (e.keyCode === $.ui.keyCode.ENTER) {
+                    $(this).parent().find("button:eq(1)").trigger("click");
+                }
+            });
         },
 
         close: function (event, ui ) {
