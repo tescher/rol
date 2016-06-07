@@ -106,7 +106,7 @@ jQuery(document).ready(function($) {
             var objectName = $(this).attr('id').substr($(this).attr('id').indexOf("dialogNew") + 9);
             $(this).dialog("option", "objectName", objectName);
             $(this).dialog("option", "title", "New " + objectName);
-            $(this).keypress(function(e) {
+            $(this).keydown(function(e) {
                 if (e.keyCode == $.ui.keyCode.ENTER) {
                     $(this).parent().find("button:eq(0)").trigger("click");
                 }

@@ -239,6 +239,10 @@ table.header-border {
   max-width: 750px;
 }
 
+.ui-dialog-titlebar-close {
+  visibility: hidden;
+}
+
 /* Stop overflow */
 .no-overflow {
   overflow-x: hidden;
