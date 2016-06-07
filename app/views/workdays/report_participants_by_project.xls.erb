@@ -69,10 +69,10 @@
             <Cell><Data ss:Type="String">Report Totals</Data></Cell>
           </Row>
           <Row>
-            <Cell><Data ss:Type="String">Distinct Volunteers:</Data></Cell><Cell><Data ss:Type="String"><%= @report_info["num_volunteers"] %></Data></Cell> <Cell><Data ss:Type="String">Volunteer Shifts:</Data></Cell> <Cell><Data ss:Type="String"><%= @report_info["num_shifts"] %> Volunteer Hours:</Data></Cell> <Cell><Data ss:Type="String"><%= '%.1f' % @report_info["total_volunteer_hours"] %></Data></Cell>
+            <Cell><Data ss:Type="String">Distinct Volunteers:</Data></Cell><Cell><Data ss:Type="String"><%= @report_info["num_volunteers"] %></Data></Cell> <Cell><Data ss:Type="String">Volunteer Shifts:</Data></Cell> <Cell><Data ss:Type="String"><%= @report_info["num_shifts"] %> Volunteer Hours:</Data></Cell> <Cell><Data ss:Type="String"><%= '%.1f' % @report_info["total_volunteer_hours"].to_f %></Data></Cell>
           </Row>
           <Row>
-            <Cell><Data ss:Type="String">Distinct Organizations:</Data></Cell><Cell><Data ss:Type="String"><%= @report_info["num_organizations"] %></Data></Cell> <Cell><Data ss:Type="String">Organization Hours:</Data></Cell> <Cell><Data ss:Type="String"><%= '%.1f' % @report_info["total_organization_hours"] %></Data></Cell>
+            <Cell><Data ss:Type="String">Distinct Organizations:</Data></Cell><Cell><Data ss:Type="String"><%= @report_info["num_organizations"] %></Data></Cell> <Cell><Data ss:Type="String">Organization Hours:</Data></Cell> <Cell><Data ss:Type="String"><%= '%.1f' % @report_info["total_organization_hours"].to_f %></Data></Cell>
           </Row>
       <% end %>
     </Table>
