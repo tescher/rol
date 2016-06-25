@@ -1,0 +1,16 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+church:
+  name: Church
+  id: 1
+
+business:
+  name: Business
+  id: 2
+
+non_profit:
+  name: Non Profit
+  id: 3
+
+master:
+  name: master

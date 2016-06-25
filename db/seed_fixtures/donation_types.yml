@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+cash:
+  name: Cash
+  non_monetary: false
+
+restore:
+  name: ReStore
+  non_monetary: true
+
+master:
+  name: master
+

@@ -1,0 +1,30 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Lodi United Methodist
+  organization_type_id: 1
+
+two:
+  name: Example2
+  organization_type_id: 1
+
+
+<% 3.times do |n| %>
+organization_<%= n %>:
+  name:  <%= "Example Organization #{n}" %>
+  city: "Lodi"
+  email: <%= "organization-#{n}@example.com" %>
+  organization_type_id: 2
+<% end %>
+
+master_church:
+  name: master church
+  organization_type_id: 1
+
+master_employer:
+  name: master employer
+  organization_type_id: 2
+
+dependent:
+  name: dependent
+  organization_type: master

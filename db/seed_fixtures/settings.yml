@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+system:
+  name: System
+  id: 1
+  site_title: Example Title
+  org_title: Org Title
+  org_short_title: ORGTITLE
+  org_site: http://example.org
+  old_system_site: http://old.example.org
+  old_system_name: Old System
+  no_pagination: false
+  records_per_page: 15
+  min_password_length: 6
+
