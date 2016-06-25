@@ -25,9 +25,7 @@ test:
   encoding: unicode
   database: rol_test
   pool: 5
-  #username: postgres
-  #password: Mariann1
-  username: hfh_rol_dev
+  username: hfh_rol_test
   password: ^nHYebFYbsd9
   timeout: 5000
 
