@@ -22,6 +22,7 @@ class VolunteerCategoryTest < ActiveSupport::TestCase
   test "Volunteer Association" do
     @volunteer_category1 = volunteer_categories(:master)
     @volunteer1 = volunteers(:dependent)
+    puts "Volunteer category" + @volunteer1.volunteer_categories.to_s
     assert_raises(ActiveRecord::DeleteRestrictionError) {@volunteer_category1.destroy}
   end
 

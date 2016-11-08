@@ -66,7 +66,6 @@ dependent:
   first_contact_type: master
   employer: master_employer
   church: master_church
-  volunteer_categories: master_volunteer_category
 
 master:
   first_name: Jim

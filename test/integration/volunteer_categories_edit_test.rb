@@ -63,16 +63,19 @@ class VolunteerCategoriesEditTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "no delete if attached to an organization" do
+  test "no delete if attached to an volunteer" do
     log_in_as(@user)
-    @organization = organizations(:one)
-    @organization.volunteer_category = @volunteer_category
-    @organization.save
-    get edit_volunteer_category_path(@volunteer_category)
-    assert_select 'a[href=?]', volunteer_category_path(@volunteer_category), method: :delete
+    @volunteer = volunteers(:one)
+    @volunteer.volunteer_categories = [@volunteer_category_3]
+    @volunteer.save
+    get edit_volunteer_category_path(@volunteer_category_3)
+    assert_select 'a[href=?]', volunteer_category_path(@volunteer_category_3), method: :delete
 
     assert_no_difference 'VolunteerCategory.count' do
-      delete volunteer_category_path(@volunteer_category)
+      delete volunteer_category_path(@volunteer_category_3)
+    end
+    VolunteerVolunteerCategory.where(volunteer_id: @volunteer.id).each do |vi|
+      vi.destroy
     end
   end
 

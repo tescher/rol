@@ -6,7 +6,7 @@
     <h2>(read only)</h2>
 <% end %>
 
-<% if template.exists?('form',[],true) %>
+<% if lookup_context.template_exists?('form',lookup_context.prefixes,true) %>
   <%= render 'form' %>
 <% else %>
   <%= render 'shared/object_form' %>

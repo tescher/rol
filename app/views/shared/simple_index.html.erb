@@ -6,7 +6,7 @@
 
   <% if @objects.count > 0 %>
       <ul class="listing">
-        <% if template.exists?('object',[],true) %>
+        <% if lookup_context.template_exists?('object',lookup_context.prefixes,true) %>
             <%= render partial: "object", collection: @objects, as: :object %>
         <% else %>
             <%= render partial: "shared/object", collection: @objects, as: :object %>
