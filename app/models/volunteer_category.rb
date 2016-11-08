@@ -4,4 +4,13 @@ class VolunteerCategory < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: { case_sensitive: false, message: "duplicate name" }
 
+  def option_formatter
+    if self.inactive?
+      "/#{self.name}"
+    else
+      self.name
+    end
+  end
+
+
 end

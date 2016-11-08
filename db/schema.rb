@@ -178,10 +178,20 @@ ActiveRecord::Schema.define(version: 20161108052146) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "volunteer_category_volunteers", force: :cascade do |t|
+  create_table "volunteer_categories_volunteers", id: false, force: :cascade do |t|
     t.integer "volunteer_id",          null: false
     t.integer "volunteer_category_id", null: false
   end
+
+  create_table "volunteer_category_volunteers", force: :cascade do |t|
+    t.integer  "volunteer_id"
+    t.integer  "volunteer_category_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "volunteer_category_volunteers", ["volunteer_category_id"], name: "index_volunteer_category_volunteers_on_volunteer_category_id", using: :btree
+  add_index "volunteer_category_volunteers", ["volunteer_id"], name: "index_volunteer_category_volunteers_on_volunteer_id", using: :btree
 
   create_table "volunteer_interests", force: :cascade do |t|
     t.integer  "volunteer_id"
