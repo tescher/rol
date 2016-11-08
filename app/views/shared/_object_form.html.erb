@@ -1,0 +1,22 @@
+<%= form_for(@object) do |f| %>
+  <%= @object = f.object
+      render 'shared/error_messages' %>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="field">
+      <%= f.label :name %><br>
+      <%= f.text_field :name, class: 'form-control', autofocus: 'true' %>
+    </div>
+    <div class="checkbox">
+      <label>
+        <%= f.check_box :inactive %> Inactive
+      </label>
+    </div>
+    <div class="pull-right">
+      <%= render partial: "shared/form_actions", locals: {f: f} %>
+    </div>
+  </div>
+</div>
+
+<% end %>

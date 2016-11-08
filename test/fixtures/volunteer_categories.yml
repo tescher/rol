@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+intern:
+  name: Internship
+  id: 1
+
+huber:
+  name: Huber
+  id: 1
+
+master_volunteer_category:
+  name: master
+
