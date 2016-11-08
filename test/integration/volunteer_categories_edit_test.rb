@@ -74,7 +74,7 @@ class VolunteerCategoriesEditTest < ActionDispatch::IntegrationTest
     assert_no_difference 'VolunteerCategory.count' do
       delete volunteer_category_path(@volunteer_category_3)
     end
-    VolunteerVolunteerCategory.where(volunteer_id: @volunteer.id).each do |vi|
+    VolunteerCategoryVolunteer.where(volunteer_id: @volunteer.id).each do |vi|
       vi.destroy
     end
   end

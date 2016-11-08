@@ -7,5 +7,5 @@
 
 
 dependent:
-  volunteer_id: master.id
-  volunteer_category_id: master.id
+  volunteer: dependent
+  volunteer_category: master
