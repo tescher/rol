@@ -1,0 +1,2 @@
+module VolunteerCategoriesHelper
+end

@@ -12,6 +12,8 @@ class Volunteer < ActiveRecord::Base
   belongs_to :church, -> { where(:organization_type => 1) }, class_name: "Organization", foreign_key: :church_id
   belongs_to :employer, class_name: "Organization", foreign_key: :employer_id
   belongs_to :first_contact_type, class_name: "ContactType", foreign_key: :first_contact_type_id
+  has_and_belongs_to_many :volunteer_categories
+
 
   accepts_nested_attributes_for :donations, :allow_destroy => true
 

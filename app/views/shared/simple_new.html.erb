@@ -1,4 +1,8 @@
 <% provide(:title, "New #{@class_name.titleize}") %>
 <h1>New <%= @class_name.titleize %></h1>
 
-<%= render 'form' %>
+<% if template.exists?('form',[],true) %>
+    <%= render 'form' %>
+<% else %>
+    <%= render 'shared/object_form' %>
+<% end %>
