@@ -125,7 +125,7 @@
             <%= label_tag :volunteer_categories %>
           </div>
           <div class="col-xs-3">
-            <%= select_tag(:volunteer_category_ids, options_from_collection_for_select(VolunteerCategory.all, :id, :option_formatter, @source_volunteer.volunteer_category_ids), { :multiple => true, class: "form-control read-only"})  %>
+            <%= select_tag(:volunteer_category_ids, options_from_collection_for_select(VolunteerCategory.all, :id, :option_formatter, @object.volunteer_category_ids), { :multiple => true, class: "form-control read-only"})  %>
           </div>
         </div>
       </div>

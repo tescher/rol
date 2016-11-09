@@ -200,6 +200,7 @@
               <%= f.select :interest_ids, option_groups_from_collection_for_select(InterestCategory.all, :interests, :name, :id, :option_formatter, f.object.interest_ids), {}, { :multiple => true, class: "form-control"}  %>
             </div>
           </div>
+          <div class="row">&nbsp;</div>
           <div class="row">
             <div class="col-md-2">
               <%= f.label :volunteer_categories %><br>
