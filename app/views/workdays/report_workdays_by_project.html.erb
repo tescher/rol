@@ -3,11 +3,12 @@
 
 <% got_info = false %>
 
-<% @project_info.each do |project| %>
+<% @project_info_volunteers.each do |pv| %>
     <% got_info = true %>
-    <h4>Project: <%= Project.find(project.project_id).name %></h4>
-    <h5>Distinct Project Volunteers: <%= project.num_volunteers %>,  Volunteer Shifts: <%= project.num_shifts %>, Volunteer Hours: <%= project.total_volunteer_hours %></h5>
-    <h5>Distinct Project Organizations: <%= project.num_organizations %>,  Organization Hours: <%= project.total_organization_hours %></h5>
+    <% po = @project_info_organizations.select { |p| p.project.id == pv.project_id }[0] %>
+    <h4>Project: <%= Project.find(pv.project_id).name %></h4>
+    <h5>Distinct Project Volunteers: <%= pv.num_volunteers %>,  Volunteer Shifts: <%= pv.num_shifts %>, Volunteer Hours: <%= pv.total_volunteer_hours %></h5>
+    <h5>Distinct Project Organizations: <%= po.num_organizations %>,  Organization Hours: <%= po.total_organization_hours %></h5>
 
     <ul class="listing">
       <div class="row">
@@ -33,26 +34,28 @@
         </li>
       </div>
 
-      <% @workdays.select { |w| w.project_id == project.project_id }.each do |workday| %>
-          <div class="row clickable" href="<%=add_participants_workday_path(workday, project_id: project.project_id)%>">
+      <% logger.info simple_format @workdays.to_yaml %>
+
+      <% @workdays.select { |w| w.project_id == pv.project_id }.each do |w| %>
+          <div class="row clickable" href="<%=add_participants_workday_path(w, project_id: pv.project_id)%>">
             <li>
               <div class="col-md-2">
-                <span class="no-overflow"><%= workday.name %></span>
+                <span class="no-overflow"><%= w.name %></span>
               </div>
               <div class="col-md-3">
-                <%= workday.workdate.strftime("%A, %B %-d, %Y") %>
+                <%= w.workdate.strftime("%A, %B %-d, %Y") %>
               </div>
               <div class="col-md-1">
-                <%= workday.volunteers %>
+                <%= w.num_volunteers %>
               </div>
               <div class="col-md-1">
-                <%= workday.volunteer_hours %>
+                <%= w.volunteer_hours %>
               </div>
               <div class="col-md-1">
-                <%= workday.organizations %>
+                <%= w.num_organizations %>
               </div>
               <div class="col-md-1">
-                <%= workday.organization_hours %>
+                <%= w.organization_hours %>
               </div>
             </li>
           </div>
@@ -64,8 +67,8 @@
     <h4>No workdays found with the given criteria</h4>
 <% else %>
     <h4><u>Report Totals</u></h4>
-    <h4>Distinct Volunteers: <%= @report_info["num_volunteers"] %> Volunteer Shifts: <%= @report_info["num_shifts"] %> Volunteer Hours: <%= '%.1f' % @report_info["total_volunteer_hours"].to_f %></h4>
-    <h4>Distinct Organizations: <%= @report_info["num_organizations"] %> Organization Hours: <%= '%.1f' % @report_info["total_organization_hours"].to_f %></h4>
+    <h4>Distinct Volunteers: <%= @report_info_volunteers["num_volunteers"] %> Volunteer Shifts: <%= @report_info_volunteers["num_shifts"] %> Volunteer Hours: <%= '%.1f' % @report_info_volunteers["total_volunteer_hours"].to_f %></h4>
+    <h4>Distinct Organizations: <%= @report_info_organizations["num_organizations"] %> Organization Hours: <%= '%.1f' % @report_info_organizations["total_organization_hours"].to_f %></h4>
 <% end %>
 
 <div class="row">
