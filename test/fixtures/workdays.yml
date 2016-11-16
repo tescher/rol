@@ -11,12 +11,12 @@ two:
   workdate: <%= 5.day.ago.to_s(:db) %>
 
 fiveday:
-  name: Workday Two
+  name: Workday Three
   project_id: 1
   workdate: <%= 5.day.ago.to_s(:db) %>
 
 tenday:
-  name: Workday Two
+  name: Workday Four
   project_id: 1
   workdate: <%= 5.day.ago.to_s(:db) %>
 
