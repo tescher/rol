@@ -7,15 +7,15 @@
   <Worksheet ss:Name="Sheet1">
     <Table>
       <% got_info = false %>
-      <% @project_info.each do |project| %>
+      <% @project_info.each do |p| %>
           <% got_info = true %>
           <Row>
-            <Cell><Data ss:Type="String">Project: <%= Project.find(project.project_id).name %></Data></Cell>
-            <Cell><Data ss:Type="String">Distinct Project Volunteers: <%= project.num_volunteers %></Data></Cell>
-            <Cell><Data ss:Type="String">Volunteer Shifts: <%= project.num_shifts %></Data></Cell>
-            <Cell><Data ss:Type="String">Volunteer Hours: <%= project.total_volunteer_hours %></Data></Cell>
-            <Cell><Data ss:Type="String">Distinct Project Organizations: <%= project.num_organizations %></Data></Cell>
-            <Cell><Data ss:Type="String">Organization Hours: <%= project.total_organization_hours %></Data></Cell>
+            <Cell><Data ss:Type="String">Project: <%= Project.find(p[:project_id]).name %></Data></Cell>
+            <Cell><Data ss:Type="String">Distinct Project Volunteers: <%= p[:num_volunteers].presence || "0" %></Data></Cell>
+            <Cell><Data ss:Type="String">Volunteer Shifts: <%= p[:num_shifts].presence || "0" %></Data></Cell>
+            <Cell><Data ss:Type="String">Volunteer Hours: <%= p[:volunteer_hours].presence || "0" %></Data></Cell>
+            <Cell><Data ss:Type="String">Distinct Project Organizations: <%= p[:num_organizations].presence || "0" %></Data></Cell>
+            <Cell><Data ss:Type="String">Organization Hours: <%= p[:organization_hours].presence || "0" %></Data></Cell>
           </Row>
           <Row>
             <Cell><Data ss:Type="String">Workday</Data></Cell>
@@ -26,14 +26,14 @@
             <Cell><Data ss:Type="String">Organization Hours</Data></Cell>
           </Row>
 
-          <% @workdays.select { |w| w.project_id == project.project_id }.each do |workday| %>
+          <% @workdays.select { |wd| wd[:project_id] == p[:project_id] }.each do |w| %>
               <Row>
-                <Cell><Data ss:Type="String"><%= workday.name %></Data></Cell>
-                <Cell><Data ss:Type="String"><%= workday.workdate.strftime("%m/%d/%Y") %></Data></Cell>
-                <Cell><Data ss:Type="String"><%= workday.volunteers %></Data></Cell>
-                <Cell><Data ss:Type="String"><%= workday.volunteer_hours %></Data></Cell>
-                <Cell><Data ss:Type="String"><%= workday.organizations %></Data></Cell>
-                <Cell><Data ss:Type="String"><%= workday.organization_hours %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= w[:name] %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= w[:workdate].to_datetime.strftime("%m/%d/%Y") %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= w[:num_volunteers].presence || "0" %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= w[:volunteer_hours].presence || "0" %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= w[:num_organizations].presence || "0" %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= w[:organization_hours].presence || "0" %></Data></Cell>
               </Row>
           <% end %>
           <Row></Row>
@@ -47,10 +47,10 @@
             <Cell><Data ss:Type="String">Report Totals</Data></Cell>
           </Row>
           <Row>
-            <Cell><Data ss:Type="String">Distinct Volunteers:</Data></Cell><Cell><Data ss:Type="String"><%= @report_info["num_volunteers"] %></Data></Cell> <Cell><Data ss:Type="String">Volunteer Shifts:</Data></Cell> <Cell><Data ss:Type="String"><%= @report_info["num_shifts"] %> Volunteer Hours:</Data></Cell> <Cell><Data ss:Type="String"><%= '%.1f' % @report_info["total_volunteer_hours"].to_f %></Data></Cell>
+            <Cell><Data ss:Type="String">Distinct Volunteers:</Data></Cell><Cell><Data ss:Type="String"><%= @report_info[:num_volunteers].presence || "0" %></Data></Cell> <Cell><Data ss:Type="String">Volunteer Shifts:</Data></Cell> <Cell><Data ss:Type="String"><%= @report_info[:num_shifts] %> </Data></Cell> <Cell><Data ss:Type="String">Volunteer Hours:</Data></Cell> <Cell><Data ss:Type="String"><%= '%.1f' % (@report_info[:volunteer_hours].presence || "0").to_f %></Data></Cell>
           </Row>
           <Row>
-            <Cell><Data ss:Type="String">Distinct Organizations:</Data></Cell><Cell><Data ss:Type="String"><%= @report_info["num_organizations"] %></Data></Cell> <Cell><Data ss:Type="String">Organization Hours:</Data></Cell> <Cell><Data ss:Type="String"><%= '%.1f' % @report_info["total_organization_hours"].to_f %></Data></Cell>
+            <Cell><Data ss:Type="String">Distinct Organizations:</Data></Cell><Cell><Data ss:Type="String"><%= @report_info[:num_organizations].presence || "0" %></Data></Cell> <Cell><Data ss:Type="String">Organization Hours:</Data></Cell> <Cell><Data ss:Type="String"><%= '%.1f' % (@report_info[:organization_hours].presence || "0").to_f %></Data></Cell>
           </Row>
       <% end %>
     </Table>

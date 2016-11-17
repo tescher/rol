@@ -184,6 +184,37 @@ class WorkdaysReportTest < ActionDispatch::IntegrationTest
 
   end
 
+  test "Participants by Project HTML Report" do
+    log_in_as(@user)
+    get report_workdays_path(report_type: 2, report_format: 1, from_date: 6.days.ago.strftime("%m/%d/%Y"), to_date: "")
+
+    assert_select("div.container h4:nth-of-type(1)", "Project: Build #1")
+    assert_select("div.container h5:nth-of-type(1)", "Distinct Project Volunteers: 2, Volunteer Shifts: 4, Volunteer Hours: 18.0")
+    assert_select("div.container h5:nth-of-type(2)", "Distinct Project Organizations: 1, Organization Hours: 56.0")
+    assert_select("div.container ul.listing:nth-of-type(1) div.clickable:nth-of-type(1) li:nth-of-type(1) div.col-md-2:nth-of-type(3)", "17.0")
+    assert_select("div.container ul.listing:nth-of-type(1) div.clickable:nth-of-type(2) li:nth-of-type(1) div.col-md-2:nth-of-type(3)", "1.0")
+    assert_select("div.container ul.listing:nth-of-type(2) div.clickable:nth-of-type(1) li:nth-of-type(1) div.col-md-2:nth-of-type(5)", "56.0")
+
+    assert_select("div.container h4:nth-of-type(2)", "Project: Build #2")
+    assert_select("div.container h5:nth-of-type(3)", "Distinct Project Volunteers: 1, Volunteer Shifts: 1, Volunteer Hours: 12.0")
+    assert_select("div.container h5:nth-of-type(4)", "Distinct Project Organizations: 1, Organization Hours: 10.0")
+    assert_select("div.container ul.listing:nth-of-type(3) div.clickable:nth-of-type(1) li:nth-of-type(1) div.col-md-2:nth-of-type(3)", "12.0")
+    assert_select("div.container ul.listing:nth-of-type(4) div.clickable:nth-of-type(1) li:nth-of-type(1) div.col-md-2:nth-of-type(5)", "10.0")
+
+    assert_select("div.container h4:nth-of-type(3)", "Project: Build #4")
+    assert_select("div.container h5:nth-of-type(5)", "Distinct Project Volunteers: 2, Volunteer Shifts: 2, Volunteer Hours: 5.0")
+    assert_select("div.container ul.listing:nth-of-type(5) div.clickable:nth-of-type(1) li:nth-of-type(1) div.col-md-2:nth-of-type(3)", "3.0")
+    assert_select("div.container ul.listing:nth-of-type(5) div.clickable:nth-of-type(2) li:nth-of-type(1) div.col-md-2:nth-of-type(3)", "2.0")
+
+    assert_select("div.container h4:nth-of-type(4)", "Project: Build #3")
+    assert_select("div.container h5:nth-of-type(6)", "Distinct Project Organizations: 1, Organization Hours: 6.0")
+    assert_select("div.container ul.listing:nth-of-type(6) div.clickable:nth-of-type(1) li:nth-of-type(1) div.col-md-2:nth-of-type(5)", "6.0")
+
+    assert_select("div.container h4:nth-of-type(6)", "Distinct Volunteers: 4 Volunteer Shifts: 7 Volunteer Hours: 35.0")
+    assert_select("div.container h4:nth-of-type(7)", "Distinct Organizations: 3 Organization Hours: 72.0")
+
+  end
+
 
 
 end

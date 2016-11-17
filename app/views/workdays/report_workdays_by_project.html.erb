@@ -5,7 +5,6 @@
 
 <% @project_info.each do |p| %>
     <% got_info = true %>
-    <% logger.info "p: " + p.to_s %>
     <h4>Project: <%= Project.find(p[:project_id]).name %></h4>
     <h5>Distinct Project Volunteers: <%= p[:num_volunteers].presence || "0" %>, Volunteer Shifts: <%= p[:num_shifts].presence || "0" %>, Volunteer Hours: <%= p[:volunteer_hours].presence || "0" %></h5>
     <h5>Distinct Project Organizations: <%= p[:num_organizations].presence || "0" %>, Organization Hours: <%= p[:organization_hours].presence || "0" %></h5>
