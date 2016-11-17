@@ -91,7 +91,7 @@ class WorkdaysController < ApplicationController
             when "2"
               render "report_participants_by_project.html"
             when "3"
-              render "report_participants_by_hours.html"
+              render "report_hours_by_participant.html"
           end
 
         }
@@ -103,14 +103,14 @@ class WorkdaysController < ApplicationController
             when "2"
               render "report_participants_by_project.xls"
             when "3"
-              render "report_participants_by_hours.xls"
+              render "report_hours_by_participant.xls"
           end
         }
 
 
       end
     else
-      @report_types = [["Workdays by Project",1], ["Participants by Project",2], ["Participants by Hours",3]]
+      @report_types = [["Workdays by Project",1], ["Participants by Project",2], ["Hours by Participant",3]]
       @report_format = [["Screen",1],["Excel",2]]
     end
 

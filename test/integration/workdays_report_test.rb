@@ -215,6 +215,23 @@ class WorkdaysReportTest < ActionDispatch::IntegrationTest
 
   end
 
+  test "Hours by Participant HTML Report" do
+    log_in_as(@user)
+    get report_workdays_path(report_type: 3, report_format: 1, from_date: 6.days.ago.strftime("%m/%d/%Y"), to_date: "")
+
+    assert_select("div.container ul.listing:nth-of-type(1) div.clickable:nth-of-type(1) li:nth-of-type(1) div.col-md-2:nth-of-type(3)", "19.0")
+    assert_select("div.container ul.listing:nth-of-type(1) div.clickable:nth-of-type(2) li:nth-of-type(1) div.col-md-2:nth-of-type(3)", "12.0")
+    assert_select("div.container ul.listing:nth-of-type(1) div.clickable:nth-of-type(3) li:nth-of-type(1) div.col-md-2:nth-of-type(3)", "3.0")
+    assert_select("div.container ul.listing:nth-of-type(1) div.clickable:nth-of-type(4) li:nth-of-type(1) div.col-md-2:nth-of-type(3)", "1.0")
+    assert_select("div.container ul.listing:nth-of-type(1) div.clickable:nth-of-type(5) li:nth-of-type(1) div.col-md-2:nth-of-type(3)", false)
+    assert_select("div.container ul.listing:nth-of-type(1) div.clickable:nth-of-type(6) li:nth-of-type(1) div.col-md-2:nth-of-type(3)", false)
+
+    assert_select("div.container ul.listing:nth-of-type(2) div.clickable:nth-of-type(1) li:nth-of-type(1) div.col-md-2:nth-of-type(5)", "56.0")
+    assert_select("div.container ul.listing:nth-of-type(2) div.clickable:nth-of-type(2) li:nth-of-type(1) div.col-md-2:nth-of-type(5)", "10.0")
+    assert_select("div.container ul.listing:nth-of-type(2) div.clickable:nth-of-type(3) li:nth-of-type(1) div.col-md-2:nth-of-type(5)", "6.0")
+
+  end
+
 
 
 end
