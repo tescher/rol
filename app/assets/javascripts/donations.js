@@ -3,6 +3,8 @@
  */
 $(document).ready(function() {
 
+    $('[id*=donation_type_ids]').multiselect();
+
     $("#dialogDonationSummary").dialog({
         modal: true,
         title: "Donation Summary",
