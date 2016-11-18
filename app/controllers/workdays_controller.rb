@@ -39,7 +39,7 @@ class WorkdaysController < ApplicationController
       # For Volunteer Categories do a where similar to this on volunteer_category_volunteers table joined in "join" below on workday_volunteer.id
       volunteer_category_ids = params[:volunteer_category_ids].nil? ? [] : params[:volunteer_category_ids]
       if volunteer_category_ids.count > 0
-        vc_where = "volunteer_category_volunteers.volunteer_category_id IN (" + volunteer_category_ids.join(",") + ")"
+        vc_where = "volunteer_category_id IN (" + volunteer_category_ids.join(",") + ")"
       else
         vc_where = "TRUE"
       end
@@ -51,7 +51,8 @@ class WorkdaysController < ApplicationController
         project_where = "project_id IS NOT NULL"
       end
       if !(vc_where == "TRUE")
-        join_volunteers = "JOIN workday_volunteers (JOIN volunteer_category_volunteers ON volunteer_category_volunteers.volunteer_id = workday_volunteer.volunteer_id) ON workdays.id = workday_volunteers.workday_id "
+        # join_volunteers = "JOIN workday_volunteers (JOIN volunteer_category_volunteers ON volunteer_category_volunteers.volunteer_id = workday_volunteer.volunteer_id) ON workdays.id = workday_volunteers.workday_id "
+        join_volunteers = "JOIN workday_volunteers ON workdays.id = workday_volunteers.workday_id JOIN volunteer_category_volunteers ON volunteer_category_volunteers.volunteer_id = workday_volunteers.volunteer_id"
       else
         join_volunteers = "JOIN workday_volunteers ON workdays.id = workday_volunteers.workday_id "
       end
@@ -76,10 +77,10 @@ class WorkdaysController < ApplicationController
           logger.info "Workday Info"
           @workdays = consolidate(@workdays_volunteers, @workdays_organizations)
         when "2"
-          @volunteers = Workday.select("workdays.project_id, workday_volunteers.volunteer_id, COALESCE(SUM(workday_volunteers.hours), 0) as hours").joins(:workday_volunteers).where(where_clause).where(project_where).where(vc_where).group("workday_volunteers.volunteer_id, workdays.project_id").order("hours DESC")
+          @volunteers = Workday.select("workdays.project_id, workday_volunteers.volunteer_id, COALESCE(SUM(workday_volunteers.hours), 0) as hours").joins(join_volunteers).where(where_clause).where(project_where).where(vc_where).group("workday_volunteers.volunteer_id, workdays.project_id").order("hours DESC")
           @organizations = Workday.select("workdays.project_id, workday_organizations.organization_id, COALESCE(SUM(workday_organizations.hours * workday_organizations.num_volunteers), 0) as hours").joins(:workday_organizations).where(where_clause).where(project_where).group("workday_organizations.organization_id, workdays.project_id").order("hours DESC")
         when "3"
-          @volunteers = Workday.select("workday_volunteers.volunteer_id, COALESCE(SUM(workday_volunteers.hours), 0) as hours").joins(:workday_volunteers).where(where_clause).where(project_where).where(vc_where).group("workday_volunteers.volunteer_id").order("hours DESC")
+          @volunteers = Workday.select("workday_volunteers.volunteer_id, COALESCE(SUM(workday_volunteers.hours), 0) as hours").joins(join_volunteers).where(where_clause).where(project_where).where(vc_where).group("workday_volunteers.volunteer_id").order("hours DESC")
           @organizations = Workday.select("workday_organizations.organization_id, COALESCE(SUM(workday_organizations.hours * workday_organizations.num_volunteers), 0) as hours").joins(:workday_organizations).where(where_clause).where(project_where).group("workday_organizations.organization_id").order("hours DESC")
       end
 

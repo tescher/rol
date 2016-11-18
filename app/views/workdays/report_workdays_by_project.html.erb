@@ -34,7 +34,7 @@
       </div>
 
       <% @workdays.select { |w| w[:project_id] == p[:project_id] }.each do |w| %>
-          <div class="row clickable" href="<%=add_participants_workday_path(w, project_id: p[:project_id]) %>">
+          <div class="row clickable" href="<%=add_participants_workday_path(Workday.find(w[:id]), project_id: p[:project_id]) %>">
             <li>
               <div class="col-md-2">
                 <span class="no-overflow"><%= w[:name] %></span>
