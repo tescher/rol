@@ -24,7 +24,7 @@
               <%= label_tag :city %>
             </div>
             <div class="col-md-6">
-              <%= label_tag :zip_code %>
+              <%= label_tag :zip %>
             </div>
           </div>
           <div class="row">
@@ -32,7 +32,7 @@
               <%= text_field_tag :city, nil, class: 'form-control' %>
             </div>
             <div class="col-md-6">
-              <%= text_field_tag :zip_code, nil, class: 'form-control' %>
+              <%= text_field_tag :zip, nil, class: 'form-control' %>
             </div>
           </div>
           <div class="row">
@@ -91,10 +91,10 @@
       <div class="col-md-11">
         <div class="actions pull-right">
           <% if !current_user.non_monetary %>
-              <%= submit_tag "Monetary Donations", class: "btn btn-primary", onclick: "change_val('.request_format','html'); change_val('.report_type', '1');" %>
+              <%= submit_tag "Monetary Donations", class: "btn btn-primary", onclick: "change_val('.request_format','html'); change_val('.report_type', '1'); return true;" %>
               <%= submit_tag "Export", class: "btn btn-primary", onclick: "change_val('.request_format','xls'); change_val('.report_type', '1');" %>
           <% end %>
-          <%= submit_tag "Non-Monetary Donations", class: "btn btn-primary", onclick: "change_val('.request_format','html'); change_val('.report_type', '2');" %>
+          <%= submit_tag "Non-Monetary Donations", class: "btn btn-primary", onclick: "change_val('.request_format','html'); change_val('.report_type', '2');; return true;" %>
           <%= submit_tag "Export", class: "btn btn-primary", onclick: "change_val('.request_format','xls'); change_val('.report_type', '2');" %>
           <%= link_to 'Back', root_path, class: "btn btn-primary" %>
         </div>
