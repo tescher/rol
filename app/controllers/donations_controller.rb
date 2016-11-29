@@ -35,6 +35,11 @@ class DonationsController < ApplicationController
         where_clause += "donations.receipt_sent IS FALSE"
       end
 
+      if !params[:donation_type_ids].nil? && params[:donation_type_ids].count > 0
+        where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
+        where_clause += "donation_types.id IN (" + params[:donation_type_ids].join(",") + ")"
+      end
+
       where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
       if @report_type == 1
         where_clause += "donation_types.non_monetary IS FALSE"
