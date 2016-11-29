@@ -34,6 +34,9 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
       interest1 = interests(:one)
       interest2 = interests(:two)
       interest3 = interests(:three)
+      category1 = volunteer_categories(:intern)
+      category2 = volunteer_categories(:huber)
+      category3 = volunteer_categories(:master)
       if (v == @volunteer)
         volunteer_interest = VolunteerInterest.new
         volunteer_interest.volunteer = v
@@ -43,6 +46,14 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
         volunteer_interest.volunteer = v
         volunteer_interest.interest = interest2
         volunteer_interest.save
+        volunteer_category_volunteer = VolunteerCategoryVolunteer.new
+        volunteer_category_volunteer.volunteer = v
+        volunteer_category_volunteer.volunteer_category = category1
+        volunteer_category_volunteer.save
+        volunteer_category_volunteer = VolunteerCategoryVolunteer.new
+        volunteer_category_volunteer.volunteer = v
+        volunteer_category_volunteer.volunteer_category = category2
+        volunteer_category_volunteer.save
       else
         volunteer_interest = VolunteerInterest.new
         volunteer_interest.volunteer = v
@@ -52,6 +63,14 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
         volunteer_interest.volunteer = v
         volunteer_interest.interest = interest3
         volunteer_interest.save
+        volunteer_category_volunteer = VolunteerCategoryVolunteer.new
+        volunteer_category_volunteer.volunteer = v
+        volunteer_category_volunteer.volunteer_category = category2
+        volunteer_category_volunteer.save
+        volunteer_category_volunteer = VolunteerCategoryVolunteer.new
+        volunteer_category_volunteer.volunteer = v
+        volunteer_category_volunteer.volunteer_category = category3
+        volunteer_category_volunteer.save
       end
     end
   end
@@ -65,6 +84,9 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
         w.destroy
       end
       VolunteerInterest.where("volunteer_id = #{v.id}") do |i|
+        i.destroy
+      end
+      VolunteerCategoryVolunteer.where("volunteer_id = #{v.id}") do |i|
         i.destroy
       end
       v.really_destroy!
@@ -164,16 +186,19 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     before_v = Volunteer.count
     before_d = Donation.count
     before_wd = Workday.count
+    before_c = VolunteerCategoryVolunteer.count
     delete volunteer_path(@volunteer)
     after_wdv = WorkdayVolunteer.count
     after_v = Volunteer.count
     after_d = Donation.count
     after_wd = Workday.count
+    after_c = VolunteerCategoryVolunteer.count
     # Make sure all cascade deletes worked OK
     assert_equal before_v - 1, after_v
     assert_equal before_d - 10, after_d
     assert_equal before_wd, after_wd
     assert_equal before_wdv - 1, after_wdv
+    assert_equal before_c - 2, after_c
 
     @volunteer.reload
     assert(@volunteer.deleted?)
@@ -210,21 +235,24 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     volunteer_interests = VolunteerInterest.where("volunteer_id = #{@volunteer.id}").all
     volunteer_interests_count = volunteer_interests.count
     volunteer_interests_dup = VolunteerInterest.where("volunteer_id = #{@duplicate_volunteer.id}").all
-    volunteer_interests_dup_count = volunteer_interests_dup.count
+    # volunteer_interests_dup_count = volunteer_interests_dup.count
     donations = Donation.where("volunteer_id = #{@volunteer.id}").all
     donations_count = donations.count
     donations_dup = Donation.where("volunteer_id = #{@duplicate_volunteer.id}").all
     donations_dup_count = donations_dup.count
     notes = @volunteer.notes
-    notes_dup = @duplicate_volunteer.notes
+    # notes_dup = @duplicate_volunteer.notes
+    volunteer_category_volunteers = VolunteerCategoryVolunteer.where("volunteer_id = #{@volunteer.id}").all
+    volunteer_category_volunteers_count = volunteer_category_volunteers.count
 
     source_use_field_list = [:first_name, :last_name, :waiver_date, :remove_from_mailing_list, :church_id, :home_phone]
     source_use_fields = source_use_field_list.map {|f,i| Volunteer.merge_fields_table[f] }
 
-    use_notes = "ignore"   # Skip notes and interests on this first pass
+    use_notes = "ignore"   # Skip notes and interests and categories on this first pass
     use_interests = "ignore"
+    use_categories = "ignore"
 
-    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: source_use_fields, use_notes: use_notes, use_interests: use_interests}
+    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: source_use_fields, use_notes: use_notes, use_interests: use_interests, use_categories: use_categories}
 
     @volunteer.reload
 
@@ -252,9 +280,10 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     assert_equal(new_total, old_total, "Donation total #{new_total} should be equal")
     puts new_total,old_total
 
-    # We had "ignore" for notes and interests, make sure they stayed as is
+    # We had "ignore" for notes and interests and categories, make sure they stayed as is
     assert_equal(@volunteer.notes, notes, "Notes '#{notes}' should have remained as is")
     assert(volunteer_interests.uniq.sort == VolunteerInterest.where("volunteer_id = #{@volunteer.id}").all.uniq.sort, "Interests (#{volunteer_interests_count}) should have remained the same")
+    assert(volunteer_category_volunteers.uniq.sort == VolunteerCategoryVolunteer.where("volunteer_id = #{@volunteer.id}").all.uniq.sort, "Categories (#{volunteer_category_volunteers_count}) should have remained the same")
 
     # Did everything delete OK?
     @duplicate_volunteer.reload
@@ -262,94 +291,134 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     assert_equal(WorkdayVolunteer.where("volunteer_id = #{@duplicate_volunteer.id}").count, 0, "All workday shifts from source gone")
     assert_equal(Donation.where("volunteer_id = #{@duplicate_volunteer.id}").count, 0, "All donations from source gone")
     assert_equal(VolunteerInterest.where("volunteer_id = #{@duplicate_volunteer.id}").count, 0, "All interests from source gone")
+    assert_equal(VolunteerCategoryVolunteer.where("volunteer_id = #{@duplicate_volunteer.id}").count, 0, "All categories from source gone")
 
   end
 
-  test "Merge with combined interests" do
+  test "Merge with combined interests and categories" do
     log_in_as(@non_admin)
     volunteer_interests = VolunteerInterest.where("volunteer_id = #{@volunteer.id}").all
-    volunteer_interests_count = volunteer_interests.count
+    # volunteer_interests_count = volunteer_interests.count
     volunteer_interests_content = volunteer_interests.map {|v| v.interest_id}
     volunteer_interests_dup = VolunteerInterest.where("volunteer_id = #{@duplicate_volunteer.id}").all
-    volunteer_interests_dup_count = volunteer_interests_dup.count
+    # volunteer_interests_dup_count = volunteer_interests_dup.count
     volunteer_interests_dup_content = volunteer_interests_dup.map {|v| v.interest_id}
+    volunteer_category_volunteers = VolunteerCategoryVolunteer.where("volunteer_id = #{@volunteer.id}").all
+    volunteer_category_volunteers_content = volunteer_category_volunteers.map {|v| v.volunteer_category_id}
+    volunteer_category_volunteers_dup = VolunteerCategoryVolunteer.where("volunteer_id = #{@duplicate_volunteer.id}").all
+    volunteer_category_volunteers_dup_content = volunteer_category_volunteers_dup.map {|v| v.volunteer_category_id}
 
     use_notes = "ignore"
     use_interests = "add"
+    use_categories = "add"
 
-    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_interests: use_interests}
+    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_interests: use_interests, use_categories: use_categories}
 
     @volunteer.reload
 
     # Did interests move?
     new_volunteer_interests_content = VolunteerInterest.where("volunteer_id = #{@volunteer.id}").all.map {|v| v.interest_id}
     assert(new_volunteer_interests_content.sort == (volunteer_interests_content + volunteer_interests_dup_content).uniq.sort, "Interests (#{new_volunteer_interests_content.count}) should be equal")
+    # Did categories move?
+    new_volunteer_category_volunteers_content = VolunteerCategoryVolunteer.where("volunteer_id = #{@volunteer.id}").all.map {|v| v.volunteer_category_id}
+    assert(new_volunteer_category_volunteers_content.sort == (volunteer_category_volunteers_content + volunteer_category_volunteers_dup_content).uniq.sort, "Categories (#{new_volunteer_category_volunteers_content.count}) should be equal")
   end
 
-  test "Merge with combined interests, none on source" do
+  test "Merge with combined interests and categories, none on source" do
     log_in_as(@non_admin)
     volunteer_interests = VolunteerInterest.where("volunteer_id = #{@volunteer.id}").all
-    volunteer_interests_count = volunteer_interests.count
+    # volunteer_interests_count = volunteer_interests.count
     volunteer_interests_content = volunteer_interests.map {|v| v.interest_id}
     volunteer_interests_dup = VolunteerInterest.where("volunteer_id = #{@duplicate_volunteer.id}").all
     volunteer_interests_dup.each {|i| i.destroy!}
     volunteer_interests_dup = VolunteerInterest.where("volunteer_id = #{@duplicate_volunteer.id}").all
-    volunteer_interests_dup_count = volunteer_interests_dup.count
+    # volunteer_interests_dup_count = volunteer_interests_dup.count
     volunteer_interests_dup_content = volunteer_interests_dup.map {|v| v.interest_id}
+
+    volunteer_category_volunteers = VolunteerCategoryVolunteer.where("volunteer_id = #{@volunteer.id}").all
+    volunteer_category_volunteers_content = volunteer_category_volunteers.map {|v| v.volunteer_category_id}
+    volunteer_category_volunteers_dup = VolunteerCategoryVolunteer.where("volunteer_id = #{@duplicate_volunteer.id}").all
+    volunteer_category_volunteers_dup.each {|i| i.destroy!}
+    volunteer_category_volunteers_dup = VolunteerCategoryVolunteer.where("volunteer_id = #{@duplicate_volunteer.id}").all
+    volunteer_category_volunteers_dup_content = volunteer_category_volunteers_dup.map {|v| v.volunteer_category_id}
 
     use_notes = "ignore"
     use_interests = "add"
+    use_categories = "add"
 
-    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_interests: use_interests}
+    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_interests: use_interests, use_categories: use_categories}
 
     @volunteer.reload
 
     # Did interests move?
     new_volunteer_interests_content = VolunteerInterest.where("volunteer_id = #{@volunteer.id}").all.map {|v| v.interest_id}
     assert(new_volunteer_interests_content.sort == (volunteer_interests_content + volunteer_interests_dup_content).uniq.sort, "Interests (#{new_volunteer_interests_content.count}) should be equal")
+    # Did categories move?
+    new_volunteer_category_volunteers_content = VolunteerCategoryVolunteer.where("volunteer_id = #{@volunteer.id}").all.map {|v| v.volunteer_category_id}
+    assert(new_volunteer_category_volunteers_content.sort == (volunteer_category_volunteers_content + volunteer_category_volunteers_dup_content).uniq.sort, "Categories (#{new_volunteer_category_volunteers_content.count}) should be equal")
   end
 
 
-  test "Merge with replaced interests" do
+  test "Merge with replaced interests and categories" do
     log_in_as(@non_admin)
     volunteer_interests = VolunteerInterest.where("volunteer_id = #{@volunteer.id}").all
-    volunteer_interests_count = volunteer_interests.count
+    # volunteer_interests_count = volunteer_interests.count
     volunteer_interests_dup = VolunteerInterest.where("volunteer_id = #{@duplicate_volunteer.id}").all
     volunteer_interests_dup.each {|i| i.destroy!}
     volunteer_interests_dup = VolunteerInterest.where("volunteer_id = #{@duplicate_volunteer.id}").all
     volunteer_interests_dup_count = volunteer_interests_dup.count
     volunteer_interests_dup_content = volunteer_interests_dup.map {|v| v.interest_id}
 
+    volunteer_category_volunteers = VolunteerCategoryVolunteer.where("volunteer_id = #{@volunteer.id}").all
+    volunteer_category_volunteers_dup = VolunteerCategoryVolunteer.where("volunteer_id = #{@duplicate_volunteer.id}").all
+    volunteer_category_volunteers_dup.each {|i| i.destroy!}
+    volunteer_category_volunteers_dup = VolunteerCategoryVolunteer.where("volunteer_id = #{@duplicate_volunteer.id}").all
+    volunteer_category_volunteers_dup_count = volunteer_category_volunteers_dup.count
+    volunteer_category_volunteers_dup_content = volunteer_category_volunteers_dup.map {|v| v.volunteer_category_id}
+
     use_notes = "ignore"
     use_interests = "replace"
+    use_categories = "replace"
 
-    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_interests: use_interests}
+    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_interests: use_interests, use_categories: use_categories}
 
     @volunteer.reload
 
     # Did interests move?
     new_volunteer_interests_content = VolunteerInterest.where("volunteer_id = #{@volunteer.id}").all.map {|v| v.interest_id}
     assert(new_volunteer_interests_content.sort == volunteer_interests_dup_content.sort, "Interests (#{volunteer_interests_dup_count}) should be equal")
+    # Did categories move?
+    new_volunteer_category_volunteers_content = VolunteerCategoryVolunteer.where("volunteer_id = #{@volunteer.id}").all.map {|v| v.volunteer_category_id}
+    assert(new_volunteer_category_volunteers_content.sort == volunteer_category_volunteers_dup_content.sort, "Categories (#{volunteer_category_volunteers_dup_count}) should be equal")
   end
 
-  test "Merge with replaced interests, none on source" do
+  test "Merge with replaced interests and categories, none on source" do
     log_in_as(@non_admin)
     volunteer_interests = VolunteerInterest.where("volunteer_id = #{@volunteer.id}").all
-    volunteer_interests_count = volunteer_interests.count
+    # volunteer_interests_count = volunteer_interests.count
     volunteer_interests_dup = VolunteerInterest.where("volunteer_id = #{@duplicate_volunteer.id}").all
     volunteer_interests_dup_count = volunteer_interests_dup.count
     volunteer_interests_dup_content = volunteer_interests_dup.map {|v| v.interest_id}
 
+    volunteer_category_volunteers = VolunteerCategoryVolunteer.where("volunteer_id = #{@volunteer.id}").all
+    volunteer_category_volunteers_dup = VolunteerCategoryVolunteer.where("volunteer_id = #{@duplicate_volunteer.id}").all
+    volunteer_category_volunteers_dup_count = volunteer_category_volunteers_dup.count
+    volunteer_category_volunteers_dup_content = volunteer_category_volunteers_dup.map {|v| v.volunteer_category_id}
+
     use_notes = "ignore"
     use_interests = "replace"
+    use_categories = "replace"
 
-    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_interests: use_interests}
+    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_interests: use_interests, use_categories: use_categories}
 
     @volunteer.reload
 
     # Did interests move?
     new_volunteer_interests_content = VolunteerInterest.where("volunteer_id = #{@volunteer.id}").all.map {|v| v.interest_id}
     assert(new_volunteer_interests_content.sort == volunteer_interests_dup_content.sort, "Interests (#{volunteer_interests_dup_count}) should be equal")
+    # Did categories move?
+    new_volunteer_category_volunteers_content = VolunteerCategoryVolunteer.where("volunteer_id = #{@volunteer.id}").all.map {|v| v.volunteer_category_id}
+    assert(new_volunteer_category_volunteers_content.sort == volunteer_category_volunteers_dup_content.sort, "Categories (#{volunteer_category_volunteers_dup_count}) should be equal")
   end
 
   test "Merge with appended notes" do
@@ -359,8 +428,9 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
 
     use_notes = "append"
     use_interests = "ignore"
+    use_categories = "ignore"
 
-    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_interests: use_interests}
+    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_interests: use_interests, use_categories: use_categories}
 
     @volunteer.reload
 
@@ -375,8 +445,9 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
 
     use_notes = "prepend"
     use_interests = "ignore"
+    use_categories = "ignore"
 
-    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_interests: use_interests}
+    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_interests: use_interests, use_categories: use_categories}
 
     @volunteer.reload
 
@@ -391,8 +462,9 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
 
     use_notes = "replace"
     use_interests = "ignore"
+    use_categories = "ignore"
 
-    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_interests: use_interests}
+    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_interests: use_interests, use_categories: use_categories}
 
     @volunteer.reload
 

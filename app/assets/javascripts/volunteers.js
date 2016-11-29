@@ -8,9 +8,9 @@ $(document).ready(function() {
     };
 
 
-    $('[id*=interest_ids]').multiselect();
+    $('[id*=interest_ids], [id*=volunteer_category_ids]').multiselect();
 
-    $('[id*=interest_ids].read-only').next('.btn-group').find('input').each(function(){
+    $('[id*=interest_ids].read-only, [id*=volunteer_category_ids].read-only').next('.btn-group').find('input').each(function(){
         $(this).prop('disabled', true);
     });
 
@@ -200,7 +200,7 @@ $(document).ready(function() {
         })
     });
 
-    ["notes", "interests"].forEach(function(field_name) {
+    ["notes", "interests", "categories"].forEach(function(field_name) {
         $("select[id*=" + field_name + "]").change(function () {
             var action = $("select[id*=" + field_name + "] option:selected").text();
             var $field = "";
@@ -208,9 +208,12 @@ $(document).ready(function() {
             if (field_name == "notes") {
                 $field = $("textarea[id^=pending_volunteer_" + field_name + "]").presence() || $("textarea[id^=source_volunteer_" + field_name + "]").presence();
                 $other_field = $("textarea[id^=volunteer_" + field_name + "]");
-            } else {
+            } else if (field_name == "interests") {
                 $field = ($("select[id^=pending_volunteer_interest_ids]").presence() || $("select[id^=source_volunteer_interest_ids]").presence()).next("div.btn-group").children(":button");
                 $other_field = ($("select[id^=volunteer_interest_ids]").presence() || $("select[id^=interest_ids]").presence()).next("div.btn-group").children(":button");
+            } else {
+                $field = ($("select[id^=pending_volunteer_category_ids]").presence() || $("select[id^=source_volunteer_category_ids]").presence()).next("div.btn-group").children(":button");
+                $other_field = ($("select[id^=volunteer_category_ids]").presence() || $("select[id^=volunteer_category_ids]").presence()).next("div.btn-group").children(":button");
             }
             if (action.toLowerCase() != "ignore") {
                 $field.addClass("background-valid");

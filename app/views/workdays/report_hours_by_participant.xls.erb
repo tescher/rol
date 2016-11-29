@@ -16,12 +16,12 @@
 
       <% @volunteers.each do |volunteer_info| %>
           <% got_info = true %>
-          <% volunteer = Volunteer.find(volunteer_info.volunteer_id) %>
+          <% volunteer = Volunteer.find(volunteer_info[:volunteer_id]) %>
           <Row>
             <Cell><Data ss:Type="String"><%= volunteer.name %></Data></Cell>
             <Cell><Data ss:Type="String"><%= volunteer.city %></Data></Cell>
             <Cell><Data ss:Type="String"><%= volunteer.email %></Data></Cell>
-            <Cell><Data ss:Type="String"><%= volunteer_info.hours %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= volunteer_info[:hours].presence || "0" %></Data></Cell>
           </Row>
       <% end %>
       <Row></Row>
@@ -35,13 +35,13 @@
 
       <% @organizations.each do |organization_info| %>
           <% got_info = true %>
-          <% organization = Organization.find(organization_info.organization_id) %>
+          <% organization = Organization.find(organization_info[:organization_id]) %>
           <Row>
             <Cell><Data ss:Type="String"><%= organization.name %></Data></Cell>
             <Cell><Data ss:Type="String"><%= organization.city %></Data></Cell>
             <Cell><Data ss:Type="String"><%= organization.contact_name %></Data></Cell>
             <Cell><Data ss:Type="String"><%= organization.email %></Data></Cell>
-            <Cell><Data ss:Type="String"><%= organization_info.hours %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= organization_info[:hours].presence || "0" %></Data></Cell>
           </Row>
       <% end %>
       <Row></Row>

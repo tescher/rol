@@ -1,5 +1,5 @@
-<% provide(:title, 'Participants by Hours') %>
-<h1>Participants by Hours</h1>
+<% provide(:title, 'Hours by Participant') %>
+<h1>Hours by Participant</h1>
 
 <% got_info = false %>
 
@@ -23,7 +23,7 @@
   <% @volunteers.each do |volunteer_info| %>
       <% got_info = true %>
 
-      <% volunteer = Volunteer.find(volunteer_info.volunteer_id) %>
+      <% volunteer = Volunteer.find(volunteer_info[:volunteer_id]) %>
       <div class="row clickable" href="<%=edit_volunteer_path(volunteer)%>">
         <li>
           <div class="col-md-2 col-md-offset-1">
@@ -36,7 +36,7 @@
             <span class="no-overflow"><%= volunteer.email %></span>
           </div>
           <div class="col-md-2">
-            <%= volunteer_info.hours %>
+            <%= volunteer_info[:hours].presence || "0" %>
           </div>
         </li>
       </div>
@@ -67,7 +67,7 @@
 
   <% @organizations.each do |organization_info| %>
       <% got_info = true %>
-      <% organization = Organization.find(organization_info.organization_id) %>
+      <% organization = Organization.find(organization_info[:organization_id]) %>
       <div class="row clickable" href="<%=edit_organization_path(organization)%>">
         <li>
           <div class="col-md-2 col-md-offset-1">
@@ -83,7 +83,7 @@
             <span class="no-overflow"><%= organization.email %></span>
           </div>
           <div class="col-md-2">
-            <%= organization_info.hours %>
+            <%= organization_info[:hours].presence || "0" %>
           </div>
         </li>
       </div>

@@ -86,6 +86,7 @@ class VolunteersController < ApplicationController
               search_params = search_params.except(:name)
             end
             interest_ids = []
+            volunteer_category_ids = []
             search_params.each do |index|
               if ["last_name", "first_name", "city"].include?(index[0])
                 if index[1].strip.length > 0
@@ -96,6 +97,9 @@ class VolunteersController < ApplicationController
               if index[0] == "interest_ids"
                 interest_ids = index[1]
               end
+              if index[0] == "volunteer_category_ids"
+                volunteer_category_ids = index[1]
+              end
             end
 
             joins_clause = []
@@ -103,9 +107,11 @@ class VolunteersController < ApplicationController
               joins_clause << :volunteer_interests
               where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
               where_clause += "volunteer_interests.interest_id IN (#{interest_ids.join(',')})"
-              # @volunteers = Volunteer.select("DISTINCT(volunteers.id), volunteers.*").joins(:volunteer_interests).where(volunteer_interests: {interest_id: interest_ids}).where(where_clause).order(:last_name, :first_name)
-            else
-              # @volunteers = Volunteer.select("DISTINCT(volunteers.id), volunteers.*").where(where_clause).order(:last_name, :first_name)
+            end
+            if volunteer_category_ids.count > 0
+              joins_clause << :volunteer_category_volunteers
+              where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
+              where_clause += "volunteer_category_volunteers.volunteer_category_id IN (#{volunteer_category_ids.join(',')})"
             end
 
             if !search_params[:workday_since].blank?
@@ -368,7 +374,7 @@ class VolunteersController < ApplicationController
         end
       end
 
-      interests = []
+      # interests = []
       volunteer_interest_ids = VolunteerInterest.where("volunteer_id = #{@object.id}").map {|i| i.interest_id}
       source_interest_ids = VolunteerInterest.where("volunteer_id = #{@source_volunteer.id}").map {|i| i.interest_id}
       if (params[:use_interests].downcase != "ignore")
@@ -376,6 +382,15 @@ class VolunteersController < ApplicationController
           volunteer_params[:interest_ids] = (source_interest_ids + volunteer_interest_ids).uniq
         else
           volunteer_params[:interest_ids] = source_interest_ids.dup
+        end
+      end
+      volunteer_category_volunteer_ids = VolunteerCategoryVolunteer.where("volunteer_id = #{@object.id}").map {|i| i.volunteer_category_id}
+      source_volunteer_category_ids = VolunteerCategoryVolunteer.where("volunteer_id = #{@source_volunteer.id}").map {|i| i.volunteer_category_id}
+      if (params[:use_categories].downcase != "ignore")
+        if (params[:use_categories].downcase == "add")
+          volunteer_params[:volunteer_category_ids] = (source_volunteer_category_ids +  volunteer_category_volunteer_ids).uniq
+        else
+          volunteer_params[:volunteer_category_ids] = source_volunteer_category_ids.dup
         end
       end
 
@@ -595,10 +610,10 @@ class VolunteersController < ApplicationController
   def volunteer_params
     params.require(:volunteer).permit(:first_name, :last_name, :middle_name, :email, :occupation, :employer_id, :church_id,
                                       :address, :city, :state, :zip, :home_phone, :work_phone, :mobile_phone,
-                                      :notes, :remove_from_mailing_list, :waiver_date, :first_contact_date, :first_contact_type_id, :pending_volunteer_id, :background_check_date, interest_ids: [], donations_attributes: [:id, :date_received, :value, :ref_no, :item, :anonymous, :in_honor_of, :designation, :notes, :receipt_sent, :volunteer_id, :organization_id, :donation_type_id, :_destroy])
+                                      :notes, :remove_from_mailing_list, :waiver_date, :first_contact_date, :first_contact_type_id, :pending_volunteer_id, :background_check_date, interest_ids: [], volunteer_category_ids: [], donations_attributes: [:id, :date_received, :value, :ref_no, :item, :anonymous, :in_honor_of, :designation, :notes, :receipt_sent, :volunteer_id, :organization_id, :donation_type_id, :_destroy])
   end
   def volunteer_search_params
-    search_params = params.permit(:name, :city, :workday_since, interest_ids: [])
+    search_params = params.permit(:name, :city, :workday_since, interest_ids: [], volunteer_category_ids: [])
     search_params.delete_if {|k,v| v.blank?}
     search_params
   end

@@ -20,18 +20,39 @@
             </div>
           </div>
 
-          <div class="field">
-            <%= label_tag :from_date %><br>
-            <%= text_field_tag :from_date, nil, id: 'fromdatepicker', class: 'form-control' %>
+          <div class="row">
+            <div class="col-md-6">
+              <%= label_tag :from_date %><br>
+            </div>
+            <div class="col-md-6">
+              <%= label_tag :to_date %><br>
+            </div>
           </div>
-          <div class="field">
-            <%= label_tag :to_date %><br>
-            <%= text_field_tag :to_date, Date.today.strftime("%m/%d/%Y"), id: 'todatepicker', class: 'form-control' %>
+          <div class="row">
+            <div class="col-md-6">
+              <%= text_field_tag :from_date, nil, id: 'fromdatepicker', class: 'form-control' %>
+            </div>
+            <div class="col-md-6">
+              <%= text_field_tag :to_date, Date.today.strftime("%m/%d/%Y"), id: 'todatepicker', class: 'form-control' %>
+            </div>
           </div>
 
-          <div class="field">
-            <%= label_tag :projects %><br>
-            <%= select_tag :project_ids, options_from_collection_for_select(Project.all.order(:name), :id, :name), { :multiple => true, class: "form-control"}  %>
+
+          <div class="row">
+            <div class="col-md-6">
+              <%= label_tag :projects %><br>
+            </div>
+            <div class="col-md-6">
+              <%= label_tag :volunteer_categories %><br>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <%= select_tag :project_ids, options_from_collection_for_select(Project.all.order(:name), :id, :name), { :multiple => true, class: "form-control"}  %>
+            </div>
+            <div class="col-md-6">
+              <%= select_tag :volunteer_category_ids, options_from_collection_for_select(VolunteerCategory.all.order(:name), :id, :option_formatter), { :multiple => true, class: "form-control"}  %>
+            </div>
           </div>
         </div>
       </div>
