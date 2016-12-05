@@ -19,6 +19,15 @@
               <%= select_tag :interest_ids, option_groups_from_collection_for_select(InterestCategory.all, :interests, :name, :id, :option_formatter), { :multiple => true, class: "form-control"}  %>
             </div>
           </div>
+          <div class="row">&nbsp;</div>
+          <div class="row">
+            <div class="col-md-2">
+              <%= label_tag :volunteer_categories %><br>
+            </div>
+            <div class="col-md-8">
+              <%= select_tag :volunteer_category_ids, options_from_collection_for_select(VolunteerCategory.all, :id, :option_formatter), { :multiple => true, class: "form-control"}  %>
+            </div>
+          </div>
 
         </div>
 

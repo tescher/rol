@@ -110,6 +110,24 @@
             <%= select_tag(:interest_ids, option_groups_from_collection_for_select(InterestCategory.all, :interests, :name, :id, :option_formatter, @object.interest_ids), { :multiple => true, class: "form-control read-only"})  %>
           </div>
         </div>
+
+        <div class="row">
+          <div class="col-xs-1">
+            <%= label_tag :volunteer_categories %>
+          </div>
+          <div class="col-xs-3">
+            <%= select_tag(:source_volunteer_category_ids, options_from_collection_for_select(VolunteerCategory.all, :id, :option_formatter, @source_volunteer.volunteer_category_ids), { :multiple => true, class: "form-control read-only"})  %>
+          </div>
+          <div class="col-xs-2">
+            <%= select_tag(:use_categories, options_for_select([ "Add", "Replace", "Ignore" ], "Add"), {class: "form-control"}) %>
+          </div>
+          <div class="col-xs-1">
+            <%= label_tag :volunteer_categories %>
+          </div>
+          <div class="col-xs-3">
+            <%= select_tag(:volunteer_category_ids, options_from_collection_for_select(VolunteerCategory.all, :id, :option_formatter, @object.volunteer_category_ids), { :multiple => true, class: "form-control read-only"})  %>
+          </div>
+        </div>
       </div>
     </div>
 

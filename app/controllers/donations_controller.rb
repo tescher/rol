@@ -35,6 +35,11 @@ class DonationsController < ApplicationController
         where_clause += "donations.receipt_sent IS FALSE"
       end
 
+      if !params[:donation_type_ids].nil? && params[:donation_type_ids].count > 0
+        where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
+        where_clause += "donation_types.id IN (" + params[:donation_type_ids].join(",") + ")"
+      end
+
       where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
       if @report_type == 1
         where_clause += "donation_types.non_monetary IS FALSE"
@@ -57,6 +62,10 @@ class DonationsController < ApplicationController
           organization_where = organization_where.length > 0 ? organization_where + " AND " : organization_where
           organization_where += "LOWER(organizations.city) LIKE #{Organization.sanitize(params[:city].downcase + "%")}"
         end
+        if !params[:zip].empty?
+          organization_where = organization_where.length > 0 ? organization_where + " AND " : organization_where
+          organization_where += "LOWER(organizations.zip) LIKE #{Organization.sanitize(params[:zip].downcase + "%")}"
+        end
 
         @organization_donations = Donation.joins(:organization, :donation_type).where(organization_where).order("organizations.name, donations.date_received")
       end
@@ -67,6 +76,10 @@ class DonationsController < ApplicationController
         if !params[:city].empty?
           volunteer_where = volunteer_where.length > 0 ? volunteer_where + " AND " : volunteer_where
           volunteer_where += "LOWER(volunteers.city) LIKE #{Volunteer.sanitize(params[:city].downcase + "%")}"
+        end
+        if !params[:zip].empty?
+          volunteer_where = volunteer_where.length > 0 ? volunteer_where + " AND " : volunteer_where
+          volunteer_where += "LOWER(volunteers.zip) LIKE #{Volunteer.sanitize(params[:zip].downcase + "%")}"
         end
         @volunteer_donations = Donation.joins(:volunteer, :donation_type).where("donations.volunteer_id IS NOT NULL").where(volunteer_where).order("volunteers.last_name, volunteers.first_name, donations.date_received")
       end

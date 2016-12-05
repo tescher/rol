@@ -132,4 +132,9 @@ module ApplicationHelper
     @class_name = controller_name.classify
   end
 
+  # Safe get for attributes that might not exist but should report as zero in that case
+  def safe_attr(obj, attr)
+    obj.try(attr).presence || "0"
+  end
+
 end
