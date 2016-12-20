@@ -12,19 +12,19 @@ class WorkdaysReportTest < ActionDispatch::IntegrationTest
     @project3.save
     @project4 = Project.new(name: "Build #4", id: 4000)
     @project4.save
-    @workday1 = Workday.new(name: "Workday #1", project: @project1, workdate: 6.days.ago.to_s(:db))
+    @workday1 = Workday.new(name: "Workday #1", project: @project1, workdate: 6.days.ago.to_s(:db), id: 1000)
     @workday1.save
-    @workday2 = Workday.new(name: "Workday #2", project: @project1, workdate: 5.days.ago.to_s(:db))
+    @workday2 = Workday.new(name: "Workday #2", project: @project1, workdate: 5.days.ago.to_s(:db), id: 2000)
     @workday2.save
-    @workday3 = Workday.new(name: "Workday #3", project: @project2, workdate: 4.days.ago.to_s(:db))
+    @workday3 = Workday.new(name: "Workday #3", project: @project2, workdate: 4.days.ago.to_s(:db), id: 3000)
     @workday3.save
-    @workday4 = Workday.new(name: "Workday #4", project: @project2, workdate: 3.days.ago.to_s(:db))
+    @workday4 = Workday.new(name: "Workday #4", project: @project2, workdate: 3.days.ago.to_s(:db), id: 4000)
     @workday4.save
-    @workday5 = Workday.new(name: "Workday #5", project: @project3, workdate: 2.days.ago.to_s(:db))
+    @workday5 = Workday.new(name: "Workday #5", project: @project3, workdate: 2.days.ago.to_s(:db), id: 5000)
     @workday5.save
-    @workday6 = Workday.new(name: "Workday #6", project: @project4, workdate: 1.days.ago.to_s(:db))
+    @workday6 = Workday.new(name: "Workday #6", project: @project4, workdate: 1.days.ago.to_s(:db), id: 6000)
     @workday6.save
-    @workday7 = Workday.new(name: "Workday #7", project: @project4, workdate: 7.days.ago.to_s(:db))
+    @workday7 = Workday.new(name: "Workday #7", project: @project4, workdate: 7.days.ago.to_s(:db), id: 7000)
     @workday7.save
     @volunteer1 = Volunteer.new(first_name: "Volunteer", last_name: " #1")
     @volunteer1.save
@@ -319,14 +319,14 @@ class WorkdaysReportTest < ActionDispatch::IntegrationTest
     assert_select("div.container h4:nth-of-type(1)", "Project: Build #1")
     assert_select("div.container h5:nth-of-type(1)", "Distinct Project Volunteers: 1, Volunteer Shifts: 3, Volunteer Hours: 17.0")
     assert_select("div.container h5:nth-of-type(2)", "Distinct Project Organizations: 1, Organization Hours: 56.0")
-    assert_select("div.container ul.listing:nth-of-type(1) div.clickable:nth-of-type(2) li:nth-of-type(1) div.col-md-1:nth-of-type(1)", "1")
-    assert_select("div.container ul.listing:nth-of-type(1) div.clickable:nth-of-type(2) li:nth-of-type(1) div.col-md-1:nth-of-type(2)", "2.0")
-    assert_select("div.container ul.listing:nth-of-type(1) div.clickable:nth-of-type(2) li:nth-of-type(1) div.col-md-1:nth-of-type(3)", "1")
-    assert_select("div.container ul.listing:nth-of-type(1) div.clickable:nth-of-type(2) li:nth-of-type(1) div.col-md-1:nth-of-type(4)", "56.0")
-    assert_select("div.container ul.listing:nth-of-type(1) div.clickable:nth-of-type(1) li:nth-of-type(1) div.col-md-1:nth-of-type(1)", "2")
-    assert_select("div.container ul.listing:nth-of-type(1) div.clickable:nth-of-type(1) li:nth-of-type(1) div.col-md-1:nth-of-type(2)", "15.0")
-    assert_select("div.container ul.listing:nth-of-type(1) div.clickable:nth-of-type(1) li:nth-of-type(1) div.col-md-1:nth-of-type(3)", "0")
-    assert_select("div.container ul.listing:nth-of-type(1) div.clickable:nth-of-type(1) li:nth-of-type(1) div.col-md-1:nth-of-type(4)", "0")
+    assert_select("div.container ul.listing:nth-of-type(1) div.clickable:nth-of-type(1) li:nth-of-type(1) div.col-md-1:nth-of-type(1)", "1")
+    assert_select("div.container ul.listing:nth-of-type(1) div.clickable:nth-of-type(1) li:nth-of-type(1) div.col-md-1:nth-of-type(2)", "2.0")
+    assert_select("div.container ul.listing:nth-of-type(1) div.clickable:nth-of-type(1) li:nth-of-type(1) div.col-md-1:nth-of-type(3)", "1")
+    assert_select("div.container ul.listing:nth-of-type(1) div.clickable:nth-of-type(1) li:nth-of-type(1) div.col-md-1:nth-of-type(4)", "56.0")
+    assert_select("div.container ul.listing:nth-of-type(1) div.clickable:nth-of-type(2) li:nth-of-type(1) div.col-md-1:nth-of-type(1)", "2")
+    assert_select("div.container ul.listing:nth-of-type(1) div.clickable:nth-of-type(2) li:nth-of-type(1) div.col-md-1:nth-of-type(2)", "15.0")
+    assert_select("div.container ul.listing:nth-of-type(1) div.clickable:nth-of-type(2) li:nth-of-type(1) div.col-md-1:nth-of-type(3)", "0")
+    assert_select("div.container ul.listing:nth-of-type(1) div.clickable:nth-of-type(2) li:nth-of-type(1) div.col-md-1:nth-of-type(4)", "0")
 
     assert_select("div.container h4:nth-of-type(2)", "Project: Build #2")
     assert_select("div.container h5:nth-of-type(3)", "Distinct Project Volunteers: 0, Volunteer Shifts: 0, Volunteer Hours: 0")
