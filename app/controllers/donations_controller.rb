@@ -59,12 +59,27 @@ class DonationsController < ApplicationController
         end
 
         if !params[:city].empty?
-          organization_where = organization_where.length > 0 ? organization_where + " AND " : organization_where
-          organization_where += "LOWER(organizations.city) LIKE #{Organization.sanitize(params[:city].downcase + "%")}"
+          organization_where_city = ""
+          params[:city].split(",").each do |p|
+            organization_where_city = organization_where_city.length > 0 ? organization_where_city + " OR " : organization_where_city
+            organization_where_city += "LOWER(organizations.city) LIKE #{Organization.sanitize(p.strip.downcase + "%")}"
+          end
+          if organization_where_city.length > 0
+            organization_where = organization_where.length > 0 ? organization_where + " AND " : organization_where
+            organization_where += "(" + organization_where_city + ")"
+          end
         end
         if !params[:zip].empty?
-          organization_where = organization_where.length > 0 ? organization_where + " AND " : organization_where
-          organization_where += "LOWER(organizations.zip) LIKE #{Organization.sanitize(params[:zip].downcase + "%")}"
+          organization_where_zip = ""
+          params[:zip].split(",").each do |p|
+            organization_where_zip = organization_where_zip.length > 0 ? organization_where_zip + " OR " : organization_where_zip
+            organization_where_zip += "LOWER(organizations.zip) LIKE #{Organization.sanitize(p.strip.downcase + "%")}"
+          end
+          if organization_where_zip.length > 0
+            organization_where = organization_where.length > 0 ? organization_where + " AND " : organization_where
+            organization_where += "(" + organization_where_zip + ")"
+          end
+
         end
 
         @organization_donations = Donation.joins(:organization, :donation_type).where(organization_where).order("organizations.name, donations.date_received")
@@ -74,12 +89,26 @@ class DonationsController < ApplicationController
         @volunteer_report = true
         volunteer_where = where_clause
         if !params[:city].empty?
-          volunteer_where = volunteer_where.length > 0 ? volunteer_where + " AND " : volunteer_where
-          volunteer_where += "LOWER(volunteers.city) LIKE #{Volunteer.sanitize(params[:city].downcase + "%")}"
+          volunteer_where_city = ""
+          params[:city].split(",").each do |p|
+            volunteer_where_city = volunteer_where_city.length > 0 ? volunteer_where_city + " OR " : volunteer_where_city
+            volunteer_where_city += "LOWER(volunteers.city) LIKE #{Volunteer.sanitize(p.strip.downcase + "%")}"
+          end
+          if volunteer_where_city.length > 0
+            volunteer_where = volunteer_where.length > 0 ? volunteer_where + " AND " : volunteer_where
+            volunteer_where += "(" + volunteer_where_city + ")"
+          end
         end
         if !params[:zip].empty?
-          volunteer_where = volunteer_where.length > 0 ? volunteer_where + " AND " : volunteer_where
-          volunteer_where += "LOWER(volunteers.zip) LIKE #{Volunteer.sanitize(params[:zip].downcase + "%")}"
+          volunteer_where_zip = ""
+          params[:zip].split(",").each do |p|
+            volunteer_where_zip = volunteer_where_zip.length > 0 ? volunteer_where_zip + " OR " : volunteer_where_zip
+            volunteer_where_zip += "LOWER(volunteers.zip) LIKE #{Volunteer.sanitize(p.strip.downcase + "%")}"
+          end
+          if volunteer_where_zip.length > 0
+            volunteer_where = volunteer_where.length > 0 ? volunteer_where + " AND " : volunteer_where
+            volunteer_where += "(" + volunteer_where_zip + ")"
+          end
         end
         @volunteer_donations = Donation.joins(:volunteer, :donation_type).where("donations.volunteer_id IS NOT NULL").where(volunteer_where).order("volunteers.last_name, volunteers.first_name, donations.date_received")
       end

@@ -92,10 +92,10 @@
         <div class="actions pull-right">
           <% if !current_user.non_monetary %>
               <%= submit_tag "Monetary Donations", class: "btn btn-primary", onclick: "change_val('.request_format','html'); change_val('.report_type', '1'); return true;" %>
-              <%= submit_tag "Export", class: "btn btn-primary", onclick: "change_val('.request_format','xls'); change_val('.report_type', '1');" %>
+              <%= submit_tag "Export", class: "btn btn-primary", onclick: "change_val('.request_format','xls'); change_val('.report_type', '1'); return true;" %>
           <% end %>
-          <%= submit_tag "Non-Monetary Donations", class: "btn btn-primary", onclick: "change_val('.request_format','html'); change_val('.report_type', '2');; return true;" %>
-          <%= submit_tag "Export", class: "btn btn-primary", onclick: "change_val('.request_format','xls'); change_val('.report_type', '2');" %>
+          <%= submit_tag "Non-Monetary Donations", class: "btn btn-primary", onclick: "change_val('.request_format','html'); change_val('.report_type', '2'); return true;" %>
+          <%= submit_tag "Export", class: "btn btn-primary", onclick: "change_val('.request_format','xls'); change_val('.report_type', '2'); return true;" %>
           <%= link_to 'Back', root_path, class: "btn btn-primary" %>
         </div>
       </div>
