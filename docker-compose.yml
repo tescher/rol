@@ -13,8 +13,8 @@ services:
     container_name: rails-rol
     build: .
     image: rails
-    volumes:
-      - /Users/thebitguru/Desktop/Work/Development/Projects/rol/code:/usr/src/app
+    volumes_from:
+      - container:rol-sync:rw
     ports:
       - "3000:3000"
     depends_on:
