@@ -52,4 +52,5 @@ module DonationsHelper
                        }]
     [donation_years, donations_by_year, year_totals]
   end
+
 end

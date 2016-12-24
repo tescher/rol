@@ -354,6 +354,5 @@ function add_fields_and_close(link, association, content, parent_selector) {
 
 function change_val(selector, value) {
     $(selector).val(value);
-    return true;
 }
 
