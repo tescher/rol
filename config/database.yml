@@ -16,6 +16,7 @@ development:
   username: hfh_rol_dev
   password: ^nHYebFYbsd9
   timeout: 5000
+  host: postgresql-common
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

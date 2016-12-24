@@ -9,7 +9,7 @@ Todo: add overview.
 You can setup this project on your local machine or a remote server using the following steps.
 
 1. Clone the repository from the github project.
-2. Install the required gems: `gem install`
+2. Install the required gems: `bundle install`
 3. Create the database and load the seed data (see the Database section for details).
 4. Run the server: `bin/rails server`
 
