@@ -110,6 +110,7 @@ GEM
     rack (1.6.5)
     rack-test (0.6.3)
       rack (>= 1.0)
+    railroady (1.5.2)
     rails (4.2.0)
       actionmailer (= 4.2.0)
       actionpack (= 4.2.0)
@@ -201,6 +202,7 @@ DEPENDENCIES
   paranoia (~> 2.0)
   pg
   possessive
+  railroady
   rails (= 4.2.0)
   rails_12factor
   sass-rails (~> 5.0)
@@ -210,3 +212,9 @@ DEPENDENCIES
   unicorn (= 4.8.3)
   web-console (~> 2.0)
   will_paginate (= 3.0.7)
+
+RUBY VERSION
+   ruby 2.1.5p273
+
+BUNDLED WITH
+   1.13.6

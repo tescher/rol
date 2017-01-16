@@ -1,7 +1,7 @@
 include ApplicationHelper
 
 class WorkdaysController < ApplicationController
-  before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search, :report, :add_participants, :workday_summary, :participant_report]
+  before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search, :report, :add_participants, :confirm_launch_self_tracking, :launch_self_tracking, :workday_summary, :participant_report]
   before_action :admin_user,     only: [:import, :import_form]
 
 
@@ -277,6 +277,30 @@ class WorkdaysController < ApplicationController
     @workday = Workday.find(params[:id])
     session[:workday_id] = @workday.id
     @project = Project.find(@workday.project_id)
+  end
+
+  def confirm_launch_self_tracking
+    @workday = Workday.find(params[:id])
+    session[:workday_id] = @workday.id
+    @project = Project.find(@workday.project_id)
+  end
+
+  def launch_self_tracking
+    @workday = Workday.find(params[:id])
+    session[:workday_id] = @workday.id
+    @project = Project.find(@workday.project_id)
+
+    # Create a token for this session
+    new_token = "create_here"
+
+    # Logout the user
+    log_out
+
+    # Save the token in the session
+    session[:self_tracking_token] = new_token
+
+    # Redirect to the new self_tracking view
+    redirect_to("/")
   end
 
   def workday_summary

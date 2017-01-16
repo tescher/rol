@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161108052146) do
+ActiveRecord::Schema.define(version: 20170116001609) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -224,6 +224,7 @@ ActiveRecord::Schema.define(version: 20161108052146) do
     t.integer  "pending_volunteer_id"
     t.datetime "deleted_at"
     t.string   "deleted_reason"
+    t.boolean  "needs_review",             default: false
   end
 
   add_index "volunteers", ["church_id"], name: "index_volunteers_on_church_id", using: :btree

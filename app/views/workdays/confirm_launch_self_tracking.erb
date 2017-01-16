@@ -1,0 +1,11 @@
+<% provide(:title, 'Volunteer Self Tracking') %>
+<h1>Volunteer Self Tracking</h1>
+
+<!-- TODO: This can use better copy. -->
+<p>The self tracking functionality allows the volunteers to check themselves in and out. To secure the system your personal account will be logged out.</p>
+
+<p>For <%= @project.name %> - <%= @workday.name %> - <%= @workday.workdate.strftime("%A, %B %-d, %Y") %></p>
+
+<%= link_to({ :action => "launch_self_tracking" }, :class => "btn btn-primary") do %>
+  <span class="glyphicon glyphicon-share-alt"></span> Launch...
+<% end %>

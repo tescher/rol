@@ -79,7 +79,7 @@ syncs:
     # this does not user groupmap but rather configures the server to map
     # sync_groupid: '6000'
 
-    watch_excludes: ['.*/.git', '.*/node_modules', '.*/bower_components', '.*/sass-cache', '.*/.sass-cache', '.*/.sass-cache', '.coffee', '.scss', '.sass', '.gitignore']
+    watch_excludes: ['.*/.git', './tmp', '.*/node_modules', '.*/bower_components', '.*/sass-cache', '.*/.sass-cache', '.*/.sass-cache', '.coffee', '.scss', '.sass', '.gitignore']
 
     # optional: use this to switch to fswatch verbose mode
     watch_args: '-v'

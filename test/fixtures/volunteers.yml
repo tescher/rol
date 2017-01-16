@@ -81,3 +81,18 @@ master:
   work_phone:
   mobile_phone:
   notes: A bunch of notes
+
+pending_one:
+  first_name: Tim
+  last_name: Smith
+  needs_review: true
+
+pending_two:
+  first_name: Tom
+  last_name: Jones
+  needs_review: true
+
+pending_three:
+  first_name: Jane
+  last_name: Smith
+  needs_review: true

@@ -212,7 +212,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
 
   test "New volunteer from pending volunteer" do
     log_in_as(@user)
-    @pending_volunteer = pending_volunteers(:one)
+    @pending_volunteer = volunteers(:pending_one)
     get new_volunteer_path(pending_volunteer_id: @pending_volunteer)
     assert_template 'new'
     assert_select "[name*=first_name]" do
@@ -222,7 +222,9 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     post volunteers_path(@volunteer), volunteer: {first_name: @pending_volunteer.first_name,
                                                  last_name: @pending_volunteer.last_name, pending_volunteer_id: @pending_volunteer.id}
     @pending_volunteer.reload
-    assert_equal(@pending_volunteer.resolved, true)
+    # TODO: I need to understand and fix this logic - Farhan
+    assert_equal(@pending_volunteer.needs_review, true)
+    assert_not_equal(@pending_volunteer.deleted_at, nil)
   end
 
 

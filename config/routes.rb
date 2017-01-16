@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   delete 'logout'  => 'sessions#destroy'
 
   resources :pending_volunteers do
+    post :edit, :update
     member do
       get 'match'
     end
@@ -51,6 +52,8 @@ Rails.application.routes.draw do
     end
     member do
       get 'add_participants'
+      get 'confirm_launch_self_tracking'
+      get 'launch_self_tracking'
     end
   end
 

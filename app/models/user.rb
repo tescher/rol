@@ -7,7 +7,10 @@ class User < ActiveRecord::Base
   validates :name, presence: true
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
   has_secure_password
-  validates :password, length: { minimum: Utilities::Utilities.system_setting(:min_password_length) }, allow_blank: true
+  # TODO: Hard coding this for now. Will have to figure out how to properly dynamiccally get this from the database.
+  # validates :password, length: { minimum: Utilities::Utilities.system_setting(:min_password_length) }, allow_blank: true
+  validates :password, length: { minimum: 6 }, allow_blank: true
+  # validates :password, length: { minimum: Utilities::Utilities.system_setting(:min_password_length) }, allow_blank: true
   validate :only_one_donation_security_type
 
   # Returns the hash digest of the given string.

@@ -1,0 +1,17 @@
+
+----------------
+
+* Continue working on the PendingVolunteer merge. Test the Volunteer--Volunteer merge as well.
+* Launch point on the "Add Participant" page on workday.
+* Migration for converting the existing pending volunteers.
+* Add waiver date to the grid.
+
+
+TODO for later
+ * How to lookup the password min length from db for User class? See user model.
+ * Will new volunteers have a different set of interests?
+ * Is it OK to assume that all pending volunteers will be resolved when the upgrade is done?  This way we don't have to worry about conversions.
+ * Delete Volunteer.pending_volunteer_id
+
+
+* See if there is a different way to label the "use" fields on the merge screens (see resolve_fields_table).

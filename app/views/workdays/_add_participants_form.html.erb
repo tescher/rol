@@ -50,6 +50,10 @@
     <div class="row">
       <div class="col-md-11">
         <div class="actions pull-right">
+          <!-- TODO: Figure out whether I need to duplicate form_actions partial here to properly position the additional button. -->
+          <%= link_to({ :action => "confirm_launch_self_tracking" }, :class => "btn btn-primary") do %>
+            <span class="glyphicon glyphicon-list-alt"></span>  Launch Self Tracking...
+          <% end %>
 
           <%= f.hidden_field(:project_id) %>
           <%= render partial: "shared/form_actions", locals: {f: f, cancel: workdays_path(project_id: @project.id)} %>

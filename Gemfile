@@ -76,6 +76,8 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  gem 'railroady'
 end
 
 group :production do
@@ -83,5 +85,3 @@ group :production do
   gem 'rails_12factor'
   gem 'unicorn',        '4.8.3'
 end
-
-

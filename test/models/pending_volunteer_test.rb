@@ -6,14 +6,12 @@ class PendingVolunteerTest < ActiveSupport::TestCase
   end
 
   test "first and last name present" do
-    @pending_volunteer = PendingVolunteer.new
+    @pending_volunteer = Volunteer.pending.new
     @pending_volunteer.first_name = "     "
     assert_not @pending_volunteer.valid?
     @pending_volunteer.first_name = "Example"
     @pending_volunteer.last_name = "  "
     assert_not @pending_volunteer.valid?
   end
-
-
 
 end

@@ -226,7 +226,7 @@ class VolunteersController < ApplicationController
       @allow_stay = true
       session[:volunteer_id] = @volunteer.id
       if params[:pending_volunteer_id]
-        @pending_volunteer = PendingVolunteer.find(params[:pending_volunteer_id])
+        @pending_volunteer = Volunteer.pending.find(params[:pending_volunteer_id])
         @volunteer.pending_volunteer_id = @pending_volunteer.id
         ["first_name", "last_name", "address", "city", "state", "zip", "phone", "notes", "interests"].each do |column|
           if column == "phone"
@@ -251,11 +251,12 @@ class VolunteersController < ApplicationController
     if @volunteer.save    # Save successful
       from_pending_volunteers = false
       if @volunteer.pending_volunteer_id
-        pending_volunteer = PendingVolunteer.find(@volunteer.pending_volunteer_id)
-        if !pending_volunteer.resolved
+        pending_volunteer = Volunteer.pending.find(@volunteer.pending_volunteer_id)
+        # TODO: Confirm and test.
+        if !pending_volunteer.needs_review
           from_pending_volunteers = true #If coming from an unresolved pending volunteer, need to go back to list
         end
-        pending_volunteer.resolved = true
+        pending_volunteer.needs_review = true
         pending_volunteer.save
       end
       session[:volunteer_id] = @volunteer.id
