@@ -1,3 +1,4 @@
+require "byebug"
 include WorkdaysHelper
 include DonationsHelper
 include ApplicationHelper
@@ -247,18 +248,19 @@ class VolunteersController < ApplicationController
   # POST /volunteers
   # POST /volunteers.json
   def create
-    @volunteer = Volunteer.new(volunteer_params)
-    if @volunteer.save    # Save successful
+    # If coming from the pending volunteer flow, we convert the original pending
+    # volunteer record.
+    if volunteer_params[:pending_volunteer_id].present?
+      from_pending_volunteers = true
+      @volunteer = Volunteer.pending.find(volunteer_params[:pending_volunteer_id])
+      @volunteer.needs_review = false
+      @volunteer.assign_attributes(volunteer_params)
+    else
       from_pending_volunteers = false
-      if @volunteer.pending_volunteer_id
-        pending_volunteer = Volunteer.pending.find(@volunteer.pending_volunteer_id)
-        # TODO: Confirm and test.
-        if !pending_volunteer.needs_review
-          from_pending_volunteers = true #If coming from an unresolved pending volunteer, need to go back to list
-        end
-        pending_volunteer.needs_review = true
-        pending_volunteer.save
-      end
+      @volunteer = Volunteer.new(volunteer_params)
+    end
+
+    if @volunteer.save    # Save successful
       session[:volunteer_id] = @volunteer.id
       if params[:volunteer][:dialog] == "true"
         @workday = session[:workday_id]
@@ -412,6 +414,7 @@ class VolunteersController < ApplicationController
         end
 
         @source_volunteer.deleted_reason = "Merged with #{@object.id}"
+        @source_volunteer.save
         @source_volunteer.destroy!
 
         flash[:success] = "Volunteers merged"

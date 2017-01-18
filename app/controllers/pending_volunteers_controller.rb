@@ -63,10 +63,9 @@ class PendingVolunteersController < ApplicationController
 
       if @volunteer.update_attributes(volunteer_params)
         flash[:success] = "Volunteer updated"
+        @object.deleted_reason = "Merged pending volunteer into #{@volunteer.id}"
+        @object.save
         @object.destroy
-        # @object.needs_review = false
-        # @object.volunteer_id = @volunteer.id
-        # @object.save!
         redirect_to pending_volunteers_path
       else
         @volunteer.errors.each {|attr, error| @object.errors.add(attr, error)}
@@ -95,7 +94,6 @@ class PendingVolunteersController < ApplicationController
 
   def create
     @object = Volunteer.pending.new(pending_volunteer_params)
-    @object.needs_review = true
     @object.work_phone = @object.mobile_phone = @object.home_phone
     status = verify_google_recptcha(GOOGLE_SECRET_KEY,params["g-recaptcha-response"])
     if status && @object.save  # Order is important here!

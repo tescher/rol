@@ -1,5 +1,11 @@
+ * Addressed Tim's PQA comment.
+ * Fixed the remaining test for pending volunteer workflow.
+ * Now setting the deleted_reason when merging.
+ * Fixed a bug in VolunteerController.merge where we weren't saving the delete_reason when merging volunteers.  Added test case to test this.
 
 ----------------
+
+
 
 * Continue working on the PendingVolunteer merge. Test the Volunteer--Volunteer merge as well.
 * Launch point on the "Add Participant" page on workday.
@@ -15,3 +21,15 @@ TODO for later
 
 
 * See if there is a different way to label the "use" fields on the merge screens (see resolve_fields_table).
+
+
+
+TESTING NOTES
+-------------
+Starting from scratch...
+rake db:reset RAILS_ENV=test
+rake test
+
+
+Running a specific test...
+rake test TEST=test/integration/volunteers_edit_test.rb
