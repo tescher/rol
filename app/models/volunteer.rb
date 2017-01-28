@@ -63,6 +63,10 @@ class Volunteer < ActiveRecord::Base
     resolve_fields
   end
 
-
+  # Returns a fuzzy match string that can be used in a where condition.  Generally used for
+  # for first_name, last_name, and city fields.
+  def self.get_fuzzymatch_where_clause(field_name, field_value)
+    return "(soundex(#{field_name}) = soundex(#{self.sanitize(field_value)}) OR (LOWER(#{field_name}) LIKE #{self.sanitize(field_value.downcase+ "%")}))"
+  end
 
 end

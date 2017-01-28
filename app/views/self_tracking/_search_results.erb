@@ -1,0 +1,45 @@
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title">Volunteer Search Results</h4>
+    </div>
+    <div class="modal-body">
+      <table class="table no-row-border header-border table-striped">
+        <thead>
+          <tr>
+            <th class="col-md-2">Name</th>
+            <th class="col-md-2">City</th>
+            <th class="col-md-3">Phone (last 3 digits)</th>
+            <th class="col-md-2">&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%
+          if @results.each do |volunteer|
+            %>
+            <tr>
+              <td><%= volunteer.first_name + " " + volunteer.last_name %></td>
+              <td><%= volunteer.city %></td>
+              <td><%= volunteer.mobile_phone %></td>
+              <td>
+                <button type="button" class="btn btn-default btn-xs">Check-in...</button>
+              </td>
+            </tr>
+            <% end.empty? %>
+              <tr><td colspan="4">No volunteers found with the given search criteria.</td></tr>
+            <% end %>
+          </tbody>
+        </table>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" onclick="return showVolunteerSearch('<%= self_tracking_volunteer_search_path %>');">
+        Search again...
+      </button>
+      <button type="button" class="btn btn-primary" onclick="return showVolunteerSearch('<%= self_tracking_volunteer_search_path %>');">
+        <span class="glyphicon glyphicon-pencil"></span> Sign-up now...
+      </button>
+      <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+    </div>
+  </div>
+</div>

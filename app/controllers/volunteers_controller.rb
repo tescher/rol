@@ -1,4 +1,3 @@
-require "byebug"
 include WorkdaysHelper
 include DonationsHelper
 include ApplicationHelper
@@ -92,7 +91,7 @@ class VolunteersController < ApplicationController
               if ["last_name", "first_name", "city"].include?(index[0])
                 if index[1].strip.length > 0
                   where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
-                  where_clause += "(soundex(#{index[0]}) = soundex(#{Volunteer.sanitize(index[1])}) OR (LOWER(#{index[0]}) LIKE #{Volunteer.sanitize(index[1].downcase+ "%")}))"
+                  where_clause += Volunteer.get_fuzzymatch_where_clause(index[0], index[1])
                 end
               end
               if index[0] == "interest_ids"

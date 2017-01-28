@@ -2,10 +2,22 @@
 <h1>Volunteer Self Tracking</h1>
 
 <!-- TODO: This can use better copy. -->
-<p>The self tracking functionality allows the volunteers to check themselves in and out. To secure the system your personal account will be logged out.</p>
+<p>
+The volunteer self tracking allows the volunteers to check themselves
+in and out. To secure the system, your will be logged out of the system.
+</p>
 
 <p>For <%= @project.name %> - <%= @workday.name %> - <%= @workday.workdate.strftime("%A, %B %-d, %Y") %></p>
 
-<%= link_to({ :action => "launch_self_tracking" }, :class => "btn btn-primary") do %>
-  <span class="glyphicon glyphicon-share-alt"></span> Launch...
-<% end %>
+<div class="row">
+  <div class="col-md-11">
+    <div class="actions pull-right">
+      <%= link_to(self_tracking_launch_path(@workday.id), :class => "btn btn-primary") do %>
+        <span class="glyphicon glyphicon-share-alt"></span> Launch...
+      <% end %>
+      <%= link_to(add_participants_workday_path(@workday, project_id: @project.id), :class => "btn btn-default") do %>
+        <span class="glyphicon glyphicon-remove"></span> Cancel
+      <% end %>
+    </div>
+  </div>
+</div>

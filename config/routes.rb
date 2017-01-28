@@ -53,8 +53,14 @@ Rails.application.routes.draw do
     member do
       get 'add_participants'
       get 'confirm_launch_self_tracking'
-      get 'launch_self_tracking'
     end
+  end
+
+  scope "/self_tracking" do
+    root to: "self_tracking#index", as: "self_tracking_index"
+    get 'launch/:id', to: 'self_tracking#launch', as: 'launch'
+    get 'volunteer_search', to: 'self_tracking#volunteer_search', as: 'self_tracking_volunteer_search'
+    # get '/self_tracking/check_in', to: 'self_tracking#check_in', as: 'self_tracking_check_in'
   end
 
   get 'workday_volunteers/import' => 'workday_volunteers#import_form'
