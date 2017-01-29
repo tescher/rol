@@ -1,0 +1,47 @@
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title">Volunteer Search Results</h4>
+    </div>
+    <div class="modal-body">
+      <% if @results.empty? %>
+        <p>No volunteers found with the given search criteria.</p>
+      <% else %>
+        <table class="table no-row-border header-border table-striped">
+          <thead>
+            <tr>
+              <th class="col-md-3">Name</th>
+              <th class="col-md-3">City</th>
+              <th class="col-md-4">Phone (last 3 digits)</th>
+              <th class="col-md-2">&nbsp;</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @results.each do |volunteer| %>
+              <tr>
+                <td><%= volunteer.first_name + " " + volunteer.last_name %></td>
+                <td><%= volunteer.city %></td>
+                <td><%= volunteer.mobile_phone.present? ? volunteer.mobile_phone.last(3) : "&nbsp;".html_safe %></td>
+                <td>
+                  <button type="button" class="btn btn-default btn-xs"
+                  onclick="return loadModalDialog('#modalDialog', '<%= self_tracking_check_in_path(volunteer) %>', hookupTimepicker);"
+                  >Check-in...</button>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+      <% end %>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" onclick="return loadModalDialog('#modalDialog', '<%= self_tracking_volunteer_search_path %>');">
+        Search again
+      </button>
+      <button type="button" class="btn btn-primary" onclick="return launchVolunteerSignup('#modalDialog', '<%= new_pending_volunteer_path(:launched_from_self_tracking => "yes") %>');">
+        <span class="glyphicon glyphicon-pencil"></span> Sign-up...
+      </button>
+      <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+    </div>
+  </div>
+</div>

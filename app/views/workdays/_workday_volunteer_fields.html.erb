@@ -1,5 +1,8 @@
 <tr class="hide_on_remove">
-  <td><%= volunteer.first_name + " " + volunteer.last_name %></td>
+  <td>
+    <%= volunteer.first_name + " " + volunteer.last_name %>
+    <% if volunteer.needs_review %> <span class="text-muted">- Pending Volunteer</span><% end %>
+  </td>
   <td>
     <div class='input-group date' id='worktimepicker'>
       <%= f.text_field :start_time,  value: f.object.start_time.nil? ? "" : f.object.start_time.strftime("%l:%M %p"), class: "workdayHoursCalc", autofocus: 'true' %>

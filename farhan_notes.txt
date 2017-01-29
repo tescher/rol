@@ -1,24 +1,26 @@
-Started implementing the volunteer self-tracking functionality.
+Implemented most of the functionality, now working on the test cases.
 * Qualified the button styling a little so we can use btn-default with proper font color.
 * Refactored the soundex where clause into Volunteer.get_fuzzymatch_where_clause.
 * Committing before I delete some of the sensitive data.
+* Made the flash messages dismissible.
 
 ----------------
-* Expire self tracking after a day (currently it doesn't seem to have a limit).
-* Fix the launching url reference (it's broken now that I am using scope in routes).
+* Write the tests.
+* Delete the *out.xml files.
 
 
 TODO for later
  * Do I really need the token or will saving in session suffice?
- * Is it OK to assume that all pending volunteers will be resolved when the upgrade is done?  This way we don't have to worry about conversions.
- * Delete Volunteer.pending_volunteer_id
- * See if there is a different way to label the "use" fields on the merge screens (see resolve_fields_table).
+ * Eventually delete Volunteer.pending_volunteer_id
 
 
 QUESTIONS
-* Do I need to worry about pagination on the check-in/check-out listing table.
-* Do I need to worry about the organizations?
+* Do we need to worry about pagination on the check-in/check-out listing table.
+* Do we need to worry about the organizations in any way in this flow?
+ * Is it OK to assume that all pending volunteers will be resolved when upgrading?  This way we don't have to worry about conversions.
+* Pagination on search results.
 * Should we require at least three characters of the last name in the search?
+* Do I need recaptcha on the new volunteer sign-up page on the self-sign-in flow?
 
 
 TESTING NOTES

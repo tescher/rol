@@ -58,9 +58,10 @@ Rails.application.routes.draw do
 
   scope "/self_tracking" do
     root to: "self_tracking#index", as: "self_tracking_index"
-    get 'launch/:id', to: 'self_tracking#launch', as: 'launch'
+    get 'launch/:id', to: 'self_tracking#launch', as: 'self_tracking_launch'
     get 'volunteer_search', to: 'self_tracking#volunteer_search', as: 'self_tracking_volunteer_search'
-    # get '/self_tracking/check_in', to: 'self_tracking#check_in', as: 'self_tracking_check_in'
+    get 'check_in/:id', to: 'self_tracking#check_in', as: 'self_tracking_check_in'
+    get 'checkout/:workday_volunteer_id', to: 'self_tracking#checkout', as: 'self_tracking_checkout'
   end
 
   get 'workday_volunteers/import' => 'workday_volunteers#import_form'

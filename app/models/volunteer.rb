@@ -19,6 +19,13 @@ class Volunteer < ActiveRecord::Base
     Volunteer.unscoped.where(needs_review: true, deleted_at: nil)
   end
 
+  # Special method for getting all volunteers including pending, but excluding the
+  # deleted ones.
+  def self.including_pending
+    Volunteer.unscope(where: :needs_review)
+    # Volunteer.unscoped.where(deleted_at: nil)
+  end
+
   accepts_nested_attributes_for :donations, :allow_destroy => true
 
 

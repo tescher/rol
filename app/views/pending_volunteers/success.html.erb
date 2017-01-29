@@ -5,6 +5,13 @@
 
 <% provide(:title, "New Volunteer") %>
 <h1> <%=Utilities::Utilities.system_setting(:org_short_title)%> Volunteer Sign-up</h1>
-<h2>Success! Thank You!</h2>
 
-<h2><u><%= link_to "Return to " + Utilities::Utilities.system_setting(:org_short_title), (session[:referer] || Utilities::Utilities.system_setting(:org_site)) %></u></h2>
+<% if @launched_from_self_tracking == "yes" %>
+  <p>
+    You have successfully signed up, you can now <a href="javascript:void();" onClick="return continueCheckinAfterSignup('<%= self_tracking_check_in_path(@object.id, :newly_signed_up => "yes") %>');">check-in</a>.
+  </p>
+<% else %>
+  <h2>Success! Thank You!</h2>
+
+  <h2><u><%= link_to "Return to " + Utilities::Utilities.system_setting(:org_short_title), (session[:referer] || Utilities::Utilities.system_setting(:org_site)) %></u></h2>
+<% end %>

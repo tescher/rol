@@ -1,64 +1,62 @@
 <% provide(:title, 'Volunteer Self Tracking') %>
 <h1>Self Tracking for <%= @workday.name %></h1>
-<!-- <h4 class="center">For <%= @project.name %> &#45; <%= @workday.name %> &#45; <%= @workday.workdate.strftime("%A, %B %&#45;d, %Y") %></h4> -->
-<!-- <h5 class="center"><%= link_to "(edit)", edit_workday_path(@workday) %></h5> -->
 
-
-<table class="table no-row-border header-border table-striped">
-  <thead>
-    <tr>
-      <th class="col-md-3">Name</th>
-      <th class="col-md-2">Check-in Time</th>
-      <th class="col-md-2">Waiver</th>
-      <th class="col-md-2">&nbsp;</th>
-    </tr>
-  </thead>
-  <tbody>
-      <%
-      if @workday.workday_volunteers.each do |workday_volunteer|
-          volunteer = workday_volunteer.volunteer
-        %>
+<% if @workday.workday_volunteers.empty? %>
+  <p>No volunteers have signed in yet.</p>
+<% else %>
+  <table class="table no-row-border header-border table-striped">
+    <thead>
+      <tr>
+        <th class="col-md-3">Name</th>
+        <th class="col-md-2">Check-in Time</th>
+        <th class="col-md-2">Waiver</th>
+        <th class="col-md-2">Check-out</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @workday.workday_volunteers.each do |workday_volunteer|
+        volunteer = workday_volunteer.volunteer %>
         <tr <% if workday_volunteer.end_time.present? %>class="text-muted"<% end %>>
-            <td><%= volunteer.first_name + " " + volunteer.last_name %></td>
-            <td>
-                <%= workday_volunteer.start_time.strftime("%l:%M %p") %>
-            </td>
-            <td>
-                <% if volunteer.waiver_date.blank? %>
-                    <span class="text-danger"><em><i class="glyphicon glyphicon-exclamation-sign"></i> Missing</em></span>
-                <% else %>
-                    <span class="text-muted"><%= volunteer.waiver_date.strftime("%m/%d/%Y") %></span>
-                <% end %>
-            </td>
-            <td>
-                <% if workday_volunteer.end_time.blank? %>
-                    Check-out
-                <% else %>
-                    Checked out at <%= workday_volunteer.end_time.strftime("%l:%M %p") %>
-                <% end %>
-            </td>
-        </tr>
-    <% end.empty? %>
-        <tr><td colspan="4">No volunteers have signed in yet.</td></tr>
-    <% end %>
-  </tbody>
-</table>
+          <td><%= volunteer.name %></td>
+          <td>
+            <%= workday_volunteer.start_time.strftime("%l:%M %p") %>
+          </td>
+          <td>
+            <% if volunteer.waiver_date.blank? %>
+              <span class="text-danger"><em><i class="glyphicon glyphicon-exclamation-sign"></i> Missing</em></span>
+            <% else %>
+              <span class="text-muted"><%= volunteer.waiver_date.strftime("%m/%d/%Y") %></span>
+            <% end %>
+          </td>
+          <td>
+            <% if workday_volunteer.end_time.blank? %>
+            <button type="button" class="btn btn-default btn-xs"
+              onclick="return checkoutVolunteer('<%= j volunteer.name %>', '<%= self_tracking_checkout_path(workday_volunteer) %>');"
+              >Check-out</button>
+          <% else %>
+            Checked out at <%= workday_volunteer.end_time.strftime("%l:%M %p") %>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
 
 <div class="row">
-    <div class="col-md-12">
-        <div class="actions pull-right">
-            <div class="actions">
-                <button type="button" class="btn btn-primary" onclick="return showVolunteerSearch('<%= self_tracking_volunteer_search_path %>');">
-                    <span class="glyphicon glyphicon-log-in"></span> Check-in...
-                </button>
-            </div>
-        </div>
+  <div class="col-md-12">
+    <div class="actions pull-right">
+      <div class="actions">
+        <button type="button" class="btn btn-primary" onclick="return launchVolunteerSignup('#modalDialog', '<%= new_pending_volunteer_path(:launched_from_self_tracking => "yes") %>');">
+          <span class="glyphicon glyphicon-plus"></span> New Volunteer Sign-up...
+        </button>
+        <button type="button" class="btn btn-primary" onclick="return loadModalDialog('#modalDialog', '<%= self_tracking_volunteer_search_path %>');">
+          <span class="glyphicon glyphicon-log-in"></span> Check-in...
+        </button>
+      </div>
     </div>
+  </div>
 </div>
 
-<div class="modal fade" tabindex="-1" role="dialog" id="modalVolunteerSearch"></div>
-<div id="dialogSelectVolunteer"></div>
-<div id="dialogNewVolunteer"></div>
-<div id="dialogSearchOrganizations"></div>
-<div id="dialogSelectOrganization"></div>
-<div id="dialogNewOrganization"></div>
+<div class="modal fade" tabindex="-1" role="dialog" id="modalDialog"></div>

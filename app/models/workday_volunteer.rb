@@ -1,6 +1,6 @@
 class WorkdayVolunteer < ActiveRecord::Base
   belongs_to :workday
-  belongs_to :volunteer
+  belongs_to :volunteer, -> { unscope(where: :needs_review) }
 
   validates :workday_id, presence: true
   validates :volunteer_id, presence: true

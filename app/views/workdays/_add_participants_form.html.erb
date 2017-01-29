@@ -15,7 +15,7 @@
       </thead>
       <tbody class="add_volunteer_fields">
       <%= f.fields_for :workday_volunteers do |builder| %>
-          <%= render "workday_volunteer_fields", :f => builder, :volunteer => Volunteer.find(builder.object.volunteer_id) %>
+          <%= render "workday_volunteer_fields", :f => builder, :volunteer => Volunteer.including_pending.find(builder.object.volunteer_id) %>
       <% end %>
       </tbody>
     </table>
