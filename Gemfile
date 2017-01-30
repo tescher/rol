@@ -78,6 +78,10 @@ group :development do
   gem 'spring'
 
   gem 'railroady'
+
+  gem "timecop"
+  gem "guard"
+  gem "guard-minitest"
 end
 
 group :production do

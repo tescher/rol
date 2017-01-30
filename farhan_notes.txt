@@ -1,17 +1,14 @@
-Implemented most of the functionality, now working on the test cases.
-* Qualified the button styling a little so we can use btn-default with proper font color.
-* Refactored the soundex where clause into Volunteer.get_fuzzymatch_where_clause.
-* Committing before I delete some of the sensitive data.
-* Made the flash messages dismissible.
+Wrote the tests for the self-tracking controller.
+* Added guard-minitest for automatically running tests on file change.
 
 ----------------
-* Write the tests.
 * Delete the *out.xml files.
 
 
 TODO for later
  * Do I really need the token or will saving in session suffice?
  * Eventually delete Volunteer.pending_volunteer_id
+ * Add test case for checking pending volunteers on the add_participate page.
 
 
 QUESTIONS

@@ -1,7 +1,8 @@
 class SelfTrackingController < ApplicationController
-  before_action :has_valid_token, except: [ :launch ]
+  before_action :has_valid_workday, except: [ :launch ]
+  before_action :logged_in_user, only: [:launch]
 
-  def has_valid_token
+  def has_valid_workday
     if !session[:self_tracking_workday_id].present?
       flash[:danger] = "No workday found, please launch this feature again from the workday screen."
       redirect_to root_path
@@ -23,7 +24,7 @@ class SelfTrackingController < ApplicationController
     # Save the workday in the session
     session[:self_tracking_workday_id] = @workday.id
     session[:self_tracking_expires_at] = DateTime.now + 1   # Expire after 1 day
-    session[:self_tracking_launching_user_id] = @workday.id
+    session[:self_tracking_launching_user_id] = user_id
 
     redirect_to action: "index"
   end
