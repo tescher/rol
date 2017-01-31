@@ -11,10 +11,10 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: rol_development
+  database: <%= ENV["RAILS_DB_DATABASE"] || "rol_development" %>
   pool: 5
-  username: hfh_rol_dev
-  password: ^nHYebFYbsd9
+  username: <%= ENV["RAILS_DB_USER"] || "hfh_rol_dev" %>
+  password: <%= ENV["RAILS_DB_PASSWORD"] || "^nHYebFYbsd9" %>
   timeout: 5000
   host: localhost
   # host: postgresql-common
@@ -25,10 +25,10 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: rol_test
+  database: <%= ENV["RAILS_DB_DATABASE"] || "rol_test" %>
   pool: 5
-  username: hfh_rol_test
-  password: ^nHYebFYbsd9
+  username: <%= ENV["RAILS_DB_USER"] || "hfh_rol_test" %>
+  password: <%= ENV["RAILS_DB_PASSWORD"] || "^nHYebFYbsd9" %>
   timeout: 5000
   host: localhost
 
