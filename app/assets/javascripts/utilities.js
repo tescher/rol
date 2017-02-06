@@ -304,8 +304,7 @@ function add_fields_wire_up_events(start_node) {
 function loadDialog(id, data, position) {
     id = "#"+id;
     $(id).html(data);
-    $(id).dialog("enable");
-    $(id).dialog("open");
+    $(id).dialog().dialog("enable").dialog("open");
     if (position) {
         $(id).dialog("widget").position(position);
     }

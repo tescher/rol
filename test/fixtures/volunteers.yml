@@ -85,6 +85,7 @@ master:
 pending_one:
   first_name: Tim
   last_name: Smith
+  home_phone: 608-848-1234
   needs_review: true
 
 pending_two:

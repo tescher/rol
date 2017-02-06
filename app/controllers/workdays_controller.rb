@@ -291,7 +291,7 @@ class WorkdaysController < ApplicationController
     if (@objectName != "volunteer") && (@objectName != "organization")
       render partial: "Invalid parameter"
     else
-      @object = (@objectName == "volunteer") ? Volunteer.find(@objectId) : Organization.find(@objectId)
+	  @object = (@objectName == "volunteer") ? Volunteer.including_pending.find(@objectId) : Organization.find(@objectId)
       join = "INNER JOIN workday_#{@objectName}s ON workday_#{@objectName}s.workday_id = workdays.id"
       @workday_years = Workday.select("ROUND(EXTRACT(YEAR FROM workdays.workdate)) as year").joins(join).where("workday_" + @objectName + "s." + @objectName + "_id = '#{@object.id}'").group("year").order("year DESC")
       @workdays_by_year = Hash[@workday_years.map { |wy|

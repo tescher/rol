@@ -26,11 +26,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
         donation.date_received = n.day.ago.to_s(:db)
         donation.save
       end
-      workday_volunteer = WorkdayVolunteer.new
-      workday_volunteer.workday = workdays(:one)
-      workday_volunteer.volunteer = v
-      workday_volunteer.hours = 4
-      workday_volunteer.save
+	  workday_volunteer = WorkdayVolunteer.create(workday: workdays(:one), volunteer: v, hours: 4)
       interest1 = interests(:one)
       interest2 = interests(:two)
       interest3 = interests(:three)

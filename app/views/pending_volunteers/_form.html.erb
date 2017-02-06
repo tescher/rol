@@ -97,11 +97,11 @@
            column_height = (total_height.to_f / num_columns).ceil
            columns = Array.new()
            column_heights = Array.new()
-           puts interest_categories
-           puts("---")
-           puts (interest_category_height)
-           puts("Total height = #{total_height}")
-           puts("Column height = #{column_height}")
+           # puts interest_categories
+           # puts("---")
+           # puts (interest_category_height)
+           # puts("Total height = #{total_height}")
+           # puts("Column height = #{column_height}")
            interest_categories.each do |ic|  # Next category of interests
              found_spot = false
              (0..num_columns-1).each do |c|    # find a column for it
@@ -122,10 +122,10 @@
                column_heights[smallest] += interest_category_height[ic]
              end
            end
-           puts "---"
-           puts column_heights
-           puts("---")
-           puts columns
+           # puts "---"
+           # puts column_heights
+           # puts("---")
+           # puts columns
         %>
 
         <% (0..num_columns - 1).each do |c|

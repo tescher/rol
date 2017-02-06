@@ -31,7 +31,28 @@ $(document).ready(function() {
             url: "address_check",
             success: function(data) {
                 loadDialog("dialogAddressCheck",data);
+            },
+            async: false,
+            cache: false
+        });
 
+        return false;
+    });
+
+    $("#linkWorkdaySummary").click(function(evt) {
+        var id = $(this).attr("data-id");
+        var objectName = $(this).attr("data-object-name");
+        $.ajax({
+            url: "/workdays/workday_summary?dialog=true&object_name="+objectName+"&id="+id,
+            success: function(data) {
+                loadDialog("dialogWorkdaySummary", data, {
+                    my: "center top",
+                    at: "center bottom",
+                    of: $("header")
+                });
+                $("#dialogWorkdaySummary #tabs-container").tabs();
+                $("#dialogWorkdaySummary").data("object_name", objectName);
+                $("#dialogWorkdaySummary").data("object_id", id);
             },
             async: false,
             cache: false

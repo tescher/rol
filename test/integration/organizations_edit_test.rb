@@ -89,22 +89,22 @@ class OrganizationsEditTest < ActionDispatch::IntegrationTest
     assert_select 'a[href=?]', organization_path(@organization), method: :delete
 
     before_wdv = WorkdayOrganization.count
-    puts before_wdv
+    # puts before_wdv
     before_v = Organization.count
-    puts before_v
+    # puts before_v
     before_d = Donation.count
-    puts before_d
+    # puts before_d
     before_wd = Workday.count
-    puts before_wd
+    # puts before_wd
     delete organization_path(@organization)
     after_wdv = WorkdayOrganization.count
-    puts after_wdv
+    # puts after_wdv
     after_v = Organization.count
-    puts after_v
+    # puts after_v
     after_d = Donation.count
-    puts after_d
+    # puts after_d
     after_wd = Workday.count
-    puts after_wd
+    # puts after_wd
     # Make sure all cascade deletes worked OK
     assert_equal before_v - 1, after_v
     assert_equal before_d - 10, after_d

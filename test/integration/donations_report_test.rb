@@ -175,7 +175,7 @@ class DonationsReportTest < ActionDispatch::IntegrationTest
   test "Donations, Monetary, Volunteers, Zip [53555, 53711], last 6 days, HTML" do
     log_in_as(@user)
     get report_donations_path(report_type: 1, volunteers: 1, organizations: 1, city: "", zip: "53555, 53711", request_format:"html", from_date: 6.days.ago.strftime("%m/%d/%Y"), to_date: "")
-    puts @response.body
+    # puts @response.body
 
     assert_select("div.container h2:nth-of-type(1)", "Organization Donations")
     assert_select("div.container ul.listing:nth-of-type(1) div.clickable:nth-of-type(1) li:nth-of-type(1) div.col-md-1:nth-of-type(4)", "$500.00")
@@ -196,7 +196,7 @@ class DonationsReportTest < ActionDispatch::IntegrationTest
   test "Donations, Monetary, Volunteers, City [Lodi, Baraboo], last 6 days, HTML" do
     log_in_as(@user)
     get report_donations_path(report_type: 1, volunteers: 1, organizations: 1, city: "lodi, baraboo", zip: "", request_format:"html", from_date: 6.days.ago.strftime("%m/%d/%Y"), to_date: "")
-    puts @response.body
+    # puts @response.body
 
     assert_select("div.container h2:nth-of-type(1)", "Organization Donations")
     assert_select("div.container ul.listing:nth-of-type(1) div.clickable:nth-of-type(1) li:nth-of-type(1) div.col-md-1:nth-of-type(4)", "$500.00")

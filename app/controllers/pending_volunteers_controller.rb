@@ -63,7 +63,15 @@ class PendingVolunteersController < ApplicationController
       end
 
       if @volunteer.update_attributes(volunteer_params)
-        flash[:success] = "Volunteer updated"
+        # Move workdays
+        WorkdayVolunteer.where("volunteer_id = #{@object.id}").each do |sw|
+          workday = sw.dup
+          workday.volunteer_id = @volunteer.id
+          workday.save!
+          sw.destroy!
+        end
+
+		flash[:success] = "Volunteer updated."
         @object.deleted_reason = "Merged pending volunteer into #{@volunteer.id}"
         @object.save
         @object.destroy
