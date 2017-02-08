@@ -309,7 +309,6 @@ function loadDialog(id, data, position) {
         $(id).dialog("widget").position(position);
     }
     add_fields_wire_up_events($(id));
-
 }
 
 function set_selection_field(id, name, input_select, from_element) {
