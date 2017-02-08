@@ -71,22 +71,43 @@ class SelfTrackingControllerTest < ActionController::TestCase
     assert search_form.errors.count > 0
 
     # Then try a search that expects both pending and regular volunteers
-    get :volunteer_search, :search_form => { name: "Smith", phone: "(907) 745-3512Dup" }
+    get :volunteer_search, :search_form => { name: "Smith" }
     assert_response :success
     results = assigns(:results)
-    assert_equal 3, results.count
+    assert_equal 2, results.count
+
+    assert_equal "Jane", results[0].first_name
+    assert_equal "Smith", results[0].last_name
+    assert results[0].needs_review
+
+    assert_equal "Tim", results[1].first_name
+    assert_equal "Smith", results[1].last_name
+    assert results[1].needs_review
+	
+	# Test phone search
+    get :volunteer_search, :search_form => { name: "Escher,Tim", phone: "(907) 745-3512Dup" }
+    assert_response :success
+    results = assigns(:results)
+    assert_equal 1, results.count
     assert_equal "TimothyDup", results[0].first_name
     assert_equal "EscherDup", results[0].last_name
     assert_equal "(907) 745-3512Dup", results[0].home_phone
     assert_not results[0].needs_review
 
-    assert_equal "Jane", results[1].first_name
-    assert_equal "Smith", results[1].last_name
-    assert results[1].needs_review
+	# Test email search
+	get :volunteer_search, :search_form => { name: "Escher,Jim", email: "volunteer-10@example.com" }
+    assert_response :success
+    results = assigns(:results)
+    assert_equal 2, results.count
+    assert_equal "Jim", results[0].first_name
+    assert_equal "Escher", results[0].last_name
+	assert_equal "tim@example.com", results[0].email
+    assert_not results[0].needs_review
 
-    assert_equal "Tim", results[2].first_name
-    assert_equal "Smith", results[2].last_name
-    assert results[2].needs_review
+    assert_equal "Volunteer 10", results[1].first_name
+    assert_equal "Example", results[1].last_name
+	assert_equal "volunteer-10@example.com", results[1].email
+    assert_not results[0].needs_review
   end
 
   test "should validate check-in functionality" do
@@ -120,12 +141,97 @@ class SelfTrackingControllerTest < ActionController::TestCase
     get :check_in, id: @pending_volunteer.id, :check_in_form => {check_in_time: "5:33 PM"}
     assert_response :success
     assert_equal "success", @response.body
-    assert_equal 2, @workday.workday_volunteers.count
-    workday_volunteer = @workday.workday_volunteers.all[1]
+	assert_equal 2, @workday.workday_volunteers.count
+	workday_volunteer = @workday.workday_volunteers.where(:volunteer_id => @pending_volunteer.id)[0]
     assert_equal @pending_volunteer.id, workday_volunteer.volunteer.id
     # The "date" portion is not relevant in this case so we reformat and get just the time component.
     assert_equal "17:33:00", workday_volunteer.start_time.strftime("%H:%M:%S")
   end
+
+  test "should validate complicated check-ins" do
+    self.setup_self_tracking_session
+
+    # Confirm no one is checked in yet.
+    assert @workday.workday_volunteers.empty?
+
+
+
+	# Check-in at 8am.
+    get :check_in, id: @volunteer.id, :check_in_form => {check_in_time: "8:00 AM"}
+    assert_response :success
+    assert_equal "success", @response.body
+    assert_equal 1, @workday.workday_volunteers.count
+    workday_volunteer = @workday.workday_volunteers.all[0]
+    assert_equal @volunteer.id, workday_volunteer.volunteer.id
+    # The "date" portion is not relevant in this case so we reformat and get just the time component.
+    assert_equal "08:00:00", workday_volunteer.start_time.strftime("%H:%M:%S")
+
+
+
+	# Then try checking in at 1:40pm without checking out first. This should not be allowed.
+    get :check_in, id: @volunteer.id, :check_in_form => {check_in_time: "1:40 PM"}
+    assert_response :success
+    check_in_form = assigns(:check_in_form)
+    assert_equal 1, check_in_form.errors.count
+	assert_equal "You are already checked in at this time.", check_in_form.errors.messages[:base][0]
+	# Still only the last check-in
+	assert_equal 1, @workday.workday_volunteers.count
+	assert_equal "08:00:00", @workday.workday_volunteers.all[0].start_time.strftime("%H:%M:%S")
+
+
+
+	# Next check in at 6am, this should be allowed. The 6am shift should be automatically checked out half hour
+	# before the later shift (i.e. 7:30).
+    get :check_in, id: @volunteer.id, :check_in_form => {check_in_time: "6:00 AM"}
+    assert_response :success
+    assert_equal "success", @response.body
+
+	# Validate the starting part of the flash message
+	starting_string = "A future shift started at"
+	assert_equal starting_string, flash[:warning][0...starting_string.length]
+
+	# Then validate the actual shifts.
+	shifts = @workday.workday_volunteers.all.order(:start_time)
+    assert_equal 2, shifts.count
+
+	earlier_shift = shifts[0]
+	assert_equal "06:00:00", earlier_shift.start_time.strftime("%H:%M:%S")
+	assert_equal "07:30:00", earlier_shift.end_time.strftime("%H:%M:%S")
+
+	later_shift = shifts[1]
+    assert_equal @volunteer.id, later_shift.volunteer.id
+    assert_equal "08:00:00", later_shift.start_time.strftime("%H:%M:%S")
+	assert_nil later_shift.end_time
+
+
+	# Next try checking in within the half hour of a future shift, this should set the checkout
+	# time to one minute before the next shift. i.e. 5:30am
+    get :check_in, id: @volunteer.id, :check_in_form => {check_in_time: "5:30 AM"}
+    assert_response :success
+    assert_equal "success", @response.body
+
+	# Validate the starting part of the flash message
+	starting_string = "A future shift started at"
+	assert_equal starting_string, flash[:warning][0...starting_string.length]
+
+	# Then validate the actual shifts.
+	shifts = @workday.workday_volunteers.all.order(:start_time)
+    assert_equal 3, shifts.count
+
+	earliest_shift = shifts[0]
+	assert_equal "05:30:00", earliest_shift.start_time.strftime("%H:%M:%S")
+	assert_equal "05:59:00", earliest_shift.end_time.strftime("%H:%M:%S")
+
+	earlier_shift = shifts[1]
+	assert_equal "06:00:00", earlier_shift.start_time.strftime("%H:%M:%S")
+	assert_equal "07:30:00", earlier_shift.end_time.strftime("%H:%M:%S")
+
+	later_shift = shifts[2]
+    assert_equal @volunteer.id, later_shift.volunteer.id
+    assert_equal "08:00:00", later_shift.start_time.strftime("%H:%M:%S")
+	assert_nil later_shift.end_time
+  end
+
 
   test "should validate checkout functionality" do
     self.setup_self_tracking_session

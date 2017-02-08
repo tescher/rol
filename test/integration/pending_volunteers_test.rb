@@ -54,9 +54,6 @@ class PendingVolunteersTest < ActionDispatch::IntegrationTest
   test "New volunteer from pending volunteer with workdays" do
     log_in_as(@user)
 
-	require "byebug"
-	# byebug
-
 	# Confirm the workdays
 	assert_equal 2, @pending_volunteer.workday_volunteers.count
 
