@@ -35,7 +35,7 @@ remote: true, html: {class: "form-horizontal", "data-check-in-form" => "true"}) 
         <div class="form-group">
           <%= label_tag :check_in_time, nil, class: "col-md-4 control-label"  %>
           <div class="col-md-8">
-            <%= form.text_field :check_in_time, class: 'form-control' %>
+            <%= form.text_field :check_in_time, class: 'form-control', autofocus: true %>
           </div>
         </div>
 

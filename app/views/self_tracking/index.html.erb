@@ -7,14 +7,14 @@
   <table class="table no-row-border header-border table-striped">
     <thead>
       <tr>
-		  <th class="col-md-3">Name <span class="glyphicon glyphicon-chevron-up"></span></th>
-        <th class="col-md-2">Check-in Time</th>
+		  <th class="col-md-3">Name</th>
+        <th class="col-md-2">Check-in Time <span class="glyphicon glyphicon-chevron-up"></span></th>
         <th class="col-md-2">Waiver</th>
-        <th class="col-md-2">Check-out</th>
+        <th class="col-md-2">Check out</th>
       </tr>
     </thead>
     <tbody>
-      <% @workday.workday_volunteers.joins(:volunteer).order('volunteers.first_name', 'volunteers.last_name', :start_time).each do |workday_volunteer|
+		<% @workday.workday_volunteers.order(:start_time, :end_time).each do |workday_volunteer|
         volunteer = workday_volunteer.volunteer %>
         <tr <% if workday_volunteer.end_time.present? %>class="text-muted"<% end %>>
           <td><%= volunteer.name %></td>
@@ -31,8 +31,8 @@
           <td>
             <% if workday_volunteer.end_time.blank? %>
             <button type="button" class="btn btn-default btn-xs"
-              onclick="return checkoutVolunteer('<%= j volunteer.name %>', '<%= self_tracking_checkout_path(workday_volunteer) %>');"
-              >Check-out</button>
+			  onclick="return loadModalDialog('#modalDialog', '<%= self_tracking_check_out_path(workday_volunteer) %>', hookupTimepicker);"
+              >Check out</button>
           <% else %>
             <%= workday_volunteer.end_time.strftime("%l:%M %p") %>
           <% end %>

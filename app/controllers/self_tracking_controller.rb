@@ -74,10 +74,10 @@ class SelfTrackingController < ApplicationController
 
   def check_in
     @volunteer = Volunteer.including_pending.find(params[:id])
+	@workday = Workday.find(session[:self_tracking_workday_id])
     @newly_signed_up = params[:newly_signed_up]
 
     if params[:check_in_form].present?
-	  @workday = Workday.find(session[:self_tracking_workday_id])
 	  @check_in_form = CheckInForm.new(params[:check_in_form].merge(volunteer: @volunteer, workday: @workday))
       if @check_in_form.valid?
         start_time = Time.strptime(@check_in_form.check_in_time, "%I:%M %P")
@@ -86,17 +86,14 @@ class SelfTrackingController < ApplicationController
 		# If there is an existing later shift on the same day then automatically check-out the new
 		# check-in a certain time before the future shift.
 		end_time = nil
-		if @workday.workday_volunteers.where("volunteer_id = ? AND start_time >= ?", @volunteer.id, start_time_formatted).count > 0
-		  future_shift = @workday.workday_volunteers.where(
-			"volunteer_id = ? AND start_time >= ?", @volunteer.id, start_time_formatted).order(:start_time).first
-		  end_time = (future_shift.start_time - 30.minutes)
-		  if end_time.strftime("%H%M%S").to_i <= start_time.strftime("%H%M%S").to_i
-			end_time = future_shift.start_time - 1.minute
-		  end
-		  flash[:warning] = "A future shift started at #{future_shift.start_time.strftime("%-I:%M %P")} so the new check-in was automatically checked-out before the start of this shift (#{end_time.strftime("%-I:%M %P")})."
-		  end_time = end_time.strftime("%H:%M:%S")
+		future_shifts = @workday.workday_volunteers.where(
+		  "volunteer_id = ? AND start_time >= ?", @volunteer.id, start_time_formatted
+		)
+		if future_shifts.count > 0
+		  start_time = future_shifts.first.start_time.strftime("%-I:%M %P")
+		  flash[:warning] = "Another shift starts at #{start_time}, please remember to check out this shift before #{start_time}."
 		else
-		  flash[:success] = "Successfully checked in #{@volunteer.name}."
+		  flash[:success] = "#{@volunteer.name} successfully checked in."
 		end
 	
 		@workday.workday_volunteers.create(:volunteer => @volunteer, :start_time => start_time_formatted, :end_time => end_time)
@@ -105,24 +102,37 @@ class SelfTrackingController < ApplicationController
         render partial: "check_in"
       end
     else
-      @check_in_form = CheckInForm.new(volunteer: @volunteer, workday: @workday)
+      @check_in_form = CheckInForm.new(check_in_time:  Time.now.strftime("%l:%M %p"), volunteer: @volunteer, workday: @workday)
       render partial: "check_in"
     end
   end
 
 
-  def checkout
+  def check_out
     # Only look for the record within the current workday.
     @workday = Workday.find(session[:self_tracking_workday_id])
-    workday_volunteer = @workday.workday_volunteers.find(params[:workday_volunteer_id])
-    workday_volunteer.end_time = Time.now.strftime("%H:%M:%S")
-    if workday_volunteer.valid?
-      workday_volunteer.save
-      flash[:success] = "#{workday_volunteer.volunteer.name} successfully checked out."
+    @workday_volunteer = @workday.workday_volunteers.find(params[:workday_volunteer_id])
+
+    if params[:check_out_form].present?
+	  @check_out_form = CheckOutForm.new(params[:check_out_form].merge(workday_volunteer: @workday_volunteer))
+      if @check_out_form.valid?
+		@workday_volunteer.end_time = Time.strptime(@check_out_form.check_out_time, "%I:%M %P").strftime("%H:%M:%S")
+		if @workday_volunteer.valid?
+		  @workday_volunteer.save
+		  flash[:success] = "#{@workday_volunteer.volunteer.name} successfully checked out."
+		  render :text => "success"
+		else
+		  render partial: "check_out"
+		end
+      else
+		render partial: "check_out"
+      end
     else
-      flash[:danger] = workday_volunteer.errors.full_messages
+      @check_out_form = CheckOutForm.new(
+		workday_volunteer: @workday_volunteer, check_out_time:  Time.now.strftime("%l:%M %p")
+	  )
+      render partial: "check_out"
     end
-    redirect_to self_tracking_index_path
   end
 
 
@@ -146,10 +156,9 @@ class CheckInForm
   include ActiveModel::Model
   attr_accessor :check_in_time, :volunteer, :workday
   validates_presence_of :check_in_time
-  validate :overlapping_check_in, :if => lambda {|attr| attr.present?}
+  validate :overlapping_check_in, :if => lambda { @check_in_time.present? }
 
   def overlapping_check_in
-	return if @check_in_time.empty?
 	check_in_time = Time.strptime(@check_in_time, "%I:%M %P").strftime("%H:%M:%S")
 
 	# Don't allow overlapping check-ins.
@@ -158,6 +167,44 @@ class CheckInForm
 		{volunteer_id: @volunteer.id, time: check_in_time}
 	).count > 0
 	  errors.add(:base, "You are already checked in at this time.")
+	end
+  end
+end
+
+
+class CheckOutForm
+  include ActiveModel::Model
+  attr_accessor :check_out_time, :workday_volunteer
+  validates_presence_of :check_out_time
+  validate :overlapping_check_out, :if => lambda { @check_out_time.present? }
+
+  def overlapping_check_out
+	end_time = Time.strptime(@check_out_time, "%I:%M %P")
+	workday = @workday_volunteer.workday
+	volunteer = @workday_volunteer.volunteer
+
+	# Confirm that check out time is after the check in time.
+	if end_time.strftime("%H%M%S").to_i <= @workday_volunteer.start_time.strftime("%H%M%S").to_i
+	  errors.add(:check_out_time, "must be after the check-in time.")
+	else
+	  # Don't allow overlapping check outs.
+	  overlapping_shifts = workday.workday_volunteers.where(
+		"(volunteer_id = :volunteer_id) AND (id != :this_workday_volunteer_id) AND 
+		(start_time > :this_start_time) AND (:this_end_time >= start_time)",
+		{
+		  volunteer_id: volunteer.id, this_workday_volunteer_id: @workday_volunteer.id,
+		  this_start_time: @workday_volunteer.start_time.strftime("%H:%M:%S"),
+		  this_end_time: end_time.strftime("%H:%M:%S")
+		}
+	  )
+	  if overlapping_shifts.count > 0
+		errors.add(
+		  :base,
+		  "You have another shift starting at %{next_shift}, you must check out before its start." % {
+			next_shift: overlapping_shifts.first.start_time.strftime("%l:%M %P")
+		  }
+		)
+	  end
 	end
   end
 end

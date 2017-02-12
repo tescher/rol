@@ -180,15 +180,13 @@ class SelfTrackingControllerTest < ActionController::TestCase
 
 
 
-	# Next check in at 6am, this should be allowed. The 6am shift should be automatically checked out half hour
-	# before the later shift (i.e. 7:30).
+	# Next check in at 6am, this should be allowed. The 6am shift should stay the same.
     get :check_in, id: @volunteer.id, :check_in_form => {check_in_time: "6:00 AM"}
     assert_response :success
     assert_equal "success", @response.body
 
-	# Validate the starting part of the flash message
-	starting_string = "A future shift started at"
-	assert_equal starting_string, flash[:warning][0...starting_string.length]
+	warning_string = "Another shift starts at 8:00 am, please remember to check out this shift before 8:00 am."
+	assert_equal warning_string, flash[:warning]
 
 	# Then validate the actual shifts.
 	shifts = @workday.workday_volunteers.all.order(:start_time)
@@ -196,7 +194,7 @@ class SelfTrackingControllerTest < ActionController::TestCase
 
 	earlier_shift = shifts[0]
 	assert_equal "06:00:00", earlier_shift.start_time.strftime("%H:%M:%S")
-	assert_equal "07:30:00", earlier_shift.end_time.strftime("%H:%M:%S")
+	assert_nil earlier_shift.end_time
 
 	later_shift = shifts[1]
     assert_equal @volunteer.id, later_shift.volunteer.id
@@ -209,10 +207,7 @@ class SelfTrackingControllerTest < ActionController::TestCase
     get :check_in, id: @volunteer.id, :check_in_form => {check_in_time: "5:30 AM"}
     assert_response :success
     assert_equal "success", @response.body
-
-	# Validate the starting part of the flash message
-	starting_string = "A future shift started at"
-	assert_equal starting_string, flash[:warning][0...starting_string.length]
+	assert_equal warning_string, flash[:warning]
 
 	# Then validate the actual shifts.
 	shifts = @workday.workday_volunteers.all.order(:start_time)
@@ -220,11 +215,11 @@ class SelfTrackingControllerTest < ActionController::TestCase
 
 	earliest_shift = shifts[0]
 	assert_equal "05:30:00", earliest_shift.start_time.strftime("%H:%M:%S")
-	assert_equal "05:59:00", earliest_shift.end_time.strftime("%H:%M:%S")
+	assert_nil earliest_shift.end_time
 
 	earlier_shift = shifts[1]
 	assert_equal "06:00:00", earlier_shift.start_time.strftime("%H:%M:%S")
-	assert_equal "07:30:00", earlier_shift.end_time.strftime("%H:%M:%S")
+	assert_nil earlier_shift.end_time
 
 	later_shift = shifts[2]
     assert_equal @volunteer.id, later_shift.volunteer.id
@@ -240,9 +235,10 @@ class SelfTrackingControllerTest < ActionController::TestCase
     assert @workday.workday_volunteers.empty?
 
     # Check-in two volunteers and then check them out.
+    get :check_in, id: @volunteer.id, :check_in_form => {check_in_time: "12:30 PM"}
     get :check_in, id: @volunteer.id, :check_in_form => {check_in_time: "8:00 AM"}
     get :check_in, id: @pending_volunteer.id, :check_in_form => {check_in_time: "1:20 PM"}
-    assert_equal 2, @workday.workday_volunteers.count
+    assert_equal 3, @workday.workday_volunteers.count
 
     workdate = @workday.workdate
     # Using .change so we retain the timezone.
@@ -251,22 +247,38 @@ class SelfTrackingControllerTest < ActionController::TestCase
     )
     Timecop.freeze(target_date_time) do
       # Get the original records
-      volunteer_workday = @workday.workday_volunteers.where(:volunteer_id => @volunteer.id)[0]
-      pending_volunteer_workday = @workday.workday_volunteers.where(:volunteer_id => @pending_volunteer.id)[0]
+	  volunteer_workday = @workday.workday_volunteers.where(:volunteer_id => @volunteer.id).order(:start_time).first
+	  pending_volunteer_workday = @workday.workday_volunteers.where(:volunteer_id => @pending_volunteer.id).first
 
-      # Checkout
-      get :checkout, workday_volunteer_id: volunteer_workday.id
-      assert_not flash.empty?
-      assert_redirected_to self_tracking_index_path
-      updated_volunteer_workday = @workday.workday_volunteers.where(:volunteer_id => @volunteer.id)[0]
+	  # Checkout before the check-in time.
+      get :check_out, workday_volunteer_id: volunteer_workday.id, :check_out_form => {check_out_time: "6:00 AM"}
+	  assert_response :success
+	  check_out_form = assigns(:check_out_form)
+	  assert_equal 1, check_out_form.errors.count
+	  assert_equal "must be after the check-in time.", check_out_form.errors.messages[:check_out_time][0]
+
+	  # Checkout after the start of next shift.
+      get :check_out, workday_volunteer_id: volunteer_workday.id, :check_out_form => {check_out_time: "2:00 PM"}
+	  assert_response :success
+	  check_out_form = assigns(:check_out_form)
+	  assert_equal 1, check_out_form.errors.count
+	  assert_equal "You have another shift starting at 12:30 pm, you must check out before its start.", check_out_form.errors.messages[:base][0]
+
+      # Valid checkout
+      get :check_out, workday_volunteer_id: volunteer_workday.id, :check_out_form => {check_out_time: "11:46 AM"}
+	  assert_response :success
+	  assert_equal "success", @response.body
+      assert_equal "#{@volunteer.name} successfully checked out.", flash[:success]
+	  updated_volunteer_workday = @workday.workday_volunteers.where(:volunteer_id => @volunteer.id).order(:start_time).first
       assert_equal "08:00:00", updated_volunteer_workday.start_time.strftime("%H:%M:%S")
-      assert_equal "17:00:00", updated_volunteer_workday.end_time.strftime("%H:%M:%S")
-      assert_equal 9, updated_volunteer_workday.hours
+      assert_equal "11:46:00", updated_volunteer_workday.end_time.strftime("%H:%M:%S")
+	  assert_equal 3.8, updated_volunteer_workday.hours
       assert_equal @volunteer.id, updated_volunteer_workday.volunteer.id
 
-      get :checkout, workday_volunteer_id: pending_volunteer_workday.id
-      assert_not flash.empty?
-      assert_redirected_to self_tracking_index_path
+      get :check_out, workday_volunteer_id: pending_volunteer_workday.id, :check_out_form => {check_out_time: "05:00 PM"}
+	  assert_response :success
+	  assert_equal "success", @response.body
+      assert_equal "#{@pending_volunteer.name} successfully checked out.", flash[:success]
       updated_pending_volunteer_workday = @workday.workday_volunteers.where(:volunteer_id => @pending_volunteer.id)[0]
       assert_equal "13:20:00", updated_pending_volunteer_workday.start_time.strftime("%H:%M:%S")
       assert_equal "17:00:00", updated_pending_volunteer_workday.end_time.strftime("%H:%M:%S")

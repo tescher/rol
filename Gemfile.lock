@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/tescher/fedex.git
+  revision: 0bcdb748dde3603e6495a6c5e35185749a40e76d
+  branch: master
+  specs:
+    fedex (3.10.1)
+      httparty (>= 0.8.3)
+      nokogiri (>= 1.5.6)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -67,9 +76,6 @@ GEM
     execjs (2.7.0)
     faker (1.4.2)
       i18n (~> 0.5)
-    fedex (3.10.1)
-      httparty (>= 0.8.3)
-      nokogiri (>= 1.5.6)
     ffi (1.9.17)
     formatador (0.2.5)
     globalid (0.3.7)
@@ -229,7 +235,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   faker (= 1.4.2)
-  fedex (~> 3.10.1)
+  fedex!
   guard
   guard-minitest
   heroku-deflater

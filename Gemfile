@@ -18,7 +18,7 @@ gem 'bootstrap-will_paginate', '0.0.10'
 gem 'bootstrap-multiselect-rails'
 
 # Fedex address checker
-gem 'fedex', '~> 3.10.1'
+gem 'fedex', :github => 'tescher/fedex', :branch => 'master'
 
 # Datepicker
 gem 'momentjs-rails', '>= 2.9.0'

@@ -1,5 +1,7 @@
-Deleted workdays.coffee because it was also causing workdays.js to be ignored.
- * Re jquery dialog's missing close button issue (http://stackoverflow.com/questions/8681707/jqueryui-modal-dialog-does-not-show-close-button-x): Deleting workdays.coffee now seems to have included the workdays.js, which defines a better workday summary link hook that added a "Close" button to the bottom of the dialog. So, this bootstrap conflict isn't meaningful anymore.
+Now allowing the user to add a check out time.
+* Switched to Tim's fedex gem.
+* Removed the additional sorting on the self tracking index action because it was excluding the pending volunteers.  I have tried a few different methods, but haven't had luck getting any of them to work so this is a short-term workaround.
+* Now respecting autofocus on dialog forms.
 ----------------
 
 
