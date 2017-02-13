@@ -1,0 +1,21 @@
+version: '2'
+services:
+  db:
+    container_name: postgresql-common
+    image: postgres
+    volumes:
+      - /Users/thebitguru/Desktop/Work/Development/Common/docker/postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=9Tt-Gy@*$Y
+    ports:
+      - "5432:5432"
+  web:
+    container_name: rails-rol
+    build: .
+    image: rails
+    volumes_from:
+      - container:rol-sync:rw
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db

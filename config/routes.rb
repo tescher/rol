@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   delete 'logout'  => 'sessions#destroy'
 
   resources :pending_volunteers do
+    post :edit, :update
     member do
       get 'match'
     end
@@ -51,7 +52,16 @@ Rails.application.routes.draw do
     end
     member do
       get 'add_participants'
+      get 'confirm_launch_self_tracking'
     end
+  end
+
+  scope "/self_tracking" do
+    root to: "self_tracking#index", as: "self_tracking_index"
+    get 'launch/:id', to: 'self_tracking#launch', as: 'self_tracking_launch'
+    get 'volunteer_search', to: 'self_tracking#volunteer_search', as: 'self_tracking_volunteer_search'
+    get 'check_in/:id', to: 'self_tracking#check_in', as: 'self_tracking_check_in'
+    get 'check_out/:workday_volunteer_id', to: 'self_tracking#check_out', as: 'self_tracking_check_out'
   end
 
   get 'workday_volunteers/import' => 'workday_volunteers#import_form'

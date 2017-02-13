@@ -1,0 +1,59 @@
+<% provide(:title, 'Volunteer Self Tracking') %>
+<h1>Self Tracking for <%= @workday.name %></h1>
+
+<% if @workday.workday_volunteers.empty? %>
+  <p>No volunteers have signed in yet.</p>
+<% else %>
+  <table class="table no-row-border header-border table-striped">
+    <thead>
+      <tr>
+		  <th class="col-md-3">Name</th>
+        <th class="col-md-2">Check-in Time <span class="glyphicon glyphicon-chevron-up"></span></th>
+        <th class="col-md-2">Waiver</th>
+        <th class="col-md-2">Check out</th>
+      </tr>
+    </thead>
+    <tbody>
+		<% @workday.workday_volunteers.order(:start_time, :end_time).each do |workday_volunteer|
+        volunteer = workday_volunteer.volunteer %>
+        <tr <% if workday_volunteer.end_time.present? %>class="text-muted"<% end %>>
+          <td><%= volunteer.name %></td>
+          <td>
+            <%= workday_volunteer.start_time.strftime("%l:%M %p") %>
+          </td>
+          <td>
+            <% if volunteer.waiver_date.blank? %>
+              <span class="text-danger"><em><i class="glyphicon glyphicon-exclamation-sign"></i> Missing</em></span>
+            <% else %>
+              <span class="text-muted"><%= volunteer.waiver_date.strftime("%m/%d/%Y") %></span>
+            <% end %>
+          </td>
+          <td>
+            <% if workday_volunteer.end_time.blank? %>
+            <button type="button" class="btn btn-default btn-xs"
+			  onclick="return loadModalDialog('#modalDialog', '<%= self_tracking_check_out_path(workday_volunteer) %>', hookupTimepicker);"
+              >Check out</button>
+          <% else %>
+            <%= workday_volunteer.end_time.strftime("%l:%M %p") %>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="actions pull-right">
+      <div class="actions">
+        <button type="button" class="btn btn-primary" onclick="return loadModalDialog('#modalDialog', '<%= self_tracking_volunteer_search_path %>');">
+          <span class="glyphicon glyphicon-log-in"></span> Check-in...
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="modalDialog"></div>

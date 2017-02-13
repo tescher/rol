@@ -7,14 +7,24 @@ class Volunteer < ActiveRecord::Base
   has_many :workday_volunteers, dependent: :destroy
   has_many :workdays, through: :workday_volunteers
   has_many :donations, dependent: :destroy
-  has_one :pending_volunteer
-  belongs_to :pending_volunteer
   belongs_to :church, -> { where(:organization_type => 1) }, class_name: "Organization", foreign_key: :church_id
   belongs_to :employer, class_name: "Organization", foreign_key: :employer_id
   belongs_to :first_contact_type, class_name: "ContactType", foreign_key: :first_contact_type_id
   has_many :volunteer_category_volunteers, dependent: :destroy
   has_many :volunteer_categories, through: :volunteer_category_volunteers
 
+  default_scope { where(needs_review: false) }
+
+  def self.pending
+    Volunteer.unscoped.where(needs_review: true, deleted_at: nil)
+  end
+
+  # Special method for getting all volunteers including pending, but excluding the
+  # deleted ones.
+  def self.including_pending
+    Volunteer.unscope(where: :needs_review)
+    # Volunteer.unscoped.where(deleted_at: nil)
+  end
 
   accepts_nested_attributes_for :donations, :allow_destroy => true
 
@@ -48,6 +58,22 @@ class Volunteer < ActiveRecord::Base
       index += 1
     end
     merge_fields
+  end
+
+  def self.pending_volunteer_merge_fields_table
+    resolve_fields = {}
+    index = 0
+    [:first_name, :last_name, :address, :city, :state, :zip, :email, :home_phone, :work_phone, :mobile_phone].each do |f|
+      resolve_fields[f] = index
+      index += 1
+    end
+    resolve_fields
+  end
+
+  # Returns a fuzzy match string that can be used in a where condition.  Generally used for
+  # for first_name, last_name, and city fields.
+  def self.get_fuzzymatch_where_clause(field_name, field_value)
+    return "(soundex(#{field_name}) = soundex(#{self.sanitize(field_value)}) OR (LOWER(#{field_name}) LIKE #{self.sanitize(field_value.downcase+ "%")}))"
   end
 
 end

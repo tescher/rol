@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161108052146) do
+ActiveRecord::Schema.define(version: 20170116001609) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,7 +56,6 @@ ActiveRecord::Schema.define(version: 20161108052146) do
 
   create_table "interest_categories", force: :cascade do |t|
     t.string   "name"
-    t.string   "string"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -178,11 +177,6 @@ ActiveRecord::Schema.define(version: 20161108052146) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "volunteer_categories_volunteers", id: false, force: :cascade do |t|
-    t.integer "volunteer_id",          null: false
-    t.integer "volunteer_category_id", null: false
-  end
-
   create_table "volunteer_category_volunteers", force: :cascade do |t|
     t.integer  "volunteer_id"
     t.integer  "volunteer_category_id"
@@ -230,6 +224,7 @@ ActiveRecord::Schema.define(version: 20161108052146) do
     t.integer  "pending_volunteer_id"
     t.datetime "deleted_at"
     t.string   "deleted_reason"
+    t.boolean  "needs_review",             default: false
   end
 
   add_index "volunteers", ["church_id"], name: "index_volunteers_on_church_id", using: :btree

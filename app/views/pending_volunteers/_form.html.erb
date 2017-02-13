@@ -1,4 +1,4 @@
-<%= form_for(@object) do |f| %>
+<%= form_for(@object, :url => pending_volunteers_path(@object, :launched_from_self_tracking => @launched_from_self_tracking)) do |f| %>
     <%= @object = f.object
         render 'shared/error_messages' %>
 
@@ -65,7 +65,7 @@
             <%= f.label :phone %><br>
           </div>
           <div class="col-md-8">
-            <%= f.text_field :phone, class: 'form-control' %>
+            <%= f.text_field :home_phone, class: 'form-control' %>
           </div>
         </div>
         <div class="row">
@@ -97,11 +97,11 @@
            column_height = (total_height.to_f / num_columns).ceil
            columns = Array.new()
            column_heights = Array.new()
-           puts interest_categories
-           puts("---")
-           puts (interest_category_height)
-           puts("Total height = #{total_height}")
-           puts("Column height = #{column_height}")
+           # puts interest_categories
+           # puts("---")
+           # puts (interest_category_height)
+           # puts("Total height = #{total_height}")
+           # puts("Column height = #{column_height}")
            interest_categories.each do |ic|  # Next category of interests
              found_spot = false
              (0..num_columns-1).each do |c|    # find a column for it
@@ -122,10 +122,10 @@
                column_heights[smallest] += interest_category_height[ic]
              end
            end
-           puts "---"
-           puts column_heights
-           puts("---")
-           puts columns
+           # puts "---"
+           # puts column_heights
+           # puts("---")
+           # puts columns
         %>
 
         <% (0..num_columns - 1).each do |c|
@@ -139,7 +139,7 @@
                               <% if (i.highlight) %>
                                   <strong>
                               <% end %>
-                              <%= check_box_tag 'pending_volunteer[pv_int_ids][]', i.id %> <%= i.name %>
+                              <%= check_box_tag 'volunteer[int_ids][]', i.id %> <%= i.name %>
                               <% if (i.highlight) %>
                                   </strong>
                               <% end %>
@@ -151,14 +151,16 @@
             <% end %>
         <% end %>
       </div>
-      <div class="row">
-        <div class="col-md-10">
-          <div class="pull-right">
-            <div class="g-recaptcha" data-sitekey="<%= GOOGLE_SITE_KEY %>"></div>
-            <%= render partial: "shared/form_actions", locals: {f: f} %>
-          </div>
-        </div>
-      </div>
-    </div>
+	  <div class="row">
+		  <div class="col-md-10">
+			  <div class="pull-right">
+				  <% if !defined?(@self_tracking_enabled) || (@self_tracking_enabled == false) %>
+					  <div class="g-recaptcha" data-sitekey="<%= GOOGLE_SITE_KEY %>"></div>
+				  <% end %>
+				  <%= render partial: "shared/form_actions", locals: {f: f} %>
+			  </div>
+		  </div>
+	  </div>
+	</div>
 
 <% end %>

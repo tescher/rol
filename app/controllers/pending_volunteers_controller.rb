@@ -7,14 +7,16 @@ class PendingVolunteersController < ApplicationController
   before_action :logged_in_user, only: [:index, :update, :match, :edit, :destroy]
 
   def new
-    @object = PendingVolunteer.new
+    @object = Volunteer.pending.new()
+    @launched_from_self_tracking = params[:launched_from_self_tracking]
+	@self_tracking_enabled = session[:self_tracking_workday_id].present? && Workday.exists?(session[:self_tracking_workday_id])
     session[:referer] = request.referer
     @submit_name = "Submit"
     render 'new'
   end
 
   def edit
-    @object = PendingVolunteer.find(params[:id])
+    @object = Volunteer.pending.find(params[:id])
     if params[:matching_id].blank?
       redirect_to root_path
     else
@@ -23,16 +25,19 @@ class PendingVolunteersController < ApplicationController
   end
 
   def update
-    @object = PendingVolunteer.find(params[:id])
+    @object = Volunteer.pending.find(params[:id])
     if params[:matching_id].blank?
       redirect_to root_path
     else
+      # Lookup the actual matching volunteer
       @volunteer = Volunteer.find(params[:matching_id])
       volunteer_params = {}
+
       params[:pv_use_fields].each do |findex|
-        item = PendingVolunteer.resolve_fields_table.key(findex.to_i)
+        item = Volunteer.pending_volunteer_merge_fields_table.key(findex.to_i)
         volunteer_params[item] = pending_volunteer_params[item]
       end
+
       if (params[:use_notes].downcase != "ignore")
         if @volunteer.notes.blank? || (params[:use_notes].downcase == "replace")
           volunteer_params[:notes] = pending_volunteer_params[:notes]
@@ -48,6 +53,7 @@ class PendingVolunteersController < ApplicationController
           end
         end
       end
+
       interests = []
       if (pending_volunteer_params[:interest_ids].length > 0) && (params[:use_interests].downcase != "ignore")
         if (params[:use_interests].downcase == "add") && (!params[:volunteer_interest_ids].nil?)
@@ -58,10 +64,18 @@ class PendingVolunteersController < ApplicationController
       end
 
       if @volunteer.update_attributes(volunteer_params)
-        flash[:success] = "Volunteer updated"
-        @object.resolved = true
-        @object.volunteer_id = @volunteer.id
-        @object.save!
+        # Move workdays
+        WorkdayVolunteer.where("volunteer_id = #{@object.id}").each do |sw|
+          workday = sw.dup
+          workday.volunteer_id = @volunteer.id
+          workday.save!
+          sw.destroy!
+        end
+
+		flash[:success] = "Volunteer updated."
+        @object.deleted_reason = "Merged pending volunteer into #{@volunteer.id}"
+        @object.save
+        @object.destroy
         redirect_to pending_volunteers_path
       else
         @volunteer.errors.each {|attr, error| @object.errors.add(attr, error)}
@@ -74,23 +88,29 @@ class PendingVolunteersController < ApplicationController
 
 
   def index
-    standard_index(PendingVolunteer.where(resolved: false), params[:page], false, "", nil, true)
+    standard_index(Volunteer.pending.all, params[:page], false, "", nil, true)
   end
 
   def match
-    @pending_volunteer = PendingVolunteer.find(params[:id])
+    @pending_volunteer = Volunteer.pending.find(params[:id])
     @matched_volunteers = find_matching_volunteers(@pending_volunteer)
   end
 
   def destroy
-    PendingVolunteer.find(params[:id]).destroy
+    Volunteer.pending.find(params[:id]).really_destroy!
     flash[:success] = "Pending Volunteer discarded"
     redirect_to pending_volunteers_path
   end
 
   def create
-    @object = PendingVolunteer.new(pending_volunteer_params)
-    status = verify_google_recptcha(GOOGLE_SECRET_KEY,params["g-recaptcha-response"])
+    @object = Volunteer.pending.new(pending_volunteer_params)
+    @object.work_phone = @object.mobile_phone = @object.home_phone
+
+    @launched_from_self_tracking = params[:launched_from_self_tracking]
+	@self_tracking_enabled = session[:self_tracking_workday_id].present? && Workday.exists?(session[:self_tracking_workday_id])
+	# Don't check recaptcha is self tracking is enabled.
+	status = @self_tracking_enabled ? true : verify_google_recptcha(GOOGLE_SECRET_KEY,params["g-recaptcha-response"])
+
     if status && @object.save  # Order is important here!
       render 'success'
     else
@@ -109,12 +129,15 @@ class PendingVolunteersController < ApplicationController
   private
 
   def pending_volunteer_params
-    modified_params = params.require(:pending_volunteer).permit(:first_name, :last_name, :address, :city, :state, :zip, :phone, :home_phone, :work_phone, :mobile_phone, :email, :notes, pv_int_ids: [], interest_ids: [] )
-    if (!modified_params[:pv_int_ids].nil?)
-      modified_params[:interest_ids] = modified_params[:pv_int_ids].dup
-      modified_params.delete(:pv_int_ids)
+    modified_params = params.require(:volunteer).permit(
+      :first_name, :last_name, :address, :city, :state, :zip, :home_phone, :work_phone,
+      :mobile_phone, :email, :notes, int_ids: [], interest_ids: []
+    )
+    if (!modified_params[:int_ids].nil?)
+      modified_params[:interest_ids] = modified_params[:int_ids].dup
+      modified_params.delete(:int_ids)
     end
-    puts modified_params
+    # puts modified_params
     modified_params
   end
 

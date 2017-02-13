@@ -21,3 +21,6 @@
 
 # Ignore RubyMine stuff
 /.idea/*
+
+# VIM swap files
+*.swp

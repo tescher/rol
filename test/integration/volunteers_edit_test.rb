@@ -26,11 +26,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
         donation.date_received = n.day.ago.to_s(:db)
         donation.save
       end
-      workday_volunteer = WorkdayVolunteer.new
-      workday_volunteer.workday = workdays(:one)
-      workday_volunteer.volunteer = v
-      workday_volunteer.hours = 4
-      workday_volunteer.save
+	  workday_volunteer = WorkdayVolunteer.create(workday: workdays(:one), volunteer: v, hours: 4)
       interest1 = interests(:one)
       interest2 = interests(:two)
       interest3 = interests(:three)
@@ -212,17 +208,23 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
 
   test "New volunteer from pending volunteer" do
     log_in_as(@user)
-    @pending_volunteer = pending_volunteers(:one)
+    @pending_volunteer = volunteers(:pending_one)
     get new_volunteer_path(pending_volunteer_id: @pending_volunteer)
     assert_template 'new'
     assert_select "[name*=first_name]" do
       assert_select "[value=?]", @pending_volunteer.first_name
     end
     @volunteer = Volunteer.new()
-    post volunteers_path(@volunteer), volunteer: {first_name: @pending_volunteer.first_name,
-                                                 last_name: @pending_volunteer.last_name, pending_volunteer_id: @pending_volunteer.id}
-    @pending_volunteer.reload
-    assert_equal(@pending_volunteer.resolved, true)
+    post volunteers_path(@volunteer), volunteer: {
+      first_name: @pending_volunteer.first_name,
+      last_name: @pending_volunteer.last_name, pending_volunteer_id: @pending_volunteer.id
+    }
+    updated_volunteer = Volunteer.find(@pending_volunteer.id)
+    # Original record was convereted to ensure that this is the case.
+    assert_equal(updated_volunteer.first_name, @pending_volunteer.first_name)
+    assert_equal(updated_volunteer.last_name, @pending_volunteer.last_name)
+    assert_equal(updated_volunteer.needs_review, false)
+    assert_nil(updated_volunteer.deleted_at)
   end
 
 
@@ -271,14 +273,14 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     # Did donations move and is the amount the same?
     new_donations = Donation.where("volunteer_id = #{@volunteer.id}").all
     assert_equal(new_donations.count, donations_count + donations_dup_count, "Number of donations (#{donations_count + donations_dup_count}) should be equal")
-    puts new_donations.count
+    # puts new_donations.count
     new_total = 0
     old_total = 0
     new_donations.each {|d| new_total += d.value unless d.value.blank? }
     donations.each {|d| old_total += d.value unless d.value.blank? }
     donations_dup.each {|d| old_total += d.value unless d.value.blank? }
     assert_equal(new_total, old_total, "Donation total #{new_total} should be equal")
-    puts new_total,old_total
+    # puts new_total,old_total
 
     # We had "ignore" for notes and interests and categories, make sure they stayed as is
     assert_equal(@volunteer.notes, notes, "Notes '#{notes}' should have remained as is")
@@ -288,6 +290,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     # Did everything delete OK?
     @duplicate_volunteer.reload
     assert(@duplicate_volunteer.deleted?, "Source volunteer soft deleted");
+    assert_equal("Merged with #{@volunteer.id}", @duplicate_volunteer.deleted_reason)
     assert_equal(WorkdayVolunteer.where("volunteer_id = #{@duplicate_volunteer.id}").count, 0, "All workday shifts from source gone")
     assert_equal(Donation.where("volunteer_id = #{@duplicate_volunteer.id}").count, 0, "All donations from source gone")
     assert_equal(VolunteerInterest.where("volunteer_id = #{@duplicate_volunteer.id}").count, 0, "All interests from source gone")

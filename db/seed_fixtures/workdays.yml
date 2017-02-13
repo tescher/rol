@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Workday One
+  project_id: 1
+  workdate: <%= 5.day.ago.to_s(:db) %>
+
+two:
+  name: Workday Two
+  project_id: 1
+  workdate: <%= 5.day.ago.to_s(:db) %>
+
+fiveday:
+  name: Workday Two
+  project_id: 1
+  workdate: <%= 5.day.ago.to_s(:db) %>
+
+tenday:
+  name: Workday Two
+  project_id: 1
+  workdate: <%= 5.day.ago.to_s(:db) %>
+
+<% 10.times do |n| %>
+workday_<%= n %>:
+  name:  <%= "Workday #{n}" %>
+  project_id: 1
+  workdate: <%= 5.day.ago.to_s(:db) %>
+<% end %>
+
+dependent:
+  name: dependent
+  project: master
+  workdate: <%= 5.day.ago.to_s(:db) %>

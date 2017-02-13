@@ -1,0 +1,31 @@
+Now not requiring recaptcha when launching new pending volunteer action while self tracking is enabled.
+* Now deleting the self tracking keys on log in and log out.
+----------------
+
+
+
+
+
+TODO for later
+--------------
+ * Eventually delete Volunteer.pending_volunteer_id
+ * Add test case for checking pending volunteers on the add_participate page.
+ * Delete the *out.xml files.
+
+
+QUESTIONS
+---------
+ * What is the workday_volunteers.old_id used for?
+
+
+TESTING NOTES
+-------------
+Starting from scratch...
+rake db:reset RAILS_ENV=test
+rake test
+
+
+Running a specific test...
+rake test TEST=test/integration/volunteers_edit_test.rb
+
+While writing tests, you can run `guard` so it watches for changes and automatically executes any changed tests.

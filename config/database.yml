@@ -11,11 +11,13 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: rol_development
+  database: <%= ENV["RAILS_DB_DATABASE"] || "rol_development" %>
   pool: 5
-  username: postgres
-  password: Mariann1
+  username: <%= ENV["RAILS_DB_USER"] || "hfh_rol_dev" %>
+  password: <%= ENV["RAILS_DB_PASSWORD"] || "^nHYebFYbsd9" %>
   timeout: 5000
+  host: localhost
+  # host: postgresql-common
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -23,11 +25,12 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: rol_test
+  database: <%= ENV["RAILS_DB_DATABASE"] || "rol_test" %>
   pool: 5
-  username: postgres
-  password: Mariann1
+  username: <%= ENV["RAILS_DB_USER"] || "hfh_rol_test" %>
+  password: <%= ENV["RAILS_DB_PASSWORD"] || "^nHYebFYbsd9" %>
   timeout: 5000
+  host: localhost
 
 
 # Production DB on WebFaction (Heroku handles through environment vars I think)

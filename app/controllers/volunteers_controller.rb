@@ -91,7 +91,7 @@ class VolunteersController < ApplicationController
               if ["last_name", "first_name", "city"].include?(index[0])
                 if index[1].strip.length > 0
                   where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
-                  where_clause += "(soundex(#{index[0]}) = soundex(#{Volunteer.sanitize(index[1])}) OR (LOWER(#{index[0]}) LIKE #{Volunteer.sanitize(index[1].downcase+ "%")}))"
+                  where_clause += Volunteer.get_fuzzymatch_where_clause(index[0], index[1])
                 end
               end
               if index[0] == "interest_ids"
@@ -226,7 +226,8 @@ class VolunteersController < ApplicationController
       @allow_stay = true
       session[:volunteer_id] = @volunteer.id
       if params[:pending_volunteer_id]
-        @pending_volunteer = PendingVolunteer.find(params[:pending_volunteer_id])
+        @pending_volunteer = Volunteer.pending.find(params[:pending_volunteer_id])
+		@num_workdays = WorkdayVolunteer.where(volunteer_id: params[:pending_volunteer_id])
         @volunteer.pending_volunteer_id = @pending_volunteer.id
         ["first_name", "last_name", "address", "city", "state", "zip", "phone", "notes", "interests"].each do |column|
           if column == "phone"
@@ -247,17 +248,19 @@ class VolunteersController < ApplicationController
   # POST /volunteers
   # POST /volunteers.json
   def create
-    @volunteer = Volunteer.new(volunteer_params)
-    if @volunteer.save    # Save successful
+    # If coming from the pending volunteer flow, we convert the original pending
+    # volunteer record.
+    if volunteer_params[:pending_volunteer_id].present?
+      from_pending_volunteers = true
+      @volunteer = Volunteer.pending.find(volunteer_params[:pending_volunteer_id])
+      @volunteer.needs_review = false
+      @volunteer.assign_attributes(volunteer_params)
+    else
       from_pending_volunteers = false
-      if @volunteer.pending_volunteer_id
-        pending_volunteer = PendingVolunteer.find(@volunteer.pending_volunteer_id)
-        if !pending_volunteer.resolved
-          from_pending_volunteers = true #If coming from an unresolved pending volunteer, need to go back to list
-        end
-        pending_volunteer.resolved = true
-        pending_volunteer.save
-      end
+      @volunteer = Volunteer.new(volunteer_params)
+    end
+
+    if @volunteer.save    # Save successful
       session[:volunteer_id] = @volunteer.id
       if params[:volunteer][:dialog] == "true"
         @workday = session[:workday_id]
@@ -411,6 +414,7 @@ class VolunteersController < ApplicationController
         end
 
         @source_volunteer.deleted_reason = "Merged with #{@object.id}"
+        @source_volunteer.save
         @source_volunteer.destroy!
 
         flash[:success] = "Volunteers merged"
