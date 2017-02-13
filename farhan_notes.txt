@@ -1,7 +1,5 @@
-Now allowing the user to add a check out time.
-* Switched to Tim's fedex gem.
-* Removed the additional sorting on the self tracking index action because it was excluding the pending volunteers.  I have tried a few different methods, but haven't had luck getting any of them to work so this is a short-term workaround.
-* Now respecting autofocus on dialog forms.
+Now not requiring recaptcha when launching new pending volunteer action while self tracking is enabled.
+* Now deleting the self tracking keys on log in and log out.
 ----------------
 
 

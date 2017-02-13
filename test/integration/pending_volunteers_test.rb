@@ -50,6 +50,17 @@ class PendingVolunteersTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test "Should display recpatcha" do
+    get new_pending_volunteer_path()
+    assert_select "[class='g-recaptcha']"
+  end
+
+  test "Should not display recpatcha" do
+    log_in_as(@user)
+	get self_tracking_launch_path(@first_workday.id)
+    get new_pending_volunteer_path()
+    assert_select "[class='g-recaptcha']", false
+  end
 
   test "New volunteer from pending volunteer with workdays" do
     log_in_as(@user)

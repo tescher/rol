@@ -3,6 +3,9 @@ module SessionsHelper
   # Logs in the given user.
   def log_in(user)
     session[:user_id] = user.id
+	session.delete(:self_tracking_workday_id)
+	session.delete(:self_tracking_expires_at)
+	session.delete(:self_tracking_launching_user_id)
   end
 
   # Returns the current logged-in user (if any).
@@ -27,6 +30,9 @@ module SessionsHelper
   def log_out
     forget(current_user)
     session.delete(:user_id)
+	session.delete(:self_tracking_workday_id)
+	session.delete(:self_tracking_expires_at)
+	session.delete(:self_tracking_launching_user_id)
     @current_user = nil
   end
 

@@ -9,6 +9,7 @@ class PendingVolunteersController < ApplicationController
   def new
     @object = Volunteer.pending.new()
     @launched_from_self_tracking = params[:launched_from_self_tracking]
+	@self_tracking_enabled = session[:self_tracking_workday_id].present? && Workday.exists?(session[:self_tracking_workday_id])
     session[:referer] = request.referer
     @submit_name = "Submit"
     render 'new'
@@ -103,9 +104,13 @@ class PendingVolunteersController < ApplicationController
 
   def create
     @object = Volunteer.pending.new(pending_volunteer_params)
-    @launched_from_self_tracking = params[:launched_from_self_tracking]
     @object.work_phone = @object.mobile_phone = @object.home_phone
-    status = verify_google_recptcha(GOOGLE_SECRET_KEY,params["g-recaptcha-response"])
+
+    @launched_from_self_tracking = params[:launched_from_self_tracking]
+	@self_tracking_enabled = session[:self_tracking_workday_id].present? && Workday.exists?(session[:self_tracking_workday_id])
+	# Don't check recaptcha is self tracking is enabled.
+	status = @self_tracking_enabled ? true : verify_google_recptcha(GOOGLE_SECRET_KEY,params["g-recaptcha-response"])
+
     if status && @object.save  # Order is important here!
       render 'success'
     else

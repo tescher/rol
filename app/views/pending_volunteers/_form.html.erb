@@ -151,14 +151,16 @@
             <% end %>
         <% end %>
       </div>
-      <div class="row">
-        <div class="col-md-10">
-          <div class="pull-right">
-            <div class="g-recaptcha" data-sitekey="<%= GOOGLE_SITE_KEY %>"></div>
-            <%= render partial: "shared/form_actions", locals: {f: f} %>
-          </div>
-        </div>
-      </div>
-    </div>
+	  <div class="row">
+		  <div class="col-md-10">
+			  <div class="pull-right">
+				  <% if !defined?(@self_tracking_enabled) || (@self_tracking_enabled == false) %>
+					  <div class="g-recaptcha" data-sitekey="<%= GOOGLE_SITE_KEY %>"></div>
+				  <% end %>
+				  <%= render partial: "shared/form_actions", locals: {f: f} %>
+			  </div>
+		  </div>
+	  </div>
+	</div>
 
 <% end %>
