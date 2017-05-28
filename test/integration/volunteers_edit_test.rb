@@ -175,14 +175,11 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
   end
 
   test "successful edit with funky address" do
-    address_save = @volunteer.address
     @volunteer.address = "D'Nure St & 5th @ Vine"
     @volunteer.save
     log_in_as(@user)
     get edit_volunteer_path(@volunteer)
     assert_template 'volunteers/edit'
-    @volunteer.address = volunteer_save
-    @volunteer.save
   end
 
   test "successful delete as admin" do
