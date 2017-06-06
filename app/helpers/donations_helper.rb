@@ -20,7 +20,7 @@ module DonationsHelper
         where_clause = "(volunteers.id = '#{object.id}') AND (donations.volunteer_id = volunteers.id) AND (donations.donation_type_id = donation_types.id) and (donation_types.non_monetary = FALSE)"
       else
         address_hash = (object.address.to_s + object.city.to_s).gsub(/[^0-9a-zA-Z]/,"").downcase
-        where_clause = "(LOWER(regexp_replace(volunteers.address || volunteers.city, '[^0-9a-zA-Z]', '')) = '" + address_hash + "') AND (donations.volunteer_id = volunteers.id) AND (donations.donation_type_id = donation_types.id) and (donation_types.non_monetary = FALSE)"
+        where_clause = "(REGEXP_REPLACE(LOWER(volunteers.address || volunteers.city), '[^0-9a-z]', '', 'g') = '" + address_hash + "') AND (donations.volunteer_id = volunteers.id) AND (donations.donation_type_id = donation_types.id) and (donation_types.non_monetary = FALSE)"
       end
 
       # join = "INNER JOIN workday_#{@objectName}s ON workday_#{@objectName}s.workday_id = workdays.id"
