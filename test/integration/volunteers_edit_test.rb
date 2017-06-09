@@ -174,6 +174,25 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     assert_equal @volunteer.email, email
   end
 
+  test "Find family donation with funky address" do
+    funky_address = "D'Nure St & 5th @ Vine"
+    funky_city = "L'odi"
+    @volunteer1 = volunteers(:volunteer_1)
+    @volunteer1.address = funky_address
+    @volunteer1.city = funky_city
+    @volunteer1.save
+    log_in_as(@monetary_donation_user)
+    get edit_volunteer_path(@volunteer1)
+    assert_template 'volunteers/edit'
+    assert_no_match 'a[id=?]', "linkDonationSummary"
+    @volunteer.address = funky_address
+    @volunteer.city = funky_city
+    @volunteer.save
+    get edit_volunteer_path(@volunteer1)
+    assert_template 'volunteers/edit'
+    assert_select 'a[id=?]', "linkDonationSummary"
+  end
+
   test "successful delete as admin" do
     log_in_as(@admin)
     get edit_volunteer_path(@volunteer)
