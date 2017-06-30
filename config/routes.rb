@@ -62,6 +62,7 @@ Rails.application.routes.draw do
     get 'volunteer_search', to: 'self_tracking#volunteer_search', as: 'self_tracking_volunteer_search'
     get 'check_in/:id', to: 'self_tracking#check_in', as: 'self_tracking_check_in'
     get 'check_out/:workday_volunteer_id', to: 'self_tracking#check_out', as: 'self_tracking_check_out'
+    get 'check_out_all', to: 'self_tracking#check_out_all', as: 'self_tracking_check_out_all'
   end
 
   get 'workday_volunteers/import' => 'workday_volunteers#import_form'

@@ -24,3 +24,5 @@
 
 # VIM swap files
 *.swp
+
+.byebug_history

@@ -43,17 +43,19 @@
   </table>
 <% end %>
 
-
-<div class="row">
-  <div class="col-md-12">
-    <div class="actions pull-right">
-      <div class="actions">
-        <button type="button" class="btn btn-primary" onclick="return loadModalDialog('#modalDialog', '<%= self_tracking_volunteer_search_path %>');">
-          <span class="glyphicon glyphicon-log-in"></span> Check-in...
-        </button>
+<% if @workday.workday_volunteers.length > 0 %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="actions pull-right">
+        <div class="actions">
+           <%= link_to 'Process end of day', login_path(:target_url => self_tracking_launch_url(:id=> session[:self_tracking_workday_id], :check_out_all => true)), class: "btn btn-primary" %>
+           <button type="button" class="btn btn-primary" onclick="return loadModalDialog('#modalDialog', '<%= self_tracking_volunteer_search_path %>');">
+            <span class="glyphicon glyphicon-log-in"></span> Check-in...
+          </button>
+        </div>
       </div>
     </div>
   </div>
-</div>
+<% end %>
 
 <div class="modal fade" tabindex="-1" role="dialog" id="modalDialog"></div>

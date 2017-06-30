@@ -16,10 +16,12 @@
             <span>Remember me on this computer</span>
         <% end %>
 
-
-
+        <% if params[:target_url].nil? %>
         <%= f.submit "Log in", class: "btn btn-primary" %>
-    <% end %>
+        <% else %>
+        <%= f.submit "Log in", name:"target_url", value: params[:target_url], class: "btn btn-primary" %>
+        <% end %>
 
+    <% end %>
   </div>
 </div>

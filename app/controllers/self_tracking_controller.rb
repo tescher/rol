@@ -26,7 +26,11 @@ class SelfTrackingController < ApplicationController
     session[:self_tracking_expires_at] = DateTime.now + 1   # Expire after 1 day
     session[:self_tracking_launching_user_id] = user_id
 
-    redirect_to action: "index"
+    if params[:check_out_all] == "true"
+      redirect_back_or self_tracking_check_out_all_path
+    else
+      redirect_to action: "index"
+    end
   end
 
 
@@ -74,7 +78,7 @@ class SelfTrackingController < ApplicationController
 
   def check_in
     @volunteer = Volunteer.including_pending.find(params[:id])
-	@workday = Workday.find(session[:self_tracking_workday_id])
+	  @workday = Workday.find(session[:self_tracking_workday_id])
     @newly_signed_up = params[:newly_signed_up]
 
     if params[:check_in_form].present?
@@ -95,7 +99,7 @@ class SelfTrackingController < ApplicationController
 		else
 		  flash[:success] = "#{@volunteer.name} successfully checked in."
 		end
-	
+
 		@workday.workday_volunteers.create(:volunteer => @volunteer, :start_time => start_time_formatted, :end_time => end_time)
         render :text => "success"
       else
@@ -114,9 +118,9 @@ class SelfTrackingController < ApplicationController
     @workday_volunteer = @workday.workday_volunteers.find(params[:workday_volunteer_id])
 
     if params[:check_out_form].present?
-	  @check_out_form = CheckOutForm.new(params[:check_out_form].merge(workday_volunteer: @workday_volunteer))
-      if @check_out_form.valid?
-		@workday_volunteer.end_time = Time.strptime(@check_out_form.check_out_time, "%I:%M %P").strftime("%H:%M:%S")
+	    @check_out_form = CheckOutForm.new(params[:check_out_form].merge(workday_volunteer: @workday_volunteer))
+    if @check_out_form.valid?
+		  @workday_volunteer.end_time = Time.strptime(@check_out_form.check_out_time, "%I:%M %P").strftime("%H:%M:%S")
 		if @workday_volunteer.valid?
 		  @workday_volunteer.save
 		  flash[:success] = "#{@workday_volunteer.volunteer.name} successfully checked out."
@@ -135,11 +139,23 @@ class SelfTrackingController < ApplicationController
     end
   end
 
+  def check_out_all
+    @workday = Workday.find(session[:self_tracking_workday_id])
+    @check_out_all_form = CheckOutAllForm.new
 
+    if params[:check_out_all_form].present?
+      @workday.workday_volunteers.each do |workday_volunteer|
+        if workday_volunteer.end_time.nil?
+          workday_volunteer.end_time = @check_out_all_form.check_out_time
+          workday_volunteer.save
+        end
+      end
+
+      p "redirecting..."
+      redirect_to self_tracking_index_path
+    end
+  end
 end
-
-
-
 
 # Class for simple validation of the search form
 class SearchForm
@@ -159,18 +175,25 @@ class CheckInForm
   validate :overlapping_check_in, :if => lambda { @check_in_time.present? }
 
   def overlapping_check_in
-	check_in_time = Time.strptime(@check_in_time, "%I:%M %P").strftime("%H:%M:%S")
+  	check_in_time = Time.strptime(@check_in_time, "%I:%M %P").strftime("%H:%M:%S")
 
-	# Don't allow overlapping check-ins.
-	if @workday.workday_volunteers.where(
-		"(volunteer_id = :volunteer_id) AND (start_time <= :time) AND ((end_time IS NULL) OR (end_time >= :time))",
-		{volunteer_id: @volunteer.id, time: check_in_time}
-	).count > 0
-	  errors.add(:base, "You are already checked in at this time.")
-	end
+  	# Don't allow overlapping check-ins.
+  	if @workday.workday_volunteers.where(
+  		"(volunteer_id = :volunteer_id) AND (start_time <= :time) AND ((end_time IS NULL) OR (end_time >= :time))",
+  		{volunteer_id: @volunteer.id, time: check_in_time}
+	   ).count > 0
+  	  errors.add(:base, "You are already checked in at this time.")
+	  end
   end
 end
 
+class CheckOutAllForm
+    include ActiveModel::Model
+    attr_accessor :check_out_time
+    def initialize()
+      @check_out_time = Time.now
+    end
+end
 
 class CheckOutForm
   include ActiveModel::Model
@@ -189,14 +212,13 @@ class CheckOutForm
 	else
 	  # Don't allow overlapping check outs.
 	  overlapping_shifts = workday.workday_volunteers.where(
-		"(volunteer_id = :volunteer_id) AND (id != :this_workday_volunteer_id) AND 
+		"(volunteer_id = :volunteer_id) AND (id != :this_workday_volunteer_id) AND
 		(start_time > :this_start_time) AND (:this_end_time >= start_time)",
 		{
 		  volunteer_id: volunteer.id, this_workday_volunteer_id: @workday_volunteer.id,
 		  this_start_time: @workday_volunteer.start_time.strftime("%H:%M:%S"),
 		  this_end_time: end_time.strftime("%H:%M:%S")
-		}
-	  )
+		})
 	  if overlapping_shifts.count > 0
 		errors.add(
 		  :base,
