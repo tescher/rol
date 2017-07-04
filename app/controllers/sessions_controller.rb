@@ -8,10 +8,10 @@ class SessionsController < ApplicationController
       log_in user
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
 
-      if params[:target_url].nil?
+      if !params[:session][:target_url].present?
         redirect_back_or root_url
       else
-        redirect_back_or params[:target_url]
+        redirect_back_or params[:session][:target_url]
       end
     else
       flash.now[:danger] = 'Invalid email/password combination'

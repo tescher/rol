@@ -19,7 +19,9 @@
         <% if params[:target_url].nil? %>
         <%= f.submit "Log in", class: "btn btn-primary" %>
         <% else %>
-        <%= f.submit "Log in", name:"target_url", value: params[:target_url], class: "btn btn-primary" %>
+        <%= f.submit "Log in", class: "btn btn-primary" %>
+        <%= f.text_field :target_url, value: params[:target_url], style: "display:none" %>
+
         <% end %>
 
     <% end %>

@@ -30,8 +30,7 @@
           </td>
           <td>
             <% if workday_volunteer.end_time.blank? %>
-            <button type="button" class="btn btn-default btn-xs"
-			  onclick="return loadModalDialog('#modalDialog', '<%= self_tracking_check_out_path(workday_volunteer) %>', hookupTimepicker);"
+            <button type="button" class="btn btn-default btn-xs" onclick="return loadModalDialog('#modalDialog', '<%= self_tracking_check_out_path(workday_volunteer) %>', hookupTimepicker);"
               >Check out</button>
           <% else %>
             <%= workday_volunteer.end_time.strftime("%l:%M %p") %>
@@ -48,7 +47,7 @@
     <div class="col-md-12">
       <div class="actions pull-right">
         <div class="actions">
-           <%= link_to 'Process end of day', login_path(:target_url => self_tracking_launch_url(:id=> session[:self_tracking_workday_id], :check_out_all => true)), class: "btn btn-primary" %>
+           <%= link_to 'Process end of day', self_tracking_check_out_all_path(:login=>true), class: "btn btn-primary" %>
            <button type="button" class="btn btn-primary" onclick="return loadModalDialog('#modalDialog', '<%= self_tracking_volunteer_search_path %>');">
             <span class="glyphicon glyphicon-log-in"></span> Check-in...
           </button>

@@ -1,3 +1,5 @@
+include ApplicationHelper
+
 class SelfTrackingController < ApplicationController
   before_action :has_valid_workday, except: [ :launch ]
   before_action :logged_in_user, only: [:launch]
@@ -45,7 +47,8 @@ class SelfTrackingController < ApplicationController
       @search_form = SearchForm.new(params[:search_form])
       if @search_form.valid?
         last_name, first_name = @search_form.name.split(",")
-		last_name.strip!
+
+    last_name.strip!
 
 		# if record(s) match fuzzy name, phone, OR email, count that as a match and present them to select from.
 		where_clause = Volunteer.get_fuzzymatch_where_clause("last_name", last_name) if last_name.present?
@@ -141,19 +144,42 @@ class SelfTrackingController < ApplicationController
 
   def check_out_all
     @workday = Workday.find(session[:self_tracking_workday_id])
-    @check_out_all_form = CheckOutAllForm.new
-
     if params[:check_out_all_form].present?
-      @workday.workday_volunteers.each do |workday_volunteer|
-        if workday_volunteer.end_time.nil?
-          workday_volunteer.end_time = @check_out_all_form.check_out_time
-          workday_volunteer.save
+      @check_out_all_form = Check_out_all_form.new(params[:check_out_all_form])
+      if @check_out_all_form.valid?
+        @workday.workday_volunteers.each do |workday_volunteer|
+          if workday_volunteer.end_time.nil?
+            workday_volunteer.end_time = Time.parse(@check_out_all_form.check_out_time)
+            workday_volunteer.save
+          end
         end
+
+        redirect_to self_tracking_index_path
+      else
+#          render 'check_out_all'
+        p "time not valid"
       end
 
-      p "redirecting..."
-      redirect_to self_tracking_index_path
+    elsif params[:login].present?
+      redirect_to login_path(:target_url => self_tracking_launch_url(:id=> session[:self_tracking_workday_id], :check_out_all => true))
+    else
+      @check_out_all_form = Check_out_all_form.new(
+        check_out_time:  Time.now.strftime("%l:%M %p"))
+
+      p "first intialization"
     end
+  end
+
+end
+
+class Check_out_all_form
+  include ActiveModel::Model
+  attr_accessor :check_out_time
+  validates_presence_of :check_out_time
+  validate :overlapping_check_out_all, :if => lambda { @check_out_time.present? }
+
+  def overlapping_check_out_all
+    # add validations
   end
 end
 
@@ -185,14 +211,6 @@ class CheckInForm
   	  errors.add(:base, "You are already checked in at this time.")
 	  end
   end
-end
-
-class CheckOutAllForm
-    include ActiveModel::Model
-    attr_accessor :check_out_time
-    def initialize()
-      @check_out_time = Time.now
-    end
 end
 
 class CheckOutForm

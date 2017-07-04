@@ -1,5 +1,6 @@
 <%= form_for(@check_out_all_form, url: self_tracking_check_out_all_path, method: :get,
-remote: true, html: {:class => "form-horizontal"}) do |form| %>
+html: {class: "form-horizontal"}) do |form| %>
+
 <% provide(:title, 'Volunteer Self Tracking') %>
 <h1>End of day confirmation</h1>
 
@@ -8,25 +9,28 @@ remote: true, html: {:class => "form-horizontal"}) do |form| %>
 </p>
 
 <%= @object = @check_out_all_form
-  render 'shared/error_messages' %>
+render 'shared/error_messages' %>
 
-  <div class="row">
-    <div class="form-horizontal">
-      <div class="col-md-2">
-        <%= label_tag "Check-out", nil, class: "control-label"  %>
-        <%= form.time_field :check_out_time, class: "form-control" %>
-      </div>
+<div class="row" style="margin-left:20px;">
+  <div class="form-horizontal">
+    <div class="col-md-2" id="form-container">
+      <%= label_tag "Check-out", nil, class: "control-label"  %>
+      <%= form.text_field :check_out_time, class: 'form-control', autofocus: true %>
     </div>
   </div>
+</div>
 
 <div class="row">
   <div class="col-md-12">
     <div class="actions pull-right">
       <div class="actions">
-         <%= form.submit 'Yes', class: "btn btn-primary" %>
+         <%= submit_tag "Yes", class: "btn btn-primary" %>
          <%= link_to 'Cancel', self_tracking_index_path, class: "btn btn-primary" %>
       </div>
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  hookupTimepicker("#form-container");
+</script>
 <% end %>
