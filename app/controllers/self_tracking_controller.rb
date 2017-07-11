@@ -136,8 +136,7 @@ class SelfTrackingController < ApplicationController
       end
     else
       @check_out_form = CheckOutForm.new(
-		workday_volunteer: @workday_volunteer, check_out_time:  Time.now.strftime("%l:%M %p")
-	  )
+		      workday_volunteer: @workday_volunteer, check_out_time:  Time.now.strftime("%l:%M %p"))
       render partial: "check_out"
     end
   end
@@ -145,42 +144,40 @@ class SelfTrackingController < ApplicationController
   def check_out_all
     @workday = Workday.find(session[:self_tracking_workday_id])
     if params[:check_out_all_form].present?
-      @check_out_all_form = Check_out_all_form.new(params[:check_out_all_form])
+      @check_out_all_form = Check_out_all_form.new(params[:check_out_all_form].merge(workday: @workday))
       if @check_out_all_form.valid?
+        is_all_updated = true
         @workday.workday_volunteers.each do |workday_volunteer|
           if workday_volunteer.end_time.nil?
             workday_volunteer.end_time = Time.parse(@check_out_all_form.check_out_time)
-            workday_volunteer.save
+            if workday_volunteer.is_end_time_valid && !@workday.is_overlapping_volunteer(workday_volunteer)
+              workday_volunteer.save
+            else
+              is_all_updated = false
+            end
           end
         end
 
-        redirect_to self_tracking_index_path
-      else
-#          render 'check_out_all'
-        p "time not valid"
+        if is_all_updated
+          redirect_to self_tracking_index_path
+        else
+          flash[:danger] = "Attention! Not all volunteers were checked out"
+          redirect_to self_tracking_index_path
+        end
       end
 
     elsif params[:login].present?
       redirect_to login_path(:target_url => self_tracking_launch_url(:id=> session[:self_tracking_workday_id], :check_out_all => true))
     else
-      @check_out_all_form = Check_out_all_form.new(
-        check_out_time:  Time.now.strftime("%l:%M %p"))
-
-      p "first intialization"
+      @check_out_all_form = Check_out_all_form.new(workday: @workday, check_out_time: Time.now.strftime("%l:%M %p"))
     end
   end
-
 end
 
 class Check_out_all_form
   include ActiveModel::Model
-  attr_accessor :check_out_time
+  attr_accessor :check_out_time, :workday, :allSuccess
   validates_presence_of :check_out_time
-  validate :overlapping_check_out_all, :if => lambda { @check_out_time.present? }
-
-  def overlapping_check_out_all
-    # add validations
-  end
 end
 
 # Class for simple validation of the search form

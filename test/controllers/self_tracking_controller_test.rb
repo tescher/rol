@@ -83,7 +83,7 @@ class SelfTrackingControllerTest < ActionController::TestCase
     assert_equal "Tim", results[1].first_name
     assert_equal "Smith", results[1].last_name
     assert results[1].needs_review
-	
+
 	# Test phone search
     get :volunteer_search, :search_form => { name: "Escher,Tim", phone: "(907) 745-3512Dup" }
     assert_response :success
@@ -226,7 +226,6 @@ class SelfTrackingControllerTest < ActionController::TestCase
     assert_equal "08:00:00", later_shift.start_time.strftime("%H:%M:%S")
 	assert_nil later_shift.end_time
   end
-
 
   test "should validate checkout functionality" do
     self.setup_self_tracking_session

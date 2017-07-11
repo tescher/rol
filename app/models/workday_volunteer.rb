@@ -7,6 +7,9 @@ class WorkdayVolunteer < ActiveRecord::Base
   validate :calc_and_validate_hours
   validates :hours, :numericality => { :greater_than_or_equal_to => 0 }, :allow_nil => true
 
+  def is_end_time_valid
+    self.end_time.strftime("%H%M%S").to_i >= self.start_time.strftime("%H%M%S").to_i ? true : false
+  end
 
   private
 

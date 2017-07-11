@@ -17,4 +17,19 @@ class Workday < ActiveRecord::Base
     @skip_dup_check
   end
 
+  def is_overlapping_volunteer(workday_volunteer)
+
+    overlapping_shifts = self.workday_volunteers.where(
+    "(volunteer_id = :volunteer_id) AND (id != :this_workday_volunteer_id) AND
+    (start_time > :this_start_time) AND (:this_end_time >= start_time)",
+    {
+      volunteer_id: workday_volunteer.volunteer.id,
+      this_workday_volunteer_id: workday_volunteer.id,
+      this_start_time: workday_volunteer.start_time.strftime("%H:%M:%S"),
+      this_end_time: workday_volunteer.end_time.strftime("%H:%M:%S")
+    })
+
+    overlapping_shifts.count > 0 ? true : false
+  end
+
 end
