@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+
   def new
   end
 
@@ -14,8 +15,9 @@ class SessionsController < ApplicationController
         redirect_back_or params[:session][:target_url]
       end
     else
-      flash.now[:danger] = 'Invalid email/password combination'
-      render 'new'
+      flash[:danger] = 'Invalid email/password combination'
+      redirect_to (params[:session][:target_url].nil? ?
+               login_path : login_path(:target_url => params[:session][:target_url]))
     end
   end
 

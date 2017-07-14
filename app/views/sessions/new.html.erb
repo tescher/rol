@@ -16,13 +16,9 @@
             <span>Remember me on this computer</span>
         <% end %>
 
-        <% if params[:target_url].nil? %>
         <%= f.submit "Log in", class: "btn btn-primary" %>
-        <% else %>
-        <%= f.submit "Log in", class: "btn btn-primary" %>
-        <%= f.text_field :target_url, value: params[:target_url], style: "display:none" %>
 
-        <% end %>
+        <%= f.text_field :target_url, value: params[:target_url], style: "display:none" if !params[:target_url].nil? %>
 
     <% end %>
   </div>
