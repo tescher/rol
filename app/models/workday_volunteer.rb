@@ -12,7 +12,6 @@ class WorkdayVolunteer < ActiveRecord::Base
   end
 
   private
-
   def calc_and_validate_hours
     if !self.start_time.blank? || !self.end_time.blank?
       begin

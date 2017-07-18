@@ -14,8 +14,13 @@
       </tr>
     </thead>
     <tbody>
+
 		<% @workday.workday_volunteers.order(:start_time, :end_time).each do |workday_volunteer|
         volunteer = workday_volunteer.volunteer %>
+
+        <% has_message = session[:unupdated_message].present? &&
+            !session[:unupdated_message][workday_volunteer.volunteer_id.to_s].nil? %>
+
         <tr <% if workday_volunteer.end_time.present? %>class="text-muted"<% end %>>
           <td><%= volunteer.name %></td>
           <td>
@@ -23,21 +28,41 @@
           </td>
           <td>
             <% if volunteer.waiver_date.blank? %>
-              <span class="text-danger"><em><i class="glyphicon glyphicon-exclamation-sign"></i> Missing</em></span>
+              <span class="text-danger">
+                <em>
+                  Missing
+                </em>
+              </span>
+
             <% else %>
               <span class="text-muted"><%= volunteer.waiver_date.strftime("%m/%d/%Y") %></span>
             <% end %>
           </td>
           <td>
-            <% if workday_volunteer.end_time.blank? %>
-            <button type="button" class="btn btn-default btn-xs" onclick="return loadModalDialog('#modalDialog', '<%= self_tracking_check_out_path(workday_volunteer) %>', hookupTimepicker);"
-              >Check out</button>
-          <% else %>
-            <%= workday_volunteer.end_time.strftime("%l:%M %p") %>
-          <% end %>
-        </td>
+            <% if has_message %>
+                <span class="text-danger">
+                  <em>
+                    <span data-toggle="tooltip" title="<%= session[:unupdated_message][workday_volunteer.volunteer_id.to_s] %>">
+                      <i class="glyphicon glyphicon-exclamation-sign"></i> <%= session[:unupdated_date] %>
+                    </span>
+                  </em>
+                </span>
+                <p>
+                  <button type="button" class="btn btn-default btn-xs" onclick="return loadModalDialog('#modalDialog', '<%= self_tracking_check_out_path(workday_volunteer) %>', hookupTimepicker);">Check out</button>
+                </p>
+            <% else %>
+              <% if workday_volunteer.end_time.blank? %>
+              <button type="button" class="btn btn-default btn-xs" onclick="return loadModalDialog('#modalDialog', '<%= self_tracking_check_out_path(workday_volunteer) %>', hookupTimepicker);">Check out</button>
+              <% else %>
+                <%= workday_volunteer.end_time.strftime("%l:%M %p") %>
+              <% end %>
+            <% end %>
+          </td>
       </tr>
       <% end %>
+
+      <% session.delete(:unupdated_message)
+         session.delete(:unupdated_date) %>
     </tbody>
   </table>
 <% end %>

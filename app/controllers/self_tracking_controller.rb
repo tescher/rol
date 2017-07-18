@@ -146,22 +146,27 @@ class SelfTrackingController < ApplicationController
     if params[:check_out_all_form].present?
       @check_out_all_form = Check_out_all_form.new(params[:check_out_all_form].merge(workday: @workday))
       if @check_out_all_form.valid?
-        is_all_updated = true
+
+        unupdated_volunteers = Hash.new(0)
+
         @workday.workday_volunteers.each do |workday_volunteer|
           if workday_volunteer.end_time.nil?
             workday_volunteer.end_time = Time.parse(@check_out_all_form.check_out_time)
-            if workday_volunteer.is_end_time_valid && !@workday.is_overlapping_volunteer(workday_volunteer)
-              workday_volunteer.save
+            if !workday_volunteer.is_end_time_valid
+              unupdated_volunteers[workday_volunteer.volunteer_id.to_s] = 'End time is before start time.'
+            elsif !@workday.is_overlapping_volunteer(workday_volunteer)
+              unupdated_volunteers[workday_volunteer.volunteer_id.to_s] = 'End time overlaps another workday entry for this volunteer'
             else
-              is_all_updated = false
+              workday_volunteer.save
             end
           end
         end
 
-        if is_all_updated
+        if unupdated_volunteers.length == 0
           redirect_to self_tracking_index_path
         else
-          flash[:danger] = "Attention! Not all volunteers were checked out"
+          session[:unupdated_date] = Time.parse(@check_out_all_form.check_out_time).strftime("%l:%M %p")
+          session[:unupdated_message] = unupdated_volunteers
           redirect_to self_tracking_index_path
         end
       end
