@@ -154,8 +154,6 @@ class SelfTrackingControllerTest < ActionController::TestCase
     # Confirm no one is checked in yet.
     assert @workday.workday_volunteers.empty?
 
-
-
 	# Check-in at 8am.
     get :check_in, id: @volunteer.id, :check_in_form => {check_in_time: "8:00 AM"}
     assert_response :success
@@ -286,6 +284,91 @@ class SelfTrackingControllerTest < ActionController::TestCase
     end
   end
 
+  test "should validate checkout all functionality" do
+      self.setup_self_tracking_session
+
+      # Confirm no one is checked in yet.
+      assert @workday.workday_volunteers.empty?
+
+      # Check-in two volunteers and then check them out.
+      get :check_in, id: @volunteer.id, :check_in_form => {check_in_time: "12:30 PM"}
+      get :check_in, id: @volunteer.id, :check_in_form => {check_in_time: "8:00 AM"}
+      get :check_in, id: @pending_volunteer.id, :check_in_form => {check_in_time: "1:20 PM"}
+      assert_equal 3, @workday.workday_volunteers.count
+
+      workdate = @workday.workdate
+      # Using .change so we retain the timezone.
+      target_date_time = DateTime.now.change(
+        :year => workdate.year, :month => workdate.month, :day => workdate.day, :hour => 17, :minute => 0
+      )
+      Timecop.freeze(target_date_time) do
+
+        # Get the original records
+  	  volunteer_workday = @workday.workday_volunteers.where(:volunteer_id => @volunteer.id).order(:start_time).first
+  	  pending_volunteer_workday = @workday.workday_volunteers.where(:volunteer_id => @pending_volunteer.id).first
+
+  	  # Checkout before the check-in time.
+      get :check_out_all, :check_out_all_form => { check_out_time: "6:00 AM" }
+      assert_redirected_to self_tracking_index_path
+      assert !session[:unupdated_message].empty?
+      assert session[:unupdated_message].has_value?("End time is before start time.")
+
+  	  # Checkout after the start of next shift
+      get :check_out_all, :check_out_all_form => {check_out_time: "2:00 PM"}
+      assert_redirected_to self_tracking_index_path
+      assert_equal 1, session[:unupdated_message].count
+      assert session[:unupdated_message].has_value?("End time overlaps another workday entry for this volunteer")
+
+      # Valid checkout
+      get :check_out_all, :check_out_all_form => {check_out_time: "11:46 AM"}
+	    assert_redirected_to self_tracking_index_path
+
+    end
+  end
+
+  test "Should check out all overlapp another workday" do
+
+    self.setup_self_tracking_session
+    assert @workday.workday_volunteers.empty?
+    get :check_in, id: @volunteer.id, :check_in_form => {check_in_time: "3:00 PM"}
+    assert_equal 1, @workday.workday_volunteers.count
+
+    @workday = workdays(:two)
+    self.setup_self_tracking_session
+    assert @workday.workday_volunteers.empty?
+    get :check_in, id: @volunteer.id, :check_in_form => {check_in_time: "12:30 PM"}
+    get :check_in, id: @volunteer.id, :check_in_form => {check_in_time: "8:00 AM"}
+    get :check_in, id: @pending_volunteer.id, :check_in_form => {check_in_time: "1:20 PM"}
+    assert_equal 3, @workday.workday_volunteers.count
+
+    workdate = @workday.workdate
+    # Using .change so we retain the timezone.
+    target_date_time = DateTime.now.change(
+      :year => workdate.year, :month => workdate.month, :day => workdate.day, :hour => 17, :minute => 0
+    )
+    Timecop.freeze(target_date_time) do
+
+      # Overlaps workday
+      get :check_out_all, :check_out_all_form => {check_out_time: "3:01 PM"}
+      assert_redirected_to self_tracking_index_path
+      assert_equal 2, session[:unupdated_message].count
+
+      # Overlaps 8:00 AM and checks out 12:00 PM
+      get :check_out_all, :check_out_all_form => {check_out_time: "2:00 PM"}
+      assert_redirected_to self_tracking_index_path
+      assert_equal 1, session[:unupdated_message].count
+
+      # End time overlaps checked out item
+      get :check_out_all, :check_out_all_form => {check_out_time: "1:00 PM"}
+      assert_redirected_to self_tracking_index_path
+      assert_equal 1, session[:unupdated_message].count
+
+      # Check out 08:00 AM
+      get :check_out_all, :check_out_all_form => {check_out_time: "12:29 PM"}
+      assert_redirected_to self_tracking_index_path
+      assert session[:unupdated_message].nil?
+    end
+  end
 
   def setup_self_tracking_session
     session[:self_tracking_workday_id] = @workday.id

@@ -153,16 +153,26 @@ class SelfTrackingController < ApplicationController
           if workday_volunteer.end_time.nil?
             workday_volunteer.end_time = Time.parse(@check_out_all_form.check_out_time)
             if !workday_volunteer.is_end_time_valid
-              unupdated_volunteers[workday_volunteer.volunteer_id.to_s] = 'End time is before start time.'
-            elsif !@workday.is_overlapping_volunteer(workday_volunteer)
-              unupdated_volunteers[workday_volunteer.volunteer_id.to_s] = 'End time overlaps another workday entry for this volunteer'
+              unupdated_volunteers[workday_volunteer.id.to_s] = 'End time is before start time.'
             else
-              workday_volunteer.save
+              overlapped_workday = @workday.get_overlapping_workday(workday_volunteer);
+              if !overlapped_workday.nil?
+                unupdated_volunteers[workday_volunteer.id.to_s] = 'End time overlaps the workday:' << overlapped_workday.name
+              else
+                if @workday.is_overlapping_volunteer(workday_volunteer)
+                  unupdated_volunteers[workday_volunteer.id.to_s] = 'End time overlaps another workday entry for this volunteer'
+                else
+                  workday_volunteer.save
+                end
+              end
             end
           end
         end
 
         if unupdated_volunteers.length == 0
+          session.delete(:unupdated_message)
+          session.delete(:unupdated_date)
+
           redirect_to self_tracking_index_path
         else
           session[:unupdated_date] = Time.parse(@check_out_all_form.check_out_time).strftime("%l:%M %p")

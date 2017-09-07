@@ -6,15 +6,20 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     @user = users(:one)
   end
 
-
   test "login with invalid information" do
     get login_path
     assert_template 'sessions/new'
     post login_path, session: { email: "", password: "" }
-    assert_template 'sessions/new'
+    assert_redirected_to login_path
     assert_not flash.empty?
-    get root_path
-    assert flash.empty?
+  end
+
+  test "login with invalid information and target_url" do
+    get login_path
+    assert_template 'sessions/new'
+    post login_path, session: { email: "", password: "", target_url: root_path }
+    assert_redirected_to login_path(:target_url => root_path)
+    assert_not flash.empty?
   end
 
   test "login with valid information followed by log out" do
@@ -51,7 +56,4 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_nil cookies['remember_token']
   end
 
-
-
 end
-

@@ -19,7 +19,7 @@
         volunteer = workday_volunteer.volunteer %>
 
         <% has_message = session[:unupdated_message].present? &&
-            !session[:unupdated_message][workday_volunteer.volunteer_id.to_s].nil? %>
+            !session[:unupdated_message][workday_volunteer.id.to_s].nil? %>
 
         <tr <% if workday_volunteer.end_time.present? %>class="text-muted"<% end %>>
           <td><%= volunteer.name %></td>
@@ -42,7 +42,7 @@
             <% if has_message %>
                 <span class="text-danger">
                   <em>
-                    <span data-toggle="tooltip" title="<%= session[:unupdated_message][workday_volunteer.volunteer_id.to_s] %>">
+                    <span data-toggle="tooltip" title="<%= session[:unupdated_message][workday_volunteer.id.to_s] %>">
                       <i class="glyphicon glyphicon-exclamation-sign"></i> <%= session[:unupdated_date] %>
                     </span>
                   </em>
