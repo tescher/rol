@@ -1,9 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# for testing has_many/belongs_to relationship deletions
+advertisement:
+  name: Advertisement
 
-master:
-  name: master
+church:
+  name: Church
 
+employer:
+  name: Employer
 
+friend:
+  name: Friend
 
+event:
+  name: HFHSCA Event
+
+other:
+  name: Other
+
+website:
+  name: Website
