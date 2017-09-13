@@ -26,3 +26,6 @@
 *.swp
 
 .byebug_history
+
+# Developer's test environment settings
+.env
