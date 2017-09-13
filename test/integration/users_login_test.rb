@@ -11,6 +11,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     get login_path
     assert_template 'sessions/new'
     post login_path, session: { email: "", password: "" }
+    follow_redirect!
     assert_template 'sessions/new'
     assert_not flash.empty?
     get root_path
@@ -54,4 +55,3 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
 
 
 end
-
