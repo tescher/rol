@@ -23,3 +23,13 @@ Once you have created the database and the user, run the following commands to s
 
     $ rake db:setup
     $ rake db:seed
+
+### Address Validation Setup
+
+This project uses the FedEx API to verify addresses.  You'll need to [obtain a key](http://www.fedex.com/us/developer/web-services/index.html) and set up the following environment variables:
+
+- RAILS_FEDEX_KEY
+- RAILS_FEDEX_PASSWORD
+- RAILS_FEDEX_ACCOUNT
+- RAILS_FEDEX_METER
+- RAILS_FEDEX_MODE
