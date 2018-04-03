@@ -1,13 +1,2 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: Project1
-  inactive: false
-  id: 1
-
-two:
-  name: Project2
-  inactive: false
-
-master:
-  name: master

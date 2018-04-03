@@ -1,15 +1,2 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  volunteer_id: 
-  workday_id: 
-  start_time: 
-  end_time: 
-  hours: 1.5
-
-two:
-  volunteer_id: 
-  workday_id: 
-  start_time: 
-  end_time: 
-  hours: 1.5

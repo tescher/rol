@@ -35,7 +35,7 @@ gem "paranoia", "~> 2.0"
 
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
-gem 'pg'
+gem 'pg', "0.21.0"
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 gem 'bootstrap-sass'
