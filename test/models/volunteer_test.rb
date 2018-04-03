@@ -7,7 +7,9 @@ class VolunteerTest < ActiveSupport::TestCase
   end
 
   def teardown
-    @volunteer.really_destroy!
+    if @volunteer.persisted?
+      @volunteer.really_destroy!
+    end
   end
 
   test "should be valid" do
