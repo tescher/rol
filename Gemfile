@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
-ruby "2.1.10"
+ruby "2.4.1"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.0'
+gem 'rails', '4.2.10'
 # Crypto for password hashing
 gem 'bcrypt', '3.1.7'
 
@@ -11,7 +11,7 @@ gem 'bcrypt', '3.1.7'
 gem 'faker',                '1.4.2'
 
 # Paginater
-gem 'will_paginate',           '3.0.7'
+gem 'will_paginate',           '3.1.6'
 gem 'bootstrap-will_paginate', '0.0.10'
 
 # Multiselect helper
