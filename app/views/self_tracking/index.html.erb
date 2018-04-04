@@ -24,7 +24,11 @@
         <tr <% if workday_volunteer.end_time.present? %>class="text-muted"<% end %>>
           <td><%= volunteer.name %></td>
           <td>
-            <%= workday_volunteer.start_time.strftime("%l:%M %p") %>
+            <%= if workday_volunteer.start_time.present?
+                then
+                  workday_volunteer.start_time.strftime("%l:%M %p")
+                end
+            %>
           </td>
           <td>
             <% if volunteer.waiver_date.blank? %>
@@ -67,19 +71,21 @@
   </table>
 <% end %>
 
-<% if @workday.workday_volunteers.length > 0 %>
+
   <div class="row">
     <div class="col-md-12">
       <div class="actions pull-right">
         <div class="actions">
-           <%= link_to 'Process end of day', self_tracking_check_out_all_path(:login=>true), class: "btn btn-primary" %>
-           <button type="button" class="btn btn-primary" onclick="return loadModalDialog('#modalDialog', '<%= self_tracking_volunteer_search_path %>');">
+          <% if @workday.workday_volunteers.length > 0 %>
+            <%= link_to 'Process end of day', self_tracking_check_out_all_path(:login=>true), class: "btn btn-primary" %>
+          <% end %>
+          <button type="button" class="btn btn-primary" onclick="return loadModalDialog('#modalDialog', '<%= self_tracking_volunteer_search_path %>');">
             <span class="glyphicon glyphicon-log-in"></span> Check-in...
           </button>
         </div>
       </div>
     </div>
   </div>
-<% end %>
+
 
 <div class="modal fade" tabindex="-1" role="dialog" id="modalDialog"></div>

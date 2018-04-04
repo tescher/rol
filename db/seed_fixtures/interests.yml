@@ -1,25 +1,2 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: Example
-  interest_category_id: 1
-  highlight: false
-
-two:
-  name: Example2
-  interest_category_id: 2
-  highlight: false
-
-three:
-  name: Example3
-  interest_category_id: 2
-  highlight: false
-
-dependent:
-  name: dependent
-  interest_category: master
-  highlight: false
-
-master:
-  name: master
-  interest_category_id: 1

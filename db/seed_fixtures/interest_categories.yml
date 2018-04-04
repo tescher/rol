@@ -1,12 +1,2 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-office:
-  name: Office
-  id: 1
-
-construction:
-  name: Construction
-  id: 2
-
-master:
-  name: master

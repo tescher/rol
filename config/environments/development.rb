@@ -41,4 +41,8 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Allow web to come in over the private network
+  config.web_console.whitelisted_ips = '192.168.0.0/16'
+
 end

@@ -24,6 +24,7 @@ Once you have created the database and the user, run the following commands to s
     $ rake db:setup
     $ rake db:seed
 
+The seed file in the project (not for the tests) includes an initial user admin@example.com with password "password" so you can log in initially. You should disable this user after creating your own.
 ### Address Validation Setup
 
 This project uses the FedEx API to verify addresses.  You'll need to [obtain a key](http://www.fedex.com/us/developer/web-services/index.html) and set up the following environment variables:

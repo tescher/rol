@@ -85,7 +85,9 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
       VolunteerCategoryVolunteer.where("volunteer_id = #{v.id}") do |i|
         i.destroy
       end
-      v.really_destroy!
+      if v.persisted?
+        v.really_destroy!
+      end
     end
   end
 
