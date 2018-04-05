@@ -30,6 +30,9 @@ gem 'jc-validates_timeliness'
 # Possessive noun helper
 gem 'possessive'
 
+# Easy Autocomplete
+gem 'rails-jquery-autocomplete'
+
 # Paranoid record deleter
 gem "paranoia", "~> 2.0"
 

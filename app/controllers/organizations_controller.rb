@@ -6,6 +6,7 @@ class OrganizationsController < ApplicationController
   before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search, :address_check, :donations]
   before_action :admin_user,     only: [:destroy, :import, :import_form]
   before_action :donations_allowed, only: [:donations]
+  autocomplete :organization, :name, :full => true, :extra_data => [:city], :display_value => :autocomplete_display
 
 
   def search

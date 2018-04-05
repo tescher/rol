@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       post 'import' => 'volunteers#import'
       get 'search_merge'
       get 'match_merge'
+      get :autocomplete_volunteer_last_name
     end
     member do
       get 'address_check'
@@ -35,6 +36,7 @@ Rails.application.routes.draw do
       get 'search'
       get 'import' => 'organizations#import_form'
       post 'import' => 'organizations#import'
+      get :autocomplete_organization_name
     end
     member do
       get 'address_check'

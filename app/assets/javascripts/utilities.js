@@ -6,6 +6,18 @@ jQuery(document).ready(function($) {
 
      add_fields_wire_up_events($(document));
 
+    // Links for autocomplete
+    $('input').bind('railsAutocomplete.select', function(event, data){
+        if ($(this).attr("data-autocomplete-match-path")) {
+            $(this).val('');  // Clear out the matching input
+            window.location.href = $(this).attr("data-autocomplete-match-path") + "/" + data.item.id + "/edit"
+        }
+    });
+
+    // Style autocomplete matches
+    $('input').autocomplete({
+    });
+
     // Infrastructure to search/select/add associated records with dialogs
 
     $('div[id^="dialogSearch"]').dialog({
