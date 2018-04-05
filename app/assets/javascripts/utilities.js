@@ -13,10 +13,7 @@ jQuery(document).ready(function($) {
             window.location.href = $(this).attr("data-autocomplete-match-path") + "/" + data.item.id + "/edit"
         }
     });
-
-    // Style autocomplete matches
-    $('input').autocomplete({
-    });
+    monkeyPatchAutocomplete();
 
     // Infrastructure to search/select/add associated records with dialogs
 
@@ -279,6 +276,25 @@ jQuery(document).ready(function($) {
 
 
 });
+
+// Style autocomplete matches
+function monkeyPatchAutocomplete() {
+
+    // don't really need this, but in case I did, I could store it and chain
+    var oldFn = $.ui.autocomplete.prototype._renderItem;
+
+    $.ui.autocomplete.prototype._renderItem = function( ul, item) {
+        var re = new RegExp(this.term, "i") ;
+        var t = item.label.replace(re,"<span style='font-weight:bold;color:Blue;'>" +
+            "$&" +
+            "</span>");
+        return $( "<li></li>" )
+            .data( "item.ui-autocomplete", item )
+            .append( "<a>" + t + "</a>" )
+            .appendTo( ul );
+    };
+}
+
 
 // Put all events here that have to be wired again when fields are added
 function add_fields_wire_up_events(start_node) {
