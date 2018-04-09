@@ -266,3 +266,23 @@ table.header-border {
 .background-invalid {
   background-color: LightPink !important;
 }
+
+/* Autocomplete styling */
+
+.ui-menu-item > a {
+  display: block;
+  padding: 3px 15px;
+  clear: both;
+  font-weight: normal;
+  line-height: 18px;
+  color: #555555;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.ui-menu-item .ui-state-active {
+  color: #000000 !important;
+  text-decoration: none;
+  background-color: rgba(136, 136, 136, 0.24) !important;
+  border-color: #888888 !important;
+}

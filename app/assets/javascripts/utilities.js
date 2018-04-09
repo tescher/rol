@@ -285,7 +285,7 @@ function monkeyPatchAutocomplete() {
 
     $.ui.autocomplete.prototype._renderItem = function( ul, item) {
         var re = new RegExp(this.term, "i") ;
-        var t = item.label.replace(re,"<span style='font-weight:bold;color:Blue;'>" +
+        var t = item.label.replace(re,"<span style='font-weight:bold;'>" +
             "$&" +
             "</span>");
         return $( "<li></li>" )
