@@ -69,6 +69,6 @@ class WaiversController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def waiver_params
-      params.require(:waiver).permit(:volunteer_id, :guardian_id, :over_18, :birthdate, :date_signed, :waiver_text, :e_sign)
+      params.require(:waiver).permit(:volunteer_id, :guardian_id, :adult, :birthdate, :date_signed, :waiver_text, :e_sign)
     end
 end

@@ -2,49 +2,58 @@
   <%= @object = f.object
       render 'shared/error_messages' %>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <div class="field">
-      <%= f.label :site_title %><br>
-      <%= f.text_field :site_title, class: 'form-control', autofocus: 'true' %>
-    </div>
-    <div class="field">
-      <%= f.label "Organization Title" %><br>
-      <%= f.text_field :org_title, class: 'form-control' %>
-    </div>
-    <div class="field">
-      <%= f.label "Organization Short Title" %><br>
-      <%= f.text_field :org_short_title, class: 'form-control' %>
-    </div>
-    <div class="field">
-      <%= f.label "Organization URL" %><br>
-      <%= f.text_field :org_site, class: 'form-control' %>
-    </div>
-    <div class="field">
-      <%= f.label "Old System URL" %><br>
-      <%= f.text_field :old_system_site, class: 'form-control' %>
-    </div>
-    <div class="field">
-      <%= f.label "Old System Name" %><br>
-      <%= f.text_field :old_system_name, class: 'form-control' %>
-    </div>
-    <div class="checkbox">
-      <label>
-        <%= f.check_box :no_pagination %> Scrolling Record Lists
-      </label>
-    </div>
-    <div class="field">
-      <%= f.label :records_per_page %><br>
-      <%= f.text_field :records_per_page, class: 'form-control' %>
-    </div>
-    <div class="field">
-      <%= f.label "Minimum Password Length" %><br>
-      <%= f.text_field :min_password_length, class: 'form-control' %>
-    </div>
-    <div class="pull-right">
-      <%= render partial: "shared/form_actions", locals: {f: f} %>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="field">
+        <%= f.label :site_title %><br>
+        <%= f.text_field :site_title, class: 'form-control', autofocus: 'true' %>
+      </div>
+      <div class="field">
+        <%= f.label "Organization Title" %><br>
+        <%= f.text_field :org_title, class: 'form-control' %>
+      </div>
+      <div class="field">
+        <%= f.label "Organization Short Title" %><br>
+        <%= f.text_field :org_short_title, class: 'form-control' %>
+      </div>
+      <div class="field">
+        <%= f.label "Organization URL" %><br>
+        <%= f.text_field :org_site, class: 'form-control' %>
+      </div>
+      <div class="field">
+        <%= f.label "Old System URL" %><br>
+        <%= f.text_field :old_system_site, class: 'form-control' %>
+      </div>
+      <div class="field">
+        <%= f.label "Old System Name" %><br>
+        <%= f.text_field :old_system_name, class: 'form-control' %>
+      </div>
+      <div class="checkbox">
+        <label>
+          <%= f.check_box :no_pagination %> Scrolling Record Lists
+        </label>
+      </div>
+      <div class="field">
+        <%= f.label :records_per_page %><br>
+        <%= f.text_field :records_per_page, class: 'form-control' %>
+      </div>
+      <div class="field">
+        <%= f.label "Minimum Password Length" %><br>
+        <%= f.text_field :min_password_length, class: 'form-control' %>
+      </div>
+      <div class="field">
+        <%= f.label :adult_waiver_text %><br>
+        <%= f.text_area :adult_waiver_text, class: 'form-control' %>
+      </div>
+      <div class="field">
+        <%= f.label :minor_waiver_text %><br>
+        <%= f.text_area :minor_waiver_text, class: 'form-control' %>
+      </div>
+
+      <div class="pull-right">
+        <%= render partial: "shared/form_actions", locals: {f: f} %>
+      </div>
     </div>
   </div>
-</div>
 
 <% end %>

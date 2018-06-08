@@ -18,7 +18,7 @@ class WaiversControllerTest < ActionController::TestCase
 
   test "should create waiver" do
     assert_difference('Waiver.count') do
-      post :create, waiver: { birthdate: @waiver.birthdate, date_signed: @waiver.date_signed, e_sign: @waiver.e_sign, guardian_id: @waiver.guardian_id, over_18: @waiver.over_18, volunteer_id: @waiver.volunteer_id, waiver_text: @waiver.waiver_text }
+      post :create, waiver: { birthdate: @waiver.birthdate, date_signed: @waiver.date_signed, e_sign: @waiver.e_sign, guardian_id: @waiver.guardian_id, adult: @waiver.adult, volunteer_id: @waiver.volunteer_id, waiver_text: @waiver.waiver_text }
     end
 
     assert_redirected_to waiver_path(assigns(:waiver))
@@ -35,7 +35,7 @@ class WaiversControllerTest < ActionController::TestCase
   end
 
   test "should update waiver" do
-    patch :update, id: @waiver, waiver: { birthdate: @waiver.birthdate, date_signed: @waiver.date_signed, e_sign: @waiver.e_sign, guardian_id: @waiver.guardian_id, over_18: @waiver.over_18, volunteer_id: @waiver.volunteer_id, waiver_text: @waiver.waiver_text }
+    patch :update, id: @waiver, waiver: { birthdate: @waiver.birthdate, date_signed: @waiver.date_signed, e_sign: @waiver.e_sign, guardian_id: @waiver.guardian_id, adult: @waiver.adult, volunteer_id: @waiver.volunteer_id, waiver_text: @waiver.waiver_text }
     assert_redirected_to waiver_path(assigns(:waiver))
   end
 
