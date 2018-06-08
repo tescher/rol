@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :waivers
   get 'settings/edit'
   patch 'settings/update'
 
