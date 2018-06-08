@@ -27,4 +27,13 @@ class Organization < ActiveRecord::Base
       errors[:email] << "is not valid" unless multi_email_valid(email)
     end
   end
+
+  def autocomplete_display
+    if self.city.blank? then
+      "#{self.name}"
+    else
+      "#{self.name} (#{self.city})"
+      end
+  end
+
 end

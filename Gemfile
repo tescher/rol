@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby "2.4.1"
+ruby "~> 2.2.7"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.10'
@@ -29,6 +29,9 @@ gem 'jc-validates_timeliness'
 
 # Possessive noun helper
 gem 'possessive'
+
+# Easy Autocomplete
+gem 'rails-jquery-autocomplete'
 
 # Paranoid record deleter
 gem "paranoia", "~> 2.0"

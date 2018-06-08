@@ -75,5 +75,14 @@ class Volunteer < ActiveRecord::Base
   def self.get_fuzzymatch_where_clause(field_name, field_value)
     return "(soundex(#{field_name}) = soundex(#{self.sanitize(field_value)}) OR (LOWER(#{field_name}) LIKE #{self.sanitize(field_value.downcase+ "%")}))"
   end
+  
+  def autocomplete_display
+    if self.city.blank? then
+      "#{self.last_name}, #{self.first_name}"
+    else
+      "#{self.last_name}, #{self.first_name} (#{self.city})"
+    end
+    
+  end
 
 end
