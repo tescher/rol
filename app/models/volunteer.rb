@@ -12,6 +12,8 @@ class Volunteer < ActiveRecord::Base
   belongs_to :first_contact_type, class_name: "ContactType", foreign_key: :first_contact_type_id
   has_many :volunteer_category_volunteers, dependent: :destroy
   has_many :volunteer_categories, through: :volunteer_category_volunteers
+  belongs_to :guardian, class_name: "Volunteer", foreign_key: :guardian_id
+  has_many :minors, class_name: "Volunteer", foreign_key: :guardian_id, dependent: :restrict_with_error
 
   default_scope { where(needs_review: false) }
 

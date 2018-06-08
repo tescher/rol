@@ -6,6 +6,8 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     @user = users(:one)
     @volunteer = volunteers(:one)
     @duplicate_volunteer = volunteers(:duplicate)
+    @minor_volunteer = volunteers(:minor)
+    @guardian_volunteer = volunteers(:guardian)
     @admin = users(:michael)
     @non_admin = users(:one)
     @monetary_donation_user = users(:monetary_donation)
@@ -72,7 +74,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
   end
 
   def teardown
-    [@volunteer, @duplicate_volunteer].each do |v|
+    [@volunteer, @duplicate_volunteer, @minor_volunteer, @guardian_volunteer].each do |v|
       Donation.where("volunteer_id = #{v.id}") do |d|
         d.destroy
       end
@@ -495,6 +497,24 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     # Did notes stay?
     assert_equal(@volunteer.notes, notes_dup, "Notes (#{notes_dup}) should be equal")
   end
+
+  test "no delete if a guardian to a minor" do
+    log_in_as(@admin)
+    @minor_volunteer.guardian_id = @guardian_volunteer.id
+    @minor_volunteer.save
+    get edit_volunteer_path(@guardian_volunteer)
+    assert_select 'a[href=?]', volunteer_path(@guardian_volunteer), method: :delete
+    assert_no_difference 'Volunteer.count' do
+      delete volunteer_path(@guardian_volunteer)
+    end
+    @minor_volunteer.guardian_id = nil
+    @minor_volunteer.save
+    assert_difference 'Volunteer.count', -1 do
+      delete volunteer_path(@guardian_volunteer)
+    end
+
+  end
+
 
 
 end
