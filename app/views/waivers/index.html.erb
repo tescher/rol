@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Waivers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Volunteer</th>
+      <th>Guardian</th>
+      <th>Over 18</th>
+      <th>Birthdate</th>
+      <th>Date signed</th>
+      <th>Waiver text</th>
+      <th>E sign</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @waivers.each do |waiver| %>
+      <tr>
+        <td><%= waiver.volunteer_id %></td>
+        <td><%= waiver.guardian_id %></td>
+        <td><%= waiver.over_18 %></td>
+        <td><%= waiver.birthdate %></td>
+        <td><%= waiver.date_signed %></td>
+        <td><%= waiver.waiver_text %></td>
+        <td><%= waiver.e_sign %></td>
+        <td><%= link_to 'Show', waiver %></td>
+        <td><%= link_to 'Edit', edit_waiver_path(waiver) %></td>
+        <td><%= link_to 'Destroy', waiver, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Waiver', new_waiver_path %>

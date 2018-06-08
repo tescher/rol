@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  volunteer_id: 1
+  guardian_id: 1
+  adult: false
+  birthdate: 2018-06-08
+  date_signed: 2018-06-08
+  waiver_text: MyString
+  e_sign: false
+
+two:
+  volunteer_id: 1
+  guardian_id: 1
+  adult: false
+  birthdate: 2018-06-08
+  date_signed: 2018-06-08
+  waiver_text: MyString
+  e_sign: false
