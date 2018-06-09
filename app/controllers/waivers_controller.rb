@@ -1,10 +1,17 @@
 class WaiversController < ApplicationController
   before_action :set_waiver, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:index, :show, :create, :new, :edit, :update, :destroy]
+
 
   # GET /waivers
   # GET /waivers.json
   def index
-    @waivers = Waiver.all
+    if !params[:volunteer_id].empty?
+      @waivers = Waiver.where(volunteer_id: params[:volunteer_id])
+      puts @waivers.count
+    else
+      @waivers = Waiver.all
+    end
   end
 
   # GET /waivers/1
@@ -62,13 +69,13 @@ class WaiversController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_waiver
-      @waiver = Waiver.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_waiver
+    @waiver = Waiver.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def waiver_params
-      params.require(:waiver).permit(:volunteer_id, :guardian_id, :adult, :birthdate, :date_signed, :waiver_text, :e_sign)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def waiver_params
+    params.require(:waiver).permit(:volunteer_id, :guardian_id, :adult, :birthdate, :date_signed, :waiver_text, :e_sign)
+  end
 end

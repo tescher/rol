@@ -88,15 +88,28 @@
             <div class="col-md-2">
               <%= f.label :waiver_signed %><br>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-4">
               <%= f.text_field :waiver_date,  value: @volunteer.waiver_date.nil? ? "" : @volunteer.waiver_date.strftime("%m/%d/%Y") , id: 'waiverdatepicker', class: 'form-control' %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2">
+              <%= f.label :birthdate %><br>
+            </div>
+            <div class="col-md-4">
+              <%= f.text_field :birthdate,  value: @volunteer.birthdate.nil? ? "" : @volunteer.birthdate.strftime("%m/%d/%Y") , id: 'birthdatepicker', class: 'form-control' %>
+            </div>
+            <div class="col-md-4">
+              <label>
+                <%= f.check_box :adult %> Adult (for waiver)
+              </label>
             </div>
           </div>
           <div class="row">
             <div class="col-md-2">
               <%= f.label :first_contact %><br>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-4">
               <%= f.text_field :first_contact_date,  value: @volunteer.first_contact_date.nil? ? "" : @volunteer.first_contact_date.strftime("%m/%d/%Y") , id: 'firstcontactdatepicker', class: 'form-control' %>
             </div>
           </div>
@@ -125,7 +138,7 @@
         <div class="col-md-5">
 
           <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
               <%= f.label :home_phone %><br>
             </div>
             <div class="col-md-8">
@@ -133,7 +146,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
               <%= f.label :work_phone %><br>
             </div>
             <div class="col-md-8">
@@ -141,7 +154,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
               <%= f.label :mobile_phone %><br>
             </div>
             <div class="col-md-8">
@@ -149,7 +162,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
               <%= f.label :occupation %><br>
             </div>
             <div class="col-md-8">
@@ -157,7 +170,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
               <%= f.label :employer %><br>
             </div>
             <div class="col-md-8">
@@ -171,7 +184,7 @@
           </div>
           <div class="row">&nbsp;</div>
           <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
               <%= f.label :church %><br>
             </div>
             <div class="col-md-8">
@@ -185,7 +198,7 @@
           </div>
           <div class="row">&nbsp;</div>
           <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
               <%= f.label :notes %><br>
             </div>
             <div class="col-md-8">
@@ -193,7 +206,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
               <%= f.label :interests %><br>
             </div>
             <div class="col-md-8">
@@ -202,7 +215,7 @@
           </div>
           <div class="row">&nbsp;</div>
           <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
               <%= f.label :volunteer_categories %><br>
             </div>
             <div class="col-md-8">
@@ -211,10 +224,10 @@
           </div>
           <div class="row">&nbsp;</div>
           <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
               <%= f.label :background_check %><br>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-4">
               <%= f.text_field :background_check_date,  value: @volunteer.background_check_date.nil? ? "" : @volunteer.background_check_date.strftime("%m/%d/%Y") , id: 'backgroundcheckdatepicker', class: 'form-control' %>
             </div>
           </div>

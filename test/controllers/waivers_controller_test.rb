@@ -3,47 +3,63 @@ require 'test_helper'
 class WaiversControllerTest < ActionController::TestCase
   setup do
     @waiver = waivers(:one)
+    @waiver2 = waivers(:other_volunteer)
+    @volunteer2 = volunteers(:duplicate)
+    @user = users(:one)
   end
 
-  test "should get index" do
+  test "should redirect index when not logged in" do
     get :index
-    assert_response :success
-    assert_not_nil assigns(:waivers)
+    assert_redirected_to login_url
   end
 
-  test "should get new" do
+  test "should redirect new when not logged in" do
     get :new
-    assert_response :success
+    assert_not flash.empty?
+    assert_redirected_to login_url
   end
 
-  test "should create waiver" do
-    assert_difference('Waiver.count') do
+  test "should redirect create waiver when not logged in" do
+    assert_no_difference('Waiver.count') do
       post :create, waiver: { birthdate: @waiver.birthdate, date_signed: @waiver.date_signed, e_sign: @waiver.e_sign, guardian_id: @waiver.guardian_id, adult: @waiver.adult, volunteer_id: @waiver.volunteer_id, waiver_text: @waiver.waiver_text }
     end
 
-    assert_redirected_to waiver_path(assigns(:waiver))
+    assert_redirected_to login_url
   end
 
-  test "should show waiver" do
+  test "should redirect show waiver when not logged in" do
     get :show, id: @waiver
-    assert_response :success
+    assert_not flash.empty?
+    assert_redirected_to login_url
   end
 
-  test "should get edit" do
+  test "should redirect edit when not logged in" do
     get :edit, id: @waiver
-    assert_response :success
+    assert_not flash.empty?
+    assert_redirected_to login_url
   end
 
-  test "should update waiver" do
+  test "should redirect update when not logged in" do
     patch :update, id: @waiver, waiver: { birthdate: @waiver.birthdate, date_signed: @waiver.date_signed, e_sign: @waiver.e_sign, guardian_id: @waiver.guardian_id, adult: @waiver.adult, volunteer_id: @waiver.volunteer_id, waiver_text: @waiver.waiver_text }
-    assert_redirected_to waiver_path(assigns(:waiver))
+    assert_not flash.empty?
+    assert_redirected_to login_url
   end
 
-  test "should destroy waiver" do
-    assert_difference('Waiver.count', -1) do
+  test "should redirect destroy when not logged in" do
+    assert_no_difference 'Waiver.count' do
       delete :destroy, id: @waiver
     end
+    assert_redirected_to login_url
+  end
 
-    assert_redirected_to waivers_path
+  test "Should only show waivers for this volunteer" do
+    log_in_as(@user)
+    @waiver2.volunteer_id = @volunteer2.id
+    @waiver2.save
+    get :index, volunteer_id: @volunteer2.id
+    puts @response.body
+    assert_select '[href=?]', edit_waiver_path(@waiver), {count: 0}
+    assert_select '[href=?]', edit_waiver_path(@waiver2), {count: 1}
+
   end
 end
