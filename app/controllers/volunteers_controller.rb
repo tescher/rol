@@ -397,7 +397,7 @@ class VolunteersController < ApplicationController
           volunteer_params[:volunteer_category_ids] = source_volunteer_category_ids.dup
         end
       end
-
+      link_to_add_fields
       if @object.update_attributes(volunteer_params)
 
         # If successful, move everything else
