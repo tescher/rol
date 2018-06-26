@@ -27,8 +27,21 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
         donation.volunteer_id = v.id
         donation.date_received = n.day.ago.to_s(:db)
         donation.save
+        donation.reload
+        puts "Donation #{donation.id} saved!"
       end
-	  workday_volunteer = WorkdayVolunteer.create(workday: workdays(:one), volunteer: v, hours: 4)
+      5.times do |n|
+        waiver = Waiver.new
+        waiver.volunteer_id = v.id
+        waiver.adult = true
+        waiver.birthdate = DateTime.parse("2000-02-01")
+        waiver.waiver_text = "Some text for waiver #{n}."
+        waiver.date_signed = DateTime.parse("2018-06-01")
+        waiver.save
+        waiver.reload
+        puts "Waiver #{waiver.id} saved!"
+      end
+      workday_volunteer = WorkdayVolunteer.create(workday: workdays(:one), volunteer: v, hours: 4)
       interest1 = interests(:one)
       interest2 = interests(:two)
       interest3 = interests(:three)
@@ -87,6 +100,9 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
       VolunteerCategoryVolunteer.where("volunteer_id = #{v.id}") do |i|
         i.destroy
       end
+      Waiver.where("volunteer_id = #{v.id}") do |i|
+        i.really_destroy!
+      end
       if v.persisted?
         v.really_destroy!
       end
@@ -132,6 +148,15 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test "List waivers" do
+    log_in_as(@non_admin)
+    get waivers_volunteer_path(@volunteer)
+    assert_template "waivers/waivers_form"
+    waivers = Waiver.where("volunteer_id = '#{@volunteer.id}'")
+    waivers.each do |waiver|
+      assert_select "input[value='#{waiver.id}']"
+    end
+  end
 
   test "unsuccessful edit" do
     log_in_as(@user)
@@ -206,18 +231,21 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     before_d = Donation.count
     before_wd = Workday.count
     before_c = VolunteerCategoryVolunteer.count
+    before_wv = Waiver.count
     delete volunteer_path(@volunteer)
     after_wdv = WorkdayVolunteer.count
     after_v = Volunteer.count
     after_d = Donation.count
     after_wd = Workday.count
     after_c = VolunteerCategoryVolunteer.count
+    after_wv = Waiver.count
     # Make sure all cascade deletes worked OK
     assert_equal before_v - 1, after_v
     assert_equal before_d - 10, after_d
     assert_equal before_wd, after_wd
     assert_equal before_wdv - 1, after_wdv
     assert_equal before_c - 2, after_c
+    assert_equal before_wv - 5, after_wv
 
     @volunteer.reload
     assert(@volunteer.deleted?)
@@ -239,8 +267,8 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     end
     @volunteer = Volunteer.new()
     post volunteers_path(@volunteer), volunteer: {
-      first_name: @pending_volunteer.first_name,
-      last_name: @pending_volunteer.last_name, pending_volunteer_id: @pending_volunteer.id
+        first_name: @pending_volunteer.first_name,
+        last_name: @pending_volunteer.last_name, pending_volunteer_id: @pending_volunteer.id
     }
     updated_volunteer = Volunteer.find(@pending_volunteer.id)
     # Original record was convereted to ensure that this is the case.

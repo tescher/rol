@@ -1,0 +1,42 @@
+<% provide(:title, 'Waivers') %>
+<h1>Waivers for <%= @volunteer.name %></h1>
+
+<%= form_for(@volunteer) do |f| %>
+    <%= @object = f.object
+        @waivers = @volunteer.waivers.order("date_signed DESC")
+        render 'shared/error_messages' %>
+
+    <table class="table no-row-border header-border">
+      <thead>
+      <tr>
+        <th class="col-md-1">Date Signed</th>
+        <th class="col-md-1">Birthdate</th>
+        <th class="col-md-1">Adult</th>
+        <th class="col-md-1">Guardian</th>
+        <th class="col-md-2">E-sign</th>
+        <th class="col-md-1">Waiver Text</th>
+        <th class="col-md-1"></th>
+      </tr>
+      </thead>
+      <tbody class="add_waiver_fields">
+      <%= f.fields_for :waivers, @waivers do |builder| %>
+          <%= render "waivers/waiver_fields", :f => builder %>
+      <% end %>
+      </tbody>
+    </table>
+
+    <%= link_to_add_fields "Add a Waiver", f, :waivers, "", ".add_waiver_fields", "Add a Waiver" %>
+
+    <div>&nbsp;</div>
+
+
+    <div class="row">
+      <div class="col-md-11">
+        <div class="actions pull-right">
+
+          <%= render partial: "shared/form_actions", locals: {f: f, cancel: edit_polymorphic_path(@object)} %>
+        </div>
+      </div>
+    </div>
+
+<% end %>

@@ -1,4 +1,5 @@
 class Waiver < ActiveRecord::Base
+  belongs_to :volunteer
   acts_as_paranoid
 
   validates_date :date_signed, on_or_before: lambda { Date.today }, allow_blank: false

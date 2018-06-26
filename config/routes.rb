@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     member do
       get 'address_check'
       get 'donations' => 'volunteers#donations'
+      get 'waivers' => 'volunteers#waivers'
       post 'merge'
       get 'merge' => 'volunteers#merge_form'
     end

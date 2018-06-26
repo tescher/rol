@@ -4,7 +4,7 @@ include ApplicationHelper
 include VolunteersHelper
 
 class VolunteersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search, :address_check, :donations, :merge, :search_merge, :merge_form]
+  before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search, :address_check, :donations, :waivers, :merge, :search_merge, :merge_form]
   before_action :admin_user,     only: [:destroy, :import, :import_form]
   before_action :donations_allowed, only: [:donations]
   autocomplete :volunteer, :last_name, :full => true, :extra_data => [:first_name, :city], :display_value => :autocomplete_display
@@ -397,7 +397,7 @@ class VolunteersController < ApplicationController
           volunteer_params[:volunteer_category_ids] = source_volunteer_category_ids.dup
         end
       end
-      link_to_add_fields
+
       if @object.update_attributes(volunteer_params)
 
         # If successful, move everything else
@@ -443,6 +443,12 @@ class VolunteersController < ApplicationController
   def donations
     donation_setup
     render "shared/donations_form"
+  end
+
+  # GET /volunteer/1/waivers
+  def waivers
+    waiver_setup
+    render "waivers/waivers_form"
   end
 
   # GET /volunteers/import
@@ -615,7 +621,8 @@ class VolunteersController < ApplicationController
   def volunteer_params
     params.require(:volunteer).permit(:first_name, :last_name, :middle_name, :email, :occupation, :employer_id, :church_id,
                                       :address, :city, :state, :zip, :home_phone, :work_phone, :mobile_phone,
-                                      :notes, :remove_from_mailing_list, :waiver_date, :first_contact_date, :first_contact_type_id, :pending_volunteer_id, :background_check_date, interest_ids: [], volunteer_category_ids: [], donations_attributes: [:id, :date_received, :value, :ref_no, :item, :anonymous, :in_honor_of, :designation, :notes, :receipt_sent, :volunteer_id, :organization_id, :donation_type_id, :_destroy])
+                                      :notes, :remove_from_mailing_list, :waiver_date, :first_contact_date, :first_contact_type_id, :pending_volunteer_id, :background_check_date, interest_ids: [], volunteer_category_ids: [], donations_attributes: [:id, :date_received, :value, :ref_no, :item, :anonymous, :in_honor_of, :designation, :notes, :receipt_sent, :volunteer_id, :organization_id, :donation_type_id, :_destroy],
+                                      waivers_attributes: [:id, :guardian_id, :adult, :birthdate, :date_signed, :waiver_text, :e_sign, :_destroy])
   end
   def volunteer_search_params
     search_params = params.permit(:name, :city, :workday_since, interest_ids: [], volunteer_category_ids: [])
@@ -629,6 +636,14 @@ class VolunteersController < ApplicationController
 
   def donation_setup
     @donator = @volunteer.nil? ? Volunteer.find(params[:id]) : @volunteer
+    @no_delete = true
+    @allow_stay = true
+    @custom_submit = "Save & Search"
+    @custom_submit_name = "save_and_search"
+  end
+
+  def waiver_setup
+    @volunteer = @volunteer.nil? ? Volunteer.find(params[:id]) : @volunteer
     @no_delete = true
     @allow_stay = true
     @custom_submit = "Save & Search"
