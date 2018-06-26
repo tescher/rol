@@ -8,7 +8,7 @@
               <%= label_tag :name  %><br>
             </div>
             <div class="col-md-7">
-              <%= autocomplete_field_tag :name, nil, autocomplete_organization_name_organizations_path, 'data-autocomplete-match-path' => organizations_path, class: 'form-control', autofocus: 'true' %>
+              <%= autocomplete_field_tag :name, nil, autocomplete_organization_name_organizations_path, 'data-autocomplete-match-path' => organizations_path, class: 'form-control', autofocus: 'true', autocomplete: 'off' %>
             </div>
           </div>
           <div class="row">

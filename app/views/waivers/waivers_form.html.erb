@@ -20,12 +20,14 @@
       </thead>
       <tbody class="add_waiver_fields">
       <%= f.fields_for :waivers, @waivers do |builder| %>
-          <%= render "waivers/waiver_fields", :f => builder %>
+          <%=  @readonly = true
+               render "waivers/waiver_fields", :f => builder %>
       <% end %>
       </tbody>
     </table>
 
-    <%= link_to_add_fields "Add a Waiver", f, :waivers, "", ".add_waiver_fields", "Add a Waiver" %>
+    <%= @readonly = false
+      link_to_add_fields "Add a Waiver", f, :waivers, "", ".add_waiver_fields", "Add a Waiver" %>
 
     <div>&nbsp;</div>
 
