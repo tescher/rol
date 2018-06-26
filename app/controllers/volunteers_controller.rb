@@ -413,6 +413,12 @@ class VolunteersController < ApplicationController
           donation.save!
           sd.destroy!
         end
+        Waiver.where("volunteer_id = #{@source_volunteer.id}").each do |swv|
+          waiver = swv.dup
+          waiver.volunteer_id = @object.id
+          waiver.save!
+          swv.really_destroy!
+        end
 
         @source_volunteer.deleted_reason = "Merged with #{@object.id}"
         @source_volunteer.save

@@ -27,8 +27,6 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
         donation.volunteer_id = v.id
         donation.date_received = n.day.ago.to_s(:db)
         donation.save
-        donation.reload
-        puts "Donation #{donation.id} saved!"
       end
       5.times do |n|
         waiver = Waiver.new
@@ -38,8 +36,6 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
         waiver.waiver_text = "Some text for waiver #{n}."
         waiver.date_signed = DateTime.parse("2018-06-01")
         waiver.save
-        waiver.reload
-        puts "Waiver #{waiver.id} saved!"
       end
       workday_volunteer = WorkdayVolunteer.create(workday: workdays(:one), volunteer: v, hours: 4)
       interest1 = interests(:one)
@@ -293,6 +289,10 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     donations_count = donations.count
     donations_dup = Donation.where("volunteer_id = #{@duplicate_volunteer.id}").all
     donations_dup_count = donations_dup.count
+    waivers = Waiver.where("volunteer_id = #{@volunteer.id}").all
+    waivers_count = waivers.count
+    waivers_dup = Waiver.where("volunteer_id = #{@duplicate_volunteer.id}").all
+    waivers_dup_count = waivers_dup.count
     notes = @volunteer.notes
     # notes_dup = @duplicate_volunteer.notes
     volunteer_category_volunteers = VolunteerCategoryVolunteer.where("volunteer_id = #{@volunteer.id}").all
@@ -333,6 +333,10 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     assert_equal(new_total, old_total, "Donation total #{new_total} should be equal")
     # puts new_total,old_total
 
+    # Did waivers move and is the amount the same?
+    new_waivers = Waiver.where("volunteer_id = #{@volunteer.id}").all
+    assert_equal(new_waivers.count, waivers_count + waivers_dup_count, "Number of waivers (#{waivers_count + waivers_dup_count}) should be equal")
+
     # We had "ignore" for notes and interests and categories, make sure they stayed as is
     assert_equal(@volunteer.notes, notes, "Notes '#{notes}' should have remained as is")
     assert(volunteer_interests.uniq.sort == VolunteerInterest.where("volunteer_id = #{@volunteer.id}").all.uniq.sort, "Interests (#{volunteer_interests_count}) should have remained the same")
@@ -344,6 +348,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     assert_equal("Merged with #{@volunteer.id}", @duplicate_volunteer.deleted_reason)
     assert_equal(WorkdayVolunteer.where("volunteer_id = #{@duplicate_volunteer.id}").count, 0, "All workday shifts from source gone")
     assert_equal(Donation.where("volunteer_id = #{@duplicate_volunteer.id}").count, 0, "All donations from source gone")
+    assert_equal(Waiver.where("volunteer_id = #{@duplicate_volunteer.id}").count, 0, "All waivers from source gone")
     assert_equal(VolunteerInterest.where("volunteer_id = #{@duplicate_volunteer.id}").count, 0, "All interests from source gone")
     assert_equal(VolunteerCategoryVolunteer.where("volunteer_id = #{@duplicate_volunteer.id}").count, 0, "All categories from source gone")
 
