@@ -243,7 +243,7 @@
           <%= if @object.persisted?
                 link_to "Merge", "#", id:"linkMergeVolunteer", class: "btn btn-primary"
               end %>
-
+          <%= f.submit "Waivers", name: "to_waivers", class: "btn btn-primary" %>
           <%= if current_user.donations_allowed
                 f.submit "Donations", name: "to_donations", class: "btn btn-primary"
               end %>

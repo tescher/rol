@@ -1,9 +1,9 @@
 <% provide(:title, 'Waivers') %>
-<h1>Waivers for <%= @volunteer.name %></h1>
+<h1>Waivers for <%= @parent.name %></h1>
 
-<%= form_for(@volunteer) do |f| %>
+<%= form_for(@parent) do |f| %>
     <%= @object = f.object
-        @waivers = @volunteer.waivers.order("date_signed DESC")
+        @waivers = @parent.waivers.order("date_signed DESC")
         render 'shared/error_messages' %>
 
     <table class="table no-row-border header-border">

@@ -228,7 +228,7 @@ class VolunteersController < ApplicationController
       session[:volunteer_id] = @volunteer.id
       if params[:pending_volunteer_id]
         @pending_volunteer = Volunteer.pending.find(params[:pending_volunteer_id])
-		@num_workdays = WorkdayVolunteer.where(volunteer_id: params[:pending_volunteer_id])
+        @num_workdays = WorkdayVolunteer.where(volunteer_id: params[:pending_volunteer_id])
         @volunteer.pending_volunteer_id = @pending_volunteer.id
         ["first_name", "last_name", "address", "city", "state", "zip", "phone", "notes", "interests"].each do |column|
           if column == "phone"
@@ -269,16 +269,23 @@ class VolunteersController < ApplicationController
       else
         flash[:success] = "Volunteer created"
         if !params[:to_donations].blank?
+          session[:child_entry] = "donations"
           redirect_to donations_volunteer_path(@volunteer)
         else
-          if params[:stay].blank?
-            if from_pending_volunteers
-              redirect_to pending_volunteers_path
-            else
-              redirect_to search_volunteers_path
-            end
+          if !params[:to_waivers].blank?
+            session[:child_entry] = "waivers"
+            redirect_to waivers_volunteer_path(@volunteer)
           else
-            redirect_to edit_volunteer_path(@volunteer)
+            session[:child_entry] = nil
+            if params[:stay].blank?
+              if from_pending_volunteers
+                redirect_to pending_volunteers_path
+              else
+                redirect_to search_volunteers_path
+              end
+            else
+              redirect_to edit_volunteer_path(@volunteer)
+            end
           end
         end
       end
@@ -298,12 +305,19 @@ class VolunteersController < ApplicationController
   def update
     @volunteer = Volunteer.find(params[:id])
     session[:volunteer_id] = @volunteer.id
-    if volunteer_params[:first_name].nil?     # Coming from donations
-      if @volunteer.update_attributes(volunteer_params)
-        flash[:success] = "Donations updated"
+    from = session[:child_entry]
+
+    if !from.nil?     # Coming from donations or waivers
+      if params[:volunteer] && @volunteer.update_attributes(volunteer_params)
+        flash[:success] = "#{from.capitalize} updated"
         if !params[:stay].blank?
-          redirect_to donations_volunteer_path(@volunteer)
+          if from == "donations"
+            redirect_to donations_volunteer_path(@volunteer)
+          else
+            redirect_to waivers_volunteer_path(@volunteer)
+          end
         else
+          session[:child_entry] = nil
           if !params[:save_and_search].blank?
             redirect_to search_volunteers_path
           else
@@ -311,19 +325,39 @@ class VolunteersController < ApplicationController
           end
         end
       else
-        donation_setup
-        render "shared/donations_form"
-      end
-    else                                       # Coming from regular edit
-      if @volunteer.update_attributes(volunteer_params)
-        flash[:success] = "Volunteer updated"
-        if !params[:to_donations].blank?
-          redirect_to donations_volunteer_path(@volunteer)
+        if !params[:stay].blank?
+          child_form_setup
+          if from == "donations"
+            render "shared/donations_form"
+          else
+            render "waivers/waivers_form"
+          end
         else
-          if params[:stay].blank?
+          session[:child_entry] = nil
+          if !params[:save_and_search].blank?
             redirect_to search_volunteers_path
           else
             redirect_to edit_volunteer_path(@volunteer)
+          end
+        end
+      end
+    else                                       # Coming from regular edit
+      if params[:volunteer] && @volunteer.update_attributes(volunteer_params)
+        flash[:success] = "Volunteer updated"
+        if !params[:to_donations].blank?
+          session[:child_entry] = "donations"
+          redirect_to donations_volunteer_path(@volunteer)
+        else
+          if !params[:to_waivers].blank?
+            session[:child_entry] = "waivers"
+            redirect_to waivers_volunteer_path(@volunteer)
+          else
+            session[:child_entry] = nil
+            if params[:stay].blank?
+              redirect_to search_volunteers_path
+            else
+              redirect_to edit_volunteer_path(@volunteer)
+            end
           end
         end
       else
@@ -447,13 +481,13 @@ class VolunteersController < ApplicationController
 
   # GET /volunteer/1/donations
   def donations
-    donation_setup
+    child_form_setup
     render "shared/donations_form"
   end
 
   # GET /volunteer/1/waivers
   def waivers
-    waiver_setup
+    child_form_setup
     render "waivers/waivers_form"
   end
 
@@ -640,16 +674,8 @@ class VolunteersController < ApplicationController
     redirect_to(root_url) unless current_user.donations_allowed
   end
 
-  def donation_setup
-    @donator = @volunteer.nil? ? Volunteer.find(params[:id]) : @volunteer
-    @no_delete = true
-    @allow_stay = true
-    @custom_submit = "Save & Search"
-    @custom_submit_name = "save_and_search"
-  end
-
-  def waiver_setup
-    @volunteer = @volunteer.nil? ? Volunteer.find(params[:id]) : @volunteer
+  def child_form_setup
+    @parent = @volunteer.nil? ? Volunteer.find(params[:id]) : @volunteer
     @no_delete = true
     @allow_stay = true
     @custom_submit = "Save & Search"
@@ -664,6 +690,7 @@ class VolunteersController < ApplicationController
     @allow_stay = true
     @donation_year = get_donation_summary("volunteer", @volunteer.id)[0].first
     session[:volunteer_id] = @volunteer.id
+    session[:child_entry] = nil
   end
 
 end
