@@ -12,13 +12,6 @@ jQuery(document).ready(function($) {
         autoOpen: false,
         width: 800,
         buttons: [{
-            text: "Submit",
-            click: function () {
-                var objectName = $(this).dialog("option", "objectName");
-                $("#dialogFormNew" + objectName).submit()
-            },
-            class: "btn btn-large btn-primary"
-        }, {
             text: "Cancel",
             click: function () {
                 $(this).dialog("close");
@@ -27,14 +20,7 @@ jQuery(document).ready(function($) {
         }],
 
         open: function () {
-            var objectName = $(this).attr('id').substr($(this).attr('id').indexOf("dialogNew") + 9);
-            $(this).dialog("option", "objectName", objectName);
-            $(this).dialog("option", "title", "New " + objectName);
-            $(this).keydown(function (e) {
-                if (e.keyCode === $.ui.keyCode.ENTER) {
-                    $(this).parent().find("button:eq(1)").trigger("click");
-                }
-            });
+            $(this).dialog("option", "title", "Waiver Signed By");
         },
 
         close: function (event, ui) {

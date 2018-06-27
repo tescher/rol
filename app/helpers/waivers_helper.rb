@@ -9,7 +9,7 @@ module WaiversHelper
     volunteer = Volunteer.find(volunteer_id)
     output = ""
     association = :waivers
-    form_builder = form_for(waiver) do |builder|
+    form_builder = form_for(volunteer) do |builder|
       output = builder.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
         render("waivers/waiver_fields", :f => builder, :parent => volunteer, :association => association)
       end

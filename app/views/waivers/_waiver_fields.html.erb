@@ -7,7 +7,7 @@
               label_tag "Record Missing"
             end
           else
-            label_tag :signer, @parent.name
+            label_tag :signer, @parent ? @parent.name : parent.name
           end
           %></td>
   <td>

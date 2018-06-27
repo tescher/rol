@@ -71,6 +71,7 @@ class WaiversController < ApplicationController
   def signed_by
     if params[:dialog] == "true"
       @volunteer = Volunteer.find(session[:volunteer_id])
+      puts "Volunteer: #{@volunteer.id}"
       render partial: "dialog_signed_by"
     end
   end
