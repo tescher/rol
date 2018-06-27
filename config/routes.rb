@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
-  resources :waivers
+  resources :waivers do
+    collection do
+      get 'signed_by' => 'waivers#signed_by'
+    end
+  end
+
   get 'settings/edit'
   patch 'settings/update'
 

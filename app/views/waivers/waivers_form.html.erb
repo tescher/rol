@@ -9,10 +9,10 @@
     <table class="table no-row-border header-border">
       <thead>
       <tr>
+        <th class="col-md-1">Signed By</th>
         <th class="col-md-1">Date Signed</th>
         <th class="col-md-1">Birthdate</th>
         <th class="col-md-1">Adult</th>
-        <th class="col-md-1">Guardian</th>
         <th class="col-md-2">E-sign</th>
         <th class="col-md-1">Waiver Text</th>
         <th class="col-md-1"></th>
@@ -26,8 +26,9 @@
       </tbody>
     </table>
 
-    <%= @readonly = false
-      link_to_add_fields "Add a Waiver", f, :waivers, "", ".add_waiver_fields", "Add a Waiver" %>
+    <%= # @readonly = false
+      # link_to_add_fields "Add a Waiver", f, :waivers, "", ".add_waiver_fields", "Add a Waiver"
+        link_to "Add a Waiver", "#", id:"linkNewWaiver", data: { form: f.to_json } %>
 
     <div>&nbsp;</div>
 
@@ -40,5 +41,7 @@
         </div>
       </div>
     </div>
+
+  <div id="dialogNewWaiver"></div>
 
 <% end %>

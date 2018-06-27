@@ -1,6 +1,6 @@
 class WaiversController < ApplicationController
   before_action :set_waiver, only: [:show, :edit, :update, :destroy]
-  before_action :logged_in_user, only: [:index, :show, :create, :new, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:index, :show, :create, :new, :edit, :update, :destroy, :signed_by]
 
 
   # GET /waivers
@@ -65,6 +65,13 @@ class WaiversController < ApplicationController
     respond_to do |format|
       format.html { redirect_to waivers_url, notice: 'Waiver was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def signed_by
+    if params[:dialog] == "true"
+      @volunteer = Volunteer.find(session[:volunteer_id])
+      render partial: "dialog_signed_by"
     end
   end
 
