@@ -132,22 +132,6 @@ jQuery(document).ready(function($) {
         }
     });
 
-    $('[id^="linkAdd"]').click(function(evt) {
-        var objectName = $(this).attr('id').substr($(this).attr('id').indexOf("linkAdd") + 7);
-        var aliasName = $(this).attr('data-alias');
-        $('div[id^="dialogSelect"]').attr('data-alias', aliasName);  // So we can catch it on the Create New button
-        $.ajax({
-            url: "/" + objectName.toLowerCase() + "s/search?dialog=true" + (aliasName ? "&alias=" + aliasName.toLowerCase() : ""),
-            success: function(data) {
-                loadDialog("dialogSearch" + objectName + "s",data);
-            },
-            async: false,
-            cache: false
-        });
-
-        return false;
-    });
-
     // Merge dialogs (Need different buttons than other dialogs)
 
     $('div[id^="dialogSearchMerge"]').dialog({
@@ -325,7 +309,22 @@ function add_fields_wire_up_events(start_node) {
         window.document.location = $(this).attr("href");
     });
 
+//    $('[id^="linkAdd"]').click(function(evt) {
+    $(start_node).find('[id^="linkAdd"]').click(function(evt) {
+            var objectName = $(this).attr('id').substr($(this).attr('id').indexOf("linkAdd") + 7);
+            var aliasName = $(this).attr('data-alias');
+            $('div[id^="dialogSelect"]').attr('data-alias', aliasName);  // So we can catch it on the Create New button
+            $.ajax({
+                url: "/" + objectName.toLowerCase() + "s/search?dialog=true" + (aliasName ? "&alias=" + aliasName.toLowerCase() : ""),
+                success: function(data) {
+                    loadDialog("dialogSearch" + objectName + "s",data);
+                },
+                async: false,
+                cache: false
+            });
 
+            return false;
+        });
 }
 
 

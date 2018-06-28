@@ -12,6 +12,7 @@ class VolunteersController < ApplicationController
 
   def search
     if params[:dialog] == "true"
+      @alias = params[:alias].blank? ? "" : params[:alias]
       render partial: "dialog_search_form"
     end
   end
@@ -198,6 +199,7 @@ class VolunteersController < ApplicationController
           if params[:merge] == "true"
             render partial: "dialog_index_merge"
           else
+            @alias = params[:alias].blank? ? "" : params[:alias]
             render partial: "dialog_index"
           end
         else
@@ -222,6 +224,7 @@ class VolunteersController < ApplicationController
     @volunteer = Volunteer.new
     @num_workdays = []
     if params[:dialog] == "true"
+      @alias = params[:alias].blank? ? "" : params[:alias]
       render partial: "dialog_form"
     else
       @allow_stay = true
@@ -265,7 +268,8 @@ class VolunteersController < ApplicationController
       session[:volunteer_id] = @volunteer.id
       if params[:volunteer][:dialog] == "true"
         @workday = session[:workday_id]
-        render partial: "dialog_add_workday_volunteer_fields"
+        @alias = params[:alias].blank? ? "" : params[:alias]
+        render partial: "dialog_add_child_fields"
       else
         flash[:success] = "Volunteer created"
         if !params[:to_donations].blank?
@@ -291,6 +295,7 @@ class VolunteersController < ApplicationController
       end
     else                 # Save not successful
       if params[:volunteer][:dialog] == "true"
+        @alias = params[:alias].blank? ? "" : params[:alias]
         render partial: "dialog_form"
       else
         @num_workdays = []

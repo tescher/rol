@@ -10,7 +10,7 @@ jQuery(document).ready(function($) {
         title: "New ",
         disabled: true,
         autoOpen: false,
-        width: 800,
+        width: 400,
         buttons: [{
             text: "Cancel",
             click: function () {
@@ -20,7 +20,7 @@ jQuery(document).ready(function($) {
         }],
 
         open: function () {
-            $(this).dialog("option", "title", "Waiver Signed By");
+            $(this).dialog("option", "title", "New Waiver");
         },
 
         close: function (event, ui) {
@@ -30,7 +30,7 @@ jQuery(document).ready(function($) {
 
     $('[id^="linkNewWaiver"]').click(function (evt) {
         $.ajax({
-            url: "/waivers/signed_by?dialog=true&",
+            url: "/waivers/signed_by?dialog=true",
             success: function (data) {
                 loadDialog("dialogSignedBy", data);
             },

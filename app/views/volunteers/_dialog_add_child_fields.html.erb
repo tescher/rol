@@ -1,0 +1,5 @@
+<%= if @alias == "guardian"
+      add_waiver_fields(@volunteer)
+    else
+      add_workday_volunteer_fields(@volunteer, @workday)
+    end %>
