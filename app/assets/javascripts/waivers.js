@@ -10,7 +10,7 @@ jQuery(document).ready(function($) {
         title: "New ",
         disabled: true,
         autoOpen: false,
-        width: 400,
+        width: 800,
         buttons: [{
             text: "Cancel",
             click: function () {

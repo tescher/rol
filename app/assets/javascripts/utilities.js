@@ -317,6 +317,7 @@ function add_fields_wire_up_events(start_node) {
             $.ajax({
                 url: "/" + objectName.toLowerCase() + "s/search?dialog=true" + (aliasName ? "&alias=" + aliasName.toLowerCase() : ""),
                 success: function(data) {
+                    $(start_node).closest('.ui-dialog-content').dialog('close');  // In case we came from an open dialog
                     loadDialog("dialogSearch" + objectName + "s",data);
                 },
                 async: false,

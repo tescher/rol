@@ -330,14 +330,14 @@ class VolunteersController < ApplicationController
           end
         end
       else
-        if !params[:stay].blank?
+        if params[:volunteer]  # Save must have been unsuccessful
           child_form_setup
           if from == "donations"
             render "shared/donations_form"
           else
             render "waivers/waivers_form"
           end
-        else
+        else       # Must have saved with no data
           session[:child_entry] = nil
           if !params[:save_and_search].blank?
             redirect_to search_volunteers_path

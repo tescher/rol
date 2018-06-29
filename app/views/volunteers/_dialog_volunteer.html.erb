@@ -1,5 +1,5 @@
 <div class="row clickable" onclick="<%= if @alias == "guardian"
-                                          link_to_add_waiver_fields(volunteer)
+                                          link_to_add_waiver_fields(volunteer, true)
                                         else
                                           link_to_add_workday_volunteer_fields(volunteer, session[:workday_id])
                                         end %>" >
