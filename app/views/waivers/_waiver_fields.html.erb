@@ -1,11 +1,12 @@
 <tr class="hide_on_remove">
   <td><%= if f.object.guardian_id
-            @guardian = Volunteer.find(f.object.guardian_id)
+            guardian = Volunteer.find(f.object.guardian_id)
           end
-          if @guardian
-            link_to @guardian.name, @guardian
+          if !guardian.nil?
+            link_to guardian.name, guardian
           else
-            label_tag :signer, @parent ? @parent.name : parent.name
+            parent = @parent || parent
+            label_tag :signer, parent ? parent.name : parent.name
           end
           %></td>
   <td>
@@ -21,7 +22,7 @@
   <td><%= f.text_area :waiver_text, readonly: @readonly  %></td>
   <td><%= f.hidden_field :_destroy %>
   <%= link_to "remove", "#", class: "remove_fields" %></td>
-  <%= if @guardian
-        f.hidden_field :guardian_id, value: @guardian.id
+  <%= if !guardian.nil?
+        f.hidden_field :guardian_id, value: guardian.id
       end %>
 </tr>
