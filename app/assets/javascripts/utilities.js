@@ -4,7 +4,7 @@
 
 jQuery(document).ready(function($) {
 
-     add_fields_wire_up_events($(document));
+    add_fields_wire_up_events($(document));
 
     // Links for autocomplete
     $('input').bind('railsAutocomplete.select', function(event, data){
@@ -246,11 +246,16 @@ jQuery(document).ready(function($) {
                 if (typeof data == 'object') {
                     set_selection_field(data.id, data.name, data.alias, dialog);
                 } else {   // Not JSON, must be fields to display or error in object creation
+                    var aliasName = $(this).closest('div[id^="dialogNew"]').attr('data-alias');
                     if (data.indexOf("dialogFormNew" + objectName) > -1) {  //HACK
-                        alert("Error creating " + objectName.toLowerCase() + ", make sure fields are filled correctly");
+                        alert("Error creating " + (aliasName || objectName).toLowerCase() + ", make sure fields are filled correctly");
                         // dialog.dialog("close");
                     } else {
-                        add_fields("", "workday_" + objectName.toLowerCase() + "s", data, ".add_" + objectName.toLowerCase() + "_fields");
+                        if (aliasName.toLowerCase() == "guardian") { // Dealing with waivers
+                            add_fields("", "waivers", data, ".add_waiver_fields");
+                        } else {
+                            add_fields("", "workday_" + objectName.toLowerCase() + "s", data, ".add_" + objectName.toLowerCase() + "_fields");
+                        }
                         dialog.dialog("close");
                     }
                 }
@@ -311,21 +316,22 @@ function add_fields_wire_up_events(start_node) {
 
 //    $('[id^="linkAdd"]').click(function(evt) {
     $(start_node).find('[id^="linkAdd"]').click(function(evt) {
-            var objectName = $(this).attr('id').substr($(this).attr('id').indexOf("linkAdd") + 7);
-            var aliasName = $(this).attr('data-alias');
-            $('div[id^="dialogSelect"]').attr('data-alias', aliasName);  // So we can catch it on the Create New button
-            $.ajax({
-                url: "/" + objectName.toLowerCase() + "s/search?dialog=true" + (aliasName ? "&alias=" + aliasName.toLowerCase() : ""),
-                success: function(data) {
-                    $(start_node).closest('.ui-dialog-content').dialog('close');  // In case we came from an open dialog
-                    loadDialog("dialogSearch" + objectName + "s",data);
-                },
-                async: false,
-                cache: false
-            });
-
-            return false;
+        var objectName = $(this).attr('id').substr($(this).attr('id').indexOf("linkAdd") + 7);
+        var aliasName = $(this).attr('data-alias');
+        $('div[id^="dialogSelect"]').attr('data-alias', aliasName);  // So we can catch it on the Create New button
+        $('div[id^="dialogNew"]').attr('data-alias', aliasName);  // So we can catch it on the add fields action
+        $.ajax({
+            url: "/" + objectName.toLowerCase() + "s/search?dialog=true" + (aliasName ? "&alias=" + aliasName.toLowerCase() : ""),
+            success: function(data) {
+                $(start_node).closest('.ui-dialog-content').dialog('close');  // In case we came from an open dialog
+                loadDialog("dialogSearch" + objectName + "s",data);
+            },
+            async: false,
+            cache: false
         });
+
+        return false;
+    });
 }
 
 

@@ -3,7 +3,7 @@
             guardian = Volunteer.find(f.object.guardian_id)
           end
           if !guardian.nil?
-            link_to guardian.name, guardian
+            label_tag :signer, guardian.name
           else
             parent = @parent || parent
             label_tag :signer, parent ? parent.name : parent.name
