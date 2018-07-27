@@ -479,9 +479,14 @@ class VolunteersController < ApplicationController
   # DELETE /volunteers/1
   # DELETE /volunteers/1.json
   def destroy
-    Volunteer.find(params[:id]).destroy
-    flash[:success] = "Volunteer deleted"
-    redirect_to search_volunteers_path
+    @volunteer = Volunteer.find(params[:id])
+    if @volunteer.destroy
+      flash[:success] = "Volunteer deleted"
+      redirect_to search_volunteers_path
+    else
+      edit_setup
+      render :edit
+    end
   end
 
   # GET /volunteer/1/donations

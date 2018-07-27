@@ -531,17 +531,19 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     assert_equal(@volunteer.notes, notes_dup, "Notes (#{notes_dup}) should be equal")
   end
 
-  test "no delete if a guardian to a minor" do
+  test "no delete if a guardian on a waiver" do
     log_in_as(@admin)
-    @minor_volunteer.guardian_id = @guardian_volunteer.id
-    @minor_volunteer.save
+    @waiver = Waiver.new(volunteer_id: @minor_volunteer.id, adult: false, guardian_id: @guardian_volunteer.id, date_signed: DateTime.parse("2018-06-01"))
+    @waiver.save!
+    puts @waiver.reload.to_yaml
     get edit_volunteer_path(@guardian_volunteer)
     assert_select 'a[href=?]', volunteer_path(@guardian_volunteer), method: :delete
     assert_no_difference 'Volunteer.count' do
       delete volunteer_path(@guardian_volunteer)
     end
-    @minor_volunteer.guardian_id = nil
-    @minor_volunteer.save
+    @waiver.guardian_id = nil
+    @waiver.adult = true
+    @waiver.save!
     assert_difference 'Volunteer.count', -1 do
       delete volunteer_path(@guardian_volunteer)
     end
