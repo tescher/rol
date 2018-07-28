@@ -6,7 +6,8 @@ module WaiversHelper
   end
 
   def add_waiver_fields(volunteer_id, is_guardian)
-    if is_guardian == false
+    puts "Is Guardian: #{is_guardian} #{is_guardian.to_yaml}"
+    if is_guardian == true
       volunteer = Volunteer.find(session[:volunteer_id])
       guardian = Volunteer.find(volunteer_id)
     else
@@ -14,8 +15,10 @@ module WaiversHelper
       guardian = nil
     end
     new_object = Waiver.new(birthdate: volunteer.birthdate, adult: volunteer.adult)
+    if !is_guardian
+      new_object.adult = true
+    end
     puts "Is Guardian: #{is_guardian} Volunteer: #{volunteer.id}  Guardian: #{guardian ? guardian.id : "nil"}"
-    puts new_object.to_yaml
     output = ""
     association = :waivers
     form_builder = form_for(volunteer) do |builder|
@@ -25,5 +28,10 @@ module WaiversHelper
     end
     output
   end
+
+  def last_waiver(volunteer_id)
+    Waiver.where(volunteer_id: volunteer_id).order(date_signed: :desc).first
+  end
+
 
 end

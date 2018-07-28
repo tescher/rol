@@ -2,6 +2,7 @@ include WorkdaysHelper
 include DonationsHelper
 include ApplicationHelper
 include VolunteersHelper
+include WaiversHelper
 
 class VolunteersController < ApplicationController
   before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search, :address_check, :donations, :waivers, :merge, :search_merge, :merge_form]
@@ -268,7 +269,7 @@ class VolunteersController < ApplicationController
       session[:volunteer_id] = @volunteer.id
       if params[:volunteer][:dialog] == "true"
         @workday = session[:workday_id]
-        @alias = params[:alias].blank? ? "" : params[:alias]
+        @alias = params[:volunteer][:alias].blank? ? "" : params[:volunteer][:alias]
         render partial: "dialog_add_child_fields"
       else
         flash[:success] = "Volunteer created"
@@ -318,7 +319,7 @@ class VolunteersController < ApplicationController
         if from == "waivers"
           #Update birthdate and adult flag from last waiver if not already set
           @volunteer.reload
-          last_waiver = Waiver.where(volunteer_id: @volunteer.id).order(date_signed: :desc).first
+          last_waiver = last_waiver(@volunteer.id)
           puts last_waiver.to_yaml
           if !last_waiver.nil?
             if @volunteer.birthdate.nil? && last_waiver.birthdate
