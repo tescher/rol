@@ -19,7 +19,7 @@
   <td><%= f.text_field :birthdate, value: (f.object.birthdate && f.object.birthdate.strftime("%m/%d/%Y")), readonly: @readonly, id: 'birthdatepicker'%></td>
   <td><%= f.check_box :adult, readonly: @readonly %></td>
   <td><%= f.check_box :e_sign, readonly: @readonly  %></td>
-  <td><%= f.text_area :waiver_text, readonly: @readonly  %></td>
+  <td>no text stored</td>
   <td><%= f.hidden_field :_destroy %>
   <%= link_to "remove", "#", class: "remove_fields" %></td>
   <%= if !guardian.nil?

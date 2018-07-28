@@ -46,6 +46,7 @@ class Volunteer < ActiveRecord::Base
   validates_date :waiver_date, allow_blank: true
   validates_date :first_contact_date, allow_blank: true
   validates_date :background_check_date, allow_blank: true
+  validates_date :birthdate, allow_blank: true
 
   def name
     [first_name, last_name].join(' ')

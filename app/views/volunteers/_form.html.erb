@@ -94,14 +94,14 @@
           </div>
           <div class="row">
             <div class="col-md-2">
-              <%= f.label :birthdate %><br>
+              <%= f.label "Birthdate (for waivers)" %><br>
             </div>
             <div class="col-md-4">
               <%= f.text_field :birthdate,  value: @volunteer.birthdate.nil? ? "" : @volunteer.birthdate.strftime("%m/%d/%Y") , id: 'birthdatepicker', class: 'form-control' %>
             </div>
             <div class="col-md-4">
               <label>
-                <%= f.check_box :adult %> Adult (for waiver)
+                <%= f.check_box :adult %> Adult <br/> (for waivers)
               </label>
             </div>
           </div>

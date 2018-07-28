@@ -315,6 +315,21 @@ class VolunteersController < ApplicationController
     if !from.nil?     # Coming from donations or waivers
       if params[:volunteer] && @volunteer.update_attributes(volunteer_params)
         flash[:success] = "#{from.capitalize} updated"
+        if from == "waivers"
+          #Update birthdate and adult flag from last waiver if not already set
+          @volunteer.reload
+          last_waiver = Waiver.where(volunteer_id: @volunteer.id).order(date_signed: :desc).first
+          puts last_waiver.to_yaml
+          if !last_waiver.nil?
+            if @volunteer.birthdate.nil? && last_waiver.birthdate
+              @volunteer.birthdate = last_waiver.birthdate
+            end
+            if @volunteer.try(:adult) == false && last_waiver.adult
+              @volunteer.adult = last_waiver.adult
+            end
+            @volunteer.save
+          end
+        end
         if !params[:stay].blank?
           if from == "donations"
             redirect_to donations_volunteer_path(@volunteer)
@@ -671,7 +686,7 @@ class VolunteersController < ApplicationController
   def volunteer_params
     params.require(:volunteer).permit(:first_name, :last_name, :middle_name, :email, :occupation, :employer_id, :church_id,
                                       :address, :city, :state, :zip, :home_phone, :work_phone, :mobile_phone,
-                                      :notes, :remove_from_mailing_list, :waiver_date, :first_contact_date, :first_contact_type_id, :pending_volunteer_id, :background_check_date, interest_ids: [], volunteer_category_ids: [], donations_attributes: [:id, :date_received, :value, :ref_no, :item, :anonymous, :in_honor_of, :designation, :notes, :receipt_sent, :volunteer_id, :organization_id, :donation_type_id, :_destroy],
+                                      :notes, :remove_from_mailing_list, :waiver_date, :birthdate, :adult, :first_contact_date, :first_contact_type_id, :pending_volunteer_id, :background_check_date, interest_ids: [], volunteer_category_ids: [], donations_attributes: [:id, :date_received, :value, :ref_no, :item, :anonymous, :in_honor_of, :designation, :notes, :receipt_sent, :volunteer_id, :organization_id, :donation_type_id, :_destroy],
                                       waivers_attributes: [:id, :guardian_id, :adult, :birthdate, :date_signed, :waiver_text, :e_sign, :_destroy])
   end
   def volunteer_search_params

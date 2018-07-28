@@ -4,6 +4,7 @@ class Waiver < ActiveRecord::Base
   acts_as_paranoid
 
   validates_date :date_signed, on_or_before: lambda { Date.today }, allow_blank: false
+  validates_date :birthdate, allow_blank: true
   validate :check_age_or_guardian_recorded
   validate :e_sign_includes_text
 
