@@ -317,7 +317,7 @@ class VolunteersController < ApplicationController
       if params[:volunteer] && @volunteer.update_attributes(volunteer_params)
         flash[:success] = "#{from.capitalize} updated"
         if from == "waivers"
-          #Update birthdate and adult flag from last waiver if not already set
+          #Update last waiver date, birthdate and adult flag from last waiver if not already set
           @volunteer.reload
           last_waiver = last_waiver(@volunteer.id)
           puts last_waiver.to_yaml
@@ -327,6 +327,9 @@ class VolunteersController < ApplicationController
             end
             if @volunteer.try(:adult) == false && last_waiver.adult
               @volunteer.adult = last_waiver.adult
+            end
+            if (@volunteer.waiver_date.nil?) || (last_waiver.date_signed > @volunteer.waiver_date)
+              @volunteer.waiver_date = last_waiver.date_signed
             end
             @volunteer.save
           end
