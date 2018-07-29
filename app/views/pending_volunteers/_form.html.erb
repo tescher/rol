@@ -1,166 +1,266 @@
 <%= form_for(@object, :url => pending_volunteers_path(@object, :launched_from_self_tracking => @launched_from_self_tracking)) do |f| %>
-    <%= @object = f.object
-        render 'shared/error_messages' %>
+  <%= @object = f.object
+      render 'shared/error_messages' %>
 
-    <div class="row">
-      <div class="col-md-5 col-md-offset-1">
-        <div class="row">
-          <div class="col-md-2">
-            <%= f.label :first_name %><br>
-          </div>
-          <div class="col-md-8">
-            <%= f.text_field :first_name, class: 'form-control', autofocus: 'true' %>
-          </div>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <h3>Contact Information</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5 col-md-offset-1">
+      <div class="row">
+        <div class="col-md-2">
+          <%= f.label :first_name %><br>
         </div>
-        <div class="row">
-          <div class="col-md-2">
-            <%= f.label :last_name %><br>
-          </div>
-          <div class="col-md-8">
-            <%= f.text_field :last_name, class: 'form-control' %>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-2">
-            <%= f.label :address %><br>
-          </div>
-          <div class="col-md-8">
-            <%= f.text_field :address, class: 'form-control' %>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-2">
-            <%= f.label :city %><br>
-          </div>
-          <div class="col-md-8">
-            <%= f.text_field :city, class: 'form-control' %>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-2">
-            <%= f.label :state %><br>
-          </div>
-          <div class="col-md-2">
-            <%= f.text_field :state, class: 'form-control' %>
-          </div>
-          <div class="col-md-2">
-            <%= f.label :zip %><br>
-          </div>
-          <div class="col-md-4">
-            <%= f.text_field :zip, class: 'form-control' %>
-          </div>
+        <div class="col-md-8">
+          <%= f.text_field :first_name, class: 'form-control', autofocus: 'true' %>
         </div>
       </div>
-      <div class="col-md-5">
-        <div class="row">
-          <div class="col-md-2">
-            <%= f.label :email %><br>
-          </div>
-          <div class="col-md-8">
-            <%= f.text_field :email, class: 'form-control' %>
-          </div>
+      <div class="row">
+        <div class="col-md-2">
+          <%= f.label :last_name %><br>
         </div>
-        <div class="row">
-          <div class="col-md-2">
-            <%= f.label :phone %><br>
-          </div>
-          <div class="col-md-8">
-            <%= f.text_field :home_phone, class: 'form-control' %>
-          </div>
+        <div class="col-md-8">
+          <%= f.text_field :last_name, class: 'form-control' %>
         </div>
-        <div class="row">
-          <div class="col-md-3">
-            <%= f.label :notes, 'Comments (e.g. affiliations, special interests)' %><br>
-          </div>
-          <div class="col-md-7">
-            <%= f.text_area :notes, class: 'form-control', rows: "4" %>
-          </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          <%= f.label :address %><br>
+        </div>
+        <div class="col-md-8">
+          <%= f.text_field :address, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          <%= f.label :city %><br>
+        </div>
+        <div class="col-md-8">
+          <%= f.text_field :city, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          <%= f.label :state %><br>
+        </div>
+        <div class="col-md-2">
+          <%= f.text_field :state, class: 'form-control' %>
+        </div>
+        <div class="col-md-2">
+          <%= f.label :zip %><br>
+        </div>
+        <div class="col-md-4">
+          <%= f.text_field :zip, class: 'form-control' %>
         </div>
       </div>
     </div>
-
-    <div class="row">
-      <h3 class="text-center"> Share with us how you might help. And remember - we can train you! </h3>
-      <div class="col-md-10 col-md-offset-2">
-        <% num_columns = 3
-           interest_categories = InterestCategory.all
-           interest_category_height = Hash.new()
-           interest_category_interests = Hash.new()
-           total_height = 0
-           interest_categories.each do |ic|
-             interests = Interest.where(interest_category: ic).where(inactive: false)
-             interest_category_height[ic] = 2 + interests.count
-             interest_category_interests[ic] = interests
-             total_height += interest_category_height[ic]
-           end
-           interest_categories.sort_by {|ic| -interest_category_height[ic]}
-           column_height = (total_height.to_f / num_columns).ceil
-           columns = Array.new()
-           column_heights = Array.new()
-           # puts interest_categories
-           # puts("---")
-           # puts (interest_category_height)
-           # puts("Total height = #{total_height}")
-           # puts("Column height = #{column_height}")
-           interest_categories.each do |ic|  # Next category of interests
-             found_spot = false
-             (0..num_columns-1).each do |c|    # find a column for it
-               if ((column_heights[c] || 0) + interest_category_height[ic] <= column_height)
-                 if (!columns[c])
-                   columns[c] = Array.new
-                   column_heights[c] = 0
-                 end
-                 columns[c].push(ic)
-                 column_heights[c] += interest_category_height[ic]
-                 found_spot = true
-                 break
-               end
-             end
-             if (!found_spot) # didn't find a spot, put it on the smallest column
-               smallest = column_heights.index(column_heights.min)
-               columns[smallest].push(ic)
-               column_heights[smallest] += interest_category_height[ic]
-             end
-           end
-           # puts "---"
-           # puts column_heights
-           # puts("---")
-           # puts columns
-        %>
-
-        <% (0..num_columns - 1).each do |c|
-          if (columns[c]) %>
-                <div class="col-md-3">
-                  <% columns[c].each do |ic| %>
-                      <h5><strong><u><%= ic.name %></u></strong></h5>
-                      <% interest_category_interests[ic].each do |i| %>
-                          <div class="checkbox">
-                            <label>
-                              <% if (i.highlight) %>
-                                  <strong>
-                              <% end %>
-                              <%= check_box_tag 'volunteer[int_ids][]', i.id %> <%= i.name %>
-                              <% if (i.highlight) %>
-                                  </strong>
-                              <% end %>
-                            </label>
-                          </div>
-                      <% end %>
-                  <% end %>
-                </div>
-            <% end %>
-        <% end %>
+    <div class="col-md-5">
+      <div class="row">
+        <div class="col-md-2">
+          <%= f.label :email %><br>
+        </div>
+        <div class="col-md-8">
+          <%= f.text_field :email, class: 'form-control' %>
+        </div>
       </div>
-	  <div class="row">
-		  <div class="col-md-10">
-			  <div class="pull-right">
-				  <% if !defined?(@self_tracking_enabled) || (@self_tracking_enabled == false) %>
-					  <div class="g-recaptcha" data-sitekey="<%= GOOGLE_SITE_KEY %>"></div>
-				  <% end %>
-				  <%= render partial: "shared/form_actions", locals: {f: f} %>
-			  </div>
-		  </div>
-	  </div>
-	</div>
+      <div class="row">
+        <div class="col-md-2">
+          <%= f.label :phone %><br>
+        </div>
+        <div class="col-md-8">
+          <%= f.text_field :home_phone, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5 col-md-offset-1">
+      <h3>Emergency Contact Information</h3>
+      <div class="row">
+        <div class="col-md-2">
+          <%= f.label :emerg_contact_name, "Name" %><br>
+        </div>
+        <div class="col-md-8">
+          <%= f.text_field :emerg_contact_name, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          <%= f.label :emerg_contact_phone, "Phone" %><br>
+        </div>
+        <div class="col-md-8">
+          <%= f.text_field :emerg_contact_phone, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <h3>Individual Information</h3>
+      <div class="row">
+        <div class="col-md-2">
+          <%= f.label :occupation %><br>
+        </div>
+        <div class="col-md-8">
+          <%= f.text_field :occupation, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <%= f.label :medical_conditions, 'Please list any medical conditions or allergies' %><br>
+        </div>
+        <div class="col-md-7">
+          <%= f.text_area :medical_conditions, class: 'form-control', rows: "4" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <h3>Reason for Volunteering</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <%= f.text_area :notes, class: 'form-control', rows: "4" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <h3> Please let us know where you'd like to help (check all that apply) </h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <% num_columns = 1
+         interest_categories = InterestCategory.all
+         interest_category_height = Hash.new()
+         interest_category_interests = Hash.new()
+         total_height = 0
+         interest_categories.each do |ic|
+           interests = Interest.where(interest_category: ic).where(inactive: false)
+           interest_category_height[ic] = 2 + interests.count
+           interest_category_interests[ic] = interests
+           total_height += interest_category_height[ic]
+         end
+         interest_categories.sort_by {|ic| -interest_category_height[ic]}
+         column_height = (total_height.to_f / num_columns).ceil
+         columns = Array.new()
+         column_heights = Array.new()
+         # puts interest_categories
+         # puts("---")
+         # puts (interest_category_height)
+         # puts("Total height = #{total_height}")
+         # puts("Column height = #{column_height}")
+         interest_categories.each do |ic|  # Next category of interests
+           found_spot = false
+           (0..num_columns-1).each do |c|    # find a column for it
+             if ((column_heights[c] || 0) + interest_category_height[ic] <= column_height)
+               if (!columns[c])
+                 columns[c] = Array.new
+                 column_heights[c] = 0
+               end
+               columns[c].push(ic)
+               column_heights[c] += interest_category_height[ic]
+               found_spot = true
+               break
+             end
+           end
+           if (!found_spot) # didn't find a spot, put it on the smallest column
+             smallest = column_heights.index(column_heights.min)
+             columns[smallest].push(ic)
+             column_heights[smallest] += interest_category_height[ic]
+           end
+         end
+         # puts "---"
+         # puts column_heights
+         # puts("---")
+         # puts columns
+      %>
+
+      <% (0..num_columns - 1).each do |c| %>
+        <% if (columns[c]) %>
+          <div class="col-md-3">
+            <% columns[c].each do |ic| %>
+              <h5><strong><u><%= ic.name %></u></strong></h5>
+              <% interest_category_interests[ic].each do |i| %>
+                <div class="checkbox">
+                  <label>
+                    <% if (i.highlight) %>
+                      <strong>
+                    <% end %>
+                    <%= check_box_tag 'volunteer[int_ids][]', i.id %> <%= i.name %>
+                    <% if (i.highlight) %>
+                      </strong>
+                    <% end %>
+                  </label>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <h3> Limitations </h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3 col-md-offset-1">
+      <%= f.label :limitations, 'Do you have any limitations, physical or otherwise? Please describe:' %><br>
+    </div>
+    <div class="col-md-7">
+      <%= f.text_area :limitations, class: 'form-control', rows: "4" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <h3> Background Check <br/><br/> </h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="checkbox">
+        <label>
+          <%= f.check_box :agree_to_background_check %> I give my consent to have a criminal background and sex offender registry check completed in accordance with Habitat's written policies.
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#backgroundCheck">(more info)</button>
+      <div id="backgroundCheck" class="collapse">
+        Habitat for Humanity of Wisconsin River Area values the safety of children, our employees, volunteers, and the families we serve. In order for us to provide volunteer opportunities for members of the community, we conduct criminal background and sex offender registry checks on all potential volunteers.
+        A sex offender registry or criminal conviction of violent or sexual nature or involving theft or burglary may disqualify an individual from volunteering with Habitat for Humanity of Wisconsin River Area.
+        Convictions are not an automatic disqualification from volunteer service. However, failure to provide complete and accurate information relating to criminal convictions will result in immediate removal from volunteer service.
+        Based on any or all of the criteria outlined in this policy, Habitat for Humanity of Wisconsin River Area may, in its sole discretion, decide that a partner family will be denied homeownership, an employee will be terminated, a volunteer will be dismissed or an applicant will not be hired. In the employment or volunteer context, Habitat for Humanity of Wisconsin River Area may, in its sole discretion, also choose to reassign a former convict to a job involving less exposure to risk. In doing so, Habitat for Humanity Wisconsin River Area, may, in its sole discretion, consider:
+        <br/> - The type and location of the job –whether it would give the offender access to potential victims;
+        <br/> - The types of co-workers and subordinates in the workplace;
+        <br/> - Whether the job would involve travel;
+        <br/> - Work hours;
+        <br/> - Degree of supervision; and/or
+        <br/> - Amount of access to technology, i.e., the Internet.<br/>
+        <br/>
+        <small><em>
+          Habitat for Humanity of Wisconsin River Area® is a locally-run non-profit, ecumenical Christian organization that does not discriminate on the basis of race, color, ethnic origin, national origin, creed, religion, political belief, sex, sexual orientation, marital status, age or any other characteristic protected by law.
+        </em></small>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-10">
+      <div class="pull-right">
+        <% if !defined?(@self_tracking_enabled) || (@self_tracking_enabled == false) %>
+          <div class="g-recaptcha" data-sitekey="<%= GOOGLE_SITE_KEY %>"></div>
+        <% end %>
+        <%= render partial: "shared/form_actions", locals: {f: f} %>
+      </div>
+    </div>
+  </div>
 
 <% end %>

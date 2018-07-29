@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180727194202) do
+ActiveRecord::Schema.define(version: 20180729133257) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -213,9 +213,9 @@ ActiveRecord::Schema.define(version: 20180727194202) do
     t.string   "work_phone"
     t.string   "mobile_phone"
     t.string   "notes"
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
-    t.boolean  "remove_from_mailing_list", default: false, null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.boolean  "remove_from_mailing_list",  default: false, null: false
     t.date     "waiver_date"
     t.date     "background_check_date"
     t.string   "old_id"
@@ -226,9 +226,14 @@ ActiveRecord::Schema.define(version: 20180727194202) do
     t.integer  "pending_volunteer_id"
     t.datetime "deleted_at"
     t.string   "deleted_reason"
-    t.boolean  "needs_review",             default: false
+    t.boolean  "needs_review",              default: false
     t.boolean  "adult"
     t.date     "birthdate"
+    t.string   "emerg_contact_name"
+    t.string   "emerg_contact_phone"
+    t.string   "medical_conditions"
+    t.string   "limitations"
+    t.boolean  "agree_to_background_check"
   end
 
   add_index "volunteers", ["church_id"], name: "index_volunteers_on_church_id", using: :btree
