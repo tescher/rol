@@ -231,7 +231,7 @@ $(document).ready(function() {
                 $other_field = $("textarea[id^=volunteer_" + field_name + "][disabled='disabled']");
             } else if (field_name == "interests") {
                 $field = ($("select[id^=volunteer_interest_ids]").not("[class*='read-only']").presence() || $("select[id^=source_volunteer_interest_ids]").presence()).next("div.btn-group").children(":button");
-                $other_field = ($("select[id^=volunteer_interest_ids][class*='read-only']").presence() || $("select[id^=volunteer_interest_ids]").presence()).next("div.btn-group").children(":button");
+                $other_field = ($("select[id^=volunteer_interest_ids][class*='read-only']").presence() || $("select[id^=interest_ids]").presence()).next("div.btn-group").children(":button");
             } else {
                 $field = ($("select[id^=volunteer_category_ids]").not("[class*='read-only']").presence() || $("select[id^=source_volunteer_category_ids]").presence()).next("div.btn-group").children(":button");
                 $other_field = ($("select[id^=volunteer_category_ids][class*='read-only']").presence() || $("select[id^=volunteer_category_ids]").presence()).next("div.btn-group").children(":button");
