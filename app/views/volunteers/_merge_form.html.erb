@@ -16,7 +16,7 @@
           </div>
 
         </div>
-        <% [:first_name, :middle_name, :last_name, :occupation, :address, :city, :state, :zip, :email, :home_phone, :work_phone, :mobile_phone, :remove_from_mailing_list].each do |field| %>
+        <% [:first_name, :middle_name, :last_name, :occupation, :address, :city, :state, :zip, :email, :home_phone, :work_phone, :mobile_phone, :adult, :emerg_contact_name, :emerg_contact_phone, :remove_from_mailing_list, :agree_to_background_check].each do |field| %>
             <div class="row">
               <div class="col-xs-1">
                 <%= label_tag field %>
@@ -25,7 +25,7 @@
                 <%= content_tag(:span, @source_volunteer.send(field), id: "source_volunteer_#{field}", class: "form-control") %>
               </div>
               <div class="col-xs-2">
-                <%= check_box_tag("source_use_fields[]",Volunteer.merge_fields_table[field], (field.to_s != "remove_from_mailing_list" && !@source_volunteer.send(field).blank?) || (field.to_s == "remove_from_mailing_list" && !@source_volunteer.remove_from_mailing_list?), {id: "use_#{field}", class: "form-control"}) %>
+                <%= check_box_tag("source_use_fields[]",Volunteer.merge_fields_table[field], ((field.to_s != "remove_from_mailing_list") && (field.to_s != "agree_to_background_check") && !@source_volunteer.send(field).blank?) || (field.to_s == "remove_from_mailing_list" && !@source_volunteer.remove_from_mailing_list?) || (field.to_s == "agree_to_background_check" && !@source_volunteer.agree_to_background_check?), {id: "use_#{field}", class: "form-control"}) %>
               </div>
               <div class="col-xs-1">
                 <%= label_tag field %>
@@ -35,7 +35,7 @@
               </div>
             </div>
         <% end %>
-        <% [:waiver_date, :background_check_date, :first_contact_date].each do |field| %>
+        <% [:waiver_date, :background_check_date, :first_contact_date, :birthdate].each do |field| %>
             <div class="row">
               <div class="col-xs-1">
                 <%= label_tag field %>
@@ -90,6 +90,40 @@
           </div>
           <div class="col-xs-3">
             <%= text_area_tag(:volunteer_notes, @object.notes, class: "form-control", rows: "4", disabled: "disabled") %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-1">
+            <%= label_tag :medical_conditions %>
+          </div>
+          <div class="col-xs-3">
+            <%= text_area_tag(:source_volunteer_medical_conditions, @source_volunteer.medical_conditions, class: "form-control", rows: "4", disabled: "disabled") %>
+          </div>
+          <div class="col-xs-2">
+            <%= select_tag(:use_medical_conditions, options_for_select([ "Prepend", "Append", "Replace", "Ignore" ], "Append"), {class: "form-control"}) %>
+          </div>
+          <div class="col-xs-1">
+            <%= label_tag :medical_conditions %>
+          </div>
+          <div class="col-xs-3">
+            <%= text_area_tag(:volunteer_medical_conditions, @object.medical_conditions, class: "form-control", rows: "4", disabled: "disabled") %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-1">
+            <%= label_tag :limitations %>
+          </div>
+          <div class="col-xs-3">
+            <%= text_area_tag(:source_volunteer_limitations, @source_volunteer.limitations, class: "form-control", rows: "4", disabled: "disabled") %>
+          </div>
+          <div class="col-xs-2">
+            <%= select_tag(:use_limitations, options_for_select([ "Prepend", "Append", "Replace", "Ignore" ], "Append"), {class: "form-control"}) %>
+          </div>
+          <div class="col-xs-1">
+            <%= label_tag :limitations %>
+          </div>
+          <div class="col-xs-3">
+            <%= text_area_tag(:volunteer_limitations, @object.limitations, class: "form-control", rows: "4", disabled: "disabled") %>
           </div>
         </div>
 

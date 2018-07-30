@@ -48,6 +48,7 @@ class Volunteer < ActiveRecord::Base
   validates_date :first_contact_date, allow_blank: true
   validates_date :background_check_date, allow_blank: true
   validates_date :birthdate, allow_blank: true
+  validate :pending_must_allow_background_check
 
   def name
     [first_name, last_name].join(' ')
@@ -60,7 +61,7 @@ class Volunteer < ActiveRecord::Base
   def self.merge_fields_table
     merge_fields = {}
     index = 0
-    [:first_name, :middle_name, :last_name, :occupation, :address, :city, :state, :zip, :email, :home_phone, :work_phone, :mobile_phone, :remove_from_mailing_list, :waiver_date, :background_check_date, :church_id, :employer_id, :first_contact_date, :first_contact_type_id].each do |f|
+    [:first_name, :middle_name, :last_name, :occupation, :address, :city, :state, :zip, :email, :home_phone, :work_phone, :mobile_phone, :remove_from_mailing_list, :waiver_date, :background_check_date, :church_id, :employer_id, :first_contact_date, :first_contact_type_id, :medical_conditions, :limitations, :emerg_contact_name, :emerg_contact_phone, :agree_to_background_check].each do |f|
       merge_fields[f] = index
       index += 1
     end
@@ -70,7 +71,7 @@ class Volunteer < ActiveRecord::Base
   def self.pending_volunteer_merge_fields_table
     resolve_fields = {}
     index = 0
-    [:first_name, :last_name, :address, :city, :state, :zip, :email, :home_phone, :work_phone, :mobile_phone].each do |f|
+    [:first_name, :last_name, :address, :city, :state, :zip, :email, :home_phone, :work_phone, :mobile_phone, :emerg_contact_name, :emerg_contact_phone, :limitations, :medical_conditions, :agree_to_background_check].each do |f|
       resolve_fields[f] = index
       index += 1
     end
@@ -90,6 +91,12 @@ class Volunteer < ActiveRecord::Base
       "#{self.last_name}, #{self.first_name} (#{self.city})"
     end
     
+  end
+
+  def pending_must_allow_background_check
+    if (self.needs_review == true) && (self.agree_to_background_check != true)
+      errors.add(:agree_to_background_check, "Must agree to allow a background check in order to apply.")
+    end
   end
 
 end

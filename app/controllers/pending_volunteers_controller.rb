@@ -53,6 +53,36 @@ class PendingVolunteersController < ApplicationController
           end
         end
       end
+      if (params[:use_limitations].downcase != "ignore")
+        if @volunteer.limitations.blank? || (params[:use_limitations].downcase == "replace")
+          volunteer_params[:limitations] = pending_volunteer_params[:limitations]
+        else
+          if (!pending_volunteer_params[:limitations].blank?)
+            if (params[:use_limitations].downcase == "append")
+              volunteer_params[:limitations] = @volunteer.limitations + "\n " + pending_volunteer_params[:limitations]
+            else
+              if (params[:use_limitations].downcase == "prepend")
+                volunteer_params[:limitations] =  pending_volunteer_params[:limitations] + "\n " + @volunteer.limitations
+              end
+            end
+          end
+        end
+      end
+      if (params[:use_medical_conditions].downcase != "ignore")
+        if @volunteer.medical_conditions.blank? || (params[:use_medical_conditions].downcase == "replace")
+          volunteer_params[:medical_conditions] = pending_volunteer_params[:medical_conditions]
+        else
+          if (!pending_volunteer_params[:medical_conditions].blank?)
+            if (params[:use_medical_conditions].downcase == "append")
+              volunteer_params[:medical_conditions] = @volunteer.medical_conditions + "\n " + pending_volunteer_params[:medical_conditions]
+            else
+              if (params[:use_medical_conditions].downcase == "prepend")
+                volunteer_params[:medical_conditions] =  pending_volunteer_params[:medical_conditions] + "\n " + @volunteer.medical_conditions
+              end
+            end
+          end
+        end
+      end
 
       interests = []
       if (pending_volunteer_params[:interest_ids].length > 0) && (params[:use_interests].downcase != "ignore")
@@ -105,6 +135,9 @@ class PendingVolunteersController < ApplicationController
   def create
     @object = Volunteer.pending.new(pending_volunteer_params)
     @object.work_phone = @object.mobile_phone = @object.home_phone
+    if !@object.notes.blank?
+      @object.notes = "Reason for volunteering: ""#{@object.notes}"""
+    end
 
     @launched_from_self_tracking = params[:launched_from_self_tracking]
 	@self_tracking_enabled = session[:self_tracking_workday_id].present? && Workday.exists?(session[:self_tracking_workday_id])
@@ -131,7 +164,7 @@ class PendingVolunteersController < ApplicationController
   def pending_volunteer_params
     modified_params = params.require(:volunteer).permit(
       :first_name, :last_name, :address, :city, :state, :zip, :home_phone, :work_phone,
-      :mobile_phone, :email, :notes, int_ids: [], interest_ids: []
+      :mobile_phone, :email, :notes, :occupation, :emerg_contact_name, :emerg_contact_phone, :limitations, :medical_conditions, :agree_to_background_check, int_ids: [], interest_ids: []
     )
     if (!modified_params[:int_ids].nil?)
       modified_params[:interest_ids] = modified_params[:int_ids].dup

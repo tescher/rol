@@ -115,7 +115,7 @@ class PendingVolunteersTest < ActionDispatch::IntegrationTest
     use_categories = "ignore"
 
 	put pending_volunteer_path(source_volunteer), {
-	  matching_id: target_volunteer.id, pv_use_fields: source_use_fields, use_notes: use_notes,
+	  matching_id: target_volunteer.id, pv_use_fields: source_use_fields, use_notes: use_notes, use_limitations: use_limitations, use_medical_conditions: use_medical_conditions,
 	  use_interests: use_interests, use_categories: use_categories,
 	  volunteer: {
 		first_name: source_volunteer.first_name,

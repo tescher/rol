@@ -133,7 +133,7 @@
   </div>
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
-      <% num_columns = 1
+      <% num_columns = 2
          interest_categories = InterestCategory.all
          interest_category_height = Hash.new()
          interest_category_interests = Hash.new()
@@ -181,9 +181,9 @@
 
       <% (0..num_columns - 1).each do |c| %>
         <% if (columns[c]) %>
-          <div class="col-md-3">
+          <div class="col-md-4">
             <% columns[c].each do |ic| %>
-              <h5><strong><u><%= ic.name %></u></strong></h5>
+              <h4><br/><strong><u><%= ic.name %></u></strong><br/><br/></h4>
               <% interest_category_interests[ic].each do |i| %>
                 <div class="checkbox">
                   <label>

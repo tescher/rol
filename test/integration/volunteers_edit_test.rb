@@ -298,14 +298,14 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     volunteer_category_volunteers = VolunteerCategoryVolunteer.where("volunteer_id = #{@volunteer.id}").all
     volunteer_category_volunteers_count = volunteer_category_volunteers.count
 
-    source_use_field_list = [:first_name, :last_name, :waiver_date, :remove_from_mailing_list, :church_id, :home_phone]
+    source_use_field_list = [:first_name, :last_name, :waiver_date, :remove_from_mailing_list, :agree_to_background_check, :church_id, :home_phone]
     source_use_fields = source_use_field_list.map {|f,i| Volunteer.merge_fields_table[f] }
 
     use_notes = "ignore"   # Skip notes and interests and categories on this first pass
     use_interests = "ignore"
     use_categories = "ignore"
 
-    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: source_use_fields, use_notes: use_notes, use_interests: use_interests, use_categories: use_categories}
+    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: source_use_fields, use_notes: use_notes, use_limitations: use_limitations, use_medical_conditions: use_medical_conditions, use_interests: use_interests, use_categories: use_categories}
 
     @volunteer.reload
 
@@ -371,7 +371,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     use_interests = "add"
     use_categories = "add"
 
-    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_interests: use_interests, use_categories: use_categories}
+    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_limitations: use_limitations, use_medical_conditions: use_medical_conditions, use_interests: use_interests, use_categories: use_categories}
 
     @volunteer.reload
 
@@ -405,7 +405,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     use_interests = "add"
     use_categories = "add"
 
-    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_interests: use_interests, use_categories: use_categories}
+    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_limitations: use_limitations, use_medical_conditions: use_medical_conditions, use_interests: use_interests, use_categories: use_categories}
 
     @volunteer.reload
 
@@ -439,7 +439,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     use_interests = "replace"
     use_categories = "replace"
 
-    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_interests: use_interests, use_categories: use_categories}
+    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_limitations: use_limitations, use_medical_conditions: use_medical_conditions, use_interests: use_interests, use_categories: use_categories}
 
     @volunteer.reload
 
@@ -468,7 +468,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     use_interests = "replace"
     use_categories = "replace"
 
-    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_interests: use_interests, use_categories: use_categories}
+    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_limitations: use_limitations, use_medical_conditions: use_medical_conditions, use_interests: use_interests, use_categories: use_categories}
 
     @volunteer.reload
 
@@ -480,55 +480,79 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     assert(new_volunteer_category_volunteers_content.sort == volunteer_category_volunteers_dup_content.sort, "Categories (#{volunteer_category_volunteers_dup_count}) should be equal")
   end
 
-  test "Merge with appended notes" do
+  test "Merge with appended notes, conditions, limitations" do
     log_in_as(@non_admin)
     notes = @volunteer.notes
     notes_dup = @duplicate_volunteer.notes
+    medical_conditions = @volunteer.medical_conditions
+    medical_conditions_dup = @duplicate_volunteer.medical_conditions
+    limitations = @volunteer.limitations
+    limitations_dup = @duplicate_volunteer.limitations
 
     use_notes = "append"
+    use_limitations = "append"
+    use_medical_conditions = "append"
     use_interests = "ignore"
     use_categories = "ignore"
 
-    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_interests: use_interests, use_categories: use_categories}
+    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_limitations: use_limitations, use_medical_conditions: use_medical_conditions, use_interests: use_interests, use_categories: use_categories}
 
     @volunteer.reload
 
     # Did notes move?
     assert_equal(@volunteer.notes, notes + "\n" + notes_dup, "Notes (#{notes + "\n" + notes_dup}) should be equal")
+    assert_equal(@volunteer.limitations, limitations + "\n" + limitations_dup, "Limitations (#{limitations + "\n" + limitations_dup}) should be equal")
+    assert_equal(@volunteer.medical_conditions, medical_conditions + "\n" + medical_conditions_dup, "Medical conditions (#{medical_conditions + "\n" + medical_conditions_dup}) should be equal")
   end
 
-  test "Merge with prepended notes" do
+  test "Merge with prepended notes, conditions, limitations" do
     log_in_as(@non_admin)
     notes = @volunteer.notes
     notes_dup = @duplicate_volunteer.notes
+    medical_conditions = @volunteer.medical_conditions
+    medical_conditions_dup = @duplicate_volunteer.medical_conditions
+    limitations = @volunteer.limitations
+    limitations_dup = @duplicate_volunteer.limitations
 
     use_notes = "prepend"
+    use_limitations = "prepend"
+    use_medical_conditions = "prepend"
     use_interests = "ignore"
     use_categories = "ignore"
 
-    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_interests: use_interests, use_categories: use_categories}
+    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_limitations: use_limitations, use_medical_conditions: use_medical_conditions, use_interests: use_interests, use_categories: use_categories}
 
     @volunteer.reload
 
     # Did notes move?
     assert_equal(@volunteer.notes, notes_dup + "\n" + notes, "Notes (#{notes_dup + "\n" + notes}) should be equal")
+    assert_equal(@volunteer.limitations, limitations_dup + "\n" + limitations, "Limitations (#{limitations_dup + "\n" + limitations}) should be equal")
+    assert_equal(@volunteer.medical_conditions, medical_conditions_dup + "\n" + medical_conditions, "Medical conditions (#{medical_conditions_dup + "\n" + medical_conditions}) should be equal")
   end
 
-  test "Merge with replaced notes" do
+  test "Merge with replaced notes, conditions, limitations" do
     log_in_as(@non_admin)
     notes = @volunteer.notes
     notes_dup = @duplicate_volunteer.notes
+    medical_conditions = @volunteer.medical_conditions
+    medical_conditions_dup = @duplicate_volunteer.medical_conditions
+    limitations = @volunteer.limitations
+    limitations_dup = @duplicate_volunteer.limitations
 
     use_notes = "replace"
+    use_limitations = "replace"
+    use_medical_conditions = "replace"
     use_interests = "ignore"
     use_categories = "ignore"
 
-    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_interests: use_interests, use_categories: use_categories}
+    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_limitations: use_limitations, use_medical_conditions: use_medical_conditions, use_interests: use_interests, use_categories: use_categories}
 
     @volunteer.reload
 
     # Did notes stay?
     assert_equal(@volunteer.notes, notes_dup, "Notes (#{notes_dup}) should be equal")
+    assert_equal(@volunteer.limitations, limitations_dup, "Limitations (#{limitations_dup}) should be equal")
+    assert_equal(@volunteer.medical_conditions, medical_conditions_dup, "Medical conditions (#{medical_conditions_dup}) should be equal")
   end
 
   test "no delete if a guardian on a waiver" do

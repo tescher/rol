@@ -221,12 +221,12 @@ $(document).ready(function() {
         })
     });
 
-    ["notes", "interests", "categories"].forEach(function(field_name) {
+    ["notes", "limitations", "medical_conditions", "interests", "categories"].forEach(function(field_name) {
         $("select[id*=" + field_name + "]").change(function () {
             var action = $("select[id*=" + field_name + "] option:selected").text();
             var $field = "";
             var $other_field = "";
-            if (field_name == "notes") {
+            if ((field_name == "notes") || (field_name == "limitations") || (field_name == "medical_conditions")) {
                 $field = $("textarea[id^=pending_volunteer_" + field_name + "]").presence() || $("textarea[id^=source_volunteer_" + field_name + "]").presence();
                 $other_field = $("textarea[id^=volunteer_" + field_name + "]");
             } else if (field_name == "interests") {
