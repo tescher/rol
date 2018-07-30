@@ -111,6 +111,8 @@ class PendingVolunteersTest < ActionDispatch::IntegrationTest
     source_use_fields = source_use_field_list.map {|f,i| Volunteer.pending_volunteer_merge_fields_table[f] }
 
     use_notes = "ignore"   # Skip notes and interests and categories on this first pass
+    use_limitations = "ignore"
+    use_medical_conditions = "ignore"
     use_interests = "ignore"
     use_categories = "ignore"
 
@@ -121,12 +123,13 @@ class PendingVolunteersTest < ActionDispatch::IntegrationTest
 		first_name: source_volunteer.first_name,
 		last_name: source_volunteer.last_name,
 		home_phone: source_volunteer.home_phone,
+    agree_to_background_check: source_volunteer.agree_to_background_check,
 		interest_ids: [source_volunteer.interest_ids]
 	  }
 	}
 
-    # Did everything delete OK?
-    source_volunteer.reload
+   # Did everything delete OK?
+  source_volunteer.reload
 	target_volunteer.reload
 	assert_equal  "Merged pending volunteer into #{target_volunteer.id}", source_volunteer.deleted_reason
 	assert_not_nil source_volunteer.deleted_at

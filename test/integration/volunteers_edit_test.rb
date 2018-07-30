@@ -302,6 +302,8 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     source_use_fields = source_use_field_list.map {|f,i| Volunteer.merge_fields_table[f] }
 
     use_notes = "ignore"   # Skip notes and interests and categories on this first pass
+    use_limitations = "ignore"
+    use_medical_conditions = "ignore"
     use_interests = "ignore"
     use_categories = "ignore"
 
@@ -368,6 +370,8 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     volunteer_category_volunteers_dup_content = volunteer_category_volunteers_dup.map {|v| v.volunteer_category_id}
 
     use_notes = "ignore"
+    use_limitations = "ignore"
+    use_medical_conditions = "ignore"
     use_interests = "add"
     use_categories = "add"
 
@@ -402,6 +406,8 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     volunteer_category_volunteers_dup_content = volunteer_category_volunteers_dup.map {|v| v.volunteer_category_id}
 
     use_notes = "ignore"
+    use_limitations = "ignore"
+    use_medical_conditions = "ignore"
     use_interests = "add"
     use_categories = "add"
 
@@ -436,6 +442,8 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     volunteer_category_volunteers_dup_content = volunteer_category_volunteers_dup.map {|v| v.volunteer_category_id}
 
     use_notes = "ignore"
+    use_limitations = "ignore"
+    use_medical_conditions = "ignore"
     use_interests = "replace"
     use_categories = "replace"
 
@@ -465,6 +473,8 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     volunteer_category_volunteers_dup_content = volunteer_category_volunteers_dup.map {|v| v.volunteer_category_id}
 
     use_notes = "ignore"
+    use_limitations = "ignore"
+    use_medical_conditions = "ignore"
     use_interests = "replace"
     use_categories = "replace"
 

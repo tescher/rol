@@ -94,16 +94,19 @@ pending_one:
   first_name: Tim
   last_name: Smith
   home_phone: 608-848-1234
+  agree_to_background_check: true
   needs_review: true
 
 pending_two:
   first_name: Tom
   last_name: Jones
+  agree_to_background_check: true
   needs_review: true
 
 pending_three:
   first_name: Jane
   last_name: Smith
+  agree_to_background_check: true
   needs_review: true
 
 minor:

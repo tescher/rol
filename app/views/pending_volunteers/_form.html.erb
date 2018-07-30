@@ -135,25 +135,29 @@
     <div class="col-md-10 col-md-offset-1">
       <% num_columns = 2
          interest_categories = InterestCategory.all
+         interest_categories_include = Array.new()
          interest_category_height = Hash.new()
          interest_category_interests = Hash.new()
          total_height = 0
          interest_categories.each do |ic|
-           interests = Interest.where(interest_category: ic).where(inactive: false)
-           interest_category_height[ic] = 2 + interests.count
-           interest_category_interests[ic] = interests
-           total_height += interest_category_height[ic]
+           interests = Interest.where(interest_category: ic).where(inactive: false, include_on_application: true)
+           if interests.count > 0
+             interest_categories_include << ic
+             interest_category_height[ic] = 2 + interests.count
+             interest_category_interests[ic] = interests
+             total_height += interest_category_height[ic]
+           end
          end
-         interest_categories.sort_by {|ic| -interest_category_height[ic]}
-         column_height = (total_height.to_f / num_columns).ceil
+         interest_categories_include.sort_by {|ic| -interest_category_height[ic]}
+         column_height = (total_height.to_f / num_columns).ceil + 1
          columns = Array.new()
          column_heights = Array.new()
-         # puts interest_categories
-         # puts("---")
-         # puts (interest_category_height)
-         # puts("Total height = #{total_height}")
-         # puts("Column height = #{column_height}")
-         interest_categories.each do |ic|  # Next category of interests
+         puts interest_categories
+         puts("---")
+         puts (interest_category_height)
+         puts("Total height = #{total_height}")
+         puts("Column height = #{column_height}")
+         interest_categories_include.each do |ic|  # Next category of interests
            found_spot = false
            (0..num_columns-1).each do |c|    # find a column for it
              if ((column_heights[c] || 0) + interest_category_height[ic] <= column_height)
@@ -168,7 +172,10 @@
              end
            end
            if (!found_spot) # didn't find a spot, put it on the smallest column
-             smallest = column_heights.index(column_heights.min)
+             puts column_heights
+             smallest = column_heights.index(column_heights.min) || 0
+             puts "Smallest #{smallest}"
+             puts column_heights
              columns[smallest].push(ic)
              column_heights[smallest] += interest_category_height[ic]
            end
