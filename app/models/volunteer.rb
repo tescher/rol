@@ -39,6 +39,7 @@ class Volunteer < ActiveRecord::Base
     self.home_phone = number_to_phone(self.home_phone)
     self.work_phone = number_to_phone(self.work_phone)
     self.mobile_phone = number_to_phone(self.mobile_phone)
+    self.emerg_contact_phone = number_to_phone(self.emerg_contact_phone)
   }
   validates :first_name, presence: true
   validates :last_name, presence: true
