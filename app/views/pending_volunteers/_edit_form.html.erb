@@ -17,7 +17,7 @@
 
         </div>
         <% check_exceptions = [:work_phone, :mobile_phone] %>
-        <% [:first_name, :last_name, :address, :city, :state, :zip, :email, :home_phone, :work_phone, :mobile_phone].each do |field| %>
+        <% [:first_name, :last_name, :address, :city, :state, :zip, :email, :home_phone, :work_phone, :mobile_phone, :emerg_contact_name, :emerg_contact_phone, :occupation, :agree_to_background_check].each do |field| %>
             <div class="row">
               <div class="col-xs-1">
                 <%= f.label field %>
@@ -51,6 +51,42 @@
           </div>
           <div class="col-xs-3">
             <%= text_area_tag(:volunteer_notes, @volunteer.notes, class: "form-control", rows: "4", disabled: "disabled") %>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="col-xs-1">
+            <%= f.label :medical_conditions, 'Medical conditions' %>
+          </div>
+          <div class="col-xs-3">
+            <%= f.text_area :medical_conditions, class: 'form-control', rows: "4" %>
+          </div>
+          <div class="col-xs-2">
+            <%= select_tag(:use_medical_conditions, options_for_select([ "Prepend", "Append", "Replace", "Ignore" ], "Append"), {class: "form-control"}) %>
+          </div>
+          <div class="col-xs-1">
+            <%= f.label :notes %>
+          </div>
+          <div class="col-xs-3">
+            <%= text_area_tag(:volunteer_medical_conditions, @volunteer.medical_conditions, class: "form-control", rows: "4", disabled: "disabled") %>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="col-xs-1">
+            <%= f.label :limitations, 'Physical limitations' %>
+          </div>
+          <div class="col-xs-3">
+            <%= f.text_area :limitations, class: 'form-control', rows: "4" %>
+          </div>
+          <div class="col-xs-2">
+            <%= select_tag(:use_limitations, options_for_select([ "Prepend", "Append", "Replace", "Ignore" ], "Append"), {class: "form-control"}) %>
+          </div>
+          <div class="col-xs-1">
+            <%= f.label :limitations %>
+          </div>
+          <div class="col-xs-3">
+            <%= text_area_tag(:volunteer_limitations, @volunteer.limitations, class: "form-control", rows: "4", disabled: "disabled") %>
           </div>
 
         </div>
