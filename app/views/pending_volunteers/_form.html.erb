@@ -10,39 +10,57 @@
   <div class="row">
     <div class="col-md-5 col-md-offset-1">
       <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-3">
           <%= f.label :first_name %><br>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-7">
           <%= f.text_field :first_name, class: 'form-control', autofocus: 'true' %>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-3">
           <%= f.label :last_name %><br>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-7">
           <%= f.text_field :last_name, class: 'form-control' %>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-3">
+          <%= f.label :email %><br>
+        </div>
+        <div class="col-md-7">
+          <%= f.text_field :email, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <%= f.label :phone %><br>
+        </div>
+        <div class="col-md-7">
+          <%= f.text_field :home_phone, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="row">
+        <div class="col-md-3">
           <%= f.label :address %><br>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-7">
           <%= f.text_field :address, class: 'form-control' %>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-3">
           <%= f.label :city %><br>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-7">
           <%= f.text_field :city, class: 'form-control' %>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-3">
           <%= f.label :state %><br>
         </div>
         <div class="col-md-2">
@@ -51,26 +69,8 @@
         <div class="col-md-2">
           <%= f.label :zip %><br>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
           <%= f.text_field :zip, class: 'form-control' %>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-5">
-      <div class="row">
-        <div class="col-md-2">
-          <%= f.label :email %><br>
-        </div>
-        <div class="col-md-8">
-          <%= f.text_field :email, class: 'form-control' %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2">
-          <%= f.label :phone %><br>
-        </div>
-        <div class="col-md-8">
-          <%= f.text_field :home_phone, class: 'form-control' %>
         </div>
       </div>
     </div>
@@ -79,18 +79,18 @@
     <div class="col-md-5 col-md-offset-1">
       <h3>Emergency Contact Information</h3>
       <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-3">
           <%= f.label :emerg_contact_name, "Name" %><br>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-7">
           <%= f.text_field :emerg_contact_name, class: 'form-control' %>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-3">
           <%= f.label :emerg_contact_phone, "Phone" %><br>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-7">
           <%= f.text_field :emerg_contact_phone, class: 'form-control' %>
         </div>
       </div>
@@ -98,10 +98,10 @@
     <div class="col-md-5">
       <h3>Individual Information</h3>
       <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-3">
           <%= f.label :occupation %><br>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-7">
           <%= f.text_field :occupation, class: 'form-control' %>
         </div>
       </div>
@@ -188,7 +188,7 @@
 
       <% (0..num_columns - 1).each do |c| %>
         <% if (columns[c]) %>
-          <div class="col-md-4">
+          <div class="col-md-6">
             <% columns[c].each do |ic| %>
               <h4><br/><strong><u><%= ic.name %></u></strong><br/><br/></h4>
               <% interest_category_interests[ic].each do |i| %>
