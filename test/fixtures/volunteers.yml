@@ -14,6 +14,10 @@ one:
   work_phone:
   mobile_phone:
   notes: A bunch of notes
+  limitations: A bunch of limitations
+  medical_conditions: A bunch of medical conditions
+  emerg_contact_name: Emergency Name
+  emerg_contact_phone:
   first_contact_date: <%= 10.day.ago.to_s(:db) %>
   background_check_date: <%= 10.day.ago.to_s(:db) %>
   waiver_date: <%= 10.day.ago.to_s(:db) %>
@@ -32,6 +36,10 @@ duplicate:
   work_phone: Dup
   mobile_phone: Dup
   notes: Another bunch of notesDup
+  limitations: Another bunch of limitationsDup
+  medical_conditions: Another bunch of medical conditionsDup
+  emerg_contact_name: Emergency NameDup
+  emerg_contact_phone: Dup
   church: master_church
   employer: master_employer
   first_contact_date: <%= 5.day.ago.to_s(:db) %>
@@ -86,14 +94,27 @@ pending_one:
   first_name: Tim
   last_name: Smith
   home_phone: 608-848-1234
+  agree_to_background_check: true
   needs_review: true
 
 pending_two:
   first_name: Tom
   last_name: Jones
+  agree_to_background_check: true
   needs_review: true
 
 pending_three:
   first_name: Jane
   last_name: Smith
+  agree_to_background_check: true
   needs_review: true
+
+minor:
+  first_name: Bobby Jr.
+  last_name: Jones
+  adult: false
+
+guardian:
+  first_name: Robert
+  last_name: Jones
+  adult: true

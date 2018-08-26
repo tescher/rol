@@ -1,56 +1,57 @@
 <%= form_for(@volunteer, html: { id: "dialogFormNewVolunteer" }, remote: true) do |f| %>
-    <%= @object = f.object
-        render 'shared/error_messages' %>
+  <%= @object = f.object
+      render 'shared/error_messages' %>
 
-    <div class="container dialog-container">
-      <div class="row">
-        <div class="col-md-7">
+  <div class="container dialog-container">
+    <div class="row">
+      <div class="col-md-7">
 
-          <div class="row">
-            <div class="col-md-4">
-              <%= f.label :first_name %><br>
-            </div>
-            <div class="col-md-8">
-              <%= f.text_field :first_name, class: 'form-control', autofocus: 'true' %>
-            </div>
+        <div class="row">
+          <div class="col-md-4">
+            <%= f.label :first_name %><br>
           </div>
-          <div class="row">
-            <div class="col-md-4">
-              <%= f.label :last_name %><br>
-            </div>
-            <div class="col-md-8">
-              <%= f.text_field :last_name, class: 'form-control' %>
-            </div>
+          <div class="col-md-8">
+            <%= f.text_field :first_name, class: 'form-control', autofocus: 'true' %>
           </div>
-          <div class="row">
-            <div class="col-md-4">
-              <%= f.label :email %><br>
-            </div>
-            <div class="col-md-8">
-              <%= f.text_field :email, class: 'form-control' %>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-4">
-              <%= f.label :home_phone %><br>
-            </div>
-            <div class="col-md-8">
-              <%= f.text_field :home_phone, class: 'form-control' %>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-4">
-              <%= f.label :city %><br>
-            </div>
-            <div class="col-md-8">
-              <%= f.text_field :city, class: 'form-control' %>
-            </div>
-          </div>
-
         </div>
+        <div class="row">
+          <div class="col-md-4">
+            <%= f.label :last_name %><br>
+          </div>
+          <div class="col-md-8">
+            <%= f.text_field :last_name, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <%= f.label :email %><br>
+          </div>
+          <div class="col-md-8">
+            <%= f.text_field :email, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <%= f.label :home_phone %><br>
+          </div>
+          <div class="col-md-8">
+            <%= f.text_field :home_phone, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <%= f.label :city %><br>
+          </div>
+          <div class="col-md-8">
+            <%= f.text_field :city, class: 'form-control' %>
+          </div>
+        </div>
+
       </div>
     </div>
+  </div>
 
-    <%= f.hidden_field :dialog, value: "true" %>
+  <%= f.hidden_field :dialog, value: "true" %>
+  <%= f.hidden_field :alias, value: @alias %>
 
 <% end %>

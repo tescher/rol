@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  resources :waivers do
+    collection do
+      get 'signed_by' => 'waivers#signed_by'
+    end
+  end
+
   get 'settings/edit'
   patch 'settings/update'
 
@@ -27,6 +33,7 @@ Rails.application.routes.draw do
     member do
       get 'address_check'
       get 'donations' => 'volunteers#donations'
+      get 'waivers' => 'volunteers#waivers'
       post 'merge'
       get 'merge' => 'volunteers#merge_form'
     end

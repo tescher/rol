@@ -161,8 +161,10 @@ a.btn-primary:visited {
    color: #ffffff;
  }
 
+/* Fix font size to match jquery style */
 .btn-primary {
-  width: auto
+  width: auto;
+  font-size: 1em;
 }
 
 div.actions {

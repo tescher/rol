@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170116001609) do
+ActiveRecord::Schema.define(version: 20180730192659) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,9 +64,10 @@ ActiveRecord::Schema.define(version: 20170116001609) do
     t.string   "name"
     t.integer  "interest_category_id"
     t.boolean  "highlight"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
-    t.boolean  "inactive",             default: false, null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.boolean  "inactive",               default: false, null: false
+    t.boolean  "include_on_application", default: false
   end
 
   add_index "interests", ["interest_category_id"], name: "index_interests_on_interest_category_id", using: :btree
@@ -154,6 +155,8 @@ ActiveRecord::Schema.define(version: 20170116001609) do
     t.integer  "min_password_length"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.string   "adult_waiver_text"
+    t.string   "minor_waiver_text"
   end
 
   create_table "users", force: :cascade do |t|
@@ -211,9 +214,9 @@ ActiveRecord::Schema.define(version: 20170116001609) do
     t.string   "work_phone"
     t.string   "mobile_phone"
     t.string   "notes"
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
-    t.boolean  "remove_from_mailing_list", default: false, null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.boolean  "remove_from_mailing_list",  default: false, null: false
     t.date     "waiver_date"
     t.date     "background_check_date"
     t.string   "old_id"
@@ -224,7 +227,14 @@ ActiveRecord::Schema.define(version: 20170116001609) do
     t.integer  "pending_volunteer_id"
     t.datetime "deleted_at"
     t.string   "deleted_reason"
-    t.boolean  "needs_review",             default: false
+    t.boolean  "needs_review",              default: false
+    t.boolean  "adult"
+    t.date     "birthdate"
+    t.string   "emerg_contact_name"
+    t.string   "emerg_contact_phone"
+    t.string   "medical_conditions"
+    t.string   "limitations"
+    t.boolean  "agree_to_background_check"
   end
 
   add_index "volunteers", ["church_id"], name: "index_volunteers_on_church_id", using: :btree
@@ -232,6 +242,21 @@ ActiveRecord::Schema.define(version: 20170116001609) do
   add_index "volunteers", ["employer_id"], name: "index_volunteers_on_employer_id", using: :btree
   add_index "volunteers", ["first_contact_type_id"], name: "index_volunteers_on_first_contact_type_id", using: :btree
   add_index "volunteers", ["old_id"], name: "index_volunteers_on_old_id", using: :btree
+
+  create_table "waivers", force: :cascade do |t|
+    t.integer  "volunteer_id"
+    t.integer  "guardian_id"
+    t.boolean  "adult"
+    t.date     "birthdate"
+    t.date     "date_signed"
+    t.string   "waiver_text"
+    t.boolean  "e_sign"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.datetime "deleted_at"
+  end
+
+  add_index "waivers", ["deleted_at"], name: "index_waivers_on_deleted_at", using: :btree
 
   create_table "workday_organizations", force: :cascade do |t|
     t.integer  "organization_id"

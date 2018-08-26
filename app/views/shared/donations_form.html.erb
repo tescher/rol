@@ -1,50 +1,50 @@
 <% provide(:title, 'Donations') %>
-<h1>Donations from <%= @donator.name %></h1>
+<h1>Donations from <%= @parent.name %></h1>
 
-<%= form_for(@donator) do |f| %>
-    <%= @object = f.object
-        if current_user.non_monetary
-          @donations = @donator.donations.non_monetary.order("date_received DESC")
-        else
-          @donations = @donator.donations.order("date_received DESC")
-        end
-        render 'shared/error_messages' %>
+<%= form_for(@parent) do |f| %>
+  <%= @object = f.object
+      if current_user.non_monetary
+        @donations = @parent.donations.non_monetary.order("date_received DESC")
+      else
+        @donations = @parent.donations.order("date_received DESC")
+      end
+      render 'shared/error_messages' %>
 
-    <table class="table no-row-border header-border">
-      <thead>
-      <tr>
-        <th class="col-md-1">Date Rec</th>
-        <th class="col-md-2">Type</th>
-        <th class="col-md-1">Ref No</th>
-        <th class="col-md-1">Value ($)</th>
-        <th class="col-md-2">Item(s)</th>
-        <th class="col-md-1">Designation</th>
-        <th class="col-md-1">Honor Of</th>
-        <th class="col-md-4">Notes</th>
-        <th class="col-md-1">Anon</th>
-        <th class="col-md-1">Rcpt Sent</th>
-        <th class="col-md-1"></th>
-      </tr>
-      </thead>
-      <tbody class="add_donation_fields">
-      <%= f.fields_for :donations, @donations do |builder| %>
-          <%= render "donations/donation_fields", :f => builder %>
-      <% end %>
-      </tbody>
-    </table>
+  <table class="table no-row-border header-border">
+    <thead>
+    <tr>
+      <th class="col-md-1">Date Rec</th>
+      <th class="col-md-2">Type</th>
+      <th class="col-md-1">Ref No</th>
+      <th class="col-md-1">Value ($)</th>
+      <th class="col-md-2">Item(s)</th>
+      <th class="col-md-1">Designation</th>
+      <th class="col-md-1">Honor Of</th>
+      <th class="col-md-4">Notes</th>
+      <th class="col-md-1">Anon</th>
+      <th class="col-md-1">Rcpt Sent</th>
+      <th class="col-md-1"></th>
+    </tr>
+    </thead>
+    <tbody class="add_donation_fields">
+    <%= f.fields_for :donations, @donations do |builder| %>
+      <%= render "donations/donation_fields", :f => builder %>
+    <% end %>
+    </tbody>
+  </table>
 
-    <%= link_to_add_fields "Add a Donation", f, :donations, "", ".add_donation_fields", "Add a Donation" %>
+  <%= link_to_add_fields "Add a Donation", f, :donations, "", ".add_donation_fields", "Add a Donation" %>
 
-    <div>&nbsp;</div>
+  <div>&nbsp;</div>
 
 
-    <div class="row">
-      <div class="col-md-11">
-        <div class="actions pull-right">
+  <div class="row">
+    <div class="col-md-11">
+      <div class="actions pull-right">
 
-          <%= render partial: "shared/form_actions", locals: {f: f, cancel: edit_polymorphic_path(@object)} %>
-        </div>
+        <%= render partial: "shared/form_actions", locals: {f: f, cancel: edit_polymorphic_path(@object)} %>
       </div>
     </div>
+  </div>
 
 <% end %>

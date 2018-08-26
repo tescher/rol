@@ -7,11 +7,15 @@ class Volunteer < ActiveRecord::Base
   has_many :workday_volunteers, dependent: :destroy
   has_many :workdays, through: :workday_volunteers
   has_many :donations, dependent: :destroy
+  has_many :waivers, dependent: :destroy
   belongs_to :church, -> { where(:organization_type => 1) }, class_name: "Organization", foreign_key: :church_id
   belongs_to :employer, class_name: "Organization", foreign_key: :employer_id
   belongs_to :first_contact_type, class_name: "ContactType", foreign_key: :first_contact_type_id
   has_many :volunteer_category_volunteers, dependent: :destroy
   has_many :volunteer_categories, through: :volunteer_category_volunteers
+  has_many :waivers_as_guardian, class_name: "Waiver", foreign_key: :guardian_id, dependent: :restrict_with_error
+  # belongs_to :guardian, class_name: "Volunteer", foreign_key: :guardian_id
+  # has_many :minors, class_name: "Volunteer", foreign_key: :guardian_id, dependent: :restrict_with_error
 
   default_scope { where(needs_review: false) }
 
@@ -27,6 +31,7 @@ class Volunteer < ActiveRecord::Base
   end
 
   accepts_nested_attributes_for :donations, :allow_destroy => true
+  accepts_nested_attributes_for :waivers, :allow_destroy => true
 
 
   before_save {
@@ -34,6 +39,7 @@ class Volunteer < ActiveRecord::Base
     self.home_phone = number_to_phone(self.home_phone)
     self.work_phone = number_to_phone(self.work_phone)
     self.mobile_phone = number_to_phone(self.mobile_phone)
+    self.emerg_contact_phone = number_to_phone(self.emerg_contact_phone)
   }
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -41,6 +47,8 @@ class Volunteer < ActiveRecord::Base
   validates_date :waiver_date, allow_blank: true
   validates_date :first_contact_date, allow_blank: true
   validates_date :background_check_date, allow_blank: true
+  validates_date :birthdate, allow_blank: true
+  validate :pending_must_allow_background_check
 
   def name
     [first_name, last_name].join(' ')
@@ -53,7 +61,7 @@ class Volunteer < ActiveRecord::Base
   def self.merge_fields_table
     merge_fields = {}
     index = 0
-    [:first_name, :middle_name, :last_name, :occupation, :address, :city, :state, :zip, :email, :home_phone, :work_phone, :mobile_phone, :remove_from_mailing_list, :waiver_date, :background_check_date, :church_id, :employer_id, :first_contact_date, :first_contact_type_id].each do |f|
+    [:first_name, :middle_name, :last_name, :occupation, :address, :city, :state, :zip, :email, :home_phone, :work_phone, :mobile_phone, :remove_from_mailing_list, :waiver_date, :background_check_date, :church_id, :employer_id, :first_contact_date, :first_contact_type_id, :medical_conditions, :limitations, :emerg_contact_name, :emerg_contact_phone, :agree_to_background_check].each do |f|
       merge_fields[f] = index
       index += 1
     end
@@ -63,7 +71,7 @@ class Volunteer < ActiveRecord::Base
   def self.pending_volunteer_merge_fields_table
     resolve_fields = {}
     index = 0
-    [:first_name, :last_name, :address, :city, :state, :zip, :email, :home_phone, :work_phone, :mobile_phone].each do |f|
+    [:first_name, :last_name, :address, :city, :state, :zip, :email, :home_phone, :work_phone, :mobile_phone, :emerg_contact_name, :emerg_contact_phone, :limitations, :medical_conditions, :agree_to_background_check].each do |f|
       resolve_fields[f] = index
       index += 1
     end
@@ -83,6 +91,12 @@ class Volunteer < ActiveRecord::Base
       "#{self.last_name}, #{self.first_name} (#{self.city})"
     end
     
+  end
+
+  def pending_must_allow_background_check
+    if (self.needs_review == true) && (self.agree_to_background_check != true)
+      errors.add(:agree_to_background_check, "Must agree to allow a background check in order to apply.")
+    end
   end
 
 end

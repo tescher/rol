@@ -187,7 +187,7 @@ class OrganizationsController < ApplicationController
   def update
     @organization = Organization.find(params[:id])
     session[:organization_id] = @organization.id
-    if organization_params[:name].nil?     # Coming from donations
+    if params[:organization] && organization_params[:name].nil?     # Coming from donations
       if @organization.update_attributes(organization_params)
         flash[:success] = "Donations updated"
         if params[:stay].blank?
@@ -196,13 +196,13 @@ class OrganizationsController < ApplicationController
           redirect_to donations_organization_path(@organization)
         end
       else
-        @donator = @organization
+        @parent = @organization
         @allow_stay = true
         @no_delete = true
         render "shared/donations_form"
       end
     else                                       # Coming from regular edit
-      if @organization.update_attributes(organization_params)
+      if params[:organization] && @organization.update_attributes(organization_params)
         flash[:success] = "Organization updated"
         if !params[:to_donations].blank?
           redirect_to donations_organization_path(@organization)
@@ -232,7 +232,7 @@ class OrganizationsController < ApplicationController
 
   # GET /organization/1/donations
   def donations
-    @donator = Organization.find(params[:id])
+    @parent = Organization.find(params[:id])
     @no_delete = true
     @allow_stay = true
     render "shared/donations_form"

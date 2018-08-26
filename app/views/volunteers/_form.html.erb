@@ -88,15 +88,28 @@
             <div class="col-md-2">
               <%= f.label :waiver_signed %><br>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-4">
               <%= f.text_field :waiver_date,  value: @volunteer.waiver_date.nil? ? "" : @volunteer.waiver_date.strftime("%m/%d/%Y") , id: 'waiverdatepicker', class: 'form-control' %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2">
+              <%= f.label "Birthdate (for waivers)" %><br>
+            </div>
+            <div class="col-md-4">
+              <%= f.text_field :birthdate,  value: @volunteer.birthdate.nil? ? "" : @volunteer.birthdate.strftime("%m/%d/%Y") , id: 'birthdatepicker', class: 'form-control' %>
+            </div>
+            <div class="col-md-4">
+              <label>
+                <%= f.check_box :adult %> Adult <br/> (for waivers)
+              </label>
             </div>
           </div>
           <div class="row">
             <div class="col-md-2">
               <%= f.label :first_contact %><br>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-4">
               <%= f.text_field :first_contact_date,  value: @volunteer.first_contact_date.nil? ? "" : @volunteer.first_contact_date.strftime("%m/%d/%Y") , id: 'firstcontactdatepicker', class: 'form-control' %>
             </div>
           </div>
@@ -106,6 +119,22 @@
             </div>
             <div class="col-md-8">
               <%= f.select :first_contact_type_id, options_from_collection_for_select(ContactType.where(inactive: false), :id, :name, f.object.first_contact_type_id), {:include_blank => "None"}, { :multiple => false, class: "form-control"}  %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2">
+              <%= f.label :emerg_contact_name, "Emergency contact" %><br>
+            </div>
+            <div class="col-md-8">
+              <%= f.text_field :emerg_contact_name,  class: 'form-control' %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2">
+              <%= f.label :emerg_contact_phone, "Emergency contact phone" %><br>
+            </div>
+            <div class="col-md-8">
+              <%= f.text_field :emerg_contact_phone, class: 'form-control' %>
             </div>
           </div>
           <div class="row">&nbsp;</div>
@@ -125,7 +154,7 @@
         <div class="col-md-5">
 
           <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
               <%= f.label :home_phone %><br>
             </div>
             <div class="col-md-8">
@@ -133,7 +162,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
               <%= f.label :work_phone %><br>
             </div>
             <div class="col-md-8">
@@ -141,7 +170,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
               <%= f.label :mobile_phone %><br>
             </div>
             <div class="col-md-8">
@@ -149,7 +178,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
               <%= f.label :occupation %><br>
             </div>
             <div class="col-md-8">
@@ -157,7 +186,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
               <%= f.label :employer %><br>
             </div>
             <div class="col-md-8">
@@ -171,7 +200,7 @@
           </div>
           <div class="row">&nbsp;</div>
           <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
               <%= f.label :church %><br>
             </div>
             <div class="col-md-8">
@@ -185,7 +214,7 @@
           </div>
           <div class="row">&nbsp;</div>
           <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
               <%= f.label :notes %><br>
             </div>
             <div class="col-md-8">
@@ -193,7 +222,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
               <%= f.label :interests %><br>
             </div>
             <div class="col-md-8">
@@ -202,7 +231,7 @@
           </div>
           <div class="row">&nbsp;</div>
           <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
               <%= f.label :volunteer_categories %><br>
             </div>
             <div class="col-md-8">
@@ -211,11 +240,36 @@
           </div>
           <div class="row">&nbsp;</div>
           <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-10">
+              <div class="checkbox">
+                <label>
+                  <%= f.check_box :agree_to_background_check %> Agreed to background check
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
               <%= f.label :background_check %><br>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-4">
               <%= f.text_field :background_check_date,  value: @volunteer.background_check_date.nil? ? "" : @volunteer.background_check_date.strftime("%m/%d/%Y") , id: 'backgroundcheckdatepicker', class: 'form-control' %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              <%= f.label :medical_conditions %><br>
+            </div>
+            <div class="col-md-8">
+              <%= f.text_area :medical_conditions, class: 'form-control' %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              <%= f.label :limitations, "Physical limitations" %><br>
+            </div>
+            <div class="col-md-8">
+              <%= f.text_area :limitations, class: 'form-control' %>
             </div>
           </div>
             <%= f.hidden_field :pending_volunteer_id, value: (@pending_volunteer.nil? ? nil: @pending_volunteer.id) %>
@@ -230,7 +284,7 @@
           <%= if @object.persisted?
                 link_to "Merge", "#", id:"linkMergeVolunteer", class: "btn btn-primary"
               end %>
-
+          <%= f.submit "Waivers", name: "to_waivers", class: "btn btn-primary" %>
           <%= if current_user.donations_allowed
                 f.submit "Donations", name: "to_donations", class: "btn btn-primary"
               end %>

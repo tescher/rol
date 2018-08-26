@@ -1,4 +1,8 @@
-<div class="row clickable" onclick="<%= link_to_add_workday_volunteer_fields(volunteer, session[:workday_id]) %>" >
+<div class="row clickable" onclick="<%= if @alias == "guardian"
+                                          link_to_add_waiver_fields(volunteer, true)
+                                        else
+                                          link_to_add_workday_volunteer_fields(volunteer, session[:workday_id])
+                                        end %>" >
   <li>
     <div class="col-md-2 col-md-offset-1">
       <%= volunteer.first_name + " " + volunteer.last_name %>

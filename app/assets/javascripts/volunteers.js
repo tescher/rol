@@ -167,7 +167,7 @@ $(document).ready(function() {
 
     function set_field_validity_color($checkbox) {
         var field_name = $checkbox.attr("id").split("use_")[1];
-        var $field = $("input[id^=pending_volunteer_"+field_name+"]").presence() || $("span[id^=source_volunteer_"+field_name+"]").presence();
+        var $field = $("input[id^=volunteer_"+field_name+"]").presence() || $("span[id^=source_volunteer_"+field_name+"]").presence();
         var $other_field = $("span[id^=volunteer_"+field_name+"]");
         if ($checkbox.prop("checked")) {
             $other_field.removeClass("background-valid");
@@ -221,20 +221,20 @@ $(document).ready(function() {
         })
     });
 
-    ["notes", "interests", "categories"].forEach(function(field_name) {
+    ["notes", "limitations", "medical_conditions", "interests", "categories"].forEach(function(field_name) {
         $("select[id*=" + field_name + "]").change(function () {
             var action = $("select[id*=" + field_name + "] option:selected").text();
             var $field = "";
             var $other_field = "";
-            if (field_name == "notes") {
-                $field = $("textarea[id^=pending_volunteer_" + field_name + "]").presence() || $("textarea[id^=source_volunteer_" + field_name + "]").presence();
-                $other_field = $("textarea[id^=volunteer_" + field_name + "]");
+            if ((field_name == "notes") || (field_name == "limitations") || (field_name == "medical_conditions")) {
+                $field = $("textarea[id^=volunteer_" + field_name + "][disabled!='disabled']").presence() || $("textarea[id^=source_volunteer_" + field_name + "]").presence();
+                $other_field = $("textarea[id^=volunteer_" + field_name + "][disabled='disabled']");
             } else if (field_name == "interests") {
-                $field = ($("select[id^=pending_volunteer_interest_ids]").presence() || $("select[id^=source_volunteer_interest_ids]").presence()).next("div.btn-group").children(":button");
-                $other_field = ($("select[id^=volunteer_interest_ids]").presence() || $("select[id^=interest_ids]").presence()).next("div.btn-group").children(":button");
+                $field = ($("select[id^=volunteer_interest_ids]").not("[class*='read-only']").presence() || $("select[id^=source_volunteer_interest_ids]").presence()).next("div.btn-group").children(":button");
+                $other_field = ($("select[id^=volunteer_interest_ids][class*='read-only']").presence() || $("select[id^=interest_ids]").presence()).next("div.btn-group").children(":button");
             } else {
-                $field = ($("select[id^=pending_volunteer_category_ids]").presence() || $("select[id^=source_volunteer_category_ids]").presence()).next("div.btn-group").children(":button");
-                $other_field = ($("select[id^=volunteer_category_ids]").presence() || $("select[id^=volunteer_category_ids]").presence()).next("div.btn-group").children(":button");
+                $field = ($("select[id^=volunteer_category_ids]").not("[class*='read-only']").presence() || $("select[id^=source_volunteer_category_ids]").presence()).next("div.btn-group").children(":button");
+                $other_field = ($("select[id^=volunteer_category_ids][class*='read-only']").presence() || $("select[id^=volunteer_category_ids]").presence()).next("div.btn-group").children(":button");
             }
             if (action.toLowerCase() != "ignore") {
                 $field.addClass("background-valid");
