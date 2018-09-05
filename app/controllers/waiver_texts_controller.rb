@@ -11,7 +11,8 @@ class WaiverTextsController < ApplicationController
   # GET /waiver_texts/1.json
   def show
     send_data(@waiver_text.data,
-              type: 'application/pdf')
+              type: 'application/pdf',
+              filename: @waiver_text.filename)
   end
 
   # GET /waiver_texts/new

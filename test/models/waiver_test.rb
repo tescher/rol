@@ -33,12 +33,4 @@ class WaiverTest < ActiveSupport::TestCase
     assert @waiver.valid?
   end
 
-  test "Must have waiver text if e-signed" do
-    assert @waiver.valid?
-    @waiver.e_sign = true
-    assert_not @waiver.valid?
-    @waiver.waiver_text = "This is some waiver text"
-    assert @waiver.valid?
-  end
-
 end

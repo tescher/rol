@@ -33,5 +33,14 @@ module WaiversHelper
     Waiver.where(volunteer_id: volunteer_id).order(date_signed: :desc).first
   end
 
+  def effective_waiver_text(waiver)
+    if (waiver.adult == true)
+      waiver_type = WaiverText.waiver_types[:adult]
+    else
+      waiver_type = WaiverText.waiver_types[:minor]
+    end
+    WaiverText.where("created_at <= ?", waiver.created_at).where(waiver_type: waiver_type).order(created_at: :desc).first
+  end
+
 
 end
