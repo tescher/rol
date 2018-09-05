@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180730192659) do
+ActiveRecord::Schema.define(version: 20180905161619) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -242,6 +242,14 @@ ActiveRecord::Schema.define(version: 20180730192659) do
   add_index "volunteers", ["employer_id"], name: "index_volunteers_on_employer_id", using: :btree
   add_index "volunteers", ["first_contact_type_id"], name: "index_volunteers_on_first_contact_type_id", using: :btree
   add_index "volunteers", ["old_id"], name: "index_volunteers_on_old_id", using: :btree
+
+  create_table "waiver_texts", force: :cascade do |t|
+    t.string   "filename"
+    t.binary   "data"
+    t.integer  "waiver_type"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "waivers", force: :cascade do |t|
     t.integer  "volunteer_id"

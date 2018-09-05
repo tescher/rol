@@ -1,0 +1,45 @@
+
+<%= form_for(@waiver_text) do |f| %>
+  <% if @waiver_text.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@waiver_text.errors.count, "error") %> prohibited this waiver from being saved:</h2>
+
+      <ul>
+        <% @waiver_text.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5 col-md-offset-1">
+
+        <div class="row">
+          <div class="col-md-3">
+            <%= f.label :waiver_type %>
+          </div>
+          <div class="col-md-3">
+            <%= f.select :waiver_type, WaiverText.waiver_types.keys, class: "form-control" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <%= f.label "File to upload " %>
+          </div>
+          <div class="col-md-8">
+            <%= f.file_field :file, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="pull-right">
+        <%= render partial: "shared/form_actions", locals: {f: f} %>
+      </div>
+    </div>
+  </div>
+<% end %>

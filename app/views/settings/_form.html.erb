@@ -42,12 +42,8 @@
         <%= f.text_field :min_password_length, class: 'form-control' %>
       </div>
       <div class="field">
-        <%= f.label :adult_waiver_text %><br>
-        <%= f.text_area :adult_waiver_text, class: 'form-control' %>
-      </div>
-      <div class="field">
-        <%= f.label :minor_waiver_text %><br>
-        <%= f.text_area :minor_waiver_text, class: 'form-control' %>
+        <%= f.label "Waiver Text" %><br>
+        <%= f.submit "Update Waiver Text", name: "to_waivers", class: "btn btn-primary form-control" %>
       </div>
 
       <div class="pull-right">
