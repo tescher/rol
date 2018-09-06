@@ -1,5 +1,7 @@
 class WaiverTextsController < ApplicationController
-  before_action :set_waiver_text, only: [:show, :edit, :update]
+  before_action :set_waiver_text, only: [:show, :edit]
+  before_action :logged_in_admin_user, only: [:index, :show, :create, :new, :edit]
+
 
   # GET /waiver_texts
   # GET /waiver_texts.json

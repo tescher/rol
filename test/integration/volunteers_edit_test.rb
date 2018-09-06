@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'waivers_helper'
 
 class VolunteersEditTest < ActionDispatch::IntegrationTest
 
@@ -37,6 +38,8 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
         waiver.date_signed = DateTime.parse("2018-06-01")
         waiver.save
       end
+      adult_waiver_master = WaiverText.create(waiver_type: WaiverText.waiver_types[:adult], bypass_file: true, data: "Adult master text", created_at: DateTime.parse("2018-07-01"))
+      minor_waiver_master = WaiverText.create(waiver_type: WaiverText.waiver_types[:minor], bypass_file: true, data: "Minor master text", created_at: DateTime.parse("2018-07-01"))
       workday_volunteer = WorkdayVolunteer.create(workday: workdays(:one), volunteer: v, hours: 4)
       interest1 = interests(:one)
       interest2 = interests(:two)
@@ -584,6 +587,16 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
 
   end
 
+  test "Get correct waiver text if text is on waiver" do
+    log_in_as(@admin)
+    assert_match /Some text for waiver/, effective_waiver_text(last_waiver(@volunteer.id)).data, "Waiver text should match volunteer waivers"
+    @waiver = Waiver.new(volunteer_id: @volunteer.id, e_sign: true, adult: true, date_signed: DateTime.parse("2018-07-01"))
+    @waiver.save!
+    assert_match /Adult master text/, effective_waiver_text(last_waiver(@volunteer.id)).data, "Waiver text should match adult master waiver"
+    @waiver.adult=false
+    @waiver.save!
+    assert_match /Minor master text/, effective_waiver_text(last_waiver(@volunteer.id)).data, "Waiver text should match minor master waiver"
 
+  end
 
 end

@@ -4,6 +4,7 @@ class WaiverText < ActiveRecord::Base
   validate :pdf_only
 
   def initialize(params = {})
+    @bypass_file = params.delete(:bypass_file)
     @file = params.delete(:file)
     super
     if @file
@@ -21,7 +22,7 @@ class WaiverText < ActiveRecord::Base
   end
 
   def pdf_only
-    if (@file.content_type != 'application/pdf')
+    if (@bypass_file != true) && (@file.content_type != 'application/pdf')
       errors.add(:file, 'File type must be PDF')
     end
   end
