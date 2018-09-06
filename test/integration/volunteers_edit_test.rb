@@ -34,7 +34,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
         waiver.volunteer_id = v.id
         waiver.adult = true
         waiver.birthdate = DateTime.parse("2000-02-01")
-        waiver.waiver_text = "Some text for waiver #{n}."
+        waiver.data = "Some text for waiver #{n}."
         waiver.date_signed = DateTime.parse("2018-06-01")
         waiver.save
       end
@@ -590,10 +590,11 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
   test "Get correct waiver text if text is on waiver" do
     log_in_as(@admin)
     assert_match /Some text for waiver/, effective_waiver_text(last_waiver(@volunteer.id)).data, "Waiver text should match volunteer waivers"
-    @waiver = Waiver.new(volunteer_id: @volunteer.id, e_sign: true, adult: true, date_signed: DateTime.parse("2018-07-01"))
+    @waiver = Waiver.new(volunteer_id: @volunteer.id, e_sign: true, adult: true, date_signed: DateTime.parse("2018-07-01"), created_at: DateTime.parse("2018-07-01") )
     @waiver.save!
     assert_match /Adult master text/, effective_waiver_text(last_waiver(@volunteer.id)).data, "Waiver text should match adult master waiver"
     @waiver.adult=false
+    @waiver.guardian_id = @guardian_volunteer.id
     @waiver.save!
     assert_match /Minor master text/, effective_waiver_text(last_waiver(@volunteer.id)).data, "Waiver text should match minor master waiver"
 

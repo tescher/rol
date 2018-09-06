@@ -1,7 +1,7 @@
 <% provide(:title, 'Waivers') %>
 <h1>Waivers for <%= @parent.name %></h1>
 
-<%= form_for(@parent) do |f| %>
+<%= form_for(@parent, html: { :multipart => true }) do |f| %>
     <%= @object = f.object
         @waivers = @parent.waivers.order("date_signed DESC")
         render 'shared/error_messages' %>

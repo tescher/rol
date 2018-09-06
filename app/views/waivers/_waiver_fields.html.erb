@@ -24,14 +24,16 @@
     </div>
   <td><%= f.check_box :adult, disabled: @readonly %></td>
   <td><%= f.check_box :e_sign, disabled: true  %></td>
-  <td><% if f.object.e_sign == true %>
-        <% waiver_text = effective_waiver_text(f.object) %>
-        <% if waiver_text %>
-          <%= link_to 'Download', waiver_text, method: :get %>
+  <td>  <% if @readonly %>
+          <% waiver_text = effective_waiver_text(f.object) %>
+          <% if waiver_text %>
+            <%= link_to 'Download', waiver_text, method: :get %>
+          <% else %>
+          <i>Not available</i>
+          <% end %>
         <% else %>
-          "No active waiver text as of date signed"
+          <%= f.file_field :file, accept: 'application/pdf', class: "form-control" %>
         <% end %>
-      <% end %>
   </td>
   <td><%= f.hidden_field :_destroy %>
     <%= link_to "remove", "#", class: "remove_fields" %></td>

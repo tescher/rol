@@ -34,13 +34,17 @@ module WaiversHelper
   end
 
   def effective_waiver_text(waiver)
-    if (waiver.adult == true)
-      waiver_type = WaiverText.waiver_types[:adult]
+    if waiver.e_sign == true
+      if waiver.adult == true
+        waiver_type = WaiverText.waiver_types[:adult]
+      else
+        waiver_type = WaiverText.waiver_types[:minor]
+      end
+      WaiverText.where("created_at <= ?", waiver.created_at).where(waiver_type: waiver_type).order(created_at: :desc).first
     else
-      waiver_type = WaiverText.waiver_types[:minor]
+      waiver.data ? waiver : nil
     end
-    WaiverText.where("created_at <= ?", waiver.created_at).where(waiver_type: waiver_type).order(created_at: :desc).first
   end
 
 
-end
+  end

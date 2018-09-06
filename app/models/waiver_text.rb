@@ -4,8 +4,8 @@ class WaiverText < ActiveRecord::Base
   validate :pdf_only
 
   def initialize(params = {})
-    @bypass_file = params.delete(:bypass_file)
     @file = params.delete(:file)
+    @bypass_file = params.delete(:bypass_file)
     super
     if @file
       self.filename = sanitize_filename(@file.original_filename)
