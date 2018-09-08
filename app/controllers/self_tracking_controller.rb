@@ -1,4 +1,5 @@
 include ApplicationHelper
+include WaiversHelper
 
 class SelfTrackingController < ApplicationController
   before_action :has_valid_workday, except: [ :launch ]
@@ -109,8 +110,26 @@ class SelfTrackingController < ApplicationController
         render partial: "check_in"
       end
     else
-      @check_in_form = CheckInForm.new(check_in_time:  Time.now.strftime("%l:%M %p"), volunteer: @volunteer, workday: @workday)
-      render partial: "check_in"
+      if params[:need_waiver_form].present?
+        @need_waiver_form = NeedWaiverForm(params[:need_waiver_form])
+        if @need_waiver_form.valid?
+          @volunteer.waivers.create(e_sign: true, guardian: @guardian, adult: @waiver_type == WaiverText.waiver_types[:adult] ? true : false)
+        else
+          render partial: "need_waiver"
+        end
+      end
+      @waiver_type = need_waiver_type(@volunteer)
+      if @waiver_type && !params[:skip_waiver]
+        puts "Waiver type #{WaiverText.waiver_types.key(@waiver_type)}"
+        last_waiver = last_waiver(@volunteer.id)
+        guardian_id = last_waiver ? last_waiver.guardian_id : nil
+        @guardian = guardian_id ? Volunteer.including_pending.find(guardian_id) : nil
+        @need_waiver_form = NeedWaiverForm.new(volunteer: @volunteer)
+        render partial: "need_waiver"
+      else
+        @check_in_form = CheckInForm.new(check_in_time:  Time.now.strftime("%l:%M %p"), volunteer: @volunteer, workday: @workday)
+        render partial: "check_in"
+      end
     end
   end
 
@@ -214,6 +233,12 @@ class CheckInForm
     end
   end
 end
+
+class NeedWaiverForm
+  include ActiveModel::Model
+  attr_accessor :volunteer, :guardian, :waiver_type
+end
+
 
 class CheckOutForm
   include ActiveModel::Model

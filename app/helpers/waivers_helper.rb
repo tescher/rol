@@ -33,18 +33,39 @@ module WaiversHelper
     Waiver.where(volunteer_id: volunteer_id).order(date_signed: :desc).first
   end
 
-  def effective_waiver_text(waiver)
-    if waiver.e_sign == true
-      if waiver.adult == true
-        waiver_type = WaiverText.waiver_types[:adult]
+  # If a waiver is needed, it will return the type needed (adult or minor)
+  def need_waiver_type(volunteer)
+    waiver = last_waiver(volunteer.id)
+    puts "Last waiver #{waiver}"
+    if !waiver || ((DateTime.now.to_date - waiver.effective_date_signed) > Utilities::Utilities.system_setting(:waiver_valid_days))
+      birthdate = volunteer.birthdate
+      puts "Birthdate #{birthdate}"
+      if volunteer.adult || (birthdate && age(birthdate) >= Utilities::Utilities.system_setting(:adult_age))
+        puts "returning adult"
+        return WaiverText.waiver_types[:adult]
       else
-        waiver_type = WaiverText.waiver_types[:minor]
+        return WaiverText.waiver_types[:minor]
       end
-      WaiverText.where("created_at <= ?", waiver.created_at).where(waiver_type: waiver_type).order(created_at: :desc).first
+    end
+    return nil
+  end
+
+  def effective_waiver_text(waiver = nil, waiver_type = nil)
+    if !waiver
+      WaiverText.where("created_at <= ?", Time.zone.now).where(waiver_type: waiver_type).order(created_at: :desc).first
     else
-      waiver.data ? waiver : nil
+      if waiver.e_sign == true
+        if waiver.adult == true
+          waiver_type = WaiverText.waiver_types[:adult]
+        else
+          waiver_type = WaiverText.waiver_types[:minor]
+        end
+        WaiverText.where("created_at <= ?", waiver.created_at).where(waiver_type: waiver_type).order(created_at: :desc).first
+      else
+        waiver.data ? waiver : nil
+      end
     end
   end
 
 
-  end
+end

@@ -16,6 +16,10 @@ class Waiver < ActiveRecord::Base
     end
   end
 
+  def effective_date_signed
+    self.date_signed || self.created_at.to_date
+  end
+
 
   private
 
