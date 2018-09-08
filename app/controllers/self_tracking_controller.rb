@@ -111,16 +111,21 @@ class SelfTrackingController < ApplicationController
       end
     else
       if params[:need_waiver_form].present?
-        @need_waiver_form = NeedWaiverForm(params[:need_waiver_form])
+        @need_waiver_form = NeedWaiverForm.new(params[:need_waiver_form].merge(volunteer: @volunteer, guardian: @guardian))
         if @need_waiver_form.valid?
-          @volunteer.waivers.create(e_sign: true, guardian: @guardian, adult: @waiver_type == WaiverText.waiver_types[:adult] ? true : false)
+          if (@need_waiver_form.waiver_type.to_i == WaiverText.waiver_types[:adult].to_i)
+            puts "Creating adult waiver"
+            Waiver.create(volunteer_id: @volunteer.id, e_sign: true, adult: true, date_signed: Time.zone.now.to_date)
+          else
+            puts "Creating minor waiver"
+            Waiver.create(volunteer_id: @volunteer.id, guardian_id: @guardian.id, e_sign: true, adult: false, date_signed: Time.zone.now.to_date)
+          end
         else
           render partial: "need_waiver"
         end
       end
       @waiver_type = need_waiver_type(@volunteer)
       if @waiver_type && !params[:skip_waiver]
-        puts "Waiver type #{WaiverText.waiver_types.key(@waiver_type)}"
         last_waiver = last_waiver(@volunteer.id)
         guardian_id = last_waiver ? last_waiver.guardian_id : nil
         @guardian = guardian_id ? Volunteer.including_pending.find(guardian_id) : nil

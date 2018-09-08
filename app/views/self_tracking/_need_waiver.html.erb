@@ -27,6 +27,7 @@
               <%= link_to 'View Waiver', effective_waiver_text(nil, @waiver_type), class: "btn btn-default", method: :get %>
             </div>
           </div>
+          <%= form.hidden_field :waiver_type, value: @waiver_type %>
           <%= hidden_field_tag :dialog, "true" %>
         </p>
       </div>

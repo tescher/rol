@@ -20,6 +20,7 @@ class WaiverTextsController < ApplicationController
   # GET /waiver_texts/new
   def new
     @waiver_text = WaiverText.new
+    @submit_name = "Save waiver text"
   end
 
   # GET /waiver_texts/1/edit
