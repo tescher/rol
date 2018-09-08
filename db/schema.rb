@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180906151531) do
+ActiveRecord::Schema.define(version: 20180908133904) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -157,6 +157,9 @@ ActiveRecord::Schema.define(version: 20180906151531) do
     t.datetime "updated_at",          null: false
     t.string   "adult_waiver_text"
     t.string   "minor_waiver_text"
+    t.integer  "waiver_valid_days"
+    t.boolean  "allow_waiver_skip"
+    t.integer  "adult_age"
   end
 
   create_table "users", force: :cascade do |t|

@@ -21,6 +21,7 @@ class SettingsController < ApplicationController
         redirect_to root_path
       end
     else
+      @no_delete = true
       render 'edit'
     end
   end
@@ -29,7 +30,7 @@ class SettingsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def setting_params
-    params.require(:setting).permit(:site_title, :org_title, :org_short_title, :org_site, :old_system_site, :old_system_name, :no_pagination, :records_per_page, :min_password_length)
+    params.require(:setting).permit(:site_title, :org_title, :org_short_title, :org_site, :old_system_site, :old_system_name, :no_pagination, :records_per_page, :min_password_length, :adult_age, :waiver_valid_days, :allow_waiver_skip)
   end
 
 

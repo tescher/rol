@@ -42,6 +42,19 @@
         <%= f.text_field :min_password_length, class: 'form-control' %>
       </div>
       <div class="field">
+        <%= f.label "Adult Age (for waivers)" %><br>
+        <%= f.text_field :adult_age, class: 'form-control' %>
+      </div>
+      <div class="field">
+        <%= f.label "Number Of Days Waivers Are Valid" %><br>
+        <%= f.text_field :waiver_valid_days, class: 'form-control' %>
+      </div>
+      <div class="checkbox">
+        <label>
+          <%= f.check_box :allow_waiver_skip %> Allow skipping waiver at check-in
+        </label>
+      </div>
+      <div class="field">
         <%= f.label "Waiver Text" %><br>
         <%= f.submit "Update Waiver Text", name: "to_waivers", class: "btn btn-primary form-control" %>
       </div>

@@ -3,6 +3,8 @@ class Setting < ActiveRecord::Base
 
   validates :min_password_length, numericality: { only_integer: true, greater_than: 0 }
   validates :records_per_page, numericality: { only_integer: true, greater_than: 0 }
+  validates :waiver_valid_days, numericality: { only_integer: true, greater_than: 0 }
+  validates :adult_age, numericality: { only_integer: true, greater_than: 0 }
 
   private
 
