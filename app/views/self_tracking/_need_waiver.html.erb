@@ -12,32 +12,33 @@
               render 'shared/error_messages' %>
           <div class="form-group">
             <div class="col-md-8">
-              <p class="form-control-static">
-                <% if @waiver_type == WaiverText.waiver_types[:adult] %>
-                  Please sign waiver before continuing
-                <% else %>
-                  <%= @guardian.name %> please sign waiver as a guardian for <%= @volunteer.name %>
-                <% end %>
-                by clicking "Sign"
-              </p>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="col-md-8">
-              <%= link_to 'View Waiver', effective_waiver_text(nil, @waiver_type), class: "btn btn-default", method: :get %>
-            </div>
-          </div>
-          <%= form.hidden_field :waiver_type, value: @waiver_type %>
-          <%= hidden_field_tag :dialog, "true" %>
+        <p class="form-control-static">
+          <% if @waiver_type == WaiverText.waiver_types[:adult] %>
+            Please sign waiver before continuing
+          <% else %>
+            <%= @guardian.name %> please sign waiver as a guardian for <%= @volunteer.name %>
+          <% end %>
+          by clicking "Sign"
         </p>
       </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-primary">Sign</button>
-        <% if Utilities::Utilities.system_setting(:allow_waiver_skip) %>
-          <button type="submit" name="skip_waiver" class="btn btn-primary">Skip for now</button>
-        <% end %>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+    </div>
+    <div class="form-group">
+      <div class="col-md-8">
+        <%= link_to 'View Waiver', effective_waiver_text(nil, @waiver_type), class: "btn btn-default", method: :get %>
       </div>
     </div>
+    <%= form.hidden_field :waiver_type, value: @waiver_type %>
+    <%= hidden_field_tag :dialog, "true" %>
+    <%= hidden_field_tag :guardian_id, @guardian ? @guardian.id : nil %>
+    </p>
+  </div>
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-primary">Sign</button>
+    <% if Utilities::Utilities.system_setting(:allow_waiver_skip) %>
+      <button type="submit" name="skip_waiver" class="btn btn-primary">Skip for now</button>
+    <% end %>
+    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+  </div>
+  </div>
   </div>
 <% end %>

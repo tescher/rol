@@ -44,6 +44,11 @@ class SelfTrackingController < ApplicationController
 
 
   def volunteer_search
+    # If we are doing a guardian search, need to pass through original volunteer
+    if params[:guardian_search]
+      @volunteer = Volunteer.including_pending.find(params[:volunteer_id])
+    end
+
     if params[:search_form].present?
       @search_form = SearchForm.new(params[:search_form])
       if @search_form.valid?
@@ -69,15 +74,13 @@ class SelfTrackingController < ApplicationController
 
         @results = Volunteer.including_pending.where(where_clause).order(:last_name, :first_name)
 
-        if @search_form.guardian_search
-          # If we are doing a guardian search, need to pass through original volunteer
-          @volunteer = Volunteer.including_pending.find(@search_form.volunteer_id)
+        if params[:guardian_search]
           render partial: "guardian_search_results"
         else
           render partial: "search_results"
         end
       else
-        if @search_form.guardian_search
+        if params[:guardian_search]
           render partial: "guardian_search"
         else
           render partial: "volunteer_search"
@@ -85,7 +88,11 @@ class SelfTrackingController < ApplicationController
       end
     else
       @search_form = SearchForm.new()
-      render partial: "volunteer_search"
+      if params[:guardian_search]
+        render partial: "guardian_search"
+      else
+        render partial: "volunteer_search"
+      end
     end
   end
 
@@ -236,7 +243,7 @@ end
 # Class for simple validation of the search form
 class SearchForm
   include ActiveModel::Model
-  attr_accessor :name, :phone, :email, :guardian_search, :volunteer_id
+  attr_accessor :name, :phone, :email
   validates_presence_of :name
 end
 

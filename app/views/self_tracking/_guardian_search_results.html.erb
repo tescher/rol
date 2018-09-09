@@ -37,7 +37,7 @@
       <% end %>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-primary" onclick="return loadModalDialog('#modalDialog', '<%= self_tracking_volunteer_search_path(guardian_search: true) %>');">
+      <button type="button" class="btn btn-primary" onclick="return loadModalDialog('#modalDialog', '<%= self_tracking_volunteer_search_path(volunteer_id: @volunteer.id, guardian_search: true) %>');">
         Search again
       </button>
       <button type="button" class="btn btn-primary" onclick="return launchVolunteerSignup('#modalDialog', '<%= new_pending_volunteer_path(:launched_from_self_tracking => "yes") %>');">

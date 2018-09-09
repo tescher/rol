@@ -46,8 +46,8 @@ remote: true, html: {:class => "form-horizontal"}) do |form| %>
         </div>
 
       <%= hidden_field_tag :dialog, "true" %>
-      <%= form.hidden_field :guardian_search, value: "true" %>
-      <%= form.hidden_field :volunteer_id, value: @volunteer.id %>
+      <%= hidden_field_tag :guardian_search, "true" %>
+      <%= hidden_field_tag :volunteer_id, @volunteer.id %>
       </p>
     </div>
     <div class="modal-footer">

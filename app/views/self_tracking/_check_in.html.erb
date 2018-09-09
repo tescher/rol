@@ -23,10 +23,10 @@ remote: true, html: {class: "form-horizontal", "data-check-in-form" => "true"}) 
           <label class="control-label col-md-4">Waiver</label>
           <div class="col-md-8">
             <p class="form-control-static">
-              <% if @volunteer.waiver_date.blank? %>
+              <% if last_waiver_date(@volunteer.id).blank? %>
                 <span class="text-danger"><em><i class="glyphicon glyphicon-exclamation-sign"></i> Missing</em></span>
               <% else %>
-                Signed <%= @volunteer.waiver_date.strftime("%m/%d/%Y") %>
+                Signed <%= last_waiver_date(@volunteer.id).strftime("%m/%d/%Y") %>
               <% end %>
             </p>
           </div>

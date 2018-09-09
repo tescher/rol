@@ -31,7 +31,7 @@
             %>
           </td>
           <td>
-            <% if volunteer.waiver_date.blank? %>
+            <% if last_waiver_date(volunteer.id).blank? %>
               <span class="text-danger">
                 <em>
                   Missing
@@ -39,7 +39,7 @@
               </span>
 
             <% else %>
-              <span class="text-muted"><%= volunteer.waiver_date.strftime("%m/%d/%Y") %></span>
+              <span class="text-muted"><%= last_waiver_date(volunteer.id).strftime("%m/%d/%Y") %></span>
             <% end %>
           </td>
           <td>
