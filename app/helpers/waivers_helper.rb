@@ -41,7 +41,7 @@ module WaiversHelper
       birthdate = volunteer.birthdate
       puts "Birthdate #{birthdate}"
       if volunteer.adult || (birthdate && age(birthdate) >= Utilities::Utilities.system_setting(:adult_age))
-        puts "returning adult"
+        puts "returning adult (age: #{age(birthdate)})"
         return WaiverText.waiver_types[:adult]
       else
         return WaiverText.waiver_types[:minor]

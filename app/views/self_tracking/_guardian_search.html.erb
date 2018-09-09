@@ -1,0 +1,59 @@
+<%= form_for(@search_form, url: self_tracking_volunteer_search_path, method: :get,
+remote: true, html: {:class => "form-horizontal"}) do |form| %>
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title">Guardian Selection</h4>
+    </div>
+    <div class="modal-body">
+      <p>
+        <div class="form-group">
+          <%= @object = @search_form
+              render 'shared/error_messages' %>
+        </div>
+      <div class="form-group">
+        <div class="col-md-8">
+          <p class="form-control-static">
+              You need to have a waiver signed. Who will sign for you?
+            <% if @guardian %>
+              <div class="form-group">
+                <div class="col-md-8">
+                  <%= link_to @guardian.name, self_tracking_check_in_path(@volunteer, guardian_id: @guardian.id), class: "btn btn-default", method: :post %>
+                </div>
+              </div>
+            <% end %>
+           </p>
+        </div>
+      </div>
+        <div class="form-group">
+          <%= label_tag :name, nil, class: "col-md-2 control-label"  %>
+          <div class="col-md-10">
+            <%= form.text_field :name, class: 'form-control', autofocus: 'true', placeholder: "last,first" %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= label_tag :phone, nil, class: "col-md-2 control-label"  %>
+          <div class="col-md-10">
+            <%= form.text_field :phone, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= label_tag :email, nil, class: "col-md-2 control-label"  %>
+          <div class="col-md-10">
+            <%= form.text_field :email, class: 'form-control' %>
+          </div>
+        </div>
+
+      <%= hidden_field_tag :dialog, "true" %>
+      <%= form.hidden_field :guardian_search, value: "true" %>
+      <%= form.hidden_field :volunteer_id, value: @volunteer.id %>
+      </p>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-primary">Search</button>
+      <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+    </div>
+  </div>
+</div>
+<% end %>

@@ -69,9 +69,19 @@ class SelfTrackingController < ApplicationController
 
         @results = Volunteer.including_pending.where(where_clause).order(:last_name, :first_name)
 
-        render partial: "search_results"
+        if @search_form.guardian_search
+          # If we are doing a guardian search, need to pass through original volunteer
+          @volunteer = Volunteer.including_pending.find(@search_form.volunteer_id)
+          render partial: "guardian_search_results"
+        else
+          render partial: "search_results"
+        end
       else
-        render partial: "volunteer_search"
+        if @search_form.guardian_search
+          render partial: "guardian_search"
+        else
+          render partial: "volunteer_search"
+        end
       end
     else
       @search_form = SearchForm.new()
@@ -82,9 +92,13 @@ class SelfTrackingController < ApplicationController
 
   def check_in
     @volunteer = Volunteer.including_pending.find(params[:id])
+    if params[:guardian_id]
+      @guardian = Volunteer.including_pending.find(params[:guardian_id])
+    end
     @workday = Workday.find(session[:self_tracking_workday_id])
     @newly_signed_up = params[:newly_signed_up]
 
+    # Handle check-in time form
     if params[:check_in_form].present?
       @check_in_form = CheckInForm.new(params[:check_in_form].merge(volunteer: @volunteer, workday: @workday))
       if @check_in_form.valid?
@@ -110,6 +124,7 @@ class SelfTrackingController < ApplicationController
         render partial: "check_in"
       end
     else
+      # Handle waiver signing form
       if params[:need_waiver_form].present?
         @need_waiver_form = NeedWaiverForm.new(params[:need_waiver_form].merge(volunteer: @volunteer, guardian: @guardian))
         if @need_waiver_form.valid?
@@ -124,13 +139,22 @@ class SelfTrackingController < ApplicationController
           render partial: "need_waiver"
         end
       end
+      # Do we need a waiver?
       @waiver_type = need_waiver_type(@volunteer)
       if @waiver_type && !params[:skip_waiver]
         last_waiver = last_waiver(@volunteer.id)
-        guardian_id = last_waiver ? last_waiver.guardian_id : nil
-        @guardian = guardian_id ? Volunteer.including_pending.find(guardian_id) : nil
-        @need_waiver_form = NeedWaiverForm.new(volunteer: @volunteer)
-        render partial: "need_waiver"
+        # If a minor and we don't have a guardian yet, get one
+        if @waiver_type == WaiverText.waiver_types[:minor] && !@guardian
+          guardian_id = last_waiver ? last_waiver.guardian_id : nil
+          @guardian = guardian_id ? Volunteer.including_pending.find(guardian_id) : nil
+          @search_form = SearchForm.new()
+          render partial: "guardian_search"
+        else
+          # We have what we need, get waiver signed
+          @need_waiver_form = NeedWaiverForm.new()
+          render partial: "need_waiver"
+        end
+        # Waiver good, ready to check-in
       else
         @check_in_form = CheckInForm.new(check_in_time:  Time.now.strftime("%l:%M %p"), volunteer: @volunteer, workday: @workday)
         render partial: "check_in"
@@ -212,7 +236,7 @@ end
 # Class for simple validation of the search form
 class SearchForm
   include ActiveModel::Model
-  attr_accessor :name, :phone, :email
+  attr_accessor :name, :phone, :email, :guardian_search, :volunteer_id
   validates_presence_of :name
 end
 
@@ -242,6 +266,19 @@ end
 class NeedWaiverForm
   include ActiveModel::Model
   attr_accessor :volunteer, :guardian, :waiver_type
+end
+
+class NeedGuardianForm
+  include ActiveModel::Model
+  attr_accessor :volunteer, :guardian
+  validates_presence_of :guardian
+  validate :guardian_not_self
+
+  def guardian_not_self
+    if @guardian.id == @volunteer.id
+      errors.add(:base, "You can't be the guardian")
+    end
+  end
 end
 
 
