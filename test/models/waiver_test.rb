@@ -25,12 +25,12 @@ class WaiverTest < ActiveSupport::TestCase
     assert_not @waiver.valid?
   end
 
-  test "Must have birthdate or adult = true" do
-    assert @waiver.valid?
-    @waiver.adult = false
-    assert_not @waiver.valid?
-    @waiver.birthdate = 10.years.ago.to_s(:db)  # Will be valid even though not really an adult
-    assert @waiver.valid?
-  end
+#  test "Must have birthdate or adult = true" do
+#    assert @waiver.valid?
+#    @waiver.adult = false
+#    assert_not @waiver.valid?
+#    @waiver.birthdate = 10.years.ago.to_s(:db)  # Will be valid even though not really an adult
+#    assert @waiver.valid?
+#  end
 
 end

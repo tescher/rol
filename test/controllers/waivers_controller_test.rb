@@ -21,7 +21,7 @@ class WaiversControllerTest < ActionController::TestCase
 
   test "should redirect create waiver when not logged in" do
     assert_no_difference('Waiver.count') do
-      post :create, waiver: { birthdate: @waiver.birthdate, date_signed: @waiver.date_signed, e_sign: @waiver.e_sign, guardian_id: @waiver.guardian_id, adult: @waiver.adult, volunteer_id: @waiver.volunteer_id, waiver_text: @waiver.waiver_text }
+      post :create, waiver: { date_signed: @waiver.date_signed, e_sign: @waiver.e_sign, guardian_id: @waiver.guardian_id, adult: @waiver.adult, volunteer_id: @waiver.volunteer_id, waiver_text: @waiver.waiver_text }
     end
 
     assert_redirected_to login_url
@@ -40,7 +40,7 @@ class WaiversControllerTest < ActionController::TestCase
   end
 
   test "should redirect update when not logged in" do
-    patch :update, id: @waiver, waiver: { birthdate: @waiver.birthdate, date_signed: @waiver.date_signed, e_sign: @waiver.e_sign, guardian_id: @waiver.guardian_id, adult: @waiver.adult, volunteer_id: @waiver.volunteer_id, waiver_text: @waiver.waiver_text }
+    patch :update, id: @waiver, waiver: {date_signed: @waiver.date_signed, e_sign: @waiver.e_sign, guardian_id: @waiver.guardian_id, adult: @waiver.adult, volunteer_id: @waiver.volunteer_id, waiver_text: @waiver.waiver_text }
     assert_not flash.empty?
     assert_redirected_to login_url
   end

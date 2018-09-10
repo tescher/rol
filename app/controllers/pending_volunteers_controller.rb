@@ -33,9 +33,11 @@ class PendingVolunteersController < ApplicationController
       @volunteer = Volunteer.find(params[:matching_id])
       volunteer_params = {}
 
-      params[:pv_use_fields].each do |findex|
-        item = Volunteer.pending_volunteer_merge_fields_table.key(findex.to_i)
-        volunteer_params[item] = pending_volunteer_params[item]
+      if params[:pv_use_fields]
+        params[:pv_use_fields].each do |findex|
+          item = Volunteer.pending_volunteer_merge_fields_table.key(findex.to_i)
+          volunteer_params[item] = pending_volunteer_params[item]
+        end
       end
 
       if (params[:use_notes].downcase != "ignore")
@@ -104,8 +106,8 @@ class PendingVolunteersController < ApplicationController
 
         flash[:success] = "Volunteer updated."
         @object.deleted_reason = "Merged pending volunteer into #{@volunteer.id}"
-        @object.save
-        @object.destroy
+        @object.save!
+        @object.destroy!
         redirect_to pending_volunteers_path
       else
         @volunteer.errors.each {|attr, error| @object.errors.add(attr, error)}

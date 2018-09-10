@@ -36,7 +36,7 @@ class Waiver < ActiveRecord::Base
   end
 
   def check_age_or_guardian_recorded
-    if (self.adult != true) && !self.birthdate.present? && !self.guardian_id.present?
+    if (self.adult != true) && !Volunteer.including_pending.find(self.volunteer_id).birthdate.present? && !self.guardian_id.present?
       errors.add(:adult, "Volunteer must be marked as an adult, have a recorded birthdate, or waiver signed by a guardian")
     end
   end

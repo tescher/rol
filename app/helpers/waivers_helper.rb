@@ -6,19 +6,17 @@ module WaiversHelper
   end
 
   def add_waiver_fields(volunteer_id, is_guardian)
-    puts "Is Guardian: #{is_guardian} #{is_guardian.to_yaml}"
     if is_guardian == true
-      volunteer = Volunteer.find(session[:volunteer_id])
-      guardian = Volunteer.find(volunteer_id)
+      volunteer = Volunteer.including_pending.find(session[:volunteer_id])
+      guardian = Volunteer.including_pending.find(volunteer_id)
     else
-      volunteer = Volunteer.find(volunteer_id)
+      volunteer = Volunteer.including_pending.find(volunteer_id)
       guardian = nil
     end
-    new_object = Waiver.new(birthdate: volunteer.birthdate, adult: volunteer.adult)
+    new_object = Waiver.new(adult: need_waiver_type(volunteer, false) == WaiverText.waiver_types[:adult])
     if !is_guardian
       new_object.adult = true
     end
-    puts "Is Guardian: #{is_guardian} Volunteer: #{volunteer.id}  Guardian: #{guardian ? guardian.id : "nil"}"
     output = ""
     association = :waivers
     form_builder = form_for(volunteer) do |builder|
@@ -43,10 +41,11 @@ module WaiversHelper
     end
   end
 
-  # If a waiver is needed, it will return the type needed (adult or minor)
-  def need_waiver_type(volunteer)
-    waiver = last_waiver(volunteer.id)
-    puts "Last waiver #{waiver}"
+  # If a waiver is needed, it will return the type needed (adult or minor). If "check_last_waiver" is false, it will return type for any new waiver
+  def need_waiver_type(volunteer, check_last_waiver = true)
+    if check_last_waiver
+      waiver = last_waiver(volunteer.id)
+    end
     if !waiver || ((DateTime.now.to_date - waiver.effective_date_signed) > Utilities::Utilities.system_setting(:waiver_valid_days))
       birthdate = volunteer.birthdate
       puts "Birthdate #{birthdate}"

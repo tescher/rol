@@ -1,6 +1,6 @@
 <tr class="hide_on_remove">
   <td><%= if f.object.guardian_id
-            guardian = Volunteer.find(f.object.guardian_id)
+            guardian = Volunteer.including_pending.find(f.object.guardian_id)
           end
           if !guardian.nil?
             label_tag :signer, guardian.name
@@ -16,12 +16,6 @@
       </div>
     </div>
   </td>
-  <td>
-    <div class="field">
-      <div class='input-group date' >
-        <%= f.text_field :birthdate, value: (f.object.birthdate && f.object.birthdate.strftime("%m/%d/%Y")), disabled: @readonly, id: 'birthdatepicker'%></td>
-      </div>
-    </div>
   <td><%= f.check_box :adult, disabled: @readonly %></td>
   <td><%= f.check_box :e_sign, disabled: true  %></td>
   <td>  <% if @readonly %>
