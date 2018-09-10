@@ -234,7 +234,7 @@ class VolunteersController < ApplicationController
         @pending_volunteer = Volunteer.pending.find(params[:pending_volunteer_id])
         @num_workdays = WorkdayVolunteer.where(volunteer_id: params[:pending_volunteer_id])
         @volunteer.pending_volunteer_id = @pending_volunteer.id
-        ["first_name", "last_name", "address", "city", "state", "zip", "phone", "email", "occupation", "emerg_contact_phone", "emerg_contact_name", "notes", "limitations", "medical_conditions", "agree_to_background_check", "interests"].each do |column|
+        ["first_name", "last_name", "address", "city", "state", "zip", "phone", "email", "occupation", "emerg_contact_phone", "emerg_contact_name", "notes", "limitations", "medical_conditions", "agree_to_background_check", "birthdate", "adult", "interests"].each do |column|
           if column == "phone"
             @volunteer.send("home_phone=", @pending_volunteer.send(column))
           else

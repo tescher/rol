@@ -9,7 +9,7 @@ class PendingVolunteersController < ApplicationController
   def new
     @object = Volunteer.pending.new()
     @launched_from_self_tracking = params[:launched_from_self_tracking]
-	@self_tracking_enabled = session[:self_tracking_workday_id].present? && Workday.exists?(session[:self_tracking_workday_id])
+    @self_tracking_enabled = session[:self_tracking_workday_id].present? && Workday.exists?(session[:self_tracking_workday_id])
     session[:referer] = request.referer
     @submit_name = "Submit"
     render 'new'
@@ -102,7 +102,7 @@ class PendingVolunteersController < ApplicationController
           sw.destroy!
         end
 
-		flash[:success] = "Volunteer updated."
+        flash[:success] = "Volunteer updated."
         @object.deleted_reason = "Merged pending volunteer into #{@volunteer.id}"
         @object.save
         @object.destroy
@@ -140,9 +140,9 @@ class PendingVolunteersController < ApplicationController
     end
 
     @launched_from_self_tracking = params[:launched_from_self_tracking]
-	@self_tracking_enabled = session[:self_tracking_workday_id].present? && Workday.exists?(session[:self_tracking_workday_id])
-	# Don't check recaptcha is self tracking is enabled.
-	status = @self_tracking_enabled ? true : verify_google_recptcha(GOOGLE_SECRET_KEY,params["g-recaptcha-response"])
+    @self_tracking_enabled = session[:self_tracking_workday_id].present? && Workday.exists?(session[:self_tracking_workday_id])
+    # Don't check recaptcha is self tracking is enabled.
+    status = @self_tracking_enabled ? true : verify_google_recptcha(GOOGLE_SECRET_KEY,params["g-recaptcha-response"])
 
     if status && @object.save  # Order is important here!
       render 'success'
@@ -163,8 +163,8 @@ class PendingVolunteersController < ApplicationController
 
   def pending_volunteer_params
     modified_params = params.require(:volunteer).permit(
-      :first_name, :last_name, :address, :city, :state, :zip, :home_phone, :work_phone,
-      :mobile_phone, :email, :notes, :occupation, :emerg_contact_name, :emerg_contact_phone, :limitations, :medical_conditions, :agree_to_background_check, int_ids: [], interest_ids: []
+        :first_name, :last_name, :address, :city, :state, :zip, :home_phone, :work_phone,
+        :mobile_phone, :email, :notes, :occupation, :emerg_contact_name, :emerg_contact_phone, :limitations, :medical_conditions, :agree_to_background_check, :birthdate, :adult, int_ids: [], interest_ids: []
     )
     if (!modified_params[:int_ids].nil?)
       modified_params[:interest_ids] = modified_params[:int_ids].dup

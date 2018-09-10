@@ -110,10 +110,28 @@
           <%= f.label :medical_conditions, 'Please list any medical conditions or allergies' %><br>
         </div>
         <div class="col-md-7">
-          <%= f.text_area :medical_conditions, class: 'form-control', rows: "4" %>
+          <%= f.text_area :medical_conditions, class: 'form-control', rows: "3" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <%= f.label :birthdate %>
+        </div>
+        <div class="col-md-7">
+          <%= f.text_field :birthdate, id: 'birthdatepicker', class: 'form-control' %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-10">
+          <div class="checkbox">
+            <label><strong>
+              <%= f.check_box :adult %> (alternatively) I declare that I am <%= Utilities::Utilities.system_setting(:adult_age) %> or older.
+            </strong></label>
+          </div>
         </div>
       </div>
     </div>
+  </div>
   </div>
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
