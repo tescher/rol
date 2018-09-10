@@ -145,26 +145,42 @@ class SelfTrackingController < ApplicationController
         else
           render partial: "need_waiver"
         end
-      end
-      # Do we need a waiver?
-      @waiver_type = need_waiver_type(@volunteer)
-      if @waiver_type && !params[:skip_waiver]
-        last_waiver = last_waiver(@volunteer.id)
-        # If a minor and we don't have a guardian yet, get one
-        if @waiver_type == WaiverText.waiver_types[:minor] && !@guardian
-          guardian_id = last_waiver ? last_waiver.guardian_id : nil
-          @guardian = guardian_id ? Volunteer.including_pending.find(guardian_id) : nil
-          @search_form = SearchForm.new()
-          render partial: "guardian_search"
-        else
-          # We have what we need, get waiver signed
-          @need_waiver_form = NeedWaiverForm.new()
-          render partial: "need_waiver"
-        end
-        # Waiver good, ready to check-in
       else
-        @check_in_form = CheckInForm.new(check_in_time:  Time.now.strftime("%l:%M %p"), volunteer: @volunteer, workday: @workday)
-        render partial: "check_in"
+        # Handle Birthdate/Adult form
+        if params[:need_age_form].present?
+          @need_age_form = NeedAgeForm.new(params[:need_age_form])
+          if @need_age_form.valid?
+            @volunteer.update_attributes(params.require(:need_age_form).permit(:birthdate, :adult))
+          else
+            render partial: "need_age"
+          end
+        end
+      end
+      # Do we need to determine age?
+      if @volunteer.birthdate.blank? && !@volunteer.adult
+        @need_age_form = NeedAgeForm.new()
+        render partial: "need_age"
+      else
+        # Do we need a waiver?
+        @waiver_type = need_waiver_type(@volunteer)
+        if @waiver_type && !params[:skip_waiver]
+          last_waiver = last_waiver(@volunteer.id)
+          # If a minor and we don't have a guardian yet, get one
+          if @waiver_type == WaiverText.waiver_types[:minor] && !@guardian
+            guardian_id = last_waiver ? last_waiver.guardian_id : nil
+            @guardian = guardian_id ? Volunteer.including_pending.find(guardian_id) : nil
+            @search_form = SearchForm.new()
+            render partial: "guardian_search"
+          else
+            # We have what we need, get waiver signed
+            @need_waiver_form = NeedWaiverForm.new()
+            render partial: "need_waiver"
+          end
+          # Waiver good, ready to check-in
+        else
+          @check_in_form = CheckInForm.new(check_in_time:  Time.now.strftime("%l:%M %p"), volunteer: @volunteer, workday: @workday)
+          render partial: "check_in"
+        end
       end
     end
   end
@@ -284,6 +300,18 @@ class NeedGuardianForm
   def guardian_not_self
     if @guardian.id == @volunteer.id
       errors.add(:base, "You can't be the guardian")
+    end
+  end
+end
+
+class NeedAgeForm
+  include ActiveModel::Model
+  attr_accessor :birthdate, :adult
+  validate :birthdate_or_adult
+
+  def birthdate_or_adult
+    if @birthdate.blank? && !@adult
+      errors.add(:base, "Enter your birthdate or declare that you are #{Utilities::Utilities.system_setting(:adult_age)} or older.")
     end
   end
 end

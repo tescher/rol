@@ -322,9 +322,6 @@ class VolunteersController < ApplicationController
           last_waiver = last_waiver(@volunteer.id)
           puts last_waiver.to_yaml
           if !last_waiver.nil?
-            if @volunteer.birthdate.nil? && last_waiver.birthdate
-              @volunteer.birthdate = last_waiver.birthdate
-            end
             if @volunteer.try(:adult) == false && last_waiver.adult
               @volunteer.adult = last_waiver.adult
             end
