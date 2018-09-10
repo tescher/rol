@@ -19,7 +19,10 @@ remote: true, html: {:class => "form-horizontal"}) do |form| %>
             <% if @guardian %>
               <div class="form-group">
                 <div class="col-md-8">
-                  <%= link_to @guardian.name, self_tracking_check_in_path(@volunteer, guardian_id: @guardian.id), class: "btn btn-default", method: :post %>
+                  <button type="button" class="btn btn-default" onclick="return loadModalDialog('#modalDialog', '<%= self_tracking_check_in_path(@volunteer, guardian_id: @guardian.id) %>');">
+                    <%= @guardian.name %>
+                  </button>
+                  <br> Or search for someone else...
                 </div>
               </div>
             <% end %>
@@ -52,6 +55,11 @@ remote: true, html: {:class => "form-horizontal"}) do |form| %>
     </div>
     <div class="modal-footer">
       <button type="submit" class="btn btn-primary">Search</button>
+      <% if Utilities::Utilities.system_setting(:allow_waiver_skip) %>
+        <button type="button" class="btn btn-primary" onclick="return loadModalDialog('#modalDialog', '<%= self_tracking_check_in_path(@volunteer, skip_waiver: "1") %>');">
+          Skip for now
+        </button>
+      <% end %>
       <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
     </div>
   </div>

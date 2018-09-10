@@ -99,12 +99,13 @@ class SelfTrackingController < ApplicationController
 
   def check_in
     @volunteer = Volunteer.including_pending.find(params[:id])
-    if params[:guardian_id]
+    if !params[:guardian_id].blank?
       @guardian = Volunteer.including_pending.find(params[:guardian_id])
     end
     @workday = Workday.find(session[:self_tracking_workday_id])
     @newly_signed_up = params[:newly_signed_up]
 
+    # Handle forms
     # Handle check-in time form
     if params[:check_in_form].present?
       @check_in_form = CheckInForm.new(params[:check_in_form].merge(volunteer: @volunteer, workday: @workday))
@@ -127,62 +128,70 @@ class SelfTrackingController < ApplicationController
 
         @workday.workday_volunteers.create(:volunteer => @volunteer, :start_time => start_time_formatted, :end_time => end_time)
         render :text => "success"
+        return
       else
         render partial: "check_in"
-      end
-    else
-      # Handle waiver signing form
-      if params[:need_waiver_form].present?
-        @need_waiver_form = NeedWaiverForm.new(params[:need_waiver_form].merge(volunteer: @volunteer, guardian: @guardian))
-        if @need_waiver_form.valid?
-          if (@need_waiver_form.waiver_type.to_i == WaiverText.waiver_types[:adult].to_i)
-            puts "Creating adult waiver"
-            Waiver.create(volunteer_id: @volunteer.id, e_sign: true, adult: true, date_signed: Time.zone.now.to_date)
-          else
-            puts "Creating minor waiver"
-            Waiver.create(volunteer_id: @volunteer.id, guardian_id: @guardian.id, e_sign: true, adult: false, date_signed: Time.zone.now.to_date)
-          end
-        else
-          render partial: "need_waiver"
-        end
-      else
-        # Handle Birthdate/Adult form
-        if params[:need_age_form].present?
-          @need_age_form = NeedAgeForm.new(params[:need_age_form])
-          if @need_age_form.valid?
-            @volunteer.update_attributes(params.require(:need_age_form).permit(:birthdate, :adult))
-          else
-            render partial: "need_age"
-          end
-        end
-      end
-      # Do we need to determine age?
-      if @volunteer.birthdate.blank? && !@volunteer.adult
-        @need_age_form = NeedAgeForm.new()
-        render partial: "need_age"
-      else
-        # Do we need a waiver?
-        @waiver_type = need_waiver_type(@volunteer)
-        if @waiver_type && !params[:skip_waiver]
-          last_waiver = last_waiver(@volunteer.id)
-          # If a minor and we don't have a guardian yet, get one
-          if @waiver_type == WaiverText.waiver_types[:minor] && !@guardian
-            guardian_id = last_waiver ? last_waiver.guardian_id : nil
-            @guardian = guardian_id ? Volunteer.including_pending.find(guardian_id) : nil
-            @search_form = SearchForm.new()
-            render partial: "guardian_search"
-          else
-            # We have what we need, get waiver signed
-            @need_waiver_form = NeedWaiverForm.new()
-            render partial: "need_waiver"
-          end
-          # Waiver good, ready to check-in
-        else
-          @check_in_form = CheckInForm.new(check_in_time:  Time.now.strftime("%l:%M %p"), volunteer: @volunteer, workday: @workday)
-          render partial: "check_in"
-        end
+        return
       end
     end
+    # Handle waiver signing form
+    if params[:need_waiver_form].present? && !params[:skip_waiver]
+      @need_waiver_form = NeedWaiverForm.new(params[:need_waiver_form].merge(volunteer: @volunteer, guardian: @guardian))
+      if @need_waiver_form.valid?
+        if (@need_waiver_form.waiver_type.to_i == WaiverText.waiver_types[:adult].to_i)
+          puts "Creating adult waiver"
+          Waiver.create(volunteer_id: @volunteer.id, e_sign: true, adult: true, date_signed: Time.zone.now.to_date)
+        else
+          puts "Creating minor waiver"
+          Waiver.create(volunteer_id: @volunteer.id, guardian_id: @guardian.id, e_sign: true, adult: false, date_signed: Time.zone.now.to_date)
+        end
+      else
+        render partial: "need_waiver"
+        return
+      end
+    end
+    # Handle Birthdate/Adult form
+    if params[:need_age_form].present?
+      @need_age_form = NeedAgeForm.new(params[:need_age_form])
+      if @need_age_form.valid?
+        @volunteer.update_attributes(params.require(:need_age_form).permit(:birthdate, :adult))
+      else
+        render partial: "need_age"
+        return
+      end
+    end
+
+    # Check that we have the necessary info for check-in, otherwise put up forms
+    # Do we need to determine age?
+    if @volunteer.birthdate.blank? && (@volunteer.adult != true)
+      @need_age_form = NeedAgeForm.new()
+      render partial: "need_age"
+      return
+    end
+    # Do we need a waiver?
+    @waiver_type = need_waiver_type(@volunteer)
+    if @waiver_type && !params[:skip_waiver]
+      last_waiver = last_waiver(@volunteer.id)
+      # If a minor and we don't have a guardian yet, get one
+      if @waiver_type == WaiverText.waiver_types[:minor] && !@guardian
+        guardian_id = last_waiver ? last_waiver.guardian_id : nil
+        @guardian = guardian_id ? Volunteer.including_pending.find(guardian_id) : nil
+        @search_form = SearchForm.new()
+        render partial: "guardian_search"
+        return
+      else
+        # We have what we need, get waiver signed
+        @need_waiver_form = NeedWaiverForm.new()
+        render partial: "need_waiver"
+        return
+      end
+    end
+
+    # All good, ready to check-in
+
+    @check_in_form = CheckInForm.new(check_in_time:  Time.now.strftime("%l:%M %p"), volunteer: @volunteer, workday: @workday)
+    render partial: "check_in"
+
   end
 
 
@@ -310,8 +319,11 @@ class NeedAgeForm
   validate :birthdate_or_adult
 
   def birthdate_or_adult
-    if @birthdate.blank? && !@adult
-      errors.add(:base, "Enter your birthdate or declare that you are #{Utilities::Utilities.system_setting(:adult_age)} or older.")
+    if @birthdate.blank? && (@adult != "1")
+      puts "adding error"
+      errors.add(:need_age, "Enter your birthdate or declare that you are #{Utilities::Utilities.system_setting(:adult_age)} or older.")
+    else
+      puts "No errors"
     end
   end
 end
