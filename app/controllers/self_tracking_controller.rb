@@ -69,12 +69,14 @@ class SelfTrackingController < ApplicationController
               :phone => Volunteer.sanitize(@search_form.phone)}
         end
 
+
         where_clause = "(#{where_clause})"
         where_clause += " OR (email = #{Volunteer.sanitize(@search_form.email)})" if @search_form.email.present?
 
         @results = Volunteer.including_pending.where(where_clause).order(:last_name, :first_name)
 
         if params[:guardian_search]
+          @results = @results.select { |g| g.adult == true || (g.birthdate && (age(g.birthdate) >= Utilities::Utilities.system_setting(:adult_age)))}
           render partial: "guardian_search_results"
         else
           render partial: "search_results"
@@ -169,21 +171,23 @@ class SelfTrackingController < ApplicationController
       return
     end
     # Do we need a waiver?
-    @waiver_type = need_waiver_type(@volunteer)
-    if @waiver_type && !params[:skip_waiver]
-      last_waiver = last_waiver(@volunteer.id)
-      # If a minor and we don't have a guardian yet, get one
-      if @waiver_type == WaiverText.waiver_types[:minor] && !@guardian
-        guardian_id = last_waiver ? last_waiver.guardian_id : nil
-        @guardian = guardian_id ? Volunteer.including_pending.find(guardian_id) : nil
-        @search_form = SearchForm.new()
-        render partial: "guardian_search"
-        return
-      else
-        # We have what we need, get waiver signed
-        @need_waiver_form = NeedWaiverForm.new()
-        render partial: "need_waiver"
-        return
+    if Utilities:: Utilities.system_setting(:waivers_at_checkin)
+      @waiver_type = need_waiver_type(@volunteer)
+      if @waiver_type && !params[:skip_waiver]
+        last_waiver = last_waiver(@volunteer.id)
+        # If a minor and we don't have a guardian yet, get one
+        if @waiver_type == WaiverText.waiver_types[:minor] && !@guardian
+          guardian_id = last_waiver ? last_waiver.guardian_id : nil
+          @guardian = guardian_id ? Volunteer.including_pending.find(guardian_id) : nil
+          @search_form = SearchForm.new()
+          render partial: "guardian_search"
+          return
+        else
+          # We have what we need, get waiver signed
+          @need_waiver_form = NeedWaiverForm.new()
+          render partial: "need_waiver"
+          return
+        end
       end
     end
 
