@@ -54,6 +54,7 @@ class PendingVolunteersTest < ActionDispatch::IntegrationTest
       VolunteerInterest.where("volunteer_id = #{v.id}").destroy_all
       VolunteerCategoryVolunteer.where("volunteer_id = #{v.id}").destroy_all
       Waiver.where("volunteer_id = #{v.id}").destroy_all
+      Waiver.where("guardian_id = #{v.id}").destroy_all
       # v.really_destroy!
     end
   end

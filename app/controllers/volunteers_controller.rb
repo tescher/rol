@@ -498,11 +498,27 @@ class VolunteersController < ApplicationController
           donation.save!
           sd.destroy!
         end
+        deletable_waivers = []
         Waiver.where("volunteer_id = #{@source_volunteer.id}").each do |swv|
           waiver = swv.dup
           waiver.volunteer_id = @object.id
           waiver.save!
-          swv.really_destroy!
+          deletable_waivers.push swv
+          # swv.really_destroy!
+        end
+        Waiver.where("guardian_id = #{@source_volunteer.id}").each do |swv|
+          waiver = swv.dup
+          waiver.guardian_id =@object.id
+          waiver.save!
+          unless deletable_waivers.include?(swv)
+            deletable_waivers.push swv
+          end
+          # swv.really_destroy!
+        end
+
+        # Need to do it this way because a person can be a volunteer and guardian on the same waiver
+        deletable_waivers.each do |wv|
+          wv.really_destroy!
         end
 
         @source_volunteer.deleted_reason = "Merged with #{@object.id}"
