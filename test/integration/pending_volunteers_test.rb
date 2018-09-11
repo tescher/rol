@@ -5,6 +5,8 @@ class PendingVolunteersTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:one)
     @volunteer = volunteers(:one)
+    @volunteer2 = volunteers(:volunteer_2)
+    @guardian = volunteers(:guardian)
     @pending_volunteer = volunteers(:pending_one)
     @non_admin = users(:one)
 
@@ -31,11 +33,16 @@ class PendingVolunteersTest < ActionDispatch::IntegrationTest
         VolunteerInterest.create(volunteer: v, interest: interest2)
         VolunteerCategoryVolunteer.create(volunteer: v, volunteer_category: category1)
         VolunteerCategoryVolunteer.create(volunteer: v, volunteer_category: category2)
+        Waiver.create(volunteer_id: v.id, date_signed: 10.days.ago.to_s(:db), e_sign:true, adult: false, guardian_id: @guardian.id)
       else
         VolunteerInterest.create(volunteer: v, interest: interest2)
         VolunteerInterest.create(volunteer: v, interest: interest3)
         VolunteerCategoryVolunteer.create(volunteer: v, volunteer_category: category2)
         VolunteerCategoryVolunteer.create(volunteer: v, volunteer_category: category3)
+        Waiver.create(volunteer_id: v.id, date_signed: 10.days.ago.to_s(:db), e_sign:true, adult: true)
+        Waiver.create(volunteer_id: @volunteer2.id, guardian_id: v.id, e_sign: true, date_signed: 20.days.ago.to_s(:db))
+        # Create a weird situation where a person is both volunteer and guardian on a waiver. This waiver should essentially be "merged" into one target waiver
+        Waiver.create(volunteer_id: @volunteer.id, guardian_id: v.id, e_sign: true, date_signed: 20.days.ago.to_s(:db))
       end
     end
   end
@@ -46,6 +53,7 @@ class PendingVolunteersTest < ActionDispatch::IntegrationTest
       WorkdayVolunteer.where("volunteer_id = #{v.id}").destroy_all
       VolunteerInterest.where("volunteer_id = #{v.id}").destroy_all
       VolunteerCategoryVolunteer.where("volunteer_id = #{v.id}").destroy_all
+      Waiver.where("volunteer_id = #{v.id}").destroy_all
       # v.really_destroy!
     end
   end
@@ -62,11 +70,13 @@ class PendingVolunteersTest < ActionDispatch::IntegrationTest
     assert_select "[class='g-recaptcha']", false
   end
 
-  test "New volunteer from pending volunteer with workdays" do
+  test "New volunteer from pending volunteer with workdays and waivers" do
     log_in_as(@user)
 
-    # Confirm the workdays
+    # Confirm the workdays and waivers
     assert_equal 2, @pending_volunteer.workday_volunteers.count
+    assert_equal 1, @pending_volunteer.waivers.count
+    assert_equal 2, @pending_volunteer.waivers_as_guardian.count
 
     get new_volunteer_path(pending_volunteer_id: @pending_volunteer)
     assert_template 'new'
@@ -83,6 +93,8 @@ class PendingVolunteersTest < ActionDispatch::IntegrationTest
     assert_equal @pending_volunteer.first_name, updated_volunteer.first_name
     assert_equal @pending_volunteer.last_name, updated_volunteer.last_name
     assert_equal false, updated_volunteer.needs_review
+    assert_equal 1, updated_volunteer.waivers.count
+    assert_equal 2, updated_volunteer.waivers_as_guardian.count
     assert_nil updated_volunteer.deleted_at
   end
 
@@ -110,6 +122,10 @@ class PendingVolunteersTest < ActionDispatch::IntegrationTest
     workdays_count = workdays.count # Need to do here to make sure query runs before merge
     workdays_dup = WorkdayVolunteer.where("volunteer_id = #{target_volunteer.id}").all
     workdays_dup_count = workdays_dup.count
+    waivers = Waiver.where("(volunteer_id = #{source_volunteer.id}) OR (guardian_id = #{source_volunteer.id})").distinct.all
+    waivers_count = waivers.count # Need to do here to make sure query runs before merge
+    waivers_dup = Waiver.where("(volunteer_id = #{target_volunteer.id}) OR (guardian_id = #{target_volunteer.id})").distinct.all
+    waivers_dup_count = waivers_dup.count
     volunteer_interests = VolunteerInterest.where("volunteer_id = #{source_volunteer.id}").all
     volunteer_interests_count = volunteer_interests.count
     volunteer_interests_dup = VolunteerInterest.where("volunteer_id = #{target_volunteer.id}").all
@@ -164,6 +180,19 @@ class PendingVolunteersTest < ActionDispatch::IntegrationTest
         WorkdayVolunteer.where("volunteer_id = #{target_volunteer.id}").all.count,
         workdays_count + workdays_dup_count,
         "Number of workdays (#{workdays_count + workdays_dup_count}) should be equal"
+    )
+
+    # Did waivers move?
+    assert_equal(
+        Waiver.where("(volunteer_id = #{target_volunteer.id}) OR (guardian_id = #{target_volunteer.id})").distinct.all.count,
+        waivers_count + waivers_dup_count - 1,
+        "Number of waivers (#{waivers_count + waivers_dup_count - 1}) should be equal"
+    )
+    # Should have one waiver with both volunteer and guardian as the same person
+    assert_equal(
+        Waiver.where("(volunteer_id = #{target_volunteer.id}) AND (guardian_id = #{target_volunteer.id})").distinct.all.count,
+        1,
+        "Merged waivers with volunteer and guardian as same person (#{1}) should be equal"
     )
 
     # Donations should not be affected.

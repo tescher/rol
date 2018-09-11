@@ -96,13 +96,26 @@ class PendingVolunteersController < ApplicationController
       end
 
       if @volunteer.update_attributes(volunteer_params)
-        # Move workdays
+        # Move workdays and waivers
         WorkdayVolunteer.where("volunteer_id = #{@object.id}").each do |sw|
           workday = sw.dup
           workday.volunteer_id = @volunteer.id
           workday.save!
           sw.destroy!
         end
+        Waiver.where("volunteer_id = #{@object.id}").each do |swv|
+          waiver = swv.dup
+          waiver.volunteer_id = @volunteer.id
+          waiver.save!
+          swv.really_destroy!
+        end
+        Waiver.where("guardian_id = #{@object.id}").each do |swv|
+          waiver = swv.dup
+          waiver.guardian_id = @volunteer.id
+          waiver.save!
+          swv.really_destroy!
+        end
+
 
         flash[:success] = "Volunteer updated."
         @object.deleted_reason = "Merged pending volunteer into #{@volunteer.id}"
