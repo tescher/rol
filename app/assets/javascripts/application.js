@@ -15,10 +15,6 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require jquery-ui/widgets/autocomplete
-//= require moment
-//= require moment-timezone
-//= require moment-timezone-with-data-2012-2022
-//= require moment-timezone-with-data
 //= require autocomplete-rails
 //= require bootstrap
 //= require bootstrap-multiselect

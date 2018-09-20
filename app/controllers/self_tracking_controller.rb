@@ -218,7 +218,7 @@ class SelfTrackingController < ApplicationController
       end
     else
       @check_out_form = CheckOutForm.new(
-          workday_volunteer: @workday_volunteer, check_out_time:  Time.now.strftime("%l:%M %p"))
+          workday_volunteer: @workday_volunteer, check_out_time:  nil)
       render partial: "check_out"
     end
   end
