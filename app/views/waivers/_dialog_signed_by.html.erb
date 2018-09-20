@@ -5,7 +5,7 @@
   <button class="btn btn-primary" onclick="<%= link_to_add_waiver_fields @volunteer.id, false %>">This volunteer</button>
   <% last_waiver = last_waiver(@volunteer.id)
      if !last_waiver.nil? && last_waiver.guardian_id %>
-    <button class="btn btn-primary" onclick="<%= link_to_add_waiver_fields last_waiver.guardian_id, true %>"><%=Volunteer.find(last_waiver.guardian_id).name%></button>
+    <button class="btn btn-primary" onclick="<%= link_to_add_waiver_fields last_waiver.guardian_id, true %>"><%=Volunteer.including_pending.find(last_waiver.guardian_id).name%></button>
     <%= link_to "Another guardian", "#", id:"linkAddVolunteer", class: "btn btn-primary", data: {alias: "guardian"} %>
   <%  else  %>
     <%= link_to "A guardian", "#", id:"linkAddVolunteer", class: "btn btn-primary", data: {alias: "guardian"} %>

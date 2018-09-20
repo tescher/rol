@@ -56,4 +56,7 @@ function hookupTimepicker(divSelector) {
 	// Change the period button (AM/PM) to btn-default style instead of the btn-primary default that it uses.
 	$(e.currentTarget.form).find("button[data-action='togglePeriod']").removeClass("btn-primary").addClass("btn-default");
   });
+  $("[id$='datepicker']").datetimepicker({
+        format: 'M/D/YYYY'
+    });
 }

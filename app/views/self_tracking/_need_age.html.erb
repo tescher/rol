@@ -1,0 +1,37 @@
+<%= form_for(@need_age_form, url: self_tracking_check_in_path(@volunteer, :newly_signed_up => @newly_signed_up), method: :get,
+             remote: true, html: {class: "form-horizontal", "data-need-age-form" => "true"}) do |form| %>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Need Your Age</h4>
+      </div>
+      <div class="modal-body">
+        <p>
+          <%= @object = @need_age_form
+              puts "Errors #{@object.errors.count}"
+              render 'shared/error_messages' %>
+        <div class="form-group">
+          <div class="col-md-2">
+            <%= form.label "Birthdate" %><br>
+          </div>
+          <div class="col-md-4">
+            <%= form.text_field :birthdate,  id: 'birthdatepicker', class: 'form-control' %>
+          </div>
+          <div class="col-md-4">
+            <label>
+              <%= form.check_box :adult %> Adult
+            </label>
+          </div>
+        </div>
+
+        <%= hidden_field_tag :dialog, "true" %>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+<% end %>

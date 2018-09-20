@@ -1,4 +1,5 @@
 include ApplicationHelper
+include WaiversHelper
 
 class SelfTrackingController < ApplicationController
   before_action :has_valid_workday, except: [ :launch ]
@@ -43,75 +44,158 @@ class SelfTrackingController < ApplicationController
 
 
   def volunteer_search
+    # If we are doing a guardian search, need to pass through original volunteer
+    if params[:guardian_search]
+      @volunteer = Volunteer.including_pending.find(params[:volunteer_id])
+    end
+
     if params[:search_form].present?
       @search_form = SearchForm.new(params[:search_form])
       if @search_form.valid?
         last_name, first_name = @search_form.name.split(",")
 
-    last_name.strip!
+        last_name.strip!
 
-		# if record(s) match fuzzy name, phone, OR email, count that as a match and present them to select from.
-		where_clause = Volunteer.get_fuzzymatch_where_clause("last_name", last_name) if last_name.present?
-		if first_name.present?
-		  first_name.strip!
-		  where_clause += " AND " if where_clause.present?
-		  where_clause += Volunteer.get_fuzzymatch_where_clause("first_name", first_name)
-		end
+        # if record(s) match fuzzy name, phone, OR email, count that as a match and present them to select from.
+        where_clause = Volunteer.get_fuzzymatch_where_clause("last_name", last_name) if last_name.present?
+        if first_name.present?
+          first_name.strip!
+          where_clause += " AND " if where_clause.present?
+          where_clause += Volunteer.get_fuzzymatch_where_clause("first_name", first_name)
+        end
 
-		if @search_form.phone.present?
-		  where_clause += " AND (mobile_phone = %{phone} OR work_phone = %{phone} OR home_phone = %{phone})" % {
-			:phone => Volunteer.sanitize(@search_form.phone)}
-		end
+        if @search_form.phone.present?
+          where_clause += " AND (mobile_phone = %{phone} OR work_phone = %{phone} OR home_phone = %{phone})" % {
+              :phone => Volunteer.sanitize(@search_form.phone)}
+        end
 
-		where_clause = "(#{where_clause})"
+
+        where_clause = "(#{where_clause})"
         where_clause += " OR (email = #{Volunteer.sanitize(@search_form.email)})" if @search_form.email.present?
 
         @results = Volunteer.including_pending.where(where_clause).order(:last_name, :first_name)
 
-        render partial: "search_results"
+        if params[:guardian_search]
+          @results = @results.select { |g| g.adult == true || (g.birthdate && (age(g.birthdate) >= Utilities::Utilities.system_setting(:adult_age)))}
+          render partial: "guardian_search_results"
+        else
+          render partial: "search_results"
+        end
       else
-        render partial: "volunteer_search"
+        if params[:guardian_search]
+          render partial: "guardian_search"
+        else
+          render partial: "volunteer_search"
+        end
       end
     else
       @search_form = SearchForm.new()
-      render partial: "volunteer_search"
+      if params[:guardian_search]
+        render partial: "guardian_search"
+      else
+        render partial: "volunteer_search"
+      end
     end
   end
 
 
   def check_in
     @volunteer = Volunteer.including_pending.find(params[:id])
-	  @workday = Workday.find(session[:self_tracking_workday_id])
+    if !params[:guardian_id].blank?
+      @guardian = Volunteer.including_pending.find(params[:guardian_id])
+    end
+    @workday = Workday.find(session[:self_tracking_workday_id])
     @newly_signed_up = params[:newly_signed_up]
 
+    # Handle forms
+    # Handle check-in time form
     if params[:check_in_form].present?
-	  @check_in_form = CheckInForm.new(params[:check_in_form].merge(volunteer: @volunteer, workday: @workday))
+      @check_in_form = CheckInForm.new(params[:check_in_form].merge(volunteer: @volunteer, workday: @workday))
       if @check_in_form.valid?
         start_time = Time.strptime(@check_in_form.check_in_time, "%I:%M %P")
         start_time_formatted = start_time.strftime("%H:%M:%S")
 
-		# If there is an existing later shift on the same day then automatically check-out the new
-		# check-in a certain time before the future shift.
-		end_time = nil
-		future_shifts = @workday.workday_volunteers.where(
-		  "volunteer_id = ? AND start_time >= ?", @volunteer.id, start_time_formatted
-		)
-		if future_shifts.count > 0
-		  start_time = future_shifts.first.start_time.strftime("%-I:%M %P")
-		  flash[:warning] = "Another shift starts at #{start_time}, please remember to check out this shift before #{start_time}."
-		else
-		  flash[:success] = "#{@volunteer.name} successfully checked in."
-		end
+        # If there is an existing later shift on the same day then automatically check-out the new
+        # check-in a certain time before the future shift.
+        end_time = nil
+        future_shifts = @workday.workday_volunteers.where(
+            "volunteer_id = ? AND start_time >= ?", @volunteer.id, start_time_formatted
+        )
+        if future_shifts.count > 0
+          start_time = future_shifts.first.start_time.strftime("%-I:%M %P")
+          flash[:warning] = "Another shift starts at #{start_time}, please remember to check out this shift before #{start_time}."
+        else
+          flash[:success] = "#{@volunteer.name} successfully checked in."
+        end
 
-		@workday.workday_volunteers.create(:volunteer => @volunteer, :start_time => start_time_formatted, :end_time => end_time)
+        @workday.workday_volunteers.create(:volunteer => @volunteer, :start_time => start_time_formatted, :end_time => end_time)
         render :text => "success"
+        return
       else
         render partial: "check_in"
+        return
       end
-    else
-      @check_in_form = CheckInForm.new(check_in_time:  Time.now.strftime("%l:%M %p"), volunteer: @volunteer, workday: @workday)
-      render partial: "check_in"
     end
+    # Handle waiver signing form
+    if params[:need_waiver_form].present? && !params[:skip_waiver]
+      @need_waiver_form = NeedWaiverForm.new(params[:need_waiver_form].merge(volunteer: @volunteer, guardian: @guardian))
+      if @need_waiver_form.valid?
+        if (@need_waiver_form.waiver_type.to_i == WaiverText.waiver_types[:adult].to_i)
+          puts "Creating adult waiver"
+          Waiver.create(volunteer_id: @volunteer.id, e_sign: true, adult: true, date_signed: Time.zone.now.to_date)
+        else
+          puts "Creating minor waiver"
+          Waiver.create(volunteer_id: @volunteer.id, guardian_id: @guardian.id, e_sign: true, adult: false, date_signed: Time.zone.now.to_date)
+        end
+      else
+        render partial: "need_waiver"
+        return
+      end
+    end
+    # Handle Birthdate/Adult form
+    if params[:need_age_form].present?
+      @need_age_form = NeedAgeForm.new(params[:need_age_form])
+      if @need_age_form.valid?
+        @volunteer.update_attributes(params.require(:need_age_form).permit(:birthdate, :adult))
+      else
+        render partial: "need_age"
+        return
+      end
+    end
+
+    # Check that we have the necessary info for check-in, otherwise put up forms
+    # Do we need to determine age?
+    if @volunteer.birthdate.blank? && (@volunteer.adult != true)
+      @need_age_form = NeedAgeForm.new()
+      render partial: "need_age"
+      return
+    end
+    # Do we need a waiver?
+    if Utilities:: Utilities.system_setting(:waivers_at_checkin)
+      @waiver_type = need_waiver_type(@volunteer)
+      if @waiver_type && !params[:skip_waiver]
+        last_waiver = last_waiver(@volunteer.id)
+        # If a minor and we don't have a guardian yet, get one
+        if @waiver_type == WaiverText.waiver_types[:minor] && !@guardian
+          guardian_id = last_waiver ? last_waiver.guardian_id : nil
+          @guardian = guardian_id ? Volunteer.including_pending.find(guardian_id) : nil
+          @search_form = SearchForm.new()
+          render partial: "guardian_search"
+          return
+        else
+          # We have what we need, get waiver signed
+          @need_waiver_form = NeedWaiverForm.new()
+          render partial: "need_waiver"
+          return
+        end
+      end
+    end
+
+    # All good, ready to check-in
+
+    @check_in_form = CheckInForm.new(check_in_time:  Time.now.strftime("%l:%M %p"), volunteer: @volunteer, workday: @workday)
+    render partial: "check_in"
+
   end
 
 
@@ -121,22 +205,22 @@ class SelfTrackingController < ApplicationController
     @workday_volunteer = @workday.workday_volunteers.find(params[:workday_volunteer_id])
 
     if params[:check_out_form].present?
-	    @check_out_form = CheckOutForm.new(params[:check_out_form].merge(workday_volunteer: @workday_volunteer))
-    if @check_out_form.valid?
-		  @workday_volunteer.end_time = Time.strptime(@check_out_form.check_out_time, "%I:%M %P").strftime("%H:%M:%S")
-		if @workday_volunteer.valid?
-		  @workday_volunteer.save
-		  flash[:success] = "#{@workday_volunteer.volunteer.name} successfully checked out."
-		  render :text => "success"
-		else
-		  render partial: "check_out"
-		end
+      @check_out_form = CheckOutForm.new(params[:check_out_form].merge(workday_volunteer: @workday_volunteer))
+      if @check_out_form.valid?
+        @workday_volunteer.end_time = Time.strptime(@check_out_form.check_out_time, "%I:%M %P").strftime("%H:%M:%S")
+        if @workday_volunteer.valid?
+          @workday_volunteer.save
+          flash[:success] = "#{@workday_volunteer.volunteer.name} successfully checked out."
+          render :text => "success"
+        else
+          render partial: "check_out"
+        end
       else
-		render partial: "check_out"
+        render partial: "check_out"
       end
     else
       @check_out_form = CheckOutForm.new(
-		      workday_volunteer: @workday_volunteer, check_out_time:  Time.now.strftime("%l:%M %p"))
+          workday_volunteer: @workday_volunteer, check_out_time:  Time.now.strftime("%l:%M %p"))
       render partial: "check_out"
     end
   end
@@ -203,17 +287,51 @@ class CheckInForm
   validate :overlapping_check_in, :if => lambda { @check_in_time.present? }
 
   def overlapping_check_in
-  	check_in_time = Time.strptime(@check_in_time, "%I:%M %P").strftime("%H:%M:%S")
+    check_in_time = Time.strptime(@check_in_time, "%I:%M %P").strftime("%H:%M:%S")
 
-  	# Don't allow overlapping check-ins.
-  	if @workday.workday_volunteers.where(
-  		"(volunteer_id = :volunteer_id) AND (start_time <= :time) AND ((end_time IS NULL) OR (end_time >= :time))",
-  		{volunteer_id: @volunteer.id, time: check_in_time}
-	   ).count > 0
-  	  errors.add(:base, "You are already checked in at this time.")
-	  end
+    # Don't allow overlapping check-ins.
+    if @workday.workday_volunteers.where(
+        "(volunteer_id = :volunteer_id) AND (start_time <= :time) AND ((end_time IS NULL) OR (end_time >= :time))",
+        {volunteer_id: @volunteer.id, time: check_in_time}
+    ).count > 0
+      errors.add(:base, "You are already checked in at this time.")
+    end
   end
 end
+
+class NeedWaiverForm
+  include ActiveModel::Model
+  attr_accessor :volunteer, :guardian, :waiver_type
+end
+
+class NeedGuardianForm
+  include ActiveModel::Model
+  attr_accessor :volunteer, :guardian
+  validates_presence_of :guardian
+  validate :guardian_not_self
+
+  def guardian_not_self
+    if @guardian.id == @volunteer.id
+      errors.add(:base, "You can't be the guardian")
+    end
+  end
+end
+
+class NeedAgeForm
+  include ActiveModel::Model
+  attr_accessor :birthdate, :adult
+  validate :birthdate_or_adult
+
+  def birthdate_or_adult
+    if @birthdate.blank? && (@adult != "1")
+      puts "adding error"
+      errors.add(:need_age, "Enter your birthdate or declare that you are #{Utilities::Utilities.system_setting(:adult_age)} or older.")
+    else
+      puts "No errors"
+    end
+  end
+end
+
 
 class CheckOutForm
   include ActiveModel::Model
@@ -222,31 +340,31 @@ class CheckOutForm
   validate :overlapping_check_out, :if => lambda { @check_out_time.present? }
 
   def overlapping_check_out
-	end_time = Time.strptime(@check_out_time, "%I:%M %P")
-	workday = @workday_volunteer.workday
-	volunteer = @workday_volunteer.volunteer
+    end_time = Time.strptime(@check_out_time, "%I:%M %P")
+    workday = @workday_volunteer.workday
+    volunteer = @workday_volunteer.volunteer
 
-	# Confirm that check out time is after the check in time.
-	if end_time.strftime("%H%M%S").to_i <= @workday_volunteer.start_time.strftime("%H%M%S").to_i
-	  errors.add(:check_out_time, "must be after the check-in time.")
-	else
-	  # Don't allow overlapping check outs.
-	  overlapping_shifts = workday.workday_volunteers.where(
-		"(volunteer_id = :volunteer_id) AND (id != :this_workday_volunteer_id) AND
+    # Confirm that check out time is after the check in time.
+    if end_time.strftime("%H%M%S").to_i <= @workday_volunteer.start_time.strftime("%H%M%S").to_i
+      errors.add(:check_out_time, "must be after the check-in time.")
+    else
+      # Don't allow overlapping check outs.
+      overlapping_shifts = workday.workday_volunteers.where(
+          "(volunteer_id = :volunteer_id) AND (id != :this_workday_volunteer_id) AND
 		(start_time > :this_start_time) AND (:this_end_time >= start_time)",
-		{
-		  volunteer_id: volunteer.id, this_workday_volunteer_id: @workday_volunteer.id,
-		  this_start_time: @workday_volunteer.start_time.strftime("%H:%M:%S"),
-		  this_end_time: end_time.strftime("%H:%M:%S")
-		})
-	  if overlapping_shifts.count > 0
-		errors.add(
-		  :base,
-		  "You have another shift starting at %{next_shift}, you must check out before its start." % {
-			next_shift: overlapping_shifts.first.start_time.strftime("%l:%M %P")
-		  }
-		)
-	  end
-	end
+          {
+              volunteer_id: volunteer.id, this_workday_volunteer_id: @workday_volunteer.id,
+              this_start_time: @workday_volunteer.start_time.strftime("%H:%M:%S"),
+              this_end_time: end_time.strftime("%H:%M:%S")
+          })
+      if overlapping_shifts.count > 0
+        errors.add(
+            :base,
+            "You have another shift starting at %{next_shift}, you must check out before its start." % {
+                next_shift: overlapping_shifts.first.start_time.strftime("%l:%M %P")
+            }
+        )
+      end
+    end
   end
 end

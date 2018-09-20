@@ -21,6 +21,8 @@ one:
   first_contact_date: <%= 10.day.ago.to_s(:db) %>
   background_check_date: <%= 10.day.ago.to_s(:db) %>
   waiver_date: <%= 10.day.ago.to_s(:db) %>
+  birthdate: <%= 50.years.ago.to_s(:db) %>
+  adult: true
 
 duplicate:
   first_name: TimothyDup
@@ -46,6 +48,8 @@ duplicate:
   first_contact_type_id: master
   background_check_date: <%= 5.day.ago.to_s(:db) %>
   waiver_date: <%= 10.day.ago.to_s(:db) %>
+  birthdate: <%= 10.years.ago.to_s(:db) %>
+  adult: false
 
 
 <% 30.times do |n| %>
@@ -91,22 +95,26 @@ master:
   notes: A bunch of notes
 
 pending_one:
-  first_name: Tim
+  first_name: Tom
   last_name: Smith
   home_phone: 608-848-1234
   agree_to_background_check: true
+  adult: false
+  birthdate: <%= 10.years.ago.to_s(:db) %>
   needs_review: true
 
 pending_two:
   first_name: Tom
   last_name: Jones
   agree_to_background_check: true
+  birthdate: <%= 10.years.ago.to_s(:db) %>
   needs_review: true
 
 pending_three:
   first_name: Jane
   last_name: Smith
   agree_to_background_check: true
+  adult: true
   needs_review: true
 
 minor:

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180730192659) do
+ActiveRecord::Schema.define(version: 20180910225614) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -157,6 +157,10 @@ ActiveRecord::Schema.define(version: 20180730192659) do
     t.datetime "updated_at",          null: false
     t.string   "adult_waiver_text"
     t.string   "minor_waiver_text"
+    t.integer  "waiver_valid_days"
+    t.boolean  "allow_waiver_skip"
+    t.integer  "adult_age"
+    t.boolean  "waivers_at_checkin"
   end
 
   create_table "users", force: :cascade do |t|
@@ -243,6 +247,14 @@ ActiveRecord::Schema.define(version: 20180730192659) do
   add_index "volunteers", ["first_contact_type_id"], name: "index_volunteers_on_first_contact_type_id", using: :btree
   add_index "volunteers", ["old_id"], name: "index_volunteers_on_old_id", using: :btree
 
+  create_table "waiver_texts", force: :cascade do |t|
+    t.string   "filename"
+    t.binary   "data"
+    t.integer  "waiver_type"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "waivers", force: :cascade do |t|
     t.integer  "volunteer_id"
     t.integer  "guardian_id"
@@ -254,6 +266,8 @@ ActiveRecord::Schema.define(version: 20180730192659) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.datetime "deleted_at"
+    t.string   "filename"
+    t.binary   "data"
   end
 
   add_index "waivers", ["deleted_at"], name: "index_waivers_on_deleted_at", using: :btree

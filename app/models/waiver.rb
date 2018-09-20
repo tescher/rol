@@ -6,21 +6,40 @@ class Waiver < ActiveRecord::Base
   validates_date :date_signed, on_or_before: lambda { Date.today }, allow_blank: false
   validates_date :birthdate, allow_blank: true
   validate :check_age_or_guardian_recorded
-  validate :esign_must_include_text
+
+  def initialize(params = {})
+    @file = params.delete(:file)
+    super
+    if @file
+      self.filename = sanitize_filename(@file.original_filename)
+      self.data = @file.read
+    end
+  end
+
+  def effective_date_signed
+    self.date_signed || self.created_at.to_date
+  end
 
 
   private
 
+  def sanitize_filename(filename)
+    # Get only the filename, not the whole path (for IE)
+    # Thanks to this article I just found for the tip: http://mattberther.com/2007/10/19/uploading-files-to-a-database-using-rails
+    return File.basename(filename)
+  end
+
+  def pdf_only
+    if (@file) && (@bypass_file != true) && (@file.content_type != 'application/pdf')
+      errors.add(:file, 'File type must be PDF')
+    end
+  end
+
   def check_age_or_guardian_recorded
-    if (self.adult != true) && !self.birthdate.present? && !self.guardian_id.present?
+    if (self.adult != true) && !Volunteer.including_pending.find(self.volunteer_id).birthdate.present? && !self.guardian_id.present?
       errors.add(:adult, "Volunteer must be marked as an adult, have a recorded birthdate, or waiver signed by a guardian")
     end
   end
 
-  def esign_must_include_text
-    if (self.e_sign == true) && !self.waiver_text.present?
-      errors.add(:e_sign, "E-signed waiver missing saved waiver text")
-    end
-  end
 
 end

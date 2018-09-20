@@ -1,7 +1,7 @@
 <% provide(:title, 'Waivers') %>
 <h1>Waivers for <%= @parent.name %></h1>
 
-<%= form_for(@parent) do |f| %>
+<%= form_for(@parent, html: { :multipart => true }) do |f| %>
     <%= @object = f.object
         @waivers = @parent.waivers.order("date_signed DESC")
         render 'shared/error_messages' %>
@@ -11,8 +11,7 @@
       <tr>
         <th class="col-md-1">Signed By</th>
         <th class="col-md-1">Date Signed</th>
-        <th class="col-md-1">Vol Birthdate</th>
-        <th class="col-md-1">Vol is Adult?</th>
+        <th class="col-md-1">Adult waiver?</th>
         <th class="col-md-2">E-sign</th>
         <th class="col-md-1">Waiver Text</th>
         <th class="col-md-1"></th>

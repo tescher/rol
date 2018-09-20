@@ -9,7 +9,7 @@ class PendingVolunteersController < ApplicationController
   def new
     @object = Volunteer.pending.new()
     @launched_from_self_tracking = params[:launched_from_self_tracking]
-	@self_tracking_enabled = session[:self_tracking_workday_id].present? && Workday.exists?(session[:self_tracking_workday_id])
+    @self_tracking_enabled = session[:self_tracking_workday_id].present? && Workday.exists?(session[:self_tracking_workday_id])
     session[:referer] = request.referer
     @submit_name = "Submit"
     render 'new'
@@ -33,9 +33,11 @@ class PendingVolunteersController < ApplicationController
       @volunteer = Volunteer.find(params[:matching_id])
       volunteer_params = {}
 
-      params[:pv_use_fields].each do |findex|
-        item = Volunteer.pending_volunteer_merge_fields_table.key(findex.to_i)
-        volunteer_params[item] = pending_volunteer_params[item]
+      if params[:pv_use_fields]
+        params[:pv_use_fields].each do |findex|
+          item = Volunteer.pending_volunteer_merge_fields_table.key(findex.to_i)
+          volunteer_params[item] = pending_volunteer_params[item]
+        end
       end
 
       if (params[:use_notes].downcase != "ignore")
@@ -94,18 +96,40 @@ class PendingVolunteersController < ApplicationController
       end
 
       if @volunteer.update_attributes(volunteer_params)
-        # Move workdays
+        # Move workdays and waivers
         WorkdayVolunteer.where("volunteer_id = #{@object.id}").each do |sw|
           workday = sw.dup
           workday.volunteer_id = @volunteer.id
           workday.save!
           sw.destroy!
         end
+        deletable_waivers = []
+        Waiver.where("volunteer_id = #{@object.id}").each do |swv|
+          waiver = swv.dup
+          waiver.volunteer_id = @volunteer.id
+          waiver.save!
+          deletable_waivers.push swv
+            # swv.really_destroy!
+        end
+        Waiver.where("guardian_id = #{@object.id}").each do |swv|
+          waiver = swv.dup
+          waiver.guardian_id = @volunteer.id
+          waiver.save!
+          unless deletable_waivers.include?(swv)
+            deletable_waivers.push swv
+          end
+            # swv.really_destroy!
+        end
 
-		flash[:success] = "Volunteer updated."
+        # Need to do it this way because a person can be a volunteer and guardian on the same waiver
+        deletable_waivers.each do |wv|
+          wv.really_destroy!
+        end
+
+        flash[:success] = "Volunteer updated."
         @object.deleted_reason = "Merged pending volunteer into #{@volunteer.id}"
-        @object.save
-        @object.destroy
+        @object.save!
+        @object.destroy!
         redirect_to pending_volunteers_path
       else
         @volunteer.errors.each {|attr, error| @object.errors.add(attr, error)}
@@ -140,9 +164,9 @@ class PendingVolunteersController < ApplicationController
     end
 
     @launched_from_self_tracking = params[:launched_from_self_tracking]
-	@self_tracking_enabled = session[:self_tracking_workday_id].present? && Workday.exists?(session[:self_tracking_workday_id])
-	# Don't check recaptcha is self tracking is enabled.
-	status = @self_tracking_enabled ? true : verify_google_recptcha(GOOGLE_SECRET_KEY,params["g-recaptcha-response"])
+    @self_tracking_enabled = session[:self_tracking_workday_id].present? && Workday.exists?(session[:self_tracking_workday_id])
+    # Don't check recaptcha is self tracking is enabled.
+    status = @self_tracking_enabled ? true : verify_google_recptcha(GOOGLE_SECRET_KEY,params["g-recaptcha-response"])
 
     if status && @object.save  # Order is important here!
       render 'success'
@@ -163,8 +187,8 @@ class PendingVolunteersController < ApplicationController
 
   def pending_volunteer_params
     modified_params = params.require(:volunteer).permit(
-      :first_name, :last_name, :address, :city, :state, :zip, :home_phone, :work_phone,
-      :mobile_phone, :email, :notes, :occupation, :emerg_contact_name, :emerg_contact_phone, :limitations, :medical_conditions, :agree_to_background_check, int_ids: [], interest_ids: []
+        :first_name, :last_name, :address, :city, :state, :zip, :home_phone, :work_phone,
+        :mobile_phone, :email, :notes, :occupation, :emerg_contact_name, :emerg_contact_phone, :limitations, :medical_conditions, :agree_to_background_check, :birthdate, :adult, int_ids: [], interest_ids: []
     )
     if (!modified_params[:int_ids].nil?)
       modified_params[:interest_ids] = modified_params[:int_ids].dup

@@ -13,10 +13,15 @@ class SettingsController < ApplicationController
   def update
     @object = Setting.find(1)
     if @object.update_attributes(setting_params)
-      flash[:success] = "Settings updated"
-      WillPaginate.per_page = Utilities::Utilities.system_setting(:records_per_page)  # This one needs to update now
-      redirect_to root_path
+      flash[:success] = "Settings saved"
+      if !params[:to_waivers].blank?
+        redirect_to waiver_texts_path
+      else
+        WillPaginate.per_page = Utilities::Utilities.system_setting(:records_per_page)  # This one needs to update now
+        redirect_to root_path
+      end
     else
+      @no_delete = true
       render 'edit'
     end
   end
@@ -25,7 +30,7 @@ class SettingsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def setting_params
-    params.require(:setting).permit(:site_title, :org_title, :org_short_title, :org_site, :old_system_site, :old_system_name, :no_pagination, :records_per_page, :min_password_length, :adult_waiver_text, :minor_waiver_text)
+    params.require(:setting).permit(:site_title, :org_title, :org_short_title, :org_site, :old_system_site, :old_system_name, :no_pagination, :records_per_page, :min_password_length, :adult_age, :waiver_valid_days, :waivers_at_checkin, :allow_waiver_skip)
   end
 
 

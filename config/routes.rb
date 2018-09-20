@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :waiver_texts
   resources :waivers do
     collection do
       get 'signed_by' => 'waivers#signed_by'

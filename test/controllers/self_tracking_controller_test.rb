@@ -80,7 +80,7 @@ class SelfTrackingControllerTest < ActionController::TestCase
     assert_equal "Smith", results[0].last_name
     assert results[0].needs_review
 
-    assert_equal "Tim", results[1].first_name
+    assert_equal "Tom", results[1].first_name
     assert_equal "Smith", results[1].last_name
     assert results[1].needs_review
 

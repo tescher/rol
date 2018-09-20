@@ -1,0 +1,25 @@
+<div class="row">
+  <li>
+    <% if @waiver_type_displayed[waiver_text.waiver_type] != true %>
+      <strong>
+    <% end %>
+    <div class="col-md-3 col-md-offset-1">
+      <%= waiver_text.filename %>
+    </div>
+    <div class="col-md-2">
+        <%= waiver_text.waiver_type %>
+    </div>
+    <div class="col-md-3">
+      <%= waiver_text.created_at.strftime(" %l:%M %P, %A, %B %-d, %Y") %>
+    </div>
+    <% if @waiver_type_displayed[waiver_text.waiver_type] != true %>
+      </strong>
+      <% @waiver_type_displayed[waiver_text.waiver_type] = true %>
+    <% end %>
+    <div class="col-md-3">
+      <%=  link_to 'Download', waiver_text, method: :get %>
+    </div>
+
+
+  </li>
+</div>

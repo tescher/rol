@@ -234,7 +234,7 @@ class VolunteersController < ApplicationController
         @pending_volunteer = Volunteer.pending.find(params[:pending_volunteer_id])
         @num_workdays = WorkdayVolunteer.where(volunteer_id: params[:pending_volunteer_id])
         @volunteer.pending_volunteer_id = @pending_volunteer.id
-        ["first_name", "last_name", "address", "city", "state", "zip", "phone", "email", "occupation", "emerg_contact_phone", "emerg_contact_name", "notes", "limitations", "medical_conditions", "agree_to_background_check", "interests"].each do |column|
+        ["first_name", "last_name", "address", "city", "state", "zip", "phone", "email", "occupation", "emerg_contact_phone", "emerg_contact_name", "notes", "limitations", "medical_conditions", "agree_to_background_check", "birthdate", "adult", "interests"].each do |column|
           if column == "phone"
             @volunteer.send("home_phone=", @pending_volunteer.send(column))
           else
@@ -322,9 +322,6 @@ class VolunteersController < ApplicationController
           last_waiver = last_waiver(@volunteer.id)
           puts last_waiver.to_yaml
           if !last_waiver.nil?
-            if @volunteer.birthdate.nil? && last_waiver.birthdate
-              @volunteer.birthdate = last_waiver.birthdate
-            end
             if @volunteer.try(:adult) == false && last_waiver.adult
               @volunteer.adult = last_waiver.adult
             end
@@ -501,11 +498,27 @@ class VolunteersController < ApplicationController
           donation.save!
           sd.destroy!
         end
+        deletable_waivers = []
         Waiver.where("volunteer_id = #{@source_volunteer.id}").each do |swv|
           waiver = swv.dup
           waiver.volunteer_id = @object.id
           waiver.save!
-          swv.really_destroy!
+          deletable_waivers.push swv
+          # swv.really_destroy!
+        end
+        Waiver.where("guardian_id = #{@source_volunteer.id}").each do |swv|
+          waiver = swv.dup
+          waiver.guardian_id =@object.id
+          waiver.save!
+          unless deletable_waivers.include?(swv)
+            deletable_waivers.push swv
+          end
+          # swv.really_destroy!
+        end
+
+        # Need to do it this way because a person can be a volunteer and guardian on the same waiver
+        deletable_waivers.each do |wv|
+          wv.really_destroy!
         end
 
         @source_volunteer.deleted_reason = "Merged with #{@object.id}"
@@ -721,7 +734,7 @@ class VolunteersController < ApplicationController
     params.require(:volunteer).permit(:first_name, :last_name, :middle_name, :email, :occupation, :employer_id, :church_id,
                                       :address, :city, :state, :zip, :home_phone, :work_phone, :mobile_phone,
                                       :notes, :remove_from_mailing_list, :waiver_date, :birthdate, :adult, :first_contact_date, :first_contact_type_id, :pending_volunteer_id, :agree_to_background_check, :background_check_date, :emerg_contact_name, :emerg_contact_phone, :limitations, :medical_conditions, interest_ids: [], volunteer_category_ids: [], donations_attributes: [:id, :date_received, :value, :ref_no, :item, :anonymous, :in_honor_of, :designation, :notes, :receipt_sent, :volunteer_id, :organization_id, :donation_type_id, :_destroy],
-                                      waivers_attributes: [:id, :guardian_id, :adult, :birthdate, :date_signed, :waiver_text, :e_sign, :_destroy])
+                                      waivers_attributes: [:id, :guardian_id, :adult, :birthdate, :date_signed, :waiver_text, :e_sign, :file, :_destroy])
   end
   def volunteer_search_params
     search_params = params.permit(:name, :city, :workday_since, interest_ids: [], volunteer_category_ids: [])

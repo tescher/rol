@@ -1,6 +1,6 @@
 <tr class="hide_on_remove">
   <td><%= if f.object.guardian_id
-            guardian = Volunteer.find(f.object.guardian_id)
+            guardian = Volunteer.including_pending.find(f.object.guardian_id)
           end
           if !guardian.nil?
             label_tag :signer, guardian.name
@@ -12,19 +12,23 @@
   <td>
     <div class="field">
       <div class='input-group date' >
-        <%= f.text_field :date_signed,  value: f.object.date_signed.nil? ? Date.today.strftime("%m/%d/%Y") : f.object.date_signed.strftime("%m/%d/%Y"), readonly: @readonly, id: 'signeddatepicker', autofocus: 'true' %>
+        <%= f.text_field :date_signed,  value: f.object.date_signed.nil? ? Date.today.strftime("%m/%d/%Y") : f.object.date_signed.strftime("%m/%d/%Y"), disabled: @readonly, id: 'signeddatepicker', autofocus: 'true' %>
       </div>
     </div>
   </td>
-  <td>
-    <div class="field">
-      <div class='input-group date' >
-        <%= f.text_field :birthdate, value: (f.object.birthdate && f.object.birthdate.strftime("%m/%d/%Y")), readonly: @readonly, id: 'birthdatepicker'%></td>
-      </div>
-    </div>
-  <td><%= f.check_box :adult, readonly: @readonly %></td>
-  <td><%= f.check_box :e_sign, readonly: @readonly  %></td>
-  <td>no text stored</td>
+  <td><%= f.check_box :adult, disabled: @readonly %></td>
+  <td><%= f.check_box :e_sign, disabled: true  %></td>
+  <td>  <% if @readonly %>
+          <% waiver_text = effective_waiver_text(f.object) %>
+          <% if waiver_text %>
+            <%= link_to 'Download', waiver_text, method: :get %>
+          <% else %>
+          <i>Not available</i>
+          <% end %>
+        <% else %>
+          <%= f.file_field :file, accept: 'application/pdf', class: "form-control" %>
+        <% end %>
+  </td>
   <td><%= f.hidden_field :_destroy %>
     <%= link_to "remove", "#", class: "remove_fields" %></td>
   <%= if !guardian.nil?

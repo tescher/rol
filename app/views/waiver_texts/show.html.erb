@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Filename:</strong>
+  <%= @waiver_text.filename %>
+</p>
+
+<p>
+  <strong>Data:</strong>
+  <%= @waiver_text.data %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @waiver_text.waiver_type %>
+</p>
+
+<%= link_to 'Edit', edit_waiver_text_path(@waiver_text) %> |
+<%= link_to 'Back', waiver_texts_path %>

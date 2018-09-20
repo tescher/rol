@@ -1,0 +1,40 @@
+<% provide(:title, 'Waivers') %>
+
+<h1>Waivers</h1>
+<h5 class="center">Currently active <strong>highlighted</strong></h5>
+<div class="container scrolled-listing">
+
+  <% if @waiver_texts.count > 0 %>
+    <ul class="listing">
+    <div class="row">
+      <li>
+        <div class="col-md-3 col-md-offset-1">
+          <h4>Original Filename</h4>
+        </div>
+        <div class="col-md-2">
+          <h4>Type</h4>
+        </div>
+        <div class="col-md-3">
+          <h4>Active as of</h4>
+        </div>
+      </li>
+    </div>
+
+      <% @waiver_type_displayed = Hash.new %>
+      <%= render @waiver_texts %>
+    </ul>
+  <% else %>
+    <p class="center">No waivers found. Click New Waiver to create one.</p>
+  <% end %>
+
+</div>
+
+
+<div class="row">
+  <div class="col-md-11">
+    <div class="actions pull-right">
+      <%= link_to 'New Waiver', new_waiver_text_path, class: "btn btn-primary" %>
+      <%= link_to 'Back', settings_edit_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>

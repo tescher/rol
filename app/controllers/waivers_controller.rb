@@ -8,8 +8,7 @@ class WaiversController < ApplicationController
   def index
     if !params[:volunteer_id].empty?
       @waivers = Waiver.where(volunteer_id: params[:volunteer_id])
-      puts @waivers.count
-    else
+     else
       @waivers = Waiver.all
     end
   end
@@ -17,11 +16,14 @@ class WaiversController < ApplicationController
   # GET /waivers/1
   # GET /waivers/1.json
   def show
+    send_data(@waiver.data,
+              type: 'application/pdf',
+              filename: @waiver.filename)
   end
 
   # GET /waivers/new
   def new
-    @waiver = Waiver.new
+    @waiver = Waiver.new()
   end
 
   # GET /waivers/1/edit
@@ -70,8 +72,7 @@ class WaiversController < ApplicationController
 
   def signed_by
     if params[:dialog] == "true"
-      @volunteer = Volunteer.find(session[:volunteer_id])
-      puts "Volunteer: #{@volunteer.id}"
+      @volunteer = Volunteer.including_pending.find(session[:volunteer_id])
       render partial: "dialog_signed_by"
     end
   end
@@ -84,6 +85,6 @@ class WaiversController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def waiver_params
-    params.require(:waiver).permit(:volunteer_id, :guardian_id, :adult, :birthdate, :date_signed, :waiver_text, :e_sign)
+    params.require(:waiver).permit(:volunteer_id, :guardian_id, :adult, :date_signed, :waiver_text, :e_sign, :file)
   end
 end

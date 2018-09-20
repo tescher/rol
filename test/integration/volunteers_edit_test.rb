@@ -1,10 +1,12 @@
 require 'test_helper'
+require 'waivers_helper'
 
 class VolunteersEditTest < ActionDispatch::IntegrationTest
 
   def setup
     @user = users(:one)
     @volunteer = volunteers(:one)
+    @volunteer2 = volunteers(:volunteer_2)
     @duplicate_volunteer = volunteers(:duplicate)
     @minor_volunteer = volunteers(:minor)
     @guardian_volunteer = volunteers(:guardian)
@@ -33,11 +35,13 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
         waiver.volunteer_id = v.id
         waiver.adult = true
         waiver.birthdate = DateTime.parse("2000-02-01")
-        waiver.waiver_text = "Some text for waiver #{n}."
+        waiver.data = "Some text for waiver #{n}."
         waiver.date_signed = DateTime.parse("2018-06-01")
         waiver.save
       end
-      workday_volunteer = WorkdayVolunteer.create(workday: workdays(:one), volunteer: v, hours: 4)
+      WaiverText.create(waiver_type: WaiverText.waiver_types[:adult], bypass_file: true, data: "Adult master text", created_at: DateTime.parse("2018-07-01"))
+      WaiverText.create(waiver_type: WaiverText.waiver_types[:minor], bypass_file: true, data: "Minor master text", created_at: DateTime.parse("2018-07-01"))
+      WorkdayVolunteer.create(workday: workdays(:one), volunteer: v, hours: 4)
       interest1 = interests(:one)
       interest2 = interests(:two)
       interest3 = interests(:three)
@@ -61,6 +65,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
         volunteer_category_volunteer.volunteer = v
         volunteer_category_volunteer.volunteer_category = category2
         volunteer_category_volunteer.save
+        Waiver.create(volunteer_id: v.id, date_signed: DateTime.parse("2010-06-01"), e_sign:true, adult: false, guardian_id: @volunteer2.id)
       else
         volunteer_interest = VolunteerInterest.new
         volunteer_interest.volunteer = v
@@ -78,6 +83,10 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
         volunteer_category_volunteer.volunteer = v
         volunteer_category_volunteer.volunteer_category = category3
         volunteer_category_volunteer.save
+        Waiver.create(volunteer_id: v.id, date_signed: DateTime.parse("2010-06-01"), e_sign:true, adult: true)
+        Waiver.create(volunteer_id: @minor_volunteer.id, guardian_id: v.id, e_sign: true, date_signed: DateTime.parse("2010-06-01"))
+        # Create a weird situation where a person is both volunteer and guardian on a waiver. This waiver should essentially be "merged" into one target waiver
+        Waiver.create(volunteer_id: @volunteer.id, guardian_id: v.id, e_sign: true, date_signed: DateTime.parse("2010-06-01"))
       end
     end
   end
@@ -97,6 +106,9 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
         i.destroy
       end
       Waiver.where("volunteer_id = #{v.id}") do |i|
+        i.really_destroy!
+      end
+      Waiver.where("guardian_id = #{v.id}") do |i|
         i.really_destroy!
       end
       if v.persisted?
@@ -241,7 +253,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     assert_equal before_wd, after_wd
     assert_equal before_wdv - 1, after_wdv
     assert_equal before_c - 2, after_c
-    assert_equal before_wv - 5, after_wv
+    assert_equal before_wv - 7, after_wv
 
     @volunteer.reload
     assert(@volunteer.deleted?)
@@ -283,22 +295,19 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     workdays_dup_count = workdays_dup.count
     volunteer_interests = VolunteerInterest.where("volunteer_id = #{@volunteer.id}").all
     volunteer_interests_count = volunteer_interests.count
-    volunteer_interests_dup = VolunteerInterest.where("volunteer_id = #{@duplicate_volunteer.id}").all
-    # volunteer_interests_dup_count = volunteer_interests_dup.count
     donations = Donation.where("volunteer_id = #{@volunteer.id}").all
     donations_count = donations.count
     donations_dup = Donation.where("volunteer_id = #{@duplicate_volunteer.id}").all
     donations_dup_count = donations_dup.count
-    waivers = Waiver.where("volunteer_id = #{@volunteer.id}").all
+    waivers = Waiver.where("(volunteer_id = #{@volunteer.id}) OR (guardian_id = #{@volunteer.id})").distinct.all
     waivers_count = waivers.count
-    waivers_dup = Waiver.where("volunteer_id = #{@duplicate_volunteer.id}").all
+    waivers_dup = Waiver.where("(volunteer_id = #{@duplicate_volunteer.id}) OR (guardian_id = #{@duplicate_volunteer.id})").distinct.all
     waivers_dup_count = waivers_dup.count
     notes = @volunteer.notes
-    # notes_dup = @duplicate_volunteer.notes
     volunteer_category_volunteers = VolunteerCategoryVolunteer.where("volunteer_id = #{@volunteer.id}").all
     volunteer_category_volunteers_count = volunteer_category_volunteers.count
 
-    source_use_field_list = [:first_name, :last_name, :waiver_date, :remove_from_mailing_list, :agree_to_background_check, :church_id, :home_phone]
+    source_use_field_list = [:first_name, :last_name, :waiver_date, :remove_from_mailing_list, :agree_to_background_check, :church_id, :home_phone, :adult, :birthdate]
     source_use_fields = source_use_field_list.map {|f,i| Volunteer.merge_fields_table[f] }
 
     use_notes = "ignore"   # Skip notes and interests and categories on this first pass
@@ -335,9 +344,11 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     assert_equal(new_total, old_total, "Donation total #{new_total} should be equal")
     # puts new_total,old_total
 
-    # Did waivers move and is the amount the same?
-    new_waivers = Waiver.where("volunteer_id = #{@volunteer.id}").all
-    assert_equal(new_waivers.count, waivers_count + waivers_dup_count, "Number of waivers (#{waivers_count + waivers_dup_count}) should be equal")
+    # Did waivers move and is the amount the same? Also check for edge case where volunteer was both volunteer and guardian on waiver after merge
+    new_waivers = Waiver.where("(volunteer_id = #{@volunteer.id}) OR (guardian_id = #{@volunteer.id})").distinct.all
+    assert_equal(new_waivers.count, waivers_count + waivers_dup_count - 1, "Number of waivers (#{waivers_count + waivers_dup_count - 1}) should be equal")
+    merged_waivers = Waiver.where("(volunteer_id = #{@volunteer.id}) AND (guardian_id = #{@volunteer.id})").distinct.all
+    assert_equal(merged_waivers.count, 1, "Number of merged waivers (#{1}) should be equal")
 
     # We had "ignore" for notes and interests and categories, make sure they stayed as is
     assert_equal(@volunteer.notes, notes, "Notes '#{notes}' should have remained as is")
@@ -351,6 +362,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     assert_equal(WorkdayVolunteer.where("volunteer_id = #{@duplicate_volunteer.id}").count, 0, "All workday shifts from source gone")
     assert_equal(Donation.where("volunteer_id = #{@duplicate_volunteer.id}").count, 0, "All donations from source gone")
     assert_equal(Waiver.where("volunteer_id = #{@duplicate_volunteer.id}").count, 0, "All waivers from source gone")
+    assert_equal(Waiver.where("guardian_id = #{@duplicate_volunteer.id}").count, 0, "All guardian waivers from source gone")
     assert_equal(VolunteerInterest.where("volunteer_id = #{@duplicate_volunteer.id}").count, 0, "All interests from source gone")
     assert_equal(VolunteerCategoryVolunteer.where("volunteer_id = #{@duplicate_volunteer.id}").count, 0, "All categories from source gone")
 
@@ -359,10 +371,8 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
   test "Merge with combined interests and categories" do
     log_in_as(@non_admin)
     volunteer_interests = VolunteerInterest.where("volunteer_id = #{@volunteer.id}").all
-    # volunteer_interests_count = volunteer_interests.count
     volunteer_interests_content = volunteer_interests.map {|v| v.interest_id}
     volunteer_interests_dup = VolunteerInterest.where("volunteer_id = #{@duplicate_volunteer.id}").all
-    # volunteer_interests_dup_count = volunteer_interests_dup.count
     volunteer_interests_dup_content = volunteer_interests_dup.map {|v| v.interest_id}
     volunteer_category_volunteers = VolunteerCategoryVolunteer.where("volunteer_id = #{@volunteer.id}").all
     volunteer_category_volunteers_content = volunteer_category_volunteers.map {|v| v.volunteer_category_id}
@@ -584,6 +594,17 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
 
   end
 
+  test "Get correct waiver text if text is on waiver" do
+    log_in_as(@admin)
+    assert_match /Some text for waiver/, effective_waiver_text(last_waiver(@volunteer.id)).data, "Waiver text should match volunteer waivers"
+    @waiver = Waiver.new(volunteer_id: @volunteer.id, e_sign: true, adult: true, date_signed: DateTime.parse("2018-07-01"), created_at: DateTime.parse("2018-07-01") )
+    @waiver.save!
+    assert_match /Adult master text/, effective_waiver_text(last_waiver(@volunteer.id)).data, "Waiver text should match adult master waiver"
+    @waiver.adult=false
+    @waiver.guardian_id = @guardian_volunteer.id
+    @waiver.save!
+    assert_match /Minor master text/, effective_waiver_text(last_waiver(@volunteer.id)).data, "Waiver text should match minor master waiver"
 
+  end
 
 end
