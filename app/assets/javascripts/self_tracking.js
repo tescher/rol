@@ -47,9 +47,9 @@ function continueNewVolunteerCheckin(checkinUrl) {
 }
 
 function hookupTimepicker(divSelector) {
-  alert(jstz.determine().name());
+  alert("Version 1: " + jstz.determine().name());
     //var defaultDate = moment.tz(new Date(), jstz.determine().name());
-    var defaultDate = moment().tz(jstz.determine().name());
+    var defaultDate = moment(new Date()).tz(jstz.determine().name());
   $("[id$='_time']").datetimepicker({
       format: 'h:mm A',
       defaultDate: defaultDate
