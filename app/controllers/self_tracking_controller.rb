@@ -141,10 +141,8 @@ class SelfTrackingController < ApplicationController
       @need_waiver_form = NeedWaiverForm.new(params[:need_waiver_form].merge(volunteer: @volunteer, guardian: @guardian))
       if @need_waiver_form.valid?
         if (@need_waiver_form.waiver_type.to_i == WaiverText.waiver_types[:adult].to_i)
-          puts "Creating adult waiver"
           Waiver.create(volunteer_id: @volunteer.id, e_sign: true, adult: true, date_signed: Time.zone.now.to_date)
         else
-          puts "Creating minor waiver"
           Waiver.create(volunteer_id: @volunteer.id, guardian_id: @guardian.id, e_sign: true, adult: false, date_signed: Time.zone.now.to_date)
         end
       else

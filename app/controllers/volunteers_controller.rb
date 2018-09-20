@@ -320,7 +320,6 @@ class VolunteersController < ApplicationController
           #Update last waiver date, birthdate and adult flag from last waiver if not already set
           @volunteer.reload
           last_waiver = last_waiver(@volunteer.id)
-          puts last_waiver.to_yaml
           if !last_waiver.nil?
             if @volunteer.try(:adult) == false && last_waiver.adult
               @volunteer.adult = last_waiver.adult

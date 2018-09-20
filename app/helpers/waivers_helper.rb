@@ -1,7 +1,6 @@
 module WaiversHelper
   def link_to_add_waiver_fields(volunteer_id, is_guardian)
     association = :waivers
-    puts "Is Guardian: #{is_guardian}"
     "add_fields_and_close(this, \'#{association}\', \'#{escape_javascript(add_waiver_fields(volunteer_id, is_guardian))}\', \'#{".add_waiver_fields"}\')"
   end
 
@@ -48,7 +47,6 @@ module WaiversHelper
     end
     if !waiver || ((DateTime.now.to_date - waiver.effective_date_signed) > Utilities::Utilities.system_setting(:waiver_valid_days))
       birthdate = volunteer.birthdate
-      puts "Birthdate #{birthdate}"
       if volunteer.adult || (birthdate && age(birthdate) >= Utilities::Utilities.system_setting(:adult_age))
         return WaiverText.waiver_types[:adult]
       else
