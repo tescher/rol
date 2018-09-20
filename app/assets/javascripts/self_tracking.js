@@ -51,7 +51,7 @@ function hookupTimepicker(divSelector) {
     var defaultDate = moment.tz(new Date(), jstz.determine().name());
   $("[id$='_time']").datetimepicker({
       format: 'h:mm A',
-      defaultDate: defaultDate
+      //defaultDate: defaultDate
       });
   $("[id$='_time']").on("dp.show", function(e) {
 	// Change the period button (AM/PM) to btn-default style instead of the btn-primary default that it uses.
