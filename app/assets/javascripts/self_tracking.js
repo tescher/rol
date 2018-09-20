@@ -50,7 +50,7 @@ function hookupTimepicker(divSelector) {
   $("[id$='_time']").datetimepicker({
       format: 'h:mm A'
       });
-  $("[id$='_time']").data("DateTimePicker").timeZone(jstz.determine().name())
+  //$("[id$='_time']").data("DateTimePicker").timeZone(jstz.determine().name())
   $("[id$='_time']").on("dp.show", function(e) {
 	// Change the period button (AM/PM) to btn-default style instead of the btn-primary default that it uses.
 	$(e.currentTarget.form).find("button[data-action='togglePeriod']").removeClass("btn-primary").addClass("btn-default");
