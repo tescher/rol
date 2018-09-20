@@ -49,7 +49,7 @@ function continueNewVolunteerCheckin(checkinUrl) {
 function hookupTimepicker(divSelector) {
   alert("Version 2: " + moment.tz(jstz.determine().name()).utcOffset());
     //var defaultDate = moment.tz(new Date(), jstz.determine().name());
-  var defaultDate = moment(new Date()).add(moment.tz(jstz.determine().name()).utcOffset());
+  var defaultDate = moment(new Date()).add(moment.tz(jstz.determine().name()).utcOffset(), "minutes");
   $("[id$='_time']").datetimepicker({
       format: 'h:mm A',
       defaultDate: defaultDate
