@@ -26,3 +26,6 @@
 *.swp
 
 .byebug_history
+
+# Ignore assets, build at deploy
+/public/assets/**
