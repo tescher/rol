@@ -48,10 +48,11 @@ function continueNewVolunteerCheckin(checkinUrl) {
 
 function hookupTimepicker(divSelector) {
   alert(jstz.determine().name());
-    var defaultDate = moment.tz(new Date(), jstz.determine().name());
+    //var defaultDate = moment.tz(new Date(), jstz.determine().name());
+    var defaultDate = moment();
   $("[id$='_time']").datetimepicker({
       format: 'h:mm A',
-      //defaultDate: defaultDate
+      defaultDate: defaultDate
       });
   $("[id$='_time']").on("dp.show", function(e) {
 	// Change the period button (AM/PM) to btn-default style instead of the btn-primary default that it uses.
