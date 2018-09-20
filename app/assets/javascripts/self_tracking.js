@@ -48,7 +48,7 @@ function continueNewVolunteerCheckin(checkinUrl) {
 
 function hookupTimepicker(divSelector) {
   $("[id$='_time']").datetimepicker({
-      useCurrent: false,
+      useCurrent: true,
       format: 'h:mm A'
       });
   //$("[id$='_time']").data("DateTimePicker").timeZone(jstz.determine().name())

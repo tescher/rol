@@ -191,7 +191,7 @@ class SelfTrackingController < ApplicationController
 
     # All good, ready to check-in
 
-    @check_in_form = CheckInForm.new(check_in_time:  Time.now.strftime("%l:%M %p"), volunteer: @volunteer, workday: @workday)
+    @check_in_form = CheckInForm.new(check_in_time:  nil, volunteer: @volunteer, workday: @workday)
     render partial: "check_in"
 
   end
