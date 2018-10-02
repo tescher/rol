@@ -256,7 +256,7 @@ class SelfTrackingController < ApplicationController
     elsif params[:login].present?
       redirect_to login_path(:target_url => self_tracking_launch_url(:id=> session[:self_tracking_workday_id], :check_out_all => true))
     else
-      @check_out_all_form = Check_out_all_form.new(workday: @workday, check_out_time: Time.now.strftime("%l:%M %p"))
+      @check_out_all_form = Check_out_all_form.new(workday: @workday, check_out_time: nil)
     end
   end
 end

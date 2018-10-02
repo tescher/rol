@@ -10,7 +10,7 @@
         <%= waiver_text.waiver_type %>
     </div>
     <div class="col-md-3">
-      <%= waiver_text.created_at.strftime(" %l:%M %P, %A, %B %-d, %Y") %>
+      <%= waiver_text.created_at.strftime(" %m/%d/%Y %l:%M %P") %>
     </div>
     <% if @waiver_type_displayed[waiver_text.waiver_type] != true %>
       </strong>
