@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: One
+  inactive: false
+
+two:
+  name: Two
+  inactive: false
+
+master:
+  name: master
+  inactive: false

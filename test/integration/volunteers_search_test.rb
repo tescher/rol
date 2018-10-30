@@ -104,7 +104,7 @@ class VolunteersSearchTest < ActionDispatch::IntegrationTest
     @past_workday_volunteer.save
     get search_volunteers_path
     assert_template 'volunteers/search'
-    get volunteers_path, {workday_since: 5.day.ago.strftime("%m/%d/%Y")}
+    get volunteers_path, {workday_since: 6.day.ago.strftime("%m/%d/%Y")}
     assert_select 'div[href=?]', edit_volunteer_path(@recent_volunteer)
     @recent_workday_volunteer.destroy
     @past_workday_volunteer.destroy

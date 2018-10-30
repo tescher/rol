@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @contact_method.name %>
+</p>
+
+<p>
+  <strong>Inactive:</strong>
+  <%= @contact_method.inactive %>
+</p>
+
+<%= link_to 'Edit', edit_contact_method_path(@contact_method) %> |
+<%= link_to 'Back', contact_methods_path %>

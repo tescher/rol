@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :contact_methods
   resources :waiver_texts
   resources :waivers do
     collection do

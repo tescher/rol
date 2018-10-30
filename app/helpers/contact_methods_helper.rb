@@ -1,0 +1,2 @@
+module ContactMethodsHelper
+end
