@@ -45,7 +45,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.4)
-    autoprefixer-rails (9.1.4)
+    autoprefixer-rails (9.3.1)
       execjs
     bcrypt (3.1.7)
     binding_of_caller (0.8.0)
@@ -116,24 +116,22 @@ GEM
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
       ruby_dep (~> 1.2)
-    loofah (2.2.2)
+    loofah (2.2.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     lumberjack (1.0.13)
-    mail (2.7.0)
+    mail (2.7.1)
       mini_mime (>= 0.1.1)
-    method_source (0.9.0)
+    method_source (0.9.1)
     mini_mime (1.0.1)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
-    moment_timezone-rails (0.5.14)
-      momentjs-rails (~> 2.15.1)
-    momentjs-rails (2.15.1)
+    momentjs-rails (2.20.1)
       railties (>= 3.1)
     multi_json (1.13.1)
     multi_xml (0.6.0)
     nenv (0.3.0)
-    nokogiri (1.8.4)
+    nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
     notiffany (0.1.1)
       nenv (~> 0.1)
@@ -142,7 +140,7 @@ GEM
       activerecord (>= 4.0, < 5.3)
     pg (0.21.0)
     possessive (1.0.1)
-    pry (0.11.3)
+    pry (0.12.0)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
     rack (1.6.10)
@@ -251,7 +249,6 @@ DEPENDENCIES
   jc-validates_timeliness
   jquery-rails (~> 4.2.0)
   jquery-ui-rails
-  moment_timezone-rails (= 0.5.14)
   momentjs-rails (>= 2.9.0)
   paranoia (~> 2.0)
   pg (= 0.21.0)
@@ -273,4 +270,4 @@ RUBY VERSION
    ruby 2.2.7p470
 
 BUNDLED WITH
-   1.16.1
+   1.16.5
