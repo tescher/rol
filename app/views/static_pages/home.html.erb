@@ -45,7 +45,8 @@
                   <li><h4><%= link_to "Volunteer Categories", volunteer_categories_path %></h4></li>
                   <li><h4><%= link_to "Organization Types", organization_types_path %></h4></li>
                   <li><h4><%= link_to "Donation Types", donation_types_path %></h4></li>
-                  <li><h4><%= link_to "Contact Types", contact_types_path %></h4></li>
+                  <li><h4><%= link_to "Contact Types", contact_types_path, title: 'How volunteer first contacted us.', 'data-toggle' => 'tooltip', 'data-placement' => 'right' %></h4></li>
+                  <li><h4><%= link_to "Contact Methods", contact_methods_path, title: 'For contact recording and management.', 'data-toggle' => 'tooltip', 'data-placement' => 'right' %></h4></li>
                   <li><h4><%= link_to "System Settings", settings_edit_path('1') %></h4></li>
                 </ul>
               </div>

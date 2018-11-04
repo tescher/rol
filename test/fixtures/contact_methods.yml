@@ -3,10 +3,12 @@
 one:
   name: One
   inactive: false
+  id: 1
 
 two:
   name: Two
   inactive: false
+  id: 2
 
 master:
   name: master
