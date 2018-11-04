@@ -63,9 +63,9 @@ class ContactMethodsEditTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "no delete if attached to an contact" do
+  test "no delete if attached to a contact" do
     log_in_as(@user)
-    @contact = Contact.new(name: "Deletable")
+    @contact = Contact.new(date_time: DateTime.now, contact_method_id: @contact_method.id)
     @contact.contact_method = @contact_method_deleteable
     @contact.save
     get edit_contact_method_path(@contact_method_deleteable)
