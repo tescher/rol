@@ -1,0 +1,49 @@
+<% provide(:title, 'Waivers') %>
+<h1>Waivers for <%= @parent.name %></h1>
+
+<%= form_for(@parent, html: { :multipart => true }) do |f| %>
+    <%= @object = f.object
+        @waivers = @parent.waivers.order("date_signed DESC")
+        render 'shared/error_messages' %>
+
+    <table class="table no-row-border header-border">
+      <thead>
+      <tr>
+        <th class="col-md-1">Signed By</th>
+        <th class="col-md-1">Date Signed</th>
+        <th class="col-md-1">Adult waiver?</th>
+        <th class="col-md-2">E-sign</th>
+        <th class="col-md-1">Waiver Text</th>
+        <th class="col-md-1"></th>
+      </tr>
+      </thead>
+      <tbody class="add_waiver_fields">
+      <%= f.fields_for :waivers, @waivers do |builder| %>
+          <%=  @readonly = true
+               render "waivers/waiver_fields", :f => builder %>
+      <% end %>
+      </tbody>
+    </table>
+
+    <%= # @readonly = false
+      # link_to_add_fields "Add a Waiver", f, :waivers, "", ".add_waiver_fields", "Add a Waiver"
+        link_to "Add a Waiver", "#", id:"linkNewWaiver" %>
+
+    <div>&nbsp;</div>
+
+
+    <div class="row">
+      <div class="col-md-11">
+        <div class="actions pull-right">
+
+          <%= render partial: "shared/form_actions", locals: {f: f, cancel: edit_polymorphic_path(@object)} %>
+        </div>
+      </div>
+    </div>
+
+  <div id="dialogSignedBy"></div>
+  <div id="dialogSearchVolunteers"></div>
+  <div id="dialogSelectVolunteer"></div>
+  <div id="dialogNewVolunteer"></div>
+
+<% end %>

@@ -8,6 +8,7 @@ class Volunteer < ActiveRecord::Base
   has_many :workdays, through: :workday_volunteers
   has_many :donations, dependent: :destroy
   has_many :waivers, dependent: :destroy
+  has_many :contacts, dependent: :destroy
   belongs_to :church, -> { where(:organization_type => 1) }, class_name: "Organization", foreign_key: :church_id
   belongs_to :employer, class_name: "Organization", foreign_key: :employer_id
   belongs_to :first_contact_type, class_name: "ContactType", foreign_key: :first_contact_type_id
@@ -32,6 +33,7 @@ class Volunteer < ActiveRecord::Base
 
   accepts_nested_attributes_for :donations, :allow_destroy => true
   accepts_nested_attributes_for :waivers, :allow_destroy => true
+  accepts_nested_attributes_for :contacts, :allow_destroy => true
 
 
   before_save {

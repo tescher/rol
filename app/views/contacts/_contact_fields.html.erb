@@ -1,0 +1,13 @@
+<tr class="hide_on_remove">
+  <td>
+    <div class="field">
+      <div class='input-group date' >
+        <%= f.text_field :date_time,  value: f.object.date_time.nil? ? Date.today.strftime("%m/%d/%Y %l:%M %p") : f.object.date_time.strftime("%m/%d/%Y %l:%M %p"), disabled: @readonly, id: 'datetimedatepicker', autofocus: 'true' %>
+      </div>
+    </div>
+  </td>
+  <td><%= f.text_field :contact_method, value: f.contact_method.name, disabled: @readonly %></td>
+  <td><%= f.text_area :notes, size: '30x5', disabled: true  %></td>
+  <td><%= f.hidden_field :_destroy %>
+    <%= link_to "delete", "#", class: "remove_fields" %></td>
+</tr>

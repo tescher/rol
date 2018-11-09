@@ -37,6 +37,7 @@ Rails.application.routes.draw do
       get 'address_check'
       get 'donations' => 'volunteers#donations'
       get 'waivers' => 'volunteers#waivers'
+      get 'contacts' => 'volunteers#contacts'
       post 'merge'
       get 'merge' => 'volunteers#merge_form'
     end

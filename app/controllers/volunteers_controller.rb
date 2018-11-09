@@ -5,7 +5,7 @@ include VolunteersHelper
 include WaiversHelper
 
 class VolunteersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search, :address_check, :donations, :waivers, :merge, :search_merge, :merge_form]
+  before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search, :address_check, :donations, :waivers, :contacts, :merge, :search_merge, :merge_form]
   before_action :admin_user,     only: [:destroy, :import, :import_form]
   before_action :donations_allowed, only: [:donations]
   autocomplete :volunteer, :last_name, :full => true, :extra_data => [:first_name, :city], :display_value => :autocomplete_display
@@ -497,6 +497,12 @@ class VolunteersController < ApplicationController
           donation.save!
           sd.destroy!
         end
+        Contact.where("volunteer_id = #{@source_volunteer.id}").each do |ct|
+          contact = ct.dup
+          contact.volunteer_id = @object.id
+          contact.save!
+          ct.destroy!
+        end
         deletable_waivers = []
         Waiver.where("volunteer_id = #{@source_volunteer.id}").each do |swv|
           waiver = swv.dup
@@ -560,6 +566,12 @@ class VolunteersController < ApplicationController
   def waivers
     child_form_setup
     render "waivers/waivers_form"
+  end
+
+  # GET /volunteer/1/contacts
+  def contacts
+    child_form_setup
+    render "contacts/contacts_form"
   end
 
   # GET /volunteers/import
@@ -733,7 +745,8 @@ class VolunteersController < ApplicationController
     params.require(:volunteer).permit(:first_name, :last_name, :middle_name, :email, :occupation, :employer_id, :church_id,
                                       :address, :city, :state, :zip, :home_phone, :work_phone, :mobile_phone,
                                       :notes, :remove_from_mailing_list, :waiver_date, :birthdate, :adult, :first_contact_date, :first_contact_type_id, :pending_volunteer_id, :agree_to_background_check, :background_check_date, :emerg_contact_name, :emerg_contact_phone, :limitations, :medical_conditions, interest_ids: [], volunteer_category_ids: [], donations_attributes: [:id, :date_received, :value, :ref_no, :item, :anonymous, :in_honor_of, :designation, :notes, :receipt_sent, :volunteer_id, :organization_id, :donation_type_id, :_destroy],
-                                      waivers_attributes: [:id, :guardian_id, :adult, :birthdate, :date_signed, :waiver_text, :e_sign, :file, :_destroy])
+                                      waivers_attributes: [:id, :guardian_id, :adult, :birthdate, :date_signed, :waiver_text, :e_sign, :file, :_destroy],
+                                      contacts_attributes: [:id, :notes, :contact_method_id, :date_time, :_destroy])
   end
   def volunteer_search_params
     search_params = params.permit(:name, :city, :workday_since, interest_ids: [], volunteer_category_ids: [])
