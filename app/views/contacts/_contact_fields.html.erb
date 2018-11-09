@@ -6,7 +6,15 @@
       </div>
     </div>
   </td>
-  <td><%= f.text_field :contact_method, value: f.contact_method.name, disabled: @readonly %></td>
+  <td><%= if f.object.contact_method_id
+            contact_method = ContactMethod.find(f.object.contact_method_id)
+          end
+          if !contact_method.nil?
+            label_tag :contact_method, contact_method.name
+          else
+            label_tag :contact_method, "N/A"
+          end
+  %></td>
   <td><%= f.text_area :notes, size: '30x5', disabled: true  %></td>
   <td><%= f.hidden_field :_destroy %>
     <%= link_to "delete", "#", class: "remove_fields" %></td>

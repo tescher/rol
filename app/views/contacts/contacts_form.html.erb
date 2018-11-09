@@ -1,26 +1,16 @@
-<% provide(:title, 'Waivers') %>
-<h1>Waivers for <%= @parent.name %></h1>
+<% provide(:title, 'Contacts') %>
+<h1>Contact History for <%= @parent.name %></h1>
 
 <%= form_for(@parent, html: { :multipart => true }) do |f| %>
     <%= @object = f.object
-        @waivers = @parent.waivers.order("date_signed DESC")
+        @contacts = @parent.contacts.order("date_time DESC")
         render 'shared/error_messages' %>
 
     <table class="table no-row-border header-border">
-      <thead>
-      <tr>
-        <th class="col-md-1">Signed By</th>
-        <th class="col-md-1">Date Signed</th>
-        <th class="col-md-1">Adult waiver?</th>
-        <th class="col-md-2">E-sign</th>
-        <th class="col-md-1">Waiver Text</th>
-        <th class="col-md-1"></th>
-      </tr>
-      </thead>
-      <tbody class="add_waiver_fields">
-      <%= f.fields_for :waivers, @waivers do |builder| %>
+      <tbody class="add_contact_fields">
+      <%= f.fields_for :contacts, @contacts do |builder| %>
           <%=  @readonly = true
-               render "waivers/waiver_fields", :f => builder %>
+               render "contacts/contact_fields", :f => builder %>
       <% end %>
       </tbody>
     </table>
@@ -40,10 +30,5 @@
         </div>
       </div>
     </div>
-
-  <div id="dialogSignedBy"></div>
-  <div id="dialogSearchVolunteers"></div>
-  <div id="dialogSelectVolunteer"></div>
-  <div id="dialogNewVolunteer"></div>
 
 <% end %>

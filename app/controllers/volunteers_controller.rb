@@ -281,15 +281,20 @@ class VolunteersController < ApplicationController
             session[:child_entry] = "waivers"
             redirect_to waivers_volunteer_path(@volunteer)
           else
-            session[:child_entry] = nil
-            if params[:stay].blank?
-              if from_pending_volunteers
-                redirect_to pending_volunteers_path
-              else
-                redirect_to search_volunteers_path
-              end
+            if !params[:to_contacts].blank?
+              session[:child_entry] = "contacts"
+              redirect_to contacts_volunteer_path(@volunteer)
             else
-              redirect_to edit_volunteer_path(@volunteer)
+              session[:child_entry] = nil
+              if params[:stay].blank?
+                if from_pending_volunteers
+                  redirect_to pending_volunteers_path
+                else
+                  redirect_to search_volunteers_path
+                end
+              else
+                redirect_to edit_volunteer_path(@volunteer)
+              end
             end
           end
         end
@@ -372,11 +377,16 @@ class VolunteersController < ApplicationController
             session[:child_entry] = "waivers"
             redirect_to waivers_volunteer_path(@volunteer)
           else
-            session[:child_entry] = nil
-            if params[:stay].blank?
-              redirect_to search_volunteers_path
+            if !params[:to_contacts].blank?
+              session[:child_entry] = "contacts"
+              redirect_to contacts_volunteer_path(@volunteer)
             else
-              redirect_to edit_volunteer_path(@volunteer)
+              session[:child_entry] = nil
+              if params[:stay].blank?
+                redirect_to search_volunteers_path
+              else
+                redirect_to edit_volunteer_path(@volunteer)
+              end
             end
           end
         end
