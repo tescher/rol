@@ -6,7 +6,9 @@
         @contacts = @parent.contacts.order("date_time DESC")
         render 'shared/error_messages' %>
 
-    <table class="table no-row-border header-border">
+  <%= link_to 'New Contact', new_contact_path(volunteer_id: @parent.id), class: "btn btn-primary"%>
+
+  <table class="table no-row-border header-border">
       <tbody class="add_contact_fields">
       <%= f.fields_for :contacts, @contacts do |builder| %>
           <%=  @readonly = true

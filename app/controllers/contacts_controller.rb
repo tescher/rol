@@ -15,6 +15,7 @@ class ContactsController < ApplicationController
 
   # GET /contacts/new
   def new
+    @volunteer = contact_params[:volunteer_id]
     @contact = Contact.new
   end
 
