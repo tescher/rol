@@ -74,7 +74,11 @@ class ContactsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contact_params
-      params.require(:contact).permit(:date_time, :contact_method_id, :volunteer_id, :notes)
+      contact_params = params.require(:contact).permit(:contact_date, :contact_time, :contact_method_id, :volunteer_id, :notes)
+      contact_date  = contact_params[:contact_date].blank? ? DateTime.current.strftime("%m/%d/%Y") : contact_params[:contact_date]
+      contact_time  = contact_params[:contact_time].blank? ? DateTime.current.strftime("%l:%M %p") : contact_params[:contact_time]
+      contact_params[:date_time] = Time.parse("#{contact_date} #{contact_time}") rescue nil
+      contact_params
     end
 
 end
