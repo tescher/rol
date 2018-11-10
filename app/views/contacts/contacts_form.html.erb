@@ -2,35 +2,33 @@
 <h1>Contact History for <%= @parent.name %></h1>
 
 <%= form_for(@parent, html: { :multipart => true }) do |f| %>
-    <%= @object = f.object
-        @contacts = @parent.contacts.order("date_time DESC")
-        render 'shared/error_messages' %>
+  <%= @object = f.object
+      @contacts = @parent.contacts.order("date_time DESC")
+      render 'shared/error_messages' %>
 
-  <%= link_to 'New Contact', new_contact_path(volunteer_id: @parent.id), class: "btn btn-primary"%>
+  <div class="center">
+    <%= link_to 'New Contact', new_contact_path(volunteer_id: @parent.id), class: "btn btn-primary"%>
+  </div>
 
   <table class="table no-row-border header-border">
-      <tbody class="add_contact_fields">
-      <%= f.fields_for :contacts, @contacts do |builder| %>
-          <%=  @readonly = true
-               render "contacts/contact_fields", :f => builder %>
-      <% end %>
-      </tbody>
-    </table>
+    <tbody class="add_contact_fields">
+    <%= f.fields_for :contacts, @contacts do |builder| %>
+      <%=  @readonly = true
+           render "contacts/contact_fields", :f => builder %>
+    <% end %>
+    </tbody>
+  </table>
 
-    <%= # @readonly = false
-      # link_to_add_fields "Add a Waiver", f, :waivers, "", ".add_waiver_fields", "Add a Waiver"
-        link_to "Add a Waiver", "#", id:"linkNewWaiver" %>
-
-    <div>&nbsp;</div>
+  <div>&nbsp;</div>
 
 
-    <div class="row">
-      <div class="col-md-11">
-        <div class="actions pull-right">
+  <div class="row">
+    <div class="col-md-11">
+      <div class="actions pull-right">
 
-          <%= render partial: "shared/form_actions", locals: {f: f, cancel: edit_polymorphic_path(@object)} %>
-        </div>
+        <%= render partial: "shared/form_actions", locals: {f: f, cancel: edit_polymorphic_path(@object)} %>
       </div>
     </div>
+  </div>
 
 <% end %>

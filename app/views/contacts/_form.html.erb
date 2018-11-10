@@ -1,0 +1,43 @@
+<%= form_for(@contact) do |f| %>
+  <%= @object = f.object
+      render 'shared/error_messages' %>
+
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="col-md-3">
+        <%= f.datetime_select :date_time %><br>
+      </div>
+      <div class="col-md-2">
+        <%= f.label "Method" %><br>
+      </div>
+      <div class="col-md-8">
+        <%= f.select :contact_method_id, options_from_collection_for_select(ContactMethod.where(inactive: false), :id, :name, f.object.contact_method_id), { :multiple => false, class: "form-control"}  %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="col-md-2">
+        <%= f.label "Contact Notes" %>
+      </div>
+      <div class="col-md-4">
+        <%= f.text_area :notes, size: '30x5' %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="col-md-2">
+        <%= f.label "Permanent Notes" %>
+      </div>
+      <div class="col-md-4">
+        <%= text_area_tag :permanent_notes, value: @volunteer.notes, size: '30x5' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="pull-right">
+    <%= render partial: "shared/form_actions", locals: {f: f} %>
+  </div>
+
+<% end %>

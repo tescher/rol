@@ -15,7 +15,7 @@ class ContactsController < ApplicationController
 
   # GET /contacts/new
   def new
-    @volunteer = contact_params[:volunteer_id]
+    @volunteer = Volunteer.find(params[:volunteer_id])
     @contact = Contact.new
   end
 
@@ -27,9 +27,12 @@ class ContactsController < ApplicationController
   # POST /contacts.json
   def create
     @contact = Contact.new(contact_params)
+    @volunteer = Volunteer.find(contact_params[:volunteer_id])
 
     respond_to do |format|
       if @contact.save
+        @volunteer.notes = params[:permanent_notes]
+        @volunteer.save
         format.html { redirect_to @contact, notice: 'Contact was successfully created.' }
         format.json { render :show, status: :created, location: @contact }
       else
@@ -73,4 +76,5 @@ class ContactsController < ApplicationController
     def contact_params
       params.require(:contact).permit(:date_time, :contact_method_id, :volunteer_id, :notes)
     end
+
 end
