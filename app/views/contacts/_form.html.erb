@@ -27,13 +27,13 @@
             <%= f.label "Date" %><br>
           </div>
           <div class="col-sm-3">
-            <%= f.text_field :contact_date,  value: @object.date_time.nil? ? DateTime.current.strftime("%m/%d/%Y") : @object.date_time.strftime("%m/%d/%Y") , id: 'contactdatepicker', class: 'form-control' %>
+            <%= f.text_field :contact_date,  value: @object.date_time.nil? ? nil : @object.date_time.strftime("%m/%d/%Y") , id: 'contactdatepicker', class: 'form-control' %>
           </div>
           <div class="col-sm-1">
             <%= f.label "Time" %><br>
           </div>
           <div class="col-sm-3">
-            <%= f.text_field :contact_time,  value: f.object.date_time.nil? ? DateTime.current.strftime("%l:%M %p") : f.object.date_time.strftime("%l:%M %p"), id: 'contacttimepicker', class: 'form-control' %>
+            <%= f.text_field :contact_time,  value: @object.date_time.nil? ? nil : @object.date_time.strftime("%l:%M %p"), id: 'contacttimepicker', class: 'form-control' %>
           </div>
           <div class="col-sm-1">
             <%= f.label "Method" %><br>

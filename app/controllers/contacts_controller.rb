@@ -65,10 +65,7 @@ class ContactsController < ApplicationController
   # DELETE /contacts/1.json
   def destroy
     @contact.destroy
-    respond_to do |format|
-      format.html { redirect_to contacts_url, notice: 'Contact was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    render :text => '<body onload="window.close()"></body>'
   end
 
   private
@@ -83,9 +80,9 @@ class ContactsController < ApplicationController
     params[:contact].delete("permanent_notes")
     contact_params = params.require(:contact).permit(:contact_date, :contact_time, :contact_method_id, :volunteer_id, :notes)
     puts contact_params
-    contact_date  = contact_params[:contact_date].blank? ? DateTime.current.strftime("%m/%d/%Y") : contact_params[:contact_date]
-    contact_time  = contact_params[:contact_time].blank? ? DateTime.current.strftime("%l:%M %p") : contact_params[:contact_time]
-    contact_params[:date_time] = Time.parse("#{contact_date} #{contact_time}") rescue nil
+    contact_date  = contact_params[:contact_date].blank? ? DateTime.now.strftime("%m/%d/%Y") : contact_params[:contact_date]
+    contact_time  = contact_params[:contact_time].blank? ? DateTime.now.strftime("%l:%M %p") : contact_params[:contact_time]
+    contact_params[:date_time] = DateTime.strptime("#{contact_date} #{contact_time}","%m/%d/%Y %l:%M %p" ) rescue nil
     puts contact_params
     contact_params.delete("contact_date")
     contact_params.delete("contact_time")

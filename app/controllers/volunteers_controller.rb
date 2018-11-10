@@ -339,7 +339,11 @@ class VolunteersController < ApplicationController
           if from == "donations"
             redirect_to donations_volunteer_path(@volunteer)
           else
-            redirect_to waivers_volunteer_path(@volunteer)
+            if from == "contacts"
+              redirect_to contacts_volunteer_path(@volunteer)
+            else
+              redirect_to waivers_volunteer_path(@volunteer)
+            end
           end
         else
           session[:child_entry] = nil
@@ -355,7 +359,11 @@ class VolunteersController < ApplicationController
           if from == "donations"
             render "shared/donations_form"
           else
-            render "waivers/waivers_form"
+            if from == "contacts"
+              render "contacts/contacts_form"
+            else
+              render "waivers/waivers_form"
+            end
           end
         else       # Must have saved with no data
           session[:child_entry] = nil
