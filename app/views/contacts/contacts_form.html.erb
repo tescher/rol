@@ -1,13 +1,22 @@
 <% provide(:title, 'Contacts') %>
 <h1>Contact History for <%= @parent.name %></h1>
 
+<% content_for :head do %>
+  <!-- Refresh on focus -->
+  <script type="text/javascript">
+      var blurred = false;
+      window.onblur = function() { blurred = true; };
+      window.onfocus = function() { blurred && (location.reload()); };
+  </script>
+<% end %>
+
 <%= form_for(@parent, html: { :multipart => true }) do |f| %>
-  <%= @object = f.object
+  <% @object = f.object
       @contacts = @parent.contacts.order("date_time DESC")
-      render 'shared/error_messages' %>
+      %>
 
   <div class="center">
-    <%= link_to 'New Contact', new_contact_path(volunteer_id: @parent.id), class: "btn btn-primary"%>
+    <%= link_to 'New Contact', new_contact_path(volunteer_id: @parent.id), class: "btn btn-primary", target: "_blank" %>
   </div>
 
   <table class="table no-row-border header-border">

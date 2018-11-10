@@ -1,3 +1,6 @@
+include ApplicationHelper
+include DonationsHelper
+
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
   before_action :logged_in_user, only: [:index, :show, :create, :new, :edit, :update, :destroy]
@@ -15,44 +18,46 @@ class ContactsController < ApplicationController
 
   # GET /contacts/new
   def new
-    @volunteer = Volunteer.find(params[:volunteer_id])
-    @contact = Contact.new
+    @volunteer = @volunteer || Volunteer.find(params[:volunteer_id])
+    @contact = Contact.new(volunteer_id: @volunteer.id)
+    volunteer_info_setup
   end
 
   # GET /contacts/1/edit
   def edit
+    @contact = Contact.find(params[:id])
+    @volunteer = Volunteer.find(@contact.volunteer_id)
+    volunteer_info_setup
   end
 
   # POST /contacts
   # POST /contacts.json
   def create
     @contact = Contact.new(contact_params)
-    @volunteer = Volunteer.find(contact_params[:volunteer_id])
+    @volunteer = Volunteer.find(@contact.volunteer_id)
 
-    respond_to do |format|
-      if @contact.save
-        @volunteer.notes = params[:permanent_notes]
-        @volunteer.save
-        format.html { redirect_to @contact, notice: 'Contact was successfully created.' }
-        format.json { render :show, status: :created, location: @contact }
-      else
-        format.html { render :new }
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
-      end
+    if @contact.save
+      @volunteer.notes = params[:permanent_notes]
+      @volunteer.save
+      render :text => '<body onload="window.close()"></body>'
+    else
+      volunteer_info_setup
+      render :new
     end
   end
 
   # PATCH/PUT /contacts/1
   # PATCH/PUT /contacts/1.json
   def update
-    respond_to do |format|
-      if @contact.update(contact_params)
-        format.html { redirect_to @contact, notice: 'Contact was successfully updated.' }
-        format.json { render :show, status: :ok, location: @contact }
-      else
-        format.html { render :edit }
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
-      end
+    @contact = Contact.find(params[:id])
+    @volunteer = Volunteer.find(@contact.volunteer_id)
+    if @contact.update(contact_params)
+      @volunteer.notes = params[:permanent_notes]
+      @volunteer.save
+      render :text => '<body onload="window.close()"></body>'
+    else
+      volunteer_info_setup
+      render :edit
     end
   end
 
@@ -67,18 +72,31 @@ class ContactsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_contact
-      @contact = Contact.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_contact
+    @contact = Contact.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def contact_params
-      contact_params = params.require(:contact).permit(:contact_date, :contact_time, :contact_method_id, :volunteer_id, :notes)
-      contact_date  = contact_params[:contact_date].blank? ? DateTime.current.strftime("%m/%d/%Y") : contact_params[:contact_date]
-      contact_time  = contact_params[:contact_time].blank? ? DateTime.current.strftime("%l:%M %p") : contact_params[:contact_time]
-      contact_params[:date_time] = Time.parse("#{contact_date} #{contact_time}") rescue nil
-      contact_params
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def contact_params
+    params[:permanent_notes] = params[:contact][:permanent_notes]
+    params[:contact].delete("permanent_notes")
+    contact_params = params.require(:contact).permit(:contact_date, :contact_time, :contact_method_id, :volunteer_id, :notes)
+    puts contact_params
+    contact_date  = contact_params[:contact_date].blank? ? DateTime.current.strftime("%m/%d/%Y") : contact_params[:contact_date]
+    contact_time  = contact_params[:contact_time].blank? ? DateTime.current.strftime("%l:%M %p") : contact_params[:contact_time]
+    contact_params[:date_time] = Time.parse("#{contact_date} #{contact_time}") rescue nil
+    puts contact_params
+    contact_params.delete("contact_date")
+    contact_params.delete("contact_time")
+    puts contact_params
+    puts params
+    contact_params
+  end
+
+  def volunteer_info_setup
+    @num_workdays = WorkdayVolunteer.where(volunteer_id: @volunteer.id)
+    @donation_year = get_donation_summary("volunteer", @volunteer.id)[0].first
+  end
 
 end

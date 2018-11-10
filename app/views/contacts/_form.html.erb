@@ -2,45 +2,78 @@
   <%= @object = f.object
       render 'shared/error_messages' %>
 
-  <div class="row">
-    <div class="col-md-9 col-md-offset-3">
-      <div class="col-md-4">
-        <%= f.label "Date" %><br>
-        <%= f.text_field :contact_date,  value: @object.date_time.nil? ? DateTime.current.strftime("%m/%d/%Y") : @object.date_time.strftime("%m/%d/%Y") , id: 'contactdatepicker', class: 'form-control' %>
-      </div>
-      <div class="col-md-4" >
-        <%= f.label "Time" %><br>
-        <%= f.text_field :contact_time,  value: f.object.date_time.nil? ? DateTime.current.strftime("%l:%M %p") : f.object.date_time.strftime("%l:%M %p"), id: 'contacttimepicker', class: 'form-control' %>
-      </div>
-      <div class="col-md-4">
-        <%= f.label "Method" %><br>
-        <%= f.select :contact_method_id, options_from_collection_for_select(ContactMethod.where(inactive: false), :id, :name, f.object.contact_method_id), { :multiple => false, class: "form-control"}  %>
+  <% if @num_workdays.count > 0 %>
+    <h5 class="center">Has participated in <a href="#" data-id="<%= @volunteer.id %>" data-object-name="volunteer" id="linkWorkdaySummary"><%= pluralize(@num_workdays.count, "workday") %> for <%= pluralize(@num_workdays.sum("hours"), "hour") %></a></h5>
+    <div id="dialogWorkdaySummary"></div>
+    <div id="dialogParticipantReport"></div>
+  <% else %>
+    <h5 class="center">Has not participated in any workdays</h5>
+  <% end %>
+  <% if current_user.monetary %>
+    <% if !@donation_year.nil? %>
+      <h5 class="center">Household has <a href="#" data-id="<%= @volunteer.id %>" data-object-name="volunteer" id="linkDonationSummary"> donated monetarily </a></h5>
+      <div id="dialogDonationSummary"></div>
+    <% else %>
+      <h5 class="center">Household has not donated monetarily</h5>
+    <% end %>
+  <% end %>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="row">
+          <div class="col-sm-1">
+            <%= f.label "Date" %><br>
+          </div>
+          <div class="col-sm-3">
+            <%= f.text_field :contact_date,  value: @object.date_time.nil? ? DateTime.current.strftime("%m/%d/%Y") : @object.date_time.strftime("%m/%d/%Y") , id: 'contactdatepicker', class: 'form-control' %>
+          </div>
+          <div class="col-sm-1">
+            <%= f.label "Time" %><br>
+          </div>
+          <div class="col-sm-3">
+            <%= f.text_field :contact_time,  value: f.object.date_time.nil? ? DateTime.current.strftime("%l:%M %p") : f.object.date_time.strftime("%l:%M %p"), id: 'contacttimepicker', class: 'form-control' %>
+          </div>
+          <div class="col-sm-1">
+            <%= f.label "Method" %><br>
+          </div>
+          <div class="col-sm-3">
+            <%= f.select :contact_method_id, options_from_collection_for_select(ContactMethod.where(inactive: false), :id, :name, f.object.contact_method_id), {}, { :multiple => false, class: 'form-control'}  %>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <div class="col-md-2">
-        <%= f.label "Contact Notes" %>
-      </div>
-      <div class="col-md-4">
-        <%= f.text_area :notes, size: '30x5' %>
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="row">
+          <div class="col-sm-1">
+            <%= f.label "Contact Notes" %>
+          </div>
+          <div class="col-sm-11">
+            <%= f.text_area :notes, size: '30x5' %>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <div class="col-md-2">
-        <%= f.label "Permanent Notes" %>
-      </div>
-      <div class="col-md-4">
-        <%= text_area_tag :permanent_notes, value: @volunteer.notes, size: '30x5' %>
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="row">
+          <div class="col-sm-1">
+            <%= f.label "Permanent Notes" %>
+          </div>
+          <div class="col-sm-11">
+            <%= f.text_area :permanent_notes, value: @volunteer.notes, size: '30x5' %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
+  <%= f.hidden_field(:volunteer_id) %>
+
   <div class="pull-right">
-    <%= render partial: "shared/form_actions", locals: {f: f} %>
+    <%= render partial: "shared/form_actions", locals: {f: f, cancel: '_self', cancel_onclick: 'window.close();'} %>
   </div>
 
 <% end %>
