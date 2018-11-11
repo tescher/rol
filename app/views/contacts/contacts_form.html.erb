@@ -22,7 +22,7 @@
   <table class="table no-row-border header-border">
     <tbody class="add_contact_fields">
     <%= f.fields_for :contacts, @contacts do |builder| %>
-      <%=  @readonly = false
+      <%=  @readonly = true
            render "contacts/contact_fields", :f => builder %>
     <% end %>
     </tbody>

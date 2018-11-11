@@ -318,9 +318,8 @@ class VolunteersController < ApplicationController
     session[:volunteer_id] = @volunteer.id
     from = session[:child_entry]
 
-    if !from.nil?     # Coming from donations or waivers
+    if !from.nil?     # Coming from donations or waivers or contacts
       if params[:volunteer] && @volunteer.update_attributes(volunteer_params)
-        flash[:success] = "#{from.capitalize} updated"
         if from == "waivers"
           #Update last waiver date, birthdate and adult flag from last waiver if not already set
           @volunteer.reload
@@ -336,6 +335,7 @@ class VolunteersController < ApplicationController
           end
         end
         if !params[:stay].blank?
+          flash[:success] = "#{from.capitalize} updated"
           if from == "donations"
             redirect_to donations_volunteer_path(@volunteer)
           else
@@ -376,7 +376,6 @@ class VolunteersController < ApplicationController
       end
     else                                       # Coming from regular edit
       if params[:volunteer] && @volunteer.update_attributes(volunteer_params)
-        flash[:success] = "Volunteer updated"
         if !params[:to_donations].blank?
           session[:child_entry] = "donations"
           redirect_to donations_volunteer_path(@volunteer)
@@ -393,6 +392,7 @@ class VolunteersController < ApplicationController
               if params[:stay].blank?
                 redirect_to search_volunteers_path
               else
+                flash[:success] = "Volunteer updated"
                 redirect_to edit_volunteer_path(@volunteer)
               end
             end
@@ -782,6 +782,7 @@ class VolunteersController < ApplicationController
     @allow_stay = true
     @custom_submit = "Save & Search"
     @custom_submit_name = "save_and_search"
+    @submit_name = "Save"
   end
 
   def edit_setup
@@ -791,6 +792,7 @@ class VolunteersController < ApplicationController
     @church = @volunteer.church_id.blank? ? nil : Organization.find(@volunteer.church_id)
     @allow_stay = true
     @donation_year = get_donation_summary("volunteer", @volunteer.id)[0].first
+    @submit_name = "Update Volunteer"
     session[:volunteer_id] = @volunteer.id
     session[:child_entry] = nil
   end
