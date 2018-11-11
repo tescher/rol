@@ -5,6 +5,8 @@ class OrganizationsEditTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:one)
     @organization = organizations(:one)
+    @volunteer1 = volunteers(:one)
+    @volunteer2 = volunteers(:duplicate)
     @admin = users(:michael)
     @non_admin = users(:one)
     @monetary_donation_user = users(:monetary_donation)
@@ -86,7 +88,7 @@ class OrganizationsEditTest < ActionDispatch::IntegrationTest
   test "successful delete as admin" do
     log_in_as(@admin)
     get edit_organization_path(@organization)
-    assert_select 'a[href=?]', organization_path(@organization), method: :delete
+    assert_select "a[href='#{organization_path(@organization)}'][data-method=delete]", true, "Should have a delete link"
 
     before_wdv = WorkdayOrganization.count
     # puts before_wdv
@@ -116,8 +118,26 @@ class OrganizationsEditTest < ActionDispatch::IntegrationTest
   test "No delete if not admin" do
     log_in_as(@user)
     get edit_organization_path(@organization)
-    assert_no_match 'a[href=?]', organization_path(@organization), method: :delete
+    assert_select "a[href='#{organization_path(@organization)}'][data-method=delete]", false, "Should not have a delete link"
   end
+
+  test "Make sure primary volunteer contacts for organzation appear" do
+    log_in_as(@user)
+    @volunteer1.employer_id = @organization.id
+    @volunteer1.primary_employer_contact = true
+    @volunteer1.save!
+    get edit_organization_path(@organization)
+    assert_select "a[href='#{volunteer_path(@volunteer1)}']", true, "Should have a link for volunteer1"
+    assert_select "a[href='#{volunteer_path(@volunteer2)}']", false, "Should not have link for volunteer2"
+    @volunteer2.church_id = @organization.id
+    @volunteer2.primary_church_contact = true
+    @volunteer2.save!
+    get edit_organization_path(@organization)
+    assert_select "a[href='#{volunteer_path(@volunteer1)}']", true, "Should have a link for volunteer1"
+    assert_select "a[href='#{volunteer_path(@volunteer2)}']", true, "Should have link for volunteer2"
+  end
+
+
 
 
 end

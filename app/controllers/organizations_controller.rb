@@ -140,6 +140,7 @@ class OrganizationsController < ApplicationController
   def edit
     @organization = Organization.find(params[:id])
     @num_workdays = WorkdayOrganization.where(organization_id: @organization.id)
+    @primary_contacts = Volunteer.where("((employer_id = '#{@organization.id}') AND (primary_employer_contact = TRUE)) OR ((church_id = '#{@organization.id}') AND (primary_church_contact = TRUE))").distinct
     @allow_stay = true
     @donation_year = get_donation_summary("organization", @organization.id)[0].first
     session[:organization_id] = @organization.id

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181104222849) do
+ActiveRecord::Schema.define(version: 20181111032407) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -258,6 +258,8 @@ ActiveRecord::Schema.define(version: 20181104222849) do
     t.string   "medical_conditions"
     t.string   "limitations"
     t.boolean  "agree_to_background_check"
+    t.boolean  "primary_employer_contact"
+    t.boolean  "primary_church_contact"
   end
 
   add_index "volunteers", ["church_id"], name: "index_volunteers_on_church_id", using: :btree

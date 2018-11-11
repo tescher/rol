@@ -761,8 +761,11 @@ class VolunteersController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def volunteer_params
     params.require(:volunteer).permit(:first_name, :last_name, :middle_name, :email, :occupation, :employer_id, :church_id,
+                                      :primary_employer_contact, :primary_church_contact,
                                       :address, :city, :state, :zip, :home_phone, :work_phone, :mobile_phone,
-                                      :notes, :remove_from_mailing_list, :waiver_date, :birthdate, :adult, :first_contact_date, :first_contact_type_id, :pending_volunteer_id, :agree_to_background_check, :background_check_date, :emerg_contact_name, :emerg_contact_phone, :limitations, :medical_conditions, interest_ids: [], volunteer_category_ids: [], donations_attributes: [:id, :date_received, :value, :ref_no, :item, :anonymous, :in_honor_of, :designation, :notes, :receipt_sent, :volunteer_id, :organization_id, :donation_type_id, :_destroy],
+                                      :notes, :remove_from_mailing_list, :waiver_date, :birthdate, :adult, :first_contact_date, :first_contact_type_id,
+                                      :pending_volunteer_id, :agree_to_background_check, :background_check_date, :emerg_contact_name, :emerg_contact_phone,
+                                      :limitations, :medical_conditions, interest_ids: [], volunteer_category_ids: [], donations_attributes: [:id, :date_received, :value, :ref_no, :item, :anonymous, :in_honor_of, :designation, :notes, :receipt_sent, :volunteer_id, :organization_id, :donation_type_id, :_destroy],
                                       waivers_attributes: [:id, :guardian_id, :adult, :birthdate, :date_signed, :waiver_text, :e_sign, :file, :_destroy],
                                       contacts_attributes: [:id, :notes, :contact_method_id, :date_time, :_destroy])
   end

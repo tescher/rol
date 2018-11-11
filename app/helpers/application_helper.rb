@@ -142,4 +142,11 @@ module ApplicationHelper
     now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
   end
 
+  def list_of_links_for(list)
+    return if !list || list.count == 0
+    list.collect do |item|
+      link_to(item.name, edit_polymorphic_path(item))
+    end.join(", ").html_safe
+  end
+
 end
