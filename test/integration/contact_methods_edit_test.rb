@@ -65,9 +65,9 @@ class ContactMethodsEditTest < ActionDispatch::IntegrationTest
 
   test "no delete if attached to a contact" do
     log_in_as(@user)
-    @contact = Contact.new(date_time: DateTime.now, contact_method_id: @contact_method.id, volunteer_id: 1)
+    @contact = Contact.new(date_time: DateTime.yesterday, contact_method_id: @contact_method.id, volunteer_id: 1)
     @contact.contact_method = @contact_method_deleteable
-    @contact.save
+    @contact.save!
     get edit_contact_method_path(@contact_method_deleteable)
     assert_select 'a[href=?]', contact_method_path(@contact_method_deleteable), method: :delete
 
