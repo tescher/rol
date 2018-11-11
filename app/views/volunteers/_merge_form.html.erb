@@ -75,6 +75,25 @@
               </div>
             </div>
         <% end %>
+        <% [:primary_church_contact, :primary_employer_contact].each do |field| %>
+          <div class="row">
+            <div class="col-xs-1">
+              <%= label_tag field %>
+            </div>
+            <div class="col-xs-3">
+              <%= content_tag(:span, @source_volunteer.send(field), id: "source_volunteer_#{field}", class: "form-control") %>
+            </div>
+            <div class="col-xs-2">
+              <%= check_box_tag("source_use_fields[]",Volunteer.merge_fields_table[field], ((field.to_s != "remove_from_mailing_list") && (field.to_s != "agree_to_background_check") && !@source_volunteer.send(field).blank?) || (field.to_s == "remove_from_mailing_list" && !@source_volunteer.remove_from_mailing_list?) || (field.to_s == "agree_to_background_check" && !@source_volunteer.agree_to_background_check?), {id: "use_#{field}", class: "form-control"}) %>
+            </div>
+            <div class="col-xs-1">
+              <%= label_tag field %>
+            </div>
+            <div class="col-xs-3">
+              <%= content_tag(:span, @object.send(field), id: "volunteer_#{field}", class: "form-control") %>
+            </div>
+          </div>
+        <% end %>
         <div class="row">
           <div class="col-xs-1">
             <%= label_tag :notes %>

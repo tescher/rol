@@ -337,7 +337,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     volunteer_category_volunteers = VolunteerCategoryVolunteer.where("volunteer_id = #{@volunteer.id}").all
     volunteer_category_volunteers_count = volunteer_category_volunteers.count
 
-    source_use_field_list = [:first_name, :last_name, :waiver_date, :remove_from_mailing_list, :agree_to_background_check, :church_id, :home_phone, :adult, :birthdate]
+    source_use_field_list = [:first_name, :last_name, :waiver_date, :remove_from_mailing_list, :agree_to_background_check, :primary_employer_contact, :church_id, :home_phone, :adult, :birthdate]
     source_use_fields = source_use_field_list.map {|f,i| Volunteer.merge_fields_table[f] }
 
     use_notes = "ignore"   # Skip notes and interests and categories on this first pass

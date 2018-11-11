@@ -64,7 +64,7 @@ class Volunteer < ActiveRecord::Base
   def self.merge_fields_table
     merge_fields = {}
     index = 0
-    [:first_name, :middle_name, :last_name, :occupation, :address, :city, :state, :zip, :email, :home_phone, :work_phone, :mobile_phone, :remove_from_mailing_list, :waiver_date, :background_check_date, :church_id, :employer_id, :first_contact_date, :first_contact_type_id, :medical_conditions, :limitations, :emerg_contact_name, :emerg_contact_phone, :agree_to_background_check, :birthdate, :adult].each do |f|
+    [:first_name, :middle_name, :last_name, :occupation, :address, :city, :state, :zip, :email, :home_phone, :work_phone, :mobile_phone, :remove_from_mailing_list, :waiver_date, :background_check_date, :church_id, :primary_church_contact, :employer_id, :primary_employer_contact, :first_contact_date, :first_contact_type_id, :medical_conditions, :limitations, :emerg_contact_name, :emerg_contact_phone, :agree_to_background_check, :birthdate, :adult].each do |f|
       merge_fields[f] = index
       index += 1
     end
