@@ -66,7 +66,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
   test "No delete if not admin" do
     log_in_as(@user)
     get edit_user_path(@user)
-    assert_no_match 'a[href=?]', user_path(@user), method: :delete
+    assert_select "a[href='#{user_path(@user)}'][data-method=delete]", false, "Should not have a delete link"
   end
 
 

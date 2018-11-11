@@ -82,7 +82,7 @@ class OrganizationsController < ApplicationController
             if ["name", "city"].include?(index[0])
               if index[1].strip.length > 0
                 where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
-                where_clause += "(soundex(#{index[0]}) = soundex(#{Organization.sanitize(index[1])}) OR (LOWER(#{index[0]}) LIKE #{Organization.sanitize(index[1].downcase + "%")}))"
+                where_clause += "(soundex(#{index[0]}) = soundex(#{Organization.sanitize(index[1])}) OR (LOWER(#{index[0]}) LIKE #{Organization.sanitize("%" + index[1].downcase + "%")}))"
               end
             end
             if index[0] == "organization_type_ids"

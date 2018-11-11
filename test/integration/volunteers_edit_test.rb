@@ -244,13 +244,13 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     log_in_as(@monetary_donation_user)
     get edit_volunteer_path(@volunteer1)
     assert_template 'volunteers/edit'
-    assert_no_match 'a[id=?]', "linkDonationSummary"
+    assert_select 'a[id="linkDonationSummary"]', false
     @volunteer.address = funky_address
     @volunteer.city = funky_city
     @volunteer.save
     get edit_volunteer_path(@volunteer1)
     assert_template 'volunteers/edit'
-    assert_select 'a[id=?]', "linkDonationSummary"
+    assert_select 'a[id="linkDonationSummary"]', true
   end
 
   test "successful delete as admin" do
@@ -288,7 +288,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
   test "No delete if not admin" do
     log_in_as(@user)
     get edit_volunteer_path(@volunteer)
-    assert_no_match 'a[href=?]', volunteer_path(@volunteer), method: :delete
+    assert_select "a[href='#{volunteer_path(@volunteer)}'][data-method=delete]", false, "Should not have a delete link"
   end
 
   test "New volunteer from pending volunteer" do

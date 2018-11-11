@@ -127,14 +127,14 @@ class OrganizationsEditTest < ActionDispatch::IntegrationTest
     @volunteer1.primary_employer_contact = true
     @volunteer1.save!
     get edit_organization_path(@organization)
-    assert_select "a[href='#{volunteer_path(@volunteer1)}']", true, "Should have a link for volunteer1"
-    assert_select "a[href='#{volunteer_path(@volunteer2)}']", false, "Should not have link for volunteer2"
+    assert_select "a[href='#{edit_volunteer_path(@volunteer1)}']", true, "Should have a link for volunteer1"
+    assert_select "a[href='#{edit_volunteer_path(@volunteer2)}']", false, "Should not have link for volunteer2"
     @volunteer2.church_id = @organization.id
     @volunteer2.primary_church_contact = true
     @volunteer2.save!
     get edit_organization_path(@organization)
-    assert_select "a[href='#{volunteer_path(@volunteer1)}']", true, "Should have a link for volunteer1"
-    assert_select "a[href='#{volunteer_path(@volunteer2)}']", true, "Should have link for volunteer2"
+    assert_select "a[href='#{edit_volunteer_path(@volunteer1)}']", true, "Should have a link for volunteer1"
+    assert_select "a[href='#{edit_volunteer_path(@volunteer2)}']", true, "Should have link for volunteer2"
   end
 
 
