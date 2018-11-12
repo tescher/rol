@@ -97,12 +97,12 @@ class Volunteer < ActiveRecord::Base
   end
 
   def pending_must_allow_background_check
-    if (self.needs_review == true) && (self.agree_to_background_check != true)
+    if (self.needs_review == true) && (self.agree_to_background_check != true) && (self.deleted_reason.blank?)
       errors.add(:agree_to_background_check, "Must agree to allow a background check in order to apply.")
     end
   end
   def pending_need_age
-    if (self.needs_review == true) && (self.adult != true) && (self.birthdate.blank?)
+    if (self.needs_review == true) && (self.adult != true) && (self.birthdate.blank?) && (self.deleted_reason.blank?)
       errors.add(:need_age, "Enter birthdate or check that you are #{Utilities::Utilities.system_setting(:adult_age)} or older.")
     end
   end
