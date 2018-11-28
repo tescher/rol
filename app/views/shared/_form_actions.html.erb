@@ -12,6 +12,6 @@
                       data: { confirm: "You sure?" }, class: "btn btn-primary" %>
       <% end %>
   <% end %>
-  <%= link_to 'Cancel', defined?(cancel) ? cancel : root_path, class: "btn btn-primary" %>
+  <%= link_to 'Cancel', defined?(cancel) ? cancel : root_path, onclick: defined?(cancel_onclick) ? cancel_onclick : "", class: "btn btn-primary" %>
 
 </div>

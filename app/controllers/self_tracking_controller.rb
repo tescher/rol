@@ -233,10 +233,13 @@ class SelfTrackingController < ApplicationController
 
         @workday.workday_volunteers.each do |workday_volunteer|
           if workday_volunteer.end_time.nil?
-            workday_volunteer.end_time = Time.parse(@check_out_all_form.check_out_time)
+            workday_volunteer.end_time = Time.strptime(@check_out_all_form.check_out_time, "%I:%M %P").strftime("%H:%M:%S")
+            if workday_volunteer.start_time.nil?
+              workday_volunteer.start_time = workday_volunteer.end_time - 4.hours # Assume 4 hours if ambiguous
+            end
             if !workday_volunteer.is_end_time_valid
               unupdated_volunteers[workday_volunteer.volunteer_id.to_s] = 'End time is before start time.'
-            elsif !@workday.is_overlapping_volunteer(workday_volunteer)
+            elsif @workday.is_overlapping_volunteer(workday_volunteer)
               unupdated_volunteers[workday_volunteer.volunteer_id.to_s] = 'End time overlaps another workday entry for this volunteer'
             else
               workday_volunteer.save

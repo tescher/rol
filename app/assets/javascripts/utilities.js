@@ -251,7 +251,7 @@ jQuery(document).ready(function($) {
                         alert("Error creating " + (aliasName || objectName).toLowerCase() + ", make sure fields are filled correctly");
                         // dialog.dialog("close");
                     } else {
-                        if (aliasName.toLowerCase() == "guardian") { // Dealing with waivers
+                        if (aliasName && aliasName.toLowerCase() == "guardian") { // Dealing with waivers
                             add_fields("", "waivers", data, ".add_waiver_fields");
                         } else {
                             add_fields("", "workday_" + objectName.toLowerCase() + "s", data, ".add_" + objectName.toLowerCase() + "_fields");

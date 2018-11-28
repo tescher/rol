@@ -24,6 +24,19 @@
         </div>
         <div class="row">
           <div class="col-md-4">
+            <%= f.label "Birthdate (for waivers)" %><br>
+          </div>
+          <div class="col-md-4">
+            <%= f.text_field :birthdate, id: 'birthdatepicker', class: 'form-control' %>
+          </div>
+          <div class="col-md-4">
+            <label>
+              <%= f.check_box :adult %> Adult <br/> (for waivers)
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
             <%= f.label :email %><br>
           </div>
           <div class="col-md-8">

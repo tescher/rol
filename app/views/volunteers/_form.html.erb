@@ -123,7 +123,7 @@
           </div>
           <div class="row">
             <div class="col-md-2">
-              <%= f.label :emerg_contact_name, "Emergency contact" %><br>
+              <%= f.label :emerg_contact_name, "Emerg contact" %><br>
             </div>
             <div class="col-md-8">
               <%= f.text_field :emerg_contact_name,  class: 'form-control' %>
@@ -131,7 +131,7 @@
           </div>
           <div class="row">
             <div class="col-md-2">
-              <%= f.label :emerg_contact_phone, "Emergency contact phone" %><br>
+              <%= f.label :emerg_contact_phone, "Emerg contact phone" %><br>
             </div>
             <div class="col-md-8">
               <%= f.text_field :emerg_contact_phone, class: 'form-control' %>
@@ -200,6 +200,15 @@
           </div>
           <div class="row">&nbsp;</div>
           <div class="row">
+            <div class="col-md-8 col-md-offset-3">
+              <div class="checkbox">
+                <label>
+                  <%= f.check_box :primary_employer_contact %> Primary employer contact
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
             <div class="col-md-3">
               <%= f.label :church %><br>
             </div>
@@ -213,6 +222,15 @@
             </div>
           </div>
           <div class="row">&nbsp;</div>
+          <div class="row">
+            <div class="col-md-8 col-md-offset-3">
+              <div class="checkbox">
+                <label>
+                  <%= f.check_box :primary_church_contact %> Primary church contact
+                </label>
+              </div>
+            </div>
+          </div>
           <div class="row">
             <div class="col-md-3">
               <%= f.label :notes %><br>
@@ -288,6 +306,7 @@
           <%= if current_user.donations_allowed
                 f.submit "Donations", name: "to_donations", class: "btn btn-primary"
               end %>
+          <%= f.submit "Contacts", name: "to_contacts", class: "btn btn-primary" %>
         </div>
       </div>
     </div>

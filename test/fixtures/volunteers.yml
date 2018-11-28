@@ -18,6 +18,8 @@ one:
   medical_conditions: A bunch of medical conditions
   emerg_contact_name: Emergency Name
   emerg_contact_phone:
+  primary_employer_contact: true
+  primary_church_contact: true
   first_contact_date: <%= 10.day.ago.to_s(:db) %>
   background_check_date: <%= 10.day.ago.to_s(:db) %>
   waiver_date: <%= 10.day.ago.to_s(:db) %>

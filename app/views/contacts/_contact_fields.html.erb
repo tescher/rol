@@ -1,0 +1,21 @@
+<tr class="hide_on_remove">
+  <td>
+        <%= label_tag :date_time, f.object.date_time.strftime("%m/%d/%Y %l:%M %p") %>
+  </td>
+  <td><%= if f.object.contact_method_id
+            contact_method = ContactMethod.find(f.object.contact_method_id)
+          end
+          if !contact_method.nil?
+            label_tag :contact_method, contact_method.name
+          else
+            label_tag :contact_method, "N/A"
+          end
+  %></td>
+  <td><%= f.text_area :notes, size: '30x5', disabled: true  %></td>
+  <td>
+    <%= link_to 'edit', edit_contact_path(id: f.object.id), target: "_blank" %>
+    |
+    <%= f.hidden_field :_destroy %>
+    <%= link_to "delete", "#", class: "remove_fields" %>
+  </td>
+</tr>

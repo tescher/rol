@@ -1,0 +1,45 @@
+<% provide(:title, 'Contacts') %>
+<h1>Contact History for <%= @parent.name %></h1>
+
+<% content_for :head do %>
+  <!-- Refresh on focus -->
+  <script type="text/javascript">
+      var blurred = false;
+      window.onblur = function() { blurred = true; };
+      window.onfocus = function() { blurred && (location.reload()); };
+  </script>
+<% end %>
+
+<%= form_for(@parent, html: { :multipart => true }) do |f| %>
+  <% @object = f.object
+      @contacts = @parent.contacts.order("date_time DESC")
+      %>
+
+  <div class="left">
+    <%= link_to 'New Contact', new_contact_path(volunteer_id: @parent.id), class: "btn btn-primary", target: "_blank" %>
+  </div>
+
+
+
+  <table class="table no-row-border header-border">
+    <tbody class="add_contact_fields">
+    <%= f.fields_for :contacts, @contacts do |builder| %>
+      <%=  @readonly = true
+           render "contacts/contact_fields", :f => builder %>
+    <% end %>
+    </tbody>
+  </table>
+
+  <div>&nbsp;</div>
+
+
+  <div class="row">
+    <div class="col-md-11">
+      <div class="actions pull-right">
+
+        <%= render partial: "shared/form_actions", locals: {f: f, cancel: edit_polymorphic_path(@object)} %>
+      </div>
+    </div>
+  </div>
+
+<% end %>

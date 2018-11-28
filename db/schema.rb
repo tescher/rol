@@ -11,11 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180910225614) do
+ActiveRecord::Schema.define(version: 20181111045732) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "fuzzystrmatch"
+
+  create_table "contact_methods", force: :cascade do |t|
+    t.string   "name"
+    t.boolean  "inactive"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "contact_types", force: :cascade do |t|
     t.string   "name"
@@ -23,6 +30,19 @@ ActiveRecord::Schema.define(version: 20180910225614) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
+
+  create_table "contacts", force: :cascade do |t|
+    t.datetime "date_time"
+    t.integer  "contact_method_id"
+    t.integer  "volunteer_id"
+    t.string   "notes"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.datetime "deleted_at"
+  end
+
+  add_index "contacts", ["deleted_at"], name: "index_contacts_on_deleted_at", using: :btree
+  add_index "contacts", ["volunteer_id"], name: "index_contacts_on_volunteer_id", using: :btree
 
   create_table "donation_types", force: :cascade do |t|
     t.string   "name"
@@ -239,6 +259,8 @@ ActiveRecord::Schema.define(version: 20180910225614) do
     t.string   "medical_conditions"
     t.string   "limitations"
     t.boolean  "agree_to_background_check"
+    t.boolean  "primary_employer_contact"
+    t.boolean  "primary_church_contact"
   end
 
   add_index "volunteers", ["church_id"], name: "index_volunteers_on_church_id", using: :btree

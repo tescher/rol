@@ -5,7 +5,7 @@ include VolunteersHelper
 include WaiversHelper
 
 class VolunteersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search, :address_check, :donations, :waivers, :merge, :search_merge, :merge_form]
+  before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search, :address_check, :donations, :waivers, :contacts, :merge, :search_merge, :merge_form]
   before_action :admin_user,     only: [:destroy, :import, :import_form]
   before_action :donations_allowed, only: [:donations]
   autocomplete :volunteer, :last_name, :full => true, :extra_data => [:first_name, :city], :display_value => :autocomplete_display
@@ -281,15 +281,20 @@ class VolunteersController < ApplicationController
             session[:child_entry] = "waivers"
             redirect_to waivers_volunteer_path(@volunteer)
           else
-            session[:child_entry] = nil
-            if params[:stay].blank?
-              if from_pending_volunteers
-                redirect_to pending_volunteers_path
-              else
-                redirect_to search_volunteers_path
-              end
+            if !params[:to_contacts].blank?
+              session[:child_entry] = "contacts"
+              redirect_to contacts_volunteer_path(@volunteer)
             else
-              redirect_to edit_volunteer_path(@volunteer)
+              session[:child_entry] = nil
+              if params[:stay].blank?
+                if from_pending_volunteers
+                  redirect_to pending_volunteers_path
+                else
+                  redirect_to search_volunteers_path
+                end
+              else
+                redirect_to edit_volunteer_path(@volunteer)
+              end
             end
           end
         end
@@ -313,9 +318,8 @@ class VolunteersController < ApplicationController
     session[:volunteer_id] = @volunteer.id
     from = session[:child_entry]
 
-    if !from.nil?     # Coming from donations or waivers
+    if !from.nil?     # Coming from donations or waivers or contacts
       if params[:volunteer] && @volunteer.update_attributes(volunteer_params)
-        flash[:success] = "#{from.capitalize} updated"
         if from == "waivers"
           #Update last waiver date, birthdate and adult flag from last waiver if not already set
           @volunteer.reload
@@ -331,10 +335,15 @@ class VolunteersController < ApplicationController
           end
         end
         if !params[:stay].blank?
+          flash[:success] = "#{from.capitalize} updated"
           if from == "donations"
             redirect_to donations_volunteer_path(@volunteer)
           else
-            redirect_to waivers_volunteer_path(@volunteer)
+            if from == "contacts"
+              redirect_to contacts_volunteer_path(@volunteer)
+            else
+              redirect_to waivers_volunteer_path(@volunteer)
+            end
           end
         else
           session[:child_entry] = nil
@@ -350,7 +359,11 @@ class VolunteersController < ApplicationController
           if from == "donations"
             render "shared/donations_form"
           else
-            render "waivers/waivers_form"
+            if from == "contacts"
+              render "contacts/contacts_form"
+            else
+              render "waivers/waivers_form"
+            end
           end
         else       # Must have saved with no data
           session[:child_entry] = nil
@@ -363,7 +376,6 @@ class VolunteersController < ApplicationController
       end
     else                                       # Coming from regular edit
       if params[:volunteer] && @volunteer.update_attributes(volunteer_params)
-        flash[:success] = "Volunteer updated"
         if !params[:to_donations].blank?
           session[:child_entry] = "donations"
           redirect_to donations_volunteer_path(@volunteer)
@@ -372,11 +384,17 @@ class VolunteersController < ApplicationController
             session[:child_entry] = "waivers"
             redirect_to waivers_volunteer_path(@volunteer)
           else
-            session[:child_entry] = nil
-            if params[:stay].blank?
-              redirect_to search_volunteers_path
+            if !params[:to_contacts].blank?
+              session[:child_entry] = "contacts"
+              redirect_to contacts_volunteer_path(@volunteer)
             else
-              redirect_to edit_volunteer_path(@volunteer)
+              session[:child_entry] = nil
+              if params[:stay].blank?
+                redirect_to search_volunteers_path
+              else
+                flash[:success] = "Volunteer updated"
+                redirect_to edit_volunteer_path(@volunteer)
+              end
             end
           end
         end
@@ -497,6 +515,12 @@ class VolunteersController < ApplicationController
           donation.save!
           sd.destroy!
         end
+        Contact.where("volunteer_id = #{@source_volunteer.id}").each do |ct|
+          contact = ct.dup
+          contact.volunteer_id = @object.id
+          contact.save!
+          ct.destroy!
+        end
         deletable_waivers = []
         Waiver.where("volunteer_id = #{@source_volunteer.id}").each do |swv|
           waiver = swv.dup
@@ -560,6 +584,12 @@ class VolunteersController < ApplicationController
   def waivers
     child_form_setup
     render "waivers/waivers_form"
+  end
+
+  # GET /volunteer/1/contacts
+  def contacts
+    child_form_setup
+    render "contacts/contacts_form"
   end
 
   # GET /volunteers/import
@@ -731,9 +761,13 @@ class VolunteersController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def volunteer_params
     params.require(:volunteer).permit(:first_name, :last_name, :middle_name, :email, :occupation, :employer_id, :church_id,
+                                      :primary_employer_contact, :primary_church_contact,
                                       :address, :city, :state, :zip, :home_phone, :work_phone, :mobile_phone,
-                                      :notes, :remove_from_mailing_list, :waiver_date, :birthdate, :adult, :first_contact_date, :first_contact_type_id, :pending_volunteer_id, :agree_to_background_check, :background_check_date, :emerg_contact_name, :emerg_contact_phone, :limitations, :medical_conditions, interest_ids: [], volunteer_category_ids: [], donations_attributes: [:id, :date_received, :value, :ref_no, :item, :anonymous, :in_honor_of, :designation, :notes, :receipt_sent, :volunteer_id, :organization_id, :donation_type_id, :_destroy],
-                                      waivers_attributes: [:id, :guardian_id, :adult, :birthdate, :date_signed, :waiver_text, :e_sign, :file, :_destroy])
+                                      :notes, :remove_from_mailing_list, :waiver_date, :birthdate, :adult, :first_contact_date, :first_contact_type_id,
+                                      :pending_volunteer_id, :agree_to_background_check, :background_check_date, :emerg_contact_name, :emerg_contact_phone,
+                                      :limitations, :medical_conditions, interest_ids: [], volunteer_category_ids: [], donations_attributes: [:id, :date_received, :value, :ref_no, :item, :anonymous, :in_honor_of, :designation, :notes, :receipt_sent, :volunteer_id, :organization_id, :donation_type_id, :_destroy],
+                                      waivers_attributes: [:id, :guardian_id, :adult, :birthdate, :date_signed, :waiver_text, :e_sign, :file, :_destroy],
+                                      contacts_attributes: [:id, :notes, :contact_method_id, :date_time, :_destroy])
   end
   def volunteer_search_params
     search_params = params.permit(:name, :city, :workday_since, interest_ids: [], volunteer_category_ids: [])
@@ -751,6 +785,7 @@ class VolunteersController < ApplicationController
     @allow_stay = true
     @custom_submit = "Save & Search"
     @custom_submit_name = "save_and_search"
+    @submit_name = "Save"
   end
 
   def edit_setup
@@ -760,6 +795,7 @@ class VolunteersController < ApplicationController
     @church = @volunteer.church_id.blank? ? nil : Organization.find(@volunteer.church_id)
     @allow_stay = true
     @donation_year = get_donation_summary("volunteer", @volunteer.id)[0].first
+    @submit_name = "Update Volunteer"
     session[:volunteer_id] = @volunteer.id
     session[:child_entry] = nil
   end

@@ -8,6 +8,7 @@ class Volunteer < ActiveRecord::Base
   has_many :workdays, through: :workday_volunteers
   has_many :donations, dependent: :destroy
   has_many :waivers, dependent: :destroy
+  has_many :contacts, dependent: :destroy
   belongs_to :church, -> { where(:organization_type => 1) }, class_name: "Organization", foreign_key: :church_id
   belongs_to :employer, class_name: "Organization", foreign_key: :employer_id
   belongs_to :first_contact_type, class_name: "ContactType", foreign_key: :first_contact_type_id
@@ -32,6 +33,7 @@ class Volunteer < ActiveRecord::Base
 
   accepts_nested_attributes_for :donations, :allow_destroy => true
   accepts_nested_attributes_for :waivers, :allow_destroy => true
+  accepts_nested_attributes_for :contacts, :allow_destroy => true
 
 
   before_save {
@@ -62,7 +64,7 @@ class Volunteer < ActiveRecord::Base
   def self.merge_fields_table
     merge_fields = {}
     index = 0
-    [:first_name, :middle_name, :last_name, :occupation, :address, :city, :state, :zip, :email, :home_phone, :work_phone, :mobile_phone, :remove_from_mailing_list, :waiver_date, :background_check_date, :church_id, :employer_id, :first_contact_date, :first_contact_type_id, :medical_conditions, :limitations, :emerg_contact_name, :emerg_contact_phone, :agree_to_background_check, :birthdate, :adult].each do |f|
+    [:first_name, :middle_name, :last_name, :occupation, :address, :city, :state, :zip, :email, :home_phone, :work_phone, :mobile_phone, :remove_from_mailing_list, :waiver_date, :background_check_date, :church_id, :primary_church_contact, :employer_id, :primary_employer_contact, :first_contact_date, :first_contact_type_id, :medical_conditions, :limitations, :emerg_contact_name, :emerg_contact_phone, :agree_to_background_check, :birthdate, :adult].each do |f|
       merge_fields[f] = index
       index += 1
     end
@@ -95,12 +97,12 @@ class Volunteer < ActiveRecord::Base
   end
 
   def pending_must_allow_background_check
-    if (self.needs_review == true) && (self.agree_to_background_check != true)
+    if (self.needs_review == true) && (self.agree_to_background_check != true) && (self.deleted_reason.blank?)
       errors.add(:agree_to_background_check, "Must agree to allow a background check in order to apply.")
     end
   end
   def pending_need_age
-    if (self.needs_review == true) && (self.adult != true) && (self.birthdate.blank?)
+    if (self.needs_review == true) && (self.adult != true) && (self.birthdate.blank?) && (self.deleted_reason.blank?)
       errors.add(:need_age, "Enter birthdate or check that you are #{Utilities::Utilities.system_setting(:adult_age)} or older.")
     end
   end
