@@ -186,14 +186,6 @@ class VolunteersController < ApplicationController
       @volunteers = @volunteers_filtered
     end
 
-    @last_workdate = {}
-    @volunteers.each do |v|
-      last_workday = Workday.joins(:workday_volunteers).where("workday_volunteers.volunteer_id = '#{v.id}'").order("workdays.workdate DESC").first
-      if !last_workday.nil?
-        @last_workdate[v.id] = last_workday.workdate
-      end
-    end
-
     respond_to do |format|
       format.html {
         if params[:dialog] == "true"
