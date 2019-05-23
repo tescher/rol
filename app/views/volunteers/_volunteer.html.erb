@@ -19,7 +19,7 @@
       <%= volunteer.home_phone.presence || volunteer.mobile_phone.presence || volunteer.work_phone.presence %>
     </div>
     <div class="col-md-2">
-      <%= @last_workdate[volunteer.id].nil? ? "" : @last_workdate[volunteer.id].strftime("%m/%d/%Y") %>
+      <%= volunteer.last_workday.nil? ? "" : volunteer.last_workday.workdate.strftime("%m/%d/%Y") %>
     </div>
     <div class="col-md-2">
       <%= link_to 'New Contact', new_contact_path(volunteer_id: volunteer.id), target: "_blank" %>

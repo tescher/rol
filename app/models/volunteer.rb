@@ -61,6 +61,10 @@ class Volunteer < ActiveRecord::Base
     self.home_phone || self.mobile_phone || self.work_phone
   end
 
+  def last_workday
+    Workday.joins(:workday_volunteers).where("workday_volunteers.volunteer_id = '#{self.id}'").order("workdays.workdate DESC").first
+  end
+
   def self.merge_fields_table
     merge_fields = {}
     index = 0

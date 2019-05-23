@@ -8,7 +8,7 @@ class VolunteersController < ApplicationController
   before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search, :address_check, :donations, :waivers, :contacts, :merge, :search_merge, :merge_form]
   before_action :admin_user,     only: [:destroy, :import, :import_form]
   before_action :donations_allowed, only: [:donations]
-  autocomplete :volunteer, :last_name, :full => true, :extra_data => [:first_name, :city], :display_value => :autocomplete_display
+  autocomplete :volunteer, :last_name, :full => false, :extra_data => [:first_name, :city], :display_value => :autocomplete_display
 
 
   def search
@@ -184,14 +184,6 @@ class VolunteersController < ApplicationController
         @volunteers_filtered << new_volunteer
       end
       @volunteers = @volunteers_filtered
-    end
-
-    @last_workdate = {}
-    @volunteers.each do |v|
-      last_workday = Workday.joins(:workday_volunteers).where("workday_volunteers.volunteer_id = '#{v.id}'").order("workdays.workdate DESC").first
-      if !last_workday.nil?
-        @last_workdate[v.id] = last_workday.workdate
-      end
     end
 
     respond_to do |format|

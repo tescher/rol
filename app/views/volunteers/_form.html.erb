@@ -2,7 +2,7 @@
     <%= @object = f.object
         render 'shared/error_messages' %>
     <% if @num_workdays.count > 0 %>
-        <h5 class="center">Has participated in <a href="#" data-id="<%= @volunteer.id %>" data-object-name="volunteer" id="linkWorkdaySummary"><%= pluralize(@num_workdays.count, "workday") %> for <%= pluralize(@num_workdays.sum("hours"), "hour") %></a></h5>
+        <h5 class="center">Has participated in <a href="#" data-id="<%= @volunteer.id %>" data-object-name="volunteer" id="linkWorkdaySummary"><%= pluralize(@num_workdays.count, "workday") %> for <%= pluralize(@num_workdays.sum("hours"), "hour") %>, most recently <%= @volunteer.last_workday.workdate.strftime("%m/%d/%Y") %></a></h5>
         <div id="dialogWorkdaySummary"></div>
         <div id="dialogParticipantReport"></div>
     <% else %>
