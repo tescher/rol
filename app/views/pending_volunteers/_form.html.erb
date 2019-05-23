@@ -282,7 +282,7 @@
         <% if !defined?(@self_tracking_enabled) || (@self_tracking_enabled == false) %>
           <div class="g-recaptcha" data-sitekey="<%= GOOGLE_SITE_KEY %>"></div>
         <% end %>
-        <%= render partial: "shared/form_actions", locals: {f: f} %>
+        <%= render partial: "shared/form_actions", locals: {f: f, cancel: Utilities::Utilities.system_setting(:org_site)} %>
       </div>
     </div>
   </div>

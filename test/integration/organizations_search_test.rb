@@ -21,8 +21,11 @@ class OrganizationsSearchTest < ActionDispatch::IntegrationTest
     assert_template 'organizations/search'
     get organizations_path, {name: "e"}
     assert_select 'div.pagination'
-    first_page_of_organizations = Organization.where("(soundex(name) = soundex('e') OR (LOWER(name) LIKE 'e%'))").order(:name, :city).paginate(page: 1)
+    first_page_of_organizations = Organization.where("(soundex(name) = soundex('e') OR (LOWER(name) LIKE 'e%'))").order(:name, :city).paginate(page: 1, per_page: 29)
+    puts "Organization Count #{first_page_of_organizations.count}"
+    puts @response.body
     first_page_of_organizations.each do |organization|
+      puts organization.name
       assert_select 'div[href=?]', edit_organization_path(organization)
     end
   end
