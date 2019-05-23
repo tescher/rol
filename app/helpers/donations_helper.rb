@@ -12,15 +12,15 @@ module DonationsHelper
     output
   end
 
-  def get_donation_summary(objectName, id)
+  def get_donation_summary(objectName, id, non_monetary = false)
 
     if (objectName == "volunteer")
       object = Volunteer.find(id)
       if (object.address.to_s.empty? && object.city.to_s.empty?)
-        where_clause = "(volunteers.id = '#{object.id}') AND (donations.volunteer_id = volunteers.id) AND (donations.donation_type_id = donation_types.id) and (donation_types.non_monetary = FALSE)"
+        where_clause = "(volunteers.id = '#{object.id}') AND (donations.volunteer_id = volunteers.id) AND (donations.donation_type_id = donation_types.id) and (donation_types.non_monetary = #{non_monetary})"
       else
         address_hash = (object.address.to_s + object.city.to_s).gsub(/[^0-9a-zA-Z]/,"").downcase
-        where_clause = "(REGEXP_REPLACE(LOWER(volunteers.address || volunteers.city), '[^0-9a-z]', '', 'g') = '" + address_hash + "') AND (donations.volunteer_id = volunteers.id) AND (donations.donation_type_id = donation_types.id) and (donation_types.non_monetary = FALSE)"
+        where_clause = "(REGEXP_REPLACE(LOWER(volunteers.address || volunteers.city), '[^0-9a-z]', '', 'g') = '" + address_hash + "') AND (donations.volunteer_id = volunteers.id) AND (donations.donation_type_id = donation_types.id) and (donation_types.non_monetary = #{non_monetary})"
       end
 
       # join = "INNER JOIN workday_#{@objectName}s ON workday_#{@objectName}s.workday_id = workdays.id"
@@ -32,7 +32,7 @@ module DonationsHelper
                                }]
     else
       object = Organization.find(id)
-      where_clause = "(organizations.id = '#{object.id}') AND (donations.organization_id = organizations.id) AND (donations.donation_type_id = donation_types.id) and (donation_types.non_monetary = FALSE)"
+      where_clause = "(organizations.id = '#{object.id}') AND (donations.organization_id = organizations.id) AND (donations.donation_type_id = donation_types.id) and (donation_types.non_monetary = #{non_monetary})"
       # join = "INNER JOIN workday_#{@objectName}s ON workday_#{@objectName}s.workday_id = workdays.id"
       donation_years = Donation.select("ROUND(EXTRACT(YEAR FROM donations.date_received)) as year").joins(:organization, :donation_type).where(where_clause).group("year").order("year DESC")
       donations_by_year = Hash[donation_years.map { |dy|
