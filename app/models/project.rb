@@ -5,5 +5,8 @@ class Project < ActiveRecord::Base
 
   scope :active, -> { where(inactive: false) }
 
+  def last_workday
+    Workday.where("project_id = '#{self.id}'").order("workdate DESC").first
+  end
 
 end

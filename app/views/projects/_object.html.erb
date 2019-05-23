@@ -2,7 +2,7 @@
   <li>
     <div class="col-md-10 col-md-offset-1">
 
-      <div class="col-md-5">
+      <div class="col-md-3">
         <% if object.inactive? %>
             <s>
         <% end %>
@@ -11,8 +11,11 @@
             </s>
         <% end %>
       </div>
-      <div class="col-md-5">
+      <div class="col-md-3">
         <%= object.description %>
+      </div>
+      <div class="col-md-3">
+        <%= object.last_workday.nil? ? "" : "Last workday #{object.last_workday.workdate.strftime("%m/%d/%Y")}" %>
       </div>
 
    </div>
