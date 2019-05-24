@@ -9,13 +9,8 @@
   <% else %>
     <h5 class="center">Has not participated in any workdays</h5>
   <% end %>
-  <% if current_user.monetary %>
-    <% if !@donation_year.nil? %>
-      <h5 class="center">Household has <a href="#" data-id="<%= @volunteer.id %>" data-object-name="volunteer" id="linkDonationSummary"> donated monetarily </a></h5>
-      <div id="dialogDonationSummary"></div>
-    <% else %>
-      <h5 class="center">Household has not donated monetarily</h5>
-    <% end %>
+  <% if !@volunteer.id.nil? %>
+        <%= render partial: 'shared/donation_summary_links', locals: {object: @volunteer} %>
   <% end %>
 
 

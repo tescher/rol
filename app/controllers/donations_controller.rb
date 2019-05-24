@@ -288,10 +288,11 @@ class DonationsController < ApplicationController
 
   def donation_summary
     @objectName = params[:object_name].downcase
+    @non_monetary = ActiveRecord::Type::Boolean.new.type_cast_from_user(params[:non_monetary])
     if (@objectName != "volunteer") && (@objectName != "organization")
       render partial: "Invalid parameter"
     else
-      @donation_years, @donations_by_year, @year_totals = get_donation_summary(@objectName, params[:id])
+      @donation_years, @donations_by_year, @year_totals = get_donation_summary(@objectName, params[:id], @non_monetary)
       render partial: "dialog_donation_summary"
     end
   end

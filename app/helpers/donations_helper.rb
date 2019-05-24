@@ -20,6 +20,7 @@ module DonationsHelper
         where_clause = "(volunteers.id = '#{object.id}') AND (donations.volunteer_id = volunteers.id) AND (donations.donation_type_id = donation_types.id) and (donation_types.non_monetary = #{non_monetary})"
       else
         address_hash = (object.address.to_s + object.city.to_s).gsub(/[^0-9a-zA-Z]/,"").downcase
+        puts "Address Hash #{address_hash}"
         where_clause = "(REGEXP_REPLACE(LOWER(volunteers.address || volunteers.city), '[^0-9a-z]', '', 'g') = '" + address_hash + "') AND (donations.volunteer_id = volunteers.id) AND (donations.donation_type_id = donation_types.id) and (donation_types.non_monetary = #{non_monetary})"
       end
 
@@ -46,11 +47,12 @@ module DonationsHelper
     year_totals = Hash[donations_by_year.map { |y, ds|
                          year_value = 0
                          ds.each do |d|
-                           year_value += d.value
+                           year_value += d.value.to_s.to_d
                          end
                          [y, year_value]
                        }]
     [donation_years, donations_by_year, year_totals]
+
   end
 
 end
