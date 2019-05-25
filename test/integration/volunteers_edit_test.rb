@@ -244,13 +244,13 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     log_in_as(@monetary_donation_user)
     get edit_volunteer_path(@volunteer1)
     assert_template 'volunteers/edit'
-    assert_select 'a[id="linkDonationSummary"]', false
+    assert_select 'a[id="linkDonationSummaryMonetary"]', false
     @volunteer.address = funky_address
     @volunteer.city = funky_city
     @volunteer.save
     get edit_volunteer_path(@volunteer1)
     assert_template 'volunteers/edit'
-    assert_select 'a[id="linkDonationSummary"]', true
+    assert_select 'a[id="linkDonationSummaryMonetary"]', true
   end
 
   test "successful delete as admin" do
