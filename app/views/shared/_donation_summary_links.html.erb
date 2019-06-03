@@ -1,0 +1,22 @@
+<% if object.class.name.downcase == "volunteer"
+      entity = "Household"
+   else
+      entity = "Organization"
+   end
+%>
+<% if current_user.monetary %>
+  <% if !get_donation_summary(object.class.name.downcase, object.id, false)[0].first.nil? %>
+    <h5 class="center"><%= entity %> has <a href="#" data-id="<%= object.id %>" data-object-name="<%= object.class.name.downcase %>" data-non-monetary="false" id="linkDonationSummaryMonetary"> donated monetarily </a></h5>
+    <div id="dialogDonationSummaryMonetary"></div>
+  <% else %>
+    <h5 class="center"><%= entity %> has not donated monetarily</h5>
+  <% end %>
+<% end %>
+<% if current_user.donations_allowed %>
+  <% if !get_donation_summary(object.class.name.downcase, object.id, true)[0].first.nil? %>
+    <h5 class="center"><%= entity %> has <a href="#" data-id="<%= object.id %>" data-object-name="<%= object.class.name.downcase %>" data-non-monetary="true" id="linkDonationSummaryNonMonetary"> donated non-monetarily </a></h5>
+    <div id="dialogDonationSummaryNonMonetary"></div>
+  <% else %>
+    <h5 class="center"><%= entity %> has not donated non-monetarily</h5>
+  <% end %>
+<% end %>

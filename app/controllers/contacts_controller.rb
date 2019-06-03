@@ -93,7 +93,6 @@ class ContactsController < ApplicationController
 
   def volunteer_info_setup
     @num_workdays = WorkdayVolunteer.where(volunteer_id: @volunteer.id)
-    @donation_year = get_donation_summary("volunteer", @volunteer.id)[0].first
   end
 
 end

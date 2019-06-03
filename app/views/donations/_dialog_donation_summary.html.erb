@@ -2,38 +2,43 @@
   <div id="tabs-container">
     <ul>
       <% @donation_years.each do |dy| %>
-          <li><a href="#tabs-<%= dy.year.to_s.split(".").first %>"><%= dy.year.to_s.split(".").first %></a></li>
+        <li><a href="#tabs-<%= dy.year.to_s.split(".").first %>"><%= dy.year.to_s.split(".").first %></a></li>
       <% end %>
     </ul>
     <% @donations_by_year.each do |year, donations| %>
-        <div id="tabs-<%= year.to_s.split(".").first %>">
-          <ul class="listing">
-            <% donations.each do |d|
-              donation = Donation.find(d.id) %>
-                <li>
-                  <div class="col-md-4 col-md-offset-1">
-                    <%= donation.date_received.strftime("%m/%d/%Y") %>
-                  </div>
-                  <div class="col-md-5">
-                    <%= if @objectName == "volunteer"
-                          Volunteer.find(donation.volunteer_id).name
-                        else
-                          Organization.find(donation.organization_id).name
-                        end
-                    %>
-                  </div>
-                  <div class="col-md-2">
-                    <%= number_to_currency(donation.value) %>
-                  </div>
-                </li>
-            <% end %>
+      <div id="tabs-<%= year.to_s.split(".").first %>">
+        <ul class="listing">
+          <% donations.each do |d|
+            donation = Donation.find(d.id) %>
             <li>
-              <div class="col-md-4 col-md-offset-1">
-                Year Total: <%= number_to_currency(@year_totals[year]) %>
+              <div class="col-md-3 col-md-offset-1">
+                <%= donation.date_received.strftime("%m/%d/%Y") %>
+              </div>
+              <div class="col-md-3">
+                <%= if @objectName == "volunteer"
+                      Volunteer.find(donation.volunteer_id).name
+                    else
+                      Organization.find(donation.organization_id).name
+                    end
+                %>
+              </div>
+              <% if @non_monetary %>
+                <div class="col-md-3">
+                  <%= donation.item %>
+                </div>
+              <% end %>
+              <div class="col-md-2">
+                <%= number_to_currency(donation.value) %>
               </div>
             </li>
-          </ul>
-        </div>
+          <% end %>
+          <li>
+            <div class="col-md-4 col-md-offset-1">
+              Year Total: <%= number_to_currency(@year_totals[year]) %>
+            </div>
+          </li>
+        </ul>
+      </div>
     <% end %>
 
   </div>

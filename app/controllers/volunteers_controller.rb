@@ -786,7 +786,6 @@ class VolunteersController < ApplicationController
     @employer = @volunteer.employer_id.blank? ? nil : Organization.find(@volunteer.employer_id)
     @church = @volunteer.church_id.blank? ? nil : Organization.find(@volunteer.church_id)
     @allow_stay = true
-    @donation_year = get_donation_summary("volunteer", @volunteer.id)[0].first
     @submit_name = "Update Volunteer"
     session[:volunteer_id] = @volunteer.id
     session[:child_entry] = nil

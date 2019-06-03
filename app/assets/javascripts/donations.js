@@ -5,7 +5,7 @@ $(document).ready(function() {
 
     $('[id*=donation_type_ids]').multiselect();
 
-    $("#dialogDonationSummary").dialog({
+    $('[id^=dialogDonationSummary]').dialog({
         modal: true,
         title: "Donation Summary",
         disabled: true,
@@ -24,18 +24,19 @@ $(document).ready(function() {
         }
     });
 
-    $("#linkDonationSummary").click(function(evt) {
+    $('[id^=linkDonationSummary]').click(function(evt) {
         var id = $(this).attr("data-id");
         var objectName = $(this).attr("data-object-name");
+        var nonMonetary = $(this).attr("data-non-monetary");
         $.ajax({
-            url: "/donations/donation_summary?dialog=true&object_name="+objectName+"&id="+id,
+            url: "/donations/donation_summary?dialog=true&object_name="+objectName+"&id="+id+"&non_monetary="+nonMonetary,
             success: function(data) {
-                loadDialog("dialogDonationSummary",data, {
+                loadDialog("dialogDonationSummary"+(nonMonetary == "true" ? "NonMonetary" : "Monetary"),data, {
                     my: "center top",
                     at: "center bottom",
                     of: $("header")
                 });
-                $("#dialogDonationSummary #tabs-container").tabs();
+                $('[id^=dialogDonationSummary] #tabs-container').tabs();
 
             },
             async: false,

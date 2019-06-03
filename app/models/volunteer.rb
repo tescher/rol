@@ -62,7 +62,11 @@ class Volunteer < ActiveRecord::Base
   end
 
   def last_workday
-    Workday.joins(:workday_volunteers).where("workday_volunteers.volunteer_id = '#{self.id}'").order("workdays.workdate DESC").first
+    if self.id
+      Workday.joins(:workday_volunteers).where("workday_volunteers.volunteer_id = '#{self.id}'").order("workdays.workdate DESC").first
+    else
+      nil
+    end
   end
 
   def self.merge_fields_table
