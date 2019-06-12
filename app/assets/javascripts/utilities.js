@@ -263,6 +263,19 @@ jQuery(document).ready(function($) {
         }
     });
 
+    // Tooltip for ellipsis fields
+
+    $(document).on('mouseenter', ".no-overflow", function() {
+        var $this = $(this);
+        if(this.offsetWidth < this.scrollWidth && !$this.attr('title')) {
+            $this.tooltip({
+                title: $this.text(),
+                placement: "bottom"
+            });
+            $this.tooltip('show');
+        }
+    });
+
 
 });
 
