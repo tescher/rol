@@ -4,14 +4,14 @@
                                           link_to_add_workday_volunteer_fields(volunteer, session[:workday_id])
                                         end %>" >
   <li>
-    <div class="col-md-2 col-md-offset-1">
+    <div class="col-md-3 col-md-offset-1">
       <%= volunteer.first_name + " " + volunteer.last_name %>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-2 no-overflow">
       <%= volunteer.city %>
     </div>
-    <div class="col-md-2">
-      <span class="no-overflow"><%= volunteer.email %></span>
+    <div class="col-md-2 no-overflow">
+      <%= volunteer.email %>
     </div>
     <div class="col-md-3">
       <%= volunteer.home_phone.presence || volunteer.mobile_phone.presence || volunteer.work_phone.presence %>
