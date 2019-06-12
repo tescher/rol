@@ -19,7 +19,7 @@
                       <%= Project.find(workday.project_id).name + " - " + workday.name %>
                     </div>
                      <div class="col-md-2">
-                      <%= pluralize(w.hours, "hour") %>
+                      <%= pluralize(w.hours.round(1), "hour") %>
                     </div>
                   </li>
                 </div>

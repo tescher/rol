@@ -263,6 +263,19 @@ jQuery(document).ready(function($) {
         }
     });
 
+    // Tooltip for ellipsis fields
+
+    $(document).on('mouseenter', ".no-overflow", function() {
+        var $this = $(this);
+        if(this.offsetWidth < this.scrollWidth && !$this.attr('title')) {
+            $this.tooltip({
+                title: $this.text(),
+                placement: "bottom"
+            });
+            $this.tooltip('show');
+        }
+    });
+
 
 });
 
@@ -357,11 +370,17 @@ function workday_hours_calc(node) {
     var parent_node = $(node).closest("tr");
     var start_string = $(parent_node).find("input[id*='start_time']").val();
     var end_string = $(parent_node).find("input[id*='end_time']").val();
+    $(parent_node).find("input[id*='end_time']").css("background-color","transparent");
     if (start_string && end_string) {
         var start = moment("2000-01-01 " + start_string, "YYYY-MM-DD h:mm A");
         var end = moment("2000-01-01 " + end_string, "YYYY-MM-DD h:mm A");
-        var diff = moment.duration(end.diff(start)).asHours().toFixed(1);
-        $(parent_node).find("input[id*='hours']").val(+diff);
+        if (end.isSameOrAfter(start)) {
+            var diff = moment.duration(end.diff(start)).asHours().toFixed(1);
+            $(parent_node).find("input[id*='hours']").val(+diff);
+        } else {
+            $(parent_node).find("input[id*='hours']").val("");
+            $(parent_node).find("input[id*='end_time']").css("background-color","lightpink");
+        }
     }
 }
 

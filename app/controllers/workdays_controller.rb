@@ -304,7 +304,7 @@ class WorkdaysController < ApplicationController
         ws.each do |w|
           year_hours += w.hours
         end
-        [y, year_hours]
+        [y, year_hours.round(1)]
       }]
 
       render partial: "dialog_workday_summary"

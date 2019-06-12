@@ -1,13 +1,13 @@
 <div class="row clickable" href="<%=merge_volunteer_path(source_id: volunteer.id, id: session[:volunteer_id])%>" >
   <li>
-    <div class="col-md-2 col-md-offset-1">
+    <div class="col-md-3 col-md-offset-1">
       <%= volunteer.first_name + " " + volunteer.last_name %>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-2 no-overflow">
       <%= volunteer.city %>
     </div>
-    <div class="col-md-2">
-      <span class="no-overflow"><%= volunteer.email %></span>
+    <div class="col-md-3 no-overflow">
+      <%= volunteer.email %>
     </div>
     <div class="col-md-3">
       <%= volunteer.home_phone.presence || volunteer.mobile_phone.presence || volunteer.work_phone.presence %>
