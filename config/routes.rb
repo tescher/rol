@@ -97,6 +97,8 @@ Rails.application.routes.draw do
     collection do
       get 'import' => 'projects#import_form'
       post 'import' => 'projects#import'
+      get 'merge' => 'projects#merge_form'
+      post 'merge'
     end
   end
 

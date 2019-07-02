@@ -1,0 +1,39 @@
+<%= form_tag(merge_projects_path, method: "post") do %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5 col-md-offset-1">
+
+        <div class="row">
+          <div class="col-md-2">
+            <%= label_tag "Merge project(s)"  %>
+          </div>
+          <div class="col-md-8">
+            <%= select_tag :merge_project_ids, options_from_collection_for_select(Project.all, :id, :name), { :multiple => true, class: "form-control"} %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">
+            <%= label_tag "into" %>
+          </div>
+          <div class="col-md-8">
+            <%= select_tag :project_id, options_from_collection_for_select(Project.all, :id, :name), { :multiple => false, class: "form-control"} %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="actions pull-right">
+        <%= submit_tag "Merge" %>
+        <%= link_to 'Back', root_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+
+<% end %>
+
+

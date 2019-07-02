@@ -3,7 +3,7 @@ include ApplicationHelper
 class ProjectsController < ApplicationController
   before_filter { |c| c.set_controller_vars(controller_name) }
   before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy]
-  before_action :logged_in_admin_user, only: [:new, :edit, :update, :destroy, :import, :import_form]
+  before_action :logged_in_admin_user, only: [:new, :edit, :update, :destroy, :import, :import_form, :merge, :merge_form]
 
   # GET /projects
   # GET /projects.json
@@ -126,6 +126,41 @@ class ProjectsController < ApplicationController
     render "shared/import_results"
 
   end
+
+  def merge_form
+    render :merge
+  end
+
+  # POST /projects/merge
+  def merge
+    if params[:project_id].blank?
+      flash[:error] = "No project specified"
+      render :merge
+    else
+      pid = params[:project_id]
+      if Project.find(pid).nil?
+        flash[:error] = "Project not found"
+        render :merge
+      else
+        if params[:merge_project_ids].blank?
+          flash[:error] = "No project(s) to merge specified"
+          render :merge
+        else
+          params[:merge_project_ids].each do |mid|
+            Workday.where(project_id: mid).each do |wd|
+              wd.old_project_id = mid
+              wd.project_id = pid
+              wd.save!
+            end
+          end
+
+          flash[:success] = "Projects merged"
+          redirect_to root_path
+        end
+      end
+    end
+  end
+
 
 
   private
