@@ -46,6 +46,13 @@ class ProjectsMergeTest < ActionDispatch::IntegrationTest
     assert_template 'merge'
   end
 
+  test "no merge into same project" do
+    log_in_as(@user)
+    post merge_projects_path project_id: @project.id, merge_project_ids: [@project_2, @project_3, @project], mark_inactive: true
+    assert_not flash[:error].empty?
+    assert_template 'merge'
+  end
+
   test "successful merge" do
     log_in_as(@user)
     get merge_projects_path
@@ -56,7 +63,7 @@ class ProjectsMergeTest < ActionDispatch::IntegrationTest
     assert_not_nil(workdays_2)
     workdays_3 = Workday.where(project_id: @project_3.id).load
     assert_not_nil(workdays_3)
-    post merge_projects_path project_id: @project.id, merge_project_ids: [@project_2, @project_3], mark_inactive: true
+    post merge_projects_path project_id: @project.id, merge_project_ids: [@project_2, @project_3], mark_inactive: 1
     workdays.each {|wd|
       puts "Workday: #{wd.id} Project: #{wd.project_id}, Old project #{wd.old_project_id}"
       assert_nil Workday.find(wd.id).old_project_id
