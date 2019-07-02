@@ -20,26 +20,6 @@ tenday:
   project_id: 1
   workdate: <%= 5.day.ago.to_s(:db) %>
 
-21:
-  name: Workday 2-1
-  project_id: 2
-  workdate: <%= 5.day.ago.to_s(:db) %>
-22:
-  name: Workday 2-2
-  project_id: 2
-  workdate: <%= 5.day.ago.to_s(:db) %>
-31:
-  name: Workday 3-1
-  project_id: 3
-  workdate: <%= 5.day.ago.to_s(:db) %>
-32:
-  name: Workday 3-2
-  project_id: 3
-  workdate: <%= 5.day.ago.to_s(:db) %>
-33:
-  name: Workday 3-2
-  project_id: 3
-  workdate: <%= 5.day.ago.to_s(:db) %>
 
 <% 10.times do |n| %>
 workday_<%= n %>:

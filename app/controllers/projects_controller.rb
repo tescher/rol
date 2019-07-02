@@ -138,7 +138,7 @@ class ProjectsController < ApplicationController
       render :merge
     else
       pid = params[:project_id]
-      if Project.find(pid).nil?
+      if Project.find_by_id(pid).nil?
         flash[:error] = "Project not found"
         render :merge
       else
@@ -149,8 +149,14 @@ class ProjectsController < ApplicationController
           params[:merge_project_ids].each do |mid|
             Workday.where(project_id: mid).each do |wd|
               wd.old_project_id = mid
+              puts "In controller old project id: #{wd.old_project_id}"
               wd.project_id = pid
               wd.save!
+            end
+            if params[:mark_inactive] == "true"
+              project = Project.find(mid)
+              project.inactive = true
+              project.save!
             end
           end
 
