@@ -153,8 +153,8 @@ class ProjectsController < ApplicationController
             params[:merge_project_ids].each do |mid|
               Workday.where(project_id: mid).each do |wd|
                 wd.old_project_id = mid
-                puts "In controller old project id: #{wd.old_project_id}"
                 wd.project_id = pid
+                wd.skip_dup_check = true
                 wd.save!
               end
               if params[:mark_inactive] == "1"
