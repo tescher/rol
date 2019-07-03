@@ -8,10 +8,12 @@ one:
 two:
   name: Project2
   inactive: false
+  id: 2
 
 three:
   name: Project3
   inactive: false
+  id: 3
 
 four:
   name: Project4

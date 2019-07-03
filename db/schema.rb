@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181111045732) do
+ActiveRecord::Schema.define(version: 20190702192016) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -153,11 +153,12 @@ ActiveRecord::Schema.define(version: 20181111045732) do
 
   create_table "projects", force: :cascade do |t|
     t.string   "name"
-    t.boolean  "inactive",    default: false, null: false
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.boolean  "inactive",       default: false, null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.string   "old_id"
     t.string   "description"
+    t.integer  "old_project_id"
   end
 
   add_index "projects", ["old_id"], name: "index_projects_on_old_id", using: :btree
@@ -327,12 +328,13 @@ ActiveRecord::Schema.define(version: 20181111045732) do
 
   create_table "workdays", force: :cascade do |t|
     t.integer  "project_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.date     "workdate"
     t.string   "name"
     t.string   "old_id"
     t.string   "notes"
+    t.integer  "old_project_id"
   end
 
   add_index "workdays", ["old_id"], name: "index_workdays_on_old_id", using: :btree

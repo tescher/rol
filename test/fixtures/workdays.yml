@@ -20,6 +20,7 @@ tenday:
   project_id: 1
   workdate: <%= 5.day.ago.to_s(:db) %>
 
+
 <% 10.times do |n| %>
 workday_<%= n %>:
   name:  <%= "Workday #{n}" %>
