@@ -8,13 +8,13 @@
             <%= label_tag "Merge project(s)"  %>
           </div>
           <div class="col-md-4">
-            <%= select_tag :merge_project_ids, options_from_collection_for_select(Project.all, :id, :name), { :multiple => true, class: "form-control"} %>
+            <%= select_tag :merge_project_ids, options_from_collection_for_select(Project.order("name DESC").all, :id, :name), { :multiple => true, class: "form-control"} %>
           </div>
           <div class="col-md-2">
             <%= label_tag "into" %>
           </div>
           <div class="col-md-4">
-            <%= select_tag :project_id, options_from_collection_for_select(Project.all, :id, :name), { :multiple => false, class: "form-control"} %>
+            <%= select_tag :project_id, options_from_collection_for_select(Project.order("name DESC").all, :id, :name), { :multiple => false, class: "form-control"} %>
           </div>
         </div>
         <div class="row">
