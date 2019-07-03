@@ -7,9 +7,9 @@ class ProjectsMergeTest < ActionDispatch::IntegrationTest
     @project = projects(:one)
     @project_2 = projects(:two)
     @project_3 = projects(:three)
-    @workday_21 = Workday.new(project_id: @project_2.id, name: "2-1", workdate: Date.yesterday)
+    @workday_21 = Workday.new(project_id: @project_2.id, name: "dup", workdate: Date.yesterday)
     @workday_21.save!
-    @workday_31 = Workday.new(project_id: @project_3.id, name: "3-1", workdate: Date.yesterday)
+    @workday_31 = Workday.new(project_id: @project_3.id, name: "dup", workdate: Date.yesterday)
     @workday_31.save!
     @workday_32 = Workday.new(project_id: @project_3.id, name: "3-2", workdate: Date.yesterday)
     @workday_32.save!
