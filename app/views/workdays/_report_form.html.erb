@@ -48,10 +48,15 @@
           </div>
           <div class="row">
             <div class="col-md-6">
-              <%= select_tag :project_ids, options_from_collection_for_select(Project.all.order(:name), :id, :name), { :multiple => true, class: "form-control"}  %>
+              <%= select_tag :project_ids, options_from_collection_for_select(Project.active.all.order(:name), :id, :name), { :multiple => true, class: "form-control"}  %>
             </div>
             <div class="col-md-6">
               <%= select_tag :volunteer_category_ids, options_from_collection_for_select(VolunteerCategory.all.order(:name), :id, :option_formatter), { :multiple => true, class: "form-control"}  %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <%= check_box_tag :include_inactive %>Include inactive<br>
             </div>
           </div>
         </div>

@@ -62,6 +62,8 @@ Rails.application.routes.draw do
       get 'participant_report'
       get 'import' => 'workdays#import_form'
       post 'import' => 'workdays#import'
+      get 'update_projects_select' => 'workdays#update_projects_select'
+
     end
     member do
       get 'add_participants'

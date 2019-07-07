@@ -105,6 +105,17 @@ $(document).ready(function() {
         return false;
     });
 
+    $(document).on('change', '#include_inactive', function(evt) {
+        $.ajax({
+            url: 'update_projects_select',
+            type: 'GET',
+            dataType: 'script',
+            data: {
+                include_inactive: $("#include_inactive").is(':checked')
+            }
+         });
+    });
+
 
 
 
