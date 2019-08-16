@@ -174,6 +174,7 @@ class ProjectsController < ApplicationController
 
 
 
+
   private
 
   # Never trust parameters from the scary internet, only allow the white list through.

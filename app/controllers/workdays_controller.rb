@@ -1,7 +1,7 @@
 include ApplicationHelper
 
 class WorkdaysController < ApplicationController
-  before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search, :report, :add_participants, :confirm_launch_self_tracking, :launch_self_tracking, :workday_summary, :participant_report]
+  before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search, :report, :add_participants, :confirm_launch_self_tracking, :launch_self_tracking, :workday_summary, :participant_report, :update_projects_select]
   before_action :admin_user,     only: [:import, :import_form]
 
 
@@ -364,6 +364,18 @@ class WorkdaysController < ApplicationController
     flash[:success] = "Workday deleted"
     redirect_to workdays_path(project_id: project_id)
   end
+
+  def update_projects_select
+    if params[:include_inactive] == "true"
+      @projects = Project.all.order(:name)
+    else
+      @projects = Project.active.all.order(:name)
+    end
+    respond_to do |format|
+      format.js
+    end
+  end
+
 
   private
 
