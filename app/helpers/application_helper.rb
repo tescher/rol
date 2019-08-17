@@ -28,9 +28,13 @@ module ApplicationHelper
     "set_selection_field(\"#{object.id}\", \"#{object.name}\", \"#{alias_name}\", $(this))"
   end
 
-  def multi_email_valid(emails)
+  def multi_email_valid(emails, use_comma = false)
     all_ok = true
-    emails.split(/\s*;\s*/).each do |host|
+    split_char = ';'
+    if use_comma
+      split_char = ','
+    end
+    emails.split(/\s*#{split_char}\s*/).each do |host|
       all_ok = false unless(host =~ VALID_EMAIL_REGEX)
     end
     all_ok
