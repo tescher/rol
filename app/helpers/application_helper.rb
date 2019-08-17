@@ -36,6 +36,10 @@ module ApplicationHelper
     all_ok
   end
 
+  def host_domain
+    ActionDispatch::Http::URL.extract_domain(Utilities::Utilities.system_setting(:org_site),1).sub(/^https?\:\/\//, '')
+  end
+
   # Quotes a string, escaping any ' (single quote) and \ (backslash) characters.
   def quote_string(s)
     s.gsub(/\\/, '\&\&').gsub(/'/, "''") # ' (for ruby-mode)

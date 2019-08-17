@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190702192016) do
+ActiveRecord::Schema.define(version: 20190817142439) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -174,14 +174,20 @@ ActiveRecord::Schema.define(version: 20190702192016) do
     t.boolean  "no_pagination"
     t.integer  "records_per_page"
     t.integer  "min_password_length"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
     t.string   "adult_waiver_text"
     t.string   "minor_waiver_text"
     t.integer  "waiver_valid_days"
     t.boolean  "allow_waiver_skip"
     t.integer  "adult_age"
     t.boolean  "waivers_at_checkin"
+    t.string   "pending_volunteer_notify_email"
+    t.string   "email_account"
+    t.string   "email_password"
+    t.string   "smtp_server"
+    t.string   "smtp_port"
+    t.boolean  "smtp_starttls",                  default: true
   end
 
   create_table "users", force: :cascade do |t|

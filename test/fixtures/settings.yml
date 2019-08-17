@@ -12,4 +12,10 @@ system:
   no_pagination: false
   records_per_page: 15
   min_password_length: 6
+  pending_volunteer_notify_email: admin@example.org
+  email_account: tim@eschers.com
+  email_password: password
+  smtp_server: smtp.gmail.com
+  smtp_port: 587
+
 

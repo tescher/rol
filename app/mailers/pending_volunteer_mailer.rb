@@ -1,3 +1,5 @@
+include ApplicationHelper
+
 class PendingVolunteerMailer < ApplicationMailer
 
   def notification_email(pending_volunteer)
@@ -11,6 +13,7 @@ class PendingVolunteerMailer < ApplicationMailer
                          authentication: :plain,
                          enable_starttls_auto: Utilities::Utilities.system_setting(:smtp_starttls)}
       mail(to: mail_to,
+           from: "no_reply@#{host_domain}",
            subject: "New Pending Volunteer",
            delivery_method_options: delivery_options)
     end
