@@ -17,6 +17,6 @@ class PendingVolunteerMailerTest < ActionMailer::TestCase
     assert_equal 'New Pending Volunteer', email.subject
     assert_equal email.body.parts.length, 2
     assert_equal email.body.parts.collect(&:content_type), ["text/plain; charset=UTF-8", "text/html; charset=UTF-8"]
-    assert_equal read_fixture('notification').join, email.body.parts.find {|p| p.content_type.match /html/}.body.raw_source
+    assert_equal read_fixture('notification').join, email.body.parts.find {|p| p.content_type.match /plain/}.body.raw_source.gsub(/\r/,"")
   end
 end
