@@ -11,7 +11,9 @@ class PendingVolunteerMailer < ApplicationMailer
                          address: Utilities::Utilities.system_setting(:smtp_server),
                          port: Utilities::Utilities.system_setting(:smtp_port),
                          authentication: :plain,
-                         enable_starttls_auto: Utilities::Utilities.system_setting(:smtp_starttls)}
+                         enable_starttls_auto: Utilities::Utilities.system_setting(:smtp_starttls),
+                         ssl: Utilities::Utilities.system_setting(:smtp_ssl),
+                         tls: Utilities::Utilities.system_setting(:smtp_tls)}
       mail(to: mail_to,
            from: "no_reply@#{host_domain}",
            subject: "New Pending Volunteer",
