@@ -63,6 +63,34 @@
         <%= f.label "Waiver Text" %><br>
         <%= f.submit "Update Waiver Text", name: "to_waivers", class: "btn btn-primary form-control" %>
       </div>
+      <div class="field">
+        <%= f.label "Send new pending volunteer notifications to emails(s)" %><br>
+        <%= f.text_field :pending_volunteer_notify_email, class: 'form-control' %>
+      </div>
+      <div class="field">
+        <%= f.label "Outgoing e-mail account login" %><br>
+        <%= f.text_field :email_account, class: 'form-control' %>
+      </div>
+      <div class="field">
+        <%= f.label "Outgoing e-mail account password" %><br>
+        <%= f.password_field :email_password, class: 'form-control' %>
+      </div>
+      <div class="field">
+        <%= f.label "Outgoing SMTP server" %><br>
+        <%= f.text_field :smtp_server, class: 'form-control' %>
+      </div>
+      <div class="field">
+        <%= f.label "Outgoing SMTP port" %><br>
+        <%= f.text_field :smtp_port, class: 'form-control' %>
+      </div>
+      <div class="checkbox">
+        <label>
+          <%= f.check_box :smtp_starttls %> Use SMTP StartTLS
+        </label>
+      </div>
+
+
+
 
       <div class="pull-right">
         <%= render partial: "shared/form_actions", locals: {f: f} %>
