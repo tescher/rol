@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190817142439) do
+ActiveRecord::Schema.define(version: 20190817232155) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -188,6 +188,8 @@ ActiveRecord::Schema.define(version: 20190817142439) do
     t.string   "smtp_server"
     t.string   "smtp_port"
     t.boolean  "smtp_starttls",                  default: true
+    t.boolean  "smtp_ssl",                       default: true
+    t.boolean  "smtp_tls",                       default: true
   end
 
   create_table "users", force: :cascade do |t|
