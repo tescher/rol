@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<h1>Hello from ORGTITLE Example Title</h1>
+<p>
+  A new pending volunteer, Tom Jones, has signed up.<br>
+  Follow this link to verify: https://www.example.org/pending_volunteers %>
+</p>
+</body>
+</html>
