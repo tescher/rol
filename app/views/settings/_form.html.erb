@@ -9,6 +9,10 @@
         <%= f.text_field :site_title, class: 'form-control', autofocus: 'true' %>
       </div>
       <div class="field">
+        <%= f.label "Site URL (for links in notification emails)" %><br>
+        <%= f.text_field :site_url, class: 'form-control' %>
+      </div>
+      <div class="field">
         <%= f.label "Organization Title" %><br>
         <%= f.text_field :org_title, class: 'form-control' %>
       </div>

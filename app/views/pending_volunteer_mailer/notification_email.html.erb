@@ -7,7 +7,7 @@
 <h1>Hello from <%= Utilities::Utilities.system_setting(:org_short_title) %> <%= Utilities::Utilities.system_setting(:site_title) %></h1>
 <p>
   A new pending volunteer, <%= @pending_volunteer.name %>, has signed up.<br>
-  Follow this link to verify: <%= url_for(controller: 'pending_volunteers', action: 'index', host: ApplicationHelper.host_domain) %>
+  Follow this link to verify: <%= url_for(controller: 'pending_volunteers', action: 'index', host: ApplicationHelper.host_server) %>
 </p>
 </body>
 </html>

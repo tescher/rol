@@ -4,6 +4,7 @@ system:
   name: System
   id: 1
   site_title: Example Title
+  site_url: http://vm.example.org
   org_title: Org Title
   org_short_title: ORGTITLE
   org_site: http://example.org
