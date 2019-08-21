@@ -36,7 +36,7 @@
             <span class="no-overflow"><%= volunteer.email %></span>
           </div>
           <div class="col-md-2">
-            <%= volunteer_info[:hours].presence || "0" %>
+            <%= numeric_display(volunteer_info[:hours]) %>
           </div>
         </li>
       </div>

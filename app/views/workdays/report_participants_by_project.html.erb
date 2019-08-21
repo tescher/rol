@@ -10,7 +10,7 @@
     <% @project_volunteers = @volunteers.select { |v| v[:project_id] == p[:project_id] } %>
     <% if @project_volunteers.count > 0 %>
 
-        <h5>Distinct Project Volunteers: <%=  p[:num_volunteers].presence || "0" %>, Volunteer Shifts: <%= p[:num_shifts].presence || "0" %>, Volunteer Hours: <%= p[:volunteer_hours].presence || "0" %></h5>
+        <h5>Distinct Project Volunteers: <%=  p[:num_volunteers].presence || "0" %>, Volunteer Shifts: <%= p[:num_shifts].presence || "0" %>, Volunteer Hours: <%= numeric_display(p[:volunteer_hours]) %></h5>
 
         <ul class="listing">
           <div class="row">
@@ -44,7 +44,7 @@
                     <span class="no-overflow"><%= volunteer.email %></span>
                   </div>
                   <div class="col-md-2">
-                    <%= volunteer_info[:hours].presence || "0" %>
+                    <%= numeric_display(volunteer_info[:hours]) %>
                   </div>
                 </li>
               </div>
@@ -54,7 +54,7 @@
 
     <% @project_organizations = @organizations.select { |o| o[:project_id] == p[:project_id] } %>
     <% if @project_organizations.count > 0 %>
-        <h5>Distinct Project Organizations: <%= p[:num_organizations].presence || "0" %>, Organization Hours: <%= p[:organization_hours].presence || "0" %></h5>
+        <h5>Distinct Project Organizations: <%= p[:num_organizations].presence || "0" %>, Organization Hours: <%= numeric_display(p[:organization_hours]) %></h5>
 
         <ul class="listing">
           <div class="row">
@@ -94,7 +94,7 @@
                     <span class="no-overflow"><%= organization.email %></span>
                   </div>
                   <div class="col-md-2">
-                    <%= organization_info[:hours].presence || "0" %>
+                    <%= numeric_display(organization_info[:hours]) %>
                   </div>
                 </li>
               </div>

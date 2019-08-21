@@ -11,6 +11,14 @@ module ApplicationHelper
     end
   end
 
+  # Numeric display with rounding
+  def numeric_display(object, digits = 1)
+    if object.present?
+      return object.round(digits).to_s
+    end
+    return "0"
+  end
+
   # Dynamic form helpers
   def link_to_remove_fields(name, f)
     f.hidden_field(:_destroy) + link_to("remove", "#", class: "remove_fields")

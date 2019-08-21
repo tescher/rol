@@ -21,7 +21,7 @@
             <Cell><Data ss:Type="String"><%= volunteer.name %></Data></Cell>
             <Cell><Data ss:Type="String"><%= volunteer.city %></Data></Cell>
             <Cell><Data ss:Type="String"><%= volunteer.email %></Data></Cell>
-            <Cell><Data ss:Type="String"><%= volunteer_info[:hours].presence || "0" %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= numeric_display(volunteer_info[:hours]) %></Data></Cell>
           </Row>
       <% end %>
       <Row></Row>
@@ -41,7 +41,7 @@
             <Cell><Data ss:Type="String"><%= organization.city %></Data></Cell>
             <Cell><Data ss:Type="String"><%= organization.contact_name %></Data></Cell>
             <Cell><Data ss:Type="String"><%= organization.email %></Data></Cell>
-            <Cell><Data ss:Type="String"><%= organization_info[:hours].presence || "0" %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= numeric_display(organization_info[:hours]) %></Data></Cell>
           </Row>
       <% end %>
       <Row></Row>
