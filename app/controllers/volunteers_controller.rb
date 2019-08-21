@@ -313,18 +313,8 @@ class VolunteersController < ApplicationController
     if !from.nil?     # Coming from donations or waivers or contacts
       if params[:volunteer] && @volunteer.update_attributes(volunteer_params)
         if from == "waivers"
-          #Update last waiver date, birthdate and adult flag from last waiver if not already set
-          @volunteer.reload
-          last_waiver = last_waiver(@volunteer.id)
-          if !last_waiver.nil?
-            if @volunteer.try(:adult) == false && last_waiver.adult
-              @volunteer.adult = last_waiver.adult
-            end
-            if (@volunteer.waiver_date.nil?) || (last_waiver.date_signed > @volunteer.waiver_date)
-              @volunteer.waiver_date = last_waiver.date_signed
-            end
-            @volunteer.save
-          end
+          #Update last waiver date and adult flag from last waiver if not already set
+          update_waiver_info(@volunteer)
         end
         if !params[:stay].blank?
           flash[:success] = "#{from.capitalize} updated"
@@ -368,6 +358,7 @@ class VolunteersController < ApplicationController
       end
     else                                       # Coming from regular edit
       if params[:volunteer] && @volunteer.update_attributes(volunteer_params)
+        update_waiver_info(@volunteer)
         if !params[:to_donations].blank?
           session[:child_entry] = "donations"
           redirect_to donations_volunteer_path(@volunteer)
