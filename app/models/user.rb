@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   attr_accessor :remember_token
 
-  has_many :contacts
+  has_many :contacts, dependent: :restrict_with_exception
+  has_many :last_edit_contacts, class_name: "Contact", foreign_key: :last_edit_user_id, dependent: :restrict_with_exception
 
   before_save {
     self.email = email.downcase
