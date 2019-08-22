@@ -174,7 +174,11 @@ class PendingVolunteersTest < ActionDispatch::IntegrationTest
     # Did all fields merge as expected?
     Volunteer.pending_volunteer_merge_fields_table.each do |field,index|
       if source_use_field_list.include? field
-        assert_equal source_volunteer[field], target_volunteer[field], "Field #{field.to_s} should be equal"
+        if target_volunteer[field].nil?
+          assert_nil source_volunteer[field], "Field #{field.to_s} should be equal"
+        else
+          assert_equal source_volunteer[field], target_volunteer[field], "Field #{field.to_s} should be equal"
+        end
       else
         assert_not_equal(source_volunteer[field], target_volunteer[field],"Field #{field.to_s} should not be equal") unless source_volunteer[field].nil? and target_volunteer[field].nil?
       end

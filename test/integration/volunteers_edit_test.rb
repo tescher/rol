@@ -45,6 +45,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
         contact.volunteer_id = v.id
         contact.notes = "Some notes"
         contact.contact_method_id = @contact_method.id
+        contact.user_id = @non_admin.id
         contact.date_time = DateTime.parse("2018-06-01 10:00:00")
         contact.save
       end
@@ -353,7 +354,11 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     # Did all fields merge as expected?
     Volunteer.merge_fields_table.each do |field,index|
       if source_use_field_list.include? field
-        assert_equal(@volunteer[field], @duplicate_volunteer[field],"Field #{field.to_s} should be equal")
+        if @duplicate_volunteer[field].nil?
+          assert_nil @volunteer[field], "Field #{field.to_s} should be equal"
+        else
+          assert_equal(@volunteer[field], @duplicate_volunteer[field],"Field #{field.to_s} should be equal")
+        end
       else
         assert_not_equal(@volunteer[field], @duplicate_volunteer[field],"Field #{field.to_s} should not be equal")
       end
@@ -614,7 +619,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     log_in_as(@admin)
     @waiver = Waiver.new(volunteer_id: @minor_volunteer.id, adult: false, guardian_id: @guardian_volunteer.id, date_signed: DateTime.parse("2018-06-01"))
     @waiver.save!
-    puts @waiver.reload.to_yaml
+    # puts @waiver.reload.to_yaml
     get edit_volunteer_path(@guardian_volunteer)
     assert_select 'a[href=?]', volunteer_path(@guardian_volunteer), method: :delete
     assert_no_difference 'Volunteer.count' do

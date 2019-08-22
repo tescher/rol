@@ -21,7 +21,7 @@ class ContactsControllerTest < ActionController::TestCase
 
   test "should redirect create contact when not logged in" do
     assert_no_difference('Contact.count') do
-      post :create, contact: { date_time: @contact.date_time, volunteer_id: @contact.volunteer_id, contact_method_id: @contact.contact_method_id, notes: @contact.notes }
+      post :create, contact: { date_time: @contact.date_time, volunteer_id: @contact.volunteer_id, contact_method_id: @contact.contact_method_id, user_id: @user.id, notes: @contact.notes }
     end
 
     assert_redirected_to login_url
@@ -40,7 +40,7 @@ class ContactsControllerTest < ActionController::TestCase
   end
 
   test "should redirect update when not logged in" do
-    patch :update, id: @contact, contact: {date_time: @contact.date_time, volunteer_id: @contact.volunteer_id, contact_method_id: @contact.contact_method_id, notes: @contact.notes }
+    patch :update, id: @contact, contact: {date_time: @contact.date_time, volunteer_id: @contact.volunteer_id, contact_method_id: @contact.contact_method_id, user_id: @user.id, notes: @contact.notes }
     assert_not flash.empty?
     assert_redirected_to login_url
   end
