@@ -9,6 +9,10 @@
         <%= f.text_field :site_title, class: 'form-control', autofocus: 'true' %>
       </div>
       <div class="field">
+        <%= f.label "Site URL (for links in notification emails)" %><br>
+        <%= f.text_field :site_url, class: 'form-control' %>
+      </div>
+      <div class="field">
         <%= f.label "Organization Title" %><br>
         <%= f.text_field :org_title, class: 'form-control' %>
       </div>
@@ -63,6 +67,44 @@
         <%= f.label "Waiver Text" %><br>
         <%= f.submit "Update Waiver Text", name: "to_waivers", class: "btn btn-primary form-control" %>
       </div>
+      <div class="field">
+        <%= f.label "Send new pending volunteer notifications to email(s)" %><br>
+        <%= f.text_field :pending_volunteer_notify_email, class: 'form-control' %>
+      </div>
+      <div class="field">
+        <%= f.label "Outgoing e-mail account login" %><br>
+        <%= f.text_field :email_account, class: 'form-control' %>
+      </div>
+      <div class="field">
+        <%= f.label "Outgoing e-mail account password" %><br>
+        <%= f.text_field :email_password, class: 'form-control' %>
+      </div>
+      <div class="field">
+        <%= f.label "Outgoing SMTP server" %><br>
+        <%= f.text_field :smtp_server, class: 'form-control' %>
+      </div>
+      <div class="field">
+        <%= f.label "Outgoing SMTP port" %><br>
+        <%= f.text_field :smtp_port, class: 'form-control' %>
+      </div>
+      <div class="checkbox">
+        <label>
+          <%= f.check_box :smtp_starttls %> Use SMTP StartTLS
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <%= f.check_box :smtp_ssl %> Use SSL
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <%= f.check_box :smtp_tls %> Use TLS
+        </label>
+      </div>
+
+
+
 
       <div class="pull-right">
         <%= render partial: "shared/form_actions", locals: {f: f} %>

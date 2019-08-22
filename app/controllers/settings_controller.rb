@@ -30,7 +30,8 @@ class SettingsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def setting_params
-    params.require(:setting).permit(:site_title, :org_title, :org_short_title, :org_site, :old_system_site, :old_system_name, :no_pagination, :records_per_page, :min_password_length, :adult_age, :waiver_valid_days, :waivers_at_checkin, :allow_waiver_skip)
+    params.require(:setting).permit(:site_title, :site_url, :org_title, :org_short_title, :org_site, :old_system_site, :old_system_name, :no_pagination, :records_per_page, :min_password_length, :adult_age, :waiver_valid_days, :waivers_at_checkin, :allow_waiver_skip,
+                                    :pending_volunteer_notify_email, :email_account, :email_password, :smtp_server, :smtp_port, :smpt_starttls, :smtp_ssl, :smtp_tls)
   end
 
 

@@ -1,0 +1,4 @@
+Hello from <%= Utilities::Utilities.system_setting(:org_short_title) %> <%= Utilities::Utilities.system_setting(:site_title) %>
+
+A new pending volunteer, <%= @pending_volunteer.name %>, has signed up.
+Follow this link to verify: <%= url_for(controller: 'pending_volunteers', action: 'index', host: ApplicationHelper.host_server) %>

@@ -169,6 +169,7 @@ class PendingVolunteersController < ApplicationController
     status = @self_tracking_enabled ? true : verify_google_recptcha(GOOGLE_SECRET_KEY,params["g-recaptcha-response"])
 
     if status && @object.save  # Order is important here!
+      PendingVolunteerMailer.notification_email(@object).deliver_now
       render 'success'
     else
       if !status

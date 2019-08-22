@@ -11,6 +11,14 @@ module ApplicationHelper
     end
   end
 
+  # Numeric display with rounding
+  def numeric_display(object, digits = 1)
+    if object.present?
+      return object.round(digits).to_s
+    end
+    return "0"
+  end
+
   # Dynamic form helpers
   def link_to_remove_fields(name, f)
     f.hidden_field(:_destroy) + link_to("remove", "#", class: "remove_fields")
@@ -28,12 +36,23 @@ module ApplicationHelper
     "set_selection_field(\"#{object.id}\", \"#{object.name}\", \"#{alias_name}\", $(this))"
   end
 
-  def multi_email_valid(emails)
+  def multi_email_valid(emails, use_comma = false)
     all_ok = true
-    emails.split(/\s*;\s*/).each do |host|
+    split_char = ';'
+    if use_comma
+      split_char = ','
+    end
+    emails.split(/\s*#{split_char}\s*/).each do |host|
       all_ok = false unless(host =~ VALID_EMAIL_REGEX)
     end
     all_ok
+  end
+
+  def host_domain
+    ActionDispatch::Http::URL.extract_domain(Utilities::Utilities.system_setting(:org_site),1).sub(/^https?\:\/\//, '')
+  end
+  def host_server
+    Utilities::Utilities.system_setting(:site_url).sub(/^https?\:\/\//, '')
   end
 
   # Quotes a string, escaping any ' (single quote) and \ (backslash) characters.

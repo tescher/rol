@@ -64,11 +64,15 @@ class PendingVolunteersTest < ActionDispatch::IntegrationTest
     assert_select "[class='g-recaptcha']"
   end
 
-  test "Should not display recpatcha" do
+  test "Should not display recpatcha and should send notification email" do
     log_in_as(@user)
     get self_tracking_launch_path(@first_workday.id)
     get new_pending_volunteer_path()
     assert_select "[class='g-recaptcha']", false
+    pending_volunteer = PendingVolunteer.new()
+    ActionMailer::Base.deliveries.clear
+    post pending_volunteers_path(pending_volunteer), volunteer: { first_name: "Tom", last_name: "Jones", adult: true, agree_to_background_check: true }
+    assert_not ActionMailer::Base.deliveries.empty?
   end
 
   test "New volunteer from pending volunteer with workdays and waivers" do

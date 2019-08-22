@@ -42,4 +42,20 @@ module VolunteersHelper
     matched_volunteers.each {|id, mv| matched_volunteers.delete(id) if mv[:volunteer] == object }  # Get rid of the one we passed in
     matched_volunteers = Hash[matched_volunteers.sort_by { |id, mv| -mv[:points]}[0..4]]
   end
+
+  # Update the legacy waiver info on the volunteer record from latest waiver entered
+  def update_waiver_info(volunteer)
+    volunteer.reload
+    last_waiver = last_waiver(volunteer.id)
+    if !last_waiver.nil?
+      if volunteer.try(:adult) == false && last_waiver.adult
+        volunteer.adult = last_waiver.adult
+      end
+      if (volunteer.waiver_date.nil?) || (last_waiver.date_signed > volunteer.waiver_date)
+        volunteer.waiver_date = last_waiver.date_signed
+      end
+      volunteer.save
+    end
+
+  end
 end

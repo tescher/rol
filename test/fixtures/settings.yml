@@ -4,6 +4,7 @@ system:
   name: System
   id: 1
   site_title: Example Title
+  site_url: http://vm.example.org
   org_title: Org Title
   org_short_title: ORGTITLE
   org_site: http://example.org
@@ -12,4 +13,10 @@ system:
   no_pagination: false
   records_per_page: 15
   min_password_length: 6
+  pending_volunteer_notify_email: admin@example.org
+  email_account: tim@eschers.com
+  email_password: password
+  smtp_server: smtp.gmail.com
+  smtp_port: 587
+
 
