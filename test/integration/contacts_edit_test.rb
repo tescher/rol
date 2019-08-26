@@ -5,12 +5,14 @@ class ContactsEditTest < ActionDispatch::IntegrationTest
   def setup
     @admin_user = users(:michael)
     @volunteer = volunteers(:one)
+    @volunteer2 = volunteers(:two)
     @non_admin_user1 = users(:one)
     @non_admin_user2 = users(:two)
     @contact_owned_by_user1 = contacts(:one)
     @contact_un_owned = contacts(:two)
     @contact_un_owned.user_id = nil
     @contact_un_owned.save!
+    @contact_volunteer2 = contacts(:other_volunteer)
   end
 
   def teardown
@@ -111,14 +113,35 @@ class ContactsEditTest < ActionDispatch::IntegrationTest
   end
 
   test "Admins can see all contacts in listing" do
+    log_in_as(@admin_user)
+    get :index, volunteer_id: @volunteer.id
+    puts @response.body
+    # Should not see volunteer 2 contact
+    assert_select '[href=?]', edit_contact_path(@contact_volunteer2), {count: 0}
+    assert_select '[href=?]', edit_contact_path(@contact_owned_by_user1), {count: 1}
+    assert_select '[href=?]', edit_contact_path(@contact_un_owned), {count: 1}
 
   end
 
   test "Non-admins without security flag set can only see their contacts" do
+    log_in_as(@non_admin_user1)
+    get :index, volunteer_id: @volunteer.id
+    puts @response.body
+    assert_select '[href=?]', edit_contact_path(@contact_volunteer2), {count: 0}
+    assert_select '[href=?]', edit_contact_path(@contact_owned_by_user1), {count: 1}
+    assert_select '[href=?]', edit_contact_path(@contact_un_owned), {count: 0}
 
   end
 
   test "Non-admins with security flag set can see theirs and un-owned contacts" do
+    @non_admin_user1.can_edit_unowned_contacts = true
+    @non_admin_user1.save!
+    log_in_as(@non_admin_user1)
+    get :index, volunteer_id: @volunteer.id
+    puts @response.body
+    assert_select '[href=?]', edit_contact_path(@contact_volunteer2), {count: 0}
+    assert_select '[href=?]', edit_contact_path(@contact_owned_by_user1), {count: 1}
+    assert_select '[href=?]', edit_contact_path(@contact_un_owned), {count: 1}
 
   end
 
