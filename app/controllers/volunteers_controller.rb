@@ -572,6 +572,16 @@ class VolunteersController < ApplicationController
   # GET /volunteer/1/contacts
   def contacts
     child_form_setup
+    # Get list of contacts based on user security
+    # Admin user => get them all
+    if @current_user.admin?
+      @contacts = @parent.contacts.order("date_time DESC")
+    else if @current_user.can_edit_unowned_contacts?
+           @contacts = @parent.contacts.where({user_id: [@current_user.id, nil]}).order("date_time DESC")
+         else
+           @contacts = @parent.contacts.where({user_id: @current_user.id}).order("date_time DESC")
+         end
+    end
     render "contacts/contacts_form"
   end
 

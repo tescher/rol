@@ -5,14 +5,16 @@ class ContactsEditTest < ActionDispatch::IntegrationTest
   def setup
     @admin_user = users(:michael)
     @volunteer = volunteers(:one)
-    @volunteer2 = volunteers(:two)
+    @volunteer2 = volunteers(:duplicate)
     @non_admin_user1 = users(:one)
     @non_admin_user2 = users(:two)
     @contact_owned_by_user1 = contacts(:one)
     @contact_un_owned = contacts(:two)
     @contact_un_owned.user_id = nil
+    @contact_un_owned.last_edit_user_id = @non_admin_user2.id
     @contact_un_owned.save!
     @contact_volunteer2 = contacts(:other_volunteer)
+    @contact_method1 = contact_methods(:one)
   end
 
   def teardown
@@ -21,14 +23,25 @@ class ContactsEditTest < ActionDispatch::IntegrationTest
   test "No edits by non-admin user on contacts not owned by them" do
     log_in_as(@non_admin_user1)
     get edit_contact_path(@contact_owned_by_user1)
+    puts "Flash here #{flash[:error]}"
     assert_template 'edit'
     log_in_as(@non_admin_user2)
     get edit_contact_path(@contact_owned_by_user1)
     assert_redirected_to root_url
   end
 
+  test "Cannot create a contact owned by another user if not admin" do
+    log_in_as(@non_admin_user1)
+    post contacts_path, contact: { volunteer_id: @volunteer.id, contact_method_id: @contact_method1.id, user_id: @non_admin_user2.id, notes: "Blah" }
+    assert_redirected_to root_url
+    log_in_as(@admin_user)
+    post contacts_path, contact: { volunteer_id: @volunteer.id, contact_method_id: @contact_method1.id, user_id: @non_admin_user2.id, notes: "Blah" }
+    assert_response :success
+  end
+
+
   test "Edits set last_edit_user_id" do
-    @contact_owned_by_user1.last_edit_user_id = @admin_user
+    @contact_owned_by_user1.last_edit_user_id = @admin_user.id
     @contact_owned_by_user1.save!
     log_in_as(@non_admin_user1)
     patch contact_path( @contact_owned_by_user1), contact: { notes:  "Blah" }
@@ -95,7 +108,7 @@ class ContactsEditTest < ActionDispatch::IntegrationTest
 
   test "Only admin can delete" do
     log_in_as(@non_admin_user1)
-    get edit_interest_path(@contact_owned_by_user1)
+    get edit_contact_path(@contact_owned_by_user1)
     assert_select 'a[href=?]', contact_path(@contact_owned_by_user1), { method: :delete }, false
 
     assert_difference 'Contact.count', 0 do
@@ -103,7 +116,7 @@ class ContactsEditTest < ActionDispatch::IntegrationTest
     end
 
     log_in_as(@admin_user)
-    get edit_interest_path(@contact_owned_by_user1)
+    get edit_contact_path(@contact_owned_by_user1)
     assert_select 'a[href=?]', contact_path(@contact_owned_by_user1), method: :delete
 
     assert_difference 'Contact.count', -1 do
@@ -114,8 +127,7 @@ class ContactsEditTest < ActionDispatch::IntegrationTest
 
   test "Admins can see all contacts in listing" do
     log_in_as(@admin_user)
-    get :index, volunteer_id: @volunteer.id
-    puts @response.body
+    get contacts_volunteer_path(@volunteer)
     # Should not see volunteer 2 contact
     assert_select '[href=?]', edit_contact_path(@contact_volunteer2), {count: 0}
     assert_select '[href=?]', edit_contact_path(@contact_owned_by_user1), {count: 1}
@@ -125,8 +137,7 @@ class ContactsEditTest < ActionDispatch::IntegrationTest
 
   test "Non-admins without security flag set can only see their contacts" do
     log_in_as(@non_admin_user1)
-    get :index, volunteer_id: @volunteer.id
-    puts @response.body
+    get contacts_volunteer_path(@volunteer)
     assert_select '[href=?]', edit_contact_path(@contact_volunteer2), {count: 0}
     assert_select '[href=?]', edit_contact_path(@contact_owned_by_user1), {count: 1}
     assert_select '[href=?]', edit_contact_path(@contact_un_owned), {count: 0}
@@ -137,8 +148,7 @@ class ContactsEditTest < ActionDispatch::IntegrationTest
     @non_admin_user1.can_edit_unowned_contacts = true
     @non_admin_user1.save!
     log_in_as(@non_admin_user1)
-    get :index, volunteer_id: @volunteer.id
-    puts @response.body
+    get contacts_volunteer_path(@volunteer)
     assert_select '[href=?]', edit_contact_path(@contact_volunteer2), {count: 0}
     assert_select '[href=?]', edit_contact_path(@contact_owned_by_user1), {count: 1}
     assert_select '[href=?]', edit_contact_path(@contact_un_owned), {count: 1}
