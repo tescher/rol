@@ -8,11 +8,6 @@ class ContactsControllerTest < ActionController::TestCase
     @user = users(:one)
   end
 
-  test "should redirect index when not logged in" do
-    get :index
-    assert_redirected_to login_url
-  end
-
   test "should redirect new when not logged in" do
     get :new
     assert_not flash.empty?
@@ -24,12 +19,6 @@ class ContactsControllerTest < ActionController::TestCase
       post :create, contact: { date_time: @contact.date_time, volunteer_id: @contact.volunteer_id, contact_method_id: @contact.contact_method_id, user_id: @user.id, notes: @contact.notes }
     end
 
-    assert_redirected_to login_url
-  end
-
-  test "should redirect show contact when not logged in" do
-    get :show, id: @contact
-    assert_not flash.empty?
     assert_redirected_to login_url
   end
 

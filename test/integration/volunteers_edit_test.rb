@@ -1,5 +1,6 @@
 require 'test_helper'
-require 'waivers_helper'
+require 'pp'
+
 
 class VolunteersEditTest < ActionDispatch::IntegrationTest
 
@@ -37,7 +38,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
         waiver.adult = true
         waiver.birthdate = DateTime.parse("2000-02-01")
         waiver.data = "Some text for waiver #{n}."
-        waiver.date_signed = DateTime.parse("2018-06-01")
+        waiver.date_signed = (n+10).day.ago.to_s(:db)
         waiver.save
       end
       5.times do |n|
@@ -102,7 +103,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
   end
 
   def teardown
-    [@volunteer, @duplicate_volunteer, @minor_volunteer, @guardian_volunteer].each do |v|
+    [@volunteer, @volunteer2, @duplicate_volunteer, @minor_volunteer, @guardian_volunteer].each do |v|
       Donation.where("volunteer_id = #{v.id}") do |d|
         d.destroy
       end
@@ -636,8 +637,11 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
 
   test "Get correct waiver text if text is on waiver" do
     log_in_as(@admin)
+    puts "Get correct waiver text if text is on waiver"
+    pp @volunteer
+    pp last_waiver(@volunteer.id)
     assert_match /Some text for waiver/, effective_waiver_text(last_waiver(@volunteer.id)).data, "Waiver text should match volunteer waivers"
-    @waiver = Waiver.new(volunteer_id: @volunteer.id, e_sign: true, adult: true, date_signed: DateTime.parse("2018-07-01"), created_at: DateTime.parse("2018-07-01") )
+    @waiver = Waiver.new(volunteer_id: @volunteer.id, e_sign: true, adult: true, date_signed: Date.today, created_at: DateTime.parse("2018-07-01") )
     @waiver.save!
     assert_match /Adult master text/, effective_waiver_text(last_waiver(@volunteer.id)).data, "Waiver text should match adult master waiver"
     @waiver.adult=false
