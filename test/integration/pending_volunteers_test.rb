@@ -42,7 +42,7 @@ class PendingVolunteersTest < ActionDispatch::IntegrationTest
         Waiver.create(volunteer_id: v.id, date_signed: 10.days.ago.to_s(:db), e_sign:true, adult: true)
         Waiver.create(volunteer_id: @volunteer2.id, guardian_id: v.id, e_sign: true, date_signed: 20.days.ago.to_s(:db))
         # Create a weird situation where a person is both volunteer and guardian on a waiver. This waiver should essentially be "merged" into one target waiver
-        Waiver.create(volunteer_id: @volunteer.id, guardian_id: v.id, e_sign: true, date_signed: 20.days.ago.to_s(:db))
+        Waiver.create(volunteer_id: @volunteer.id, guardian_id: v.id, e_sign: true, waiver_text: "Volunteer=Guardian case", date_signed: 20.days.ago.to_s(:db))
       end
     end
   end
@@ -199,9 +199,8 @@ class PendingVolunteersTest < ActionDispatch::IntegrationTest
     )
     # Should have one waiver with both volunteer and guardian as the same person
     assert_equal(
-        Waiver.where("(volunteer_id = #{target_volunteer.id}) AND (guardian_id = #{target_volunteer.id})").distinct.all.count,
-        1,
-        "Merged waivers with volunteer and guardian as same person (#{1}) should be equal"
+        1, Waiver.where("(volunteer_id = #{target_volunteer.id}) AND (guardian_id = #{target_volunteer.id})").distinct.all.count,
+        "Merged waivers with volunteer and guardian as same person (id=#{target_volunteer.id}) should be 1"
     )
 
     # Donations should not be affected.

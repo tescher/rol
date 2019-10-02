@@ -3,8 +3,6 @@ require 'test_helper'
 class WaiversControllerTest < ActionController::TestCase
   setup do
     @waiver = waivers(:one)
-    @waiver2 = waivers(:other_volunteer)
-    @volunteer2 = volunteers(:duplicate)
     @user = users(:one)
   end
 

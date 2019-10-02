@@ -260,12 +260,17 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     get edit_volunteer_path(@volunteer)
     assert_select 'a[href=?]', volunteer_path(@volunteer), method: :delete
     before_wdv = WorkdayVolunteer.count
+    wdv_to_delete = WorkdayVolunteer.where("volunteer_id = #{@volunteer.id}").count
     before_v = Volunteer.count
     before_d = Donation.count
+    d_to_delete = Donation.where("volunteer_id = #{@volunteer.id}").count
     before_wd = Workday.count
     before_c = VolunteerCategoryVolunteer.count
+    c_to_delete = VolunteerCategoryVolunteer.where("volunteer_id = #{@volunteer.id}").count
     before_wv = Waiver.count
+    wv_to_delete = Waiver.where("volunteer_id = #{@volunteer.id}").count
     before_ct = Contact.count
+    ct_to_delete = Contact.where("volunteer_id = #{@volunteer.id}").count
     delete volunteer_path(@volunteer)
     after_wdv = WorkdayVolunteer.count
     after_v = Volunteer.count
@@ -276,12 +281,12 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     after_ct = Contact.count
     # Make sure all cascade deletes worked OK
     assert_equal before_v - 1, after_v
-    assert_equal before_d - 10, after_d
+    assert_equal before_d - d_to_delete, after_d
     assert_equal before_wd, after_wd
-    assert_equal before_wdv - 1, after_wdv
-    assert_equal before_c - 2, after_c
-    assert_equal before_wv - 7, after_wv
-    assert_equal before_ct - 5, after_ct
+    assert_equal before_wdv - wdv_to_delete, after_wdv
+    assert_equal before_c - c_to_delete, after_c
+    assert_equal before_wv - wv_to_delete, after_wv
+    assert_equal before_ct - ct_to_delete, after_ct
 
     @volunteer.reload
     assert(@volunteer.deleted?)
@@ -382,9 +387,9 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
 
     # Did waivers move and is the amount the same? Also check for edge case where volunteer was both volunteer and guardian on waiver after merge
     new_waivers = Waiver.where("(volunteer_id = #{@volunteer.id}) OR (guardian_id = #{@volunteer.id})").distinct.all
-    assert_equal(new_waivers.count, waivers_count + waivers_dup_count - 1, "Number of waivers (#{waivers_count + waivers_dup_count - 1}) should be equal")
+    assert_equal(waivers_count + waivers_dup_count - 1, new_waivers.count, "Number of waivers (#{waivers_count + waivers_dup_count - 1}) should be equal")
     merged_waivers = Waiver.where("(volunteer_id = #{@volunteer.id}) AND (guardian_id = #{@volunteer.id})").distinct.all
-    assert_equal(merged_waivers.count, 1, "Number of merged waivers (#{1}) should be equal")
+    assert_equal(1, merged_waivers.count, "Number of merged waivers (#{1}) should be equal")
 
     # Did contacts move and is the amount the same?
     new_contacts = Contact.where("(volunteer_id = #{@volunteer.id})").all
@@ -638,8 +643,6 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
   test "Get correct waiver text if text is on waiver" do
     log_in_as(@admin)
     puts "Get correct waiver text if text is on waiver"
-    pp @volunteer
-    pp last_waiver(@volunteer.id)
     assert_match /Some text for waiver/, effective_waiver_text(last_waiver(@volunteer.id)).data, "Waiver text should match volunteer waivers"
     @waiver = Waiver.new(volunteer_id: @volunteer.id, e_sign: true, adult: true, date_signed: Date.today, created_at: DateTime.parse("2018-07-01") )
     @waiver.save!

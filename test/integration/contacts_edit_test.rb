@@ -9,6 +9,9 @@ class ContactsEditTest < ActionDispatch::IntegrationTest
     @non_admin_user1 = users(:one)
     @non_admin_user2 = users(:two)
     @contact_owned_by_user1 = contacts(:one)
+    @contact_owned_by_user1.user_id = @non_admin_user1.id
+    @contact_owned_by_user1.last_edit_user_id = @non_admin_user1.id
+    @contact_owned_by_user1.save!
     @contact_un_owned = contacts(:two)
     @contact_un_owned.user_id = nil
     @contact_un_owned.last_edit_user_id = @non_admin_user2.id
