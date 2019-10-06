@@ -301,3 +301,10 @@ table.header-border {
   background-color: rgba(136, 136, 136, 0.24) !important;
   border-color: #888888 !important;
 }
+
+/* Attempt to remove padding */
+
+.nopadding {
+  padding: 0 !important;
+  margin: 0 !important;
+}
