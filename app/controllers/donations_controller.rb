@@ -47,7 +47,7 @@ class DonationsController < ApplicationController
         where_clause += "donation_types.non_monetary IS TRUE"
       end
 
-      if params[:donation_report_object] == :organizations
+      if params[:donation_report_object] == "organizations"
         @organization_report = true
         organization_where = where_clause
         organization_type_ids = params[:organization_type_ids].nil? ? [] : params[:organization_type_ids]
@@ -85,7 +85,7 @@ class DonationsController < ApplicationController
         @organization_donations = Donation.joins(:organization, :donation_type).where(organization_where).order("organizations.name, donations.date_received")
       end
 
-      if params[:donation_report_object] == :volunteers
+      if params[:donation_report_object] == "volunteers"
         @volunteer_report = true
         volunteer_where = where_clause
         if !params[:city].empty?
