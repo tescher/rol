@@ -24,7 +24,7 @@
         <div class="col-md-4 col-md-offset-1">
           <div class="row">
             <div class="col-md-1 nopadding">
-              <%= radio_button_tag :monetary, :true, current_user.monetary, disabled: !current_user.monetary %>
+              <%= radio_button_tag :report_type, 1, current_user.monetary, disabled: !current_user.monetary %>
             </div>
             <div class="col-md-10 col-md-offset-1 nopadding">
               <%= label_tag :monetary_true, "Monetary" %>
@@ -32,7 +32,7 @@
           </div>
           <div class="row">
             <div class="col-md-1 nopadding">
-              <%= radio_button_tag :monetary, :false, !current_user.monetary, disabled: !current_user.monetary %>
+              <%= radio_button_tag :report_type, 2, !current_user.monetary, disabled: !current_user.monetary %>
             </div>
             <div class="col-md-10 col-md-offset-1 nopadding">
               <%= label_tag :monetary_false, "Non-Monetary" %>
@@ -117,12 +117,9 @@
   <div class="row">
     <div class="col-md-11">
       <div class="actions pull-right">
-        <% if !current_user.non_monetary %>
-          <%= submit_tag "Monetary Donations", class: "btn btn-primary", onclick: "change_val('.request_format','html'); change_val('.report_type', '1'); return true;" %>
-          <%= submit_tag "Export", class: "btn btn-primary", onclick: "change_val('.request_format','xls'); change_val('.report_type', '1'); return true;" %>
-        <% end %>
-        <%= submit_tag "Non-Monetary Donations", class: "btn btn-primary", onclick: "change_val('.request_format','html'); change_val('.report_type', '2'); return true;" %>
-        <%= submit_tag "Export", class: "btn btn-primary", onclick: "change_val('.request_format','xls'); change_val('.report_type', '2'); return true;" %>
+        <%= submit_tag "View Report", class: "btn btn-primary", onclick: "change_val('.request_format','html'); return true;" %>
+        <%= submit_tag "Export to Excel", class: "btn btn-primary", onclick: "change_val('.request_format','xls'); return true;" %>
+        <%= submit_tag "Export to CSV", class: "btn btn-primary", onclick: "change_val('.request_format','csv'); return true;" %>
         <%= link_to 'Back', root_path, class: "btn btn-primary" %>
       </div>
     </div>
