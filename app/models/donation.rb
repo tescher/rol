@@ -63,7 +63,7 @@ class Donation < ActiveRecord::Base
   end
 
   def org_state
-    self.organization.city
+    self.organization.state
   end
 
   def org_zip
