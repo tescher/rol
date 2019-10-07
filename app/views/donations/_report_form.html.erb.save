@@ -1,0 +1,110 @@
+<%= form_tag(report_donations_path, method: "get") do %>
+  <div class="container" xmlns="http://www.w3.org/1999/html">
+    <div class="row">
+      <div class="col-md-5 col-md-offset-2">
+
+        <div class="row">
+          <div class="col-md-6">
+            <%= label_tag :from_date %><br>
+          </div>
+          <div class="col-md-6">
+            <%= label_tag :to_date %><br>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <%= text_field_tag :from_date, nil, id: 'fromdatepicker', class: 'form-control' %>
+          </div>
+          <div class="col-md-6">
+            <%= text_field_tag :to_date, Date.today.strftime("%m/%d/%Y"), id: 'todatepicker', class: 'form-control' %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <%= label_tag :city %>
+          </div>
+          <div class="col-md-6">
+            <%= label_tag :zip %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <%= text_field_tag :city, nil, class: 'form-control' %>
+          </div>
+          <div class="col-md-6">
+            <%= text_field_tag :zip, nil, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <%= label_tag :donation_types %><br>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <%= select_tag :donation_type_ids, options_from_collection_for_select(DonationType.all.order(:name), :id, :option_formatter), { :multiple => true, class: "form-control"}  %>
+          </div>
+          <div class="col-md-6">
+            <div class="checkbox">
+              <label>
+                <%= check_box_tag :needing_receipts %> Only donations needing receipts
+              </label>
+            </div>
+            <fieldset class="form-group">
+              <div class="row">
+                <%= label_tag :donation_report_object_volunteers, class: "radio-inline" do %>
+                <%= radio_button_tag :donation_report_object, :volunteers, true, :class => "radio-inline" %>
+                  Volunteers
+                  <% end %>
+              </div>
+              <div class="row">
+                <%= label_tag :donation_report_object_organizations, class: "radio-inline" do %>
+                  <%= radio_button_tag :donation_report_object, :organizations, false, :class => "radio-inline" %>
+                  Organizations
+                <% end %>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div id="donation_report_org_types" style="display:none">
+    <div class="row">
+      <div class="col-md-5 col-md-offset-4">
+        <div class="row">
+          <div class="col-md-2">
+            <%= label_tag :limit_to %><br>
+          </div>
+          <div class="col-md-8">
+            <%= select_tag :organization_type_ids, options_from_collection_for_select(OrganizationType.all, :id, :name), { :multiple => true, class: "form-control"}  %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+
+  <%= hidden_field_tag :request_format, "html", class: "request_format" %>
+  <%= hidden_field_tag :report_type, "1", class: "report_type" %>
+
+  <div class="row">
+    <div class="col-md-11">
+      <div class="actions pull-right">
+        <% if !current_user.non_monetary %>
+          <%= submit_tag "Monetary Donations", class: "btn btn-primary", onclick: "change_val('.request_format','html'); change_val('.report_type', '1'); return true;" %>
+          <%= submit_tag "Export", class: "btn btn-primary", onclick: "change_val('.request_format','xls'); change_val('.report_type', '1'); return true;" %>
+        <% end %>
+        <%= submit_tag "Non-Monetary Donations", class: "btn btn-primary", onclick: "change_val('.request_format','html'); change_val('.report_type', '2'); return true;" %>
+        <%= submit_tag "Export", class: "btn btn-primary", onclick: "change_val('.request_format','xls'); change_val('.report_type', '2'); return true;" %>
+        <%= link_to 'Back', root_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+

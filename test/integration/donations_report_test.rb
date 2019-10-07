@@ -81,14 +81,14 @@ class DonationsReportTest < ActionDispatch::IntegrationTest
 
 
   test "Report without login" do
-    get report_donations_path(report_type: 1, volunteers: 1, city: "", zip: "", request_format:"html", from_date: 6.days.ago.strftime("%m/%d/%Y"), to_date: "")
+    get report_donations_path(report_type: 1, donation_report_object: "volunteers", city: "", zip: "", request_format:"html", from_date: 6.days.ago.strftime("%m/%d/%Y"), to_date: "")
     log_in_as(@user)
-    assert_redirected_to report_donations_path(report_type: 1, volunteers: 1, city: "", zip: "", request_format:"html", from_date: 6.days.ago.strftime("%m/%d/%Y"), to_date: "")
+    assert_redirected_to report_donations_path(report_type: 1, donation_report_object: "volunteers", city: "", zip: "", request_format:"html", from_date: 6.days.ago.strftime("%m/%d/%Y"), to_date: "")
   end
 
   test "Donations, Monetary, Volunteers, last 6 days, HTML" do
     log_in_as(@user)
-    get report_donations_path(report_type: 1, volunteers: 1, city: "", zip: "", request_format:"html", from_date: 6.days.ago.strftime("%m/%d/%Y"), to_date: "")
+    get report_donations_path(report_type: 1, donation_report_object: "volunteers", city: "", zip: "", request_format:"html", from_date: 6.days.ago.strftime("%m/%d/%Y"), to_date: "")
 
     assert_select("div.container h2:nth-of-type(1)", "Volunteer Donations")
     assert_select("div.container ul.listing:nth-of-type(1) div.clickable:nth-of-type(1) li:nth-of-type(1) div.col-md-1:nth-of-type(4)", "$30.00")
@@ -103,7 +103,7 @@ class DonationsReportTest < ActionDispatch::IntegrationTest
 
   test "Donations, Non-Monetary, Organizations, last 7 days, HTML" do
     log_in_as(@user)
-    get report_donations_path(report_type: 2, organizations: 1, city: "", zip: "", request_format:"html", from_date: 7.days.ago.strftime("%m/%d/%Y"), to_date: "")
+    get report_donations_path(report_type: 2, donation_report_object: "organizations", city: "", zip: "", request_format:"html", from_date: 7.days.ago.strftime("%m/%d/%Y"), to_date: "")
 
     assert_select("div.container h2:nth-of-type(1)", "Organization Donations")
     assert_select("div.container ul.listing:nth-of-type(1) div.clickable:nth-of-type(1) li:nth-of-type(1) div.col-md-1:nth-of-type(4)", "$0.00")
@@ -114,26 +114,20 @@ class DonationsReportTest < ActionDispatch::IntegrationTest
 
   test "Donations, Monetary, Volunteers, Zip 53555, last 6 days, HTML" do
     log_in_as(@user)
-    get report_donations_path(report_type: 1, volunteers: 1, organizations: 1, city: "", zip: "53555", request_format:"html", from_date: 6.days.ago.strftime("%m/%d/%Y"), to_date: "")
+    get report_donations_path(report_type: 1, donation_report_object: "volunteers", city: "", zip: "53555", request_format:"html", from_date: 6.days.ago.strftime("%m/%d/%Y"), to_date: "")
 
-    assert_select("div.container h2:nth-of-type(1)", "Organization Donations")
-    assert_select("div.container ul.listing:nth-of-type(1) div.clickable:nth-of-type(1) li:nth-of-type(1) div.col-md-1:nth-of-type(4)", "$100.00")
+    assert_select("div.container h2:nth-of-type(1)", "Volunteer Donations")
+    assert_select("div.container ul.listing:nth-of-type(1) div.clickable:nth-of-type(1) li:nth-of-type(1) div.col-md-1:nth-of-type(4)", "$10.00")
+    assert_select("div.container ul.listing:nth-of-type(1) div.clickable:nth-of-type(2) li:nth-of-type(1) div.col-md-1:nth-of-type(4)", "$5.00")
 
-    assert_select("div.container ul.listing:nth-of-type(1) li:nth-of-type(1) div.row div.col-md-6 span:nth-of-type(1)", "Number of Donations: 1")
-    assert_select("div.container ul.listing:nth-of-type(1) li:nth-of-type(1) div.row div.col-md-6 span:nth-of-type(2)", "Organization Total: $100.00")
-
-    assert_select("div.container h2:nth-of-type(2)", "Volunteer Donations")
-    assert_select("div.container ul.listing:nth-of-type(2) div.clickable:nth-of-type(1) li:nth-of-type(1) div.col-md-1:nth-of-type(4)", "$10.00")
-    assert_select("div.container ul.listing:nth-of-type(2) div.clickable:nth-of-type(2) li:nth-of-type(1) div.col-md-1:nth-of-type(4)", "$5.00")
-
-    assert_select("div.container ul.listing:nth-of-type(2) li:nth-of-type(1) div.row div.col-md-6  span:nth-of-type(1)", "Number of Donations: 2")
-    assert_select("div.container ul.listing:nth-of-type(2) li:nth-of-type(1) div.row div.col-md-6  span:nth-of-type(2)", "Volunteer Total: $15.00")
+    assert_select("div.container ul.listing:nth-of-type(1) li:nth-of-type(1) div.row div.col-md-6  span:nth-of-type(1)", "Number of Donations: 2")
+    assert_select("div.container ul.listing:nth-of-type(1) li:nth-of-type(1) div.row div.col-md-6  span:nth-of-type(2)", "Volunteer Total: $15.00")
 
   end
 
   test "Donations, Monetary, Volunteers, Donation Type 2, last 7 days, HTML" do
     log_in_as(@user)
-    get report_donations_path(report_type: 1, volunteers: 1, city: "", zip: "", donation_type_ids: [@donation_type2.id], request_format:"html", from_date: 7.days.ago.strftime("%m/%d/%Y"), to_date: "")
+    get report_donations_path(report_type: 1, donation_report_object: "volunteers", city: "", zip: "", donation_type_ids: [@donation_type2.id], request_format:"html", from_date: 7.days.ago.strftime("%m/%d/%Y"), to_date: "")
 
     assert_select("div.container h2:nth-of-type(1)", "Volunteer Donations")
     assert_select("div.container ul.listing:nth-of-type(1) div.clickable:nth-of-type(1) li:nth-of-type(1) div.col-md-1:nth-of-type(4)", "$30.00")
@@ -146,7 +140,7 @@ class DonationsReportTest < ActionDispatch::IntegrationTest
 
   test "Donations, Monetary, Volunteers, Donation Type 1 & 2, last 7 days, HTML" do
     log_in_as(@user)
-    get report_donations_path(report_type: 1, volunteers: 1, city: "", zip: "", donation_type_ids: [@donation_type1.id, @donation_type2.id], request_format:"html", from_date: 7.days.ago.strftime("%m/%d/%Y"), to_date: "")
+    get report_donations_path(report_type: 1, donation_report_object: "volunteers", city: "", zip: "", donation_type_ids: [@donation_type1.id, @donation_type2.id], request_format:"html", from_date: 7.days.ago.strftime("%m/%d/%Y"), to_date: "")
 
     assert_select("div.container h2:nth-of-type(1)", "Volunteer Donations")
     assert_select("div.container ul.listing:nth-of-type(1) div.clickable:nth-of-type(1) li:nth-of-type(1) div.col-md-1:nth-of-type(4)", "$30.00")
@@ -162,7 +156,7 @@ class DonationsReportTest < ActionDispatch::IntegrationTest
 
   test "Donations, Monetary, Organization Type 2, last 7 days, HTML" do
     log_in_as(@user)
-    get report_donations_path(report_type: 1, organizations: 1, organization_type_ids: [@organization_type2.id], city: "", zip: "", request_format:"html", from_date: 7.days.ago.strftime("%m/%d/%Y"), to_date: "")
+    get report_donations_path(report_type: 1, donation_report_object: "organizations", organization_type_ids: [@organization_type2.id], city: "", zip: "", request_format:"html", from_date: 7.days.ago.strftime("%m/%d/%Y"), to_date: "")
 
     assert_select("div.container h2:nth-of-type(1)", "Organization Donations")
     assert_select("div.container ul.listing:nth-of-type(1) div.clickable:nth-of-type(1) li:nth-of-type(1) div.col-md-1:nth-of-type(4)", "$100.00")
@@ -174,28 +168,21 @@ class DonationsReportTest < ActionDispatch::IntegrationTest
 
   test "Donations, Monetary, Volunteers, Zip [53555, 53711], last 6 days, HTML" do
     log_in_as(@user)
-    get report_donations_path(report_type: 1, volunteers: 1, organizations: 1, city: "", zip: "53555, 53711", request_format:"html", from_date: 6.days.ago.strftime("%m/%d/%Y"), to_date: "")
-    # puts @response.body
+    get report_donations_path(report_type: 1, donation_report_object: "volunteers", city: "", zip: "53555, 53711", request_format:"html", from_date: 6.days.ago.strftime("%m/%d/%Y"), to_date: "")
 
-    assert_select("div.container h2:nth-of-type(1)", "Organization Donations")
-    assert_select("div.container ul.listing:nth-of-type(1) div.clickable:nth-of-type(1) li:nth-of-type(1) div.col-md-1:nth-of-type(4)", "$500.00")
+    assert_select("div.container h2:nth-of-type(1)", "Volunteer Donations")
+    assert_select("div.container ul.listing:nth-of-type(1) div.clickable:nth-of-type(1) li:nth-of-type(1) div.col-md-1:nth-of-type(4)", "$10.00")
+    assert_select("div.container ul.listing:nth-of-type(1) div.clickable:nth-of-type(2) li:nth-of-type(1) div.col-md-1:nth-of-type(4)", "$7.00")
+    assert_select("div.container ul.listing:nth-of-type(1) div.clickable:nth-of-type(3) li:nth-of-type(1) div.col-md-1:nth-of-type(4)", "$5.00")
 
-    assert_select("div.container ul.listing:nth-of-type(1) li:nth-of-type(1) div.row div.col-md-6 span:nth-of-type(1)", "Number of Donations: 2")
-    assert_select("div.container ul.listing:nth-of-type(1) li:nth-of-type(1) div.row div.col-md-6 span:nth-of-type(2)", "Organization Total: $600.00")
-
-    assert_select("div.container h2:nth-of-type(2)", "Volunteer Donations")
-    assert_select("div.container ul.listing:nth-of-type(2) div.clickable:nth-of-type(1) li:nth-of-type(1) div.col-md-1:nth-of-type(4)", "$10.00")
-    assert_select("div.container ul.listing:nth-of-type(2) div.clickable:nth-of-type(2) li:nth-of-type(1) div.col-md-1:nth-of-type(4)", "$7.00")
-    assert_select("div.container ul.listing:nth-of-type(2) div.clickable:nth-of-type(3) li:nth-of-type(1) div.col-md-1:nth-of-type(4)", "$5.00")
-
-    assert_select("div.container ul.listing:nth-of-type(2) li:nth-of-type(1) div.row div.col-md-6  span:nth-of-type(1)", "Number of Donations: 3")
-    assert_select("div.container ul.listing:nth-of-type(2) li:nth-of-type(1) div.row div.col-md-6  span:nth-of-type(2)", "Volunteer Total: $22.00")
+    assert_select("div.container ul.listing:nth-of-type(1) li:nth-of-type(1) div.row div.col-md-6  span:nth-of-type(1)", "Number of Donations: 3")
+    assert_select("div.container ul.listing:nth-of-type(1) li:nth-of-type(1) div.row div.col-md-6  span:nth-of-type(2)", "Volunteer Total: $22.00")
 
   end
 
-  test "Donations, Monetary, Volunteers, City [Lodi, Baraboo], last 6 days, HTML" do
+  test "Donations, Monetary, Organizations, City [Lodi, Baraboo], last 6 days, HTML" do
     log_in_as(@user)
-    get report_donations_path(report_type: 1, volunteers: 1, organizations: 1, city: "lodi, baraboo", zip: "", request_format:"html", from_date: 6.days.ago.strftime("%m/%d/%Y"), to_date: "")
+    get report_donations_path(report_type: 1, donation_report_object: "organizations", city: "lodi, baraboo", zip: "", request_format:"html", from_date: 6.days.ago.strftime("%m/%d/%Y"), to_date: "")
     # puts @response.body
 
     assert_select("div.container h2:nth-of-type(1)", "Organization Donations")
@@ -203,14 +190,6 @@ class DonationsReportTest < ActionDispatch::IntegrationTest
 
     assert_select("div.container ul.listing:nth-of-type(1) li:nth-of-type(1) div.row div.col-md-6 span:nth-of-type(1)", "Number of Donations: 2")
     assert_select("div.container ul.listing:nth-of-type(1) li:nth-of-type(1) div.row div.col-md-6 span:nth-of-type(2)", "Organization Total: $600.00")
-
-    assert_select("div.container h2:nth-of-type(2)", "Volunteer Donations")
-    assert_select("div.container ul.listing:nth-of-type(2) div.clickable:nth-of-type(1) li:nth-of-type(1) div.col-md-1:nth-of-type(4)", "$10.00")
-    assert_select("div.container ul.listing:nth-of-type(2) div.clickable:nth-of-type(2) li:nth-of-type(1) div.col-md-1:nth-of-type(4)", "$7.00")
-    assert_select("div.container ul.listing:nth-of-type(2) div.clickable:nth-of-type(3) li:nth-of-type(1) div.col-md-1:nth-of-type(4)", "$5.00")
-
-    assert_select("div.container ul.listing:nth-of-type(2) li:nth-of-type(1) div.row div.col-md-6  span:nth-of-type(1)", "Number of Donations: 3")
-    assert_select("div.container ul.listing:nth-of-type(2) li:nth-of-type(1) div.row div.col-md-6  span:nth-of-type(2)", "Volunteer Total: $22.00")
 
   end
 
