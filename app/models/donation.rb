@@ -38,9 +38,9 @@ class Donation < ActiveRecord::Base
 
   def self.to_csv(report_object)
     if report_object == "organizations"
-      attributes = %w(date_received organization_id org_name org_address org_city org_state org_zip org_type value item ref_no don_type anonymous in_honor_of designation notes receipt_sent)
+      attributes = %w(date_received organization_id org_name org_address org_city org_state org_zip org_type value item ref_no don_type anonymous in_honor_of designation notes receipt_sent donation_year)
     else
-      attributes = %w(date_received volunteer_id vol_name vol_address vol_city vol_state vol_zip value item ref_no don_type anonymous in_honor_of designation notes receipt_sent)
+      attributes = %w(date_received volunteer_id vol_name vol_address vol_city vol_state vol_zip value item ref_no don_type anonymous in_honor_of designation notes receipt_sent donation_year)
     end
     CSV.generate(headers: true) do |csv|
       csv << attributes
@@ -96,6 +96,10 @@ class Donation < ActiveRecord::Base
 
   def don_type
     self.donation_type.name
+  end
+  
+  def donation_year
+    self.date_received.year
   end
 
   private
