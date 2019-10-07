@@ -49,8 +49,8 @@ module DonationsHelper
                          year_value = 0
                          ds.each do |d|
                            year_value += d.value.to_s.to_d
-                           grand_total += year_value
                          end
+                         grand_total += year_value
                          [y, year_value]
                        }]
 
