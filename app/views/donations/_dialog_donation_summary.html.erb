@@ -37,6 +37,11 @@
               Year Total: <%= number_to_currency(@year_totals[year]) %>
             </div>
           </li>
+          <li>
+            <div class="col-md-4 col-md-offset-1">
+              Grand Total: <%= number_to_currency(@donation_grand_total) %>
+            </div>
+          </li>
         </ul>
       </div>
     <% end %>

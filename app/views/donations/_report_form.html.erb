@@ -1,79 +1,103 @@
 <%= form_tag(report_donations_path, method: "get") do %>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-5 col-md-offset-2">
+  <div class="row">
+    <div class="col-md-7 col-md-offset-3">
 
+      <div class="row">
+        <div class="col-md-4">
           <div class="row">
-            <div class="col-md-6">
-              <%= label_tag :from_date %><br>
+            <div class="col-md-1 nopadding">
+              <%= radio_button_tag :donation_report_object, :volunteers, true %>
             </div>
-            <div class="col-md-6">
-              <%= label_tag :to_date %><br>
+            <div class="col-md-10 col-md-offset-1 nopadding">
+              <%= label_tag :donation_report_object_volunteers, "Volunteers" %>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-6">
-              <%= text_field_tag :from_date, nil, id: 'fromdatepicker', class: 'form-control' %>
+            <div class="col-md-1 nopadding">
+              <%= radio_button_tag :donation_report_object, :organizations, false %>
             </div>
-            <div class="col-md-6">
-              <%= text_field_tag :to_date, Date.today.strftime("%m/%d/%Y"), id: 'todatepicker', class: 'form-control' %>
+            <div class="col-md-10 col-md-offset-1 nopadding">
+              <%= label_tag :donation_report_object_volunteers, "Organizations" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-md-offset-1">
+          <div class="row">
+            <div class="col-md-1 nopadding">
+              <%= radio_button_tag :report_type, 1, current_user.monetary, disabled: !current_user.monetary %>
+            </div>
+            <div class="col-md-10 col-md-offset-1 nopadding">
+              <%= label_tag :monetary_true, "Monetary" %>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-6">
-              <%= label_tag :city %>
+            <div class="col-md-1 nopadding">
+              <%= radio_button_tag :report_type, 2, !current_user.monetary, disabled: !current_user.monetary %>
             </div>
-            <div class="col-md-6">
-              <%= label_tag :zip %>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <%= text_field_tag :city, nil, class: 'form-control' %>
-            </div>
-            <div class="col-md-6">
-              <%= text_field_tag :zip, nil, class: 'form-control' %>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <%= label_tag :donation_types %><br>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <%= select_tag :donation_type_ids, options_from_collection_for_select(DonationType.all.order(:name), :id, :option_formatter), { :multiple => true, class: "form-control"}  %>
-            </div>
-            <div class="col-md-6">
-              <div class="checkbox">
-                <label>
-                  <%= check_box_tag :needing_receipts %> Only donations needing receipts
-                </label>
-              </div>
-              <div class="checkbox">
-                <label>
-                  <%= check_box_tag :volunteers, "1", true %> Volunteers
-                </label>
-              </div>
-              <div class="checkbox">
-                <label>
-                  <%= check_box_tag :organizations, "1", false, id: "donation_report_org"  %> Organizations
-                </label>
-              </div>
+            <div class="col-md-10 col-md-offset-1 nopadding">
+              <%= label_tag :monetary_false, "Non-Monetary" %>
             </div>
           </div>
         </div>
       </div>
-    </div>
-
-    <div id="donation_report_org_types" style="display:none">
       <div class="row">
-        <div class="col-md-5 col-md-offset-4">
+        <div class="col-md-4">
           <div class="row">
-            <div class="col-md-2">
+            <%= label_tag :from_date %>
+          </div>
+          <div class="row">
+            <%= text_field_tag :from_date, nil, id: 'fromdatepicker', class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-md-4 col-md-offset-1">
+          <div class="row">
+            <%= label_tag :to_date %>
+          </div>
+          <div class="row">
+            <%= text_field_tag :to_date, Date.today.strftime("%m/%d/%Y"), id: 'todatepicker', class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="row">
+            <%= label_tag :city %>
+          </div>
+          <div class="row">
+            <%= text_field_tag :city, nil, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-md-4 col-md-offset-1">
+          <div class="row">
+            <%= label_tag :zip %>
+          </div>
+          <div class="row">
+            <%= text_field_tag :zip, nil, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="row">
+            <%= label_tag :donation_types %><br>
+          </div>
+          <div class="row">
+            <%= select_tag :donation_type_ids, options_from_collection_for_select(DonationType.all.order(:name), :id, :option_formatter), { :multiple => true, class: "form-control"}  %>
+          </div>
+        </div>
+        <div class="col-md-4 col-md-offset-1">
+          <div class="row">
+            <label>
+              <%= check_box_tag :needing_receipts %> Only donations needing receipts
+            </label>
+          </div>
+          <div id="donation_report_org_types" style="display:none">
+            <div class="row">
               <%= label_tag :limit_to %><br>
             </div>
-            <div class="col-md-8">
+            <div class="row">
               <%= select_tag :organization_type_ids, options_from_collection_for_select(OrganizationType.all, :id, :name), { :multiple => true, class: "form-control"}  %>
             </div>
           </div>
@@ -81,25 +105,25 @@
       </div>
     </div>
 
-    </div>
+  </div>
 
 
-    <%= hidden_field_tag :request_format, "html", class: "request_format" %>
-    <%= hidden_field_tag :report_type, "1", class: "report_type" %>
 
-    <div class="row">
-      <div class="col-md-11">
-        <div class="actions pull-right">
-          <% if !current_user.non_monetary %>
-              <%= submit_tag "Monetary Donations", class: "btn btn-primary", onclick: "change_val('.request_format','html'); change_val('.report_type', '1'); return true;" %>
-              <%= submit_tag "Export", class: "btn btn-primary", onclick: "change_val('.request_format','xls'); change_val('.report_type', '1'); return true;" %>
-          <% end %>
-          <%= submit_tag "Non-Monetary Donations", class: "btn btn-primary", onclick: "change_val('.request_format','html'); change_val('.report_type', '2'); return true;" %>
-          <%= submit_tag "Export", class: "btn btn-primary", onclick: "change_val('.request_format','xls'); change_val('.report_type', '2'); return true;" %>
-          <%= link_to 'Back', root_path, class: "btn btn-primary" %>
-        </div>
+
+
+  <%= hidden_field_tag :request_format, "html", class: "request_format" %>
+  <%= hidden_field_tag :report_type, "1", class: "report_type" %>
+
+  <div class="row">
+    <div class="col-md-11">
+      <div class="actions pull-right">
+        <%= submit_tag "View Report", class: "btn btn-primary", onclick: "change_val('.request_format','html'); return true;" %>
+        <%= submit_tag "Export to Excel", class: "btn btn-primary", onclick: "change_val('.request_format','xls'); return true;" %>
+        <%= submit_tag "Export to CSV", class: "btn btn-primary", onclick: "change_val('.request_format','csv'); return true;" %>
+        <%= link_to 'Back', root_path, class: "btn btn-primary" %>
       </div>
     </div>
+  </div>
 <% end %>
 
 

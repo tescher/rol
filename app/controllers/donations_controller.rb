@@ -13,11 +13,15 @@ class DonationsController < ApplicationController
       if params[:request_format] == "xls"
         per_page = 1000000   #Hopefully all of them!
         request.format = :xls
-      else
-        per_page = 30
+      else if params[:request_format] == "csv"
+             request.format = :csv
+           else
+             per_page = 30
+           end
       end
 
       @report_type = params[:report_type].to_i
+      @report_object = params[:donation_report_object]
 
       where_clause = ""
 
@@ -47,8 +51,7 @@ class DonationsController < ApplicationController
         where_clause += "donation_types.non_monetary IS TRUE"
       end
 
-      if params[:organizations]
-        @organization_report = true
+      if @report_object == "organizations"
         organization_where = where_clause
         organization_type_ids = params[:organization_type_ids].nil? ? [] : params[:organization_type_ids]
         organization_where = organization_where.length > 0 ? organization_where + " AND " : organization_where
@@ -82,11 +85,10 @@ class DonationsController < ApplicationController
 
         end
 
-        @organization_donations = Donation.joins(:organization, :donation_type).where(organization_where).order("organizations.name, donations.date_received")
+        @donations = Donation.joins(:organization, :donation_type).where(organization_where).order("organizations.name, donations.date_received")
       end
 
-      if params[:volunteers]
-        @volunteer_report = true
+      if @report_object == "volunteers"
         volunteer_where = where_clause
         if !params[:city].empty?
           volunteer_where_city = ""
@@ -110,7 +112,7 @@ class DonationsController < ApplicationController
             volunteer_where += "(" + volunteer_where_zip + ")"
           end
         end
-        @volunteer_donations = Donation.joins(:volunteer, :donation_type).where("donations.volunteer_id IS NOT NULL").where(volunteer_where).order("volunteers.last_name, volunteers.first_name, donations.date_received")
+        @donations = Donation.joins(:volunteer, :donation_type).where("donations.volunteer_id IS NOT NULL").where(volunteer_where).order("volunteers.last_name, volunteers.first_name, donations.date_received")
       end
 
       respond_to do |format|
@@ -121,6 +123,10 @@ class DonationsController < ApplicationController
           response.headers['Content-Disposition'] = 'attachment; filename="report.xls"'
           render "report_donations.xls"
         }
+        format.csv {
+          headers['Content-Disposition'] = "attachment; filename=\"donations\""
+          headers['Content-Type'] ||= 'text/csv'
+          send_data @donations.to_csv(@report_object) }
 
 
       end
@@ -292,7 +298,7 @@ class DonationsController < ApplicationController
     if (@objectName != "volunteer") && (@objectName != "organization")
       render partial: "Invalid parameter"
     else
-      @donation_years, @donations_by_year, @year_totals = get_donation_summary(@objectName, params[:id], @non_monetary)
+      @donation_years, @donations_by_year, @year_totals, @donation_grand_total = get_donation_summary(@objectName, params[:id], @non_monetary)
       render partial: "dialog_donation_summary"
     end
   end

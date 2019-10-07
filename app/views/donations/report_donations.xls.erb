@@ -7,7 +7,7 @@
   <Worksheet ss:Name="Sheet1">
     <Table>
 
-      <% if @organization_report %>
+      <% if @report_object == "organizations" %>
           <% d_total = 0 %>
           <% d_count = 0 %>
           <Row>
@@ -31,7 +31,7 @@
             <Cell><Data ss:Type="String">Notes</Data></Cell>
           </Row>
 
-          <% @organization_donations.each do |d| %>
+          <% @donations.each do |d| %>
               <% d_total += (d.value.to_f) %>
               <% d_count += 1 %>
               <% organization = Organization.find(d.organization_id) %>
@@ -68,7 +68,7 @@
           <Row></Row>
       <% end %>
 
-      <% if @volunteer_report %>
+      <% if @report_object == "volunteers" %>
           <% d_total = 0 %>
           <% d_count = 0 %>
           <Row>
@@ -92,7 +92,7 @@
             <Cell><Data ss:Type="String">Notes</Data></Cell>
           </Row>
 
-          <% @volunteer_donations.each do |d| %>
+          <% @donations.each do |d| %>
               <% d_total += (d.value.to_f) %>
               <% d_count += 1 %>
               <% volunteer = Volunteer.find(d.volunteer_id) %>

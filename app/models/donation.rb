@@ -36,6 +36,72 @@ class Donation < ActiveRecord::Base
     errors.add(:value, "invalid value amount") unless (self.value.to_f > 0) || (self.donation_type.non_monetary && !(self.value.to_f < 0))
   end
 
+  def self.to_csv(report_object)
+    if report_object == "organizations"
+      attributes = %w(date_received organization_id org_name org_address org_city org_state org_zip org_type value item ref_no don_type anonymous in_honor_of designation notes receipt_sent donation_year)
+    else
+      attributes = %w(date_received volunteer_id vol_name vol_address vol_city vol_state vol_zip value item ref_no don_type anonymous in_honor_of designation notes receipt_sent donation_year)
+    end
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+      all.each do |donation|
+        csv << attributes.map {|attr| donation.send(attr)}
+      end
+    end
+  end
+
+  def org_name
+    self.organization.name
+  end
+
+  def org_address
+    self.organization.address
+  end
+
+  def org_city
+    self.organization.city
+  end
+
+  def org_state
+    self.organization.state
+  end
+
+  def org_zip
+    self.organization.zip
+  end
+
+  def org_type
+    self.organization.organization_type.name
+  end
+
+  def vol_name
+    self.volunteer.name
+  end
+
+  def vol_address
+    self.volunteer.address
+  end
+
+  def vol_city
+    self.volunteer.city
+  end
+
+  def vol_state
+    self.volunteer.state
+  end
+
+  def vol_zip
+    self.volunteer.zip
+  end
+
+  def don_type
+    self.donation_type.name
+  end
+
+  def donation_year
+    self.date_received.year
+  end
+
   private
   def skip_item_check
     @skip_item_check
