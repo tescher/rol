@@ -44,14 +44,17 @@ module DonationsHelper
 
     end
 
+    grand_total = 0
     year_totals = Hash[donations_by_year.map { |y, ds|
                          year_value = 0
                          ds.each do |d|
                            year_value += d.value.to_s.to_d
+                           grand_total += year_value
                          end
                          [y, year_value]
                        }]
-    [donation_years, donations_by_year, year_totals]
+
+    [donation_years, donations_by_year, year_totals, grand_total]
 
   end
 

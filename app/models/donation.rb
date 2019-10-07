@@ -97,7 +97,7 @@ class Donation < ActiveRecord::Base
   def don_type
     self.donation_type.name
   end
-  
+
   def donation_year
     self.date_received.year
   end

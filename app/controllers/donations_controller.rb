@@ -298,7 +298,7 @@ class DonationsController < ApplicationController
     if (@objectName != "volunteer") && (@objectName != "organization")
       render partial: "Invalid parameter"
     else
-      @donation_years, @donations_by_year, @year_totals = get_donation_summary(@objectName, params[:id], @non_monetary)
+      @donation_years, @donations_by_year, @year_totals, @donation_grand_total = get_donation_summary(@objectName, params[:id], @non_monetary)
       render partial: "dialog_donation_summary"
     end
   end
