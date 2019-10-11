@@ -96,16 +96,16 @@ class ContactsEditTest < ActionDispatch::IntegrationTest
     # Non-admin cannot
     log_in_as(@non_admin_user1)
     get edit_contact_path(@contact_un_owned)
-    assert_select "select[id='contact_user_id']", false
+    assert_select "select[id='user_id']", false
 
     # Nobody can edit
     log_in_as(@admin_user)
     get edit_contact_path(@contact_owned_by_user1)
-    assert_select "select[id='contact_user_id']", false
+    assert_select "select[id='user_id']", false
 
     log_in_as(@non_admin_user1)
     get edit_contact_path(@contact_owned_by_user1)
-    assert_select "select[id='contact_user_id']", false
+    assert_select "select[id='user_id']", false
 
   end
 
