@@ -182,7 +182,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
   end
 
   test "List contacts" do
-    log_in_as(@non_admin)
+    log_in_as(@admin)
     get contacts_volunteer_path(@volunteer)
     assert_template "contacts/contacts_form"
     contacts = Contact.where("volunteer_id = '#{@volunteer.id}'")
@@ -642,7 +642,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
 
   test "Get correct waiver text if text is on waiver" do
     log_in_as(@admin)
-    puts "Get correct waiver text if text is on waiver"
+    # puts "Get correct waiver text if text is on waiver"
     assert_match /Some text for waiver/, effective_waiver_text(last_waiver(@volunteer.id)).data, "Waiver text should match volunteer waivers"
     @waiver = Waiver.new(volunteer_id: @volunteer.id, e_sign: true, adult: true, date_signed: Date.today, created_at: DateTime.parse("2018-07-01") )
     @waiver.save!

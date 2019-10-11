@@ -26,7 +26,7 @@ class ContactsEditTest < ActionDispatch::IntegrationTest
   test "No edits by non-admin user on contacts not owned by them" do
     log_in_as(@non_admin_user1)
     get edit_contact_path(@contact_owned_by_user1)
-    puts "Flash here #{flash[:error]}"
+    # puts "Flash here #{flash[:error]}"
     assert_template 'edit'
     log_in_as(@non_admin_user2)
     get edit_contact_path(@contact_owned_by_user1)
@@ -140,15 +140,20 @@ class ContactsEditTest < ActionDispatch::IntegrationTest
     # Should not see volunteer 2 contact
     assert_select '[href=?]', edit_contact_path(@contact_volunteer2), {count: 0}
     assert_select '[href=?]', edit_contact_path(@contact_owned_by_user1), {count: 1}
+    assert_select 'label[for="contact_user"]', {text: "by #{@contact_owned_by_user1.user.name}", count: 1}
     assert_select '[href=?]', edit_contact_path(@contact_un_owned), {count: 1}
+    assert_select 'label[for="contact_user"]', {text: "by Unknown", count: 1}
 
   end
 
   test "Non-admins without security flag set can only see their contacts" do
     log_in_as(@non_admin_user1)
+    puts "Non-admins without security flag set can only see their contacts"
     get contacts_volunteer_path(@volunteer)
+    puts response.body
     assert_select '[href=?]', edit_contact_path(@contact_volunteer2), {count: 0}
     assert_select '[href=?]', edit_contact_path(@contact_owned_by_user1), {count: 1}
+    assert_select 'label[for="contact_user"]', {text: "by #{@contact_owned_by_user1.user.name}", count: 0}
     assert_select '[href=?]', edit_contact_path(@contact_un_owned), {count: 0}
 
   end
@@ -160,7 +165,9 @@ class ContactsEditTest < ActionDispatch::IntegrationTest
     get contacts_volunteer_path(@volunteer)
     assert_select '[href=?]', edit_contact_path(@contact_volunteer2), {count: 0}
     assert_select '[href=?]', edit_contact_path(@contact_owned_by_user1), {count: 1}
+    assert_select 'label[for="contact_user"]', {text: "by #{@contact_owned_by_user1.user.name}", count: 1}
     assert_select '[href=?]', edit_contact_path(@contact_un_owned), {count: 1}
+    assert_select 'label[for="contact_user"]', {text: "by Unknown", count: 1}
 
   end
 

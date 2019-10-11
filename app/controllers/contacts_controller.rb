@@ -43,7 +43,7 @@ class ContactsController < ApplicationController
     else if (!@current_user.admin? && (@contact.user_id != @current_user.id))
            # Someone trying to create a contact owned by someone else
            flash[:error] = "Cannot create contact for another user"
-           puts "Redirecting"
+           # puts "Redirecting"
            redirect_to root_url
            return
          end
@@ -52,11 +52,11 @@ class ContactsController < ApplicationController
     if @contact.save
       @volunteer.notes = params[:permanent_notes]
       @volunteer.save
-      puts "Contact saved"
+      # puts "Contact saved"
       render :text => '<body onload="window.close()"></body>'
     else
-      puts "Contact not saved"
-      puts flash[:error]
+      # puts "Contact not saved"
+      # puts flash[:error]
       volunteer_info_setup
       render :new
     end
@@ -96,15 +96,15 @@ class ContactsController < ApplicationController
     params[:permanent_notes] = params[:contact][:permanent_notes]
     params[:contact].delete("permanent_notes")
     contact_params = params.require(:contact).permit(:contact_date, :contact_time, :contact_method_id, :volunteer_id, :notes, :user_id)
-    puts contact_params
+    # puts contact_params
     contact_date  = contact_params[:contact_date].blank? ? DateTime.now.strftime("%m/%d/%Y") : contact_params[:contact_date]
     contact_time  = contact_params[:contact_time].blank? ? DateTime.now.strftime("%l:%M %p") : contact_params[:contact_time]
     contact_params[:date_time] = DateTime.strptime("#{contact_date} #{contact_time}","%m/%d/%Y %l:%M %p" ) rescue nil
-    puts contact_params
+    # puts contact_params
     contact_params.delete("contact_date")
     contact_params.delete("contact_time")
-    puts contact_params
-    puts params
+    # puts contact_params
+    # puts params
     contact_params
   end
 

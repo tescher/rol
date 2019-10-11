@@ -193,7 +193,7 @@ class WorkdaysReportTest < ActionDispatch::IntegrationTest
   test "Participants by Project HTML Report" do
     log_in_as(@user)
     get report_workdays_path(report_type: 2, report_format: 1, from_date: 6.days.ago.strftime("%m/%d/%Y"), to_date: "")
-    puts "Workday Report Response: " + @response.body
+    # puts "Workday Report Response: " + @response.body
 
     assert_select("div.container h4:nth-of-type(1)", "Project: Build #1")
     assert_select("div.container h5:nth-of-type(1)", "Distinct Project Volunteers: 2, Volunteer Shifts: 4, Volunteer Hours: 18.0")
