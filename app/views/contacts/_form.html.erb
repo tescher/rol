@@ -68,7 +68,7 @@
   <%= f.hidden_field(:volunteer_id) %>
 
   <div class="pull-right">
-    <%= render partial: "shared/form_actions", locals: {f: f, cancel: '_self', cancel_onclick: 'window.close();'} %>
+    <%= render partial: "shared/form_actions", locals: {f: f, non_admin_delete: false, cancel: '_self', cancel_onclick: 'window.close();'} %>
   </div>
 
 <% end %>

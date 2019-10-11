@@ -112,7 +112,10 @@ class ContactsEditTest < ActionDispatch::IntegrationTest
   test "Only admin can delete" do
     log_in_as(@non_admin_user1)
     get edit_contact_path(@contact_owned_by_user1)
-    assert_select 'a[href=?]', contact_path(@contact_owned_by_user1), { method: :delete }, false
+    assert_select 'a[href=?]', contact_path(@contact_owned_by_user1), { method: :delete, count: 0 }
+
+    get contacts_volunteer_path(@contact_owned_by_user1.volunteer)
+    assert_select 'a[href=?]', "#", { text: "delete", count: 0 }
 
     assert_difference 'Contact.count', 0 do
       delete contact_path(@contact_owned_by_user1)
@@ -121,6 +124,9 @@ class ContactsEditTest < ActionDispatch::IntegrationTest
     log_in_as(@admin_user)
     get edit_contact_path(@contact_owned_by_user1)
     assert_select 'a[href=?]', contact_path(@contact_owned_by_user1), method: :delete
+
+    get contacts_volunteer_path(@contact_owned_by_user1.volunteer)
+    assert_select 'a[href=?]', "#", { text: "delete" }
 
     assert_difference 'Contact.count', -1 do
       delete contact_path(@contact_owned_by_user1)

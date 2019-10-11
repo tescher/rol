@@ -4,6 +4,7 @@ include DonationsHelper
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:edit, :update, :destroy]
   before_action :logged_in_user, only: [:create, :new, :edit, :update, :destroy]
+  before_action :admin_user,     only: [:destroy]
 
   # GET /contacts/new
   def new
