@@ -40,7 +40,7 @@
           </div>
           <% if current_user.admin %>
             <div class="col-sm-1">
-              <%= f.label "User" %><br>
+              <%= f.label "Made By" %><br>
             </div>
             <div class="col-sm-2">
               <%= f.select :user_id, options_from_collection_for_select(User.all, :id, :name, f.object.user_id), { :include_blank => "Unknown" }, { :multiple => false, class: 'form-control'}  %>
