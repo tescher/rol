@@ -65,16 +65,16 @@ class ProjectsMergeTest < ActionDispatch::IntegrationTest
     assert_not_nil(workdays_3)
     post merge_projects_path project_id: @project.id, merge_project_ids: [@project_2, @project_3], mark_inactive: 1
     workdays.each {|wd|
-      puts "Workday: #{wd.id} Project: #{wd.project_id}, Old project #{wd.old_project_id}"
+      # puts "Workday: #{wd.id} Project: #{wd.project_id}, Old project #{wd.old_project_id}"
       assert_nil Workday.find(wd.id).old_project_id
     }
     workdays_2.each {|wd|
-      puts "Workday #{wd.id} old project id #{wd.reload.old_project_id}"
+      # puts "Workday #{wd.id} old project id #{wd.reload.old_project_id}"
       assert_equal Workday.find(wd.id).old_project_id, @project_2.id
       assert_equal Workday.find(wd.id).project_id, @project.id
     }
     workdays_3.each {|wd|
-      puts "Workday #{wd.id} old project id #{wd.reload.old_project_id}"
+      # puts "Workday #{wd.id} old project id #{wd.reload.old_project_id}"
       assert_equal Workday.find(wd.id).old_project_id, @project_3.id
       assert_equal Workday.find(wd.id).project_id, @project.id
     }

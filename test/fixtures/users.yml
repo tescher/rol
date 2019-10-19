@@ -4,11 +4,13 @@ one:
   name: "Tim Smith"
   email: tim@smith.com
   password_digest: <%= User.digest('password') %>
+  id: 1
 
 two:
   name: "Bob Smith"
   email: bob@smith.com
   password_digest: <%= User.digest('password') %>
+  id: 2
 
 michael:
   name: Michael Example

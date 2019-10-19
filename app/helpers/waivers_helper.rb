@@ -33,7 +33,7 @@ module WaiversHelper
   def last_waiver_date(volunteer_id)
     waiver = last_waiver(volunteer_id)
     if waiver
-      puts "Found waiver"
+      # puts "Found waiver for volunteer id #{volunteer_id}"
       waiver.date_signed ? waiver.date_signed : waiver.created_at.to_date
     else
       Volunteer.including_pending.find(volunteer_id).waiver_date

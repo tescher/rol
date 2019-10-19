@@ -325,10 +325,10 @@ class NeedAgeForm
 
   def birthdate_or_adult
     if @birthdate.blank? && (@adult != "1")
-      puts "adding error"
+      # puts "adding error"
       errors.add(:need_age, "Enter your birthdate or declare that you are #{Utilities::Utilities.system_setting(:adult_age)} or older.")
     else
-      puts "No errors"
+      # puts "No errors"
     end
   end
 end

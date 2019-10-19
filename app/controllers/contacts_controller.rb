@@ -2,19 +2,9 @@ include ApplicationHelper
 include DonationsHelper
 
 class ContactsController < ApplicationController
-  before_action :set_contact, only: [:show, :edit, :update, :destroy]
-  before_action :logged_in_user, only: [:index, :show, :create, :new, :edit, :update, :destroy]
-
-  # GET /contacts
-  # GET /contacts.json
-  def index
-    @contacts = Contact.all
-  end
-
-  # GET /contacts/1
-  # GET /contacts/1.json
-  def show
-  end
+  before_action :set_contact, only: [:edit, :update, :destroy]
+  before_action :logged_in_user, only: [:create, :new, :edit, :update, :destroy]
+  before_action :admin_user,     only: [:destroy]
 
   # GET /contacts/new
   def new
@@ -27,6 +17,18 @@ class ContactsController < ApplicationController
   def edit
     @contact = Contact.find(params[:id])
     @volunteer = Volunteer.find(@contact.volunteer_id)
+    if @contact.user_id.nil?
+      if !@current_user.admin? && !@current_user.can_edit_unowned_contacts?
+        flash[:error] = "Can't edit contact for another user"
+        redirect_to root_url
+        return
+      end
+    else if !@current_user.admin? && @current_user.id != @contact.user_id
+        flash[:error] = "Can't edit contact for another user"
+        redirect_to root_url
+        return
+      end
+    end
     volunteer_info_setup
   end
 
@@ -35,12 +37,26 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
     @volunteer = Volunteer.find(@contact.volunteer_id)
+    @contact.last_edit_user_id = @current_user.id
+    if @contact.user_id.nil?
+      @contact.user_id = @current_user.id
+    else if (!@current_user.admin? && (@contact.user_id != @current_user.id))
+           # Someone trying to create a contact owned by someone else
+           flash[:error] = "Cannot create contact for another user"
+           # puts "Redirecting"
+           redirect_to root_url
+           return
+         end
+    end
 
     if @contact.save
       @volunteer.notes = params[:permanent_notes]
       @volunteer.save
+      # puts "Contact saved"
       render :text => '<body onload="window.close()"></body>'
     else
+      # puts "Contact not saved"
+      # puts flash[:error]
       volunteer_info_setup
       render :new
     end
@@ -51,6 +67,7 @@ class ContactsController < ApplicationController
   def update
     @contact = Contact.find(params[:id])
     @volunteer = Volunteer.find(@contact.volunteer_id)
+    @contact.last_edit_user_id = @current_user.id
     if @contact.update(contact_params)
       @volunteer.notes = params[:permanent_notes]
       @volunteer.save
@@ -78,16 +95,16 @@ class ContactsController < ApplicationController
   def contact_params
     params[:permanent_notes] = params[:contact][:permanent_notes]
     params[:contact].delete("permanent_notes")
-    contact_params = params.require(:contact).permit(:contact_date, :contact_time, :contact_method_id, :volunteer_id, :notes)
-    puts contact_params
+    contact_params = params.require(:contact).permit(:contact_date, :contact_time, :contact_method_id, :volunteer_id, :notes, :user_id)
+    # puts contact_params
     contact_date  = contact_params[:contact_date].blank? ? DateTime.now.strftime("%m/%d/%Y") : contact_params[:contact_date]
     contact_time  = contact_params[:contact_time].blank? ? DateTime.now.strftime("%l:%M %p") : contact_params[:contact_time]
     contact_params[:date_time] = DateTime.strptime("#{contact_date} #{contact_time}","%m/%d/%Y %l:%M %p" ) rescue nil
-    puts contact_params
+    # puts contact_params
     contact_params.delete("contact_date")
     contact_params.delete("contact_time")
-    puts contact_params
-    puts params
+    # puts contact_params
+    # puts params
     contact_params
   end
 

@@ -38,8 +38,8 @@ class OrganizationsController < ApplicationController
           address_result = fedex.validate_address(address: address)
           render json: address_result
         rescue Fedex::RateError => error
-          puts error
-          puts address_result
+          # puts error
+          # puts address_result
         end
       }
     end

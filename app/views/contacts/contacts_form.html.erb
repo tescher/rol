@@ -12,7 +12,7 @@
 
 <%= form_for(@parent, html: { :multipart => true }) do |f| %>
   <% @object = f.object
-      @contacts = @parent.contacts.order("date_time DESC")
+      @contacts
       %>
 
   <div class="left">

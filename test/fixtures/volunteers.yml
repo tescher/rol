@@ -25,6 +25,7 @@ one:
   waiver_date: <%= 10.day.ago.to_s(:db) %>
   birthdate: <%= 50.years.ago.to_s(:db) %>
   adult: true
+  id: 1
 
 duplicate:
   first_name: TimothyDup
@@ -52,6 +53,13 @@ duplicate:
   waiver_date: <%= 10.day.ago.to_s(:db) %>
   birthdate: <%= 10.years.ago.to_s(:db) %>
   adult: false
+  id: 2
+
+other:
+  first_name: Joe
+  last_name: Jones
+  adult: true
+  id: 99
 
 
 <% 30.times do |n| %>
@@ -123,8 +131,10 @@ minor:
   first_name: Bobby Jr.
   last_name: Jones
   adult: false
+  id: 4
 
 guardian:
   first_name: Robert
   last_name: Jones
   adult: true
+  id: 5

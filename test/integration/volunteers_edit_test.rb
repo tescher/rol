@@ -1,5 +1,6 @@
 require 'test_helper'
-require 'waivers_helper'
+require 'pp'
+
 
 class VolunteersEditTest < ActionDispatch::IntegrationTest
 
@@ -37,7 +38,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
         waiver.adult = true
         waiver.birthdate = DateTime.parse("2000-02-01")
         waiver.data = "Some text for waiver #{n}."
-        waiver.date_signed = DateTime.parse("2018-06-01")
+        waiver.date_signed = (n+10).day.ago.to_s(:db)
         waiver.save
       end
       5.times do |n|
@@ -45,6 +46,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
         contact.volunteer_id = v.id
         contact.notes = "Some notes"
         contact.contact_method_id = @contact_method.id
+        contact.user_id = @non_admin.id
         contact.date_time = DateTime.parse("2018-06-01 10:00:00")
         contact.save
       end
@@ -101,7 +103,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
   end
 
   def teardown
-    [@volunteer, @duplicate_volunteer, @minor_volunteer, @guardian_volunteer].each do |v|
+    [@volunteer, @volunteer2, @duplicate_volunteer, @minor_volunteer, @guardian_volunteer].each do |v|
       Donation.where("volunteer_id = #{v.id}") do |d|
         d.destroy
       end
@@ -180,7 +182,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
   end
 
   test "List contacts" do
-    log_in_as(@non_admin)
+    log_in_as(@admin)
     get contacts_volunteer_path(@volunteer)
     assert_template "contacts/contacts_form"
     contacts = Contact.where("volunteer_id = '#{@volunteer.id}'")
@@ -258,12 +260,17 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     get edit_volunteer_path(@volunteer)
     assert_select 'a[href=?]', volunteer_path(@volunteer), method: :delete
     before_wdv = WorkdayVolunteer.count
+    wdv_to_delete = WorkdayVolunteer.where("volunteer_id = #{@volunteer.id}").count
     before_v = Volunteer.count
     before_d = Donation.count
+    d_to_delete = Donation.where("volunteer_id = #{@volunteer.id}").count
     before_wd = Workday.count
     before_c = VolunteerCategoryVolunteer.count
+    c_to_delete = VolunteerCategoryVolunteer.where("volunteer_id = #{@volunteer.id}").count
     before_wv = Waiver.count
+    wv_to_delete = Waiver.where("volunteer_id = #{@volunteer.id}").count
     before_ct = Contact.count
+    ct_to_delete = Contact.where("volunteer_id = #{@volunteer.id}").count
     delete volunteer_path(@volunteer)
     after_wdv = WorkdayVolunteer.count
     after_v = Volunteer.count
@@ -274,12 +281,12 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     after_ct = Contact.count
     # Make sure all cascade deletes worked OK
     assert_equal before_v - 1, after_v
-    assert_equal before_d - 10, after_d
+    assert_equal before_d - d_to_delete, after_d
     assert_equal before_wd, after_wd
-    assert_equal before_wdv - 1, after_wdv
-    assert_equal before_c - 2, after_c
-    assert_equal before_wv - 7, after_wv
-    assert_equal before_ct - 5, after_ct
+    assert_equal before_wdv - wdv_to_delete, after_wdv
+    assert_equal before_c - c_to_delete, after_c
+    assert_equal before_wv - wv_to_delete, after_wv
+    assert_equal before_ct - ct_to_delete, after_ct
 
     @volunteer.reload
     assert(@volunteer.deleted?)
@@ -353,7 +360,11 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     # Did all fields merge as expected?
     Volunteer.merge_fields_table.each do |field,index|
       if source_use_field_list.include? field
-        assert_equal(@volunteer[field], @duplicate_volunteer[field],"Field #{field.to_s} should be equal")
+        if @duplicate_volunteer[field].nil?
+          assert_nil @volunteer[field], "Field #{field.to_s} should be equal"
+        else
+          assert_equal(@volunteer[field], @duplicate_volunteer[field],"Field #{field.to_s} should be equal")
+        end
       else
         assert_not_equal(@volunteer[field], @duplicate_volunteer[field],"Field #{field.to_s} should not be equal")
       end
@@ -376,9 +387,9 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
 
     # Did waivers move and is the amount the same? Also check for edge case where volunteer was both volunteer and guardian on waiver after merge
     new_waivers = Waiver.where("(volunteer_id = #{@volunteer.id}) OR (guardian_id = #{@volunteer.id})").distinct.all
-    assert_equal(new_waivers.count, waivers_count + waivers_dup_count - 1, "Number of waivers (#{waivers_count + waivers_dup_count - 1}) should be equal")
+    assert_equal(waivers_count + waivers_dup_count - 1, new_waivers.count, "Number of waivers (#{waivers_count + waivers_dup_count - 1}) should be equal")
     merged_waivers = Waiver.where("(volunteer_id = #{@volunteer.id}) AND (guardian_id = #{@volunteer.id})").distinct.all
-    assert_equal(merged_waivers.count, 1, "Number of merged waivers (#{1}) should be equal")
+    assert_equal(1, merged_waivers.count, "Number of merged waivers (#{1}) should be equal")
 
     # Did contacts move and is the amount the same?
     new_contacts = Contact.where("(volunteer_id = #{@volunteer.id})").all
@@ -614,7 +625,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     log_in_as(@admin)
     @waiver = Waiver.new(volunteer_id: @minor_volunteer.id, adult: false, guardian_id: @guardian_volunteer.id, date_signed: DateTime.parse("2018-06-01"))
     @waiver.save!
-    puts @waiver.reload.to_yaml
+    # puts @waiver.reload.to_yaml
     get edit_volunteer_path(@guardian_volunteer)
     assert_select 'a[href=?]', volunteer_path(@guardian_volunteer), method: :delete
     assert_no_difference 'Volunteer.count' do
@@ -631,8 +642,9 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
 
   test "Get correct waiver text if text is on waiver" do
     log_in_as(@admin)
+    # puts "Get correct waiver text if text is on waiver"
     assert_match /Some text for waiver/, effective_waiver_text(last_waiver(@volunteer.id)).data, "Waiver text should match volunteer waivers"
-    @waiver = Waiver.new(volunteer_id: @volunteer.id, e_sign: true, adult: true, date_signed: DateTime.parse("2018-07-01"), created_at: DateTime.parse("2018-07-01") )
+    @waiver = Waiver.new(volunteer_id: @volunteer.id, e_sign: true, adult: true, date_signed: Date.today, created_at: DateTime.parse("2018-07-01") )
     @waiver.save!
     assert_match /Adult master text/, effective_waiver_text(last_waiver(@volunteer.id)).data, "Waiver text should match adult master waiver"
     @waiver.adult=false

@@ -13,3 +13,4 @@ two:
 master:
   name: master
   inactive: false
+  id: 99

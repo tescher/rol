@@ -3,6 +3,7 @@ include DonationsHelper
 include ApplicationHelper
 include VolunteersHelper
 include WaiversHelper
+require 'pp'
 
 class VolunteersController < ApplicationController
   before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy, :search, :address_check, :donations, :waivers, :contacts, :merge, :search_merge, :merge_form]
@@ -40,8 +41,8 @@ class VolunteersController < ApplicationController
           address_result = fedex.validate_address(address: address)
           render json: address_result
         rescue Fedex::RateError => error
-          puts error
-          puts address_result
+          # puts error
+          # puts address_result
         end
       }
     end
@@ -572,6 +573,21 @@ class VolunteersController < ApplicationController
   # GET /volunteer/1/contacts
   def contacts
     child_form_setup
+    # Get list of contacts based on user security
+    # Admin user => get them all
+    if current_user.admin
+      @contacts = @parent.contacts.order("date_time DESC")
+      pp current_user
+      puts "All contacts"
+    else if current_user.can_edit_unowned_contacts
+           @contacts = @parent.contacts.where({user_id: [current_user.id, nil]}).order("date_time DESC")
+           puts "Contacts for this user and unowned"
+         else
+           @contacts = @parent.contacts.where({user_id: current_user.id}).order("date_time DESC")
+           puts "Contacts for this user"
+         end
+    end
+    pp @contacts
     render "contacts/contacts_form"
   end
 

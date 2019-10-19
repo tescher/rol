@@ -31,11 +31,16 @@
                 <%= f.check_box :all_donations %> View/Edit all donations
               </label>
             </div>
-            <div class="checkbox">
-              <label>
-                <%= f.check_box :non_monetary_donations %> View/Edit non-monetary donations only
-              </label>
-            </div>
+          <div class="checkbox">
+            <label>
+              <%= f.check_box :non_monetary_donations %> View/Edit non-monetary donations only
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <%= f.check_box :can_edit_unowned_contacts %> Can edit unowned contacts
+            </label>
+          </div>
             <div class="pull-right">
               <%= render partial: "shared/form_actions", locals: {f: f} %>
             </div>

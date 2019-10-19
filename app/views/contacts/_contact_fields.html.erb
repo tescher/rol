@@ -11,11 +11,19 @@
             label_tag :contact_method, "N/A"
           end
   %></td>
+  <% if current_user.admin || current_user.can_edit_unowned_contacts
+        user = f.object.user_id ? User.find(f.object.user_id) : nil %>
+    <td>
+    <%= label_tag :contact_user, "by #{user.nil? ? 'Unknown' : user.name}" %>
+    </td>
+  <% end %>
   <td><%= f.text_area :notes, size: '30x5', disabled: true  %></td>
   <td>
     <%= link_to 'edit', edit_contact_path(id: f.object.id), target: "_blank" %>
+    <% if current_user.admin %>
     |
-    <%= f.hidden_field :_destroy %>
-    <%= link_to "delete", "#", class: "remove_fields" %>
+      <%= f.hidden_field :_destroy %>
+      <%= link_to "delete", "#", class: "remove_fields" %>
+    <% end %>
   </td>
 </tr>
