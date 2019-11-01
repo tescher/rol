@@ -10,6 +10,9 @@ class SessionsController < ApplicationController
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
 
       if !params[:session][:target_url].present?
+        if user.notify_if_pending && (Volunteer.pending.all.count > 0)
+          flash[:success] = "There are pending volunteers to resolve."
+        end
         redirect_back_or root_url
       else
         redirect_back_or params[:session][:target_url]
