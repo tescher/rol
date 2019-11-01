@@ -577,17 +577,17 @@ class VolunteersController < ApplicationController
     # Admin user => get them all
     if current_user.admin
       @contacts = @parent.contacts.order("date_time DESC")
-      pp current_user
-      puts "All contacts"
+      # pp current_user
+      # puts "All contacts"
     else if current_user.can_edit_unowned_contacts
            @contacts = @parent.contacts.where({user_id: [current_user.id, nil]}).order("date_time DESC")
-           puts "Contacts for this user and unowned"
+           # puts "Contacts for this user and unowned"
          else
            @contacts = @parent.contacts.where({user_id: current_user.id}).order("date_time DESC")
-           puts "Contacts for this user"
+           # puts "Contacts for this user"
          end
     end
-    pp @contacts
+    # pp @contacts
     render "contacts/contacts_form"
   end
 

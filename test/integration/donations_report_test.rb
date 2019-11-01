@@ -45,7 +45,7 @@ class DonationsReportTest < ActionDispatch::IntegrationTest
     @donation8.save
     @donation9 = Donation.new(date_received: 1.days.ago.to_s(:db), value: 100, organization: @organization2, donation_type: @donation_type2)
     @donation9.save
-    @donation10 = Donation.new(date_received: 7.days.ago.to_s(:db), value: 0, item: "Desks", organization: @organization3, donation_type: @donation_type3)
+    @donation10 = Donation.new(date_received: 7.days.ago.to_s(:db), value: 50, item: "Desks", organization: @organization3, donation_type: @donation_type3)
     @donation10.save
 
 
@@ -106,9 +106,21 @@ class DonationsReportTest < ActionDispatch::IntegrationTest
     get report_donations_path(report_type: 2, donation_report_object: "organizations", city: "", zip: "", request_format:"html", from_date: 7.days.ago.strftime("%m/%d/%Y"), to_date: "")
 
     assert_select("div.container h2:nth-of-type(1)", "Organization Donations")
-    assert_select("div.container ul.listing:nth-of-type(1) div.clickable:nth-of-type(1) li:nth-of-type(1) div.col-md-1:nth-of-type(4)", "$0.00")
+    assert_select("div.container ul.listing:nth-of-type(1) div.clickable:nth-of-type(1) li:nth-of-type(1) div.col-md-1:nth-of-type(4)", "$50.00")
 
     assert_select("div.container ul.listing:nth-of-type(1) li:nth-of-type(1) div.row, span:nth-of-type(1)", "Number of Donations: 1")
+
+  end
+
+  test "Donations, Non-Monetary, Volunteers, last 7 days, HTML" do
+    log_in_as(@user)
+    get report_donations_path(report_type: 2, donation_report_object: "volunteers", city: "", zip: "", request_format:"html", from_date: 7.days.ago.strftime("%m/%d/%Y"), to_date: "")
+
+    assert_select("div.container h2:nth-of-type(1)", "Volunteer Donations")
+    assert_select("div.container ul.listing:nth-of-type(1) div.clickable:nth-of-type(1) li:nth-of-type(1) div.col-md-1:nth-of-type(4)", "$0.00")
+    assert_select("div.container ul.listing:nth-of-type(1) div.clickable:nth-of-type(2) li:nth-of-type(1) div.col-md-1:nth-of-type(4)", "$10.00")
+
+    assert_select("div.container ul.listing:nth-of-type(1) li:nth-of-type(1) div.row, span:nth-of-type(1)", "Number of Donations: 2")
 
   end
 
