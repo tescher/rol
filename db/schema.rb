@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190826144635) do
+ActiveRecord::Schema.define(version: 20191101150842) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -206,6 +206,7 @@ ActiveRecord::Schema.define(version: 20190826144635) do
     t.boolean  "all_donations",             default: false, null: false
     t.boolean  "non_monetary_donations",    default: false, null: false
     t.boolean  "can_edit_unowned_contacts", default: false
+    t.boolean  "notify_if_pending",         default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
