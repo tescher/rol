@@ -226,4 +226,26 @@ class PendingVolunteersTest < ActionDispatch::IntegrationTest
     assert_equal 0, VolunteerInterest.where("volunteer_id = #{source_volunteer.id}").count, "All interests from source gone"
     assert_equal 0, VolunteerCategoryVolunteer.where("volunteer_id = #{source_volunteer.id}").count, "All categories from source gone"
   end
+
+  test "Pending volunteer flash appears at login for user with flag set" do
+    get login_path
+    post login_path, session: { email: @non_admin.email, password: 'password' }
+    assert is_logged_in?
+    assert_redirected_to root_url
+    follow_redirect!
+    assert_template root_path
+    assert_nil flash[:success], "No flash if user flag not set"
+    delete logout_path
+
+    @non_admin.notify_if_pending = true
+    @non_admin.save!
+    get login_path
+    post login_path, session: { email: @non_admin.email, password: 'password' }
+    assert is_logged_in?
+    assert_redirected_to root_url
+    follow_redirect!
+    assert_template root_path
+    assert_equal "There are pending volunteers to resolve.", flash[:success],"Flash if user flag set"
+    delete logout_path
+  end
 end
