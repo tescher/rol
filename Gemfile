@@ -69,6 +69,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+#
+# Want to keep using assigns and assert-template in testing
+gem 'rails-controller-testing'
 
 group :development do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

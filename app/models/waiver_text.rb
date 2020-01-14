@@ -1,4 +1,4 @@
-class WaiverText < ActiveRecord::Base
+class WaiverText < ApplicationRecord
   enum waiver_type: [:adult, :minor]
 
   validate :pdf_only

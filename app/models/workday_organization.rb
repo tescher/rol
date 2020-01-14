@@ -1,4 +1,4 @@
-class WorkdayOrganization < ActiveRecord::Base
+class WorkdayOrganization < ApplicationRecord
   belongs_to :workday
   belongs_to :organization
 

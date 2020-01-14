@@ -1,6 +1,6 @@
 include ActionView::Helpers::NumberHelper
 
-class Volunteer < ActiveRecord::Base
+class Volunteer < ApplicationRecord
   acts_as_paranoid
   has_many :volunteer_interests, dependent: :destroy
   has_many :interests, through: :volunteer_interests

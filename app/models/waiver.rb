@@ -1,4 +1,4 @@
-class Waiver < ActiveRecord::Base
+class Waiver < ApplicationRecord
   belongs_to :volunteer
   belongs_to :guardian, class_name: "Volunteer", foreign_key: :guardian_id
   acts_as_paranoid

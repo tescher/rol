@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   attr_accessor :remember_token
 
   has_many :contacts, dependent: :restrict_with_exception

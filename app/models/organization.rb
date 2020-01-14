@@ -1,7 +1,7 @@
 include ActionView::Helpers::NumberHelper
 include ApplicationHelper
 
-class Organization < ActiveRecord::Base
+class Organization < ApplicationRecord
   belongs_to :organization_type
   has_many :workday_organizations, dependent: :destroy
   has_many :workdays, through: :workday_organizations
