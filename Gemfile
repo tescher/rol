@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby "~> 2.2.7"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.10'
+gem 'rails', '>= 5.0.0.rc2', '< 5.1'
 # Crypto for password hashing
 gem 'bcrypt', '3.1.7'
 
