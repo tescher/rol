@@ -18,7 +18,7 @@ class VolunteersSearchTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     get search_volunteers_path
     assert_template 'volunteers/search'
-    get volunteers_path, {name: "e"}
+    get volunteers_path, params: { name: "e" }
     assert_select 'div.pagination'
     first_page_of_volunteers = Volunteer.where("(soundex(last_name) = soundex('e') OR (LOWER(last_name) LIKE 'e%'))").order(:last_name, :first_name).paginate(page: 1, per_page: 30)
     first_page_of_volunteers.each do |volunteer|
@@ -32,7 +32,7 @@ class VolunteersSearchTest < ActionDispatch::IntegrationTest
     @volunteer.save
     get search_volunteers_path
     assert_template 'volunteers/search'
-    get volunteers_path, {interest_ids: [@interest.id]}
+    get volunteers_path, params: { interest_ids: [@interest.id] }
     assert_select 'div[href=?]', edit_volunteer_path(@volunteer)
     @volunteer.destroy
   end
@@ -43,7 +43,7 @@ class VolunteersSearchTest < ActionDispatch::IntegrationTest
     @volunteer.save
     get search_volunteers_path
     assert_template 'volunteers/search'
-    get volunteers_path, {interest_ids: [@interest.id, "0"], name: "s"}
+    get volunteers_path, params: { interest_ids: [@interest.id, "0"], name: "s" }
     assert_select 'div[href=?]', edit_volunteer_path(@volunteer)
     @volunteer.destroy
   end
@@ -54,7 +54,7 @@ class VolunteersSearchTest < ActionDispatch::IntegrationTest
     @volunteer.save
     get search_volunteers_path
     assert_template 'volunteers/search'
-    get volunteers_path, {interest_ids: [@interest.id, "0"], name: "s,z"}
+    get volunteers_path, params: { interest_ids: [@interest.id, "0"], name: "s,z" }
     assert_select 'div[href=?]', edit_volunteer_path(@volunteer), false
     @volunteer.destroy
   end
@@ -65,7 +65,7 @@ class VolunteersSearchTest < ActionDispatch::IntegrationTest
     @volunteer.save
     get search_volunteers_path
     assert_template 'volunteers/search'
-    get volunteers_path, {interest_ids: [@interest.id, "0"], name: "s,t"}
+    get volunteers_path, params: { interest_ids: [@interest.id, "0"], name: "s,t" }
     assert_select 'div[href=?]', edit_volunteer_path(@volunteer)
     @volunteer.destroy
   end
@@ -76,7 +76,7 @@ class VolunteersSearchTest < ActionDispatch::IntegrationTest
     @volunteer.save
     get search_volunteers_path
     assert_template 'volunteers/search'
-    get volunteers_path, {interest_ids: [@interest.id, "0"], name: "s,t", city: "baraboo"}
+    get volunteers_path, params: { interest_ids: [@interest.id, "0"], name: "s,t", city: "baraboo" }
     assert_select 'div[href=?]', edit_volunteer_path(@volunteer), false
     @volunteer.destroy
   end
@@ -87,7 +87,7 @@ class VolunteersSearchTest < ActionDispatch::IntegrationTest
     @volunteer.save
     get search_volunteers_path
     assert_template 'volunteers/search'
-    get volunteers_path, {interest_ids: [@interest.id, "0"], name: "s,t", city: "baraboo"}
+    get volunteers_path, params: { interest_ids: [@interest.id, "0"], name: "s,t", city: "baraboo" }
     assert_select 'div[href=?]', edit_volunteer_path(@volunteer)
     @volunteer.destroy
   end
@@ -104,7 +104,7 @@ class VolunteersSearchTest < ActionDispatch::IntegrationTest
     @past_workday_volunteer.save
     get search_volunteers_path
     assert_template 'volunteers/search'
-    get volunteers_path, {workday_since: 6.day.ago.strftime("%m/%d/%Y")}
+    get volunteers_path, params: { workday_since: 6.day.ago.strftime("%m/%d/%Y") }
     assert_select 'div[href=?]', edit_volunteer_path(@recent_volunteer)
     @recent_workday_volunteer.destroy
     @past_workday_volunteer.destroy

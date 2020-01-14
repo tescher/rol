@@ -83,4 +83,8 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Keep Rails 4.2 timezone behavior
+  config.active_record.time_zone_aware_types = [:datetime]
+
 end

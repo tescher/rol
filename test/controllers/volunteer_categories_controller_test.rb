@@ -12,13 +12,13 @@ class VolunteerCategoriesControllerTest < ActionController::TestCase
   end
 
   test "should redirect edit when not logged in" do
-    get :edit, id: @volunteer_category
+    get :edit, params: { id: @volunteer_category }
     assert_not flash.empty?
     assert_redirected_to login_url
   end
 
   test "should redirect update when not logged in" do
-    patch :update, id: @volunteer_category, volunteer_category: { name: @volunteer_category.name }
+    patch :update, params: { id: @volunteer_category, volunteer_category: { name: @volunteer_category.name } }
     assert_not flash.empty?
     assert_redirected_to login_url
   end
@@ -31,7 +31,7 @@ class VolunteerCategoriesControllerTest < ActionController::TestCase
 
   test "should redirect destroy when not logged in" do
     assert_no_difference 'VolunteerCategory.count' do
-      delete :destroy, id: @volunteer_category
+      delete :destroy, params: { id: @volunteer_category }
     end
     assert_redirected_to login_url
   end

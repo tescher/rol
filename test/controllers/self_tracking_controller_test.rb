@@ -16,7 +16,7 @@ class SelfTrackingControllerTest < ActionController::TestCase
   end
 
   test "should require authentication for launch action" do
-    get :launch, id: "INTENTIONALLY_INVALID"
+    get :launch, params: { id: "INTENTIONALLY_INVALID" }
     assert_not flash.empty?
     assert_redirected_to login_url
   end
@@ -25,7 +25,7 @@ class SelfTrackingControllerTest < ActionController::TestCase
     log_in_as(@user)
     assert_equal @user.id, session[:user_id]
 
-    get :launch, id: @workday.id
+    get :launch, params: { id: @workday.id }
     assert flash.empty?
     assert_equal @workday.id, session[:self_tracking_workday_id]
     assert_equal @user.id, session[:self_tracking_launching_user_id]
@@ -65,13 +65,13 @@ class SelfTrackingControllerTest < ActionController::TestCase
     assert_response :success
 
     # Empty name validation check.
-    get :volunteer_search, :search_form => { name: "" }
+    get :volunteer_search, params: { :search_form => { name: "" } }
     assert_response :success
     search_form = assigns(:search_form)
     assert search_form.errors.count > 0
 
     # Then try a search that expects both pending and regular volunteers
-    get :volunteer_search, :search_form => { name: "Smith" }
+    get :volunteer_search, params: { :search_form => { name: "Smith" } }
     assert_response :success
     results = assigns(:results)
     assert_equal 2, results.count
@@ -85,7 +85,7 @@ class SelfTrackingControllerTest < ActionController::TestCase
     assert results[1].needs_review
 
 	# Test phone search
-    get :volunteer_search, :search_form => { name: "Escher,Tim", phone: "(907) 745-3512Dup" }
+    get :volunteer_search, params: { :search_form => { name: "Escher,Tim", phone: "(907) 745-3512Dup" } }
     assert_response :success
     results = assigns(:results)
     assert_equal 1, results.count
@@ -95,7 +95,7 @@ class SelfTrackingControllerTest < ActionController::TestCase
     assert_not results[0].needs_review
 
 	# Test email search
-	get :volunteer_search, :search_form => { name: "Escher,Jim", email: "volunteer-10@example.com" }
+	get :volunteer_search, params: { :search_form => { name: "Escher,Jim", email: "volunteer-10@example.com" } }
     assert_response :success
     results = assigns(:results)
     assert_equal 2, results.count
@@ -117,18 +117,18 @@ class SelfTrackingControllerTest < ActionController::TestCase
     assert @workday.workday_volunteers.empty?
 
     # Basic get
-    get :check_in, id: @volunteer.id
+    get :check_in, params: { id: @volunteer.id }
     assert_response :success
 
     # Empty check-in time.
-    get :check_in, id: @volunteer.id, :check_in_form => {check_in_time: ""}
+    get :check_in, params: { id: @volunteer.id, :check_in_form => {check_in_time: ""} }
     assert_response :success
     check_in_form = assigns(:check_in_form)
     assert check_in_form.errors.count > 0
     assert @workday.workday_volunteers.empty?
 
     # Successful check in
-    get :check_in, id: @volunteer.id, :check_in_form => {check_in_time: "8:00 AM"}
+    get :check_in, params: { id: @volunteer.id, :check_in_form => {check_in_time: "8:00 AM"} }
     assert_response :success
     assert_equal "success", @response.body
     assert_equal 1, @workday.workday_volunteers.count
@@ -138,7 +138,7 @@ class SelfTrackingControllerTest < ActionController::TestCase
     assert_equal "08:00:00", workday_volunteer.start_time.strftime("%H:%M:%S")
 
     # Successful check in with pending volunteer, and a PM time to validate the 24 hours behavior
-    get :check_in, id: @pending_volunteer.id, :check_in_form => {check_in_time: "5:33 PM"}
+    get :check_in, params: { id: @pending_volunteer.id, :check_in_form => {check_in_time: "5:33 PM"} }
     assert_response :success
     assert_equal "success", @response.body
 	assert_equal 2, @workday.workday_volunteers.count
@@ -157,7 +157,7 @@ class SelfTrackingControllerTest < ActionController::TestCase
 
 
 	# Check-in at 8am.
-    get :check_in, id: @volunteer.id, :check_in_form => {check_in_time: "8:00 AM"}
+    get :check_in, params: { id: @volunteer.id, :check_in_form => {check_in_time: "8:00 AM"} }
     assert_response :success
     assert_equal "success", @response.body
     assert_equal 1, @workday.workday_volunteers.count
@@ -169,7 +169,7 @@ class SelfTrackingControllerTest < ActionController::TestCase
 
 
 	# Then try checking in at 1:40pm without checking out first. This should not be allowed.
-    get :check_in, id: @volunteer.id, :check_in_form => {check_in_time: "1:40 PM"}
+    get :check_in, params: { id: @volunteer.id, :check_in_form => {check_in_time: "1:40 PM"} }
     assert_response :success
     check_in_form = assigns(:check_in_form)
     assert_equal 1, check_in_form.errors.count
@@ -181,7 +181,7 @@ class SelfTrackingControllerTest < ActionController::TestCase
 
 
 	# Next check in at 6am, this should be allowed. The 6am shift should stay the same.
-    get :check_in, id: @volunteer.id, :check_in_form => {check_in_time: "6:00 AM"}
+    get :check_in, params: { id: @volunteer.id, :check_in_form => {check_in_time: "6:00 AM"} }
     assert_response :success
     assert_equal "success", @response.body
 
@@ -204,7 +204,7 @@ class SelfTrackingControllerTest < ActionController::TestCase
 
 	# Next try checking in within the half hour of a future shift, this should set the checkout
 	# time to one minute before the next shift. i.e. 5:30am
-    get :check_in, id: @volunteer.id, :check_in_form => {check_in_time: "5:30 AM"}
+    get :check_in, params: { id: @volunteer.id, :check_in_form => {check_in_time: "5:30 AM"} }
     assert_response :success
     assert_equal "success", @response.body
 	assert_equal warning_string, flash[:warning]
@@ -234,9 +234,9 @@ class SelfTrackingControllerTest < ActionController::TestCase
     assert @workday.workday_volunteers.empty?
 
     # Check-in two volunteers and then check them out.
-    get :check_in, id: @volunteer.id, :check_in_form => {check_in_time: "12:30 PM"}
-    get :check_in, id: @volunteer.id, :check_in_form => {check_in_time: "8:00 AM"}
-    get :check_in, id: @pending_volunteer.id, :check_in_form => {check_in_time: "1:20 PM"}
+    get :check_in, params: { id: @volunteer.id, :check_in_form => {check_in_time: "12:30 PM"} }
+    get :check_in, params: { id: @volunteer.id, :check_in_form => {check_in_time: "8:00 AM"} }
+    get :check_in, params: { id: @pending_volunteer.id, :check_in_form => {check_in_time: "1:20 PM"} }
     assert_equal 3, @workday.workday_volunteers.count
 
     workdate = @workday.workdate
@@ -250,21 +250,21 @@ class SelfTrackingControllerTest < ActionController::TestCase
 	  pending_volunteer_workday = @workday.workday_volunteers.where(:volunteer_id => @pending_volunteer.id).first
 
 	  # Checkout before the check-in time.
-      get :check_out, workday_volunteer_id: volunteer_workday.id, :check_out_form => {check_out_time: "6:00 AM"}
+      get :check_out, params: { workday_volunteer_id: volunteer_workday.id, :check_out_form => {check_out_time: "6:00 AM"} }
 	  assert_response :success
 	  check_out_form = assigns(:check_out_form)
 	  assert_equal 1, check_out_form.errors.count
 	  assert_equal "must be after the check-in time.", check_out_form.errors.messages[:check_out_time][0]
 
 	  # Checkout after the start of next shift.
-      get :check_out, workday_volunteer_id: volunteer_workday.id, :check_out_form => {check_out_time: "2:00 PM"}
+      get :check_out, params: { workday_volunteer_id: volunteer_workday.id, :check_out_form => {check_out_time: "2:00 PM"} }
 	  assert_response :success
 	  check_out_form = assigns(:check_out_form)
 	  assert_equal 1, check_out_form.errors.count
 	  assert_equal "You have another shift starting at 12:30 pm, you must check out before its start.", check_out_form.errors.messages[:base][0]
 
       # Valid checkout
-      get :check_out, workday_volunteer_id: volunteer_workday.id, :check_out_form => {check_out_time: "11:46 AM"}
+      get :check_out, params: { workday_volunteer_id: volunteer_workday.id, :check_out_form => {check_out_time: "11:46 AM"} }
 	  assert_response :success
 	  assert_equal "success", @response.body
       assert_equal "#{@volunteer.name} successfully checked out.", flash[:success]
@@ -274,7 +274,7 @@ class SelfTrackingControllerTest < ActionController::TestCase
 	  assert_equal 3.8, updated_volunteer_workday.hours
       assert_equal @volunteer.id, updated_volunteer_workday.volunteer.id
 
-      get :check_out, workday_volunteer_id: pending_volunteer_workday.id, :check_out_form => {check_out_time: "05:00 PM"}
+      get :check_out, params: { workday_volunteer_id: pending_volunteer_workday.id, :check_out_form => {check_out_time: "05:00 PM"} }
 	  assert_response :success
 	  assert_equal "success", @response.body
       assert_equal "#{@pending_volunteer.name} successfully checked out.", flash[:success]

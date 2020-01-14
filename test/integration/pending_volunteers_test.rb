@@ -71,7 +71,7 @@ class PendingVolunteersTest < ActionDispatch::IntegrationTest
     assert_select "[class='g-recaptcha']", false
     pending_volunteer = PendingVolunteer.new()
     ActionMailer::Base.deliveries.clear
-    post pending_volunteers_path(pending_volunteer), volunteer: { first_name: "Tom", last_name: "Jones", adult: true, agree_to_background_check: true }
+    post pending_volunteers_path(pending_volunteer), params: { volunteer: { first_name: "Tom", last_name: "Jones", adult: true, agree_to_background_check: true } }
     assert_not ActionMailer::Base.deliveries.empty?
   end
 
@@ -89,10 +89,10 @@ class PendingVolunteersTest < ActionDispatch::IntegrationTest
       assert_select "[value=?]", @pending_volunteer.first_name
     end
     volunteer = Volunteer.new()
-    post volunteers_path(volunteer), volunteer: {
+    post volunteers_path(volunteer), params: { volunteer: {
         first_name: @pending_volunteer.first_name,
         last_name: @pending_volunteer.last_name, pending_volunteer_id: @pending_volunteer.id
-    }
+    } }
     updated_volunteer = Volunteer.find(@pending_volunteer.id)
     assert_equal 2, updated_volunteer.workday_volunteers.count
     assert_equal @pending_volunteer.first_name, updated_volunteer.first_name
@@ -149,7 +149,7 @@ class PendingVolunteersTest < ActionDispatch::IntegrationTest
     use_interests = "ignore"
     use_categories = "ignore"
 
-    put pending_volunteer_path(source_volunteer), {
+    put pending_volunteer_path(source_volunteer), params: {
         matching_id: target_volunteer.id, pv_use_fields: source_use_fields, use_notes: use_notes, use_limitations: use_limitations, use_medical_conditions: use_medical_conditions,
         use_interests: use_interests, use_categories: use_categories,
         volunteer: {
@@ -229,7 +229,7 @@ class PendingVolunteersTest < ActionDispatch::IntegrationTest
 
   test "Pending volunteer flash appears at login for user with flag set" do
     get login_path
-    post login_path, session: { email: @non_admin.email, password: 'password' }
+    post login_path, params: { session: { email: @non_admin.email, password: 'password' } }
     assert is_logged_in?
     assert_redirected_to root_url
     follow_redirect!
@@ -240,7 +240,7 @@ class PendingVolunteersTest < ActionDispatch::IntegrationTest
     @non_admin.notify_if_pending = true
     @non_admin.save!
     get login_path
-    post login_path, session: { email: @non_admin.email, password: 'password' }
+    post login_path, params: { session: { email: @non_admin.email, password: 'password' } }
     assert is_logged_in?
     assert_redirected_to root_url
     follow_redirect!

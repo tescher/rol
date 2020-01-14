@@ -46,7 +46,7 @@ class ProjectsEditTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     assert_redirected_to edit_project_path(@project)
     name  = "Foo"
-    patch project_path(@project), project: { name:  name }
+    patch project_path(@project), params: { project: { name:  name } }
     assert_not flash.empty?
     assert_redirected_to projects_url
     @project.reload
@@ -81,7 +81,7 @@ class ProjectsEditTest < ActionDispatch::IntegrationTest
     get edit_project_path(@project_2)
     assert_template 'shared/simple_edit'
     name  = @project.name
-    patch project_path(@project_2), project: { name:  name }
+    patch project_path(@project_2), params: { project: { name:  name } }
     assert_select '.alert', 1
     @project_2.reload
     assert_not_equal @project_2.name,  name

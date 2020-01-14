@@ -19,7 +19,7 @@ class OrganizationsSearchTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     get search_organizations_path
     assert_template 'organizations/search'
-    get organizations_path, {name: "e"}
+    get organizations_path, params: { name: "e" }
     assert_select 'div.pagination'
     first_page_of_organizations = Organization.where("(soundex(name) = soundex('e') OR (LOWER(name) LIKE 'e%'))").order(:name, :city).paginate(page: 1, per_page: 29)
     # puts "Organization Count #{first_page_of_organizations.count}"
@@ -36,7 +36,7 @@ class OrganizationsSearchTest < ActionDispatch::IntegrationTest
     @organization.save
     get search_organizations_path
     assert_template 'organizations/search'
-    get organizations_path, {organization_type_ids: [@organization_type.id]}
+    get organizations_path, params: { organization_type_ids: [@organization_type.id] }
     assert_select 'div[href=?]', edit_organization_path(@organization)
     @organization.destroy
   end
@@ -47,7 +47,7 @@ class OrganizationsSearchTest < ActionDispatch::IntegrationTest
     @organization.save
     get search_organizations_path
     assert_template 'organizations/search'
-    get organizations_path, {organization_type_ids: [@organization_type2.id]}
+    get organizations_path, params: { organization_type_ids: [@organization_type2.id] }
     assert_select 'div[href=?]', edit_organization_path(@organization), false
     @organization.destroy
   end
@@ -59,7 +59,7 @@ class OrganizationsSearchTest < ActionDispatch::IntegrationTest
     @organization.save
     get search_organizations_path
     assert_template 'organizations/search'
-    get organizations_path, {organization_type_ids: [@organization_type.id], name: "e"}
+    get organizations_path, params: { organization_type_ids: [@organization_type.id], name: "e" }
     assert_select 'div[href=?]', edit_organization_path(@organization)
     @organization.destroy
   end

@@ -25,7 +25,7 @@ class VolunteerCategoriesEditTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     get edit_volunteer_category_path(@volunteer_category)
     assert_template 'shared/simple_edit'
-    patch volunteer_category_path(@volunteer_category), volunteer_category: { name:  "" }
+    patch volunteer_category_path(@volunteer_category), params: { volunteer_category: { name:  "" } }
     assert_template 'shared/simple_edit'
   end
 
@@ -34,7 +34,7 @@ class VolunteerCategoriesEditTest < ActionDispatch::IntegrationTest
     get edit_volunteer_category_path(@volunteer_category)
     assert_template 'shared/simple_edit'
     name  = "Foo"
-    patch volunteer_category_path(@volunteer_category), volunteer_category: { name:  name }
+    patch volunteer_category_path(@volunteer_category), params: { volunteer_category: { name:  name } }
     assert_not flash.empty?
     assert_redirected_to volunteer_categories_url
     @volunteer_category.reload
@@ -46,7 +46,7 @@ class VolunteerCategoriesEditTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     assert_redirected_to edit_volunteer_category_path(@volunteer_category)
     name  = "Foo"
-    patch volunteer_category_path(@volunteer_category), volunteer_category: { name:  name }
+    patch volunteer_category_path(@volunteer_category), params: { volunteer_category: { name:  name } }
     assert_not flash.empty?
     assert_redirected_to volunteer_categories_url
     @volunteer_category.reload
@@ -84,7 +84,7 @@ class VolunteerCategoriesEditTest < ActionDispatch::IntegrationTest
     get edit_volunteer_category_path(@volunteer_category_2)
     assert_template 'shared/simple_edit'
     name  = @volunteer_category.name
-    patch volunteer_category_path(@volunteer_category_2), volunteer_category: { name:  name }
+    patch volunteer_category_path(@volunteer_category_2), params: { volunteer_category: { name:  name } }
     assert_select '.alert', 1
     @volunteer_category_2.reload
     assert_not_equal @volunteer_category_2.name,  name

@@ -12,13 +12,13 @@ class OrganizationTypesControllerTest < ActionController::TestCase
   end
 
   test "should redirect edit when not logged in" do
-    get :edit, id: @organization_type
+    get :edit, params: { id: @organization_type }
     assert_not flash.empty?
     assert_redirected_to login_url
   end
 
   test "should redirect update when not logged in" do
-    patch :update, id: @organization_type, organization_type: { name: @organization_type.name }
+    patch :update,  params: { id: @organization_type, organization_type: { name: @organization_type.name } }
     assert_not flash.empty?
     assert_redirected_to login_url
   end
@@ -31,7 +31,7 @@ class OrganizationTypesControllerTest < ActionController::TestCase
 
   test "should redirect destroy when not logged in" do
     assert_no_difference 'OrganizationType.count' do
-      delete :destroy, id: @organization_type
+      delete :destroy, params: { id: @organization_type }
     end
     assert_redirected_to login_url
   end
