@@ -25,7 +25,7 @@ class ProjectsEditTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     get edit_project_path(@project)
     assert_template 'shared/simple_edit'
-    patch project_path(@project), project: { name:  "" }
+    patch project_path(@project), params: { project: { name:  "" } }
     assert_template 'shared/simple_edit'
   end
 
@@ -34,7 +34,7 @@ class ProjectsEditTest < ActionDispatch::IntegrationTest
     get edit_project_path(@project)
     assert_template 'shared/simple_edit'
     name  = "Foo"
-    patch project_path(@project), project: { name:  name }
+    patch project_path(@project), params: { project: { name:  name } }
     assert_not flash.empty?
     assert_redirected_to projects_url
     @project.reload

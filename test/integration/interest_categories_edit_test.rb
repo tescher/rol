@@ -25,7 +25,7 @@ class InterestCategoriesEditTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     get edit_interest_category_path(@interest_category)
     assert_template 'shared/simple_edit'
-    patch interest_category_path(@interest_category), interest_category: { name:  "" }
+    patch interest_category_path(@interest_category), params: { interest_category: { name:  "" } }
     assert_template 'shared/simple_edit'
   end
 
@@ -34,7 +34,7 @@ class InterestCategoriesEditTest < ActionDispatch::IntegrationTest
     get edit_interest_category_path(@interest_category)
     assert_template 'shared/simple_edit'
     name  = "Foo"
-    patch interest_category_path(@interest_category), interest_category: { name:  name }
+    patch interest_category_path(@interest_category), params: { interest_category: { name:  name } }
     assert_not flash.empty?
     assert_redirected_to interest_categories_url
     @interest_category.reload
@@ -46,7 +46,7 @@ class InterestCategoriesEditTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     assert_redirected_to edit_interest_category_path(@interest_category)
     name  = "Foo"
-    patch interest_category_path(@interest_category), interest_category: { name:  name }
+    patch interest_category_path(@interest_category), params: { interest_category: { name:  name } }
     assert_not flash.empty?
     assert_redirected_to interest_categories_url
     @interest_category.reload
@@ -82,7 +82,7 @@ class InterestCategoriesEditTest < ActionDispatch::IntegrationTest
     get edit_interest_category_path(@interest_category_2)
     assert_template 'shared/simple_edit'
     name  = @interest_category.name
-    patch interest_category_path(@interest_category_2), interest_category: { name:  name }
+    patch interest_category_path(@interest_category_2), params: { interest_category: { name:  name } }
     assert_select '.alert', 1
     @interest_category_2.reload
     assert_not_equal @interest_category_2.name,  name

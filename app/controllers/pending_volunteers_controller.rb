@@ -3,7 +3,7 @@ include ApplicationHelper
 include VolunteersHelper
 
 class PendingVolunteersController < ApplicationController
-  before_filter { |c| c.set_controller_vars(controller_name) }
+  before_action { |c| c.set_controller_vars(controller_name) }
   before_action :logged_in_user, only: [:index, :update, :match, :edit, :destroy]
 
   def new

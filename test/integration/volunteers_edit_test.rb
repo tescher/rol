@@ -195,8 +195,8 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     get edit_volunteer_path(@volunteer)
     assert_template 'volunteers/edit'
-    patch volunteer_path(@volunteer), volunteer: { first_name:  "",
-                                                   email: "foo@invalid" }
+    patch volunteer_path(@volunteer), params: { volunteer: { first_name:  "",
+                                                   email: "foo@invalid" } }
     assert_template 'volunteers/edit'
   end
 
@@ -207,9 +207,9 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     first_name  = "Foo"
     last_name = "Bar"
     email = "foo@bar.com"
-    patch volunteer_path(@volunteer), volunteer: { first_name:  first_name,
+    patch volunteer_path(@volunteer), params: { volunteer: { first_name:  first_name,
                                                    last_name: last_name,
-                                                   email: email }
+                                                   email: email } }
     # assert_not flash.empty?
     assert_redirected_to search_volunteers_url
     @volunteer.reload
@@ -225,9 +225,9 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     first_name  = "Foo"
     last_name = "Bar"
     email = "foo@bar.com"
-    patch volunteer_path(@volunteer), volunteer: { first_name:  first_name,
+    patch volunteer_path(@volunteer), params: { volunteer: { first_name:  first_name,
                                                    last_name: last_name,
-                                                   email: email }
+                                                   email: email } }
     assert_not flash.empty?
     assert_redirected_to search_volunteers_url
     @volunteer.reload
@@ -307,9 +307,9 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
       assert_select "[value=?]", @pending_volunteer.first_name
     end
     @volunteer = Volunteer.new()
-    post volunteers_path(@volunteer), volunteer: {
+    post volunteers_path(@volunteer), params: { volunteer: {
         first_name: @pending_volunteer.first_name,
-        last_name: @pending_volunteer.last_name, pending_volunteer_id: @pending_volunteer.id
+        last_name: @pending_volunteer.last_name, pending_volunteer_id: @pending_volunteer.id }
     }
     updated_volunteer = Volunteer.find(@pending_volunteer.id)
     # Original record was convereted to ensure that this is the case.
@@ -353,7 +353,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     use_interests = "ignore"
     use_categories = "ignore"
 
-    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: source_use_fields, use_notes: use_notes, use_limitations: use_limitations, use_medical_conditions: use_medical_conditions, use_interests: use_interests, use_categories: use_categories}
+    post merge_volunteer_path(@volunteer), params: { source_id: @duplicate_volunteer.id, source_use_fields: source_use_fields, use_notes: use_notes, use_limitations: use_limitations, use_medical_conditions: use_medical_conditions, use_interests: use_interests, use_categories: use_categories }
 
     @volunteer.reload
 
@@ -431,7 +431,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     use_interests = "add"
     use_categories = "add"
 
-    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_limitations: use_limitations, use_medical_conditions: use_medical_conditions, use_interests: use_interests, use_categories: use_categories}
+    post merge_volunteer_path(@volunteer), params: { source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_limitations: use_limitations, use_medical_conditions: use_medical_conditions, use_interests: use_interests, use_categories: use_categories }
 
     @volunteer.reload
 
@@ -467,7 +467,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     use_interests = "add"
     use_categories = "add"
 
-    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_limitations: use_limitations, use_medical_conditions: use_medical_conditions, use_interests: use_interests, use_categories: use_categories}
+    post merge_volunteer_path(@volunteer), params: { source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_limitations: use_limitations, use_medical_conditions: use_medical_conditions, use_interests: use_interests, use_categories: use_categories }
 
     @volunteer.reload
 
@@ -503,7 +503,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     use_interests = "replace"
     use_categories = "replace"
 
-    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_limitations: use_limitations, use_medical_conditions: use_medical_conditions, use_interests: use_interests, use_categories: use_categories}
+    post merge_volunteer_path(@volunteer), params: { source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_limitations: use_limitations, use_medical_conditions: use_medical_conditions, use_interests: use_interests, use_categories: use_categories }
 
     @volunteer.reload
 
@@ -534,7 +534,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     use_interests = "replace"
     use_categories = "replace"
 
-    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_limitations: use_limitations, use_medical_conditions: use_medical_conditions, use_interests: use_interests, use_categories: use_categories}
+    post merge_volunteer_path(@volunteer), params: { source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_limitations: use_limitations, use_medical_conditions: use_medical_conditions, use_interests: use_interests, use_categories: use_categories }
 
     @volunteer.reload
 
@@ -561,7 +561,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     use_interests = "ignore"
     use_categories = "ignore"
 
-    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_limitations: use_limitations, use_medical_conditions: use_medical_conditions, use_interests: use_interests, use_categories: use_categories}
+    post merge_volunteer_path(@volunteer), params: { source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_limitations: use_limitations, use_medical_conditions: use_medical_conditions, use_interests: use_interests, use_categories: use_categories }
 
     @volunteer.reload
 
@@ -586,7 +586,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     use_interests = "ignore"
     use_categories = "ignore"
 
-    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_limitations: use_limitations, use_medical_conditions: use_medical_conditions, use_interests: use_interests, use_categories: use_categories}
+    post merge_volunteer_path(@volunteer), params: { source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_limitations: use_limitations, use_medical_conditions: use_medical_conditions, use_interests: use_interests, use_categories: use_categories }
 
     @volunteer.reload
 
@@ -611,7 +611,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     use_interests = "ignore"
     use_categories = "ignore"
 
-    post merge_volunteer_path(@volunteer), {source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_limitations: use_limitations, use_medical_conditions: use_medical_conditions, use_interests: use_interests, use_categories: use_categories}
+    post merge_volunteer_path(@volunteer), params: { source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_limitations: use_limitations, use_medical_conditions: use_medical_conditions, use_interests: use_interests, use_categories: use_categories }
 
     @volunteer.reload
 

@@ -50,7 +50,7 @@ class SelfTrackingController < ApplicationController
     end
 
     if params[:search_form].present?
-      @search_form = SearchForm.new(params[:search_form])
+      @search_form = SearchForm.new(params.require(:search_form).permit(:name, :phone, :email))
       if @search_form.valid?
         last_name, first_name = @search_form.name.split(",")
 
@@ -110,7 +110,7 @@ class SelfTrackingController < ApplicationController
     # Handle forms
     # Handle check-in time form
     if params[:check_in_form].present?
-      @check_in_form = CheckInForm.new(params[:check_in_form].merge(volunteer: @volunteer, workday: @workday))
+      @check_in_form = CheckInForm.new(params.require(:check_in_form).permit(:check_in_time).merge(volunteer: @volunteer, workday: @workday))
       if @check_in_form.valid?
         start_time = Time.strptime(@check_in_form.check_in_time, "%I:%M %P")
         start_time_formatted = start_time.strftime("%H:%M:%S")
@@ -129,7 +129,7 @@ class SelfTrackingController < ApplicationController
         end
 
         @workday.workday_volunteers.create(:volunteer => @volunteer, :start_time => start_time_formatted, :end_time => end_time)
-        render :text => "success"
+        render plain: "success"
         return
       else
         render partial: "check_in"
@@ -203,13 +203,13 @@ class SelfTrackingController < ApplicationController
     @workday_volunteer = @workday.workday_volunteers.find(params[:workday_volunteer_id])
 
     if params[:check_out_form].present?
-      @check_out_form = CheckOutForm.new(params[:check_out_form].merge(workday_volunteer: @workday_volunteer))
+      @check_out_form = CheckOutForm.new(params.require(:check_out_form).permit(:check_out_time).merge(workday_volunteer: @workday_volunteer))
       if @check_out_form.valid?
         @workday_volunteer.end_time = Time.strptime(@check_out_form.check_out_time, "%I:%M %P").strftime("%H:%M:%S")
         if @workday_volunteer.valid?
           @workday_volunteer.save
           flash[:success] = "#{@workday_volunteer.volunteer.name} successfully checked out."
-          render :text => "success"
+          render plain: "success"
         else
           render partial: "check_out"
         end

@@ -1,7 +1,7 @@
 include ApplicationHelper
 
 class ProjectsController < ApplicationController
-  before_filter { |c| c.set_controller_vars(controller_name) }
+  before_action { |c| c.set_controller_vars(controller_name) }
   before_action :logged_in_user, only: [:index, :new, :edit, :update, :destroy]
   before_action :logged_in_admin_user, only: [:new, :edit, :update, :destroy, :import, :import_form, :merge, :merge_form]
 

@@ -25,7 +25,7 @@ class OrganizationTypesEditTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     get edit_organization_type_path(@organization_type)
     assert_template 'shared/simple_edit'
-    patch organization_type_path(@organization_type), organization_type: { name:  "" }
+    patch organization_type_path(@organization_type), params: { organization_type: { name:  "" } }
     assert_template 'shared/simple_edit'
   end
 
@@ -34,7 +34,7 @@ class OrganizationTypesEditTest < ActionDispatch::IntegrationTest
     get edit_organization_type_path(@organization_type)
     assert_template 'shared/simple_edit'
     name  = "Foo"
-    patch organization_type_path(@organization_type), organization_type: { name:  name }
+    patch organization_type_path(@organization_type), params: { organization_type: { name:  name } }
     assert_not flash.empty?
     assert_redirected_to organization_types_url
     @organization_type.reload
@@ -46,7 +46,7 @@ class OrganizationTypesEditTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     assert_redirected_to edit_organization_type_path(@organization_type)
     name  = "Foo"
-    patch organization_type_path(@organization_type), organization_type: { name:  name }
+    patch organization_type_path(@organization_type), params: { organization_type: { name:  name } }
     assert_not flash.empty?
     assert_redirected_to organization_types_url
     @organization_type.reload
@@ -81,7 +81,7 @@ class OrganizationTypesEditTest < ActionDispatch::IntegrationTest
     get edit_organization_type_path(@organization_type_2)
     assert_template 'shared/simple_edit'
     name  = @organization_type.name
-    patch organization_type_path(@organization_type_2), organization_type: { name:  name }
+    patch organization_type_path(@organization_type_2), params: { organization_type: { name:  name } }
     assert_select '.alert', 1
     @organization_type_2.reload
     assert_not_equal @organization_type_2.name,  name

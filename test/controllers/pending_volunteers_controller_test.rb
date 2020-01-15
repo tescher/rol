@@ -18,12 +18,12 @@ class PendingVolunteersControllerTest < ActionController::TestCase
   end
 
   test "should error or redirect all but post if not logged in " do
-    get :edit, id: @pending_volunteer
+    get :edit, params: { id: @pending_volunteer }
     assert_redirected_to login_url
-    patch :update, id: @pending_volunteer, pending_volunteer: { xml: "" }
+    patch :update, params: { id: @pending_volunteer, pending_volunteer: { xml: "" } }
     assert_not flash.empty?
     assert_redirected_to login_url
-    delete :destroy, id: @pending_volunteer
+    delete :destroy, params: { id: @pending_volunteer }
     assert_redirected_to login_url
     get :index
     assert_not flash.empty?

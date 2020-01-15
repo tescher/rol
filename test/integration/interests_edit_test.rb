@@ -24,7 +24,7 @@ class InterestsEditTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     get edit_interest_path(@interest)
     assert_template 'shared/simple_edit'
-    patch interest_path(@interest), interest: { name:  "" }
+    patch interest_path(@interest), params: { interest: { name:  "" } }
     assert_template 'shared/simple_edit'
   end
 

@@ -3,51 +3,51 @@
 one:
   name: "Tim Smith"
   email: tim@smith.com
-  password_digest: <%= User.digest('password') %>
+  password_digest: <%= password_digest('password') %>
   id: 1
 
 two:
   name: "Bob Smith"
   email: bob@smith.com
-  password_digest: <%= User.digest('password') %>
+  password_digest: <%= password_digest('password') %>
   id: 2
 
 michael:
   name: Michael Example
   email: michael@example.com
-  password_digest: <%= User.digest('password') %>
+  password_digest: <%= password_digest('password') %>
   admin: true
 
 monetary_donation:
   name: Tim Monetary
   email: tm@example.com
-  password_digest: <%= User.digest('password') %>
+  password_digest: <%= password_digest('password') %>
   all_donations: true
 
 non_monetary_donation:
   name: Tim NonMonetary
   email: tnm@example.com
-  password_digest: <%= User.digest('password') %>
+  password_digest: <%= password_digest('password') %>
   non_monetary_donations: true
 
 archer:
   name: Sterling Archer
   email: duchess@example.gov
-  password_digest: <%= User.digest('password') %>
+  password_digest: <%= password_digest('password') %>
 
 lana:
   name: Lana Kane
   email: hands@example.gov
-  password_digest: <%= User.digest('password') %>
+  password_digest: <%= password_digest('password') %>
 
 mallory:
   name: Mallory Archer
   email: boss@example.gov
-  password_digest: <%= User.digest('password') %>
+  password_digest: <%= password_digest('password') %>
 
 <% 30.times do |n| %>
 user_<%= n %>:
   name:  <%= "User #{n}" %>
   email: <%= "user-#{n}@example.com" %>
-  password_digest: <%= User.digest('password') %>
+  password_digest: <%= password_digest('password') %>
 <% end %>
