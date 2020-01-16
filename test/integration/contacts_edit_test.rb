@@ -148,9 +148,9 @@ class ContactsEditTest < ActionDispatch::IntegrationTest
 
   test "Non-admins without security flag set can only see their contacts" do
     log_in_as(@non_admin_user1)
-    puts "Non-admins without security flag set can only see their contacts"
+    # puts "Non-admins without security flag set can only see their contacts"
     get contacts_volunteer_path(@volunteer)
-    puts response.body
+    # puts response.body
     assert_select '[href=?]', edit_contact_path(@contact_volunteer2), {count: 0}
     assert_select '[href=?]', edit_contact_path(@contact_owned_by_user1), {count: 1}
     assert_select 'label[for="contact_user"]', {text: "by #{@contact_owned_by_user1.user.name}", count: 0}

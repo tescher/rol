@@ -397,8 +397,8 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
 
     # We had "ignore" for notes and interests and categories, make sure they stayed as is
     assert_equal(@volunteer.notes, notes, "Notes '#{notes}' should have remained as is")
-    assert(volunteer_interests.uniq.sort == VolunteerInterest.where("volunteer_id = #{@volunteer.id}").all.uniq.sort, "Interests (#{volunteer_interests_count}) should have remained the same")
-    assert(volunteer_category_volunteers.uniq.sort == VolunteerCategoryVolunteer.where("volunteer_id = #{@volunteer.id}").all.uniq.sort, "Categories (#{volunteer_category_volunteers_count}) should have remained the same")
+    assert(volunteer_interests.distinct.sort == VolunteerInterest.where("volunteer_id = #{@volunteer.id}").all.distinct.sort, "Interests (#{volunteer_interests_count}) should have remained the same")
+    assert(volunteer_category_volunteers.distinct.sort == VolunteerCategoryVolunteer.where("volunteer_id = #{@volunteer.id}").all.distinct.sort, "Categories (#{volunteer_category_volunteers_count}) should have remained the same")
 
     # Did everything delete OK?
     @duplicate_volunteer.reload

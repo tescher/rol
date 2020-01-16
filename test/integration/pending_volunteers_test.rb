@@ -214,11 +214,11 @@ class PendingVolunteersTest < ActionDispatch::IntegrationTest
     assert_nil source_volunteer.notes, "Notes '#{notes}' should have remained as is"
 
     assert(
-        volunteer_interests.uniq.sort == VolunteerInterest.where("volunteer_id = #{source_volunteer.id}").all.uniq.sort,
+        volunteer_interests.distinct.sort == VolunteerInterest.where("volunteer_id = #{source_volunteer.id}").all.distinct.sort,
         "Interests (#{volunteer_interests_count}) should have remained the same"
     )
     assert(
-        volunteer_category_volunteers.uniq.sort == VolunteerCategoryVolunteer.where("volunteer_id = #{source_volunteer.id}").all.uniq.sort,
+        volunteer_category_volunteers.distinct.sort == VolunteerCategoryVolunteer.where("volunteer_id = #{source_volunteer.id}").all.distinct.sort,
         "Categories (#{volunteer_category_volunteers_count}) should have remained the same"
     )
 

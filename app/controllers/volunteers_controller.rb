@@ -771,7 +771,7 @@ class VolunteersController < ApplicationController
   def volunteer_search_params
     search_params = params.permit(:name, :city, :workday_since, interest_ids: [], volunteer_category_ids: [])
     search_params.delete_if {|k,v| v.blank?}
-    search_params
+    search_params.to_h
   end
 
   def donations_allowed
