@@ -115,4 +115,9 @@ class Volunteer < ApplicationRecord
     end
   end
 
+  def self.sanitize(string)
+    "\'#{sanitize_sql(string)}\'"
+  end
+
+
 end
