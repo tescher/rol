@@ -1,14 +1,14 @@
 source 'https://rubygems.org'
 
-ruby "~> 2.2.7"
+ruby "~> 2.5.5"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '>= 5.0.0.rc2', '< 5.1'
+gem 'rails', '5.1.7'
 # Crypto for password hashing
 gem 'bcrypt', '3.1.7'
 
 # DB Seeder
-gem 'faker',                '1.4.2'
+gem 'faker'
 
 # Paginater
 gem 'will_paginate',           '3.1.6'
@@ -34,7 +34,7 @@ gem 'possessive'
 gem 'rails-jquery-autocomplete'
 
 # Paranoid record deleter
-gem "paranoia", "~> 2.0"
+gem "paranoia"
 
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
@@ -47,7 +47,7 @@ gem 'bootstrap-sass'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
+gem 'coffee-rails', '~> 4.2.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -58,7 +58,7 @@ gem 'jquery-ui-rails'
 #gem 'turbolinks'
 #gem 'jquery-turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.0'
+gem 'jbuilder'
 
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
@@ -78,6 +78,7 @@ group :test, :development do
   gem 'rails-controller-testing'
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+
   gem 'byebug'
 
 end
@@ -97,7 +98,7 @@ group :development do
 end
 
 group :production do
-  gem 'heroku-deflater'
-  gem 'rails_12factor'
-  gem 'unicorn',        '4.8.3'
+  ###gem 'heroku-deflater'
+  ###gem 'rails_12factor'
+  ###gem 'unicorn',        '4.8.3'
 end
