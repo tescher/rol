@@ -3,16 +3,19 @@ source 'https://rubygems.org'
 ruby "~> 2.5.5"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.1.7'
+gem 'rails', '5.2.3'
 # Crypto for password hashing
 gem 'bcrypt', '3.1.7'
+
+# Used in Rails 5.2+
+gem 'bootsnap'
 
 # DB Seeder
 gem 'faker'
 
 # Paginater
-gem 'will_paginate',           '3.1.6'
-gem 'bootstrap-will_paginate', '0.0.10'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 
 # Multiselect helper
 gem 'bootstrap-multiselect-rails'
