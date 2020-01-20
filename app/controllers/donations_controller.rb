@@ -294,7 +294,7 @@ class DonationsController < ApplicationController
 
   def donation_summary
     @objectName = params[:object_name].downcase
-    @non_monetary = ActiveRecord::Type::Boolean.new.type_cast_from_user(params[:non_monetary])
+    @non_monetary = ActiveRecord::Type::Boolean.new.cast(params[:non_monetary])
     if (@objectName != "volunteer") && (@objectName != "organization")
       render partial: "Invalid parameter"
     else

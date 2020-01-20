@@ -16,16 +16,17 @@ module DonationsHelper
 
     if (objectName == "volunteer")
       object = Volunteer.find(id)
-      if (object.address.to_s.empty? && object.city.to_s.empty?)
+      if (object.address.to_s.empty? || object.city.to_s.empty?)
         where_clause = "(volunteers.id = '#{object.id}') AND (donations.volunteer_id = volunteers.id) AND (donations.donation_type_id = donation_types.id) and (donation_types.non_monetary = #{non_monetary})"
       else
         address_hash = (object.address.to_s + object.city.to_s).gsub(/[^0-9a-zA-Z]/,"").downcase
         # puts "Address Hash #{address_hash}"
         where_clause = "(REGEXP_REPLACE(LOWER(volunteers.address || volunteers.city), '[^0-9a-z]', '', 'g') = '" + address_hash + "') AND (donations.volunteer_id = volunteers.id) AND (donations.donation_type_id = donation_types.id) and (donation_types.non_monetary = #{non_monetary})"
       end
-
+      # puts where_clause
       # join = "INNER JOIN workday_#{@objectName}s ON workday_#{@objectName}s.workday_id = workdays.id"
       donation_years = Donation.select("ROUND(EXTRACT(YEAR FROM donations.date_received)) as year").joins(:volunteer, :donation_type).where(where_clause).group("year").order("year DESC")
+      # puts Donation.select("ROUND(EXTRACT(YEAR FROM donations.date_received)) as year").joins(:volunteer, :donation_type).group("year").order("year DESC")
       donations_by_year = Hash[donation_years.map { |dy|
                                  year = dy.year.to_s.split(".").first
                                  donations = Donation.select("donations.*").joins(:volunteer, :donation_type).where("ROUND(EXTRACT(YEAR FROM donations.date_received)) = '#{dy.year}' AND " + where_clause).order("donations.date_received DESC")

@@ -53,7 +53,7 @@ class ContactsController < ApplicationController
       @volunteer.notes = params[:permanent_notes]
       @volunteer.save
       # puts "Contact saved"
-      render plain: '<body onload="window.close()"></body>'
+      render html: '<body onload="window.close()"></body>'.html_safe
     else
       # puts "Contact not saved"
       # puts flash[:error]
@@ -71,7 +71,7 @@ class ContactsController < ApplicationController
     if @contact.update(contact_params)
       @volunteer.notes = params[:permanent_notes]
       @volunteer.save
-      render plain: '<body onload="window.close()"></body>'
+      render html: '<body onload="window.close()"></body>'.html_safe
     else
       volunteer_info_setup
       render :edit
@@ -82,7 +82,7 @@ class ContactsController < ApplicationController
   # DELETE /contacts/1.json
   def destroy
     @contact.destroy
-    render  plain: '<body onload="window.close()"></body>'
+    render  html: '<body onload="window.close()"></body>'.html_safe
   end
 
   private
