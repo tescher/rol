@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
   # to get around the httparty bug that turns [] into [""] on http calls.
   def fix_params
-    params.transform_values! { |v| v.kind_of?(Array) && (v[0] == "") ? [] : v }
+    params.transform_values! { |v| v.kind_of?(Array) && v.count == 1 && (v[0] == "") ? [] : v }
   end
 
 
