@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/tescher/fedex.git
+  remote: https://github.com/tescher/fedex.git
   revision: 0bcdb748dde3603e6495a6c5e35185749a40e76d
   branch: master
   specs:
@@ -243,7 +243,7 @@ DEPENDENCIES
   will_paginate
 
 RUBY VERSION
-   ruby 2.5.5p157
+   ruby 2.5.7p206
 
 BUNDLED WITH
-   1.17.3
+   2.0.2
