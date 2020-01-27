@@ -3,7 +3,7 @@ module VolunteersHelper
   def find_matching_volunteers(object)
     matched_volunteers = Hash.new
     volunteer_ids = []
-    volunteers = Volunteer.where("(last_name ILIKE ?) OR (soundex(last_name) = soundex(#{Volunteer.sanitize(object.last_name)}))",object.last_name)
+    volunteers = Volunteer.where("(last_name ILIKE ?) OR (soundex(last_name) = soundex(#{Volunteer.sanitize(object.last_name)}))")
     volunteers.each do |v|
       volunteer_ids.push(v.id)
       matched_volunteer = {volunteer: v, points: 10}
