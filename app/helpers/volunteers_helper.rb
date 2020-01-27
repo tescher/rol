@@ -10,11 +10,15 @@ module VolunteersHelper
       matched_volunteers[v.id] = matched_volunteer
     end
     if (!object.first_name.blank?)
-      volunteers = Volunteer.where(id: volunteer_ids).where("first_name ILIKE ?",object.first_name)
+      volunteers = Volunteer.where(id: volunteer_ids).where("first_name = ?",object.first_name)
       volunteers.each do |v|
         matched_volunteers[v.id][:points] += 5
       end
       volunteers = Volunteer.where(id: volunteer_ids).where("first_name ILIKE ?",object.first_name + "%")
+      volunteers.each do |v|
+        matched_volunteers[v.id][:points] += 3
+      end
+      volunteers = Volunteer.where(id: volunteer_ids).where("LEFT(first_name, LEN('#{object.first_name}')) = ?",object.first_name)
       volunteers.each do |v|
         matched_volunteers[v.id][:points] += 3
       end
