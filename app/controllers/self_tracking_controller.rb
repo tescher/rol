@@ -152,7 +152,7 @@ class SelfTrackingController < ApplicationController
     end
     # Handle Birthdate/Adult form
     if params[:need_age_form].present?
-      @need_age_form = NeedAgeForm.new(params[:need_age_form])
+      @need_age_form = NeedAgeForm.new(params[:need_age_form].permit[:birthdate, :adult])
       if @need_age_form.valid?
         @volunteer.update_attributes(params.require(:need_age_form).permit(:birthdate, :adult))
       else
