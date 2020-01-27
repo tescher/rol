@@ -176,6 +176,7 @@ class PendingVolunteersController < ApplicationController
         @object.errors.add(:captcha, " - Be sure to click the No Robots box")
       end
       @submit_name = "Submit"
+      restore_pending_volunteer_params(pending_volunteer_params)
       render 'new'
     end
   end
@@ -193,10 +194,18 @@ class PendingVolunteersController < ApplicationController
     )
     if (!modified_params[:int_ids].nil?)
       modified_params[:interest_ids] = modified_params[:int_ids].dup
-      # modified_params.delete(:int_ids)
+      modified_params.delete(:int_ids)
     end
     # puts modified_params
     modified_params
+  end
+
+  def restore_pending_volunteer_params(p)
+    if (!p[:interest_ids].nil?)
+      p[:int_ids] = p[:interest_ids].dup
+      p.delete(:interest_ids)
+    end
+    p
   end
 
   def verify_google_recptcha(secret_key,response)
