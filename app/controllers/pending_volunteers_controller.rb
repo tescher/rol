@@ -189,8 +189,13 @@ class PendingVolunteersController < ApplicationController
   def pending_volunteer_params
     modified_params = params.require(:volunteer).permit(
         :first_name, :last_name, :address, :city, :state, :zip, :home_phone, :work_phone,
-        :mobile_phone, :email, :notes, :occupation, :emerg_contact_name, :emerg_contact_phone, :limitations, :medical_conditions, :agree_to_background_check, :birthdate, :adult, interest_ids: []
+        :mobile_phone, :email, :notes, :occupation, :emerg_contact_name, :emerg_contact_phone, :limitations, :medical_conditions, :agree_to_background_check, :birthdate, :adult, int_ids: [], interest_ids: []
     )
+    if (!modified_params[:int_ids].nil?)
+      modified_params[:interest_ids] = modified_params[:int_ids].dup
+      # modified_params.delete(:int_ids)
+    end
+    # puts modified_params
     modified_params
   end
 
