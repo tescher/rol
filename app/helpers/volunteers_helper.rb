@@ -1,5 +1,5 @@
 module VolunteersHelper
-  
+
   def find_matching_volunteers(object)
     matched_volunteers = Hash.new
     volunteer_ids = []
@@ -12,10 +12,11 @@ module VolunteersHelper
     volunteers = Volunteer.where(id: volunteer_ids).where("soundex(last_name) = soundex(#{Volunteer.sanitize(object.last_name)})")
     volunteers.each do |v|
       if matched_volunteers[v.id].nil?
-        matched_volunteer = {volunteer: v}
+        matched_volunteer = {volunteer: v, points: 5}
         matched_volunteers[v.id] = matched_volunteer
+      else
+        matched_volunteers[v.id][:points] += 5
       end
-      matched_volunteers[v.id][:points] += 5
     end
     if (!object.first_name.blank?)
       volunteers = Volunteer.where(id: volunteer_ids).where("first_name ILIKE ?",object.first_name)
