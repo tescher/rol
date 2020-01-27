@@ -11,6 +11,10 @@ module VolunteersHelper
     end
     volunteers = Volunteer.where(id: volunteer_ids).where("soundex(last_name) = soundex(#{Volunteer.sanitize(object.last_name)})")
     volunteers.each do |v|
+      if matched_volunteers[v.id].nil?
+        matched_volunteer = {volunteer: v}
+        matched_volunteers[v.id] = matched_volunteer
+      end
       matched_volunteers[v.id][:points] += 5
     end
     if (!object.first_name.blank?)
@@ -22,7 +26,7 @@ module VolunteersHelper
       volunteers.each do |v|
         matched_volunteers[v.id][:points] += 3
       end
-      volunteers = Volunteer.where(id: volunteer_ids).where("soundex(last_name) = soundex(#{Volunteer.sanitize(object.first_name)})")
+      volunteers = Volunteer.where(id: volunteer_ids).where("soundex(first_name) = soundex(#{Volunteer.sanitize(object.first_name)})")
       volunteers.each do |v|
         matched_volunteers[v.id][:points] += 2
       end
