@@ -5,7 +5,7 @@ require 'application_helper'
 
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-  # set_fixture_class workday_volunteers: WorkdayVolunteer
+  # set_fixture_class volunteer_category_volunteers: VolunteerCategoryVolunteer
   fixtures :all
   include ApplicationHelper
 

@@ -82,11 +82,16 @@ class Volunteer < ApplicationRecord
   def self.pending_volunteer_merge_fields_table
     resolve_fields = {}
     index = 0
-    [:first_name, :last_name, :address, :city, :state, :zip, :email, :home_phone, :work_phone, :mobile_phone, :emerg_contact_name, :emerg_contact_phone, :limitations, :medical_conditions, :agree_to_background_check, :birthdate, :adult].each do |f|
+    pending_volunteer_merge_fields.each do |f|
       resolve_fields[f] = index
       index += 1
     end
+    puts resolve_fields
     resolve_fields
+  end
+
+  def self.pending_volunteer_merge_fields
+    [:first_name, :last_name, :address, :city, :state, :occupation, :zip, :email, :home_phone, :work_phone, :mobile_phone, :emerg_contact_name, :emerg_contact_phone, :limitations, :medical_conditions, :agree_to_background_check, :birthdate, :adult]
   end
 
   # Returns a fuzzy match string that can be used in a where condition.  Generally used for

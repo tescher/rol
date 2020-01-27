@@ -148,20 +148,15 @@ class PendingVolunteersTest < ActionDispatch::IntegrationTest
     use_medical_conditions = "ignore"
     use_interests = "ignore"
     use_categories = "ignore"
+    #Assume all fields are on form and may have values
+    source_form_fields = Hash[Volunteer.pending_volunteer_merge_fields.collect { |v| [v, source_volunteer.send(v)] }]
+    source_form_fields[:interest_ids] = [source_volunteer.interest_ids]
 
     put pending_volunteer_path(source_volunteer), params: {
         matching_id: target_volunteer.id, pv_use_fields: source_use_fields, use_notes: use_notes, use_limitations: use_limitations, use_medical_conditions: use_medical_conditions,
         use_interests: use_interests, use_categories: use_categories,
-        volunteer: {
-            first_name: source_volunteer.first_name,
-            last_name: source_volunteer.last_name,
-            home_phone: source_volunteer.home_phone,
-            adult: source_volunteer.adult,
-            birthdate: source_volunteer.birthdate,
-            agree_to_background_check: source_volunteer.agree_to_background_check,
-            interest_ids: [source_volunteer.interest_ids]
-        }
-    }
+        volunteer: source_form_fields
+     }
 
     # Did everything delete OK?
     source_volunteer.reload
@@ -174,6 +169,7 @@ class PendingVolunteersTest < ActionDispatch::IntegrationTest
     # Did all fields merge as expected?
     Volunteer.pending_volunteer_merge_fields_table.each do |field,index|
       if source_use_field_list.include? field
+        puts target_volunteer[field].to_s + "-" + source_volunteer[field].to_s
         if target_volunteer[field].nil?
           assert_nil source_volunteer[field], "Field #{field.to_s} should be equal"
         else

@@ -107,7 +107,17 @@ master:
 pending_one:
   first_name: Tom
   last_name: Smith
+  email: pending_one@gmail.com
   home_phone: 608-848-1234
+  address: 123 Pending One Place
+  occupation: Construction
+  city: Madison
+  state: AL
+  zip: 53706
+  emerg_contact_name: Tom Smith Sr.
+  emerg_contact_phone: 608-555-1212
+  limitations: no limitations
+  medical_conditions: no conditions
   agree_to_background_check: true
   adult: false
   birthdate: <%= 10.years.ago.to_s(:db) %>
