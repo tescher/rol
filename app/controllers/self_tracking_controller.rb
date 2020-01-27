@@ -138,7 +138,7 @@ class SelfTrackingController < ApplicationController
     end
     # Handle waiver signing form
     if params[:need_waiver_form].present? && !params[:skip_waiver]
-      @need_waiver_form = NeedWaiverForm.new(params[:need_waiver_form].permit[:waiver_type].merge(volunteer: @volunteer, guardian: @guardian))
+      @need_waiver_form = NeedWaiverForm.new(params[:need_waiver_form].permit(:waiver_type).merge(volunteer: @volunteer, guardian: @guardian))
       if @need_waiver_form.valid?
         if (@need_waiver_form.waiver_type.to_i == WaiverText.waiver_types[:adult].to_i)
           Waiver.create(volunteer_id: @volunteer.id, e_sign: true, adult: true, date_signed: Time.zone.now.to_date)
@@ -152,7 +152,7 @@ class SelfTrackingController < ApplicationController
     end
     # Handle Birthdate/Adult form
     if params[:need_age_form].present?
-      @need_age_form = NeedAgeForm.new(params[:need_age_form].permit[:birthdate, :adult])
+      @need_age_form = NeedAgeForm.new(params[:need_age_form].permit(:birthdate, :adult))
       if @need_age_form.valid?
         @volunteer.update_attributes(params.require(:need_age_form).permit(:birthdate, :adult))
       else
