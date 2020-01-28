@@ -1,4 +1,4 @@
-<%= form_for(@need_age_form, url: self_tracking_check_in_path(@volunteer, :newly_signed_up => @newly_signed_up), method: :get,
+<%= form_for(@need_age_form, url: self_tracking_check_in_path(@volunteer), method: :get,
              remote: true, html: {class: "form-horizontal", "data-need-age-form" => "true"}) do |form| %>
   <div class="modal-dialog" role="document">
     <div class="modal-content">

@@ -18,5 +18,8 @@ system:
   email_password: password
   smtp_server: smtp.gmail.com
   smtp_port: 587
+  waivers_at_checkin: true
+  adult_age: 18
+  waiver_valid_days: 365
 
 

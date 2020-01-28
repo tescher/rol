@@ -8,7 +8,7 @@
 
 <% if @launched_from_self_tracking == "yes" %>
   <p>
-    You have successfully signed up, you can now <a href="javascript:void();" onClick="return continueCheckinAfterSignup('<%= self_tracking_check_in_path(@object.id, :newly_signed_up => "yes") %>');">check-in</a>.
+    You have successfully signed up, you can now <a href="javascript:void();" onClick="return continueCheckinAfterSignup('<%= self_tracking_check_in_path(@object.id) %>');">check-in</a>.
   </p>
 <% else %>
   <h2>Success! Thank You!</h2>
