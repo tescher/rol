@@ -47,6 +47,8 @@ class SelfTrackingController < ApplicationController
     # If we are doing a guardian search, need to pass through original volunteer
     if params[:guardian_search]
       @volunteer = Volunteer.including_pending.find(params[:volunteer_id])
+    else
+      session.delete(:check_in_volunteer)
     end
 
     if params[:search_form].present?
@@ -103,7 +105,7 @@ class SelfTrackingController < ApplicationController
     if !session[:check_in_volunteer].nil?
       @volunteer = Volunteer.including_pending.find(session[:check_in_volunteer])
       @guardian = Volunteer.including_pending.find(params[:id])
-      session[:check_in_volunteer] = nil
+      session.delete :check_in_volunteer
     else
       @volunteer = Volunteer.including_pending.find(params[:id])
     end
@@ -232,7 +234,7 @@ class SelfTrackingController < ApplicationController
   def check_out_all
     @workday = Workday.find(session[:self_tracking_workday_id])
     if params[:check_out_all_form].present?
-      @check_out_all_form = Check_out_all_form.new(params[:check_out_all_form].merge(workday: @workday))
+      @check_out_all_form = Check_out_all_form.new(params.require(:check_out_all_form).merge(workday: @workday))
       if @check_out_all_form.valid?
 
         unupdated_volunteers = Hash.new(0)
