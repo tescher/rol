@@ -234,7 +234,7 @@ class SelfTrackingController < ApplicationController
   def check_out_all
     @workday = Workday.find(session[:self_tracking_workday_id])
     if params[:check_out_all_form].present?
-      @check_out_all_form = Check_out_all_form.new(params.require(:check_out_all_form).merge(workday: @workday))
+      @check_out_all_form = Check_out_all_form.new(params.require(:check_out_all_form).permit(:check_in_time).merge(workday: @workday))
       if @check_out_all_form.valid?
 
         unupdated_volunteers = Hash.new(0)
