@@ -35,10 +35,10 @@ class ContactsEditTest < ActionDispatch::IntegrationTest
 
   test "Cannot create a contact owned by another user if not admin" do
     log_in_as(@non_admin_user1)
-    post contacts_path, contact: { volunteer_id: @volunteer.id, contact_method_id: @contact_method1.id, user_id: @non_admin_user2.id, notes: "Blah" }
+    post contacts_path, params: { contact: { volunteer_id: @volunteer.id, contact_method_id: @contact_method1.id, user_id: @non_admin_user2.id, notes: "Blah" } }
     assert_redirected_to root_url
     log_in_as(@admin_user)
-    post contacts_path, contact: { volunteer_id: @volunteer.id, contact_method_id: @contact_method1.id, user_id: @non_admin_user2.id, notes: "Blah" }
+    post contacts_path, params: { contact: { volunteer_id: @volunteer.id, contact_method_id: @contact_method1.id, user_id: @non_admin_user2.id, notes: "Blah" } }
     assert_response :success
   end
 
@@ -47,7 +47,7 @@ class ContactsEditTest < ActionDispatch::IntegrationTest
     @contact_owned_by_user1.last_edit_user_id = @admin_user.id
     @contact_owned_by_user1.save!
     log_in_as(@non_admin_user1)
-    patch contact_path( @contact_owned_by_user1), contact: { notes:  "Blah" }
+    patch contact_path( @contact_owned_by_user1), params: { contact: { notes:  "Blah" } }
     @contact_owned_by_user1.reload
     assert_equal  @contact_owned_by_user1.last_edit_user_id,  @non_admin_user1.id
   end
@@ -56,7 +56,7 @@ class ContactsEditTest < ActionDispatch::IntegrationTest
     log_in_as(@admin_user)
     get edit_contact_path( @contact_owned_by_user1)
     assert_template 'edit'
-    patch contact_path( @contact_owned_by_user1), contact: { notes:  "Blah" }
+    patch contact_path( @contact_owned_by_user1), params: { contact: { notes:  "Blah" } }
     @contact_owned_by_user1.reload
     assert_equal  @contact_owned_by_user1.last_edit_user_id,  @admin_user.id
   end
@@ -67,7 +67,7 @@ class ContactsEditTest < ActionDispatch::IntegrationTest
     log_in_as(@admin_user)
     get edit_contact_path( @contact_un_owned)
     assert_template 'edit'
-    patch contact_path( @contact_un_owned), contact: { notes:  "Blah" }
+    patch contact_path( @contact_un_owned), params: { contact: { notes:  "Blah" } }
     @contact_un_owned.reload
     assert_equal  @contact_un_owned.last_edit_user_id,  @admin_user.id
 
@@ -81,7 +81,7 @@ class ContactsEditTest < ActionDispatch::IntegrationTest
     @non_admin_user1.save!
     get edit_contact_path(@contact_un_owned)
     assert_template 'edit'
-    patch contact_path(@contact_un_owned), contact: { notes:  "Blah" }
+    patch contact_path(@contact_un_owned), params: { contact: { notes:  "Blah" } }
     @contact_un_owned.reload
     assert_equal @contact_un_owned.last_edit_user_id,  @non_admin_user1.id
   end
@@ -148,9 +148,9 @@ class ContactsEditTest < ActionDispatch::IntegrationTest
 
   test "Non-admins without security flag set can only see their contacts" do
     log_in_as(@non_admin_user1)
-    puts "Non-admins without security flag set can only see their contacts"
+    # puts "Non-admins without security flag set can only see their contacts"
     get contacts_volunteer_path(@volunteer)
-    puts response.body
+    # puts response.body
     assert_select '[href=?]', edit_contact_path(@contact_volunteer2), {count: 0}
     assert_select '[href=?]', edit_contact_path(@contact_owned_by_user1), {count: 1}
     assert_select 'label[for="contact_user"]', {text: "by #{@contact_owned_by_user1.user.name}", count: 0}

@@ -1,4 +1,4 @@
-class WorkdayVolunteer < ActiveRecord::Base
+class WorkdayVolunteer < ApplicationRecord
   belongs_to :workday
   belongs_to :volunteer, -> { unscope(where: :needs_review) }
 

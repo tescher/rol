@@ -18,12 +18,12 @@ class PendingVolunteersControllerTest < ActionController::TestCase
   end
 
   test "should error or redirect all but post if not logged in " do
-    get :edit, id: @pending_volunteer
+    get :edit, params: { id: @pending_volunteer }
     assert_redirected_to login_url
-    patch :update, id: @pending_volunteer, pending_volunteer: { xml: "" }
+    patch :update, params: { id: @pending_volunteer, pending_volunteer: { xml: "" } }
     assert_not flash.empty?
     assert_redirected_to login_url
-    delete :destroy, id: @pending_volunteer
+    delete :destroy, params: { id: @pending_volunteer }
     assert_redirected_to login_url
     get :index
     assert_not flash.empty?
@@ -60,16 +60,16 @@ class PendingVolunteersControllerTest < ActionController::TestCase
 
   test "match display" do
     log_in_as(@user)
-    get :match, id: @pending_volunteer
+    get :match, params: { id: @pending_volunteer }
     assert_template 'match'
     assert_select 'div[href=?]', edit_pending_volunteer_path(id: @pending_volunteer, matching_id: @volunteer)  # Should find at least one match
   end
 
   test "edit display" do
     log_in_as(@user)
-    get :edit, id: @pending_volunteer
+    get :edit, params: { id: @pending_volunteer }
     assert_redirected_to root_path
-    get :edit, id: @pending_volunteer, matching_id: @volunteer
+    get :edit, params: { id: @pending_volunteer, matching_id: @volunteer }
     assert_template 'edit'
   end
 

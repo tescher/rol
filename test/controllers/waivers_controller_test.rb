@@ -19,33 +19,33 @@ class WaiversControllerTest < ActionController::TestCase
 
   test "should redirect create waiver when not logged in" do
     assert_no_difference('Waiver.count') do
-      post :create, waiver: { date_signed: @waiver.date_signed, e_sign: @waiver.e_sign, guardian_id: @waiver.guardian_id, adult: @waiver.adult, volunteer_id: @waiver.volunteer_id, waiver_text: @waiver.waiver_text }
+      post :create, params: { waiver: { date_signed: @waiver.date_signed, e_sign: @waiver.e_sign, guardian_id: @waiver.guardian_id, adult: @waiver.adult, volunteer_id: @waiver.volunteer_id, waiver_text: @waiver.waiver_text } }
     end
 
     assert_redirected_to login_url
   end
 
   test "should redirect show waiver when not logged in" do
-    get :show, id: @waiver
+    get :show, params: { id: @waiver }
     assert_not flash.empty?
     assert_redirected_to login_url
   end
 
   test "should redirect edit when not logged in" do
-    get :edit, id: @waiver
+    get :edit, params: { id: @waiver }
     assert_not flash.empty?
     assert_redirected_to login_url
   end
 
   test "should redirect update when not logged in" do
-    patch :update, id: @waiver, waiver: {date_signed: @waiver.date_signed, e_sign: @waiver.e_sign, guardian_id: @waiver.guardian_id, adult: @waiver.adult, volunteer_id: @waiver.volunteer_id, waiver_text: @waiver.waiver_text }
+    patch :update, params: { id: @waiver, waiver: {date_signed: @waiver.date_signed, e_sign: @waiver.e_sign, guardian_id: @waiver.guardian_id, adult: @waiver.adult, volunteer_id: @waiver.volunteer_id, waiver_text: @waiver.waiver_text } }
     assert_not flash.empty?
     assert_redirected_to login_url
   end
 
   test "should redirect destroy when not logged in" do
     assert_no_difference 'Waiver.count' do
-      delete :destroy, id: @waiver
+      delete :destroy, params: { id: @waiver }
     end
     assert_redirected_to login_url
   end

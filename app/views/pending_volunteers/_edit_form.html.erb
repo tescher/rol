@@ -17,7 +17,8 @@
 
         </div>
         <% check_exceptions = [:work_phone, :mobile_phone] %>
-        <% [:first_name, :last_name, :address, :city, :state, :zip, :email, :home_phone, :work_phone, :mobile_phone, :emerg_contact_name, :emerg_contact_phone, :occupation, :agree_to_background_check, :adult].each do |field| %>
+        <% Volunteer.pending_volunteer_merge_fields.each do |field|
+              next if [:birthdate, :notes, :medical_conditions, :limitations].include?(field) %>
             <div class="row">
               <div class="col-xs-1">
                 <%= f.label field %>

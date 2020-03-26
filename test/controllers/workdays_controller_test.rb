@@ -18,13 +18,13 @@ class WorkdaysControllerTest < ActionController::TestCase
   end
 
   test "should redirect edit when not logged in" do
-    get :edit, id: @workday
+    get :edit, params: { id: @workday }
     assert_not flash.empty?
     assert_redirected_to login_url
   end
 
   test "should redirect update when not logged in" do
-    patch :update, id: @workday, workday: { name: @workday.name }
+    patch :update, params: { id: @workday, workday: { name: @workday.name } }
     assert_not flash.empty?
     assert_redirected_to login_url
   end
@@ -35,7 +35,7 @@ class WorkdaysControllerTest < ActionController::TestCase
   end
 
   test "should redirect add_participants when not logged in" do
-    get :add_participants, id: @workday
+    get :add_participants, params: { id: @workday }
     assert_redirected_to login_url
   end
 
@@ -43,7 +43,7 @@ class WorkdaysControllerTest < ActionController::TestCase
 
   test "should redirect destroy when not logged in" do
     assert_no_difference 'Workday.count' do
-      delete :destroy, id: @workday
+      delete :destroy, params: { id: @workday }
     end
     assert_redirected_to login_url
   end

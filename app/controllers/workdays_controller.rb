@@ -59,8 +59,8 @@ class WorkdaysController < ApplicationController
       join_organizations = "JOIN workday_organizations ON workdays.id = workday_organizations.workday_id "
       @report_info_volunteers = Workday.select("COALESCE(COUNT(DISTINCT workday_volunteers.volunteer_id), 0) as num_volunteers, COALESCE(COUNT(workday_volunteers.id), 0) as num_shifts, COALESCE(SUM(workday_volunteers.hours), 0) as volunteer_hours, '1' as id").joins(join_volunteers).where(project_where).where(where_clause).where(vc_where)
       @report_info_organizations = Workday.select("COALESCE(COUNT(DISTINCT workday_organizations.organization_id), 0) as num_organizations, COALESCE(SUM(workday_organizations.hours * workday_organizations.num_volunteers), 0) as organization_hours, '1' as id").joins(join_organizations).where(project_where).where(where_clause)
-      #@report_info_volunteers = ActiveRecord::Base.connection.exec_query(report_info_volunteers_sql)
-      #@report_info_organizations = ActiveRecord::Base.connection.exec_query(report_info_organizations_sql)
+      #@report_info_volunteers = ApplicationRecord.connection.exec_query(report_info_volunteers_sql)
+      #@report_info_organizations = ApplicationRecord.connection.exec_query(report_info_organizations_sql)
       logger.info "Report Info"
       @report_info = consolidate(@report_info_volunteers, @report_info_organizations)[0]
       logger.info "Consoliated Report: " + @report_info.to_yaml

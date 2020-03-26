@@ -13,7 +13,7 @@ class WorkdaysEditTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     get edit_workday_path(@workday)
     assert_template 'workdays/edit'
-    patch workday_path(@workday), workday: { name:  "" }
+    patch workday_path(@workday), params: { workday: { name:  "" } }
     assert_template 'workdays/edit'
   end
 
@@ -23,8 +23,8 @@ class WorkdaysEditTest < ActionDispatch::IntegrationTest
     assert_template 'workdays/edit'
     name  = "Foo"
     project_id = 2
-    patch workday_path(@workday), workday: { name:  name,
-                                                   project_id: project_id}
+    patch workday_path(@workday), params: { workday: { name:  name,
+                                                   project_id: project_id} }
     assert_redirected_to add_participants_workday_path(@workday)
     @workday.reload
     assert_equal @workday.name,  name
@@ -37,8 +37,8 @@ class WorkdaysEditTest < ActionDispatch::IntegrationTest
     assert_redirected_to edit_workday_path(@workday)
     name  = "Foo"
     project_id = 2
-    patch workday_path(@workday), workday: { name:  name,
-                                                project_id: project_id}
+    patch workday_path(@workday), params: { workday: { name:  name,
+                                                project_id: project_id} }
     assert_redirected_to add_participants_workday_path(@workday)
     @workday.reload
     assert_equal @workday.name,  name
@@ -63,7 +63,7 @@ class WorkdaysEditTest < ActionDispatch::IntegrationTest
     name  = @workday.name
     project = @workday.project_id
     workdate = @workday.workdate.strftime("%m/%d/%Y")
-    patch workday_path(@workday_2), workday: { name:  name, project_id: project, workdate: workdate }
+    patch workday_path(@workday_2), params: { workday: { name:  name, project_id: project, workdate: workdate } }
     assert_select '.alert', 1
     @workday_2.reload
     assert_not_equal @workday_2.name,  name

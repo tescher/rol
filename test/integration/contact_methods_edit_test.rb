@@ -25,7 +25,7 @@ class ContactMethodsEditTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     get edit_contact_method_path(@contact_method)
     assert_template 'shared/simple_edit'
-    patch contact_method_path(@contact_method), contact_method: { name:  "" }
+    patch contact_method_path(@contact_method), params: { contact_method: { name:  "" } }
     assert_template 'shared/simple_edit'
   end
 
@@ -34,7 +34,7 @@ class ContactMethodsEditTest < ActionDispatch::IntegrationTest
     get edit_contact_method_path(@contact_method)
     assert_template 'shared/simple_edit'
     name  = "Foo"
-    patch contact_method_path(@contact_method), contact_method: { name:  name }
+    patch contact_method_path(@contact_method), params: { contact_method: { name:  name } }
     assert_not flash.empty?
     assert_redirected_to contact_methods_url
     @contact_method.reload
@@ -46,7 +46,7 @@ class ContactMethodsEditTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     assert_redirected_to edit_contact_method_path(@contact_method)
     name  = "Foo"
-    patch contact_method_path(@contact_method), contact_method: { name:  name }
+    patch contact_method_path(@contact_method), params: { contact_method: { name:  name } }
     assert_not flash.empty?
     assert_redirected_to contact_methods_url
     @contact_method.reload
@@ -82,7 +82,7 @@ class ContactMethodsEditTest < ActionDispatch::IntegrationTest
     get edit_contact_method_path(@contact_method_2)
     assert_template 'shared/simple_edit'
     name  = @contact_method.name
-    patch contact_method_path(@contact_method_2), contact_method: { name:  name }
+    patch contact_method_path(@contact_method_2), params: { contact_method: { name:  name } }
     assert_select '.alert', 1
     @contact_method_2.reload
     assert_not_equal @contact_method_2.name,  name

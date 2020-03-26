@@ -1,4 +1,4 @@
-class Setting < ActiveRecord::Base
+class Setting < ApplicationRecord
   before_validation :default_values
 
   validates :min_password_length, numericality: { only_integer: true, greater_than: 0 }

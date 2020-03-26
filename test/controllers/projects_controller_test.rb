@@ -12,13 +12,13 @@ class ProjectsControllerTest < ActionController::TestCase
   end
 
   test "should redirect edit when not logged in" do
-    get :edit, id: @project
+    get :edit, params: { id: @project }
     assert_not flash.empty?
     assert_redirected_to login_url
   end
 
   test "should redirect update when not logged in" do
-    patch :update, id: @project, project: { name: @project.name }
+    patch :update, params: { id: @project, project: { name: @project.name } }
     assert_not flash.empty?
     assert_redirected_to login_url
   end
@@ -31,7 +31,7 @@ class ProjectsControllerTest < ActionController::TestCase
 
   test "should redirect destroy when not logged in" do
     assert_no_difference 'Project.count' do
-      delete :destroy, id: @project
+      delete :destroy, params: { id: @project }
     end
     assert_redirected_to login_url
   end

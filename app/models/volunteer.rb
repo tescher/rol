@@ -1,6 +1,6 @@
 include ActionView::Helpers::NumberHelper
 
-class Volunteer < ActiveRecord::Base
+class Volunteer < ApplicationRecord
   acts_as_paranoid
   has_many :volunteer_interests, dependent: :destroy
   has_many :interests, through: :volunteer_interests
@@ -82,11 +82,16 @@ class Volunteer < ActiveRecord::Base
   def self.pending_volunteer_merge_fields_table
     resolve_fields = {}
     index = 0
-    [:first_name, :last_name, :address, :city, :state, :zip, :email, :home_phone, :work_phone, :mobile_phone, :emerg_contact_name, :emerg_contact_phone, :limitations, :medical_conditions, :agree_to_background_check, :birthdate, :adult].each do |f|
+    pending_volunteer_merge_fields.each do |f|
       resolve_fields[f] = index
       index += 1
     end
+    puts resolve_fields
     resolve_fields
+  end
+
+  def self.pending_volunteer_merge_fields
+    [:first_name, :last_name, :address, :city, :state, :occupation, :zip, :email, :home_phone, :work_phone, :mobile_phone, :emerg_contact_name, :emerg_contact_phone, :limitations, :medical_conditions, :agree_to_background_check, :birthdate, :adult]
   end
 
   # Returns a fuzzy match string that can be used in a where condition.  Generally used for
@@ -114,5 +119,10 @@ class Volunteer < ActiveRecord::Base
       errors.add(:need_age, "Enter birthdate or check that you are #{Utilities::Utilities.system_setting(:adult_age)} or older.")
     end
   end
+
+  def self.sanitize(string)
+    "\'#{sanitize_sql(string)}\'"
+  end
+
 
 end

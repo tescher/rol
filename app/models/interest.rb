@@ -1,4 +1,4 @@
-class Interest < ActiveRecord::Base
+class Interest < ApplicationRecord
   has_many :volunteer_interests, dependent: :restrict_with_exception
   has_many :volunteers, through: :volunteer_interests, dependent: :restrict_with_exception
   belongs_to :interest_category

@@ -47,10 +47,12 @@ class SelfTrackingController < ApplicationController
     # If we are doing a guardian search, need to pass through original volunteer
     if params[:guardian_search]
       @volunteer = Volunteer.including_pending.find(params[:volunteer_id])
+    else
+      session.delete(:check_in_volunteer)
     end
 
     if params[:search_form].present?
-      @search_form = SearchForm.new(params[:search_form])
+      @search_form = SearchForm.new(params.require(:search_form).permit(:name, :phone, :email))
       if @search_form.valid?
         last_name, first_name = @search_form.name.split(",")
 
@@ -100,17 +102,22 @@ class SelfTrackingController < ApplicationController
 
 
   def check_in
-    @volunteer = Volunteer.including_pending.find(params[:id])
+    if !session[:check_in_volunteer].nil?
+      @volunteer = Volunteer.including_pending.find(session[:check_in_volunteer])
+      @guardian = Volunteer.including_pending.find(params[:id])
+      session.delete :check_in_volunteer
+    else
+      @volunteer = Volunteer.including_pending.find(params[:id])
+    end
     if !params[:guardian_id].blank?
       @guardian = Volunteer.including_pending.find(params[:guardian_id])
     end
     @workday = Workday.find(session[:self_tracking_workday_id])
-    @newly_signed_up = params[:newly_signed_up]
 
     # Handle forms
     # Handle check-in time form
     if params[:check_in_form].present?
-      @check_in_form = CheckInForm.new(params[:check_in_form].merge(volunteer: @volunteer, workday: @workday))
+      @check_in_form = CheckInForm.new(params.require(:check_in_form).permit(:check_in_time).merge(volunteer: @volunteer, workday: @workday))
       if @check_in_form.valid?
         start_time = Time.strptime(@check_in_form.check_in_time, "%I:%M %P")
         start_time_formatted = start_time.strftime("%H:%M:%S")
@@ -129,7 +136,7 @@ class SelfTrackingController < ApplicationController
         end
 
         @workday.workday_volunteers.create(:volunteer => @volunteer, :start_time => start_time_formatted, :end_time => end_time)
-        render :text => "success"
+        render plain: "success"
         return
       else
         render partial: "check_in"
@@ -138,7 +145,7 @@ class SelfTrackingController < ApplicationController
     end
     # Handle waiver signing form
     if params[:need_waiver_form].present? && !params[:skip_waiver]
-      @need_waiver_form = NeedWaiverForm.new(params[:need_waiver_form].merge(volunteer: @volunteer, guardian: @guardian))
+      @need_waiver_form = NeedWaiverForm.new(params[:need_waiver_form].permit(:waiver_type).merge(volunteer: @volunteer, guardian: @guardian))
       if @need_waiver_form.valid?
         if (@need_waiver_form.waiver_type.to_i == WaiverText.waiver_types[:adult].to_i)
           Waiver.create(volunteer_id: @volunteer.id, e_sign: true, adult: true, date_signed: Time.zone.now.to_date)
@@ -152,7 +159,7 @@ class SelfTrackingController < ApplicationController
     end
     # Handle Birthdate/Adult form
     if params[:need_age_form].present?
-      @need_age_form = NeedAgeForm.new(params[:need_age_form])
+      @need_age_form = NeedAgeForm.new(params[:need_age_form].permit(:birthdate, :adult))
       if @need_age_form.valid?
         @volunteer.update_attributes(params.require(:need_age_form).permit(:birthdate, :adult))
       else
@@ -169,7 +176,7 @@ class SelfTrackingController < ApplicationController
       return
     end
     # Do we need a waiver?
-    if Utilities:: Utilities.system_setting(:waivers_at_checkin)
+    if Utilities::Utilities.system_setting(:waivers_at_checkin)
       @waiver_type = need_waiver_type(@volunteer)
       if @waiver_type && !params[:skip_waiver]
         last_waiver = last_waiver(@volunteer.id)
@@ -178,6 +185,7 @@ class SelfTrackingController < ApplicationController
           guardian_id = last_waiver ? last_waiver.guardian_id : nil
           @guardian = guardian_id ? Volunteer.including_pending.find(guardian_id) : nil
           @search_form = SearchForm.new()
+          session[:check_in_volunteer] = @volunteer.id  # Save since we are now going to look for a guardian
           render partial: "guardian_search"
           return
         else
@@ -203,13 +211,13 @@ class SelfTrackingController < ApplicationController
     @workday_volunteer = @workday.workday_volunteers.find(params[:workday_volunteer_id])
 
     if params[:check_out_form].present?
-      @check_out_form = CheckOutForm.new(params[:check_out_form].merge(workday_volunteer: @workday_volunteer))
+      @check_out_form = CheckOutForm.new(params.require(:check_out_form).permit(:check_out_time).merge(workday_volunteer: @workday_volunteer))
       if @check_out_form.valid?
         @workday_volunteer.end_time = Time.strptime(@check_out_form.check_out_time, "%I:%M %P").strftime("%H:%M:%S")
         if @workday_volunteer.valid?
           @workday_volunteer.save
           flash[:success] = "#{@workday_volunteer.volunteer.name} successfully checked out."
-          render :text => "success"
+          render plain: "success"
         else
           render partial: "check_out"
         end
@@ -226,7 +234,7 @@ class SelfTrackingController < ApplicationController
   def check_out_all
     @workday = Workday.find(session[:self_tracking_workday_id])
     if params[:check_out_all_form].present?
-      @check_out_all_form = Check_out_all_form.new(params[:check_out_all_form].merge(workday: @workday))
+      @check_out_all_form = Check_out_all_form.new(params.require(:check_out_all_form).permit(:check_out_time).merge(workday: @workday))
       if @check_out_all_form.valid?
 
         unupdated_volunteers = Hash.new(0)

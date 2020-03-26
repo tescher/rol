@@ -1,4 +1,4 @@
-class Contact < ActiveRecord::Base
+class Contact < ApplicationRecord
   belongs_to :volunteer
   belongs_to :contact_method
   belongs_to :user

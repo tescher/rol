@@ -16,27 +16,27 @@ class ContactsControllerTest < ActionController::TestCase
 
   test "should redirect create contact when not logged in" do
     assert_no_difference('Contact.count') do
-      post :create, contact: { date_time: @contact.date_time, volunteer_id: @contact.volunteer_id, contact_method_id: @contact.contact_method_id, user_id: @user.id, notes: @contact.notes }
+      post :create, params: { contact: { date_time: @contact.date_time, volunteer_id: @contact.volunteer_id, contact_method_id: @contact.contact_method_id, user_id: @user.id, notes: @contact.notes } }
     end
 
     assert_redirected_to login_url
   end
 
   test "should redirect edit when not logged in" do
-    get :edit, id: @contact
+    get :edit, params: { id: @contact }
     assert_not flash.empty?
     assert_redirected_to login_url
   end
 
   test "should redirect update when not logged in" do
-    patch :update, id: @contact, contact: {date_time: @contact.date_time, volunteer_id: @contact.volunteer_id, contact_method_id: @contact.contact_method_id, user_id: @user.id, notes: @contact.notes }
+    patch :update, params: { id: @contact, contact: {date_time: @contact.date_time, volunteer_id: @contact.volunteer_id, contact_method_id: @contact.contact_method_id, user_id: @user.id, notes: @contact.notes } }
     assert_not flash.empty?
     assert_redirected_to login_url
   end
 
   test "should redirect destroy when not logged in" do
     assert_no_difference 'Contact.count' do
-      delete :destroy, id: @contact
+      delete :destroy, params: { id: @contact }
     end
     assert_redirected_to login_url
   end

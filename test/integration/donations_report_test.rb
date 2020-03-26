@@ -4,6 +4,8 @@ class DonationsReportTest < ActionDispatch::IntegrationTest
 
   def setup
     @user = users(:one)
+    @non_monetary_user = users(:non_monetary_donation)
+    @monetary_user = users(:monetary_donation)
     @volunteer1 = Volunteer.new(first_name: "One", last_name: "Volunteer", zip: "53555-9621", city: "Lodi")
     @volunteer1.save
     @volunteer2 = Volunteer.new(first_name: "Two", last_name: "Volunteer", zip: "53555", city: "lodi")
@@ -202,6 +204,57 @@ class DonationsReportTest < ActionDispatch::IntegrationTest
 
     assert_select("div.container ul.listing:nth-of-type(1) li:nth-of-type(1) div.row div.col-md-6 span:nth-of-type(1)", "Number of Donations: 2")
     assert_select("div.container ul.listing:nth-of-type(1) li:nth-of-type(1) div.row div.col-md-6 span:nth-of-type(2)", "Organization Total: $600.00")
+
+  end
+
+  test "Get non-monetary donation summary" do
+    log_in_as(@non_monetary_user)
+    get donation_summary_donations_path(object_name: "volunteer", id: @volunteer1.id, non_monetary: true)
+
+    assert_select("li:nth-of-type(1) div.col-md-3:nth-of-type(3)", "Couch")
+    assert_select("li:nth-of-type(2) div.col-md-3:nth-of-type(3)", false)
+
+  end
+
+  test "Get non-monetary donation summary, group families by address" do
+    log_in_as(@non_monetary_user)
+    @volunteer1.address = "N2378 Summerville"
+    @volunteer1.city = "Lodi"
+    @volunteer1.save!
+    @volunteer2.address = @volunteer1.address
+    @volunteer2.city = "lodi"
+    @volunteer2.save!
+    get donation_summary_donations_path(object_name: "volunteer", id: @volunteer1.id, non_monetary: true)
+
+    assert_select("li:nth-of-type(1) div.col-md-3:nth-of-type(3)", "Chair")
+    assert_select("li:nth-of-type(2) div.col-md-3:nth-of-type(3)", "Couch")
+    assert_select("li:nth-of-type(3) div.col-md-3:nth-of-type(3)", false)
+
+  end
+  test "Get monetary donation summary" do
+    log_in_as(@non_monetary_user)
+    get donation_summary_donations_path(object_name: "volunteer", id: @volunteer1.id, non_monetary: false)
+
+    assert_select("li:nth-of-type(1) div.col-md-2:nth-of-type(1)", "$10.00")
+    assert_select("li:nth-of-type(2) div.col-md-2:nth-of-type(1)", "$20.00")
+    assert_select("li:nth-of-type(3) div.col-md-2:nth-of-type(1)", false)
+
+  end
+
+  test "Get donation summary, group families by address" do
+    log_in_as(@monetary_user)
+    @volunteer1.address = "N2378 Summerville"
+    @volunteer1.city = "Lodi"
+    @volunteer1.save!
+    @volunteer2.address = @volunteer1.address
+    @volunteer2.city = "lodi"
+    @volunteer2.save!
+    get donation_summary_donations_path(object_name: "volunteer", id: @volunteer1.id, non_monetary: false)
+
+    assert_select("li:nth-of-type(1) div.col-md-2:nth-of-type(1)", "$10.00")
+    assert_select("li:nth-of-type(2) div.col-md-2:nth-of-type(1)", "$5.00")
+    assert_select("li:nth-of-type(3) div.col-md-2:nth-of-type(1)", "$20.00")
+    assert_select("li:nth-of-type(4) div.col-md-2:nth-of-type(1)", false)
 
   end
 

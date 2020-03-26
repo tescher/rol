@@ -1,4 +1,4 @@
-class Waiver < ActiveRecord::Base
+class Waiver < ApplicationRecord
   belongs_to :volunteer
   belongs_to :guardian, class_name: "Volunteer", foreign_key: :guardian_id
   acts_as_paranoid
@@ -8,7 +8,7 @@ class Waiver < ActiveRecord::Base
   validate :check_age_or_guardian_recorded
 
   def initialize(params = {})
-    @file = params.delete(:file)
+    @file = params.delete(:file) if params && params[:file]
     super
     if @file
       self.filename = sanitize_filename(@file.original_filename)

@@ -24,7 +24,7 @@ class InterestsEditTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     get edit_interest_path(@interest)
     assert_template 'shared/simple_edit'
-    patch interest_path(@interest), interest: { name:  "" }
+    patch interest_path(@interest), params: { interest: { name:  "" } }
     assert_template 'shared/simple_edit'
   end
 
@@ -34,9 +34,9 @@ class InterestsEditTest < ActionDispatch::IntegrationTest
     assert_template 'shared/simple_edit'
     name  = "Foo"
     interest_category_id = 2
-    patch interest_path(@interest), interest: { name:  name,
+    patch interest_path(@interest), params: { interest: { name:  name,
                                                    interest_category_id: interest_category_id,
-                                  highlight: true}
+                                  highlight: true} }
     assert_not flash.empty?
     assert_redirected_to interests_url
     @interest.reload
@@ -51,9 +51,9 @@ class InterestsEditTest < ActionDispatch::IntegrationTest
     assert_redirected_to edit_interest_path(@interest)
     name  = "Foo"
     interest_category_id = 2
-    patch interest_path(@interest), interest: { name:  name,
+    patch interest_path(@interest), params: { interest: { name:  name,
                                                 interest_category_id: interest_category_id,
-                                                   highlight: false }
+                                                   highlight: false } }
     assert_not flash.empty?
     assert_redirected_to interests_url
     @interest.reload
@@ -94,7 +94,7 @@ class InterestsEditTest < ActionDispatch::IntegrationTest
     assert_template 'shared/simple_edit'
     name  = @interest.name
     category = @interest.interest_category_id
-    patch interest_path(@interest_2), interest: { name:  name, interest_category_id: category }
+    patch interest_path(@interest_2), params: { interest: { name:  name, interest_category_id: category } }
     assert_select '.alert', 1
     @interest_2.reload
     assert_not_equal @interest_2.name,  name

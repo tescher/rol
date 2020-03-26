@@ -50,8 +50,8 @@ class OrganizationsEditTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     get edit_organization_path(@organization)
     assert_template 'organizations/edit'
-    patch organization_path(@organization), organization: { name:  "",
-                                                            email: "foo@invalid" }
+    patch organization_path(@organization), params: { organization: { name:  "",
+                                                            email: "foo@invalid" } }
     assert_template 'organizations/edit'
   end
 
@@ -61,8 +61,8 @@ class OrganizationsEditTest < ActionDispatch::IntegrationTest
     assert_template 'organizations/edit'
     name  = "Foo"
     email = "foo@bar.com"
-    patch organization_path(@organization), organization: { name:  name,
-                                                            email: email }
+    patch organization_path(@organization), params: { organization: { name:  name,
+                                                            email: email } }
     assert_not flash.empty?
     assert_redirected_to search_organizations_url
     @organization.reload
@@ -76,8 +76,8 @@ class OrganizationsEditTest < ActionDispatch::IntegrationTest
     assert_redirected_to edit_organization_path(@organization)
     name  = "Foo"
     email = "foo@bar.com"
-    patch organization_path(@organization), organization: { name:  name,
-                                                            email: email }
+    patch organization_path(@organization), params: { organization: { name:  name,
+                                                            email: email } }
     assert_not flash.empty?
     assert_redirected_to search_organizations_url
     @organization.reload

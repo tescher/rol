@@ -1,4 +1,4 @@
-class Donation < ActiveRecord::Base
+class Donation < ApplicationRecord
   belongs_to :donation_type
   belongs_to :volunteer
   belongs_to :organization

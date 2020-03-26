@@ -4,4 +4,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
 
+  before_action :fix_params
+
+  private
+
+  # to get around the httparty bug that turns [] into [""] on http calls.
+  def fix_params
+    params.transform_values! { |v| v.kind_of?(Array) && v.count == 1 && (v[0] == "") ? [] : v }
+  end
+
+
 end

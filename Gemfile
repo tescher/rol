@@ -1,18 +1,21 @@
 source 'https://rubygems.org'
 
-ruby "~> 2.2.7"
+ruby "2.5.7"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.10'
+gem 'rails', '5.2.3'
 # Crypto for password hashing
 gem 'bcrypt', '3.1.7'
 
+# Used in Rails 5.2+
+gem 'bootsnap'
+
 # DB Seeder
-gem 'faker',                '1.4.2'
+gem 'faker'
 
 # Paginater
-gem 'will_paginate',           '3.1.6'
-gem 'bootstrap-will_paginate', '0.0.10'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 
 # Multiselect helper
 gem 'bootstrap-multiselect-rails'
@@ -34,18 +37,20 @@ gem 'possessive'
 gem 'rails-jquery-autocomplete'
 
 # Paranoid record deleter
-gem "paranoia", "~> 2.0"
+gem "paranoia"
 
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 gem 'pg', "0.21.0"
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sassc-rails'
 gem 'bootstrap-sass'
+
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
+gem 'coffee-rails', '~> 4.2.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -56,7 +61,7 @@ gem 'jquery-ui-rails'
 #gem 'turbolinks'
 #gem 'jquery-turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.0'
+gem 'jbuilder'
 
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
@@ -69,26 +74,36 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+#
 
-group :development do
+group :test, :development do
+  # Want to keep using assigns and assert-template in testing
+  gem 'rails-controller-testing'
+
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+
   gem 'byebug'
 
+  gem 'listen'
+
+end
+
+group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 
-  gem 'railroady'
+  # gem 'railroady'
 
   gem "timecop"
-  gem "guard"
-  gem "guard-minitest"
+  #gem "guard"
+  #gem "guard-minitest"
 end
 
 group :production do
-  gem 'heroku-deflater'
-  gem 'rails_12factor'
-  gem 'unicorn',        '4.8.3'
+  ###gem 'heroku-deflater'
+  ###gem 'rails_12factor'
+  ###gem 'unicorn',        '4.8.3'
 end

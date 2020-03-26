@@ -1,4 +1,4 @@
-class Workday < ActiveRecord::Base
+class Workday < ApplicationRecord
 
   attr_accessor :skip_dup_check
 

@@ -1,4 +1,4 @@
-class VolunteerCategory < ActiveRecord::Base
+class VolunteerCategory < ApplicationRecord
   has_many :volunteer_category_volunteers, dependent: :restrict_with_exception
   has_many :volunteers, through: :volunteer_category_volunteers, dependent: :restrict_with_exception
 

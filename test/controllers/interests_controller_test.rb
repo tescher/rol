@@ -12,13 +12,13 @@ class InterestsControllerTest < ActionController::TestCase
   end
 
   test "should redirect edit when not logged in" do
-    get :edit, id: @interest
+    get :edit, params: { id: @interest }
     assert_not flash.empty?
     assert_redirected_to login_url
   end
 
   test "should redirect update when not logged in" do
-    patch :update, id: @interest, interest: { name: @interest.name, interest_category_id: @interest.interest_category_id }
+    patch :update, params: { id: @interest, interest: { name: @interest.name, interest_category_id: @interest.interest_category_id } }
     assert_not flash.empty?
     assert_redirected_to login_url
   end
@@ -31,7 +31,7 @@ class InterestsControllerTest < ActionController::TestCase
 
   test "should redirect destroy when not logged in" do
     assert_no_difference 'Interest.count' do
-      delete :destroy, id: @interest
+      delete :destroy, params: { id: @interest }
     end
     assert_redirected_to login_url
   end

@@ -20,7 +20,7 @@ class WorkdayVolunteersEditTest < ActionDispatch::IntegrationTest
     assert_redirected_to add_participants_workday_path(@workday)
     @workday_volunteer = WorkdayVolunteer.new
     assert_difference "WorkdayVolunteer.count", 1 do
-      patch workday_path(@workday), workday: { workday_volunteers_attributes: {@workday_volunteer.id => {workday_id: @workday.id, volunteer_id: @volunteer.id, hours: 1.5}}}
+      patch workday_path(@workday), params: { workday: { workday_volunteers_attributes: {@workday_volunteer.id => {workday_id: @workday.id, volunteer_id: @volunteer.id, hours: 1.5}}} }
     end
   end
 

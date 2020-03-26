@@ -1,20 +1,16 @@
 module VolunteersHelper
-  
+
   def find_matching_volunteers(object)
     matched_volunteers = Hash.new
     volunteer_ids = []
-    volunteers = Volunteer.where("last_name ILIKE ?",object.last_name)
+    volunteers = Volunteer.where("(last_name ILIKE ?) OR (soundex(last_name) = soundex(#{Volunteer.sanitize(object.last_name)}))",object.last_name)
     volunteers.each do |v|
       volunteer_ids.push(v.id)
       matched_volunteer = {volunteer: v, points: 10}
       matched_volunteers[v.id] = matched_volunteer
     end
-    volunteers = Volunteer.where(id: volunteer_ids).where("soundex(last_name) = soundex(#{Volunteer.sanitize(object.last_name)})")
-    volunteers.each do |v|
-      matched_volunteers[v.id][:points] += 5
-    end
     if (!object.first_name.blank?)
-      volunteers = Volunteer.where(id: volunteer_ids).where("first_name ILIKE ?",object.first_name)
+      volunteers = Volunteer.where(id: volunteer_ids).where("first_name = ?",object.first_name)
       volunteers.each do |v|
         matched_volunteers[v.id][:points] += 5
       end
@@ -22,7 +18,11 @@ module VolunteersHelper
       volunteers.each do |v|
         matched_volunteers[v.id][:points] += 3
       end
-      volunteers = Volunteer.where(id: volunteer_ids).where("soundex(last_name) = soundex(#{Volunteer.sanitize(object.first_name)})")
+      volunteers = Volunteer.where(id: volunteer_ids).where("first_name = LEFT(?, LENGTH(first_name))",object.first_name)
+      volunteers.each do |v|
+        matched_volunteers[v.id][:points] += 3
+      end
+      volunteers = Volunteer.where(id: volunteer_ids).where("soundex(first_name) = soundex(#{Volunteer.sanitize(object.first_name)})")
       volunteers.each do |v|
         matched_volunteers[v.id][:points] += 2
       end
