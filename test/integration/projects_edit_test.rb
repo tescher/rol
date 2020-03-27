@@ -7,6 +7,8 @@ class ProjectsEditTest < ActionDispatch::IntegrationTest
     @project = projects(:one)
     @project_2 = projects(:two)
     @non_admin = users(:one)
+    @volunteer_1 = volunteers(:volunteer_1)
+    @volunteer_2 = volunteers(:volunteer_2)
   end
 
   test "No edits by non-admin" do
@@ -87,6 +89,43 @@ class ProjectsEditTest < ActionDispatch::IntegrationTest
     assert_not_equal @project_2.name,  name
 
   end
+
+  test "add homeowner to project, don't allow duplicates, check removal" do
+    log_in_as(@user)
+    patch project_path(@project), params: { project: { homeowner_ids: [ @volunteer_1.id ] } }
+    @project.reload
+    assert_equal 1, @project.homeowners.count
+    patch project_path(@project), params: { project: { homeowner_ids: [ @volunteer_1.id, @volunteer_2.id ] } }
+    @project.reload
+    assert_equal 2, @project.homeowners.count
+    patch project_path(@project), params: { project: { homeowner_ids: [] } }
+    @project.reload
+    assert_equal 0, @project.homeowners.count
+    assert_raises (ActiveRecord::RecordNotUnique) { patch project_path(@project), params: { project: { homeowner_ids: [ @volunteer_1.id, @volunteer_1.id ] } } }
+    @project.reload
+    assert_equal 0, @project.homeowners.count
+
+
+  end
+
+  test "no delete of project or homeowner if homeowner attached" do
+    log_in_as(@user)
+    patch project_path(@project), params: { project: { homeowner_ids: [ @volunteer_1.id ] } }
+    @project.reload
+    assert_equal 1, @project.homeowners.count
+    assert_no_difference 'Project.count' do
+      delete project_path(@project)
+    end
+    assert_no_difference 'Volunteer.count' do
+      delete volunteer_path(@volunteer_1)
+    end
+
+
+  end
+
+
+
+
 
 
 end
