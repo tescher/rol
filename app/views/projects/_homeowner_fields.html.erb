@@ -1,0 +1,8 @@
+<tr class="hide_on_remove">
+  <td>
+    <%= homeowner.first_name + " " + homeowner.last_name %>
+  </td>
+  <td><%= f.hidden_field :homeowner_id, value: homeowner.id %>
+    <%= f.hidden_field :_destroy %>
+    <%= link_to "remove", "#", class: "remove_fields" %></td>
+</tr>

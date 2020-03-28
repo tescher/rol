@@ -1,8 +1,10 @@
 class Project < ApplicationRecord
   has_many :workdays, dependent: :restrict_with_exception
 
-  has_many :homeowners_projects, dependent: :restrict_with_error
-  has_many :homeowners, through: :homeowners_projects, source: :volunteer
+  has_many :homeowner_projects, dependent: :restrict_with_error
+  has_many :homeowners, through: :homeowner_projects, source: :volunteer
+  accepts_nested_attributes_for :homeowners, :reject_if => lambda { |a| a[:volunteer_id].blank? }, :allow_destroy => true
+
 
   validates :name, presence: true, uniqueness: { case_sensitive: false, message: "duplicate name" }
 
