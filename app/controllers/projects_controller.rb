@@ -189,6 +189,6 @@ class ProjectsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def project_params
-    params.require(:project).permit(:name, :description, :inactive, homeowner_ids: [])
+    params.require(:project).permit(:name, :description, :inactive, homeowner_projects_attributes: [ :homeowner_id, :project_id, :_destroy ] )
   end
 end
