@@ -3,6 +3,7 @@ include DonationsHelper
 include ApplicationHelper
 include VolunteersHelper
 include WaiversHelper
+include ProjectsHelper
 require 'pp'
 
 class VolunteersController < ApplicationController

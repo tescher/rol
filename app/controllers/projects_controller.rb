@@ -20,12 +20,14 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @object = Project.new
+    session[:project_id] = @object.id
     render 'shared/simple_new'
   end
 
   # GET /projects/1/edit
   def edit
     @object = Project.find(params[:id])
+    session[:project_id] = @object.id
     render 'shared/simple_edit'
   end
 
@@ -38,7 +40,15 @@ class ProjectsController < ApplicationController
   # PATCH/PUT /projects/1
   # PATCH/PUT /projects/1.json
   def update
-    standard_update(Project, params[:id], project_params)
+    @object = Project.find(params[:id])
+    if @object.update_attributes(project_params)
+      flash[:success] = "Project updated"
+      session.delete(:project_id)
+      redirect_to projects_url
+    else
+      render 'shared/simple_edit'
+    end
+
   end
 
   # DELETE /projects/1
