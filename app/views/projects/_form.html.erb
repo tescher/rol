@@ -18,8 +18,8 @@
         <div class="row no-gutters">
           <div class="col-md-6">
             <div class='input-group homeowner_search'>
-              <%= text_field_tag :homeowner_search, "", class: 'form-control' %>
-              <span class="input-group-addon"><span id='linkAddVolunteer' data-alias="homeowner" class="glyphicon glyphicon-search"></span></span>
+              <%= text_field_tag :homeowner_search, "", class: 'form-control search-element' %>
+              <span class="input-group-addon" id='linkAddVolunteer' data-alias="homeowner" ><span class="glyphicon glyphicon-search"></span></span>
             </div>
           </div>
           <div class="col=md-6">
@@ -49,7 +49,7 @@
     </div>
   </div>
 
-  <div id="dialogSearchVolunteers"></div>
-  <div id="dialogSelectVolunteer"></div>
+  <div id="dialogSearchVolunteers" data-seed-search="true"></div>
+  <div id="dialogSelectVolunteer" data-noNew="true"></div>
 
 <% end %>
