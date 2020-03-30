@@ -95,7 +95,7 @@ class ProjectsEditTest < ActionDispatch::IntegrationTest
     patch project_path(@project), params: { project: { homeowner_projects_attributes: { "0" => {volunteer_id: @volunteer_1.id}} } }
     @project.reload
     assert_equal 1, @project.homeowners.count
-   end
+  end
 
   test "no delete of project or homeowner if homeowner attached" do
     log_in_as(@user)
@@ -108,13 +108,16 @@ class ProjectsEditTest < ActionDispatch::IntegrationTest
     assert_no_difference 'Volunteer.count' do
       delete volunteer_path(@volunteer_1)
     end
-
-
   end
 
-
-
-
-
+  test "Don't allow duplicate homeowners" do
+    log_in_as(@user)
+    patch project_path(@project), params: { project: { homeowner_projects_attributes: { "0" => {volunteer_id: @volunteer_1.id}, "1" => {volunteer_id: @volunteer_1.id}} } }
+    @project.reload
+    assert_equal 0, @project.homeowners.count
+    patch project_path(@project), params: { project: { homeowner_projects_attributes: { "0" => {volunteer_id: @volunteer_1.id}, "1" => {volunteer_id: @volunteer_2.id}} } }
+    @project.reload
+    assert_equal 2, @project.homeowners.count
+  end
 
 end

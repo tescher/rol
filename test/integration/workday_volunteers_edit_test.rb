@@ -24,4 +24,8 @@ class WorkdayVolunteersEditTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test "Homeowner selection if homeowners on project" do
+  end
+
+
 end

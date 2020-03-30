@@ -8,6 +8,7 @@ class WorkdayVolunteerTest < ActiveSupport::TestCase
     @workday.save
     @volunteer = Volunteer.new(first_name: "Bob", last_name: "Smith")
     @volunteer.save
+    @volunteer_2 = volunteers(:one)
     @workday_volunteer = WorkdayVolunteer.new(volunteer: @volunteer, workday: @workday, hours: 1.5)
   end
 
@@ -31,6 +32,13 @@ class WorkdayVolunteerTest < ActiveSupport::TestCase
     @workday_volunteer.workday = @workday
     @workday_volunteer.hours = -1
     assert_not @workday_volunteer.valid?
-
   end
+
+  test "Allow a donated_to field with a volunteer id" do
+    @workday_volunteer.donated_to = nil
+    assert @workday_volunteer.valid?
+    @workday_volunteer.donated_to = @volunteer_2
+    assert @workday_volunteer.valid?
+  end
+
 end
