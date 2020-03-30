@@ -2,7 +2,7 @@
   <td>
     <%= homeowner.first_name + " " + homeowner.last_name %>
   </td>
-  <td><%= f.hidden_field :homeowner_id, value: homeowner.id %>
+  <td><%= f.hidden_field :volunteer_id, value: homeowner.id %>
     <%= f.hidden_field :_destroy %>
     <%= link_to "#", class: "remove_fields" do %>
       <i class="glyphicon glyphicon-remove"></i>

@@ -34,19 +34,33 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.json
   def create
-    standard_create(Project, project_params)
+    @object = Project.new(project_params)
+    if duplicate_homeowners(project_params.to_h, @object)
+      render 'shared/simple_edit'
+    else
+      if @object.save
+        flash[:success] = "Project successfully created"
+        redirect_to projects_url
+      else
+        render 'shared/simple_new'
+      end
+    end
   end
 
   # PATCH/PUT /projects/1
   # PATCH/PUT /projects/1.json
   def update
     @object = Project.find(params[:id])
-    if @object.update_attributes(project_params)
-      flash[:success] = "Project updated"
-      session.delete(:project_id)
-      redirect_to projects_url
-    else
+    if duplicate_homeowners(project_params.to_h, @object)
       render 'shared/simple_edit'
+    else
+      if @object.update_attributes(project_params)
+        flash[:success] = "Project updated"
+        session.delete(:project_id)
+        redirect_to projects_url
+      else
+        render 'shared/simple_edit'
+      end
     end
 
   end
@@ -187,8 +201,25 @@ class ProjectsController < ApplicationController
 
   private
 
+  #See if they are trying to add a duplicate homeowner
+  def duplicate_homeowners(p, object)
+    p = p["homeowner_projects_attributes"]
+    if (p)
+      p = p.reject { |id, homeowner|
+        homeowner[:_destroy] == "1" }
+      up = p.uniq { |homeowner|
+        homeowner[1][:volunteer_id]
+      }
+      if (p.count != up.count)
+        object.errors[:homeowner_search] << "Homeowner should only be entered once"
+        return true
+      end
+    end
+    return false
+  end
+
   # Never trust parameters from the scary internet, only allow the white list through.
   def project_params
-    params.require(:project).permit(:name, :description, :inactive, homeowner_projects_attributes: [ :homeowner_id, :project_id, :_destroy ] )
+    params.require(:project).permit(:name, :description, :inactive, homeowner_projects_attributes: [ :id, :volunteer_id, :project_id, :_destroy ] )
   end
 end

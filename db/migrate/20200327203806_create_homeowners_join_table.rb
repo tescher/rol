@@ -1,8 +1,11 @@
 class CreateHomeownersJoinTable < ActiveRecord::Migration[5.2]
   def change
-    create_join_table :projects, :volunteers, table_name: :homeowner_projects
+    create_table :homeowner_projects do |t|
+      t.integer :project_id
+      t.integer :volunteer_id
+      t.timestamps null: false
+    end
 
-    add_index :homeowner_projects, [:project_id, :volunteer_id], :unique => true
     add_index :homeowner_projects, :project_id
     add_index :homeowner_projects, :volunteer_id
   end

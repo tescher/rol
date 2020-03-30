@@ -16,21 +16,21 @@ ActiveRecord::Schema.define(version: 2020_03_27_203806) do
   enable_extension "fuzzystrmatch"
   enable_extension "plpgsql"
 
-  create_table "contact_methods", id: :serial, force: :cascade do |t|
+  create_table "contact_methods", force: :cascade do |t|
     t.string "name"
     t.boolean "inactive"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "contact_types", id: :serial, force: :cascade do |t|
+  create_table "contact_types", force: :cascade do |t|
     t.string "name"
     t.boolean "inactive", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "contacts", id: :serial, force: :cascade do |t|
+  create_table "contacts", force: :cascade do |t|
     t.datetime "date_time"
     t.integer "contact_method_id"
     t.integer "volunteer_id"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2020_03_27_203806) do
     t.index ["volunteer_id"], name: "index_contacts_on_volunteer_id"
   end
 
-  create_table "donation_types", id: :serial, force: :cascade do |t|
+  create_table "donation_types", force: :cascade do |t|
     t.string "name"
     t.boolean "non_monetary", default: false, null: false
     t.datetime "created_at", null: false
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2020_03_27_203806) do
     t.boolean "inactive", default: false, null: false
   end
 
-  create_table "donations", id: :serial, force: :cascade do |t|
+  create_table "donations", force: :cascade do |t|
     t.date "date_received"
     t.decimal "value"
     t.string "ref_no"
@@ -73,21 +73,22 @@ ActiveRecord::Schema.define(version: 2020_03_27_203806) do
     t.index ["volunteer_id"], name: "index_donations_on_volunteer_id"
   end
 
-  create_table "homeowner_projects", id: false, force: :cascade do |t|
-    t.bigint "project_id", null: false
-    t.bigint "volunteer_id", null: false
-    t.index ["project_id", "volunteer_id"], name: "index_homeowner_projects_on_project_id_and_volunteer_id", unique: true
+  create_table "homeowner_projects", force: :cascade do |t|
+    t.integer "project_id"
+    t.integer "volunteer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_homeowner_projects_on_project_id"
     t.index ["volunteer_id"], name: "index_homeowner_projects_on_volunteer_id"
   end
 
-  create_table "interest_categories", id: :serial, force: :cascade do |t|
+  create_table "interest_categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "interests", id: :serial, force: :cascade do |t|
+  create_table "interests", force: :cascade do |t|
     t.string "name"
     t.integer "interest_category_id"
     t.boolean "highlight"
@@ -98,14 +99,14 @@ ActiveRecord::Schema.define(version: 2020_03_27_203806) do
     t.index ["interest_category_id"], name: "index_interests_on_interest_category_id"
   end
 
-  create_table "organization_types", id: :serial, force: :cascade do |t|
+  create_table "organization_types", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "inactive", default: false, null: false
   end
 
-  create_table "organizations", id: :serial, force: :cascade do |t|
+  create_table "organizations", force: :cascade do |t|
     t.string "name"
     t.integer "organization_type_id"
     t.string "address"
@@ -123,7 +124,7 @@ ActiveRecord::Schema.define(version: 2020_03_27_203806) do
     t.index ["organization_type_id"], name: "index_organizations_on_organization_type_id"
   end
 
-  create_table "pending_volunteer_interests", id: :serial, force: :cascade do |t|
+  create_table "pending_volunteer_interests", force: :cascade do |t|
     t.integer "interest_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -131,7 +132,7 @@ ActiveRecord::Schema.define(version: 2020_03_27_203806) do
     t.index ["interest_id"], name: "index_pending_volunteer_interests_on_interest_id"
   end
 
-  create_table "pending_volunteers", id: :serial, force: :cascade do |t|
+  create_table "pending_volunteers", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "middle_name"
@@ -154,7 +155,7 @@ ActiveRecord::Schema.define(version: 2020_03_27_203806) do
     t.index ["volunteer_id"], name: "index_pending_volunteers_on_volunteer_id"
   end
 
-  create_table "projects", id: :serial, force: :cascade do |t|
+  create_table "projects", force: :cascade do |t|
     t.string "name"
     t.boolean "inactive", default: false, null: false
     t.datetime "created_at", null: false
@@ -165,7 +166,7 @@ ActiveRecord::Schema.define(version: 2020_03_27_203806) do
     t.index ["old_id"], name: "index_projects_on_old_id"
   end
 
-  create_table "settings", id: :serial, force: :cascade do |t|
+  create_table "settings", force: :cascade do |t|
     t.string "name"
     t.string "site_title"
     t.string "org_title"
@@ -195,7 +196,7 @@ ActiveRecord::Schema.define(version: 2020_03_27_203806) do
     t.string "site_url"
   end
 
-  create_table "users", id: :serial, force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.datetime "created_at", null: false
@@ -210,14 +211,14 @@ ActiveRecord::Schema.define(version: 2020_03_27_203806) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  create_table "volunteer_categories", id: :serial, force: :cascade do |t|
+  create_table "volunteer_categories", force: :cascade do |t|
     t.string "name"
     t.boolean "inactive"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "volunteer_category_volunteers", id: :serial, force: :cascade do |t|
+  create_table "volunteer_category_volunteers", force: :cascade do |t|
     t.integer "volunteer_id"
     t.integer "volunteer_category_id"
     t.datetime "created_at", null: false
@@ -226,7 +227,7 @@ ActiveRecord::Schema.define(version: 2020_03_27_203806) do
     t.index ["volunteer_id"], name: "index_volunteer_category_volunteers_on_volunteer_id"
   end
 
-  create_table "volunteer_interests", id: :serial, force: :cascade do |t|
+  create_table "volunteer_interests", force: :cascade do |t|
     t.integer "volunteer_id"
     t.integer "interest_id"
     t.datetime "created_at", null: false
@@ -235,7 +236,7 @@ ActiveRecord::Schema.define(version: 2020_03_27_203806) do
     t.index ["volunteer_id"], name: "index_volunteer_interests_on_volunteer_id"
   end
 
-  create_table "volunteers", id: :serial, force: :cascade do |t|
+  create_table "volunteers", force: :cascade do |t|
     t.string "first_name"
     t.string "middle_name"
     t.string "last_name"
@@ -279,7 +280,7 @@ ActiveRecord::Schema.define(version: 2020_03_27_203806) do
     t.index ["old_id"], name: "index_volunteers_on_old_id"
   end
 
-  create_table "waiver_texts", id: :serial, force: :cascade do |t|
+  create_table "waiver_texts", force: :cascade do |t|
     t.string "filename"
     t.binary "data"
     t.integer "waiver_type"
@@ -287,7 +288,7 @@ ActiveRecord::Schema.define(version: 2020_03_27_203806) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "waivers", id: :serial, force: :cascade do |t|
+  create_table "waivers", force: :cascade do |t|
     t.integer "volunteer_id"
     t.integer "guardian_id"
     t.boolean "adult"
@@ -303,7 +304,7 @@ ActiveRecord::Schema.define(version: 2020_03_27_203806) do
     t.index ["deleted_at"], name: "index_waivers_on_deleted_at"
   end
 
-  create_table "workday_organizations", id: :serial, force: :cascade do |t|
+  create_table "workday_organizations", force: :cascade do |t|
     t.integer "organization_id"
     t.integer "workday_id"
     t.integer "num_volunteers"
@@ -317,7 +318,7 @@ ActiveRecord::Schema.define(version: 2020_03_27_203806) do
     t.index ["workday_id"], name: "index_workday_organizations_on_workday_id"
   end
 
-  create_table "workday_volunteers", id: :serial, force: :cascade do |t|
+  create_table "workday_volunteers", force: :cascade do |t|
     t.integer "volunteer_id"
     t.integer "workday_id"
     t.time "start_time"
@@ -332,7 +333,7 @@ ActiveRecord::Schema.define(version: 2020_03_27_203806) do
     t.index ["workday_id"], name: "index_workday_volunteers_on_workday_id"
   end
 
-  create_table "workdays", id: :serial, force: :cascade do |t|
+  create_table "workdays", force: :cascade do |t|
     t.integer "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
