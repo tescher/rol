@@ -1,6 +1,7 @@
 class WorkdayVolunteer < ApplicationRecord
   belongs_to :workday
   belongs_to :volunteer, -> { unscope(where: :needs_review) }
+  belongs_to :homeowner_donated_to, class_name: "Volunteer", foreign_key: :donated_to_id
 
   validates :workday_id, presence: true
   validates :volunteer_id, presence: true

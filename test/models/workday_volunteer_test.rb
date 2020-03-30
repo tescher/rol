@@ -16,7 +16,8 @@ class WorkdayVolunteerTest < ActiveSupport::TestCase
     @workday_volunteer.destroy
     @workday.destroy
     @volunteer.really_destroy!
-    @project.destroy
+    @project.homeowner_projects.destroy_all
+    @project.destroy!
   end
 
   test "should be valid" do
@@ -34,11 +35,14 @@ class WorkdayVolunteerTest < ActiveSupport::TestCase
     assert_not @workday_volunteer.valid?
   end
 
-  test "Allow a donated_to field with a volunteer id" do
-    @workday_volunteer.donated_to = nil
+  test "Allow a donated_to field with a homeowner/volunteer id" do
+    @workday_volunteer.homeowner_donated_to = nil
     assert @workday_volunteer.valid?
-    @workday_volunteer.donated_to = @volunteer_2
+    @project.homeowners << @volunteer_2
+    @workday_volunteer.homeowner_donated_to = @project.homeowners.first
     assert @workday_volunteer.valid?
+    assert_equal @volunteer_2.id, @workday_volunteer.donated_to_id
+    assert_equal @volunteer_2.id, @workday_volunteer.workday.project.homeowners.first.id
   end
 
 end

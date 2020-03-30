@@ -3,6 +3,6 @@
 one:
   name: "Admin User"
   email: admin@example.com
-  password_digest: <%= test_password_digest %>
+  password_digest: <%= password_digest('password') %>
   admin: true
 
