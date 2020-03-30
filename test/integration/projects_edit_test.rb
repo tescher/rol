@@ -90,27 +90,16 @@ class ProjectsEditTest < ActionDispatch::IntegrationTest
 
   end
 
-  test "add homeowner to project, don't allow duplicates, check removal" do
+  test "add homeowner to project" do
     log_in_as(@user)
-    patch project_path(@project), params: { project: { homeowner_ids: [ @volunteer_1.id ] } }
+    patch project_path(@project), params: { project: { homeowner_projects_attributes: { "0" => {volunteer_id: @volunteer_1.id}} } }
     @project.reload
     assert_equal 1, @project.homeowners.count
-    patch project_path(@project), params: { project: { homeowner_ids: [ @volunteer_1.id, @volunteer_2.id ] } }
-    @project.reload
-    assert_equal 2, @project.homeowners.count
-    patch project_path(@project), params: { project: { homeowner_ids: [] } }
-    @project.reload
-    assert_equal 0, @project.homeowners.count
-    assert_raises (ActiveRecord::RecordNotUnique) { patch project_path(@project), params: { project: { homeowner_ids: [ @volunteer_1.id, @volunteer_1.id ] } } }
-    @project.reload
-    assert_equal 0, @project.homeowners.count
-
-
-  end
+   end
 
   test "no delete of project or homeowner if homeowner attached" do
     log_in_as(@user)
-    patch project_path(@project), params: { project: { homeowner_ids: [ @volunteer_1.id ] } }
+    patch project_path(@project), params: { project: { homeowner_projects_attributes: { "0" => {volunteer_id: @volunteer_1.id}} } }
     @project.reload
     assert_equal 1, @project.homeowners.count
     assert_no_difference 'Project.count' do
