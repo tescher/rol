@@ -13,6 +13,11 @@
       <%= f.text_field :end_time,  value: f.object.end_time.nil? ? "" : f.object.end_time.strftime("%l:%M %p"), class: "workdayHoursCalc" %>
     </div>
   <td><%= f.text_field :hours %></td>
+  <% if project.homeowners.size > 0 %>
+    <td>
+      <%= f.select :donated_to_id, options_from_collection_for_select(project.homeowners, :id, :name, f.object.donated_to_id), {:include_blank => "None"}, { :multiple => false, class: "form-control"}  %>
+    </td>
+  <% end %>
   <td><%= f.text_area :notes %></td>
   <td><%= f.hidden_field :volunteer_id, value: volunteer.id %>
     <%= f.hidden_field :_destroy %>

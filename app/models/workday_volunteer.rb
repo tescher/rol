@@ -7,6 +7,7 @@ class WorkdayVolunteer < ApplicationRecord
   validates :volunteer_id, presence: true
   validate :calc_and_validate_hours
   validates :hours, :numericality => { :greater_than_or_equal_to => 0 }, :allow_nil => true
+  validate :no_donate_to_self
 
   def is_end_time_valid
     return true if (self.end_time.blank? || self.start_time.blank?)
@@ -14,6 +15,11 @@ class WorkdayVolunteer < ApplicationRecord
   end
 
   private
+
+  def no_donate_to_self
+    errors.add(:homeowner_donated_to, "Homeowner donated to can't be the same as the volunteer") if volunteer_id == donated_to_id
+  end
+
   def calc_and_validate_hours
     if !self.start_time.blank? || !self.end_time.blank?
       begin

@@ -381,7 +381,7 @@ class WorkdaysController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def workday_params
-    modified_params = params.require(:workday).permit(:name, :project_id, :workdate, :notes, workday_volunteers_attributes: [:id, :volunteer_id, :workday_id, :start_time, :start_time_string, :end_time, :end_time_string, :hours, :notes, :_destroy], workday_organizations_attributes: [:id, :organization_id, :workday_id, :start_time, :start_time_string, :end_time, :end_time_string, :hours, :num_volunteers, :notes, :_destroy])
+    modified_params = params.require(:workday).permit(:name, :project_id, :workdate, :notes, workday_volunteers_attributes: [:id, :volunteer_id, :workday_id, :start_time, :start_time_string, :end_time, :end_time_string, :hours, :donated_to_id, :notes, :_destroy], workday_organizations_attributes: [:id, :organization_id, :workday_id, :start_time, :start_time_string, :end_time, :end_time_string, :hours, :num_volunteers, :notes, :_destroy])
     if modified_params[:workdate]
       modified_params[:workdate] = Date.strptime(modified_params[:workdate], "%m/%d/%Y").to_s
     end

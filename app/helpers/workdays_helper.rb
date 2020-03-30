@@ -17,7 +17,7 @@ module WorkdaysHelper
     association = :workday_volunteers
     form_builder = form_for(workday) do |builder|
       output = builder.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
-        render("workdays/workday_volunteer_fields", :f => builder, :volunteer => volunteer, :association => association)
+        render("workdays/workday_volunteer_fields", :f => builder, :project => workday.project, :volunteer => volunteer, :association => association)
       end
     end
     output
