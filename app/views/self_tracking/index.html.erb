@@ -7,9 +7,13 @@
   <table class="table no-row-border header-border table-striped">
     <thead>
       <tr>
-		  <th class="col-md-3">Name</th>
+		  <th class="col-md-2">Name</th>
         <th class="col-md-2">Check-in Time <span class="glyphicon glyphicon-chevron-up"></span></th>
         <th class="col-md-2">Waiver</th>
+        <% if @workday.project.homeowners.size > 0 %>
+          <th class="col-md-2">Donated To</th>
+        <% end %>
+
         <th class="col-md-2">Check out</th>
       </tr>
     </thead>
@@ -42,6 +46,10 @@
               <span class="text-muted"><%= last_waiver_date(volunteer.id).strftime("%m/%d/%Y") %></span>
             <% end %>
           </td>
+          <% if @workday.project.homeowners.size > 0 %>
+            <td><%= workday_volunteer.donated_to_id.blank? ? "" :  workday_volunteer.homeowner_donated_to.name %></td>
+          <% end %>
+
           <td>
             <% if has_message %>
                 <span class="text-danger">

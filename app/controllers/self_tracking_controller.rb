@@ -117,7 +117,7 @@ class SelfTrackingController < ApplicationController
     # Handle forms
     # Handle check-in time form
     if params[:check_in_form].present?
-      @check_in_form = CheckInForm.new(params.require(:check_in_form).permit(:check_in_time).merge(volunteer: @volunteer, workday: @workday))
+      @check_in_form = CheckInForm.new(params.require(:check_in_form).permit(:check_in_time, :homeowner_donated_to).merge(volunteer: @volunteer, workday: @workday))
       if @check_in_form.valid?
         start_time = Time.strptime(@check_in_form.check_in_time, "%I:%M %P")
         start_time_formatted = start_time.strftime("%H:%M:%S")
@@ -135,7 +135,7 @@ class SelfTrackingController < ApplicationController
           flash[:success] = "#{@volunteer.name} successfully checked in."
         end
 
-        @workday.workday_volunteers.create(:volunteer => @volunteer, :start_time => start_time_formatted, :end_time => end_time)
+         @workday.workday_volunteers.create(:volunteer => @volunteer, :start_time => start_time_formatted, :end_time => end_time, :donated_to_id => @check_in_form.homeowner_donated_to)
         render plain: "success"
         return
       else
@@ -291,7 +291,7 @@ end
 # will cause an error if the time is invalid.
 class CheckInForm
   include ActiveModel::Model
-  attr_accessor :check_in_time, :volunteer, :workday
+  attr_accessor :check_in_time, :volunteer, :workday, :homeowner_donated_to
   validates_presence_of :check_in_time
   validate :overlapping_check_in, :if => lambda { @check_in_time.present? }
 

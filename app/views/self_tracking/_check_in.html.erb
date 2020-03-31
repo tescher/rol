@@ -1,49 +1,58 @@
 <%= form_for(@check_in_form, url: self_tracking_check_in_path(@volunteer), method: :get,
-remote: true, html: {class: "form-horizontal", "data-check-in-form" => "true"}) do |form| %>
-<div class="modal-dialog" role="document">
-  <div class="modal-content">
-    <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <h4 class="modal-title">Complete Check-in</h4>
+             remote: true, html: {class: "form-horizontal", "data-check-in-form" => "true"}) do |form| %>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Complete Check-in</h4>
+      </div>
+      <div class="modal-body">
+        <p>
+          <%= @object = @check_in_form
+              render 'shared/error_messages' %>
+          <div class="form-group">
+            <label class="control-label col-md-4">Volunteer</label>
+            <div class="col-md-8">
+        <p class="form-control-static">
+          <%= @volunteer.first_name + " " + @volunteer.last_name %>
+        </p>
+      </div>
     </div>
-    <div class="modal-body">
-      <p>
-        <%= @object = @check_in_form
-        render 'shared/error_messages' %>
-        <div class="form-group">
-          <label class="control-label col-md-4">Volunteer</label>
-          <div class="col-md-8">
-            <p class="form-control-static">
-              <%= @volunteer.first_name + " " + @volunteer.last_name %>
-            </p>
-          </div>
+    <div class="form-group">
+      <label class="control-label col-md-4">Waiver</label>
+      <div class="col-md-8">
+        <p class="form-control-static">
+          <% if last_waiver_date(@volunteer.id).blank? %>
+            <span class="text-danger"><em><i class="glyphicon glyphicon-exclamation-sign"></i> Missing</em></span>
+          <% else %>
+            Signed <%= last_waiver_date(@volunteer.id).strftime("%m/%d/%Y") %>
+          <% end %>
+        </p>
+      </div>
+    </div>
+    <% if @check_in_form.workday.project.homeowners.size > 0 %>
+      <div class="form-group">
+        <label class="control-label col-md-4">Donating Hours To</label>
+        <div class="col-md-8">
+          <%= form.select :homeowner_donated_to, options_from_collection_for_select(@check_in_form.workday.project.homeowners, :id, :name, form.object.homeowner_donated_to), {:include_blank => "None"}, { :multiple => false, class: "form-control"}  %>
         </div>
-        <div class="form-group">
-          <label class="control-label col-md-4">Waiver</label>
-          <div class="col-md-8">
-            <p class="form-control-static">
-              <% if last_waiver_date(@volunteer.id).blank? %>
-                <span class="text-danger"><em><i class="glyphicon glyphicon-exclamation-sign"></i> Missing</em></span>
-              <% else %>
-                Signed <%= last_waiver_date(@volunteer.id).strftime("%m/%d/%Y") %>
-              <% end %>
-            </p>
-          </div>
-        </div>
-        <div class="form-group">
-          <%= label_tag :check_in_time, nil, class: "col-md-4 control-label"  %>
-          <div class="col-md-8">
-            <%= form.text_field :check_in_time, class: 'form-control', autofocus: true %>
-          </div>
-        </div>
+      </div>
+    <% end %>
 
-        <%= hidden_field_tag :dialog, "true" %>
-      </p>
+    <div class="form-group">
+      <%= label_tag :check_in_time, nil, class: "col-md-4 control-label"  %>
+      <div class="col-md-8">
+        <%= form.text_field :check_in_time, class: 'form-control', autofocus: true %>
+      </div>
     </div>
-    <div class="modal-footer">
-      <button type="submit" class="btn btn-primary">Check-in</button>
-      <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-    </div>
+
+    <%= hidden_field_tag :dialog, "true" %>
+    </p>
   </div>
-</div>
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-primary">Check-in</button>
+    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+  </div>
+  </div>
+  </div>
 <% end %>
