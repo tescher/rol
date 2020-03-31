@@ -38,11 +38,15 @@ class ProjectsController < ApplicationController
     if duplicate_homeowners(project_params.to_h, @object)
       render 'shared/simple_edit'
     else
-      if @object.save
-        flash[:success] = "Project successfully created"
-        redirect_to projects_url
+      if homeowner_removal(project_params.to_h, @object)
+        render 'shared/simple_edit'
       else
-        render 'shared/simple_new'
+        if @object.save
+          flash[:success] = "Project successfully created"
+          redirect_to projects_url
+        else
+          render 'shared/simple_new'
+        end
       end
     end
   end
@@ -54,15 +58,18 @@ class ProjectsController < ApplicationController
     if duplicate_homeowners(project_params.to_h, @object)
       render 'shared/simple_edit'
     else
-      if @object.update_attributes(project_params)
-        flash[:success] = "Project updated"
-        session.delete(:project_id)
-        redirect_to projects_url
-      else
+      if homeowner_removal(project_params.to_h, @object)
         render 'shared/simple_edit'
+      else
+        if @object.update_attributes(project_params)
+          flash[:success] = "Project updated"
+          session.delete(:project_id)
+          redirect_to projects_url
+        else
+          render 'shared/simple_edit'
+        end
       end
     end
-
   end
 
   # DELETE /projects/1
@@ -114,11 +121,11 @@ class ProjectsController < ApplicationController
                 @project = Project.new
 
                 record_data.each do |key, value|
-                  if !value.blank?
+                  unless value.blank?
                     @project[key] = (key == "inactive") ? ((value == "1") ? true : false) : value
                   end
                 end
-                if !@project.valid?
+                unless @project.valid?
                   @messages << "Validation errors. #{message_data}"
                   @project.errors.full_messages.each do |message|
                     @messages << " -- #{message}"
@@ -127,9 +134,9 @@ class ProjectsController < ApplicationController
                 end
               end
             end
-            if !fatal
+            unless fatal
               @records_validated += 1
-              if !validate_only
+              unless validate_only
                 begin
                   @project.save
                   @records_imported += 1
@@ -204,19 +211,40 @@ class ProjectsController < ApplicationController
   #See if they are trying to add a duplicate homeowner
   def duplicate_homeowners(p, object)
     p = p["homeowner_projects_attributes"]
-    if (p)
+    if p
       p = p.reject { |id, homeowner|
         homeowner[:_destroy] == "1" }
       up = p.uniq { |homeowner|
         homeowner[1][:volunteer_id]
       }
-      if (p.count != up.count)
+      if p.count != up.count
         object.errors[:homeowner_search] << "Homeowner should only be entered once"
         return true
       end
     end
-    return false
+    false
   end
+
+  #See if they are trying to remove homeowners with donated workdays
+  def homeowner_removal(p, object)
+    p = p["homeowner_projects_attributes"]
+    if p
+      p = p.each { |id, homeowner|
+        if homeowner[:_destroy] == "1"
+          object.workdays.each { |wd|
+            wd.workday_volunteers.each { |wv|
+              if wv.homeowner_donated_to.id == homeowner[:id].to_i
+                object.errors[:homeowner_search] << "Can't remove homeowner, already donated to on a workday"
+                return true
+              end
+            }
+          }
+        end
+      }
+      false
+    end
+  end
+
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def project_params
