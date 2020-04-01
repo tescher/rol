@@ -54,7 +54,7 @@
               <span class="no-overflow"><%= workday_shift.workdate.strftime("%m-%d-%Y") %> - <%= workday_shift.name %></span>
             </div>
             <div class="col-md-2">
-              <%= workday_shift.hours %>
+              <%= workday_shift.hours.round(1) %>
             </div>
           </li>
         <% end  #report_type
@@ -70,7 +70,7 @@
               <span class="no-overflow"><%= workday_shift.workdate.strftime("%m-%d-%Y") %> - <%= workday_shift.name %> (Donated by <%= Volunteer.find(workday_shift.volunteer_id).name %>)</span>
             </div>
             <div class="col-md-2">
-              <%= workday_shift.hours %>
+              <%= workday_shift.hours.round(1) %>
             </div>
           </li>
       <% end #report_type
@@ -87,14 +87,14 @@
             <% end #@summary_only %>
             <% if @objectName == "volunteer" %>
               <div class="col-md-2">
-                <%= project_actual_hours %>
+                <%= project_actual_hours.round(1) %>
               </div>
               <div class="col-md-2">
-                <%= project_donated_hours %>
+                <%= project_donated_hours.round(1) %>
               </div>
             <% end %>
             <div class="col-md-2">
-              <%= project_total_hours %>
+              <%= project_total_hours.round(1) %>
             </div>
           </li>
           <% end #workdays by project %>
@@ -106,14 +106,14 @@
       </div>
       <% if @objectName == "volunteer" %>
         <div class="col-md-2">
-          <%= total_actual_hours %>
+          <%= total_actual_hours.round(1) %>
         </div>
         <div class="col-md-2">
-          <%= total_donated_hours %>
+          <%= total_donated_hours.round(1) %>
         </div>
       <% end %>
       <div class="col-md-2">
-        <%= total_hours %>
+        <%= total_hours.round(1) %>
       </div>
     </li>
   </div>
