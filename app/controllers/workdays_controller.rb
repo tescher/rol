@@ -314,6 +314,7 @@ class WorkdaysController < ApplicationController
   def participant_report
     @objectName = params[:object_name].downcase
     @objectId = params[:object_id]
+    @summary_only = params[:summary_only].to_i
     if params[:dialog] == "true"
       render partial: "dialog_participant_report_form"
     else
@@ -353,8 +354,6 @@ class WorkdaysController < ApplicationController
 
         @workdays = Workday.from("workdays, workday_#{@objectName}s").select("workdays.*, workday_#{@objectName}s.*").where(workday_where_clause).where(object_where_clause).where(date_where_clause).where(project_where_clause).order("workdays.workdate")
         @workdays_by_project = @workdays.group_by(&:project_id).sort_by{|project_id, _extras| Project.find(project_id).name}
-        puts @workdays.inspect
-        @report_type = "detail"
         render "report_participant_report"
       end
     end
