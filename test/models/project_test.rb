@@ -21,7 +21,9 @@ class ProjectTest < ActiveSupport::TestCase
   test "Workday Association" do
     @project1 = projects(:master)
     @workday = workdays(:dependent)
-    assert_raises(ActiveRecord::DeleteRestrictionError) {@project1.destroy}
+    assert_no_difference 'Project.count' do
+      @project1.destroy
+    end
   end
 
 end

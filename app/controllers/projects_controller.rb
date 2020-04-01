@@ -233,7 +233,7 @@ class ProjectsController < ApplicationController
         if homeowner[:_destroy] == "1"
           object.workdays.each { |wd|
             wd.workday_volunteers.each { |wv|
-              if wv.homeowner_donated_to.id == homeowner[:id].to_i
+              if (wv.homeowner_donated_to) && (wv.homeowner_donated_to.id == homeowner[:id].to_i)
                 object.errors[:homeowner_search] << "Can't remove homeowner, already donated to on a workday"
                 return true
               end

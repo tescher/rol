@@ -120,4 +120,18 @@ class ProjectsEditTest < ActionDispatch::IntegrationTest
     assert_equal 2, @project.homeowners.count
   end
 
+  test "No delete of homeowner if donated to on workday" do
+    log_in_as(@user)
+    patch project_path(@project), params: { project: { homeowner_projects_attributes: { "0" => {volunteer_id: @volunteer_1.id}, "1" => {volunteer_id: @volunteer_2.id}} } }
+    @project.reload
+    @workday = workdays(:one)
+    @workday.project = @project
+    @workday.save
+    @workday_volunteer = WorkdayVolunteer.new(workday: @workday, volunteer: @volunteer_1, hours: 5, donated_to_id: @volunteer_2.id )
+    assert_no_difference "HomeownerProject.count" do
+      patch project_path(@project), params: { project: { homeowner_projects_attributes: { "0" => {volunteer_id: @volunteer_2.id, _destroy: 1}} } }
+    end
+  end
+
+
 end
