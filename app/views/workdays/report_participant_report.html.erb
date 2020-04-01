@@ -9,7 +9,7 @@
 <h4><%= @objectName.capitalize + ": " + @object.name %></h4>
 <h5>From: <%= @from_date.empty? ? "Beginning" : @from_date %>  To: <%= @to_date.empty? ? "Today" : @to_date %></h5>
 
-<% if @workdays_by_project.count > 1 %>
+<% if @workdays_by_project.size > 0 %>
 <ul class="listing">
   <div class="row">
     <li class="header">
