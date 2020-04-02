@@ -314,10 +314,10 @@ class WorkdaysController < ApplicationController
   def participant_report
     @objectName = params[:object_name].downcase
     @objectId = params[:object_id]
-    @summary_only = params[:summary_only].to_i
     if params[:dialog] == "true"
       render partial: "dialog_participant_report_form"
     else
+      @summary_only = params[:summary_only].to_i
       @from_date = params[:from_date]
       @to_date = params[:to_date]
       @project_ids = params[:project_ids]
