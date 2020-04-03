@@ -215,7 +215,7 @@ aside {
     line-height: 14px;
   }
 }
-.row.clickable:hover {
+.row.clickable:hover, span.clickable:hover {
   background-color: #DADADA;
   cursor:pointer;
 }

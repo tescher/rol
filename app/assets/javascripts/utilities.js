@@ -343,7 +343,7 @@ function add_fields_wire_up_events(start_node) {
         workday_hours_calc(this);
     });
 
-    $(".row.clickable[href]").click(function() {
+    $(".row.clickable[href], span.clickable[href]").click(function() {
         window.document.location = $(this).attr("href");
     });
 

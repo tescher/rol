@@ -60,11 +60,10 @@
             total_actual_hours += workday_shift.hours
             unless @summary_only == 1 %>
               </li>
-              <div class="row clickable" href="<%=add_participants_workday_path(workday_shift.workday_id) %>">
                 <li>
                   <% if (@objectName == "organization") || (workday_shift.donated_to_id.blank?) %>
                     <div class="col-md-3 col-md-offset-1">
-                      <span class="no-overflow"><%= workday_shift.workdate.strftime("%m-%d-%Y") %> - <%= workday_shift.name %></span>
+                      <span class="no-overflow clickable" href="<%=add_participants_workday_path(workday_shift.workday_id) %>"><%= workday_shift.workdate.strftime("%m-%d-%Y") %> - <%= workday_shift.name %></span>
                     </div>
                     <div class="col-md-2">
                       <%= workday_shift.hours.round(1) %>
@@ -75,7 +74,7 @@
                     </div>
                   <% else %>
                     <div class="col-md-5 col-md-offset-1">
-                      <span class="no-overflow"><%= workday_shift.workdate.strftime("%m-%d-%Y") %> - <%= workday_shift.name %> (Donated to <%= Volunteer.find(workday_shift.donated_to_id).name %>)</span>
+                      <span class="no-overflow clickable" href="<%=add_participants_workday_path(workday_shift.workday_id) %>"><%= workday_shift.workdate.strftime("%m-%d-%Y") %> - <%= workday_shift.name %> (Donated to <%= Volunteer.find(workday_shift.donated_to_id).name %>)</span>
                     </div>
                     <div class="col-md-2">
                     </div>
@@ -87,7 +86,6 @@
                     </div>
                   <% end %>
                 </li>
-              </div>
             <% end  #report_type
           else #if shift for a donator
             project_donated_in_hours += workday_shift.hours
@@ -97,10 +95,9 @@
             total_hours += workday_shift.hours
             unless @summary_only == 1 %>
               </li>
-              <div class="row clickable" href="<%=add_participants_workday_path(workday_shift.workday_id) %>">
                 <li>
                   <div class="col-md-5 col-md-offset-1">
-                    <span class="no-overflow"><%= workday_shift.workdate.strftime("%m-%d-%Y") %> - <%= workday_shift.name %> (Donated by <%= Volunteer.find(workday_shift.volunteer_id).name %>)</span>
+                    <span class="no-overflow clickable" href="<%=add_participants_workday_path(workday_shift.workday_id) %>"><%= workday_shift.workdate.strftime("%m-%d-%Y") %> - <%= workday_shift.name %> (Donated by <%= Volunteer.find(workday_shift.volunteer_id).name %>)</span>
                   </div>
                   <div class="col-md-2">
                     <%= workday_shift.hours.round(1) %>
@@ -111,7 +108,6 @@
                     <%= workday_total_hours.round(1) %>
                   </div>
                 </li>
-              </div>
             <% end #report_type
           end #if shift for this volunteer
                  #else   #if @objectName (Organization)
