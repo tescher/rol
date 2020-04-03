@@ -30,6 +30,7 @@ class OrganizationsEditTest < ActionDispatch::IntegrationTest
     @workday_organization.workday = workdays(:one)
     @workday_organization.organization = @organization
     @workday_organization.hours = 4
+    @workday_organization.num_volunteers = 2
     @workday_organization.save
   end
 
@@ -137,6 +138,19 @@ class OrganizationsEditTest < ActionDispatch::IntegrationTest
     assert_select "a[href='#{edit_volunteer_path(@volunteer2)}']", true, "Should have link for volunteer2"
   end
 
+  test "Make sure workday link appears at the top appropriately" do
+
+    # Workday count and hours are correct
+    log_in_as(@user)
+    get edit_organization_path(@organization)
+    assert_select 'a[id="linkWorkdaySummary"]', true
+
+    # Doesn't appear if no workdays
+    @workday_organization.delete
+    get edit_organization_path(@organization)
+    assert_select 'a[id="linkWorkdaySummary"]', false
+
+  end
 
 
 

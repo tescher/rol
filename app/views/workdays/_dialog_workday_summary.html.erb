@@ -1,28 +1,31 @@
 <div class="container-fluid">
-  <div id="tabs-container">
-    <ul>
-      <% @workday_years.each do |wy| %>
+  <% if @workday_years.size < 1 %>
+    Has not participated in a workday, but has hours donated to them. Click on report below.
+  <%else %>
+    <div id="tabs-container">
+      <ul>
+        <% @workday_years.each do |wy| %>
           <li><a href="#tabs-<%= wy.year.to_s.split(".").first %>"><%= wy.year.to_s.split(".").first %></a></li>
-      <% end %>
-    </ul>
-    <% @workdays_by_year.each do |year, workdays| %>
+        <% end %>
+      </ul>
+      <% @workdays_by_year.each do |year, workdays| %>
         <div id="tabs-<%= year.to_s.split(".").first %>">
           <ul class="listing">
             <% workdays.each do |w|
               workday = Workday.find(w.id) %>
-                <div class="row clickable" href="<%=add_participants_workday_path(workday, project_id: workday.project_id)%>">
-                  <li>
-                    <div class="col-md-4 col-md-offset-1">
-                      <%= workday.workdate.strftime("%m/%d/%Y") %>
-                    </div>
-                    <div class="col-md-5">
-                      <%= Project.find(workday.project_id).name + " - " + workday.name %>
-                    </div>
-                     <div class="col-md-2">
-                      <%= pluralize(w.hours.round(1), "hour") %>
-                    </div>
-                  </li>
-                </div>
+              <div class="row clickable" href="<%=add_participants_workday_path(workday, project_id: workday.project_id)%>">
+                <li>
+                  <div class="col-md-4 col-md-offset-1">
+                    <%= workday.workdate.strftime("%m/%d/%Y") %>
+                  </div>
+                  <div class="col-md-5">
+                    <%= Project.find(workday.project_id).name + " - " + workday.name %>
+                  </div>
+                  <div class="col-md-2">
+                    <%= pluralize(w.hours.round(1), "hour") %>
+                  </div>
+                </li>
+              </div>
             <% end %>
             <li>
               <div class="col-md-4 col-md-offset-1">
@@ -31,7 +34,8 @@
             </li>
           </ul>
         </div>
-    <% end %>
+      <% end %>
 
-  </div>
+    </div>
+  <% end %>
 </div>

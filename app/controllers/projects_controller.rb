@@ -188,6 +188,12 @@ class ProjectsController < ApplicationController
                 wd.skip_dup_check = true
                 wd.save!
               end
+              HomeownerProject.where(project_id: mid).each do |ho|
+                unless HomeownerProject.where(project_id: pid, volunteer_id: ho.volunteer_id).exists?
+                  HomeownerProject.create(project_id: pid, volunteer_id: ho.volunteer_id)
+                end
+                ho.destroy
+              end
               if params[:mark_inactive] == "1"
                 project = Project.find(mid)
                 project.inactive = true

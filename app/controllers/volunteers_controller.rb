@@ -218,6 +218,7 @@ class VolunteersController < ApplicationController
   def new
     @volunteer = Volunteer.new
     @num_workdays = []
+    @donated_workdays = []
     if params[:dialog] == "true"
       @alias = params[:alias].blank? ? "" : params[:alias]
       render partial: "dialog_form"
@@ -227,6 +228,7 @@ class VolunteersController < ApplicationController
       if params[:pending_volunteer_id]
         @pending_volunteer = Volunteer.pending.find(params[:pending_volunteer_id])
         @num_workdays = WorkdayVolunteer.where(volunteer_id: params[:pending_volunteer_id])
+        @donated_workdays = WorkdayVolunteer.where(homeowner_donated_to: @volunteer.id)
         @volunteer.pending_volunteer_id = @pending_volunteer.id
         ["first_name", "last_name", "address", "city", "state", "zip", "phone", "email", "occupation", "emerg_contact_phone", "emerg_contact_name", "notes", "limitations", "medical_conditions", "agree_to_background_check", "birthdate", "adult", "interests"].each do |column|
           if column == "phone"
@@ -299,6 +301,7 @@ class VolunteersController < ApplicationController
         render partial: "dialog_form"
       else
         @num_workdays = []
+        @donated_workdays = []
         @allow_stay = true
         render :new
       end
@@ -791,6 +794,7 @@ class VolunteersController < ApplicationController
   def edit_setup
     @volunteer = @volunteer.nil? ? Volunteer.find(params[:id]) : @volunteer
     @num_workdays = WorkdayVolunteer.where(volunteer_id: @volunteer.id)
+    @donated_workdays = WorkdayVolunteer.where(homeowner_donated_to: @volunteer.id)
     @employer = @volunteer.employer_id.blank? ? nil : Organization.find(@volunteer.employer_id)
     @church = @volunteer.church_id.blank? ? nil : Organization.find(@volunteer.church_id)
     @allow_stay = true

@@ -236,6 +236,25 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     assert_equal @volunteer.email, email
   end
 
+  test "Make sure workday link appears at the top appropriately" do
+    # Workday count and hours are correct
+    log_in_as(@user)
+    get edit_volunteer_path(@volunteer)
+    assert_select 'a[id="linkWorkdaySummary"]', { count: 1, text: /1 workday for 4.0 hours/}
+
+    # Doesn't appear if no workdays
+    WorkdayVolunteer.find_by_volunteer_id(@volunteer.id).destroy
+    get edit_volunteer_path(@volunteer)
+    assert_select 'a[id="linkWorkdaySummary"]', false
+
+    # Show link if hours were donated to this volunteer
+    @workday_volunteer = WorkdayVolunteer.create(workday: workdays(:one), volunteer: @volunteer2, hours: 4, homeowner_donated_to: @volunteer)
+    get edit_volunteer_path(@volunteer)
+    assert_select 'a[id="linkWorkdaySummary"]', { count: 1, text: "hours donated to them"}
+
+  end
+
+
   test "Find family donation with funky address" do
     funky_address = "D'Nure St & 5th @ Vine"
     funky_city = "L'odi"
