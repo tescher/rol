@@ -27,7 +27,6 @@
 
                <table class="table no-row-border">
                  <tbody class="add_homeowner_fields">
-                 <% puts "Homeowners #{@object.homeowner_projects.count}" %>
                 <%= f.fields_for :homeowner_projects do |builder| %>
                   <%= render "homeowner_project_fields", :f => builder, :homeowner => Volunteer.find(builder.object.volunteer_id) %>
                 <% end %>

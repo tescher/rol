@@ -88,7 +88,7 @@ class Volunteer < ApplicationRecord
       resolve_fields[f] = index
       index += 1
     end
-    puts resolve_fields
+    # puts resolve_fields
     resolve_fields
   end
 

@@ -354,8 +354,6 @@ class WorkdaysController < ApplicationController
 
         @workdays = Workday.from("workdays, workday_#{@objectName}s").select("workdays.*, workday_#{@objectName}s.*").where(workday_where_clause).where(object_where_clause).where(date_where_clause).where(project_where_clause).order("workdays.workdate")
         @workdays_by_project = @workdays.group_by(&:project_id).sort_by{|project_id, _extras| Project.find(project_id).name}
-        puts @workdays_by_project.inspect
-        puts @workdays_by_project.size
         render "report_participant_report"
       end
     end

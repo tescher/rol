@@ -415,6 +415,12 @@ class VolunteersController < ApplicationController
       redirect_to root_path
     else
       @source_volunteer = Volunteer.find(params[:source_id])
+      if WorkdayVolunteer.where("(volunteer_id = #{@object.id} AND donated_to_id = #{@source_volunteer.id}) OR (volunteer_id = #{@source_volunteer.id} AND donated_to_id = #{@object.id})").size > 0
+        @object.errors.add(:id, "Source and target donate to each other on a workday. Cannot merge.")
+        @object.reload
+        render :merge
+        return
+      end
       volunteer_params = {}
       if params[:source_use_fields] then
         params[:source_use_fields].each do |findex|
@@ -498,7 +504,7 @@ class VolunteersController < ApplicationController
           sw.destroy!
         end
         WorkdayVolunteer.where("donated_to_id = #{@source_volunteer.id}").each do |sw|
-          puts sw.inspect
+          # puts sw.inspect
           workday = sw.dup
           workday.donated_to_id = @object.id
           workday.save!
@@ -534,7 +540,7 @@ class VolunteersController < ApplicationController
           # swv.really_destroy!
         end
         HomeownerProject.where("volunteer_id = #{@source_volunteer.id}").each do |shp|
-          puts shp.inspect
+          # puts shp.inspect
           unless HomeownerProject.where(volunteer_id: @object.id, project_id: shp.project_id).size > 0
             HomeownerProject.create(volunteer_id: @object.id, project_id: shp.project_id)
           end
