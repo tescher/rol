@@ -196,7 +196,7 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     get edit_volunteer_path(@volunteer)
     assert_template 'volunteers/edit'
     patch volunteer_path(@volunteer), params: { volunteer: { first_name:  "",
-                                                   email: "foo@invalid" } }
+                                                             email: "foo@invalid" } }
     assert_template 'volunteers/edit'
   end
 
@@ -208,8 +208,8 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     last_name = "Bar"
     email = "foo@bar.com"
     patch volunteer_path(@volunteer), params: { volunteer: { first_name:  first_name,
-                                                   last_name: last_name,
-                                                   email: email } }
+                                                             last_name: last_name,
+                                                             email: email } }
     # assert_not flash.empty?
     assert_redirected_to search_volunteers_url
     @volunteer.reload
@@ -226,8 +226,8 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     last_name = "Bar"
     email = "foo@bar.com"
     patch volunteer_path(@volunteer), params: { volunteer: { first_name:  first_name,
-                                                   last_name: last_name,
-                                                   email: email } }
+                                                             last_name: last_name,
+                                                             email: email } }
     assert_not flash.empty?
     assert_redirected_to search_volunteers_url
     @volunteer.reload
@@ -639,6 +639,69 @@ class VolunteersEditTest < ActionDispatch::IntegrationTest
     assert_equal(@volunteer.limitations, limitations_dup, "Limitations (#{limitations_dup}) should be equal")
     assert_equal(@volunteer.medical_conditions, medical_conditions_dup, "Medical conditions (#{medical_conditions_dup}) should be equal")
   end
+
+  test "Merge non-homeowner volunteer into homeowner, homeowner stays on project" do
+    log_in_as(@admin)
+    use_notes = "append" # Need at least one action so merge happens
+    use_limitations = "ignore"
+    use_medical_conditions = "ignore"
+    use_interests = "ignore"
+    use_categories = "ignore"
+
+    project1 = Project.create(name: "Project 1", homeowners: [ @volunteer ])
+    post merge_volunteer_path(@volunteer), params: { source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_limitations: use_limitations, use_medical_conditions: use_medical_conditions, use_interests: use_interests, use_categories: use_categories }
+    assert_equal 1, HomeownerProject.all.size
+    assert_equal @volunteer.id, HomeownerProject.first.volunteer_id
+    assert_equal project1.id, HomeownerProject.first.project_id
+  end
+
+  test "Merge homeowner into non-homeowner, non-homeowner ends up as homeowner" do
+    log_in_as(@admin)
+    use_notes = "append" # Need at least one action so merge happens
+    use_limitations = "ignore"
+    use_medical_conditions = "ignore"
+    use_interests = "ignore"
+    use_categories = "ignore"
+
+    project1 = Project.create(name: "Project 1", homeowners: [ @duplicate_volunteer ])
+    post merge_volunteer_path(@volunteer), params: { source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_limitations: use_limitations, use_medical_conditions: use_medical_conditions, use_interests: use_interests, use_categories: use_categories }
+    assert_equal 1, HomeownerProject.all.size
+    assert_equal @volunteer.id, HomeownerProject.first.volunteer_id
+    assert_equal project1.id, HomeownerProject.first.project_id
+
+  end
+
+  test "Both homeowners on same project merged into one" do
+    log_in_as(@admin)
+    use_notes = "append" # Need at least one action so merge happens
+    use_limitations = "ignore"
+    use_medical_conditions = "ignore"
+    use_interests = "ignore"
+    use_categories = "ignore"
+
+    project1 = Project.create(name: "Project 1", homeowners: [ @volunteer, @duplicate_volunteer, @volunteer2 ] )
+    assert_equal 3, HomeownerProject.all.size
+    post merge_volunteer_path(@volunteer), params: { source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_limitations: use_limitations, use_medical_conditions: use_medical_conditions, use_interests: use_interests, use_categories: use_categories }
+    assert_equal 2, HomeownerProject.all.size
+    assert_equal 1, HomeownerProject.where(volunteer_id: @volunteer.id).size
+    assert_equal 1, HomeownerProject.where(volunteer_id: @volunteer2.id).size
+
+  end
+
+  test "Workdays with donated_to merged correctly" do
+    log_in_as(@admin)
+    use_notes = "append" # Need at least one action so merge happens
+    use_limitations = "ignore"
+    use_medical_conditions = "ignore"
+    use_interests = "ignore"
+    use_categories = "ignore"
+
+    workday_volunteer = WorkdayVolunteer.create(workday: workdays(:one), volunteer_id: @volunteer2.id, hours: 4, homeowner_donated_to: @duplicate_volunteer)
+    post merge_volunteer_path(@volunteer), params: { source_id: @duplicate_volunteer.id, source_use_fields: [], use_notes: use_notes, use_limitations: use_limitations, use_medical_conditions: use_medical_conditions, use_interests: use_interests, use_categories: use_categories }
+    assert_equal 1, WorkdayVolunteer.where(donated_to_id: @volunteer.id).size
+    assert_equal 0, WorkdayVolunteer.where(donated_to_id: @duplicate_volunteer.id).size
+  end
+
 
   test "no delete if a guardian on a waiver" do
     log_in_as(@admin)

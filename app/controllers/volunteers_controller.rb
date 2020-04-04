@@ -497,6 +497,13 @@ class VolunteersController < ApplicationController
           workday.save!
           sw.destroy!
         end
+        WorkdayVolunteer.where("donated_to_id = #{@source_volunteer.id}").each do |sw|
+          puts sw.inspect
+          workday = sw.dup
+          workday.donated_to_id = @object.id
+          workday.save!
+          sw.destroy!
+        end
         Donation.where("volunteer_id = #{@source_volunteer.id}").each do |sd|
           donation = sd.dup
           donation.volunteer_id = @object.id
@@ -525,6 +532,13 @@ class VolunteersController < ApplicationController
             deletable_waivers.push swv
           end
           # swv.really_destroy!
+        end
+        HomeownerProject.where("volunteer_id = #{@source_volunteer.id}").each do |shp|
+          puts shp.inspect
+          unless HomeownerProject.where(volunteer_id: @object.id, project_id: shp.project_id).size > 0
+            HomeownerProject.create(volunteer_id: @object.id, project_id: shp.project_id)
+          end
+          shp.destroy!
         end
 
         # Need to do it this way because a person can be a volunteer and guardian on the same waiver

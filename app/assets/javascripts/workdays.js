@@ -5,12 +5,12 @@ $(document).ready(function() {
 
     $("#dialogWorkdaySummary").dialog({
         modal: true,
-        title: "Workday Summary",
+        title: "Workday Summary (Non-donated hours only)",
         disabled: true,
         autoOpen: false,
         width: 800,
         buttons: [{
-            text: "Printable Report",
+            text: "Full Report",
             click: function () {
                 objectId = $(this).data("object_id");
                 objectName = $(this).data("object_name");
