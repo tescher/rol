@@ -15,6 +15,20 @@ jQuery(document).ready(function($) {
     });
     monkeyPatchAutocomplete();
 
+    // Show/hide inactive objects
+    jQuery('#hide_inactive_checkbox').on('change', function(){
+        var hide = $(this).is(':checked');
+        $('.row.clickable').each(function() {
+            if ($(this).find(".inactive_marker").attr("data-inactive") == "inactive") {
+               if (hide) {
+                    $(this).hide()
+                } else {
+                    $(this).show()
+                }
+            }
+        })
+    });
+
     // Infrastructure to search/select/add associated records with dialogs
 
     $('div[id^="dialogSearch"]').dialog({

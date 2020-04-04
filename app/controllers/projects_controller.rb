@@ -8,7 +8,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    standard_index(Project, params[:page], false, "", :name)
+    standard_index(Project, params[:page], false, "", :name, false, true)
   end
 
   # GET /projects/1
