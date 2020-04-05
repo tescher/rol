@@ -4,6 +4,7 @@
 
 jQuery(document).ready(function($) {
 
+
     add_fields_wire_up_events($(document));
 
     // Links for autocomplete
