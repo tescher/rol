@@ -819,6 +819,7 @@ class VolunteersController < ApplicationController
     @church = @volunteer.church_id.blank? ? nil : Organization.find(@volunteer.church_id)
     @allow_stay = true
     @submit_name = "Update Volunteer"
+    @delete_confirm = "Are you sure? Usually better to check \"Remove from mailing list\""
     session[:volunteer_id] = @volunteer.id
     session[:child_entry] = nil
   end
