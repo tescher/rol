@@ -311,6 +311,10 @@ jQuery(document).ready(function($) {
         }
     });
 
+    $(document).find('[autofocus]').blur();
+    $(document).find('[autofocus]').focus();
+
+
 
 });
 
