@@ -17,6 +17,8 @@ class Volunteer < ApplicationRecord
   has_many :waivers_as_guardian, class_name: "Waiver", foreign_key: :guardian_id, dependent: :restrict_with_error
   # belongs_to :guardian, class_name: "Volunteer", foreign_key: :guardian_id
   # has_many :minors, class_name: "Volunteer", foreign_key: :guardian_id, dependent: :restrict_with_error
+  has_many :homeowner_projects, dependent: :restrict_with_error
+  has_many :homes, through: :homeowner_projects, source: :project
 
   default_scope { where(needs_review: false) }
 
@@ -86,7 +88,7 @@ class Volunteer < ApplicationRecord
       resolve_fields[f] = index
       index += 1
     end
-    puts resolve_fields
+    # puts resolve_fields
     resolve_fields
   end
 

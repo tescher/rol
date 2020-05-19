@@ -7,6 +7,8 @@ class ProjectsEditTest < ActionDispatch::IntegrationTest
     @project = projects(:one)
     @project_2 = projects(:two)
     @non_admin = users(:one)
+    @volunteer_1 = volunteers(:volunteer_1)
+    @volunteer_2 = volunteers(:volunteer_2)
   end
 
   test "No edits by non-admin" do
@@ -86,6 +88,49 @@ class ProjectsEditTest < ActionDispatch::IntegrationTest
     @project_2.reload
     assert_not_equal @project_2.name,  name
 
+  end
+
+  test "add homeowner to project" do
+    log_in_as(@user)
+    patch project_path(@project), params: { project: { homeowner_projects_attributes: { "0" => {volunteer_id: @volunteer_1.id}} } }
+    @project.reload
+    assert_equal 1, @project.homeowners.count
+  end
+
+  test "no delete of project or homeowner if homeowner attached" do
+    log_in_as(@user)
+    patch project_path(@project), params: { project: { homeowner_projects_attributes: { "0" => {volunteer_id: @volunteer_1.id}} } }
+    @project.reload
+    assert_equal 1, @project.homeowners.count
+    assert_no_difference 'Project.count' do
+      delete project_path(@project)
+    end
+    assert_no_difference 'Volunteer.count' do
+      delete volunteer_path(@volunteer_1)
+    end
+  end
+
+  test "Don't allow duplicate homeowners" do
+    log_in_as(@user)
+    patch project_path(@project), params: { project: { homeowner_projects_attributes: { "0" => {volunteer_id: @volunteer_1.id}, "1" => {volunteer_id: @volunteer_1.id}} } }
+    @project.reload
+    assert_equal 0, @project.homeowners.count
+    patch project_path(@project), params: { project: { homeowner_projects_attributes: { "0" => {volunteer_id: @volunteer_1.id}, "1" => {volunteer_id: @volunteer_2.id}} } }
+    @project.reload
+    assert_equal 2, @project.homeowners.count
+  end
+
+  test "No delete of homeowner if donated to on workday" do
+    log_in_as(@user)
+    patch project_path(@project), params: { project: { homeowner_projects_attributes: { "0" => {volunteer_id: @volunteer_1.id}, "1" => {volunteer_id: @volunteer_2.id}} } }
+    @project.reload
+    @workday = workdays(:one)
+    @workday.project = @project
+    @workday.save
+    @workday_volunteer = WorkdayVolunteer.new(workday: @workday, volunteer: @volunteer_1, hours: 5, donated_to_id: @volunteer_2.id )
+    assert_no_difference "HomeownerProject.count" do
+      patch project_path(@project), params: { project: { homeowner_projects_attributes: { "0" => {volunteer_id: @volunteer_2.id, _destroy: 1}} } }
+    end
   end
 
 

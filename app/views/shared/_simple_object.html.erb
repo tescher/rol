@@ -2,13 +2,19 @@
   <li>
     <div class="col-md-2 col-md-offset-1">
       <% if object.try(:inactive) %>
-          <s>
+        <s>
       <% end %>
       <%= object.name %>
       <% if object.try(:inactive) %>
-          </s>
+        </s>
       <% end %>
     </div>
+
+    <% if @inactive_switch %>
+      <div class="hidden inactive_marker" data-inactive=<%= object.inactive? ? "inactive" : "" %> >
+      </div>
+    <% end %>
+
 
   </li>
 </div>

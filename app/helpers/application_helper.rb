@@ -68,11 +68,13 @@ module ApplicationHelper
   ### Controller Helpers
 
   #standard index action
-  def standard_index(myclass, page = 1, always_paginate = false, index_view = "", order = nil, no_new = false)
+  def standard_index(myclass, page = 1, always_paginate = false, index_view = "", order = nil, no_new = false, inactive_switch = false)
+    @inactive_switch = inactive_switch
     @objects = myclass.all
     if order
       @objects = @objects.order(order)
     end
+
     if always_paginate || (!defined? Utilities::Utilities.system_setting(:no_pagination)) || !Utilities::Utilities.system_setting(:no_pagination)
       @paginate = true
       @objects = @objects.paginate(page: page)

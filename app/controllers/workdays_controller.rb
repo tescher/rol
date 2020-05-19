@@ -70,41 +70,41 @@ class WorkdaysController < ApplicationController
       @project_info = consolidate(@project_info_volunteers, @project_info_organizations)
       logger.info "Consoliated Project: " + @project_info.to_yaml
       case params[:report_type]
-        when "1"
-          @workdays_volunteers = Workday.select("workdays.*, COALESCE(COUNT(workday_volunteers.id), 0) as num_volunteers, COALESCE(SUM(workday_volunteers.hours), 0) as volunteer_hours").joins(join_volunteers).where(where_clause).where(project_where).where(vc_where).order(:project_id).group("workdays.id")
-          @workdays_organizations = Workday.select("workdays.*, COALESCE(COUNT(DISTINCT workday_organizations.organization_id), 0) as num_organizations, COALESCE(SUM(workday_organizations.hours * workday_organizations.num_volunteers), 0) as organization_hours").joins(join_organizations).where(where_clause).where(project_where).order(:project_id).group("workdays.id")
-          # Put workdays together into one collection
-          logger.info "Workday Info"
-          @workdays = consolidate(@workdays_volunteers, @workdays_organizations)
-        when "2"
-          @volunteers = Workday.select("workdays.project_id, workday_volunteers.volunteer_id, COALESCE(SUM(workday_volunteers.hours), 0) as hours").joins(join_volunteers).where(where_clause).where(project_where).where(vc_where).group("workday_volunteers.volunteer_id, workdays.project_id").order("hours DESC")
-          @organizations = Workday.select("workdays.project_id, workday_organizations.organization_id, COALESCE(SUM(workday_organizations.hours * workday_organizations.num_volunteers), 0) as hours").joins(:workday_organizations).where(where_clause).where(project_where).group("workday_organizations.organization_id, workdays.project_id").order("hours DESC")
-        when "3"
-          @volunteers = Workday.select("workday_volunteers.volunteer_id, COALESCE(SUM(workday_volunteers.hours), 0) as hours").joins(join_volunteers).where(where_clause).where(project_where).where(vc_where).group("workday_volunteers.volunteer_id").order("hours DESC")
-          @organizations = Workday.select("workday_organizations.organization_id, COALESCE(SUM(workday_organizations.hours * workday_organizations.num_volunteers), 0) as hours").joins(:workday_organizations).where(where_clause).where(project_where).group("workday_organizations.organization_id").order("hours DESC")
+      when "1"
+        @workdays_volunteers = Workday.select("workdays.*, COALESCE(COUNT(workday_volunteers.id), 0) as num_volunteers, COALESCE(SUM(workday_volunteers.hours), 0) as volunteer_hours").joins(join_volunteers).where(where_clause).where(project_where).where(vc_where).order(:project_id).group("workdays.id")
+        @workdays_organizations = Workday.select("workdays.*, COALESCE(COUNT(DISTINCT workday_organizations.organization_id), 0) as num_organizations, COALESCE(SUM(workday_organizations.hours * workday_organizations.num_volunteers), 0) as organization_hours").joins(join_organizations).where(where_clause).where(project_where).order(:project_id).group("workdays.id")
+        # Put workdays together into one collection
+        logger.info "Workday Info"
+        @workdays = consolidate(@workdays_volunteers, @workdays_organizations)
+      when "2"
+        @volunteers = Workday.select("workdays.project_id, workday_volunteers.volunteer_id, COALESCE(SUM(workday_volunteers.hours), 0) as hours").joins(join_volunteers).where(where_clause).where(project_where).where(vc_where).group("workday_volunteers.volunteer_id, workdays.project_id").order("hours DESC")
+        @organizations = Workday.select("workdays.project_id, workday_organizations.organization_id, COALESCE(SUM(workday_organizations.hours * workday_organizations.num_volunteers), 0) as hours").joins(:workday_organizations).where(where_clause).where(project_where).group("workday_organizations.organization_id, workdays.project_id").order("hours DESC")
+      when "3"
+        @volunteers = Workday.select("workday_volunteers.volunteer_id, COALESCE(SUM(workday_volunteers.hours), 0) as hours").joins(join_volunteers).where(where_clause).where(project_where).where(vc_where).group("workday_volunteers.volunteer_id").order("hours DESC")
+        @organizations = Workday.select("workday_organizations.organization_id, COALESCE(SUM(workday_organizations.hours * workday_organizations.num_volunteers), 0) as hours").joins(:workday_organizations).where(where_clause).where(project_where).group("workday_organizations.organization_id").order("hours DESC")
       end
 
       respond_to do |format|
         format.html {
           case params[:report_type]
-            when "1"
-              render "report_workdays_by_project.html"
-            when "2"
-              render "report_participants_by_project.html"
-            when "3"
-              render "report_hours_by_participant.html"
+          when "1"
+            render "report_workdays_by_project.html"
+          when "2"
+            render "report_participants_by_project.html"
+          when "3"
+            render "report_hours_by_participant.html"
           end
 
         }
         format.xls {
           response.headers['Content-Disposition'] = 'attachment; filename="report.xls"'
           case params[:report_type]
-            when "1"
-              render "report_workdays_by_project.xls"
-            when "2"
-              render "report_participants_by_project.xls"
-            when "3"
-              render "report_hours_by_participant.xls"
+          when "1"
+            render "report_workdays_by_project.xls"
+          when "2"
+            render "report_participants_by_project.xls"
+          when "3"
+            render "report_hours_by_participant.xls"
           end
         }
 
@@ -291,12 +291,12 @@ class WorkdaysController < ApplicationController
     if (@objectName != "volunteer") && (@objectName != "organization")
       render partial: "Invalid parameter"
     else
-	  @object = (@objectName == "volunteer") ? Volunteer.including_pending.find(@objectId) : Organization.find(@objectId)
+      @object = (@objectName == "volunteer") ? Volunteer.including_pending.find(@objectId) : Organization.find(@objectId)
       join = "INNER JOIN workday_#{@objectName}s ON workday_#{@objectName}s.workday_id = workdays.id"
       @workday_years = Workday.select("ROUND(EXTRACT(YEAR FROM workdays.workdate)) as year").joins(join).where("workday_" + @objectName + "s." + @objectName + "_id = '#{@object.id}'").group("year").order("year DESC")
       @workdays_by_year = Hash[@workday_years.map { |wy|
         year = wy.year.to_s.split(".").first
-        workdays = Workday.select("DISTINCT workdays.*, SUM(workday_" + @objectName + "s.hours) as hours").joins(join).where("ROUND(EXTRACT(YEAR FROM workdate)) = '#{wy.year}' AND workday_" + @objectName + "s." + @objectName + "_id = '#{@object.id}'").group("workdays.id").order("workdate DESC")
+        workdays = Workday.select("DISTINCT workdays.*, SUM(workday_" + @objectName + "s.hours * #{@objectName == "volunteer" ? "1" : "workday_organizations.num_volunteers"}) as hours").joins(join).where("ROUND(EXTRACT(YEAR FROM workdate)) = '#{wy.year}' AND workday_" + @objectName + "s." + @objectName + "_id = '#{@object.id}'").group("workdays.id").order("workdate DESC")
         [year, workdays]
       }]
       @year_totals = Hash[@workdays_by_year.map { |y, ws|
@@ -317,6 +317,7 @@ class WorkdaysController < ApplicationController
     if params[:dialog] == "true"
       render partial: "dialog_participant_report_form"
     else
+      @summary_only = params[:summary_only].to_i
       @from_date = params[:from_date]
       @to_date = params[:to_date]
       @project_ids = params[:project_ids]
@@ -325,29 +326,34 @@ class WorkdaysController < ApplicationController
       else
         @object = (@objectName == "volunteer") ? Volunteer.find(@objectId) : Organization.find(@objectId)
 
-        where_clause = ""
+        date_where_clause = ""
 
         if !@from_date.empty?
-          where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
-          where_clause += "workdate >= '#{Date.strptime(@from_date, "%m/%d/%Y").to_s}'"
+          date_where_clause = date_where_clause.length > 0 ? date_where_clause + " AND " : date_where_clause
+          date_where_clause += "workdate >= '#{Date.strptime(@from_date, "%m/%d/%Y").to_s}'"
         end
         if !params[:to_date].empty?
-          where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
-          where_clause += "workdate <= '#{Date.strptime(@to_date, "%m/%d/%Y").to_s}'"
+          date_where_clause = date_where_clause.length > 0 ? date_where_clause + " AND " : date_where_clause
+          date_where_clause += "workdate <= '#{Date.strptime(@to_date, "%m/%d/%Y").to_s}'"
+        end
+
+        # Workdays involving this volunteer or org
+        object_where_clause = "(workday_" + @objectName + "s." + @objectName + "_id = '#{@object.id}')"
+        if @objectName == "volunteer"
+          object_where_clause += " OR (donated_to_id = '#{@objectId}')"
         end
 
         project_ids = @project_ids.nil? ? [] : @project_ids
         if project_ids.count > 0
-          project_where = "project_id IN (" + project_ids.join(",") + ")"
+          project_where_clause = "project_id IN (" + project_ids.join(",") + ")"
         else
-          project_where = "project_id IS NOT NULL"
+          project_where_clause = "project_id IS NOT NULL"
         end
-        join = "INNER JOIN workday_#{@objectName}s ON workday_#{@objectName}s.workday_id = workdays.id"
-        @workdays = Workday.select("workdays.*, COUNT(workday_#{@objectName}s.id) as shifts, COALESCE(SUM(workday_#{@objectName}s.hours), 0) as workday_hours").joins(join).where("workday_" + @objectName + "s." + @objectName + "_id = '#{@object.id}'").where(where_clause).where(project_where).order("workdays.workdate").group("workdays.id")
-        @total_hours = 0
-        @workdays.each do |w|
-          @total_hours += w.workday_hours
-        end
+
+        workday_where_clause = "workday_#{@objectName}s.workday_id = workdays.id"
+
+        @workdays = Workday.from("workdays, workday_#{@objectName}s").select("workdays.*, workday_#{@objectName}s.*").where(workday_where_clause).where(object_where_clause).where(date_where_clause).where(project_where_clause).order("workdays.workdate")
+        @workdays_by_project = @workdays.group_by(&:project_id).sort_by{|project_id, _extras| Project.find(project_id).name}
         render "report_participant_report"
       end
     end
@@ -381,7 +387,7 @@ class WorkdaysController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def workday_params
-    modified_params = params.require(:workday).permit(:name, :project_id, :workdate, :notes, workday_volunteers_attributes: [:id, :volunteer_id, :workday_id, :start_time, :start_time_string, :end_time, :end_time_string, :hours, :notes, :_destroy], workday_organizations_attributes: [:id, :organization_id, :workday_id, :start_time, :start_time_string, :end_time, :end_time_string, :hours, :num_volunteers, :notes, :_destroy])
+    modified_params = params.require(:workday).permit(:name, :project_id, :workdate, :notes, workday_volunteers_attributes: [:id, :volunteer_id, :workday_id, :start_time, :start_time_string, :end_time, :end_time_string, :hours, :donated_to_id, :notes, :_destroy], workday_organizations_attributes: [:id, :organization_id, :workday_id, :start_time, :start_time_string, :end_time, :end_time_string, :hours, :num_volunteers, :notes, :_destroy])
     if modified_params[:workdate]
       modified_params[:workdate] = Date.strptime(modified_params[:workdate], "%m/%d/%Y").to_s
     end
@@ -404,7 +410,7 @@ class WorkdaysController < ApplicationController
     if collection1
       collection1.each do |w|
         w1 = JSON.parse w.to_json
-         if collection2
+        if collection2
           w2 = (collection2.select { |wc| wc.id == w.id })[0]
           if !w2.nil?
             w2.attributes.each do | attr_name, attr_value |

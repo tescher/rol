@@ -5,17 +5,20 @@
     <table class="table no-row-border header-border">
       <thead>
       <tr>
-        <th class="col-md-3">Volunteer</th>
+        <th class="col-md-2">Volunteer</th>
         <th class="col-md-2">Start Time</th>
         <th class="col-md-2">End Time</th>
-        <th class="col-md-2">Total Hours</th>
+        <th class="col-md-1">Total Hours</th>
+        <% if @object.project.homeowners.size > 0 %>
+          <th class="col-md-2">Donated to</th>
+        <% end %>
         <th class="col-md-2">Notes</th>
         <th class="col-md-1"></th>
       </tr>
       </thead>
       <tbody class="add_volunteer_fields">
       <%= f.fields_for :workday_volunteers do |builder| %>
-          <%= render "workday_volunteer_fields", :f => builder, :volunteer => Volunteer.including_pending.find(builder.object.volunteer_id) %>
+          <%= render "workday_volunteer_fields", :f => builder, :project => @object.project, :volunteer => Volunteer.including_pending.find(builder.object.volunteer_id) %>
       <% end %>
       </tbody>
     </table>

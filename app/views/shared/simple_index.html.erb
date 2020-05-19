@@ -1,6 +1,11 @@
 <% provide(:title, @class_name.titleize.pluralize) %>
 
 <h1>All <%= @class_name.titleize.pluralize %></h1>
+<% if @inactive_switch %>
+<div class="center">
+  <%= check_box_tag "hide_inactive_checkbox", "Hide inactive", false, class: "hide_inactive_checkbox"  %> Hide inactive
+</div>
+<% end %>
 
 <div class="<%= @paginate ? "container" : "container scrolled-listing" %>">
 

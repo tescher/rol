@@ -4,6 +4,7 @@
 
 jQuery(document).ready(function($) {
 
+
     add_fields_wire_up_events($(document));
 
     // Links for autocomplete
@@ -14,6 +15,20 @@ jQuery(document).ready(function($) {
         }
     });
     monkeyPatchAutocomplete();
+
+    // Show/hide inactive objects
+    jQuery('#hide_inactive_checkbox').on('change', function(){
+        var hide = $(this).is(':checked');
+        $('.row.clickable').each(function() {
+            if ($(this).find(".inactive_marker").attr("data-inactive") == "inactive") {
+               if (hide) {
+                    $(this).hide()
+                } else {
+                    $(this).show()
+                }
+            }
+        })
+    });
 
     // Infrastructure to search/select/add associated records with dialogs
 
@@ -45,6 +60,13 @@ jQuery(document).ready(function($) {
                     $(this).parent().find("button:eq(1)").trigger("click");
                 }
             });
+            if ($(this)[0].hasAttribute("data-seed-search")) {
+                var seed = $(".search-element").val()
+                if (seed) {
+                    $(this).find("input[id='name']").first().val(seed);
+                    $("#dialogFormSearch" + $(this).dialog("option", "objectName")).submit()
+                }
+            }
         },
 
         close: function (event, ui ) {
@@ -52,48 +74,61 @@ jQuery(document).ready(function($) {
         }
     });
 
-    $('div[id^="dialogSelect"]').dialog({
-        modal: true,
-        title: "Select ",
-        disabled: true,
-        autoOpen: false,
-        width: 800,
-        buttons: [{
-            text: "Create New",
-            click: function() {
-                var objectName = $(this).dialog("option", "objectName");
-                var aliasName = $(this).closest('div[id^="dialogSelect"]').attr('data-alias');
-                $.ajax({
-                    url: "/" + objectName.toLowerCase() + "s/new?dialog=true" + (aliasName ? "&alias=" + aliasName.toLowerCase() : ""),
-                    success: function(data) {
-                        loadDialog("dialogNew" + objectName, data);
-                    },
-                    async: false,
-                    cache: false
-                });
-                $(this).dialog("close");
-            },
-            class: "btn btn-large btn-primary"
-        },{
+    if ($('div[id^="dialogSelect"]').length) {
+
+        //Create the select dialog buttons object
+        var selectButtons = [{
             text: "Cancel",
-            click: function() {
+            click: function () {
                 $(this).dialog("close");
             },
             class: "btn btn-large btn-primary"
-        }],
+        }];
 
-        open: function (event, ui) {
-            var objectName = $(this).attr('id').substr($(this).attr('id').indexOf("dialogSelect") + 12);
-            $(this).dialog("option", "objectName", objectName);
-            $(this).dialog("option", "title", "Select " + objectName);
-            var wHeight = $(window).height();
-            $(this).dialog("option", "height", wHeight * 0.8)
-        },
-
-        close: function (event, ui ) {
-            // RO_DO: Something go here?
+        //Add New button unless prevented
+        if (!$('div[id^="dialogSelect"]')[0].hasAttribute('data-noNew')) {
+            var newButton = {
+                text: "Create New",
+                click: function () {
+                    var objectName = $(this).dialog("option", "objectName");
+                    var aliasName = $(this).closest('div[id^="dialogSelect"]').attr('data-alias');
+                    var noNew = $(this).closest('div[id^="dialogSelect"]').attr('data-noNew');
+                    $.ajax({
+                        url: "/" + objectName.toLowerCase() + "s/new?dialog=true" + (aliasName ? "&alias=" + aliasName.toLowerCase() : ""),
+                        success: function (data) {
+                            loadDialog("dialogNew" + objectName, data);
+                        },
+                        async: false,
+                        cache: false
+                    });
+                    $(this).dialog("close");
+                },
+                class: "btn btn-large btn-primary"
+            };
+            selectButtons.splice(0, 0, newButton)
         }
-    });
+
+        $('div[id^="dialogSelect"]').dialog({
+            modal: true,
+            title: "Select ",
+            disabled: true,
+            autoOpen: false,
+            width: 800,
+            buttons: selectButtons,
+
+            open: function (event, ui) {
+                var objectName = $(this).attr('id').substr($(this).attr('id').indexOf("dialogSelect") + 12);
+                $(this).dialog("option", "objectName", objectName);
+                $(this).dialog("option", "title", "Select " + objectName);
+                var wHeight = $(window).height();
+                $(this).dialog("option", "height", wHeight * 0.8)
+            },
+
+            close: function (event, ui) {
+                // RO_DO: Something go here?
+            }
+        });
+    };
 
     $('div[id^="dialogNew"]').dialog({
         modal: true,
@@ -276,6 +311,10 @@ jQuery(document).ready(function($) {
         }
     });
 
+    $(document).find('[autofocus]').blur();
+    $(document).find('[autofocus]').focus();
+
+
 
 });
 
@@ -323,7 +362,7 @@ function add_fields_wire_up_events(start_node) {
         workday_hours_calc(this);
     });
 
-    $(".row.clickable[href]").click(function() {
+    $(".row.clickable[href], span.clickable[href]").click(function() {
         window.document.location = $(this).attr("href");
     });
 

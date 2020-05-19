@@ -3,6 +3,7 @@ include DonationsHelper
 include ApplicationHelper
 include VolunteersHelper
 include WaiversHelper
+include ProjectsHelper
 require 'pp'
 
 class VolunteersController < ApplicationController
@@ -217,6 +218,7 @@ class VolunteersController < ApplicationController
   def new
     @volunteer = Volunteer.new
     @num_workdays = []
+    @donated_workdays = []
     if params[:dialog] == "true"
       @alias = params[:alias].blank? ? "" : params[:alias]
       render partial: "dialog_form"
@@ -226,6 +228,7 @@ class VolunteersController < ApplicationController
       if params[:pending_volunteer_id]
         @pending_volunteer = Volunteer.pending.find(params[:pending_volunteer_id])
         @num_workdays = WorkdayVolunteer.where(volunteer_id: params[:pending_volunteer_id])
+        @donated_workdays = WorkdayVolunteer.where(homeowner_donated_to: @volunteer.id)
         @volunteer.pending_volunteer_id = @pending_volunteer.id
         ["first_name", "last_name", "address", "city", "state", "zip", "phone", "email", "occupation", "emerg_contact_phone", "emerg_contact_name", "notes", "limitations", "medical_conditions", "agree_to_background_check", "birthdate", "adult", "interests"].each do |column|
           if column == "phone"
@@ -298,6 +301,7 @@ class VolunteersController < ApplicationController
         render partial: "dialog_form"
       else
         @num_workdays = []
+        @donated_workdays = []
         @allow_stay = true
         render :new
       end
@@ -411,6 +415,12 @@ class VolunteersController < ApplicationController
       redirect_to root_path
     else
       @source_volunteer = Volunteer.find(params[:source_id])
+      if WorkdayVolunteer.where("(volunteer_id = #{@object.id} AND donated_to_id = #{@source_volunteer.id}) OR (volunteer_id = #{@source_volunteer.id} AND donated_to_id = #{@object.id})").size > 0
+        @object.errors.add(:id, "Source and target donate to each other on a workday. Cannot merge.")
+        @object.reload
+        render :merge
+        return
+      end
       volunteer_params = {}
       if params[:source_use_fields] then
         params[:source_use_fields].each do |findex|
@@ -493,6 +503,13 @@ class VolunteersController < ApplicationController
           workday.save!
           sw.destroy!
         end
+        WorkdayVolunteer.where("donated_to_id = #{@source_volunteer.id}").each do |sw|
+          # puts sw.inspect
+          workday = sw.dup
+          workday.donated_to_id = @object.id
+          workday.save!
+          sw.destroy!
+        end
         Donation.where("volunteer_id = #{@source_volunteer.id}").each do |sd|
           donation = sd.dup
           donation.volunteer_id = @object.id
@@ -521,6 +538,13 @@ class VolunteersController < ApplicationController
             deletable_waivers.push swv
           end
           # swv.really_destroy!
+        end
+        HomeownerProject.where("volunteer_id = #{@source_volunteer.id}").each do |shp|
+          # puts shp.inspect
+          unless HomeownerProject.where(volunteer_id: @object.id, project_id: shp.project_id).size > 0
+            HomeownerProject.create(volunteer_id: @object.id, project_id: shp.project_id)
+          end
+          shp.destroy!
         end
 
         # Need to do it this way because a person can be a volunteer and guardian on the same waiver
@@ -790,10 +814,12 @@ class VolunteersController < ApplicationController
   def edit_setup
     @volunteer = @volunteer.nil? ? Volunteer.find(params[:id]) : @volunteer
     @num_workdays = WorkdayVolunteer.where(volunteer_id: @volunteer.id)
+    @donated_workdays = WorkdayVolunteer.where(homeowner_donated_to: @volunteer.id)
     @employer = @volunteer.employer_id.blank? ? nil : Organization.find(@volunteer.employer_id)
     @church = @volunteer.church_id.blank? ? nil : Organization.find(@volunteer.church_id)
     @allow_stay = true
     @submit_name = "Update Volunteer"
+    @delete_confirm = "Are you sure? Usually better to check \"Remove from mailing list\""
     session[:volunteer_id] = @volunteer.id
     session[:child_entry] = nil
   end

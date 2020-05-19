@@ -31,6 +31,6 @@ class WorkdayOrganizationTest < ActiveSupport::TestCase
     @workday_organization.workday = @workday
     @workday_organization.hours = -1
     assert_not @workday_organization.valid?
-
   end
+
 end

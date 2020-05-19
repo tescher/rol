@@ -73,9 +73,9 @@ class WorkdaysReportTest < ActionDispatch::IntegrationTest
     @workday5_organization3.save
 
     # Sixth workday - Build #4, Volunteers: 2, Shifts: 2, Hours: 5, Orgs: 0, Org Hours: 0
-    @workday6_volunteer1 = WorkdayVolunteer.new(volunteer: @volunteer1, workday: @workday6, hours: 2)
+    @workday6_volunteer1 = WorkdayVolunteer.new(volunteer: @volunteer1, workday: @workday6, hours: 2, donated_to_id: @volunteer4.id)
     @workday6_volunteer1.save
-    @workday6_volunteer4 = WorkdayVolunteer.new(volunteer: @volunteer4, workday: @workday6, hours: 3)
+    @workday6_volunteer4 = WorkdayVolunteer.new(volunteer: @volunteer4, workday: @workday6, hours: 3, donated_to_id: @volunteer1.id)
     @workday6_volunteer4.save
 
     # Seventh workday - Build #4, Volunteers: 2, Shifts: 2, Hours: 17, Orgs: 0, Org Hours: 0 - Outside date range
@@ -382,6 +382,30 @@ class WorkdaysReportTest < ActionDispatch::IntegrationTest
     assert_select("div.container ul.listing:nth-of-type(2) div.clickable:nth-of-type(3) li:nth-of-type(1) div.col-md-2:nth-of-type(4)", false)
 
   end
+
+  test "Participant Report with donated hours" do
+    log_in_as(@user)
+    get participant_report_workdays_path(object_name: "volunteer", object_id: @volunteer1.id, from_date: 6.days.ago.strftime("%m/%d/%Y"), to_date: "", project_ids: [])
+    # puts @response.body
+    assert_select("div.container ul.listing:nth-of-type(1) li:nth-of-type(2) span:nth-of-type(1)", "Build #1")
+    assert_select("div.container ul.listing:nth-of-type(1) li:nth-of-type(6) div.col-md-2:nth-of-type(1)", "17.0")
+    assert_select("div.container ul.listing:nth-of-type(1) li:nth-of-type(6) div.col-md-2:nth-of-type(2)", "0.0")
+    assert_select("div.container ul.listing:nth-of-type(1) li:nth-of-type(6) div.col-md-2:nth-of-type(3)", "(0.0)")
+    assert_select("div.container ul.listing:nth-of-type(1) li:nth-of-type(6) div.col-md-2:nth-of-type(4)", "17.0")
+
+    assert_select("div.container ul.listing:nth-of-type(1) li:nth-of-type(7) span:nth-of-type(1)", "Build #4")
+    assert_select("div.container ul.listing:nth-of-type(1) li:nth-of-type(10) div.col-md-2:nth-of-type(1)", "2.0")
+    assert_select("div.container ul.listing:nth-of-type(1) li:nth-of-type(10) div.col-md-2:nth-of-type(2)", "3.0")
+    assert_select("div.container ul.listing:nth-of-type(1) li:nth-of-type(10) div.col-md-2:nth-of-type(3)", "(2.0)")
+    assert_select("div.container ul.listing:nth-of-type(1) li:nth-of-type(10) div.col-md-2:nth-of-type(4)", "3.0")
+
+    assert_select("div.container ul.listing:nth-of-type(1) li:nth-of-type(11) div.col-md-2:nth-of-type(1)", "19.0")
+    assert_select("div.container ul.listing:nth-of-type(1) li:nth-of-type(11) div.col-md-2:nth-of-type(2)", "3.0")
+    assert_select("div.container ul.listing:nth-of-type(1) li:nth-of-type(11) div.col-md-2:nth-of-type(3)", "(2.0)")
+    assert_select("div.container ul.listing:nth-of-type(1) li:nth-of-type(11) div.col-md-2:nth-of-type(4)", "20.0")
+
+  end
+
 
 
 

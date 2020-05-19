@@ -1,12 +1,15 @@
 <%= form_for(@volunteer) do |f| %>
   <%= @object = f.object
       render 'shared/error_messages' %>
+  <div id="dialogWorkdaySummary"></div>
+  <div id="dialogParticipantReport"></div>
   <% if @num_workdays.count > 0 %>
     <h5 class="center">Has participated in <a href="#" data-id="<%= @pending_volunteer ? @pending_volunteer.id : @volunteer.id %>" data-object-name="volunteer" id="linkWorkdaySummary"><%= pluralize(@num_workdays.count, "workday") %> for <%= pluralize(@num_workdays.sum("hours"), "hour") %>, most recently <%= (@pending_volunteer ? @pending_volunteer : @volunteer).last_workday.workdate.strftime("%m/%d/%Y") %></a></h5>
-    <div id="dialogWorkdaySummary"></div>
-    <div id="dialogParticipantReport"></div>
-  <% else %>
-    <h5 class="center">Has not participated in any workdays</h5>
+  <% else if @donated_workdays.count > 0 %>
+      <h5 class="center">Has had <a href="#" data-id="<%= @pending_volunteer ? @pending_volunteer.id : @volunteer.id %>" data-object-name="volunteer" id="linkWorkdaySummary">hours donated to them</a></h5>
+    <% else %>
+      <h5 class="center">Has not participated in any workdays</h5>
+    <% end %>
   <% end %>
   <% if !@object.id.nil? %>
     <%= render partial: 'shared/donation_summary_links', locals: {object: @volunteer} %>

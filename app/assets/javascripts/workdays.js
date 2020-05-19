@@ -5,12 +5,12 @@ $(document).ready(function() {
 
     $("#dialogWorkdaySummary").dialog({
         modal: true,
-        title: "Workday Summary",
+        title: "Workday Summary (Non-donated hours only)",
         disabled: true,
         autoOpen: false,
         width: 800,
         buttons: [{
-            text: "Printable Report",
+            text: "Full Report",
             click: function () {
                 objectId = $(this).data("object_id");
                 objectName = $(this).data("object_name");
@@ -26,6 +26,7 @@ $(document).ready(function() {
                     async: false,
                     cache: false
                 });
+                $(this).dialog("close");
             },
             class: "btn btn-large btn-primary"
         },{
@@ -51,7 +52,7 @@ $(document).ready(function() {
         title: "Workday Report",
         disabled: true,
         autoOpen: false,
-        width: 800,
+        width: 'auto',
         buttons: [{
             text: "Run",
             click: function () {
@@ -69,7 +70,7 @@ $(document).ready(function() {
 
         open: function (event, ui ) {
             var wHeight = $(window).height();
-            $(this).dialog("option", "height", wHeight * 0.8)
+            $(this).dialog("option", "height", "auto")
             $(this).keydown(function(e) {
                 if (e.keyCode === $.ui.keyCode.ENTER) {
                     $(this).parent().find("button:eq(1)").trigger("click");

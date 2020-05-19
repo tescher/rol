@@ -8,7 +8,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    standard_index(Project, params[:page], false, "", :name)
+    standard_index(Project, params[:page], false, "", :name, false, true)
   end
 
   # GET /projects/1
@@ -20,25 +20,56 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @object = Project.new
+    session[:project_id] = @object.id
     render 'shared/simple_new'
   end
 
   # GET /projects/1/edit
   def edit
     @object = Project.find(params[:id])
+    session[:project_id] = @object.id
     render 'shared/simple_edit'
   end
 
   # POST /projects
   # POST /projects.json
   def create
-    standard_create(Project, project_params)
+    @object = Project.new(project_params)
+    if duplicate_homeowners(project_params.to_h, @object)
+      render 'shared/simple_edit'
+    else
+      if homeowner_removal(project_params.to_h, @object)
+        render 'shared/simple_edit'
+      else
+        if @object.save
+          flash[:success] = "Project successfully created"
+          redirect_to projects_url
+        else
+          render 'shared/simple_new'
+        end
+      end
+    end
   end
 
   # PATCH/PUT /projects/1
   # PATCH/PUT /projects/1.json
   def update
-    standard_update(Project, params[:id], project_params)
+    @object = Project.find(params[:id])
+    if duplicate_homeowners(project_params.to_h, @object)
+      render 'shared/simple_edit'
+    else
+      if homeowner_removal(project_params.to_h, @object)
+        render 'shared/simple_edit'
+      else
+        if @object.update_attributes(project_params)
+          flash[:success] = "Project updated"
+          session.delete(:project_id)
+          redirect_to projects_url
+        else
+          render 'shared/simple_edit'
+        end
+      end
+    end
   end
 
   # DELETE /projects/1
@@ -90,11 +121,11 @@ class ProjectsController < ApplicationController
                 @project = Project.new
 
                 record_data.each do |key, value|
-                  if !value.blank?
+                  unless value.blank?
                     @project[key] = (key == "inactive") ? ((value == "1") ? true : false) : value
                   end
                 end
-                if !@project.valid?
+                unless @project.valid?
                   @messages << "Validation errors. #{message_data}"
                   @project.errors.full_messages.each do |message|
                     @messages << " -- #{message}"
@@ -103,9 +134,9 @@ class ProjectsController < ApplicationController
                 end
               end
             end
-            if !fatal
+            unless fatal
               @records_validated += 1
-              if !validate_only
+              unless validate_only
                 begin
                   @project.save
                   @records_imported += 1
@@ -157,6 +188,12 @@ class ProjectsController < ApplicationController
                 wd.skip_dup_check = true
                 wd.save!
               end
+              HomeownerProject.where(project_id: mid).each do |ho|
+                unless HomeownerProject.where(project_id: pid, volunteer_id: ho.volunteer_id).exists?
+                  HomeownerProject.create(project_id: pid, volunteer_id: ho.volunteer_id)
+                end
+                ho.destroy
+              end
               if params[:mark_inactive] == "1"
                 project = Project.find(mid)
                 project.inactive = true
@@ -177,8 +214,46 @@ class ProjectsController < ApplicationController
 
   private
 
+  #See if they are trying to add a duplicate homeowner
+  def duplicate_homeowners(p, object)
+    p = p["homeowner_projects_attributes"]
+    if p
+      p = p.reject { |id, homeowner|
+        homeowner[:_destroy] == "1" }
+      up = p.uniq { |homeowner|
+        homeowner[1][:volunteer_id]
+      }
+      if p.count != up.count
+        object.errors[:homeowner_search] << "Homeowner should only be entered once"
+        return true
+      end
+    end
+    false
+  end
+
+  #See if they are trying to remove homeowners with donated workdays
+  def homeowner_removal(p, object)
+    p = p["homeowner_projects_attributes"]
+    if p
+      p = p.each { |id, homeowner|
+        if homeowner[:_destroy] == "1"
+          object.workdays.each { |wd|
+            wd.workday_volunteers.each { |wv|
+              if (wv.homeowner_donated_to) && (wv.homeowner_donated_to.id == homeowner[:id].to_i)
+                object.errors[:homeowner_search] << "Can't remove homeowner, already donated to on a workday"
+                return true
+              end
+            }
+          }
+        end
+      }
+      false
+    end
+  end
+
+
   # Never trust parameters from the scary internet, only allow the white list through.
   def project_params
-    params.require(:project).permit(:name, :description, :inactive)
+    params.require(:project).permit(:name, :description, :inactive, homeowner_projects_attributes: [ :id, :volunteer_id, :project_id, :_destroy ] )
   end
 end

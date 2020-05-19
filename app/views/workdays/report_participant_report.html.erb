@@ -2,53 +2,170 @@
 <h1>Participant Report</h1>
 
 <% got_info = false %>
+<% total_actual_hours = 0.0 %>
+<% total_donated_in_hours = 0.0 %>
+<% total_donated_out_hours = 0.0 %>
+<% total_hours = 0.0 %>
 
 <h4><%= @objectName.capitalize + ": " + @object.name %></h4>
 <h5>From: <%= @from_date.empty? ? "Beginning" : @from_date %>  To: <%= @to_date.empty? ? "Today" : @to_date %></h5>
-<h5>Total Hours: <%= '%.1f' % @total_hours %> <%= @project_ids.nil? ? "All Projects" : "Selected Projects" %></h5>
 
+<% if @workdays_by_project.size > 0 %>
 <ul class="listing">
   <div class="row">
     <li class="header">
-      <div class="col-md-3">
-        <u>Date</u>
-      </div>
-      <div class="col-md-4">
-        <u>Workday</u>
-      </div>
       <div class="col-md-4">
         <u>Project</u>
       </div>
-      <div class="col-md-1">
-        <u>Hours</u>
+      <% if @objectName == "volunteer" %>
+        <div class="col-md-2">
+          <u>Actual Hours</u>
+        </div>
+        <div class="col-md-2">
+          <u>Donated In Hours</u>
+        </div>
+        <div class="col-md-2">
+          <u>Donated Out Hours</u>
+        </div>
+      <% end %>
+      <div class="col-md-2">
+        <u>Total Hours</u>
       </div>
     </li>
 
-    <% @workdays.each do |workday| %>
-        <% got_info = true %>
-        <div>
-          <li>
-            <div class="col-md-3">
-              <%= workday.workdate.strftime("%A, %B %-d, %Y") %>
-            </div>
-            <div class="col-md-4">
-              <span class="no-overflow"><%= workday.name %></span>
-            </div>
-            <div class="col-md-4">
-              <span class="no-overflow"><%= Project.find(workday.project_id).name %></span>
-            </div>
-            <div class="col-md-1">
-              <%= workday.workday_hours %>
-            </div>
-          </li>
+    <% @workdays_by_project.each do |project| %>
+      <% project_actual_hours = 0.0 %>
+      <% project_donated_in_hours = 0.0 %>
+      <% project_donated_out_hours = 0.0 %>
+      <% project_total_hours = 0.0 %>
+     <li>
+        <div class="col-md-4">
+          <span class="no-overflow"><%= Project.find(project[0]).name %></span>
         </div>
-    <% end %>
+       <% unless @summary_only == 1 %>
+         </li>
+         <% end %>
+        <% project[1].each do |workday_shift|
+          workday_total_hours = 0
+          if @objectName == "organization"
+            workday_shift.hours = [workday_shift.num_volunteers, 1].max * workday_shift.hours
+          end
+          if (@objectName == "organization") || (workday_shift.volunteer_id.to_i == @objectId.to_i)
+            project_actual_hours += workday_shift.hours
+            if (@objectName == "organization") || (workday_shift.donated_to_id.blank?)
+              project_total_hours += workday_shift.hours
+              total_hours += workday_shift.hours
+              workday_total_hours = workday_shift.hours
+            else
+              project_donated_out_hours += workday_shift.hours
+              total_donated_out_hours += workday_shift.hours
+            end
+            total_actual_hours += workday_shift.hours
+            unless @summary_only == 1 %>
+                <li>
+                  <% if (@objectName == "organization") || (workday_shift.donated_to_id.blank?) %>
+                    <div class="col-md-3 col-md-offset-1">
+                      <span class="no-overflow clickable" href="<%=add_participants_workday_path(workday_shift.workday_id) %>"><%= workday_shift.workdate.strftime("%m-%d-%Y") %> - <%= workday_shift.name %></span>
+                    </div>
+                    <div class="col-md-2">
+                      <%= workday_shift.hours.round(1) %>
+                    </div>
+                    <div class="col-md-2">
+                    </div>
+                    <div class="col-md-2">
+                    </div>
+                  <% else %>
+                    <div class="col-md-5 col-md-offset-1">
+                      <span class="no-overflow clickable" href="<%=add_participants_workday_path(workday_shift.workday_id) %>"><%= workday_shift.workdate.strftime("%m-%d-%Y") %> - <%= workday_shift.name %> (Donated to <%= Volunteer.find(workday_shift.donated_to_id).name %>)</span>
+                    </div>
+                    <div class="col-md-2">
+                    </div>
+                    <div class="col-md-2">
+                      <span class="text-danger">(<%= workday_shift.hours.round(1) %>)</span>
+                    </div>
+                    <div class="col-md-2">
+                      <%= workday_total_hours.round(1) %>
+                    </div>
+                  <% end %>
+                </li>
+            <% end  #report_type
+          else #if shift for a donator
+            project_donated_in_hours += workday_shift.hours
+            project_total_hours += workday_shift.hours
+            workday_total_hours = workday_shift.hours
+            total_donated_in_hours += workday_shift.hours
+            total_hours += workday_shift.hours
+            unless @summary_only == 1 %>
+                <li>
+                  <div class="col-md-5 col-md-offset-1">
+                    <span class="no-overflow clickable" href="<%=add_participants_workday_path(workday_shift.workday_id) %>"><%= workday_shift.workdate.strftime("%m-%d-%Y") %> - <%= workday_shift.name %> (Donated by <%= Volunteer.find(workday_shift.volunteer_id).name %>)</span>
+                  </div>
+                  <div class="col-md-2">
+                    <%= workday_shift.hours.round(1) %>
+                  </div>
+                  <div class="col-md-2">
+                  </div>
+                  <div class="col-md-2">
+                    <%= workday_total_hours.round(1) %>
+                  </div>
+                </li>
+            <% end #report_type
+          end #if shift for this volunteer
+                 #else   #if @objectName (Organization)
+                 #end #if @objectName
+      end # project[1].each workday shift
+         unless @summary_only == 1 %>
+          <li>
+            <strong>
+            <div class="col-md-3 col-md-offset-1">
+              <span class="no-overflow">Project Totals</span>
+            </div>
+            <% end #@summary_only %>
+            <% if @objectName == "volunteer" %>
+              <div class="col-md-2">
+                <%= project_actual_hours.round(1) %>
+              </div>
+              <div class="col-md-2">
+                <%= project_donated_in_hours.round(1) %>
+              </div>
+              <div class="col-md-2">
+                <span class="text-danger">(<%= project_donated_out_hours.round(1) %>)</span>
+              </div>
+            <% end %>
+            <div class="col-md-2">
+              <%= project_total_hours.round(1) %>
+            </div>
+            </strong>
+          </li>
+          <% end #workdays by project %>
+    <br />
+    <li>
+      <strong>
+      <div class="col-md-4">
+        <span class="no-overflow">Totals</span>
+      </div>
+      <% if @objectName == "volunteer" %>
+        <div class="col-md-2">
+          <%= total_actual_hours.round(1) %>
+        </div>
+        <div class="col-md-2">
+          <%= total_donated_in_hours.round(1) %>
+        </div>
+        <div class="col-md-2">
+          <span class="text-danger">(<%= total_donated_out_hours.round(1) %>)</span>
+        </div>
+      <% end %>
+      <div class="col-md-2">
+        <%= total_hours.round(1) %>
+      </div>
+      </strong>
+    </li>
   </div>
 </ul>
 
 <br />
-<% if !got_info %>
-    <h4>No workdays found with the given criteria</h4>
+<% else %>
+  <h4>No workdays found with the given criteria</h4>
 <% end %>
 
 
