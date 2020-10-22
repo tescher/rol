@@ -229,7 +229,7 @@ DEPENDENCIES
   listen
   momentjs-rails (>= 2.9.0)
   paranoia
-  pg (= 0.21.0)
+  pg
   possessive
   rails (~> 5.2.4.2)
   rails-controller-testing
