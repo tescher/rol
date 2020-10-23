@@ -104,6 +104,9 @@ group :development do
 end
 
 group :production do
+  if ENV['HOSTING_VENDOR'] == "OpalStack"
+    gem 'puma'
+  end
   ###gem 'heroku-deflater'
   ###gem 'rails_12factor'
   ###gem 'unicorn',        '4.8.3'
