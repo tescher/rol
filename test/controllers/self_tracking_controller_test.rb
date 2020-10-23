@@ -23,7 +23,7 @@ class SelfTrackingControllerTest < ActionController::TestCase
   end
 
   test "should setup self-tracking session" do
-    log_in_as(@user)
+    logged_in_as(@user)
     assert_equal @user.id, session[:user_id]
 
     get :launch, params: { id: @workday.id }
