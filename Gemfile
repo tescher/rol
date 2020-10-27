@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 ruby "2.6.5"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.4.2'
+gem 'rails', '~> 5.2.4.3'
 # Crypto for password hashing
 gem 'bcrypt', '3.1.7'
 
@@ -29,6 +29,13 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.17.0'
 
 # Date validator
 gem 'jc-validates_timeliness'
+
+# Fix security issues
+gem "json", ">= 2.3.0"
+gem "rack", ">=2.2.3"
+gem "websocket-extensions", ">= 0.1.5"
+
+
 
 # Possessive noun helper
 gem 'possessive'
@@ -65,7 +72,7 @@ gem 'jquery-ui-rails'
 gem 'jbuilder'
 
 # bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'sdoc', '>= 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
