@@ -8,7 +8,7 @@ class SettingsControllerTest < ActionController::TestCase
   end
 
   test "No edits by non-admin" do
-    log_in_as(@non_admin)
+    logged_in_as(@non_admin)
     get :edit, params: { id: @settings.id }
     assert_redirected_to root_url
   end

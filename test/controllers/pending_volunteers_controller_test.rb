@@ -36,7 +36,7 @@ class PendingVolunteersControllerTest < ActionController::TestCase
   end
 
   test "index display" do
-    log_in_as(@user)
+    logged_in_as(@user)
     get :index
     assert_template 'shared/simple_index'
     pending_volunteers = Volunteer.pending.all
@@ -46,7 +46,7 @@ class PendingVolunteersControllerTest < ActionController::TestCase
   end
 
   test "index display with nobody" do
-    log_in_as(@user)
+    logged_in_as(@user)
     @pending_volunteer.needs_review = false
     @pending_volunteer.save!
     @pending_volunteer2.needs_review = false
@@ -59,14 +59,14 @@ class PendingVolunteersControllerTest < ActionController::TestCase
   end
 
   test "match display" do
-    log_in_as(@user)
+    logged_in_as(@user)
     get :match, params: { id: @pending_volunteer }
     assert_template 'match'
     assert_select 'div[href=?]', edit_pending_volunteer_path(id: @pending_volunteer, matching_id: @volunteer)  # Should find at least one match
   end
 
   test "edit display" do
-    log_in_as(@user)
+    logged_in_as(@user)
     get :edit, params: { id: @pending_volunteer }
     assert_redirected_to root_path
     get :edit, params: { id: @pending_volunteer, matching_id: @volunteer }

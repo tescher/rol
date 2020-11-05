@@ -27,14 +27,14 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should redirect edit when logged in as wrong user" do
-    log_in_as(@other_user)
+    logged_in_as(@other_user)
     get :edit, params: { id: @user }
     assert flash.empty?
     assert_redirected_to root_url
   end
 
   test "should redirect update when logged in as wrong user" do
-    log_in_as(@other_user)
+    logged_in_as(@other_user)
     patch :update, params: { id: @user, user: { name: @user.name, email: @user.email } }
     assert flash.empty?
     assert_redirected_to root_url
@@ -53,7 +53,7 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should redirect destroy when logged in as a non-admin" do
-    log_in_as(@other_user)
+    logged_in_as(@other_user)
     assert_no_difference 'User.count' do
       delete :destroy, params: { id: @user }
     end
@@ -61,7 +61,7 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should allow the admin attribute to be edited by an admin" do
-    log_in_as(@user)
+    logged_in_as(@user)
     assert_not @other_user.admin?
     patch :update, params: { id: @other_user, user: { password:              "password",
                                             password_confirmation: "password",
@@ -70,7 +70,7 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should not allow the admin attribute to be edited by a non-admin" do
-    log_in_as(@other_user2)
+    logged_in_as(@other_user2)
     assert_not @other_user.admin?
     patch :update, params: { id: @other_user, user: { password:              "password",
                                             password_confirmation: "password",
@@ -79,7 +79,7 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should not allow the admin attribute to be edited by current user unless admin" do
-    log_in_as(@other_user)
+    logged_in_as(@other_user)
     assert_not @other_user.admin?
     patch :update, params: { id: @other_user, user: { password:              "password",
                                             password_confirmation: "password",
@@ -88,7 +88,7 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should not allow the donations attributes to be edited by current user unless admin" do
-    log_in_as(@other_user)
+    logged_in_as(@other_user)
     assert_not @other_user.admin?
     patch :update, params: { id: @other_user, user: { password:              "password",
                                             password_confirmation: "password",

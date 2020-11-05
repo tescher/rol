@@ -1,9 +1,9 @@
 source 'http://rubygems.org'
 
-ruby "2.5.7"
+ruby "2.6.5"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.4.2'
+gem 'rails', '~> 5.2.4.3'
 # Crypto for password hashing
 gem 'bcrypt', '3.1.7'
 
@@ -30,6 +30,13 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.17.0'
 # Date validator
 gem 'jc-validates_timeliness'
 
+# Fix security issues
+gem "json", ">= 2.3.0"
+gem "rack", ">=2.2.3"
+gem "websocket-extensions", ">= 0.1.5"
+
+
+
 # Possessive noun helper
 gem 'possessive'
 
@@ -41,7 +48,8 @@ gem "paranoia"
 
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
-gem 'pg', "0.21.0"
+# gem 'pg', "0.21.0"
+gem 'pg'
 # Use SCSS for stylesheets
 gem 'sassc-rails'
 gem 'bootstrap-sass'
@@ -64,7 +72,7 @@ gem 'jquery-ui-rails'
 gem 'jbuilder'
 
 # bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'sdoc', '>= 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -103,6 +111,9 @@ group :development do
 end
 
 group :production do
+  if ENV['HOSTING_VENDOR'] == "OpalStack"
+    gem 'puma'
+  end
   ###gem 'heroku-deflater'
   ###gem 'rails_12factor'
   ###gem 'unicorn',        '4.8.3'
