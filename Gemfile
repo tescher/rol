@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 ruby "2.6.5"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.4.5'
+gem 'rails', '~> 5.2.4.6'
 # Crypto for password hashing
 gem 'bcrypt', '3.1.7'
 
@@ -34,8 +34,8 @@ gem 'jc-validates_timeliness'
 gem "json", ">= 2.3.0"
 gem "rack", ">=2.2.3"
 gem "websocket-extensions", ">= 0.1.5"
-
-
+gem "rdoc", ">= 6.3.1"
+gem "nokogiri", ">= 1.11.4"
 
 # Possessive noun helper
 gem 'possessive'
