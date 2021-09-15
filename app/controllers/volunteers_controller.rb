@@ -119,17 +119,37 @@ class VolunteersController < ApplicationController
               where_clause += "volunteer_category_volunteers.volunteer_category_id IN (#{volunteer_category_ids.join(',')})"
             end
 
+            @volunteers = Volunteer.select("DISTINCT(volunteers.id), volunteers.*").joins(joins_clause).where(where_clause).order(:last_name, :first_name).paginate(page: params[:page], per_page: per_page)
+            # UNION together date searches and JOIN with initial search
             if !search_params[:workday_since].blank?
               workday_since = Date.strptime(search_params[:workday_since], "%m/%d/%Y").to_s
               if !workday_since.blank?
-                joins_clause << :workday_volunteers
-                joins_clause << :workdays
-                where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
-                where_clause += "workdays.workdate >= '#{workday_since}'"
-                #@volunteers = @volunteers.joins(:workday_volunteers, :workdays).where("workday_volunteers.volunteer_id = '#{v.id}'").where("workdays.workdate >= '#{workday_since}'")
+                date_joins_clause = [:workday_volunteers, :workdays]
+                date_where_clause = "workdays.workdate >= '#{workday_since}'"
+                @volunteers_since = Volunteer.select("DISTINCT(volunteers.id), volunteers.*").joins(date_joins_clause).where(date_where_clause)
+                @volunteers_by_date = defined?(@volunteers_by_date) ? @volunteers_by_date + @volunteers_since : @volunteers_since
               end
             end
-            @volunteers = Volunteer.select("DISTINCT(volunteers.id), volunteers.*").joins(joins_clause).where(where_clause).order(:last_name, :first_name).paginate(page: params[:page], per_page: per_page)
+            if !search_params[:donation_since].blank?
+              donation_since = Date.strptime(search_params[:donation_since], "%m/%d/%Y").to_s
+              if !donation_since.blank?
+                date_joins_clause = [:donations]
+                date_where_clause = "donations.date_received >= '#{donation_since}'"
+                @volunteers_since = Volunteer.select("DISTINCT(volunteers.id), volunteers.*").joins(date_joins_clause).where(date_where_clause)
+                @volunteers_by_date = defined?(@volunteers_by_date) ? @volunteers_by_date + @volunteers_since : @volunteers_since
+              end
+            end
+            if !search_params[:created_since].blank?
+              created_since = Date.strptime(search_params[:created_since], "%m/%d/%Y").to_s
+              if !created_since.blank?
+                date_where_clause = "volunteers.created_at >= '#{created_since}'"
+                @volunteers_since = Volunteer.select("DISTINCT(volunteers.id), volunteers.*").where(date_where_clause)
+                @volunteers_by_date = defined?(@volunteers_by_date) ? @volunteers_by_date + @volunteers_since: @volunteers_since
+              end
+            end
+            if defined?(@volunteers_by_date)
+              @volunteers = @volunteers.merge(@volunteers_by_date)
+            end
           end
         end
       end
@@ -793,7 +813,7 @@ class VolunteersController < ApplicationController
                                       contacts_attributes: [:id, :notes, :contact_method_id, :date_time, :_destroy])
   end
   def volunteer_search_params
-    search_params = params.permit(:name, :city, :workday_since, interest_ids: [], volunteer_category_ids: [])
+    search_params = params.permit(:name, :city, :workday_since, :created_since, :donation_since, interest_ids: [], volunteer_category_ids: [])
     search_params.delete_if {|k,v| v.blank?}
     search_params.to_h
   end

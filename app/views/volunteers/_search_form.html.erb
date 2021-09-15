@@ -43,6 +43,22 @@
           </div>
           <div class="row">
             <div class="col-md-2">
+              <%= label_tag :donation_since %><br>
+            </div>
+            <div class="col-md-5">
+              <%= text_field_tag :donation_since,  nil , id: 'donationsincedatepicker', class: 'form-control' %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2">
+              <%= label_tag :created_since %><br>
+            </div>
+            <div class="col-md-5">
+              <%= text_field_tag :created_since,  nil , id: 'createdsincedatepicker', class: 'form-control' %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2">
               <%= label_tag :workday_since %><br>
             </div>
             <div class="col-md-5">

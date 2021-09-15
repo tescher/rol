@@ -10,6 +10,9 @@ gem 'bcrypt', '3.1.7'
 # Used in Rails 5.2+
 gem 'bootsnap'
 
+# Help with exports
+gem 'active_record_union'
+
 # DB Seeder
 gem 'faker'
 
