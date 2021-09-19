@@ -7,6 +7,7 @@
   <Worksheet ss:Name="Sheet1">
     <Table>
       <Row>
+        <Cell><Data ss:Type="String">Constituent ID</Data></Cell>
         <Cell><Data ss:Type="String">Name</Data></Cell>
         <Cell><Data ss:Type="String">Organization Type</Data></Cell>
         <Cell><Data ss:Type="String">Contact Name</Data></Cell>
@@ -21,6 +22,7 @@
       </Row>
       <% @organizations.each do |organization| %>
           <Row>
+            <Cell><Data ss:Type="String"><%= "O" + organization.id.to_s %></Data></Cell>
             <Cell><Data ss:Type="String"><%= organization.name %></Data></Cell>
             <Cell><Data ss:Type="String"><%= organization.organization_type_id.nil?  ? "" : OrganizationType.find(organization.organization_type_id).name %></Data></Cell>
             <Cell><Data ss:Type="String"><%= organization.contact_name %></Data></Cell>
