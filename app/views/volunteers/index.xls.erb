@@ -7,6 +7,7 @@
   <Worksheet ss:Name="Sheet1">
     <Table>
       <Row>
+        <Cell><Data ss:Type="String">Constituent ID</Data></Cell>
         <Cell><Data ss:Type="String">First Name</Data></Cell>
         <Cell><Data ss:Type="String">Middle Name</Data></Cell>
         <Cell><Data ss:Type="String">Last Name</Data></Cell>
@@ -20,12 +21,32 @@
         <Cell><Data ss:Type="String">Email</Data></Cell>
         <Cell><Data ss:Type="String">Occupation</Data></Cell>
         <Cell><Data ss:Type="String">Notes</Data></Cell>
+        <Cell><Data ss:Type="String">Medical Conditions</Data></Cell>
+        <Cell><Data ss:Type="String">Physical Limitations</Data></Cell>
         <Cell><Data ss:Type="String">Interests</Data></Cell>
+        <Cell><Data ss:Type="String">Volunteer Categories</Data></Cell>
+        <Cell><Data ss:Type="String">Employer</Data></Cell>
+        <Cell><Data ss:Type="String">Employer Constituent ID</Data></Cell>
+        <Cell><Data ss:Type="String">Primary Employer Contact</Data></Cell>
+        <Cell><Data ss:Type="String">Church</Data></Cell>
+        <Cell><Data ss:Type="String">Church Constituent ID</Data></Cell>
+        <Cell><Data ss:Type="String">Primary Church Contact</Data></Cell>
+        <Cell><Data ss:Type="String">Birthdate</Data></Cell>
+        <Cell><Data ss:Type="String">Adult</Data></Cell>
+        <Cell><Data ss:Type="String">Last Waiver Date</Data></Cell>
         <Cell><Data ss:Type="String">Last Workdate</Data></Cell>
+        <Cell><Data ss:Type="String">Last Donation Date</Data></Cell>
+        <Cell><Data ss:Type="String">First Contact Date</Data></Cell>
+        <Cell><Data ss:Type="String">First Contact Type</Data></Cell>
+        <Cell><Data ss:Type="String">Emergency Contact</Data></Cell>
+        <Cell><Data ss:Type="String">Emergency Contact Phone</Data></Cell>
+        <Cell><Data ss:Type="String">Agreed to Background Check</Data></Cell>
+        <Cell><Data ss:Type="String">Background Check Date</Data></Cell>
         <Cell><Data ss:Type="String">Remove From Mailing List</Data></Cell>
       </Row>
       <% @volunteers.each do |volunteer| %>
           <Row>
+            <Cell><Data ss:Type="String"><%= "V" + volunteer.id.to_s %></Data></Cell>
             <Cell><Data ss:Type="String"><%= volunteer.first_name %></Data></Cell>
             <Cell><Data ss:Type="String"><%= volunteer.middle_name %></Data></Cell>
             <Cell><Data ss:Type="String"><%= volunteer.last_name %></Data></Cell>
@@ -38,14 +59,38 @@
             <Cell><Data ss:Type="String"><%= volunteer.mobile_phone %></Data></Cell>
             <Cell><Data ss:Type="String"><%= volunteer.email %></Data></Cell>
             <Cell><Data ss:Type="String"><%= volunteer.occupation %></Data></Cell>
-            <Cell><Data ss:Type="String"><%= volunteer.notes %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= volunteer.notes.nil? ? "" : volunteer.notes.gsub(/\r?\n/, " ") %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= volunteer.medical_conditions.nil? ? "" : volunteer.medical_conditions.gsub(/\r?\n/, " ") %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= volunteer.limitations.nil? ? "" : volunteer.limitations.gsub(/\r?\n/, " ") %></Data></Cell>
             <% interest_names = ""
                volunteer.interests.each do |interest|
                  interest_names = interest_names.empty? ? "" : interest_names + ", "
                  interest_names += interest.interest_category.name + "-" + interest.name
                end %>
             <Cell><Data ss:Type="String"><%= interest_names %></Data></Cell>
+            <% volunteer_category_names = ""
+               volunteer.volunteer_categories.each do |volunteer_category|
+                 volunteer_category_names = volunteer_category_names.empty? ? "" : volunteer_category_names + ", "
+                 volunteer_category_names += volunteer_category.name
+               end %>
+            <Cell><Data ss:Type="String"><%= volunteer_category_names %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= volunteer.employer.nil? ? "" : volunteer.employer.name %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= volunteer.employer.nil? ? "" : "O" + volunteer.employer.id.to_s %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= volunteer.primary_employer_contact %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= volunteer.church.nil? ? "" : volunteer.church.name %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= volunteer.church.nil? ? "" : "O" + volunteer.church.id.to_s %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= volunteer.primary_church_contact %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= volunteer.birthdate.nil? ? "" : volunteer.birthdate.strftime("%m/%d/%Y") %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= volunteer.adult %></Data></Cell>
             <Cell><Data ss:Type="String"><%= volunteer.last_workday.nil? ? "" : volunteer.last_workday.workdate.strftime("%m/%d/%Y") %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= volunteer.last_donation.nil? ? "" : volunteer.last_donation.date_received.strftime("%m/%d/%Y") %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= volunteer.waiver_date.nil? ? "" : volunteer.waiver_date.strftime("%m/%d/%Y") %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= volunteer.first_contact_date.nil? ? "" : volunteer.first_contact_date.strftime("%m/%d/%Y") %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= volunteer.first_contact_type.nil? ? "" : volunteer.first_contact_type.name %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= volunteer.emerg_contact_name %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= volunteer.emerg_contact_phone %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= volunteer.agree_to_background_check %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= volunteer.background_check_date.nil? ? "" : volunteer.background_check_date.strftime("%m/%d/%Y") %></Data></Cell>
             <Cell><Data ss:Type="String"><%= volunteer.remove_from_mailing_list %></Data></Cell>
           </Row>
       <% end %>

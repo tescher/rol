@@ -71,6 +71,14 @@ class Volunteer < ApplicationRecord
     end
   end
 
+  def last_donation
+    if self.id
+      Donation.where("donations.volunteer_id = '#{self.id}'").order("date_received DESC").first
+    else
+      nil
+    end
+  end
+
   def self.merge_fields_table
     merge_fields = {}
     index = 0
