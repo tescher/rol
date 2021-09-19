@@ -82,9 +82,9 @@
             <Cell><Data ss:Type="String"><%= volunteer.primary_church_contact %></Data></Cell>
             <Cell><Data ss:Type="String"><%= volunteer.birthdate.nil? ? "" : volunteer.birthdate.strftime("%m/%d/%Y") %></Data></Cell>
             <Cell><Data ss:Type="String"><%= volunteer.adult %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= volunteer.waiver_date.nil? ? "" : volunteer.waiver_date.strftime("%m/%d/%Y") %></Data></Cell>
             <Cell><Data ss:Type="String"><%= volunteer.last_workday.nil? ? "" : volunteer.last_workday.workdate.strftime("%m/%d/%Y") %></Data></Cell>
             <Cell><Data ss:Type="String"><%= volunteer.last_donation.nil? ? "" : volunteer.last_donation.date_received.strftime("%m/%d/%Y") %></Data></Cell>
-            <Cell><Data ss:Type="String"><%= volunteer.waiver_date.nil? ? "" : volunteer.waiver_date.strftime("%m/%d/%Y") %></Data></Cell>
             <Cell><Data ss:Type="String"><%= volunteer.first_contact_date.nil? ? "" : volunteer.first_contact_date.strftime("%m/%d/%Y") %></Data></Cell>
             <Cell><Data ss:Type="String"><%= volunteer.first_contact_type.nil? ? "" : volunteer.first_contact_type.name %></Data></Cell>
             <Cell><Data ss:Type="String"><%= volunteer.emerg_contact_name %></Data></Cell>
