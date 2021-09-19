@@ -17,6 +17,7 @@
         <Cell><Data ss:Type="String">Phone</Data></Cell>
         <Cell><Data ss:Type="String">Email</Data></Cell>
         <Cell><Data ss:Type="String">Notes</Data></Cell>
+        <Cell><Data ss:Type="String">Remove From Mailing List</Data></Cell>
       </Row>
       <% @organizations.each do |organization| %>
           <Row>
@@ -29,7 +30,8 @@
             <Cell><Data ss:Type="String"><%= organization.zip %></Data></Cell>
             <Cell><Data ss:Type="String"><%= organization.phone %></Data></Cell>
             <Cell><Data ss:Type="String"><%= organization.email %></Data></Cell>
-            <Cell><Data ss:Type="String"><%= organization.notes %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= organization.notes.nil? ? "" : organization.notes.gsub(/\r?\n/, " ") %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= organization.remove_from_mailing_list %></Data></Cell>
           </Row>
       <% end %>
     </Table>
