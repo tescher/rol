@@ -15,6 +15,7 @@
           </Row>
           <Row></Row>
           <Row>
+            <Cell><Data ss:Type="String">Organization Constituent ID</Data></Cell>
             <Cell><Data ss:Type="String">Organization</Data></Cell>
             <Cell><Data ss:Type="String">Address</Data></Cell>
             <Cell><Data ss:Type="String">City</Data></Cell>
@@ -36,6 +37,7 @@
               <% d_count += 1 %>
               <% organization = Organization.find(d.organization_id) %>
               <Row>
+                <Cell><Data ss:Type="String"><%= "O" + organization.id.to_s %></Data></Cell>
                 <Cell><Data ss:Type="String"><%= organization.name %></Data></Cell>
                 <Cell><Data ss:Type="String"><%= organization.address %></Data></Cell>
                 <Cell><Data ss:Type="String"><%= organization.city %></Data></Cell>
@@ -76,6 +78,7 @@
           </Row>
           <Row></Row>
           <Row>
+            <Cell><Data ss:Type="String">Volunteer Constituent ID</Data></Cell>
             <Cell><Data ss:Type="String">Volunteer</Data></Cell>
             <Cell><Data ss:Type="String">Address</Data></Cell>
             <Cell><Data ss:Type="String">City</Data></Cell>
@@ -97,6 +100,7 @@
               <% d_count += 1 %>
               <% volunteer = Volunteer.find(d.volunteer_id) %>
               <Row>
+                <Cell><Data ss:Type="String"><%= "V" + volunteer.id.to_s %></Data></Cell>
                 <Cell><Data ss:Type="String"><%= volunteer.name %></Data></Cell>
                 <Cell><Data ss:Type="String"><%= volunteer.address %></Data></Cell>
                 <Cell><Data ss:Type="String"><%= volunteer.city %></Data></Cell>
