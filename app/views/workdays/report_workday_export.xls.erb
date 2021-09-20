@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:o="urn:schemas-microsoft-com:office:office"
+          xmlns:x="urn:schemas-microsoft-com:office:excel"
+          xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <% got_info = false %>
+      <Row>
+        <Cell><Data ss:Type="String">Volunteer Constituent ID</Data></Cell>
+        <Cell><Data ss:Type="String">Volunteer Name</Data></Cell>
+        <Cell><Data ss:Type="String">City</Data></Cell>
+        <Cell><Data ss:Type="String">Email</Data></Cell>
+        <Cell><Data ss:Type="String">Project ID</Data></Cell>
+        <Cell><Data ss:Type="String">Project</Data></Cell>
+        <Cell><Data ss:Type="String">Workday ID</Data></Cell>
+        <Cell><Data ss:Type="String">Workday</Data></Cell>
+        <Cell><Data ss:Type="String">Workday Date</Data></Cell>
+        <Cell><Data ss:Type="String">Workday Notes</Data></Cell>
+        <Cell><Data ss:Type="String">Start Time</Data></Cell>
+        <Cell><Data ss:Type="String">End Time</Data></Cell>
+        <Cell><Data ss:Type="String">Hours</Data></Cell>
+        <Cell><Data ss:Type="String">Hours Donated To Volunteer Constituent ID</Data></Cell>
+        <Cell><Data ss:Type="String">Hours Donated To Volunteer Name</Data></Cell>
+        <Cell><Data ss:Type="String">Volunteer Shift Notes</Data></Cell>
+      </Row>
+
+      <% @workday_volunteers.each do |workday_volunteer| %>
+          <% got_info = true %>
+          <% pp workday_volunteer  %>
+          <Row>
+            <Cell><Data ss:Type="String"><%= "V" + workday_volunteer.volunteer.id.to_s %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= workday_volunteer.volunteer.name %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= workday_volunteer.volunteer.city %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= workday_volunteer.volunteer.email %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= "P" + workday_volunteer.workday.project.id.to_s %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= workday_volunteer.workday.project.name %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= "W" + workday_volunteer.workday.id.to_s %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= workday_volunteer.workday.name %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= workday_volunteer.workday.workdate.nil? ? "" : workday_volunteer.workday.workdate.strftime("%m/%d/%Y") %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= workday_volunteer.workday.notes.nil? ? "" : workday_volunteer.workday.notes.gsub(/\r?\n/, " ") %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= workday_volunteer.start_time.nil? ? "" : workday_volunteer.start_time.strftime("%H%M") %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= workday_volunteer.end_time.nil? ? "" : workday_volunteer.end_time.strftime("%H%M") %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= numeric_display(workday_volunteer.hours) %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= workday_volunteer.homeowner_donated_to.nil? ? "" : "V" + workday_volunteer.homeowner_donated_to.id.to_s %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= workday_volunteer.homeowner_donated_to.nil? ? "" :workday_volunteer.homeowner_donated_to.name %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= workday_volunteer.volunteer_notes.nil? ? "" : workday_volunteer.volunteer_notes.gsub(/\r?\n/, " ") %></Data></Cell>
+          </Row>
+      <% end %>
+
+      <% if !got_info %>
+          <Row>
+            <Cell><Data ss:Type="String">No participants found meeting the criteria given</Data></Cell>
+          </Row>
+      <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>
