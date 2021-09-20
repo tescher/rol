@@ -29,11 +29,11 @@ class WorkdaysController < ApplicationController
 
       if !params[:from_date].empty?
         where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
-        where_clause += "workdate >= '#{Date.strptime(params[:from_date], "%m/%d/%Y").to_s}'"
+        where_clause += "workdays.workdate >= '#{Date.strptime(params[:from_date], "%m/%d/%Y").to_s}'"
       end
       if !params[:to_date].empty?
         where_clause = where_clause.length > 0 ? where_clause + " AND " : where_clause
-        where_clause += "workdate <= '#{Date.strptime(params[:to_date], "%m/%d/%Y").to_s}'"
+        where_clause += "workdays.workdate <= '#{Date.strptime(params[:to_date], "%m/%d/%Y").to_s}'"
       end
 
       # For Volunteer Categories do a where similar to this on volunteer_category_volunteers table joined in "join" below on workday_volunteer.id
@@ -46,9 +46,9 @@ class WorkdaysController < ApplicationController
 
       project_ids = params[:project_ids].nil? ? [] : params[:project_ids]
       if project_ids.count > 0
-        project_where = "project_id IN (" + project_ids.join(",") + ")"
+        project_where = "workdays.project_id IN (" + project_ids.join(",") + ")"
       else
-        project_where = "project_id IS NOT NULL"
+        project_where = "workdays.project_id IS NOT NULL"
       end
       if !(vc_where == "TRUE")
         # join_volunteers = "JOIN workday_volunteers (JOIN volunteer_category_volunteers ON volunteer_category_volunteers.volunteer_id = workday_volunteer.volunteer_id) ON workdays.id = workday_volunteers.workday_id "
@@ -82,6 +82,8 @@ class WorkdaysController < ApplicationController
       when "3"
         @volunteers = Workday.select("workday_volunteers.volunteer_id, COALESCE(SUM(workday_volunteers.hours), 0) as hours").joins(join_volunteers).where(where_clause).where(project_where).where(vc_where).group("workday_volunteers.volunteer_id").order("hours DESC")
         @organizations = Workday.select("workday_organizations.organization_id, COALESCE(SUM(workday_organizations.hours * workday_organizations.num_volunteers), 0) as hours").joins(:workday_organizations).where(where_clause).where(project_where).group("workday_organizations.organization_id").order("hours DESC")
+      when "4"
+        @workday_volunteers = WorkdayVolunteer.select("*, workday_volunteers.notes as volunteer_notes").joins("JOIN workdays ON workdays.id = workday_id").where(where_clause).where(project_where).order("workdays.workdate ASC")
       end
 
       respond_to do |format|
@@ -105,13 +107,15 @@ class WorkdaysController < ApplicationController
             render "report_participants_by_project.xls"
           when "3"
             render "report_hours_by_participant.xls"
+          when "4"
+            render "report_workday_export.xls"
           end
         }
 
 
       end
     else
-      @report_types = [["Workdays by Project",1], ["Participants by Project",2], ["Hours by Participant",3]]
+      @report_types = [["Workdays by Project",1], ["Participants by Project",2], ["Hours by Participant",3], ["Workday Export", 4]]
       @report_format = [["Screen",1],["Excel",2]]
     end
 
